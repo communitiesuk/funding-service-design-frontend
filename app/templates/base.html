@@ -1,0 +1,71 @@
+{% extends 'govuk_frontend_jinja/template.html' %}
+
+{% set assetPath = url_for('static', filename='').rstrip('/') %}
+
+{% block pageTitle %}DLUHC Funding Service Design Iteration 1{% endblock %}
+
+{% block head %}
+  <meta name="description" content="{{ service_meta_description }}">
+  <meta name="keywords" content="{{ service_meta_keywords }}">
+  <meta name="author" content="{{ service_meta_author }}">
+  <!--[if gt IE 8]><!--><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='govuk-frontend-4.0.0.min.css') }}" /><!--<![endif]-->
+  <!--[if IE 8]><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='govuk-frontend-ie8-4.0.0.min.css') }}" /><![endif]-->
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader({
+    'homepageUrl': url_for('index'),
+    'serviceName': "DLUHC Funding Service Design Iteration 1",
+    'serviceUrl': url_for('index')
+  }) }}
+{% endblock %}
+
+{% block footer %}
+  {{ govukFooter({
+    'navigation': [
+      {
+        'title': 'This demo uses',
+        'columns': 1,
+        'items': [
+            {
+              'href': 'https://github.com/alphagov/govuk-frontend/releases/tag/v4.0.0',
+              'text': 'GOV.UK Frontend v4.0.0'
+            },
+            {
+              'href': 'https://github.com/LandRegistry/govuk-frontend-jinja/releases/tag/2.0.0',
+              'text': 'GOV.UK Frontend Jinja v2.0.0'
+            }
+          ]
+      },
+      {
+        'title': 'More information',
+        'columns': 1,
+        'items': [
+            {
+              'href': "https://github.com/LandRegistry/govuk-frontend-jinja",
+              'text': "Package source code"
+            },
+            {
+              'href': "https://github.com/LandRegistry/govuk-frontend-jinja/actions",
+              'text': "Build pipeline"
+            },
+            {
+              'href': "https://pypi.org/project/govuk-frontend-jinja/",
+              'text': "PyPI package"
+            },
+            {
+              'href': "https://github.com/LandRegistry/govuk-frontend-jinja-demo",
+              'text': "Demo source code"
+            }
+          ]
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block bodyEnd %}
+  <!--[if gt IE 8]><!-->
+  <script src="{{ url_for('static', filename='govuk-frontend-4.0.0.min.js') }}"> </script>
+  <script>window.GOVUKFrontend.initAll()</script>
+  <!--<![endif]-->
+{% endblock %}

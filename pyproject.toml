@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "funding-service-design-frontend"
+version = "0.1.1"
+description = "The funding service design frontend for the DLUHC."
+authors = ["Evoco Digital Services"]
+license = "MIT License"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "^2.0.2"
+govuk-frontend-jinja = "^2.0.0"
+Werkzeug = "^2.0.2"
+Jinja2 = "^3.0.3"
+Flask-Compress = "^1.10.1"
+flask-talisman = "^0.8.1"
+python-dotenv = "^0.19.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
