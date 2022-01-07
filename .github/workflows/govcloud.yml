@@ -1,0 +1,25 @@
+name: Deploy to Cloud Foundry
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    # Build your app here
+
+  deploy:
+    runs-on: ubuntu-18.04
+    needs: build
+    
+    steps:
+    - uses: citizen-of-planet-earth/cf-cli-action@master
+      with:
+        cf_api: https://api.london.cloud.service.gov.uk
+        cf_username: ${{ secrets.CF_USER }}
+        cf_password: ${{ secrets.CF_PASSWORD }}
+        cf_org: dluhc-funding-service-design
+        cf_space: sandbox
+        command: push -f manifest.yml
