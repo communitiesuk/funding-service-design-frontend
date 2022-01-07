@@ -17,4 +17,4 @@ jobs:
         cf_password: ${{ secrets.CF_PASSWORD }}
         cf_org: dluhc-funding-service-design
         cf_space: sandbox
-        command: push -f manifest.yml
+        command: cf login -a api.london.cloud.service.gov.uk -u${{ secrets.CF_USER }} -p${{ secrets.CF_PASSWORD }} ; push -f manifest.yml
