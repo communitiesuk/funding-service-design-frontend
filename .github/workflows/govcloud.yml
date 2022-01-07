@@ -15,7 +15,8 @@ jobs:
     needs: build
     
     steps:
-    - uses: citizen-of-planet-earth/cf-cli-action@master
+    - name: push to CF
+      uses: citizen-of-planet-earth/cf-cli-action@master
       with:
         cf_api: https://api.london.cloud.service.gov.uk
         cf_username: ${{ secrets.CF_USER }}
