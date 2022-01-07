@@ -10,12 +10,13 @@ jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
-    - name: push to CF
-      uses: citizen-of-planet-earth/cf-cli-action@master
-      with:
-        cf_api: https://api.london.cloud.service.gov.uk
-        cf_username: ${{ secrets.CF_USER }}
-        cf_password: ${{ secrets.CF_PASSWORD }}
-        cf_org: dluhc-funding-service-design
-        cf_space: sandbox
-        command: cf login -a api.london.cloud.service.gov.uk -u${{ secrets.CF_USER }} -p${{ secrets.CF_PASSWORD }} ; push -f manifest.yml
+      - uses: actions/checkout@v2
+      - uses: jhunt/cf-push@v1
+        with:
+          api:      ${{ secrets.CF_API }}
+          org:      ${{ secrets.CF_ORG }}
+          space:    ${{ secrets.CF_SPACE }}
+          username: ${{ secrets.CF_USERNAME }}
+          password: ${{ secrets.CF_PASSWORD }}
+          manifest: manifest.yml
+          validate: false
