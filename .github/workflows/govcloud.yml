@@ -4,6 +4,7 @@ on:
   push:
     branches:
     - master
+    - cary
 
 jobs:
   deploy:
