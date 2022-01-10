@@ -42,6 +42,12 @@ Enter the virtual environment as described above, then:
 ### Create static files
 
     python build.py
+
+Developer note: If you receive a certification error when running the above command on macOS, 
+consider if you need to run the Python
+'Install Certificates.command' which is a file located in your globally installed Python directory. For more info see [StackOverflow](https://stackoverflow.com/questions/52805115/certificate-verify-failed-unable-to-get-local-issuer-certificate)
+
+
 Then run:
 
     flask run
