@@ -1,15 +1,9 @@
-import json
-import os
-
 from flask import render_template
-from werkzeug.exceptions import NotFound
-
 from app import app
 
 
 @app.route("/")
 def index():
-
     return render_template("index.html")
 
 
@@ -21,4 +15,3 @@ def not_found(error):
 @app.errorhandler(500)
 def internal_server(error):
     return render_template("500.html"), 500
-
