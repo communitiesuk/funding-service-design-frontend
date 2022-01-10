@@ -9,7 +9,6 @@ Built with Flask.
 
 ## Prerequisites
 - python ^= 3.10
-- poetry ^= 1.1.12 (brew install poetry)
 
 # Getting started
 
@@ -20,21 +19,29 @@ Clone the repository
 
 ### Start a Virtual environment
 
-    python -m venv venv
+    python3 -m venv venv
 
 ### Install dependencies
 From the top-level directory enter the command to install pip and the dependencies of the project
 
-    python -m pip install --upgrade pip && pip install -r requirements.txt
+    python3 -m pip install --upgrade pip && pip install -r requirements.txt
+
+## How to use
+
+###Enter the virtual environment
+
+...either macOS using bash:
+
+    source venv/bin/activate
+
+...or if on Windows using Command Prompt:
+
+    venv\Scripts\activate.bat
 
 ### Create static files
 
     python build.py
-
-## How to use
-A requirements.txt is included for developer preference. Once you have
-installed the dependences (poetry or otherwise), enter the virtual environment
-and run:
+Then run:
 
     flask run
 
