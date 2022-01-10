@@ -9,7 +9,7 @@ Built with Flask.
 
 ## Prerequisites
 - python ^= 3.10
-- poetry ^= 1.1.12
+- poetry ^= 1.1.12 (brew install poetry)
 
 # Getting started
 
@@ -18,15 +18,14 @@ Built with Flask.
 ### Locally:
 Clone the repository
 
-### Install Dependences
+### Start a Virtual environment
 
-    poetry config virtualenvs.in-project true
+    python -m venv venv
 
-    poetry install
+### Install dependencies
+From the top-level directory enter the command to install pip and the dependencies of the project
 
-### Enter the virtual environment
-
-    poetry shell
+    python -m pip install --upgrade pip && pip install -r requirements.txt
 
 ### Create static files
 
