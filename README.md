@@ -16,7 +16,7 @@ Built with Flask.
 
 Clone the repository
 
-### Start a Virtual environment
+### Create a Virtual environment
 
     python3 -m venv .venv
 
