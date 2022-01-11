@@ -14,7 +14,6 @@ Built with Flask.
 
 ## Installation
 
-### Locally:
 Clone the repository
 
 ### Start a Virtual environment
@@ -57,3 +56,15 @@ A local dev server will be created on
     http://127.0.0.1:5000/
 
 This is configurable in .flaskenv
+
+# Extras
+
+This repo comes with a .pre-commot-config.yaml, if you wish to use this do
+the following while in your virtual enviroment:
+
+    pip install pre-commit black
+
+    pre-commit install
+
+Once the above is done you will have autoformatting and pep8 compliance built
+into your workflow. You will be notified of any pep8 errors during commits.
