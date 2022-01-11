@@ -20,7 +20,7 @@ Clone the repository
 
     python3 -m venv .venv
 
-###Enter the virtual environment
+### Enter the virtual environment
 
 ...either macOS using bash:
 
@@ -56,6 +56,10 @@ A local dev server will be created on
     http://127.0.0.1:5000/
 
 This is configurable in .flaskenv
+
+You should see the following: 
+
+![Preview of the end result](https://user-images.githubusercontent.com/56394038/148535451-469d8fa4-2354-47a0-9d71-1052bfae78c4.png)
 
 # Extras
 
