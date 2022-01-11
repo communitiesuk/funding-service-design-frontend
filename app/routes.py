@@ -1,5 +1,5 @@
 from flask import render_template
-from app import app
+from app.create_app import app
 
 
 @app.route("/")
