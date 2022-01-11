@@ -2,7 +2,6 @@
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
-
 Repo for the funding service design frontend.
 
 Built with Flask.
@@ -45,7 +44,6 @@ Enter the virtual environment as described above, then:
 Developer note: If you receive a certification error when running the above command on macOS, 
 consider if you need to run the Python
 'Install Certificates.command' which is a file located in your globally installed Python directory. For more info see [StackOverflow](https://stackoverflow.com/questions/52805115/certificate-verify-failed-unable-to-get-local-issuer-certificate)
-
 
 Then run:
 
