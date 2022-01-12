@@ -42,3 +42,4 @@ print("Deleting app/static/assets")
 # Deletes temp. files.
 shutil.rmtree("./app/static/assets")
 os.remove("./govuk_frontend.zip")
+
