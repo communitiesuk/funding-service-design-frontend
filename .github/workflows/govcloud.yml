@@ -12,7 +12,10 @@ jobs:
     runs-on: ubuntu-18.04
     environment: Dev
     steps:
-      - uses: actions/checkout@v2
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: update python
+        run: sudo add-apt-repository ppa:deadsnakes/ppa && sudo apt install python3.10
       - name: debug
         run: python --version
       - name: create python env
