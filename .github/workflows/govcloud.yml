@@ -19,9 +19,9 @@ jobs:
       - name: debug
         run: python3.10 --version
       - name: create python env
-        run: python3 -m venv .venv
+        run: python3.10 -m venv .venv
       - name: install dependencies
-        run: source .venv/bin/activate && python3 -m pip install --upgrade pip && pip install -r requirements.txt
+        run: source .venv/bin/activate && python3.10 -m pip install --upgrade pip && pip install -r requirements.txt
       - name: build static assets
         run: python build.py
       - name: Deploy to Gov PaaS
