@@ -1,0 +1,24 @@
+name: Deploy to Cloud Foundry
+
+on:
+  workflow_dispatch: 
+  push:
+    branches:
+    - master
+    - cary
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    environment: Dev
+    steps:
+      - uses: actions/checkout@v2
+      - uses: citizen-of-planet-earth/cf-cli-action@v2
+        with:
+          cf_api:      ${{secrets.CF_API}}
+          cf_org:      ${{secrets.CF_ORG}}
+          cf_space:    ${{secrets.CF_SPACE }}
+          cf_username: ${{secrets.CF_USER}}
+          cf_password: ${{secrets.CF_PASSWORD}}
+          command: push -f  manifest.yml
+

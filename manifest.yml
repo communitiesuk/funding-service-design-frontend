@@ -1,0 +1,6 @@
+---
+applications:
+- name: funding-service-design-frontend
+  memory: 64M
+  buildpacks:
+  - python_buildpack
