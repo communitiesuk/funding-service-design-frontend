@@ -13,7 +13,7 @@ jobs:
     environment: Dev
     steps:
       - uses: actions/checkout@v2
-      - uses: citizen-of-planet-earth/cf-cli-action@master
+      - uses: citizen-of-planet-earth/cf-cli-action@v2
         with:
           cf_api:      ${{secrets.CF_API}}
           cf_org:      ${{secrets.CF_ORG}}
