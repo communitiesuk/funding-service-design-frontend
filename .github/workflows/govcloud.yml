@@ -14,6 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: install python requirements
+        run: python3 -m venv .venv
+        run: source .venv/bin/activate
         run: python3 -m pip install --upgrade pip && pip install -r requirements.txt
       - name: build static assets
         run: python build.py
