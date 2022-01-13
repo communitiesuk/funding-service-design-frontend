@@ -21,3 +21,4 @@ jobs:
           cf_username: ${{secrets.CF_USERNAME}}
           cf_password: ${{secrets.CF_PASSWORD}}
           command: push -f  manifest.yml
+      - run: echo "${{secrets.CF_USERNAME}}"
