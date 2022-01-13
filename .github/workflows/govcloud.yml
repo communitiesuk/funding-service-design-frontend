@@ -18,6 +18,8 @@ jobs:
         run: sudo add-apt-repository ppa:deadsnakes/ppa && sudo apt install python3.10
       - name: debug
         run: python3.10 --version
+      - name: ensurepip and venv in python3.10
+        run: python3.10 -m ensurepip && python3.10 pip install venv
       - name: create python env
         run: python3.10 -m venv .venv
       - name: install dependencies
