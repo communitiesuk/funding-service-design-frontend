@@ -13,6 +13,7 @@ jobs:
     environment: Dev
     steps:
       - uses: actions/checkout@v2
+      - run: python build.py
       - uses: citizen-of-planet-earth/cf-cli-action@v2
         with:
           cf_api:      ${{secrets.CF_API}}
