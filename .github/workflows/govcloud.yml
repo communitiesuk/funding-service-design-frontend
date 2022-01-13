@@ -1,7 +1,7 @@
 name: Deploy to Cloud Foundry
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
   push:
     branches:
     - master
@@ -33,4 +33,3 @@ jobs:
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
           command: push -f  manifest.yml
-
