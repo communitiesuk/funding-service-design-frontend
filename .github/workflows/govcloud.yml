@@ -13,9 +13,11 @@ jobs:
     environment: Dev
     steps:
       - uses: actions/checkout@v2
-      - name: install python requirements
+      - name: create python env
         run: python3 -m venv .venv
+      - name: source env
         run: source .venv/bin/activate
+      - naem: install dependencies
         run: python3 -m pip install --upgrade pip && pip install -r requirements.txt
       - name: build static assets
         run: python build.py
