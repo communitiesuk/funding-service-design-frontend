@@ -1,2 +1,2 @@
 def test_required():
-    assert True
+    assert False
