@@ -4,3 +4,4 @@ applications:
   memory: 64M
   buildpacks:
   - python_buildpack
+  command: flask run
