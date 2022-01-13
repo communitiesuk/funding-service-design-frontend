@@ -22,3 +22,6 @@ jobs:
           password: ${{secrets.CF_PASSWORD}}
           manifest: manifest.yml
           validate: false
+      - name: debug 1
+        ## Reference your environment variables
+        run: echo "The API key is:${{secrets.CF_USERNAME}}"  
