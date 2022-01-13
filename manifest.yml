@@ -1,6 +1,0 @@
----
-applications:
-- name: funding-service-design-frontend
-  memory: 64M
-  buildpacks:
-  - staticfile_buildpack
