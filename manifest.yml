@@ -3,5 +3,5 @@ applications:
 - name: funding-service-design-frontend
   memory: 64M
   buildpacks:
-  - python_buildpack
+  - https://github.com/cloudfoundry/python-buildpack.git
   command: flask run --host 0.0.0.0 --port 8080
