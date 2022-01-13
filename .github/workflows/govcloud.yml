@@ -5,7 +5,7 @@ on:
   push:
     branches:
     - master
-    - cary
+    - FS-389
 
 jobs:
   deploy:
