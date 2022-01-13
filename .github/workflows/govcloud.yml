@@ -18,14 +18,12 @@ jobs:
         run: sudo add-apt-repository ppa:deadsnakes/ppa && sudo apt install python3.10
       - name: debug
         run: python3.10 --version
-      - name: install venv in python3.10
-        run: python3.10 -m pip install venv
       - name: create python env
-        run: python3 -m venv .venv
+        run: python3.10 -m venv .venv
       - name: install dependencies
-        run: source .venv/bin/activate && python3.10 -m pip install --upgrade pip && pip install -r requirements.txt
+        run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements.txt
       - name: build static assets
-        run: python3.10 build.py
+        run: python build.py
       - name: Deploy to Gov PaaS
         uses: citizen-of-planet-earth/cf-cli-action@v2
         with:
