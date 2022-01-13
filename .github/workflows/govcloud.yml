@@ -8,7 +8,7 @@ on:
     - FS-389
 
 jobs:
-  deploy:
+  testing:
     runs-on: ubuntu-18.04
     environment: Dev
     steps:
@@ -25,7 +25,23 @@ jobs:
       - name: build static assets
         run: python build.py
       - name: run unit tests
-        run : pip install pytest && python -m pytest .
+        run: pip install pytest && python -m pytest .
+  deploy:
+    runs-on: ubuntu-18.04
+    environment: Dev
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.1
+      - name: create python env
+        run: python -m venv .venv
+      - name: install dependencies
+        run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements.txt
+      - name: build static assets
+        run: python build.py
       - name: Deploy to Gov PaaS
         uses: citizen-of-planet-earth/cf-cli-action@v2
         with:
