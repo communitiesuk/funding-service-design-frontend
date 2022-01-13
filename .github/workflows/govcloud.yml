@@ -1,6 +1,7 @@
 name: Deploy to Cloud Foundry
 
 on:
+  workflow_dispatch: 
   push:
     branches:
     - master
