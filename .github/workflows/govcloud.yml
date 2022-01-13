@@ -13,8 +13,12 @@ jobs:
     environment: Dev
     steps:
       - uses: actions/checkout@v2
-      - run: python build.py
-      - uses: citizen-of-planet-earth/cf-cli-action@v2
+      - name: install python requirements
+        run: python3 -m pip install --upgrade pip && pip install -r requirements.txt
+      - name: build static assets
+        run: python build.py
+      - name: Deploy to Gov PaaS
+        uses: citizen-of-planet-earth/cf-cli-action@v2
         with:
           cf_api:      ${{secrets.CF_API}}
           cf_org:      ${{secrets.CF_ORG}}
