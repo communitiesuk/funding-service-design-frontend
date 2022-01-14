@@ -3,8 +3,6 @@ Some very basic tests. Tests if the flask client spins
 up and serves the correct pages.
 This is the most basic set of tests.
 """
-# flake8: noqa: F811
-from tests.testconf import flask_test_client  # noqa
 
 
 def test_flask_initiates(flask_test_client):
