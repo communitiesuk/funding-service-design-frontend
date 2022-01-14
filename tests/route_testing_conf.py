@@ -1,4 +1,4 @@
 routes_and_test_content = {
-    ("/", "Hello World"),
-    ("/404", "Page not found"),
+    ("/", b"Hello World"),
+    ("/404", b"Page not found"),
 }
