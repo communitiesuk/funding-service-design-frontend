@@ -13,7 +13,7 @@ def test_routes_status_code(flask_test_client):
     If this test succeedes then our flask application's
     routes are correctly initialised.
     """
-    for route, _ in routes_and_test_content:
+    for route, _ in routes_and_test_content.items():
 
         response = flask_test_client.get(route, follow_redirects=True)
         if route == "/404":
@@ -34,7 +34,7 @@ def test_routes_content(flask_test_client):
     If this test succeedes then our flask application's
     routes are correctly initialised.
     """
-    for route, should_contain_this in routes_and_test_content:
+    for route, should_contain_this in routes_and_test_content.items():
 
         response = flask_test_client.get(route, follow_redirects=True)
         assert should_contain_this in response.data

@@ -1,8 +1,12 @@
 """
 Some very basic tests. Tests if the flask client spins
-up and serves the correct pages.
+up and serves the index. This is a selected subset
+of the test_routes.py test. These tests are marked
+"init" so that github actions can run them before
+the other tests. This saves time.
 This is the most basic set of tests.
 """
+from tests.route_testing_conf import routes_and_test_content
 
 
 def test_flask_initiates(flask_test_client):
@@ -25,4 +29,5 @@ def test_helloworld_homepage(flask_test_client):
     "Hello World".
     """
     response = flask_test_client.get("/", follow_redirects=True)
-    assert b"Hello World" in response.data
+    # We grab the expected content from routes_and_test_content
+    assert routes_and_test_content["/"] in response.data
