@@ -2,8 +2,12 @@ from flask import Flask
 from flask_compress import Compress
 from flask_talisman import Talisman
 from jinja2 import ChoiceLoader, PackageLoader, PrefixLoader
+from flask_seasurf import SeaSurf
 
+csrf = SeaSurf()
 app = Flask(__name__, static_url_path="/assets")
+app.config['SECRET_KEY'] = '087bc8e3108ceae8f7864d76cbf6408a'
+csrf.init_app(app)
 
 app.jinja_loader = ChoiceLoader(
     [
@@ -25,8 +29,16 @@ csp = {
     "img-src": ["data:", "'self'"],
 }
 
+hss = {
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "SAMEORIGIN",
+    "X-XSS-Protection": "1; mode=block",
+    "Feature_Policy": "microphone 'none'; camera 'none'; geolocation 'none'"
+}
+
 Compress(app)
-Talisman(app, content_security_policy=csp)
+Talisman(app, content_security_policy=csp, strict_transport_security=hss)
 
 
 @app.context_processor
