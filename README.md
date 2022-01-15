@@ -59,6 +59,25 @@ You should see the following:
 
 ![Preview of the end result](https://user-images.githubusercontent.com/56394038/148535451-469d8fa4-2354-47a0-9d71-1052bfae78c4.png)
 
+## Testing
+
+### Accessibility tests
+To run aXe accessibility tests in a development environment:
+
+...on macOS
+
+    pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_mac64
+
+...on linux64
+
+    pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_linux64
+
+...on win32
+
+    pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_win32.exe
+
+The aXe report is printed in the route at axe_report.json
+
 # Extras
 
 This repo comes with a .pre-commot-config.yaml, if you wish to use this do

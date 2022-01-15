@@ -25,3 +25,8 @@ tomli==1.2.3
 typing_extensions==4.0.1
 virtualenv==20.13.0
 Werkzeug==2.0.2
+selenium==4.1.0
+pytest==6.2.5
+pytest-selenium==2.0.1
+pytest-flask==1.2.0
+axe-selenium-python==2.1.6
