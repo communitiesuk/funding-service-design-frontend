@@ -28,6 +28,17 @@ jobs:
         run: python build.py
       - name: run unit tests
         run: pip install pytest && python -m pytest .
+      - name: Install Chromium
+        uses: browser-actions/setup-chrome@latest
+      - name: setup Chromedriver
+        uses: nanasess/setup-chromedriver@v1
+        with:
+        # Optional: do not specify to match Chrome's version
+          chromedriver-version: '88.0.4324.96'
+      - name: Run Accessability tests
+        run: pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_linux64
+
+      
   deploy:
     runs-on: ubuntu-18.04
     environment: Dev
