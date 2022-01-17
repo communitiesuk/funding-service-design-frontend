@@ -16,12 +16,7 @@ def test_routes_status_code(flask_test_client):
     for route, _ in routes_and_test_content.items():
 
         response = flask_test_client.get(route, follow_redirects=True)
-        if route == "/404":
-            # This is the only route for which
-            # success means a 404 status code.
-            assert response.status_code == 404
-        else:
-            assert response.status_code == 200
+        assert response.status_code == 200
 
 
 def test_routes_content(flask_test_client):
@@ -38,3 +33,16 @@ def test_routes_content(flask_test_client):
 
         response = flask_test_client.get(route, follow_redirects=True)
         assert should_contain_this in response.data
+
+
+def test_dodgy_url_returns_404(flask_test_client):
+    """
+    GIVEN Our Flask Hello World Application
+    WHEN a invalid route is requested
+    THEN check that the get a 404 response
+
+    If this test succeedes then our flask application's
+    routes are correctly initialised.
+    """
+    response = flask_test_client.get("/rubbish", follow_redirects=True)
+    assert response.status_code == 404
