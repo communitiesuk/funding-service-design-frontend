@@ -73,10 +73,9 @@ def create_app(test_config=None):
         )
 
     from app.routes import bp as default_routes
-
-    app.register_blueprint(default_routes)
     from formuli.routes import bp as formuli_routes
 
+    app.register_blueprint(default_routes)
     app.register_blueprint(formuli_routes)
 
     return app
