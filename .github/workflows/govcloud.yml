@@ -3,10 +3,10 @@ name: Deploy to Gov PaaS
 on:
   workflow_dispatch:
   push:
-    branches:
-    - master
-    - FS-389
-    - FS-390
+    # branches:
+    # - master
+    # - FS-389
+    # - FS-390
     paths-ignore:
       - '**/README.md'
 
