@@ -111,7 +111,9 @@ jobs:
         run: python -m venv .venv
       - name: install dependencies
         run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r ./funding-service-design-performance-tests/requirements.txt
-      - name: run performance tests
+      - name: Change to performance test directory
+        run: cd ./funding-service-design-performance-tests
+      - name: Run performance tests
         run: python -m pip install locust && python -m locust .
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v2
