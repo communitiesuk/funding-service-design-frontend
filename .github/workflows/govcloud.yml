@@ -1,0 +1,94 @@
+name: Deploy to Gov PaaS
+
+on:
+  workflow_dispatch:
+  push:
+    # branches:
+    # - master
+    # - FS-389
+    # - FS-390
+
+    paths-ignore:
+      - '**/README.md'
+
+jobs:
+  testing:
+    runs-on: ubuntu-18.04
+    environment: Dev
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.1
+      - name: install dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
+      - name: build static assets
+        run: python build.py
+      - name: run unit tests
+        run: python -m pip install pytest && python -m pytest .
+      - name: Install Chromium
+        uses: browser-actions/setup-chrome@latest
+      - name: setup Chromedriver
+        uses: nanasess/setup-chromedriver@v1
+        with:
+        # Optional: do not specify to match Chrome's version
+          chromedriver-version: '88.0.4324.96'
+      # - name: Run Accessability tests
+      #   run: pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_linux64
+
+
+  deploy_dev:
+    needs: testing
+    runs-on: ubuntu-18.04
+    environment: Dev
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.1
+      - name: create python env
+        run: python -m venv .venv
+      - name: install dependencies
+        run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements.txt
+      - name: build static assets
+        run: python build.py
+      - name: Deploy to Gov PaaS
+        uses: citizen-of-planet-earth/cf-cli-action@v2
+        with:
+          cf_api:      ${{secrets.CF_API}}
+          cf_org:      ${{secrets.CF_ORG}}
+          cf_space:    ${{secrets.CF_SPACE }}
+          cf_username: ${{secrets.CF_USER}}
+          cf_password: ${{secrets.CF_PASSWORD}}
+          command: push funding-service-design-frontend-dev
+
+  deploy_test:
+    needs: deploy_dev
+    runs-on: ubuntu-18.04
+    environment: test
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.1
+      - name: create python env
+        run: python -m venv .venv
+      - name: install dependencies
+        run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements.txt
+      - name: build static assets
+        run: python build.py
+      - name: Deploy to Gov PaaS
+        uses: citizen-of-planet-earth/cf-cli-action@v2
+        with:
+          cf_api:      ${{secrets.CF_API}}
+          cf_org:      ${{secrets.CF_ORG}}
+          cf_space:    ${{secrets.CF_SPACE }}
+          cf_username: ${{secrets.CF_USER}}
+          cf_password: ${{secrets.CF_PASSWORD}}
+          command: push funding-service-design-frontend-test

@@ -2,6 +2,8 @@
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
+![Funding Service Design Frontend Deploy](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/govcloud.yml/badge.svg)
+
 Repo for the funding service design frontend.
 
 Built with Flask.
@@ -58,6 +60,12 @@ This is configurable in .flaskenv
 You should see the following:
 
 ![Preview of the end result](https://user-images.githubusercontent.com/56394038/148535451-469d8fa4-2354-47a0-9d71-1052bfae78c4.png)
+
+# Pipelines
+
+Place birief descriptions of Pipelines here
+
+* Deploy to Gov PaaS - This is a simple pipeline to demonstrate capabilities.  Builds, tests and deploys a simple python application to the PaaS for evaluation in Dev and Test Only.
 
 # Testing
 
