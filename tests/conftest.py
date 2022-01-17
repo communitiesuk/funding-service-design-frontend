@@ -6,6 +6,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
 
+# Fixture for the Flask app
 @pytest.fixture(scope="session")
 def app():
     app = create_app()
