@@ -72,9 +72,9 @@ def create_app(test_config=None):
             service_meta_author="Evoco Digital Services",
         )
 
-    from app import routes
+    from app.routes import bp as default_routes
 
-    app.register_blueprint(routes.bp)
+    app.register_blueprint(default_routes)
 
     return app
 
