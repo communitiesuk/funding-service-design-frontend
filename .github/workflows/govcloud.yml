@@ -114,7 +114,7 @@ jobs:
       - name: Change to performance test directory
         run: cd ./funding-service-design-performance-tests
       - name: Run performance tests
-        run: python -m pip install locust && python -m locust .
+        run: ls && python -m pip install locust && python -m locust .
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v2
         with:
