@@ -110,7 +110,7 @@ jobs:
       - name: create python env
         run: python -m venv .venv
       - name: install dependencies
-        run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements.txt
+        run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r ./funding-service-design-performance-tests/requirements.txt
       - name: run performance tests
         run: locust
       - name: 'Upload Artifact'
