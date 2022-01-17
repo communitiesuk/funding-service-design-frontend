@@ -1,18 +1,26 @@
+import os
+
 from flask import Flask
 from flask_compress import Compress
-from flask_talisman import Talisman
-from jinja2 import ChoiceLoader, PackageLoader, PrefixLoader
 from flask_seasurf import SeaSurf
+from flask_talisman import Talisman
+from jinja2 import ChoiceLoader
+from jinja2 import PackageLoader
+from jinja2 import PrefixLoader
+
+
+app = Flask(__name__, static_url_path="/assets")
+app.config["SECRET_KEY"] = os.environ.get("CSRF_KEY")
 
 csrf = SeaSurf()
-app = Flask(__name__, static_url_path="/assets")
-app.config['SECRET_KEY'] = '087bc8e3108ceae8f7864d76cbf6408a'
 csrf.init_app(app)
 
 app.jinja_loader = ChoiceLoader(
     [
         PackageLoader("app"),
-        PrefixLoader({"govuk_frontend_jinja": PackageLoader("govuk_frontend_jinja")}),
+        PrefixLoader(
+            {"govuk_frontend_jinja": PackageLoader("govuk_frontend_jinja")}
+        ),  # noqa
     ]
 )
 
@@ -30,11 +38,11 @@ csp = {
 }
 
 hss = {
-    "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",  # noqa
     "X-Content-Type-Options": "nosniff",
     "X-Frame-Options": "SAMEORIGIN",
     "X-XSS-Protection": "1; mode=block",
-    "Feature_Policy": "microphone 'none'; camera 'none'; geolocation 'none'"
+    "Feature_Policy": "microphone 'none'; camera 'none'; geolocation 'none'",
 }
 
 Compress(app)
