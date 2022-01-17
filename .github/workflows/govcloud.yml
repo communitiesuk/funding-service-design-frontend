@@ -26,6 +26,32 @@ jobs:
         run: python build.py
       - name: run unit tests
         run: pip install pytest && python -m pytest .
+
+
+  security:
+      runs-on: ubuntu-18.04
+      environment: Dev
+      steps:
+        - name: checkout code
+          uses: actions/checkout@v2
+        - name: Set up Python
+          uses: actions/setup-python@v2
+          with:
+            python-version: 3.10.1
+        - name: install dependencies
+          run:  python -m pip install --upgrade pip && python pip install -r requirements.txt
+        - name: Bandit
+          run: bandit -r
+        - name: Safety
+          run: safety check
+        - name: Start Flask
+          run: export FLASK_DEBUG=0 && flask run --host 0.0.0.0 --port 8080
+        - name: ZAP Scan
+          uses: zaproxy/action-full-scan@v0.3.0
+          with:
+            target: '0.0.0.0:8080'
+            allow_issue_writing: False
+
   deploy:
     runs-on: ubuntu-18.04
     environment: Dev
