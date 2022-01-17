@@ -64,7 +64,7 @@ jobs:
           cf_space:    ${{secrets.CF_SPACE }}
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
-          command: push -f  funding-service-design-frontend-dev
+          command: push funding-service-design-frontend-dev
 
   deploy_test:
     needs: deploy_dev
@@ -91,6 +91,6 @@ jobs:
           cf_space:    ${{secrets.CF_SPACE }}
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
-          command: push -f  funding-service-design-frontend-dev
+          command: push funding-service-design-frontend-dev
 
 
