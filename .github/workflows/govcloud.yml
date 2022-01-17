@@ -103,7 +103,8 @@ jobs:
         with:
           repository: communitiesuk/funding-service-design-performance-tests
           path: ./funding-service-design-performance-tests
-          working-directory: ./funding-service-design-performance-tests
+      - name: Move to performance repository
+        run: cd ./funding-service-design-performance-tests
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
