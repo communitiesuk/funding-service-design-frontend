@@ -40,6 +40,7 @@ jobs:
 
       
   deploy:
+    needs: testing
     runs-on: ubuntu-18.04
     environment: Dev
     steps:
