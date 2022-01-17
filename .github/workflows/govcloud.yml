@@ -6,6 +6,7 @@ on:
     branches:
     - master
     - FS-389
+    - FS-390
     paths-ignore:
       - '**/README.md'
 
