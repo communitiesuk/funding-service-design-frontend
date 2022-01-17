@@ -31,10 +31,7 @@ def create_app(test_config=None):
         app.config.update(test_config)
 
     # ensure the instance folder exists
-    try:
-        os.makedirs(app.instance_path)
-    except OSError:
-        pass
+    os.makedirs(app.instance_path, exist_ok=True)
 
     app.jinja_loader = ChoiceLoader(
         [
