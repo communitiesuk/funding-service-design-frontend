@@ -102,6 +102,8 @@ jobs:
         uses: actions/checkout@main
         with:
           repository: communitiesuk/funding-service-design-performance-tests
+          path: ./funding-service-design-performance-tests
+          working-directory: ./funding-service-design-performance-tests
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
