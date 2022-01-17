@@ -28,4 +28,3 @@ Werkzeug==2.0.2
 safety==1.10.3
 bandit==1.7.1
 Flask-SeaSurf==0.3.1
-
