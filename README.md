@@ -43,7 +43,7 @@ Enter the virtual environment as described above, then:
 
     python build.py
 
-Developer note: If you receive a certification error when running the above command on macOS, 
+Developer note: If you receive a certification error when running the above command on macOS,
 consider if you need to run the Python
 'Install Certificates.command' which is a file located in your globally installed Python directory. For more info see [StackOverflow](https://stackoverflow.com/questions/52805115/certificate-verify-failed-unable-to-get-local-issuer-certificate)
 
@@ -51,13 +51,13 @@ Then run:
 
     flask run
 
-A local dev server will be created on 
+A local dev server will be created on
 
     http://127.0.0.1:5000/
 
 This is configurable in .flaskenv
 
-You should see the following: 
+You should see the following:
 
 ![Preview of the end result](https://user-images.githubusercontent.com/56394038/148535451-469d8fa4-2354-47a0-9d71-1052bfae78c4.png)
 
@@ -66,6 +66,14 @@ You should see the following:
 Place birief descriptions of Pipelines here
 
 * Deploy to Gov PaaS - This is a simple pipeline to demonstrate capabilities.  Builds, tests and deploys a simple python application to the PaaS for evaluation in Dev and Test Only.
+# Testing
+
+Made your changes and ready to test? Run the following in your venv:
+
+    pytest
+
+Make sure that pytest is installed (it is included in requirements.txt) or
+this will not work.
 
 # Extras
 
