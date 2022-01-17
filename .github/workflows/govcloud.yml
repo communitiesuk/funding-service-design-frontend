@@ -118,5 +118,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: performance-test-report
-          path: locust_html_report.html
+          path: ./funding-service-design-performance-tests/locust_html_report.html
           retention-days: 5
