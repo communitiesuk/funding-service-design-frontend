@@ -65,7 +65,7 @@ You should see the following:
 
 Place birief descriptions of Pipelines here
 
-* Deploy to Gov PaaS - This is a simple pipeline to demonstrate capabilities.  Builds, tests and deploys a simple python application to the PaaS for evaluation in Dev Only.
+* Deploy to Gov PaaS - This is a simple pipeline to demonstrate capabilities.  Builds, tests and deploys a simple python application to the PaaS for evaluation in Dev and Test Only.
 
 # Extras
 
