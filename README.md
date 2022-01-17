@@ -2,6 +2,8 @@
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
+![Hello World Deploy](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/govcloud.yml/badge.svg)
+
 Repo for the funding service design frontend.
 
 Built with Flask.
