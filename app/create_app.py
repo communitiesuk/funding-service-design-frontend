@@ -70,13 +70,13 @@ def create_app(test_config=None):
         )
 
     from app.routes import bp as default_routes
+    from app.routes import not_found, internal_server_error
 
+    app.register_error_handler(404, not_found)
+    app.register_error_handler(500, internal_server_error)
     app.register_blueprint(default_routes)
 
     return app
 
 
 app = create_app()
-
-# from app import routes  # noqa
-from app import error_routes  # noqa
