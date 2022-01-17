@@ -21,14 +21,18 @@ def test_app(app):
 class TestLiveServer:
     def test_server_is_up_and_running(self):
         res = urlopen(url_for("routes.index", _external=True))
+        assert res.code == 200
+
+    def test_hello_world_message(self):
+        res = urlopen(url_for("routes.index", _external=True))
         assert b"Hello World" in res.read()
         assert res.code == 200
 
 
 @pytest.mark.usefixtures("selenium_chrome_driver")
 @pytest.mark.usefixtures("live_server")
-class TestURLChrome:
-    def test_open_url(self):
+class TestURLsWithChrome:
+    def test_driver_can_open_url(self):
         self.driver.get("https://www.google.com/")
 
     def test_homepage_accessible(self):
@@ -40,8 +44,21 @@ class TestURLChrome:
         self.driver.get(url_for("routes.index", _external=True))
         axe = Axe(
             self.driver,
-            ".venv/lib/python3.10/site-packages/"
-            "axe_selenium_python/node_modules/axe-core/axe.min.js",
+        )
+        axe.inject()
+        results = axe.run()
+        axe.write_results(results, "axe_report.json")
+        assert len(results["violations"]) <= 1
+
+    def test_unknown_page_returns_accessible_404(self):
+        """
+        GIVEN Our Flask Application is running
+        WHEN the '/page-that-does-not-exist' page is requested (GET)
+        THEN check that a 404 page that is returned conforms to WCAG standards
+        """
+        self.driver.get(url_for("routes.index", _external=True) + "rubbish")
+        axe = Axe(
+            self.driver,
         )
         axe.inject()
         results = axe.run()
