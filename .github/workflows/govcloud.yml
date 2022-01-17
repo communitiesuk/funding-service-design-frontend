@@ -1,4 +1,4 @@
-name: Deploy to Cloud Foundry
+name: Deploy to Gov PaaS
 
 on:
   workflow_dispatch:
