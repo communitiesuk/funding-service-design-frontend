@@ -68,3 +68,7 @@ class TestURLsWithChrome:
         results = axe.run()
         axe.write_results(results, "axe_report.json")
         assert len(results["violations"]) <= 1
+        assert (
+            len(results["violations"]) == 0
+            or results["violations"][0].impact == "minor"
+        )
