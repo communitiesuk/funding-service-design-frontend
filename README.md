@@ -80,7 +80,7 @@ this will not work.
 
 # Performance Testing
 
-Performance tests are stored in a separate repository which is then run in the pipeline. If you want to run the performance tests yourslef follow the steps in the README for the performance test repo located [here] (https://github.com/communitiesuk/funding-service-design-performance-tests)
+Performance tests are stored in a separate repository which is then run in the pipeline. If you want to run the performance tests yourslef follow the steps in the README for the performance test repo located [here](https://github.com/communitiesuk/funding-service-design-performance-tests/blob/main/README.md)
 
 # Extras
 
