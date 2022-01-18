@@ -35,8 +35,8 @@ jobs:
         with:
         # Optional: do not specify to match Chrome's version
           chromedriver-version: '88.0.4324.96'
-      - name: Run Accessability tests
-        run: pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_linux64
+#      - name: Run Accessability tests
+#        run: pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_linux64
 
   security:
     runs-on: ubuntu-18.04
