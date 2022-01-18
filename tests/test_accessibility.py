@@ -70,5 +70,5 @@ class TestURLsWithChrome:
         assert len(results["violations"]) <= 1
         assert (
             len(results["violations"]) == 0
-            or results["violations"][0].impact == "minor"
+            or results["violations"][0]["impact"] == "minor"
         )
