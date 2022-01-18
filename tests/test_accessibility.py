@@ -39,9 +39,6 @@ class TestLiveServer:
 @pytest.mark.usefixtures("selenium_chrome_driver")
 @pytest.mark.usefixtures("live_server")
 class TestURLsWithChrome:
-    def test_driver_can_open_url(self):
-        self.driver.get("https://www.google.com/")
-
     def test_homepage_accessible(self):
         """
         GIVEN Our Flask Application is running
@@ -56,6 +53,10 @@ class TestURLsWithChrome:
         results = axe.run()
         axe.write_results(results, "axe_report.json")
         assert len(results["violations"]) <= 1
+        assert (
+            len(results["violations"]) == 0
+            or results["violations"][0]["impact"] == "minor"
+        )
 
     def test_unknown_page_returns_accessible_404(self):
         """
@@ -71,3 +72,7 @@ class TestURLsWithChrome:
         results = axe.run()
         axe.write_results(results, "axe_report.json")
         assert len(results["violations"]) <= 1
+        assert (
+            len(results["violations"]) == 0
+            or results["violations"][0]["impact"] == "minor"
+        )
