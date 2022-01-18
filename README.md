@@ -78,6 +78,10 @@ Made your changes and ready to test? Run the following in your venv:
 Make sure that pytest is installed (it is included in requirements.txt) or
 this will not work.
 
+# Performance Testing
+
+Performance tests are stored in a separate repository which is then run in the pipeline. If you want to run the performance tests yourslef follow the steps in the README for the performance test repo located [here](https://github.com/communitiesuk/funding-service-design-performance-tests/blob/main/README.md)
+
 # Extras
 
 This repo comes with a .pre-commot-config.yaml, if you wish to use this do
