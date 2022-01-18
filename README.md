@@ -4,6 +4,8 @@
 
 ![Funding Service Design Frontend Deploy](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/govcloud.yml/badge.svg)
 
+[![CodeQL](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/codeql-analysis.yml)
+
 Repo for the funding service design frontend.
 
 Built with Flask.
