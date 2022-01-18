@@ -92,8 +92,6 @@ jobs:
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
           command: push funding-service-design-frontend-test
-<<<<<<< HEAD
-=======
 
   run_performance_tests:
     needs: deploy_test
@@ -123,4 +121,3 @@ jobs:
           path: ./funding-service-design-performance-tests/locust_html_report.html
           retention-days: 5
           
->>>>>>> af05ddd81b75515b8e68c294dfba19e265bf50c7
