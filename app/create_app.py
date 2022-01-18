@@ -1,39 +1,24 @@
-import os
-
 from app.config import Config
 from flask import Flask
 from flask_compress import Compress
+from flask_seasurf import SeaSurf
 from flask_talisman import Talisman
 from jinja2 import ChoiceLoader
 from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
 
 
-def create_app(test_config=None):
-    # create and configure the app
-    app = Flask(
+def create_app() -> Flask:
+    flask_app = Flask(
         __name__, instance_relative_config=True, static_url_path="/assets"
-    )  # noqa
-
-    app.config.from_mapping(
-        # a default secret that should be overridden by instance config
-        SECRET_KEY="dev",
-        # store the database in the instance folder
-        DATABASE=os.path.join(app.instance_path, "flaskr.sqlite"),
     )
 
-    if test_config is None:
-        # load the instance config, if it exists, when not testing
-        # app.config.from_pyfile("config.py", silent=True)
-        app.config.from_object(Config())
-    else:
-        # load the test config if passed in
-        app.config.update(test_config)
+    csrf = SeaSurf()
+    csrf.init_app(flask_app)
 
-    # ensure the instance folder exists
-    os.makedirs(app.instance_path, exist_ok=True)
+    flask_app.config.from_object(Config())
 
-    app.jinja_loader = ChoiceLoader(
+    flask_app.jinja_loader = ChoiceLoader(
         [
             PackageLoader("app"),
             PrefixLoader(
@@ -42,8 +27,8 @@ def create_app(test_config=None):
         ]
     )
 
-    app.jinja_env.trim_blocks = True
-    app.jinja_env.lstrip_blocks = True
+    flask_app.jinja_env.trim_blocks = True
+    flask_app.jinja_env.lstrip_blocks = True
 
     csp = {
         "default-src": "'self'",
@@ -55,10 +40,20 @@ def create_app(test_config=None):
         "img-src": ["data:", "'self'"],
     }
 
-    Compress(app)
-    Talisman(app, content_security_policy=csp)
+    hss = {
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",  # noqa
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "Feature_Policy": "microphone 'none'; camera 'none'; geolocation 'none'",  # noqa
+    }
 
-    @app.context_processor
+    Compress(flask_app)
+    Talisman(
+        flask_app, content_security_policy=csp, strict_transport_security=hss
+    )  # noqa
+
+    @flask_app.context_processor
     def inject_global_constants():
         return dict(
             stage="alpha",
@@ -72,11 +67,11 @@ def create_app(test_config=None):
     from app.routes import bp as default_routes
     from app.routes import not_found, internal_server_error
 
-    app.register_error_handler(404, not_found)
-    app.register_error_handler(500, internal_server_error)
-    app.register_blueprint(default_routes)
+    flask_app.register_error_handler(404, not_found)
+    flask_app.register_error_handler(500, internal_server_error)
+    flask_app.register_blueprint(default_routes)
 
-    return app
+    return flask_app
 
 
 app = create_app()
