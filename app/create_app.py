@@ -66,7 +66,7 @@ def create_app(test_config=None):
             service_title="DLUHC Funding Service Design Iteration 1",
             service_meta_description="DLUHC Funding Service Design Iteration 1",  # noqa
             service_meta_keywords="DLUHC Funding Service Design Iteration 1",
-            service_meta_author="Evoco Digital Services",
+            service_meta_author="DLUHC",
         )
 
     from app.routes import bp as default_routes
