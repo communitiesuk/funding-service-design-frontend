@@ -92,3 +92,32 @@ jobs:
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
           command: push funding-service-design-frontend-test
+
+  run_performance_tests:
+    needs: deploy_test
+    runs-on: ubuntu-18.04
+    environment: test
+    steps:
+      - name: checkout code
+        uses: actions/checkout@main
+        with:
+          repository: communitiesuk/funding-service-design-performance-tests
+          path: ./funding-service-design-performance-tests
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.1
+      - name: create python env
+        run: python -m venv .venv
+      - name: install dependencies
+        run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r ./funding-service-design-performance-tests/requirements.txt
+      - name: Run performance tests
+        run: ls && python -m pip install locust && python -m locust
+        working-directory: ./funding-service-design-performance-tests
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: performance-test-report
+          path: ./funding-service-design-performance-tests/locust_html_report.html
+          retention-days: 5
+          
