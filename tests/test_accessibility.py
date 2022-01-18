@@ -39,9 +39,6 @@ class TestLiveServer:
 @pytest.mark.usefixtures("selenium_chrome_driver")
 @pytest.mark.usefixtures("live_server")
 class TestURLsWithChrome:
-    def test_driver_can_open_url(self):
-        self.driver.get("https://www.google.com/")
-
     def test_homepage_accessible(self):
         """
         GIVEN Our Flask Application is running
