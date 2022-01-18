@@ -2,14 +2,11 @@
 Tests if selected pages of the website are accessible when rendered,
 according to WCAG standards
 """
-import multiprocessing
 from urllib.request import urlopen
 
 import pytest
 from axe_selenium_python import Axe
 from flask import url_for
-
-multiprocessing.set_start_method("fork")  # Required on macOSX
 
 
 @pytest.mark.app(debug=False)
@@ -20,10 +17,20 @@ def test_app(app):
 @pytest.mark.usefixtures("live_server")
 class TestLiveServer:
     def test_server_is_up_and_running(self):
+        """
+        GIVEN Our Flask Application is running
+        WHEN the '/' page (index) is requested (GET)
+        THEN check that page returns a 200 response code
+        """
         res = urlopen(url_for("routes.index", _external=True))
         assert res.code == 200
 
     def test_hello_world_message(self):
+        """
+        GIVEN Our Flask Application is running
+        WHEN the '/' page (index) is requested (GET)
+        THEN check that page returns a 'Hello World' message
+        """
         res = urlopen(url_for("routes.index", _external=True))
         assert b"Hello World" in res.read()
         assert res.code == 200
