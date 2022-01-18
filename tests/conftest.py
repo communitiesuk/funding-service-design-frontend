@@ -1,3 +1,5 @@
+import multiprocessing
+
 import pytest
 from app.create_app import create_app
 from chromedriver_py import binary_path
@@ -5,28 +7,40 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
+multiprocessing.set_start_method("fork")  # Required on macOSX
 
-# Fixture of app instance
+
 @pytest.fixture(scope="session")
 def app():
-    """Returns an instance of the Flask app as a fixture for testing
+    """
+    Returns an instance of the Flask app as a fixture for testing,
     which is available for the testing session and accessed with the
-    @pytest.mark.uses_fixture('live_server')"""
+    @pytest.mark.uses_fixture('live_server')
+    :return: An instance of the Flask app.
+    """
+    yield create_app()
 
-    app = create_app()
-    return app
+
+@pytest.fixture()
+def flask_test_client():
+    """
+    Creates the test client we will be using to test the responses
+    from our app, this is a test fixture.
+    :return: A flask test client.
+    """
+    with create_app().test_client() as test_client:
+        yield test_client
 
 
-# Fixture for Chrome
 @pytest.fixture(scope="class")
 def selenium_chrome_driver(request):
-    """Returns a Selenium Chrome driver as a fixture for testing,
+    """
+    Returns a Selenium Chrome driver as a fixture for testing.
     using an installed Chromedriver from the .venv chromedriver_py package
     install location. Accessible with the
-    @pytest.mark.uses_fixture('selenium_chrome_driver')"""
-
-    # TODO: Consider using hitchchrome 85.0 to install compatible versions of
-    #  chromedriver, chrome and selenium simultaneously
+    @pytest.mark.uses_fixture('selenium_chrome_driver')
+    :return: A selenium chrome driver.
+    """
     service_object = Service(binary_path)
     chrome_options = Options()
     chrome_options.add_argument("--headless")
