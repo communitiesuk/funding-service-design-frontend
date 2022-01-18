@@ -87,6 +87,7 @@ To run all tests including aXe accessibility tests (using Chrome driver for Sele
 
 The aXe report is printed in the route at axe_report.json
 
+
 # Extras
 
 This repo comes with a .pre-commit-config.yaml, if you wish to use this do
