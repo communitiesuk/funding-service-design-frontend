@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
   push:
     branches:
-    - master
-    - FS-389
+#    - master
+#    - FS-389
 
 jobs:
   testing:
@@ -26,7 +26,6 @@ jobs:
         run: python build.py
       - name: run unit tests
         run: pip install pytest && python -m pytest .
-
 
   security:
       runs-on: ubuntu-18.04
