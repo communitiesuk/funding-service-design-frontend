@@ -1,5 +1,3 @@
-import os
-
 from flask import Flask
 from flask_compress import Compress
 from flask_seasurf import SeaSurf
@@ -10,7 +8,7 @@ from jinja2 import PrefixLoader
 
 
 app = Flask(__name__, static_url_path="/assets")
-app.config["SECRET_KEY"] = os.environ.get("CSRF_KEY")
+app.config.from_pyfile("config.py")
 
 csrf = SeaSurf()
 csrf.init_app(app)
