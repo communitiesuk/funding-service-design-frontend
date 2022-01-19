@@ -132,7 +132,7 @@ dmypy.json
 app/static
 govuk_components
 
-# bash_profile & .DS_Store
+# Hello world security FS-387 files
 .bash_profile
 .DS_Store
 app/.DS_Store
