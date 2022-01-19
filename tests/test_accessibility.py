@@ -102,13 +102,7 @@ class TestURLsWithChrome:
         WHEN the '/page-that-does-not-exist' page is requested (GET)
         THEN check that a 404 page that is returned conforms to WCAG standards
         """
-        # route = url_for("routes.index", _external=True) + "rubbish"
-        # self.driver.get(route)
-        # axe = Axe(
-        #     self.driver,
-        # )
-        # results = run_axe_and_print_report(axe, route)
-        route_rel = "rubbish"
+        route_rel = "page-does-not-exist"
         results = run_axe_and_print_report(self.driver, str(route_rel))
 
         assert len(results["violations"]) <= 1
