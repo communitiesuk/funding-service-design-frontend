@@ -35,10 +35,14 @@ jobs:
         with:
         # Optional: do not specify to match Chrome's version
           chromedriver-version: '88.0.4324.96'
-      # - name: Run Accessability tests
-      #   run: pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_linux64
-
-
+      - name: Run Accessability tests
+        run: pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_linux64
+      - name: 'Upload Accessibility Testing reports'
+        uses: actions/upload-artifact@v2
+        with:
+          name: accessibility-test-report
+          path: /home/runner/work/funding-service-design-frontend/funding-service-design-frontend/axe_reports/*.html
+          retention-days: 5
   deploy_dev:
     needs: testing
     runs-on: ubuntu-latest
@@ -66,8 +70,31 @@ jobs:
           cf_password: ${{secrets.CF_PASSWORD}}
           command: push funding-service-design-frontend-dev
 
-  deploy_test:
+  security:
     needs: deploy_dev
+    runs-on: ubuntu-latest
+    environment: Dev
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.1
+      - name: install dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
+      - name: Bandit
+        run: bandit -r ./app
+      - name: Safety
+        run: safety check
+      - name: ZAP Scan
+        uses: zaproxy/action-full-scan@v0.3.0
+        with:
+          target: 'https://funding-service-design-frontend-dev.london.cloudapps.digital/'
+          allow_issue_writing: False
+
+  deploy_test:
+    needs: security
     runs-on: ubuntu-latest
     environment: test
     steps:
@@ -111,6 +138,7 @@ jobs:
         run: python -m venv .venv
       - name: install dependencies
         run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r ./funding-service-design-performance-tests/requirements.txt
+
       - name: Run performance tests
         run: ls && python -m pip install locust && python -m locust
         working-directory: ./funding-service-design-performance-tests
@@ -120,4 +148,3 @@ jobs:
           name: performance-test-report
           path: ./funding-service-design-performance-tests/locust_html_report.html
           retention-days: 5
-          

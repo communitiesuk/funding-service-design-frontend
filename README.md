@@ -65,18 +65,28 @@ You should see the following:
 
 # Pipelines
 
-Place birief descriptions of Pipelines here
+Place brief descriptions of Pipelines here
 
 * Deploy to Gov PaaS - This is a simple pipeline to demonstrate capabilities.  Builds, tests and deploys a simple python application to the PaaS for evaluation in Dev and Test Only.
 
-# Testing
+## Testing
 
-Made your changes and ready to test? Run the following in your venv:
+To run all tests including aXe accessibility tests (using Chrome driver for Selenium) in a development environment run:
 
-    pytest
+...on macOS
 
-Make sure that pytest is installed (it is included in requirements.txt) or
-this will not work.
+    pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_mac64
+
+...on linux64
+
+    pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_linux64
+
+...on win32
+
+    pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_win32.exe
+
+The aXe report is printed in the route at axe_report.json
+
 
 # Performance Testing
 
@@ -84,7 +94,7 @@ Performance tests are stored in a separate repository which is then run in the p
 
 # Extras
 
-This repo comes with a .pre-commot-config.yaml, if you wish to use this do
+This repo comes with a .pre-commit-config.yaml, if you wish to use this do
 the following while in your virtual enviroment:
 
     pip install pre-commit black
