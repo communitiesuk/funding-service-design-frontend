@@ -2,6 +2,10 @@
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
+![Funding Service Design Frontend Deploy](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/govcloud.yml/badge.svg)
+
+[![CodeQL](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/codeql-analysis.yml)
+
 Repo for the funding service design frontend.
 
 Built with Flask.
@@ -41,7 +45,7 @@ Enter the virtual environment as described above, then:
 
     python build.py
 
-Developer note: If you receive a certification error when running the above command on macOS, 
+Developer note: If you receive a certification error when running the above command on macOS,
 consider if you need to run the Python
 'Install Certificates.command' which is a file located in your globally installed Python directory. For more info see [StackOverflow](https://stackoverflow.com/questions/52805115/certificate-verify-failed-unable-to-get-local-issuer-certificate)
 
@@ -49,20 +53,25 @@ Then run:
 
     flask run
 
-A local dev server will be created on 
+A local dev server will be created on
 
     http://127.0.0.1:5000/
 
 This is configurable in .flaskenv
 
-You should see the following: 
+You should see the following:
 
 ![Preview of the end result](https://user-images.githubusercontent.com/56394038/148535451-469d8fa4-2354-47a0-9d71-1052bfae78c4.png)
 
+# Pipelines
+
+Place brief descriptions of Pipelines here
+
+* Deploy to Gov PaaS - This is a simple pipeline to demonstrate capabilities.  Builds, tests and deploys a simple python application to the PaaS for evaluation in Dev and Test Only.
+
 ## Testing
 
-### Accessibility tests
-To run aXe accessibility tests in a development environment:
+To run all tests including aXe accessibility tests (using Chrome driver for Selenium) in a development environment run:
 
 ...on macOS
 
@@ -78,9 +87,10 @@ To run aXe accessibility tests in a development environment:
 
 The aXe report is printed in the route at axe_report.json
 
+
 # Extras
 
-This repo comes with a .pre-commot-config.yaml, if you wish to use this do
+This repo comes with a .pre-commit-config.yaml, if you wish to use this do
 the following while in your virtual enviroment:
 
     pip install pre-commit black

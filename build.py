@@ -1,7 +1,7 @@
+import os
+import shutil
 import urllib.request
 import zipfile
-import shutil
-import os
 
 
 # Download zips using "url"
