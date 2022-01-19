@@ -2,6 +2,10 @@
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
+![Funding Service Design Frontend Deploy](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/govcloud.yml/badge.svg)
+
+[![CodeQL](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/codeql-analysis.yml)
+
 Repo for the funding service design frontend.
 
 Built with Flask.
@@ -58,6 +62,25 @@ This is configurable in .flaskenv
 You should see the following:
 
 ![Preview of the end result](https://user-images.githubusercontent.com/56394038/148535451-469d8fa4-2354-47a0-9d71-1052bfae78c4.png)
+
+# Pipelines
+
+Place birief descriptions of Pipelines here
+
+* Deploy to Gov PaaS - This is a simple pipeline to demonstrate capabilities.  Builds, tests and deploys a simple python application to the PaaS for evaluation in Dev and Test Only.
+
+# Testing
+
+Made your changes and ready to test? Run the following in your venv:
+
+    pytest
+
+Make sure that pytest is installed (it is included in requirements.txt) or
+this will not work.
+
+# Performance Testing
+
+Performance tests are stored in a separate repository which is then run in the pipeline. If you want to run the performance tests yourslef follow the steps in the README for the performance test repo located [here](https://github.com/communitiesuk/funding-service-design-performance-tests/blob/main/README.md)
 
 # Extras
 
