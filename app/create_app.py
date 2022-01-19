@@ -6,7 +6,6 @@ from jinja2 import ChoiceLoader
 from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
 
-
 app = Flask(__name__, static_url_path="/assets")
 app.config.from_pyfile("config.py")
 
