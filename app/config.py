@@ -1,6 +1,13 @@
 """Flask configuration."""
-import os
 
-TESTING = True
-DEBUG = True
-SECRET_KEY = os.environ.get("SECRET_KEY")
+from os import environ
+
+
+class Config:
+    """Base config."""
+
+    SECRET_KEY = environ.get("SECRET_KEY") or "dev"
+    SESSION_COOKIE_NAME = environ.get("SESSION_COOKIE_NAME") or "session_cookie"  # noqa
+    STATIC_FOLDER = "static"
+    TEMPLATES_FOLDER = "templates"
+
