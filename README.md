@@ -43,6 +43,12 @@ Enter the virtual environment as described above, then:
 
 ### Create static files
 
+Static assets are downloaded automatically when one runs
+
+    flask run
+
+However you may wish to manually download them to your project, if so then run:
+
     python build.py
 
 Developer note: If you receive a certification error when running the above command on macOS,

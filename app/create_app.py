@@ -1,3 +1,4 @@
+from app.build import build_assets
 from app.config import Config
 from flask import Flask
 from flask_compress import Compress
@@ -9,6 +10,7 @@ from jinja2 import PrefixLoader
 
 
 def create_app() -> Flask:
+
     flask_app = Flask(
         __name__, instance_relative_config=True, static_url_path="/assets"
     )
@@ -17,6 +19,12 @@ def create_app() -> Flask:
     csrf.init_app(flask_app)
 
     flask_app.config.from_object(Config())
+
+    # Auto build the static assets if we are in the dev environment.
+    # In production we will most likely install static assets differently.
+    if flask_app.config.get("ENV") == "development":
+
+        build_assets()
 
     flask_app.jinja_loader = ChoiceLoader(
         [
