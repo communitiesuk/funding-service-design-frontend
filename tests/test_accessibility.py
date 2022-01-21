@@ -75,7 +75,7 @@ class TestLiveServer:
         THEN check that page returns a 'Hello World' message
         """
         res = urlopen(url_for("routes.index", _external=True))
-        assert b"Hello World" in res.read()
+        assert b"Hello Gemma" in res.read()
         assert res.code == 200
 
 
