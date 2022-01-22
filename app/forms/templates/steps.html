@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText -%}
+{% import "field.html" as field %}
+{% import "submit.html" as submit %}
+
+{% block content %}
+<div class="govuk-width-container">
+  <a href="#" class="govuk-back-link">Back</a>
+
+  <main class="govuk-main-wrapper">
+
+
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third">
+            <h2 class="govuk-heading-m">How it works</h2>
+            <p class="govuk-body">
+
+            </p>
+        </div>
+          <div class="govuk-grid-column-two-thirds">
+              <div>
+                  <h1 class="govuk-heading-xl">{{ formzy.name|title }}</h1>
+              </div>
+              <ol class="govuk-list govuk-list--number">
+                  {% for path, step in formzy.steps.items() %}
+                    <li><a href="{{ path[1:] }}" class="govuk-link">{{ step.title }}</a></li>
+                    {% endfor %}
+                </ol>
+          </div>
+        </div>
+
+  </main>
+</div>
+{% endblock %}

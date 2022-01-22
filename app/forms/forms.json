@@ -1,0 +1,34 @@
+{
+  "name": "example",
+  "title": "Example Form",
+  "description": "An example form",
+  "steps": {
+    "/details": {
+      "title": "Applicant Details",
+      "next": "/organisation-details-1",
+      "submit_text": "Next",
+      "fields": [
+        {
+          "name": "name",
+          "field_type": "text",
+          "label": "What is your name?",
+          "placeholder_text": "eg. John Smith",
+          "help_text": "Please enter your full name",
+          "hint": "It's what you are called",
+          "is_heading": 1,
+          "required": "Please enter your name"
+        },
+        {
+          "name": "example",
+          "field_type": "text",
+          "label": "Can you give any example?",
+          "placeholder_text": "eg. John Smith",
+          "help_text": "Please enter your full name",
+          "hint": "Think of any example",
+          "is_heading": 1,
+          "required": "Please give an example"
+        }
+      ]
+    }
+  }
+}

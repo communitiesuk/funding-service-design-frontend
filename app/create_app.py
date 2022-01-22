@@ -1,8 +1,8 @@
 from app.config import Config
 from flask import Flask
 from flask_compress import Compress
-from flask_seasurf import SeaSurf
 from flask_talisman import Talisman
+from flask_wtf.csrf import CSRFProtect
 from jinja2 import ChoiceLoader
 from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
@@ -13,7 +13,7 @@ def create_app() -> Flask:
         __name__, instance_relative_config=True, static_url_path="/assets"
     )
 
-    csrf = SeaSurf()
+    csrf = CSRFProtect()
     csrf.init_app(flask_app)
 
     flask_app.config.from_object(Config())
@@ -64,12 +64,21 @@ def create_app() -> Flask:
             service_meta_author="DLUHC",
         )
 
-    from app.routes import bp as default_routes
-    from app.routes import not_found, internal_server_error
+    from .default.routes import default_bp, not_found, internal_server_error
+    from .forms.routes import forms_bp
+    from .forms.views import FormzyStepView
+
+    # from formuli.routes import formuli_bp
 
     flask_app.register_error_handler(404, not_found)
     flask_app.register_error_handler(500, internal_server_error)
-    flask_app.register_blueprint(default_routes)
+    flask_app.register_blueprint(default_bp)
+    # flask_app.register_blueprint(formuli_bp)
+    flask_app.register_blueprint(forms_bp)
+    flask_app.add_url_rule(
+        "/formzy/<form_name>/<step>/",
+        view_func=FormzyStepView.as_view("formzy_step"),  # noqa
+    )  # noqa
 
     return flask_app
 
