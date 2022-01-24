@@ -16,7 +16,7 @@
             <h2 class="govuk-heading-m">{{formzy.title}}</h2>
             <p class="govuk-body">
                 {% for path, form_step in formzy.steps.items() %}
-                <a href="/formzy/{{formzy.name}}{{ path }}" class="govuk-link">{{ form_step.title }}{% if path == step.path %} >{% endif %}</a><br />
+                <a href="/forms/{{formzy.name}}{{ path }}" class="govuk-link">{{ form_step.title }}{% if path == step.path %} >{% endif %}</a><br />
                 {% endfor %}
             </p>
         </div>

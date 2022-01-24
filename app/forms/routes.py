@@ -4,7 +4,7 @@ from flask import render_template
 from .formzy import create_formzy_with_json
 
 forms_bp = Blueprint(
-    "forms_bp", __name__, url_prefix="/formzy", template_folder="templates"
+    "forms_bp", __name__, url_prefix="/forms", template_folder="templates"
 )  # noqa
 
 
