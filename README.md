@@ -75,11 +75,11 @@ Once this is running one can add the forms to "runner/src/server/forms". You may
 
 To view your form in action navigate to:
 
-    localhost:3009/[json form name]/[start page name]
+    localhost:3009/[json form name]
 
 For the baseline questions this is:
 
-    localhost:3009/baseline-questions/about-you
+    localhost:3009/baseline-questions
 
 # Pipelines
 

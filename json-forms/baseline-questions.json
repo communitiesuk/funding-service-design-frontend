@@ -7,11 +7,12 @@
             "path": "/about-you",
             "components": [
                 {
-                    "name": "QxNmBH",
+                    "name": "applicant_name",
                     "options": {},
                     "type": "TextField",
                     "title": "Applicant name",
-                    "schema": {}
+                    "schema": {},
+                    "nameHasError": false
                 },
                 {
                     "type": "EmailAddressField",
@@ -22,11 +23,12 @@
                     "schema": {}
                 },
                 {
-                    "name": "HLjUQU",
+                    "name": "applicant_telephone_number",
                     "options": {},
                     "type": "TelephoneNumberField",
                     "title": "Telephone number",
-                    "schema": {}
+                    "schema": {},
+                    "nameHasError": false
                 },
                 {
                     "name": "NXTkod",
@@ -47,21 +49,23 @@
             "title": "About your organisation",
             "components": [
                 {
-                    "name": "CcoRBu",
+                    "name": "org_name",
                     "options": {},
                     "type": "TextField",
                     "title": "Organisation name",
-                    "schema": {}
+                    "schema": {},
+                    "nameHasError": false
                 },
                 {
-                    "name": "KbjisT",
+                    "name": "org_address",
                     "options": {},
                     "type": "UkAddressField",
                     "title": "Organisation address",
-                    "schema": {}
+                    "schema": {},
+                    "nameHasError": false
                 },
                 {
-                    "name": "IjcnGk",
+                    "name": "org_type",
                     "options": {},
                     "type": "RadiosField",
                     "title": "Type of organisation",
@@ -69,24 +73,30 @@
                     "values": {
                         "type": "listRef"
                     },
-                    "schema": {}
+                    "schema": {},
+                    "nameHasError": false
                 },
                 {
-                    "name": "RTANWL",
+                    "name": "delivered_before",
                     "options": {},
                     "type": "YesNoField",
                     "title": "Have you delivered projects like this before?",
-                    "schema": {}
+                    "schema": {},
+                    "nameHasError": false,
+                    "values": {
+                        "type": "listRef"
+                    }
                 },
                 {
-                    "name": "dKJWvj",
+                    "name": "evidence_of_prev_projects",
                     "options": {
                         "required": false,
                         "optionalText": true
                     },
                     "type": "FileUploadField",
                     "title": "Upload evidence to support your answer",
-                    "schema": {}
+                    "schema": {},
+                    "nameHasError": false
                 }
             ],
             "next": [
@@ -105,11 +115,12 @@
             "path": "/enter-your-registration-number",
             "components": [
                 {
-                    "name": "wlYbJr",
+                    "name": "company_reg_num",
                     "options": {},
                     "type": "NumberField",
                     "title": "Enter your registration number",
-                    "schema": {}
+                    "schema": {},
+                    "nameHasError": false
                 }
             ],
             "next": [
@@ -124,12 +135,13 @@
             "title": "About your organisation",
             "components": [
                 {
-                    "name": "yDzLJp",
+                    "name": "org_accountant",
                     "options": {},
                     "type": "TextField",
                     "title": "Your Accountant",
                     "hint": "Name of the accountant for your organisation",
-                    "schema": {}
+                    "schema": {},
+                    "nameHasError": false
                 },
                 {
                     "name": "uoDsSL",
@@ -183,39 +195,46 @@
                     "schema": {}
                 },
                 {
-                    "name": "qKwTeK",
+                    "name": "project_address",
                     "options": {},
                     "type": "UkAddressField",
                     "title": "Project location",
-                    "schema": {}
+                    "schema": {},
+                    "nameHasError": false
                 },
                 {
-                    "name": "bdqIys",
+                    "name": "project_sector",
                     "options": {},
                     "type": "SelectField",
                     "title": "Project sector",
                     "list": "ttfDDn",
-                    "schema": {}
+                    "schema": {},
+                    "nameHasError": false,
+                    "values": {
+                        "type": "listRef"
+                    }
                 },
                 {
-                    "name": "DvXOvO",
+                    "name": "project_desc",
                     "options": {},
                     "type": "MultilineTextField",
                     "title": "Project description",
                     "hint": "Describe your project in more detail",
                     "schema": {
                         "max": "100"
-                    }
+                    },
+                    "nameHasError": false
                 },
                 {
-                    "name": "oVVBFG",
+                    "name": "project_summary",
                     "options": {},
                     "type": "MultilineTextField",
                     "title": "Project Summary",
                     "hint": "Summarise your project in 25 or fewer words",
                     "schema": {
                         "regex": "RegExp('^(?:\\b\\w+\\b[\\s\\r\\n]*){1,250}$')"
-                    }
+                    },
+                    "nameHasError": false
                 }
             ],
             "next": [
@@ -230,21 +249,23 @@
             "title": "About your project",
             "components": [
                 {
-                    "name": "tvkvor",
+                    "name": "how_much_money",
                     "options": {},
                     "type": "NumberField",
                     "title": "How much money to you need?",
                     "hint": "Enter your input using numbers only",
                     "schema": {
                         "precision": "0"
-                    }
+                    },
+                    "nameHasError": false
                 },
                 {
-                    "name": "OmrOip",
+                    "name": "funding_is_for",
                     "options": {},
                     "type": "CheckboxesField",
                     "title": "Do you want funding for:",
-                    "list": "YBjvyf"
+                    "list": "YBjvyf",
+                    "nameHasError": false
                 }
             ],
             "next": [
@@ -259,18 +280,20 @@
             "title": "About your project",
             "components": [
                 {
-                    "name": "evfwij",
+                    "name": "project_needs",
                     "options": {},
                     "type": "NumberField",
-                    "title": "How much money do you need?"
+                    "title": "How much money do you need?",
+                    "nameHasError": false
                 },
                 {
-                    "name": "qehqgN",
+                    "name": "project_policy_delivers",
                     "options": {},
                     "type": "CheckboxesField",
                     "title": "What policy will your project deliver against?",
                     "hint": "Select all that apply",
-                    "list": "YeTCqo"
+                    "list": "YeTCqo",
+                    "nameHasError": false
                 }
             ],
             "next": [
@@ -308,16 +331,18 @@
             "title": "Plan your project",
             "components": [
                 {
-                    "name": "MsnxBr",
+                    "name": "project_plan",
                     "options": {},
                     "type": "MultilineTextField",
-                    "title": "Plan your project"
+                    "title": "Plan your project",
+                    "nameHasError": false
                 },
                 {
-                    "name": "ZnKsRi",
+                    "name": "project_delivery",
                     "options": {},
                     "type": "MultilineTextField",
-                    "title": "Deliver your project"
+                    "title": "Deliver your project",
+                    "nameHasError": false
                 }
             ],
             "next": [],
