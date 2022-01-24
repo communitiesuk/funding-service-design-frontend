@@ -67,9 +67,19 @@ You should see the following:
 
 In order to load up the json forms found in "./json-forms" one must first download and run the x-gov [digital-form-builder](https://github.com/XGovFormBuilder/digital-form-builder).
 
-Once this is running one can add the forms to "runner/src/server/forms". You may need to run the following command for the runner to pick up your forms:
+Once this is running one can add the forms to "runner/src/server/forms". You may need to run the following commands for the runner to pick up your forms:
 
     yarn runner run check-forms
+
+    yarn runner build
+
+To view your form in action navigate to:
+
+    localhost:3009/[json form name]/[start page name]
+
+For the baseline questions this is:
+
+    localhost:3009/baseline-questions/about-you
 
 # Pipelines
 
