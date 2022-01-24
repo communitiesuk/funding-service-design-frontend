@@ -63,6 +63,14 @@ You should see the following:
 
 ![Preview of the end result](https://user-images.githubusercontent.com/56394038/148535451-469d8fa4-2354-47a0-9d71-1052bfae78c4.png)
 
+# Loading the json forms
+
+In order to load up the json forms found in "./json-forms" one must first download and run the x-gov [digital-form-builder](https://github.com/XGovFormBuilder/digital-form-builder).
+
+Once this is running one can add the forms to "runner/src/server/forms". You may need to run the following command for the runner to pick up your forms:
+
+    yarn runner run check-forms
+
 # Pipelines
 
 Place brief descriptions of Pipelines here
