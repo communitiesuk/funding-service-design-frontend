@@ -1,6 +1,8 @@
 import json
 import os
 
+from flask import url_for
+
 
 class Field(object):
     """A class to hold field definitions and values"""
@@ -76,6 +78,13 @@ class Formzy(object):
         self.current_step_index = 0
         self.steps = steps
 
+    @property
+    def next_url(self):
+        url = url_for(
+            "formzy_step", form_name=self.name, step=self.current_step.next[1:]
+        )
+        return url
+
     def add_step(self, step: Step):
         if not self.steps:
             self.steps = {}
@@ -94,7 +103,8 @@ class Formzy(object):
 
     @property
     def current_step(self):
-        return self.steps[self.current_step_index]
+        steps_as_list = [step for path, step in self.steps.items()]
+        return steps_as_list[self.current_step_index]
 
     def get_step(self, step: str):
         return self.steps.get("/" + step)

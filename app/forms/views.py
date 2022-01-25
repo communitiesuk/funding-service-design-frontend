@@ -1,3 +1,4 @@
+from flask import redirect
 from flask import render_template
 from flask.views import MethodView
 from flask_wtf import FlaskForm
@@ -58,6 +59,7 @@ class FormzyStepView(MethodView):
         form = self.form()
         if form.validate_on_submit():
             print("Validated")
+            return redirect(self.formzy.next_url)
         else:
             print("Invalid")
 
