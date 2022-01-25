@@ -1,4 +1,3 @@
-from app.config import Config
 from flask import Flask
 from flask_compress import Compress
 from flask_talisman import Talisman
@@ -9,14 +8,12 @@ from jinja2 import PrefixLoader
 
 
 def create_app() -> Flask:
-    flask_app = Flask(
-        __name__, instance_relative_config=True, static_url_path="/assets"
-    )
+    flask_app = Flask(__name__, static_url_path="/assets")
 
     csrf = CSRFProtect()
     csrf.init_app(flask_app)
 
-    flask_app.config.from_object(Config())
+    flask_app.config.from_pyfile("config.py")
 
     flask_app.jinja_loader = ChoiceLoader(
         [

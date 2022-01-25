@@ -63,6 +63,30 @@ You should see the following:
 
 ![Preview of the end result](https://user-images.githubusercontent.com/56394038/148535451-469d8fa4-2354-47a0-9d71-1052bfae78c4.png)
 
+# Forms Engine Configuration
+
+This service is designed to be coupled with XGov Form Builder for the serving of forms.
+The end-to-end testing routines include tests that confirm the designated XGov Forms Runner
+is correctly serving the appropriate forms.
+
+To configure testing of a remote runner, set the FORMS_SERVICE_HOST environment variable to the location of remote runner:
+
+    export FORMS_SERVICE_HOST="http://localhost:3009"
+
+The .json representations of the forms are located in the /form_jsons directory in two sub-folders for preview and public forms
+The testing process currently tests a simple form named "simple-three-step-form".
+You can change the form that is tested by amending defaults of the following environment variable:
+
+    export FORMS_SERVICE_TEST_FORM="simple-three-step-form"
+
+You can also switch testing between the preview and public folders (by default tests look for .json files in the preview folder) - by setting FORMS_SERVICE_TEST_PUBLIC_FORM to 1
+
+    export FORMS_SERVICE_TEST_PUBLIC_FORM=0
+
+You can also move the directory where the form_jsons are located by amending the FORM_SERVICE_JSONS_PATH
+
+    export FORMS_SERVICE_JSONS_PATH="form_jsons"
+
 # Pipelines
 
 Place brief descriptions of Pipelines here
