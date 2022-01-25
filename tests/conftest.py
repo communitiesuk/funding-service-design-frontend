@@ -10,6 +10,36 @@ from selenium.webdriver.chrome.service import Service
 multiprocessing.set_start_method("fork")  # Required on macOSX
 
 
+def post_driver(driver, path, params):
+    driver.execute_script(
+        """
+    function post(path, params, method='post') {
+        const form = document.createElement('form');
+        form.method = method;
+        form.action = path;
+
+        for (const key in params) {
+            if (params.hasOwnProperty(key)) {
+            const hiddenField = document.createElement('input');
+            hiddenField.type = 'hidden';
+            hiddenField.name = key;
+            hiddenField.value = params[key];
+
+            form.appendChild(hiddenField);
+        }
+      }
+
+      document.body.appendChild(form);
+      form.submit();
+    }
+
+    post(arguments[0], arguments[1]);
+    """,
+        path,
+        params,
+    )
+
+
 @pytest.fixture(scope="session")
 def app():
     """
@@ -51,4 +81,4 @@ def selenium_chrome_driver(request):
     )  # noqa
     request.cls.driver = chrome_driver
     yield
-    chrome_driver.close()
+    request.cls.driver.close()
