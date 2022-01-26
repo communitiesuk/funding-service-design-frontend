@@ -1,0 +1,596 @@
+{
+  "metadata": {},
+  "startPage": "/first-page",
+  "pages": [
+    {
+      "path": "/about-you",
+      "title": "About you",
+      "components": [
+        {
+          "name": "applicant_name",
+          "options": {},
+          "type": "TextField",
+          "title": "Applicant name",
+          "nameHasError": false,
+          "schema": {}
+        },
+        {
+          "name": "email_address",
+          "options": {},
+          "type": "EmailAddressField",
+          "title": "Email address",
+          "nameHasError": false,
+          "schema": {}
+        },
+        {
+          "name": "telephone_number",
+          "options": {},
+          "type": "TelephoneNumberField",
+          "title": "Telephone number",
+          "nameHasError": false,
+          "schema": {}
+        },
+        {
+          "name": "website",
+          "options": {},
+          "type": "WebsiteField",
+          "title": "Website",
+          "nameHasError": false,
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/about-your-organisation"
+        }
+      ],
+      "controller": "./pages/start.js"
+    },
+    {
+      "path": "/about-your-organisation",
+      "title": "About your organisation",
+      "components": [
+        {
+          "name": "organisation_name",
+          "options": {},
+          "type": "TextField",
+          "title": "Organisation name",
+          "nameHasError": false,
+          "schema": {}
+        },
+        {
+          "name": "address",
+          "options": {},
+          "type": "UkAddressField",
+          "title": "Organisation address",
+          "nameHasError": false,
+          "schema": {}
+        },
+        {
+          "name": "type_of_organisation",
+          "options": {},
+          "type": "RadiosField",
+          "title": "Type of organisation",
+          "nameHasError": false,
+          "list": "eyOjAV",
+          "schema": {}
+        },
+        {
+          "name": "wmlUiT",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Have you delivered projects like this before?",
+          "schema": {}
+        },
+        {
+          "name": "tbFDNI",
+          "options": {
+            "required": false,
+            "hideTitle": true
+          },
+          "type": "FileUploadField",
+          "hint": "Upload evidence to support your answer",
+          "title": "Have you delivered project like this before evidence",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/about-your-organisation-DihnUm"
+        }
+      ],
+      "section": "ioPdQr"
+    },
+    {
+      "path": "/about-your-organisation-DihnUm",
+      "title": "About your organisation",
+      "components": [
+        {
+          "name": "tPoqnp",
+          "options": {},
+          "type": "TextField",
+          "title": "Your accountant",
+          "hint": "Name of the accountant for your organisation",
+          "schema": {}
+        },
+        {
+          "name": "eZVQHk",
+          "options": {},
+          "type": "TextField",
+          "title": "Responsible person",
+          "hint": "Hint text about what it means to be the responsible person and who usually signs off on this",
+          "schema": {}
+        },
+        {
+          "name": "xOfYPC",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Do you have endorsements to support your application?",
+          "schema": {}
+        },
+        {
+          "name": "FjrJGA",
+          "options": {},
+          "type": "CheckboxesField",
+          "list": "upFJGt",
+          "title": "Who is endorsing your application?",
+          "schema": {}
+        },
+        {
+          "name": "ohCvxK",
+          "options": {
+            "hideTitle": true,
+            "required": false,
+            "multiple": false
+          },
+          "type": "FileUploadField",
+          "hint": "Upload evidence to support your answer",
+          "title": "Who is endorsing your application evidence",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/about-your-project"
+        }
+      ],
+      "section": "YZIZrj"
+    },
+    {
+      "path": "/about-your-project",
+      "title": "About your project",
+      "components": [
+        {
+          "name": "LbelbG",
+          "options": {},
+          "type": "TextField",
+          "title": "Project name",
+          "schema": {}
+        },
+        {
+          "name": "eYQDmp",
+          "options": {},
+          "type": "UkAddressField",
+          "title": "Project location",
+          "hint": "",
+          "schema": {}
+        },
+        {
+          "name": "LCkeXJ",
+          "options": {},
+          "type": "SelectField",
+          "title": "Project sector",
+          "list": "fOvmxf",
+          "schema": {}
+        },
+        {
+          "name": "PGtJTN",
+          "options": {},
+          "type": "MultilineTextField",
+          "title": "Project description",
+          "hint": "Describe your project in more detail",
+          "schema": {
+            "max": 100
+          }
+        },
+        {
+          "name": "VuuxGb",
+          "options": {},
+          "type": "MultilineTextField",
+          "title": "Project summary",
+          "hint": "Summarise your project in 25 words or fewer.",
+          "schema": {
+            "max": 25
+          }
+        }
+      ],
+      "next": [
+        {
+          "path": "/about-your-project-buqPfJ"
+        }
+      ],
+      "section": "fygoGH"
+    },
+    {
+      "path": "/about-your-project-buqPfJ",
+      "title": "About your project",
+      "components": [
+        {
+          "name": "iUSAzx",
+          "options": {},
+          "type": "NumberField",
+          "title": "How much money do you need?",
+          "hint": "Enter your answer using numbers only",
+          "schema": {}
+        },
+        {
+          "name": "nFOqZq",
+          "options": {},
+          "type": "CheckboxesField",
+          "title": "Do you want funding for:",
+          "list": "pTJedZ",
+          "schema": {}
+        }
+      ],
+      "next": [
+        {
+          "path": "/about-your-project-AKqsbw"
+        }
+      ],
+      "section": "hwhwWm"
+    },
+    {
+      "path": "/about-your-project-AKqsbw",
+      "title": "About your project",
+      "components": [
+        {
+          "name": "YyDuLo",
+          "options": {},
+          "type": "NumberField",
+          "title": "How much money do you need?",
+          "hint": "Enter your answer using numbers only",
+          "schema": {}
+        },
+        {
+          "name": "zbDwlw",
+          "options": {},
+          "type": "CheckboxesField",
+          "title": "What policy aims will your project deliver against?",
+          "hint": "Select all that apply",
+          "list": "SmrLYS",
+          "schema": {}
+        },
+        {
+          "name": "ulybVb",
+          "options": {
+            "hideTitle": true
+          },
+          "type": "MultilineTextField",
+          "title": "What is the expected impact of your project?",
+          "hint": "What is the expected impact of your project?",
+          "schema": {
+            "max": "25"
+          }
+        }
+      ],
+      "next": [
+        {
+          "path": "/plan-your-project"
+        }
+      ],
+      "section": "deqRAJ"
+    },
+    {
+      "path": "/plan-your-project",
+      "title": "Plan your project",
+      "components": [],
+      "next": [
+        {
+          "path": "/deliver-your-project"
+        }
+      ]
+    },
+    {
+      "path": "/deliver-your-project",
+      "title": "Deliver your project",
+      "components": [],
+      "next": [
+        {
+          "path": "/declarations"
+        }
+      ]
+    },
+    {
+      "path": "/declarations",
+      "title": "Declarations",
+      "components": [
+        {
+          "name": "dBsjtr",
+          "options": {},
+          "type": "Para",
+          "content": "Confirm the following details before you submit your application."
+        },
+        {
+          "name": "dqGuxi",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Would funding your organisation be classed as State Aid?"
+        },
+        {
+          "name": "LPplRR",
+          "options": {},
+          "type": "Para",
+          "content": "Explain how your project is compliant with the"
+        },
+        {
+          "name": "TPWlZG",
+          "options": {},
+          "type": "Details",
+          "content": "UK subsidy control regime information:",
+          "title": "UK subsidy control regime"
+        },
+        {
+          "name": "jAwARu",
+          "options": {
+            "hideTitle": true
+          },
+          "type": "MultilineTextField",
+          "title": "UK subsidy control regime"
+        },
+        {
+          "name": "VmunAJ",
+          "options": {},
+          "type": "Para",
+          "content": "<b>Describe how your project will impact people with protected characteristics?<b>"
+        },
+        {
+          "name": "PvbQdR",
+          "options": {},
+          "type": "Details",
+          "title": "Help with protected characteristics",
+          "content": "The characteristics that are protected by the Equality Act 2010 are: <br>\n. age <br>\n. disability <br>\n. gender reassignment <br>\n. marriage or civil partnership (in employment only) <br>\n. pregnancy and maternity <br>\n. race <br>\n. religion or belief <br>\n. sex <br>\n. sexual orientation <br>"
+        },
+        {
+          "name": "aGfZyn",
+          "options": {
+            "hideTitle": true
+          },
+          "type": "MultilineTextField",
+          "title": "Describe how your project will impact people with protected characteristics?"
+        },
+        {
+          "name": "sLLsLp",
+          "options": {},
+          "type": "Para",
+          "content": "<b>Does your application comply with all relevant environmental standards?<b>"
+        },
+        {
+          "name": "hWoigx",
+          "options": {},
+          "type": "Details",
+          "title": "Help with environmental standards",
+          "content": "Environment standards require you to: <br>\n. xxx <br>\n. xxxx <br>\n. xxxx <br>\n. xxx <br>"
+        },
+        {
+          "name": "VifJxH",
+          "options": {
+            "hideTitle": true
+          },
+          "type": "YesNoField",
+          "title": "Does your application comply with all relevant environmental standards?",
+          "hint": "",
+          "values": {
+            "type": "listRef"
+          }
+        },
+        {
+          "name": "LBpqwM",
+          "options": {
+            "hideTitle": true,
+            "multiple": false,
+            "classes": "&nbsp "
+          },
+          "type": "FileUploadField",
+          "title": "Does your application comply with all relevant environmental standards?",
+          "hint": "&nbsp Upload evidence to support your answer"
+        },
+        {
+          "name": "JUBLly",
+          "options": {},
+          "type": "CheckboxesField",
+          "title": "Data protection ",
+          "list": "ktTvXo"
+        }
+      ],
+      "next": []
+    }
+  ],
+  "lists": [
+    {
+      "title": "Local authority",
+      "name": "eyOjAV",
+      "type": "string",
+      "items": [
+        {
+          "text": "Local authority",
+          "value": "text"
+        },
+        {
+          "text": "Mayoral authority",
+          "value": "text"
+        },
+        {
+          "text": "Limited company",
+          "value": "text"
+        }
+      ]
+    },
+    {
+      "title": "Member of parliament (MP)",
+      "name": "upFJGt",
+      "type": "string",
+      "items": [
+        {
+          "text": "Member of parliament (MP)",
+          "value": "text"
+        }
+      ]
+    },
+    {
+      "title": "Option 1",
+      "name": "fOvmxf",
+      "type": "string",
+      "items": [
+        {
+          "text": "Option 1 detail",
+          "value": "text"
+        }
+      ]
+    },
+    {
+      "title": "Do you want funding for:",
+      "name": "pTJedZ",
+      "type": "string",
+      "items": [
+        {
+          "text": "capital expenditure",
+          "value": "text",
+          "description": "The purchase of property or equipment"
+        },
+        {
+          "text": "services",
+          "description": "The provision of services",
+          "value": "text"
+        },
+        {
+          "text": "subsidy",
+          "description": "Subsidising an existing organisation",
+          "value": "text"
+        }
+      ]
+    },
+    {
+      "title": "Select all that apply",
+      "name": "SmrLYS",
+      "type": "string",
+      "items": [
+        {
+          "text": "Net zero",
+          "value": "text"
+        },
+        {
+          "text": "Regeneration",
+          "value": "text"
+        },
+        {
+          "text": "Support local community",
+          "value": "text"
+        },
+        {
+          "text": "Level up skills",
+          "value": "text"
+        },
+        {
+          "text": "Fight climate change",
+          "value": "text"
+        },
+        {
+          "text": "Increase trade and prosperity",
+          "value": "text"
+        }
+      ]
+    },
+    {
+      "title": "Describe how your project will impact people with protected characteristics?",
+      "name": "HuYPPx",
+      "type": "string",
+      "items": [
+        {
+          "text": "age",
+          "value": "text"
+        },
+        {
+          "text": "disability",
+          "value": "text"
+        },
+        {
+          "text": "gender reassignment",
+          "value": "text"
+        },
+        {
+          "text": "marriage or civil partnership (in employment only)",
+          "value": "text"
+        },
+        {
+          "text": "pregnancy and maternity",
+          "value": "text"
+        },
+        {
+          "text": "race",
+          "value": "text"
+        },
+        {
+          "text": "religion or belief",
+          "value": "text"
+        },
+        {
+          "text": "sex",
+          "value": "text"
+        },
+        {
+          "text": "sexual orientation",
+          "value": "text"
+        }
+      ]
+    },
+    {
+      "title": "Data protection",
+      "name": "ktTvXo",
+      "type": "string",
+      "items": [
+        {
+          "description": "",
+          "text": "By submitting this application, you agree to be bound by the Data Protection Act 2018",
+          "value": "text"
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "name": "ioPdQr",
+      "title": "Question 1 of 2"
+    },
+    {
+      "name": "YZIZrj",
+      "title": "Question 2 of 2"
+    },
+    {
+      "name": "fygoGH",
+      "title": "Question 1 of 4"
+    },
+    {
+      "name": "hwhwWm",
+      "title": "Question 2 of 4"
+    },
+    {
+      "name": "deqRAJ",
+      "title": "Question 3 of 4"
+    },
+    {
+      "name": "MZwZwh",
+      "title": "Question 4 of 4"
+    }
+  ],
+  "conditions": [],
+  "fees": [],
+  "outputs": [],
+  "version": 2,
+  "skipSummary": false,
+  "name": "DLUHC form v 1.0",
+  "feedback": {
+    "feedbackForm": false,
+    "url": ""
+  },
+  "phaseBanner": {}
+}
