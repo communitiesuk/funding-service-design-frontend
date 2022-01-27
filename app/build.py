@@ -26,7 +26,7 @@ def build_assets():
     # There is a known problem on Mac where one must manually
     # run the script "Install Certificates.command" found
     # in the python application folder for this to work.
-    urllib.request.urlretrieve(url, "./govuk_frontend.zip")
+    urllib.request.urlretrieve(url, "./govuk_frontend.zip")  # nosec
 
     print("Deleting old app/static")
 
