@@ -5,7 +5,7 @@ from .formzy import create_formzy_with_json
 
 forms_bp = Blueprint(
     "forms_bp", __name__, url_prefix="/forms", template_folder="templates"
-)  # noqa
+)
 
 
 @forms_bp.route("/", methods=["GET"])

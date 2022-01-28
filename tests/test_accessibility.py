@@ -52,7 +52,9 @@ def print_axe_report(results: dict, service_dict: dict, route_rel: str):
     """
     results_html = json2html.convert(
         json=results["violations"],
-        table_attributes="border='1' cellpadding='10' cellspacing='0' bordercolor='black'",  # noqa
+        table_attributes=(
+            "border='1' cellpadding='10' cellspacing='0' bordercolor='black'"
+        ),
     )
     heading = get_report_heading(service_dict, route_rel)
     results_with_title = heading + results_html

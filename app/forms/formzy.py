@@ -35,7 +35,7 @@ class Step(object):
         title: str,
         next: str,
         submit_text: str,
-        fields: [] = None,  # noqa
+        fields: [] = None,
     ):
         self.path = path
         self.title = title
@@ -112,7 +112,7 @@ class Formzy(object):
 
 def create_formzy_with_json(
     absolute_path: str = os.path.dirname(os.path.realpath(__file__))
-    + "/forms.json",  # noqa
+    + "/forms.json",
 ):
     f = open(absolute_path)
     forms_json = json.load(f)
