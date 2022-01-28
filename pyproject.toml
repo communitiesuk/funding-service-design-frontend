@@ -7,3 +7,4 @@ license = "MIT License"
 
 [tool.black]
 line-length = 79
+experimental-string-processing = 1
