@@ -6,33 +6,17 @@ import os
 from urllib.request import urlopen
 
 import pytest
+from app.config import LOCAL_SERVICE_NAME
 from axe_selenium_python import Axe
 from flask import url_for
 from json2html import json2html
+from selenium.webdriver.chrome.webdriver import WebDriver
 
-LOCAL_SERVICE_NAME = "local_flask"
-
-
-def get_service(service):
-    if not service:
-        service = {
-            "name": LOCAL_SERVICE_NAME,
-            "host": url_for("routes.index", _external=True),
-        }
-    else:
-        if "name" not in service:
-            raise Exception(
-                "Service, if set, must be a dict with a 'name' attribute"
-            )
-        elif "host" not in service:
-            raise Exception(
-                "Service, if set, must be a dict with a 'host' attribute"
-            )
-    print(service)
-    return service
+from .utils import get_service
+from .utils import get_service_html_filepath
 
 
-def get_report_heading(service_dict, route_rel):
+def get_report_heading(service_dict: dict, route_rel: str):
     service = get_service(service_dict)
     heading = (
         "<p>Testing service: "
@@ -46,7 +30,7 @@ def get_report_heading(service_dict, route_rel):
     return heading
 
 
-def get_report_filename(service_dict, route_rel, route_name):
+def get_report_filename(service_dict: dict, route_rel: str, route_name: str):
     service = get_service(service_dict)
     report_root = ""
 
@@ -62,7 +46,7 @@ def get_report_filename(service_dict, route_rel, route_name):
     return report_root + route_name
 
 
-def print_axe_report(results, service_dict, route_rel, route_name):
+def print_axe_report(results: dict, service_dict: dict, route_rel: str):
     """
     Prints an html report from aXe generated results
     """
@@ -72,10 +56,12 @@ def print_axe_report(results, service_dict, route_rel, route_name):
     )
     heading = get_report_heading(service_dict, route_rel)
     results_with_title = heading + results_html
-    report_filename = get_report_filename(service_dict, route_rel, route_name)
+    html_basename, filename = get_service_html_filepath(
+        "axe_reports", service_dict, route_rel
+    )
 
-    os.makedirs("axe_reports", exist_ok=True)
-    f = open("axe_reports/" + report_filename + ".html", "w")
+    os.makedirs(html_basename, exist_ok=True)
+    f = open(html_basename + filename, "w")
     f.write(results_with_title)
     f.close()
 
@@ -83,28 +69,23 @@ def print_axe_report(results, service_dict, route_rel, route_name):
 @pytest.mark.usefixtures("selenium_chrome_driver")
 @pytest.mark.usefixtures("live_server")
 def run_axe_and_print_report(
-    driver,
+    driver: WebDriver,
     service_dict: dict = None,
-    method: str = "GET",
-    route_rel="",
-    route_name=None,
-    kwargs=None,
+    route_rel: str = "",
 ):
     """
     Generates an html report from aXe generate has generated a report
     :return A json report
     """
     service = get_service(service_dict)
+    if route_rel and route_rel[0] != "/":
+        route_rel = "/" + route_rel
     route = service["host"] + route_rel
-    # driver.requests(
-    #     method=method,
-    #     url=route,
-    #     kwargs=kwargs)
     driver.get(route)
     axe = Axe(driver)
     axe.inject()
     results = axe.run()
-    print_axe_report(results, service_dict, route_rel, route_name)
+    print_axe_report(results, service_dict, route_rel)
 
     return results
 
