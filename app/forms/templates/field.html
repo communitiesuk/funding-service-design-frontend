@@ -1,18 +1,41 @@
 {%- from 'govuk_frontend_jinja/components/textarea/macro.html' import govukTextarea -%}
 {%- from 'govuk_frontend_jinja/components/input/macro.html' import govukInput -%}
+{%- from 'govuk_frontend_jinja/components/radios/macro.html' import govukRadios -%}
 
 
 
 {% macro render(field) -%}
-      {% if field.field_type == "textarea" %}
+      {% if field.field_type == "MultilineTextField" %}
 
-        {{ govukTextarea({
-          'name': 'more-detail',
-          'id': 'more-detail',
-          'label': {
-            'text': 'Can you provide more detail?'
-          }
-        }) }}
+
+        {% if field.errors %}
+            {{ govukTextarea({
+                    'name': field.name,
+                    'id': field.id,
+                    'label': {
+                        'text': field.label
+                    },
+                    'classes': field.classes,
+                    'errorMessage': {
+                        'text': field.errors.0
+                    },
+                    'hint': {
+                        'text': field.hint
+                    },
+            }) }}
+        {% else %}
+            {{ govukTextarea({
+                    'name': field.name,
+                    'id': field.id,
+                    'label': {
+                        'text': field.label
+                    },
+                    'classes': field.classes,
+                    'hint': {
+                        'text': field.hint
+                    },
+            }) }}
+        {% endif %}
 
       {% elif field.name != 'csrf_token' %}
         {% if field.errors %}
@@ -26,6 +49,7 @@
                 'id': field.id,
                 'name': field.name,
                 'value': field.data,
+                'classes': field.classes,
                 'errorMessage': {
                     'text': field.errors.0
                 }
@@ -41,6 +65,7 @@
                 'id': field.id,
                 'name': field.name,
                 'value': field.data,
+                'classes': field.classes,
             }) }}
         {% endif %}
 

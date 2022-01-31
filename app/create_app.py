@@ -38,11 +38,15 @@ def create_app() -> Flask:
     }
 
     hss = {
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",  # noqa
+        "Strict-Transport-Security": (
+            "max-age=31536000; includeSubDomains; preload"
+        ),
         "X-Content-Type-Options": "nosniff",
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
-        "Feature_Policy": "microphone 'none'; camera 'none'; geolocation 'none'",  # noqa
+        "Feature_Policy": (
+            "microphone 'none'; camera 'none'; geolocation 'none'"
+        ),
     }
 
     Compress(flask_app)
@@ -56,7 +60,9 @@ def create_app() -> Flask:
             stage="alpha",
             region="NA",
             service_title="DLUHC Funding Service Design Iteration 1",
-            service_meta_description="DLUHC Funding Service Design Iteration 1",  # noqa
+            service_meta_description=(
+                "DLUHC Funding Service Design Iteration 1"
+            ),
             service_meta_keywords="DLUHC Funding Service Design Iteration 1",
             service_meta_author="DLUHC",
         )
@@ -71,8 +77,8 @@ def create_app() -> Flask:
     flask_app.register_blueprint(forms_bp)
     flask_app.add_url_rule(
         "/forms/<form_name>/<step>/",
-        view_func=FormzyStepView.as_view("formzy_step"),  # noqa
-    )  # noqa
+        view_func=FormzyStepView.as_view("formzy_step"),
+    )
 
     return flask_app
 

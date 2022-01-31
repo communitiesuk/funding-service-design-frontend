@@ -78,7 +78,7 @@ def selenium_chrome_driver(request):
     #  (if setting to run in container or on GitHub)
     chrome_driver = webdriver.Chrome(
         service=service_object, options=chrome_options
-    )  # noqa
+    )
     request.cls.driver = chrome_driver
     yield
     request.cls.driver.close()
