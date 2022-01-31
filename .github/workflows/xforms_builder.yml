@@ -15,7 +15,7 @@ jobs:
   testing:
     runs-on: ubuntu-latest
     environment: Dev
-    container: ghcr.io/xgovformbuilder/digital-form-builder-runner:3.17.3-rc.831
+    container: ghcr.io/xgovformbuilder/digital-form-builder-runner:latest
     steps:
       - name: checkout code
         uses: actions/checkout@v2
