@@ -3,8 +3,11 @@ import os
 
 from flask import url_for
 
-from ..config import APPLICATION_ROOT
 from ..config import FORMS_SERVICE_JSONS_PATH
+
+APPLICATION_ROOT = os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+)
 
 
 class Field(object):
