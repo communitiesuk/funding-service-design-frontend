@@ -1,5 +1,6 @@
 """Flask configuration."""
 from os import environ
+from os import path
 
 """
 Application Config
@@ -9,6 +10,7 @@ SESSION_COOKIE_NAME = environ.get("SESSION_COOKIE_NAME") or "session_cookie"
 STATIC_FOLDER = "static"
 TEMPLATES_FOLDER = "templates"
 LOCAL_SERVICE_NAME = "local_flask"
+APPLICATION_ROOT = path.dirname(path.dirname(path.realpath(__file__)))
 
 """
 Forms Service Config

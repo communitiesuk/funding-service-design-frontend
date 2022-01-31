@@ -5,15 +5,16 @@ from flask_wtf import FlaskForm
 from wtforms import HiddenField
 from wtforms import PasswordField
 from wtforms import StringField
+from wtforms import TextAreaField
 from wtforms.validators import DataRequired
 
-from .formzy import create_formzy_with_json
+from .formzy import create_formzy_from_json
 
 
 class FormzyStepView(MethodView):
     def __init__(self, *args, **kwargs):
         super(FormzyStepView, self).__init__(*args, **kwargs)
-        self.formzy = create_formzy_with_json()
+        self.formzy = None
         self.current_step = None
 
     def set_step(self, step: str):
@@ -29,6 +30,7 @@ class FormzyStepView(MethodView):
                 "placeholder_text",
                 "help_text",
                 "field_type",
+                "classes",
             ]:
                 setattr(d_field, attr, getattr(field, attr))
 
@@ -47,6 +49,7 @@ class FormzyStepView(MethodView):
         return d
 
     def get(self, form_name: str, step: str):
+        self.formzy = create_formzy_from_json(form_name)
         self.set_step(step)
         form = self.form()
 
@@ -55,6 +58,7 @@ class FormzyStepView(MethodView):
         )
 
     def post(self, form_name: str, step: str):
+        self.formzy = create_formzy_from_json(form_name)
         self.set_step(step)
         form = self.form()
         if form.validate_on_submit():
@@ -73,8 +77,16 @@ class FormzyStepView(MethodView):
         if field.required:
             validators.append(DataRequired(field.required))
 
-        if field.field_type == "text":
+        if field.field_type in [
+            "text",
+            "TextField",
+            "EmailAddressField",
+            "TelephoneNumberField",
+            "WebsiteField",
+        ]:
             f = StringField(field.label, validators=validators)
+        if field.field_type in ["MultilineTextField"]:
+            f = TextAreaField(field.label, validators=validators)
         if field.field_type == "password":
             f = PasswordField(field.label)
 
