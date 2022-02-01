@@ -24,4 +24,4 @@ jobs:
       - name: run docker container
         run: |
           docker ps
-          docker run xgovformbuilder/digital-form-builder-runner:latest -4 --retry 10 --retry-connrefused --retry-delay 10 http://localhost:3009/ 
+          docker run ghcr.io/xgovformbuilder/digital-form-builder-runner:latest -4 --retry 10 --retry-connrefused --retry-delay 10 http://localhost:3009/ 
