@@ -17,7 +17,9 @@ jobs:
     environment: Dev
     container: ghcr.io/xgovformbuilder/digital-form-builder-runner:latest
     steps:
-      - name: checkout code
-        uses: actions/checkout@v2
+      # - name: checkout code
+      #   uses: actions/checkout@v2
       - name: debug
-        run: ls -ltr
+        run: |
+          ls -ltr
+          ls -ltr ..
