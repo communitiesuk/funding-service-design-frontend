@@ -22,7 +22,7 @@ jobs:
       - name: debug
         run: ls -ltr
       - name: copy files for build
-        run: cp funding-service-design-frontend/json-forms/* runner/src/server/forms/ 
+        run: cp funding-service-design-frontend/json-forms/*.json runner/src/server/forms/ 
       - name: build new forms 
         run: yarn runner build
       
