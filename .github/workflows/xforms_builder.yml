@@ -21,7 +21,9 @@ jobs:
         uses: actions/checkout@v2
       - name: grab Xforms runner
         run: docker pull ghcr.io/xgovformbuilder/digital-form-builder-runner:latest
-      - name: run docker container
-        run: |
-          docker ps
-          docker run ghcr.io/xgovformbuilder/digital-form-builder-runner:latest 
+      - name: debug list images
+        run: docker images
+      # - name: run docker container
+      #   run: |
+      #     docker ps
+      #     docker run ghcr.io/xgovformbuilder/digital-form-builder-runner:latest 
