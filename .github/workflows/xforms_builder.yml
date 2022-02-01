@@ -24,4 +24,4 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v2
       - name: get from service runner
-        run:  curl -i http://runner:3009/test
+        run:  curl -i http://localhost:3009/test
