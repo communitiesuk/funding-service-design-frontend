@@ -26,37 +26,54 @@ jobs:
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-      -
-        name: Build and export
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          tags: frontend-runner:latest
-          outputs: type=docker,dest=/tmp/frontend-runner-latest.tar
-      -
-        name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: frontend-runner
-          path: /tmp/frontend-runner-latest.tar
-      
-      - name: Check images
-        run: |
-          docker image ls
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
           registry: ghcr.io
           username: ${{ secrets.GHCR_USER }}
           password: ${{ secrets.GHCR_PAT }}
-      - name: Tag image
-        run: |
-          docker tag frontend-runner ghcr.io/communitiesuk/frontend-runner:latest
-          docker tag frontend-runner ghcr.io/communitiesuk/frontend-runner:1.0
-      - name: Push Docker images
-        run: |
-          docker push ghcr.io/communitiesuk/frontend-runner:latest
-          docker push ghcr.io/communitiesuk/frontend-runner:1.0
+      
+      -
+        name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/communitiesuk/rontend-runner:latest
+            ghcr.io/communitiesuk/rontend-runner:1.0
+      # -
+      #   name: Build and export
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     context: .
+      #     tags: frontend-runner:latest
+      #     outputs: type=docker,dest=/tmp/frontend-runner-latest.tar
+      # -
+      #   name: Upload artifact
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: frontend-runner
+      #     path: /tmp/frontend-runner-latest.tar
+      
+      # - name: Check images
+      #   run: |
+      #     docker image ls
+      # - name: Login to GitHub Container Registry
+      #   uses: docker/login-action@v1
+      #   with:
+      #     registry: ghcr.io
+      #     username: ${{ secrets.GHCR_USER }}
+      #     password: ${{ secrets.GHCR_PAT }}
+      # - name: Tag image
+      #   run: |
+      #     docker tag frontend-runner ghcr.io/communitiesuk/frontend-runner:latest
+      #     docker tag frontend-runner ghcr.io/communitiesuk/frontend-runner:1.0
+      # - name: Push Docker images
+      #   run: |
+      #     docker push ghcr.io/communitiesuk/frontend-runner:latest
+      #     docker push ghcr.io/communitiesuk/frontend-runner:1.0
   use:
     runs-on: ubuntu-latest
     needs: build
