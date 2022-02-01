@@ -41,8 +41,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/communitiesuk/rontend-runner:latest
-            ghcr.io/communitiesuk/rontend-runner:1.0
+            ghcr.io/communitiesuk/frontend-runner-${GITHUB_REF##*/}:latest
+            ghcr.io/communitiesuk/frontend-runner-${GITHUB_REF##*/}:1.0
       # -
       #   name: Build and export
       #   uses: docker/build-push-action@v2
