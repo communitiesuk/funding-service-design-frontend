@@ -15,15 +15,9 @@ jobs:
   testing:
     runs-on: ubuntu-latest
     environment: Dev
-    # container: ghcr.io/xgovformbuilder/digital-form-builder-runner:latest
+    container: ghcr.io/xgovformbuilder/digital-form-builder-runner:latest
     steps:
       - name: checkout code
         uses: actions/checkout@v2
-      - name: grab Xforms runner
-        run: docker pull ghcr.io/xgovformbuilder/digital-form-builder-runner:latest
-      - name: debug list images
-        run: docker images
-      # - name: run docker container
-      #   run: |
-      #     docker ps
-      #     docker run ghcr.io/xgovformbuilder/digital-form-builder-runner:latest 
+      - name: debug
+        run: ls -ltr
