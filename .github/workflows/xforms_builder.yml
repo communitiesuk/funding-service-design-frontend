@@ -23,5 +23,6 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v2
+      - run: sleep 30
       - name: get from service runner
         run:  curl -i http://localhost:3009/test
