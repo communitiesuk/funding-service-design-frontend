@@ -24,4 +24,4 @@ jobs:
       - name: run docker container
         run: |
           docker ps
-          docker run --network digital-form-builder-runner appropriate/curl -4 --retry 10 --retry-connrefused --retry-delay 10 http://localhost:3009/ 
+          docker run digital-form-builder-runner -4 --retry 10 --retry-connrefused --retry-delay 10 http://localhost:3009/ 
