@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_compress import Compress
+from flask_seasurf import SeaSurf
 from flask_talisman import Talisman
-from flask_wtf.csrf import CSRFProtect
 from jinja2 import ChoiceLoader
 from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
@@ -10,7 +10,7 @@ from jinja2 import PrefixLoader
 def create_app() -> Flask:
     flask_app = Flask(__name__, static_url_path="/assets")
 
-    csrf = CSRFProtect()
+    csrf = SeaSurf()
     csrf.init_app(flask_app)
 
     flask_app.config.from_pyfile("config.py")
@@ -52,7 +52,7 @@ def create_app() -> Flask:
     Compress(flask_app)
     Talisman(
         flask_app, content_security_policy=csp, strict_transport_security=hss
-    )  # noqa
+    )
 
     @flask_app.context_processor
     def inject_global_constants():
@@ -68,17 +68,10 @@ def create_app() -> Flask:
         )
 
     from .default.routes import default_bp, not_found, internal_server_error
-    from .forms.routes import forms_bp
-    from .forms.views import FormzyStepView
 
     flask_app.register_error_handler(404, not_found)
     flask_app.register_error_handler(500, internal_server_error)
     flask_app.register_blueprint(default_bp)
-    flask_app.register_blueprint(forms_bp)
-    flask_app.add_url_rule(
-        "/forms/<form_name>/<step>/",
-        view_func=FormzyStepView.as_view("formzy_step"),
-    )
 
     return flask_app
 
