@@ -12,7 +12,7 @@ on:
       - '**/README.md'
 
 jobs:
-  docker:
+  build:
     runs-on: ubuntu-latest
     environment: Dev
     services:
