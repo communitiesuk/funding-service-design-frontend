@@ -11,9 +11,8 @@ from axe_selenium_python import Axe
 from flask import url_for
 from json2html import json2html
 from selenium.webdriver.chrome.webdriver import WebDriver
-
-from .utils import get_service
-from .utils import get_service_html_filepath
+from tests.utils import get_service
+from tests.utils import get_service_html_filepath
 
 
 def get_report_heading(service_dict: dict, route_rel: str):
@@ -92,6 +91,7 @@ def run_axe_and_print_report(
     return results
 
 
+@pytest.mark.initialisation
 @pytest.mark.app(debug=False)
 def test_app(app):
     assert not app.debug, "Ensure the app not in debug mode"
@@ -99,6 +99,7 @@ def test_app(app):
 
 @pytest.mark.usefixtures("live_server")
 class TestLiveServer:
+    @pytest.mark.initialisation
     def test_server_is_up_and_running(self):
         """
         GIVEN Our Flask Application is running
@@ -108,6 +109,7 @@ class TestLiveServer:
         res = urlopen(url_for("routes.index", _external=True))
         assert res.code == 200
 
+    @pytest.mark.content
     def test_hello_world_message(self):
         """
         GIVEN Our Flask Application is running
@@ -122,6 +124,7 @@ class TestLiveServer:
 @pytest.mark.usefixtures("selenium_chrome_driver")
 @pytest.mark.usefixtures("live_server")
 class TestURLsWithChrome:
+    @pytest.mark.accessible
     def test_homepage_accessible(self):
         """
         GIVEN Our Flask Application is running
@@ -138,6 +141,7 @@ class TestURLsWithChrome:
             or results["violations"][0]["impact"] == "minor"
         )
 
+    @pytest.mark.accessible
     def test_unknown_page_returns_accessible_404(self):
         """
         GIVEN Our Flask Application is running

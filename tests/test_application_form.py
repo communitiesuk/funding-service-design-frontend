@@ -105,23 +105,8 @@ from app.config import FORMS_SERVICE_PREVIEW_HOST
 from app.config import FORMS_SERVICE_PUBLIC_HOST
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.errorhandler import NoSuchElementException
-
-from .test_accessibility import run_axe_and_print_report
-from .utils import print_html_page
-
-
-# test_form_pages = {
-#     "/about-you": {
-#         "fields": [
-#             {"name": "applicant_name",
-#              "label": "Applicant name",
-#              "type": "text"
-#              },
-#         ]
-#     },
-# }
-
-# test_form_pages = get_test_form_routes()[FORMS_SERVICE_TEST_FORM]["pages"]
+from tests.test_accessibility import run_axe_and_print_report
+from tests.utils import print_html_page
 
 
 @pytest.mark.usefixtures("selenium_chrome_driver")
@@ -182,6 +167,7 @@ class TestFormURLsWithChrome:
         )
         return results
 
+    @pytest.mark.accessible
     def test_form_pages_accessible(self):
         """
         GIVEN Our FORM SERVICE Application is running
@@ -202,10 +188,14 @@ class TestFormURLsWithChrome:
                     route_rel,
                 )
                 assert len(results["violations"]) <= 2
-                # assert len(results["violations"]) == 0 or all(
-                #     [v["impact"] == "minor" for v in results["violations"]]
-                # )
+                assert len(results["violations"]) == 0 or all(
+                    [
+                        viols["impact"] not in ["serious", "critical"]
+                        for viols in results["violations"]
+                    ]
+                )
 
+    @pytest.mark.content
     def test_form_pages_contain_expected_fields(self):
         """
         GIVEN FORM SERVICE Application is running
@@ -247,28 +237,7 @@ class TestFormURLsWithChrome:
                             )
                         assert found_input is not None, error_message
 
-    # def test_insecure_form_post_returns_403(self):
-    #     """
-    #     GIVEN Our FORM SERVICE Application is running
-    #     at FORMS_SERVICE_HOST and the given
-    #     FORMS_SERVICE_TEST_FORM has been created
-    #     WHEN testing the first given route in test_form_routes
-    #     THEN check that an insecure form post returns 403
-    #     """
-    #     route = test_form_pages[0]
-    #     path = route["path"]
-    #     route_rel = "/" + FORMS_SERVICE_TEST_FORM + path
-    #     url = FORMS_SERVICE_HOST + route_rel
-    #     kwargs = {}
-    #     # response = self.driver.requests(
-    #     #     method="POST",
-    #     #     url=url,
-    #     #     kwargs=kwargs)
-    #     data = parse.urlencode({"name": "Bad Data"}).encode()
-    #     req = request.Request(url, data=data)
-    #     response = request.urlopen(req)
-    #     assert response.code == 403
-
+    @pytest.mark.accesible
     def test_unknown_forms_page_on_public_host_returns_accessible_404(self):
         """
         GIVEN Our FORM SERVICE Application is running
@@ -287,6 +256,9 @@ class TestFormURLsWithChrome:
         )
 
         assert len(results["violations"]) <= 2
-        # assert len(results["violations"]) == 0 or all(
-        #     [viols["impact"] == "minor" for viols in results["violations"]]
-        # )
+        assert len(results["violations"]) == 0 or all(
+            [
+                viols["impact"] not in ["serious", "critical"]
+                for viols in results["violations"]
+            ]
+        )

@@ -6,9 +6,11 @@ of the test_routes.py test. These tests are marked
 the other tests. This saves time.
 This is the most basic set of tests.
 """
+import pytest
 from tests.route_testing_conf import routes_and_test_content
 
 
+@pytest.mark.initialisation
 def test_flask_initiates(flask_test_client):
     """
     GIVEN Our Flask Hello World Application
@@ -21,6 +23,7 @@ def test_flask_initiates(flask_test_client):
     assert response.status_code == 200
 
 
+@pytest.mark.content
 def test_helloworld_homepage(flask_test_client):
     """
     GIVEN Our Flask Hello World Application

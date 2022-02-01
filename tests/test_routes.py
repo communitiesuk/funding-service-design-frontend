@@ -2,9 +2,11 @@
 Tests the routes and their contents using the dict within
 "route_testing_conf.py".
 """
+import pytest
 from tests.route_testing_conf import routes_and_test_content
 
 
+@pytest.mark.initialisation
 def test_routes_status_code(flask_test_client):
     """
     GIVEN Our Flask Hello World Application
@@ -19,6 +21,7 @@ def test_routes_status_code(flask_test_client):
         assert response.status_code == 200
 
 
+@pytest.mark.content
 def test_routes_content(flask_test_client):
     """
     GIVEN Our Flask Hello World Application
@@ -35,6 +38,7 @@ def test_routes_content(flask_test_client):
         assert should_contain_this in response.data
 
 
+@pytest.mark.security
 def test_dodgy_url_returns_404(flask_test_client):
     """
     GIVEN Our Flask Hello World Application
