@@ -23,9 +23,5 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v2
-      - name: debug
-        run: |
-          ls -ltr
-          ls -ltr ..
-          ls -ltr ../..
-    
+      - name: get from service runner
+        run:  http://localhost:3009/test
