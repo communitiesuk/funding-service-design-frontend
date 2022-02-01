@@ -41,5 +41,5 @@ jobs:
         name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: myimage
-          path: tmp/frontend-runner-latest.tar
+          name: frontend-runner
+          path: /tmp/frontend-runner-latest.tar
