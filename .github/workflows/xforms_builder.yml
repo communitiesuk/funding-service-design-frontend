@@ -43,14 +43,14 @@ jobs:
           tags: |
             ghcr.io/communitiesuk/frontend-runner-${{ github.ref_name }}:latest
             ghcr.io/communitiesuk/frontend-runner-${{ github.ref_name }}:1.0
-            
+
   use:
     runs-on: ubuntu-latest
     environment: Dev
     needs: build
     services:
       runner:
-        image: docker pull ghcr.io/communitiesuk/frontend-runner-${{ github.ref_name }}:latest
+        image: ghcr.io/communitiesuk/frontend-runner-${{ github.ref_name }}:latest
         ports:
            - 3009:3009
     steps:
