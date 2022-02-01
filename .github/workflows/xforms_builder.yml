@@ -51,8 +51,12 @@ jobs:
     services:
       runner:
         image: ghcr.io/communitiesuk/frontend-runner-${{ github.ref_name }}:latest
+        credentials:
+          username: ${{ secrets.GHCR_USER }}
+          password: ${{ secrets.GHCR_PAT }}
         ports:
            - 3009:3009
+      
     steps:
       -
         name: Set up Docker Buildx
