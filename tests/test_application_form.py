@@ -105,9 +105,8 @@ from app.config import FORMS_SERVICE_PREVIEW_HOST
 from app.config import FORMS_SERVICE_PUBLIC_HOST
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.errorhandler import NoSuchElementException
-
-from .test_accessibility import run_axe_and_print_report
-from .utils import print_html_page
+from tests.test_accessibility import run_axe_and_print_report
+from tests.utils import print_html_page
 
 
 # test_form_pages = {
