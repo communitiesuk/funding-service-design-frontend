@@ -167,7 +167,6 @@ class TestFormURLsWithChrome:
         )
         return results
 
-    @pytest.mark.accessible
     def test_form_pages_accessible(self):
         """
         GIVEN Our FORM SERVICE Application is running
@@ -195,7 +194,6 @@ class TestFormURLsWithChrome:
                     ]
                 )
 
-    @pytest.mark.content
     def test_form_pages_contain_expected_fields(self):
         """
         GIVEN FORM SERVICE Application is running
@@ -237,7 +235,6 @@ class TestFormURLsWithChrome:
                             )
                         assert found_input is not None, error_message
 
-    @pytest.mark.accesible
     def test_unknown_forms_page_on_public_host_returns_accessible_404(self):
         """
         GIVEN Our FORM SERVICE Application is running
