@@ -1,7 +1,3 @@
-# # syntax=docker/dockerfile:1
-# FROM ghcr.io/xgovformbuilder/digital-form-builder-runner:latest
-# COPY json-forms/* /app/runner/dist/server/forms/
-CMD [ "yarn", "runner", "start"]
 ARG BASE_IMAGE_TAG="3.17.0-rc.828"
 FROM ghcr.io/xgovformbuilder/digital-form-builder-runner:$BASE_IMAGE_TAG as base
 ARG FORMS_DIR="forms-v3"
