@@ -14,6 +14,13 @@ on:
       environment:
         description: The environment to deploy with
         required: false
+  push:
+    branches:
+    - xforms
+
+    paths-ignore:
+      - '**/README.md'
+
 
 env:
   REGISTRY: ghcr.io
