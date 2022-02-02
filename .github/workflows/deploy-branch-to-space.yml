@@ -13,7 +13,8 @@ on:
         default: sandbox
       environment:
         description: The environment to deploy with
-        required: false
+        required: true
+        default: Dev
   push:
     branches:
     - xforms
