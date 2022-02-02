@@ -79,7 +79,7 @@ jobs:
         run: |
           cf api ${{ secrets.CF_API }}
           cf auth "${{ secrets.CF_USER }}" "${{ secrets.CF_PASSWORD }}"
-          cf target -o ${{ secrets.CF_ORG }} -s ${{ github.event.inputs.space }}
+          cf target -o dluhc-funding-service-design -s sandbox
           CF_DOCKER_PASSWORD=${{ secrets.GHCR_PAT }} cf push cifu-xgov-runner-${{ github.event.inputs.branch }} -f ./manifest.yml \
             --docker-image ${{ env.DOCKER_IMAGE_TAG }} \
             --docker-username ${{ github.actor }}
