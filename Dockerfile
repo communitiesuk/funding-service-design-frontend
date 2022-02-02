@@ -18,5 +18,4 @@ USER appuser
 EXPOSE 3009
 
 USER 1001
-PRIVACY_POLICY_URL="https://www.gov.uk/government/publications/fcdo-privacy-notice-consular-services-in-the-uk-and-at-british-embassies-high-commissions-and-consulates-overseas/foreign-commonwealth-development-office-privacy-notice-consular-services-in-the-uk-and-missions-overseas"
 CMD [ "yarn", "runner", "start"]
