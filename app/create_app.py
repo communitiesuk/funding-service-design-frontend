@@ -67,7 +67,7 @@ def create_app() -> Flask:
             service_meta_author="DLUHC",
         )
 
-    from .default.routes import default_bp, not_found, internal_server_error
+    from app.default.routes import default_bp, not_found, internal_server_error
 
     flask_app.register_error_handler(404, not_found)
     flask_app.register_error_handler(500, internal_server_error)

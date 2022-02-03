@@ -131,3 +131,8 @@ dmypy.json
 .idea
 app/static
 govuk_components
+
+# Hello world security FS-387 files
+.bash_profile
+.DS_Store
+app/.DS_Store
