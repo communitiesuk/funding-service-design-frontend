@@ -4,6 +4,7 @@ from flask.views import MethodView
 from flask_wtf import FlaskForm
 from wtforms import HiddenField
 from wtforms import PasswordField
+from wtforms import RadioField
 from wtforms import StringField
 from wtforms import TextAreaField
 from wtforms.validators import DataRequired
@@ -85,6 +86,14 @@ class FormzyStepView(MethodView):
             "WebsiteField",
         ]:
             f = StringField(field.label, validators=validators)
+        if field.field_type in ["YesNoField"]:
+            f = RadioField(
+                field.label,
+                choices={"Yes": "yes", "No": "no"},
+                validators=validators,
+            )
+        if field.field_type in ["RadiosField"]:
+            f = RadioField(field.label, validators=validators)
         if field.field_type in ["MultilineTextField"]:
             f = TextAreaField(field.label, validators=validators)
         if field.field_type == "password":

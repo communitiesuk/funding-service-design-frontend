@@ -1,0 +1,36 @@
+{%- from 'govuk_frontend_jinja/components/input/macro.html' import govukInput -%}
+
+{% macro render(field) %}
+
+{% if field.errors %}
+            {{ govukInput({
+                'label': {
+                    'text': field.label
+                },
+                'hint': {
+                    'text': field.hint
+                },
+                'id': field.id,
+                'name': field.name,
+                'value': field.data,
+                'classes': field.classes,
+                'errorMessage': {
+                    'text': field.errors.0
+                }
+            }) }}
+        {% else %}
+            {{ govukInput({
+                'label': {
+                    'text': field.label
+                },
+                'hint': {
+                    'text': field.hint
+                },
+                'id': field.id,
+                'name': field.name,
+                'value': field.data,
+                'classes': field.classes,
+            }) }}
+        {% endif %}
+
+{% endmacro %}

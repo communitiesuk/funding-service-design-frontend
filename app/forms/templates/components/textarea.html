@@ -1,0 +1,34 @@
+{%- from 'govuk_frontend_jinja/components/textarea/macro.html' import govukTextarea -%}
+
+{% macro render(field) %}
+
+{% if field.errors %}
+    {{ govukTextarea({
+            'name': field.name,
+            'id': field.id,
+            'label': {
+                'text': field.label
+            },
+            'classes': field.classes,
+            'errorMessage': {
+                'text': field.errors.0
+            },
+            'hint': {
+                'text': field.hint
+            },
+    }) }}
+{% else %}
+    {{ govukTextarea({
+            'name': field.name,
+            'id': field.id,
+            'label': {
+                'text': field.label
+            },
+            'classes': field.classes,
+            'hint': {
+                'text': field.hint
+            },
+    }) }}
+{% endif %}
+
+{% endmacro %}
