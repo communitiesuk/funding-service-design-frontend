@@ -84,7 +84,9 @@ Place brief descriptions of Pipelines here
 
 * Deploy to Gov PaaS - This is a simple pipeline to demonstrate capabilities.  Builds, tests and deploys a simple python application to the PaaS for evaluation in Dev and Test Only.
 
-## Testing
+# Testing
+
+## Unit & Accessibility Testing
 
 To run all tests including aXe accessibility tests (using Chrome driver for Selenium) in a development environment run:
 
@@ -100,10 +102,10 @@ To run all tests including aXe accessibility tests (using Chrome driver for Sele
 
     pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_win32.exe
 
-The aXe report is printed in the route at axe_report.json
+The aXe reports are printed at /axe_reports
 
 
-# Performance Testing
+## Performance Testing
 
 Performance tests are stored in a separate repository which is then run in the pipeline. If you want to run the performance tests yourself follow the steps in the README for the performance test repo located [here](https://github.com/communitiesuk/funding-service-design-performance-tests/blob/main/README.md)
 
