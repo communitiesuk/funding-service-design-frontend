@@ -5,7 +5,8 @@
 {% if field.errors %}
             {{ govukInput({
                 'label': {
-                    'text': field.label
+                    'text': field.label,
+                    'classes': "govuk-label--s"
                 },
                 'hint': {
                     'text': field.hint
@@ -21,7 +22,8 @@
         {% else %}
             {{ govukInput({
                 'label': {
-                    'text': field.label
+                    'text': field.label,
+                    'classes': "govuk-label--s"
                 },
                 'hint': {
                     'text': field.hint

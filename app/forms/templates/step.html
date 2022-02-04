@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText -%}
+{%- from 'govuk_frontend_jinja/components/error-summary/macro.html' import govukErrorSummary -%}
 {% import "field.html" as field %}
 {% import "submit.html" as submit %}
 
@@ -10,18 +11,30 @@
 
   <main class="govuk-main-wrapper">
 
-
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-one-third">
             <h2 class="govuk-heading-m">{{formzy.title}}</h2>
-            <p class="govuk-body">
+                <ul class="govuk-list">
                 {% for path, form_step in formzy.steps.items() %}
-                <a href="/forms/{{formzy.name}}{{ path }}" class="govuk-link">{{ form_step.title }}{% if path == step.path %} >{% endif %}</a><br />
+                    {% if not form_step.section %}
+                    <li><a href="/forms/{{formzy.name}}{{ path }}" class="govuk-link{% if path != step.path %} govuk-link--no-underline{% endif %}">{{ form_step.title }}{% if path == step.path %} >{% endif %}</a></li>
+                    {% elif loop.previtem[1].section.start_path != form_step.section.start_path %}
+                    <li><a href="/forms/{{formzy.name}}{{form_step.section.start_path}}" class="govuk-link{% if path != step.path %} govuk-link--no-underline{% endif %}">{{ form_step.title }}{% if path == step.path %} >{% endif %}</a></li>
+                    {% endif %}
                 {% endfor %}
-            </p>
+                </ul>
         </div>
           <div class="govuk-grid-column-two-thirds">
+              {% if form.errors %}
+                {{ govukErrorSummary({
+                  "titleText": "Fix the following errors",
+                  "errorList": form.error_list
+                }) }}
+              {% endif %}
               <div>
+                  {% if step.section %}
+                    <h2 class="govuk-caption-xl govuk-!-margin-top-0" id="section-title">{{ step.section.title }}</h2>
+                  {% endif %}
                   <h1 class="govuk-heading-xl">{{ step.title}}</h1>
               </div>
                 <form action="" method="post" novalidate>

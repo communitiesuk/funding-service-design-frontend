@@ -8,8 +8,10 @@ from wtforms import RadioField
 from wtforms import StringField
 from wtforms import TextAreaField
 from wtforms.validators import DataRequired
+from wtforms.validators import Email
+from wtforms.validators import URL
 
-from .formzy import create_formzy_from_json
+from .formzy import create_formzy_from_xgov_json
 
 
 class FormzyStepView(MethodView):
@@ -35,6 +37,21 @@ class FormzyStepView(MethodView):
             ]:
                 setattr(d_field, attr, getattr(field, attr))
 
+            if hasattr(d_field, "choices"):
+                choice_items = []
+                if d_field.choices and len(d_field.choices) > 0:
+                    choice_items = [
+                        {"key": key, "text": text}
+                        for key, text in d_field.choices
+                    ]
+                setattr(d_field, "choice_items", choice_items)
+
+    def set_error_list(self, form):
+        error_list = []
+        for key, error in form.errors.items():
+            error_list.append({"text": error[0], "href": "#" + key})
+        setattr(form, "error_list", error_list)
+
     def form(self):
         class DynamicForm(FlaskForm):
             pass
@@ -50,7 +67,7 @@ class FormzyStepView(MethodView):
         return d
 
     def get(self, form_name: str, step: str):
-        self.formzy = create_formzy_from_json(form_name)
+        self.formzy = create_formzy_from_xgov_json(form_name)
         self.set_step(step)
         form = self.form()
 
@@ -59,13 +76,14 @@ class FormzyStepView(MethodView):
         )
 
     def post(self, form_name: str, step: str):
-        self.formzy = create_formzy_from_json(form_name)
+        self.formzy = create_formzy_from_xgov_json(form_name)
         self.set_step(step)
         form = self.form()
         if form.validate_on_submit():
             print("Validated")
             return redirect(self.formzy.next_url)
         else:
+            self.set_error_list(form)
             print("Invalid")
 
         return render_template(
@@ -75,8 +93,35 @@ class FormzyStepView(MethodView):
     def get_field(self, field):
         f = HiddenField(field.name)
         validators = []
+        choices = []
+
+        if field.field_type == "WebsiteField":
+            validators.append(
+                URL(
+                    message=(
+                        "Please enter a valid web address eg."
+                        " https://www.yoursite.com"
+                    )
+                )
+            )
+
+        if field.field_type == "EmailAddressField":
+            validators.append(
+                Email(
+                    message=(
+                        "Please enter a valid email address eg."
+                        " you@somedomain.com"
+                    )
+                )
+            )
+
         if field.required:
             validators.append(DataRequired(field.required))
+
+        if hasattr(field, "choices"):
+            print(field.choices)
+            for choice in field.choices:
+                choices.append((choice["value"], choice["text"]))
 
         if field.field_type in [
             "text",
@@ -89,11 +134,11 @@ class FormzyStepView(MethodView):
         if field.field_type in ["YesNoField"]:
             f = RadioField(
                 field.label,
-                choices={"Yes": "yes", "No": "no"},
+                choices=(("yes", "Yes"), ("no", "No")),
                 validators=validators,
             )
         if field.field_type in ["RadiosField"]:
-            f = RadioField(field.label, validators=validators)
+            f = RadioField(field.label, choices=choices, validators=validators)
         if field.field_type in ["MultilineTextField"]:
             f = TextAreaField(field.label, validators=validators)
         if field.field_type == "password":
