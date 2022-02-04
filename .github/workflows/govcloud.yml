@@ -36,6 +36,9 @@ jobs:
       packages: write
     env:
       DOCKER_IMAGE: communitiesuk/digital-form-builder/runner
+      FORMS_SERVICE_PREVIEW_HOST: ${{ secrets.FORMS_SERVICE_PREVIEW_HOST }}
+      FORMS_SERVICE_PUBLIC_HOST: ${{ secrets.FORMS_SERVICE_PUBLIC_HOST }}
+      FORMS_SERVICE_HOST: ${{ secrets.FORMS_SERVICE_PUBLIC_HOST }}
 
     steps:
       - name: Checkout repo
