@@ -96,6 +96,11 @@ jobs:
     needs: build-runner
     runs-on: ubuntu-latest
     environment: Dev
+    env:
+      DOCKER_IMAGE: communitiesuk/digital-form-builder/runner
+      FORMS_SERVICE_PREVIEW_HOST: ${{ secrets.FORMS_SERVICE_PREVIEW_HOST }}
+      FORMS_SERVICE_PUBLIC_HOST: ${{ secrets.FORMS_SERVICE_PUBLIC_HOST }}
+      FORMS_SERVICE_HOST: ${{ secrets.FORMS_SERVICE_PUBLIC_HOST }}
     steps:
       - name: checkout code
         uses: actions/checkout@v2
