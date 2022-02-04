@@ -11,3 +11,12 @@ applications:
   buildpacks:
   - https://github.com/cloudfoundry/python-buildpack.git
   command: flask run --host 0.0.0.0 --port 8080
+
+- name: funding-service-design-form-runner
+  docker:
+    image: ghcr.io/communitiesuk/digital-form-builder/runner:latest
+  memory: 528M    
+  sandbox: true
+  # route: funding-service-design-form-runner.london.cloudapps.digital
+  env:  
+    PREVIEW_MODE: TRUE
