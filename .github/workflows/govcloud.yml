@@ -26,6 +26,10 @@ on:
 
 env:
   REGISTRY: ghcr.io
+  FORMS_SERVICE_PREVIEW_HOST: "https://funding-service-design-form-runner.london.cloudapps.digital"
+  FORMS_SERVICE_PUBLIC_HOST: "https://funding-service-design-form-runner.london.cloudapps.digital"
+  FORMS_SERVICE_HOST: "https://funding-service-design-form-runner.london.cloudapps.digital"
+
 
 jobs:
   build-runner:
@@ -36,10 +40,6 @@ jobs:
       packages: write
     env:
       DOCKER_IMAGE: communitiesuk/digital-form-builder/runner
-      FORMS_SERVICE_PREVIEW_HOST: "https://funding-service-design-form-runner.london.cloudapps.digital"
-      FORMS_SERVICE_PUBLIC_HOST: "https://funding-service-design-form-runner.london.cloudapps.digital"
-      FORMS_SERVICE_HOST: "https://funding-service-design-form-runner.london.cloudapps.digital"
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
