@@ -15,10 +15,10 @@ Forms Service Config
 """
 FORMS_SERVICE_NAME = environ.get("FORMS_SERVICE_NAME") or "xgov_forms_service"
 FORMS_SERVICE_PUBLIC_HOST = (
-    environ.get("FORMS_SERVICE_HOST") or "http://localhost:3009"
+    environ.get("FORMS_SERVICE_PUBLIC_HOST") or "http://localhost:3009"
 )
 FORMS_SERVICE_PREVIEW_HOST = (
-    environ.get("FORMS_SERVICE_HOST") or "http://localhost:3009"
+    environ.get("FORMS_SERVICE_PREVIEW_HOST") or "http://localhost:3009"
 )
 FORMS_SERVICE_JSONS_PATH = (
     environ.get("FORMS_SERVICE_JSONS_PATH") or "form_jsons"
