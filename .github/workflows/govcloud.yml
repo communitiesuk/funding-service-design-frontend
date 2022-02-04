@@ -36,9 +36,9 @@ jobs:
       packages: write
     env:
       DOCKER_IMAGE: communitiesuk/digital-form-builder/runner
-      FORMS_SERVICE_PREVIEW_HOST: ${{ secrets.FORMS_SERVICE_PREVIEW_HOST }}
-      FORMS_SERVICE_PUBLIC_HOST: ${{ secrets.FORMS_SERVICE_PUBLIC_HOST }}
-      FORMS_SERVICE_HOST: ${{ secrets.FORMS_SERVICE_PUBLIC_HOST }}
+      FORMS_SERVICE_PREVIEW_HOST: "https://funding-service-design-form-runner.london.cloudapps.digital"
+      FORMS_SERVICE_PUBLIC_HOST: "https://funding-service-design-form-runner.london.cloudapps.digital"
+      FORMS_SERVICE_HOST: "https://funding-service-design-form-runner.london.cloudapps.digital"
 
     steps:
       - name: Checkout repo
