@@ -136,3 +136,4 @@ govuk_components
 .bash_profile
 .DS_Store
 app/.DS_Store
+.vscode/settings.json
