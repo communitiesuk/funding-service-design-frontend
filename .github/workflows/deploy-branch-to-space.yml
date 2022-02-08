@@ -1,0 +1,137 @@
+name: Deploy branch to space
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: The branch to create a build from
+        required: true
+        default: main
+      space:
+        description: The space to deploy to
+        required: true
+        default: sandbox
+      environment:
+        description: The environment to deploy with
+        required: false
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  build-runner:
+    environment: ${{ github.event.inputs.environment }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    env:
+      DOCKER_IMAGE: alphagov/digital-form-builder/runner
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Set environment variables
+        run: |
+          echo "DOCKER_IMAGE_TAG=${{ env.REGISTRY }}/${{ env.DOCKER_IMAGE }}:$GITHUB_SHA" >> $GITHUB_ENV
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          tags: |
+            ${{ env.DOCKER_IMAGE_TAG }}
+          push: true
+          file: runner/Dockerfile
+          build-args: |
+            COMMIT_SHA=$GITHUB_SHA
+
+      - name: Install cloudfoundary
+        shell: bash
+        id: install-cf-cli
+        run: |
+          wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
+          echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+          sudo apt-get update
+          sudo apt-get install cf8-cli
+
+      - name: Deploy to Gov.uk PaaS
+        id: deploy-to-paas
+        shell: bash
+        run: |
+          cf api ${{ secrets.CF_API }}
+          cf auth "${{ secrets.CF_USER }}" "${{ secrets.CF_PASSWORD }}"
+          cf target -o ${{ secrets.CF_ORGANISATION }} -s ${{ github.event.inputs.space }}
+          CF_DOCKER_PASSWORD=${{ secrets.GITHUB_TOKEN }} cf push cifu-xgov-runner-${{ github.event.inputs.branch }} -f ./runner/manifest.yml \
+            --docker-image ${{ env.DOCKER_IMAGE_TAG }} \
+            --docker-username ${{ github.actor }}
+
+  build-designer:
+    environment: ${{ github.event.inputs.environment }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    env:
+      DOCKER_IMAGE: alphagov/digital-form-builder/designer
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Set environment variables
+        run: |
+          echo "DOCKER_IMAGE_TAG=${{ env.REGISTRY }}/${{ env.DOCKER_IMAGE }}:$GITHUB_SHA" >> $GITHUB_ENV
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          tags: |
+            ${{ env.DOCKER_IMAGE_TAG }}
+          push: true
+          file: designer/Dockerfile
+          build-args: |
+            COMMIT_SHA=$GITHUB_SHA
+
+      - name: Install cloudfoundary
+        shell: bash
+        id: install-cf-cli
+        run: |
+          wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
+          echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+          sudo apt-get update
+          sudo apt-get install cf8-cli
+
+      - name: Deploy to Gov.uk PaaS
+        id: deploy-to-paas
+        shell: bash
+        run: |
+          cf api ${{ secrets.CF_API }}
+          cf auth "${{ secrets.CF_USER }}" "${{ secrets.CF_PASSWORD }}"
+          cf target -o ${{ secrets.CF_ORGANISATION }} -s ${{ github.event.inputs.space }}
+          CF_DOCKER_PASSWORD=${{ secrets.GITHUB_TOKEN }} cf push cifu-xgov-designer-${{ github.event.inputs.branch }} -f ./designer/manifest.yml \
+            --docker-image ${{ env.DOCKER_IMAGE_TAG }} \
+            --docker-username ${{ github.actor }} \
+            --var FORMS_API_URL=${{ secrets.FORMS_API_URL }} \
+            --var PUBLISH_URL=${{ secrets.PUBLISH_URL }} \
+            --var PREVIEW_URL=${{ secrets.PREVIEW_URL }}
