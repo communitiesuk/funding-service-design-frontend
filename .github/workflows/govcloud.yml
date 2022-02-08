@@ -129,7 +129,7 @@ jobs:
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.3.0
         with:
-          target: ${{ secret.FORMS_SERVICE_HOST }}
+          target: ${{ secrets.FORMS_SERVICE_HOST }}
           allow_issue_writing: False
 # #######
 #   deploy_dev:
