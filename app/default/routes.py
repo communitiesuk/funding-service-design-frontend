@@ -1,19 +1,19 @@
 from flask import Blueprint
 from flask import render_template
 
-bp = Blueprint("routes", __name__)
+default_bp = Blueprint("routes", __name__, template_folder="templates")
 
 
-@bp.route("/")
+@default_bp.route("/")
 def index():
     return render_template("index.html")
 
 
-@bp.errorhandler(404)
+@default_bp.errorhandler(404)
 def not_found(error):
     return render_template("404.html"), 404
 
 
-@bp.errorhandler(500)
+@default_bp.errorhandler(500)
 def internal_server_error(error):
     return render_template("500.html"), 500
