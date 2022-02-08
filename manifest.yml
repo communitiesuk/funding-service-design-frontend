@@ -17,6 +17,5 @@ applications:
     image: ghcr.io/communitiesuk/digital-form-builder/runner:latest
   memory: 528M
   sandbox: true
-  # route: funding-service-design-form-runner.london.cloudapps.digital
   env:
     PREVIEW_MODE: TRUE
