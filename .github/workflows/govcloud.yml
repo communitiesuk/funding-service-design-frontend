@@ -126,7 +126,13 @@ jobs:
           name: accessibility-test-report
           path: /home/runner/work/funding-service-design-frontend/funding-service-design-frontend/axe_reports/*.html
           retention-days: 5
-      - name: ZAP Scan
+      - name: Zap Baseline Scan
+        uses: zaproxy/action-baseline@v0.6.1
+        with:
+          target: ${{ secrets.FORMS_SERVICE_HOST }}
+          allow_issue_writing: False
+          fail_action: true
+      - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.3.0
         with:
           target: ${{ secrets.FORMS_SERVICE_HOST }}
