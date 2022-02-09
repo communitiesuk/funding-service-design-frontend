@@ -1,4 +1,5 @@
 from flask import Blueprint
+from flask import redirect
 from flask import render_template
 
 default_bp = Blueprint("routes", __name__, template_folder="templates")
@@ -6,7 +7,8 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 
 @default_bp.route("/")
 def index():
-    return render_template("index.html")
+    return redirect("/forms")
+    # return render_template("index.html")
 
 
 @default_bp.errorhandler(404)
