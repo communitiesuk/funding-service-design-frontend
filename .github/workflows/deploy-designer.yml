@@ -54,23 +54,23 @@ jobs:
         run: |
           echo $GITHUB_ENV
 
-      - name: Log in to the Container registry
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Log in to the Container registry
+      #   uses: docker/login-action@v1
+      #   with:
+      #     registry: ${{ env.REGISTRY }}
+      #     username: ${{ github.actor }}
+      #     password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          tags: |
-            ${{ env.DOCKER_IMAGE_TAG }}
-          push: true
-          file: Dockerfile_Designer
-          build-args: |
-            COMMIT_SHA=$GITHUB_SHA
+      # - name: Build and push docker image
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     context: .
+      #     tags: |
+      #       ${{ env.DOCKER_IMAGE_TAG }}
+      #     push: true
+      #     file: Dockerfile_Designer
+      #     build-args: |
+      #       COMMIT_SHA=$GITHUB_SHA
 
       - name: Install cloudfoundary
         shell: bash
