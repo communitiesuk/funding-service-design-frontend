@@ -4,6 +4,9 @@ ARG FORMS_DIR="forms-v3"
 WORKDIR /usr/src/app
 RUN rm -r runner/dist/server/forms && rm -r runner/src && rm -r runner/test
 COPY form_jsons/public/* runner/dist/server/forms/
+WORKDIR /usr/src/app
+RUN rm runner/src/server/plugins/crumb.ts
+COPY xform_overwrites/crumb.ts runner/src/server/plugins/crumb.ts
 
 FROM base as app
 WORKDIR /usr/src/app
