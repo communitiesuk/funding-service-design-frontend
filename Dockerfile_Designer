@@ -2,8 +2,7 @@ ARG BASE_IMAGE_TAG="3.18.0-rc.834"
 FROM ghcr.io/xgovformbuilder/digital-form-builder-designer:$BASE_IMAGE_TAG as base
 ARG FORMS_DIR="forms-v3"
 WORKDIR /usr/src/app
-RUN rm -r runner/dist/server/forms && rm -r runner/src && rm -r runner/test
-COPY form_jsons/public/* runner/dist/server/forms/
+#RUN rm -r runner/dist/server/forms && rm -r runner/src && rm -r runner/test
 
 FROM base as app
 WORKDIR /usr/src/app
