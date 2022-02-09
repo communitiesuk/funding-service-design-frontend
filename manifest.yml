@@ -19,3 +19,11 @@ applications:
   sandbox: true
   env:
     PREVIEW_MODE: TRUE
+
+- name: funding-service-design-form-designer
+  docker:
+    image: ghcr.io/communitiesuk/digital-form-builder/designer:latest
+  memory: 528M
+  sandbox: true
+  env:
+    PREVIEW_MODE: TRUE
