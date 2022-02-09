@@ -88,4 +88,7 @@ jobs:
           cf api ${{ secrets.CF_API }}
           cf auth "${{ secrets.CF_USER }}" "${{ secrets.CF_PASSWORD }}"
           cf target -o dluhc-funding-service-design -s sandbox
-          CF_DOCKER_PASSWORD=${{ secrets.GHCR_PAT }} cf push funding-service-design-form-designer -f ./manifest.yml 
+          CF_DOCKER_PASSWORD=${{ secrets.GHCR_PAT }} cf push funding-service-design-form-designer -f ./manifest.yml \
+            --var FORMS_API_URL=${{ secrets.FORMS_API_URL }} \
+            --var PUBLISH_URL=${{ secrets.PUBLISH_URL }} \
+            --var PREVIEW_URL=${{ secrets.PREVIEW_URL }}
