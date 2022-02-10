@@ -1,8 +1,8 @@
 from app.config import Config
 from flask import Flask
 from flask_compress import Compress
-from flask_seasurf import SeaSurf
 from flask_talisman import Talisman
+from flask_wtf.csrf import CSRFProtect
 from jinja2 import ChoiceLoader
 from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
@@ -13,7 +13,8 @@ def create_app() -> Flask:
         __name__, instance_relative_config=True, static_url_path="/assets"
     )
 
-    csrf = SeaSurf()
+    csrf = CSRFProtect()
+
     csrf.init_app(flask_app)
 
     flask_app.config.from_object(Config())
@@ -41,11 +42,15 @@ def create_app() -> Flask:
     }
 
     hss = {
-        "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload",  # noqa
+        "Strict-Transport-Security": (  # noqa
+            "max-age=31536000; includeSubDomains; preload"
+        ),
         "X-Content-Type-Options": "nosniff",
         "X-Frame-Options": "SAMEORIGIN",
         "X-XSS-Protection": "1; mode=block",
-        "Feature_Policy": "microphone 'none'; camera 'none'; geolocation 'none'",  # noqa
+        "Feature_Policy": (  # noqa
+            "microphone 'none'; camera 'none'; geolocation 'none'"
+        ),
     }
 
     Compress(flask_app)
@@ -59,7 +64,9 @@ def create_app() -> Flask:
             stage="alpha",
             region="NA",
             service_title="DLUHC Funding Service Design Iteration 1",
-            service_meta_description="DLUHC Funding Service Design Iteration 1",  # noqa
+            service_meta_description=(  # noqa
+                "DLUHC Funding Service Design Iteration 1"
+            ),
             service_meta_keywords="DLUHC Funding Service Design Iteration 1",
             service_meta_author="DLUHC",
         )

@@ -10,7 +10,8 @@
   <h3 class="govuk-heading-m">How much money does your project need?</h3>
 </div>
 
-<form>
+<form method="POST">
+  {{ form.csrf_token }}
 {{
   govukInput({
     "label": {"text": "How much money do you need?"},
@@ -19,10 +20,11 @@
     "label": {"text": "Enter your answer using numbers only"},
     "prefix": {"text": "£"},
     "classes": "govuk-input--width-20",
+    "type" : "number"
 })
 }}
-
 {{ govukButton({
+  "type" : "submit",
   'text': "Save and continue",
   'preventDoubleClick': True
 }) }}
