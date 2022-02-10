@@ -12,7 +12,14 @@
 
 <form>
 {{
-  govukInput(input_dict)
+  govukInput({
+    "label": {"text": "How much money do you need?"},
+    "id": form.criterion_field.id,
+    "name": form.criterion_field.id,
+                "label": {"text": "Enter your answer using numbers only"},
+    "prefix": {"text": "£"},
+    "classes": "govuk-input--width-20",
+})
 }}
 
 {{ govukButton({
