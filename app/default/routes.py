@@ -3,17 +3,17 @@ from flask import Blueprint
 from flask import render_template
 from flask import url_for
 
-bp = Blueprint("routes", __name__)
+default_bp = Blueprint("routes", __name__, template_folder="templates")
 
 
-@bp.route("/")
+@default_bp.route("/")
 def index():
     return render_template(
         "index.html", service_url=url_for("routes.max_funding_criterion")
     )
 
 
-@bp.route("/funding_amount_eligibility", methods=["GET", "POST"])
+@default_bp.route("/funding_amount_eligibility", methods=["GET", "POST"])
 def max_funding_criterion():
     return minimium_money_question_page(
         1000,
@@ -23,11 +23,11 @@ def max_funding_criterion():
     )
 
 
-@bp.errorhandler(404)
+@default_bp.errorhandler(404)
 def not_found(error):
     return render_template("404.html"), 404
 
 
-@bp.errorhandler(500)
+@default_bp.errorhandler(500)
 def internal_server_error(error):
     return render_template("500.html"), 500
