@@ -12,7 +12,12 @@ def index():
 
 @bp.route("/funding_amount", methods=["GET", "POST"])
 def funding_criterion():
-    return minimium_money_question_page(1000, "https://www.google.com")
+    return minimium_money_question_page(
+        1000,
+        "https://funding-service-design-form-runner."
+        "london.cloudapps.digital/funding-application"
+        "/about-you",
+    )
 
 
 @bp.errorhandler(404)
