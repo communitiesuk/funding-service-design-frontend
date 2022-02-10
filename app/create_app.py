@@ -13,10 +13,6 @@ def create_app() -> Flask:
         __name__, instance_relative_config=True, static_url_path="/assets"
     )
 
-    csrf = CSRFProtect()
-
-    csrf.init_app(flask_app)
-
     flask_app.config.from_object(Config())
 
     flask_app.jinja_loader = ChoiceLoader(
@@ -57,6 +53,10 @@ def create_app() -> Flask:
     Talisman(
         flask_app, content_security_policy=csp, strict_transport_security=hss
     )  # noqa
+
+    csrf = CSRFProtect()
+
+    csrf.init_app(flask_app)
 
     @flask_app.context_processor
     def inject_global_constants():

@@ -1,7 +1,7 @@
 from flask import redirect
 from flask import render_template
 from flask_wtf import FlaskForm
-from wtforms import Field
+from wtforms import IntegerField
 from wtforms.validators import DataRequired
 from wtforms.validators import NumberRange
 
@@ -9,7 +9,7 @@ from wtforms.validators import NumberRange
 def minimium_money_question_page(min_amount: int):
     class criterionForm(FlaskForm):
 
-        money_field = Field(
+        money_field = IntegerField(
             label="project_money_amount",
             validators=[DataRequired(), NumberRange(min_amount)],
         )
@@ -17,8 +17,10 @@ def minimium_money_question_page(min_amount: int):
     def criterion_page():
 
         form = criterionForm()
+        if form.money_field.data is not None and not form.validate_on_submit():
+            return redirect("/fail")
         if form.validate_on_submit():
-            return redirect("/")
+            return redirect("/success")
         return render_template("min_funding_amount.html", form=form)
 
     return criterion_page()
