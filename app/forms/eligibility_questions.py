@@ -7,7 +7,7 @@ from wtforms.validators import NumberRange
 
 
 def minimium_money_question_page(min_amount: int, success_url: str):
-    class criterionForm(FlaskForm):
+    class MinimiumMoneyForm(FlaskForm):
 
         money_field = IntegerField(
             label="project_money_amount",
@@ -16,7 +16,7 @@ def minimium_money_question_page(min_amount: int, success_url: str):
 
     def criterion_page():
 
-        form = criterionForm()
+        form = MinimiumMoneyForm()
         if form.money_field.data is not None and not form.validate_on_submit():
             return render_template(
                 "not_eligible.html",
