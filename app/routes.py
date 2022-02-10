@@ -15,11 +15,6 @@ def funding_criterion():
     return minimium_money_question_page(10000, "https://www.google.com")
 
 
-@bp.route("/not_eligible")
-def not_eligible(non_eligible_type="", details=""):
-    return render_template("not_eligible.html")
-
-
 @bp.errorhandler(404)
 def not_found(error):
     return render_template("404.html"), 404
