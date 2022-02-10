@@ -1,5 +1,4 @@
-from app.forms.eligibility_questions import form_page_from_criterion
-from app.forms.eligibility_questions import must_be_atleast_criterion
+from app.forms.eligibility_questions import minimium_money_question_page
 from flask import Blueprint
 from flask import render_template
 
@@ -13,7 +12,7 @@ def index():
 
 @bp.route("/funding_amount", methods=["GET", "POST"])
 def funding_criterion():
-    return form_page_from_criterion(must_be_atleast_criterion(10000))
+    return minimium_money_question_page(10000)
 
 
 @bp.errorhandler(404)

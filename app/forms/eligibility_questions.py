@@ -6,10 +6,10 @@ from wtforms.validators import DataRequired
 from wtforms.validators import NumberRange
 
 
-def form_page_from_criterion(min_amount: int):
+def minimium_money_question_page(min_amount: int):
     class criterionForm(FlaskForm):
 
-        criterion_field = Field(
+        money_field = Field(
             label="project_money_amount",
             validators=[DataRequired(), NumberRange(min_amount)],
         )
