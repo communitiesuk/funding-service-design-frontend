@@ -1,17 +1,20 @@
 from app.forms.eligibility_questions import minimium_money_question_page
 from flask import Blueprint
 from flask import render_template
+from flask import url_for
 
 bp = Blueprint("routes", __name__)
 
 
 @bp.route("/")
 def index():
-    return render_template("index.html")
+    return render_template(
+        "index.html", service_url=url_for("routes.max_funding_criterion")
+    )
 
 
-@bp.route("/funding_amount", methods=["GET", "POST"])
-def funding_criterion():
+@bp.route("/funding_amount_eligibility", methods=["GET", "POST"])
+def max_funding_criterion():
     return minimium_money_question_page(
         1000,
         "https://funding-service-design-form-runner."
