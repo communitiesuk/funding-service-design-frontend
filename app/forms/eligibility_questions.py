@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired
 from wtforms.validators import NumberRange
 
 
-def minimium_money_question_page(min_amount: int):
+def minimium_money_question_page(min_amount: int, success_url: str):
     class criterionForm(FlaskForm):
 
         money_field = IntegerField(
@@ -18,9 +18,9 @@ def minimium_money_question_page(min_amount: int):
 
         form = criterionForm()
         if form.money_field.data is not None and not form.validate_on_submit():
-            return redirect("/fail")
+            return redirect("/not_eligible")
         if form.validate_on_submit():
-            return redirect("/success")
+            return redirect(success_url)
         return render_template("min_funding_amount.html", form=form)
 
     return criterion_page()
