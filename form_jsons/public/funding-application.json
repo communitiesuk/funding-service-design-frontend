@@ -57,14 +57,6 @@
                     "nameHasError": false
                 },
                 {
-                    "name": "org_address",
-                    "options": {},
-                    "type": "UkAddressField",
-                    "title": "Organisation address",
-                    "schema": {},
-                    "nameHasError": false
-                },
-                {
                     "name": "org_type",
                     "options": {},
                     "type": "RadiosField",
@@ -86,17 +78,6 @@
                     "values": {
                         "type": "listRef"
                     }
-                },
-                {
-                    "name": "evidence_of_prev_projects",
-                    "options": {
-                        "required": false,
-                        "optionalText": true
-                    },
-                    "type": "FileUploadField",
-                    "title": "Upload evidence to support your answer",
-                    "schema": {},
-                    "nameHasError": false
                 }
             ],
             "next": [

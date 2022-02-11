@@ -1,0 +1,126 @@
+{
+    "metadata": {},
+    "startPage": "/choose-country",
+    "pages": [
+        {
+            "path": "/choose-country",
+            "title": "Choose your country",
+            "components": [
+                {
+                    "name": "country",
+                    "options": {},
+                    "type": "RadiosField",
+                    "title": "What country is your project in",
+                    "list": "countries",
+                    "values": {
+                        "type": "listRef"
+                    },
+                    "schema": {},
+                    "nameHasError": false
+                }
+            ],
+            "next": [
+                {
+                    "path": "/ni-page",
+                    "condition": "isNI"
+                },
+                {
+                    "path": "/england-scotland-wales-page"
+                }
+            ]
+        },
+        {
+            "title": "Northern Ireland Page",
+            "path": "/ni-page",
+            "components": [
+                {
+                    "name": "project_plan",
+                    "options": {},
+                    "type": "MultilineTextField",
+                    "title": "Plan your project",
+                    "nameHasError": false
+                }
+            ],
+            "next": [
+            ]
+        },
+        {
+            "title": "England, Scotland, Wales Page",
+            "path": "/england-scotland-wales-page",
+            "components": [
+                {
+                    "name": "project_plan",
+                    "options": {},
+                    "type": "MultilineTextField",
+                    "title": "Plan your project",
+                    "nameHasError": false
+                }
+            ],
+            "next": [
+            ]
+        }
+    ],
+    "lists": [
+        {
+            "title": "countries",
+            "name": "countries",
+            "type": "string",
+            "items": [
+                {
+                    "text": "England",
+                    "value": "england"
+                },
+                {
+                    "text": "Scotland",
+                    "value": "scotland"
+                },
+                {
+                    "text": "Wales",
+                    "value": "wales"
+                },
+                {
+                    "text": "Northern Ireland",
+                    "value": "northern ireland"
+                }
+            ]
+        }
+    ],
+    "sections": [
+    ],
+    "conditions": [
+        {
+            "displayName": "isNI",
+            "name": "isNI",
+            "value": {
+                "name": "isNI",
+                "conditions": [
+                    {
+                        "field": {
+                            "name": "country",
+                            "type": "RadiosField",
+                            "display": "What country is the project in"
+                        },
+                        "operator": "is",
+                        "value": {
+                            "type": "Value",
+                            "value": "northern ireland",
+                            "display": "Northern Ireland"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "fees": [],
+    "outputs": [],
+    "version": 2,
+    "skipSummary": false,
+    "name": "Country Splitter",
+    "feedback": {
+        "feedbackForm": false,
+        "url": ""
+    },
+    "phaseBanner": {
+        "phase": "beta"
+    }
+}
