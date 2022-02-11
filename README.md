@@ -62,7 +62,7 @@ This is configurable in .flaskenv
 
 You should see the following:
 
-![Preview of the end result](https://user-images.githubusercontent.com/56394038/148535451-469d8fa4-2354-47a0-9d71-1052bfae78c4.png)
+![Preview of the end result](https://user-images.githubusercontent.com/65361824/153576751-9cb8799f-4737-40c4-9f6f-d38d4bcc188e.png)
 
 # Forms Engine Configuration
 
