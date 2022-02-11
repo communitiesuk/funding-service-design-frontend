@@ -9,8 +9,6 @@
 <div class="govuk-width-container">
   <a href="#" class="govuk-back-link">Back</a>
 
-  <main class="govuk-main-wrapper">
-
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-one-third">
             <h2 class="govuk-heading-m">{{formzy.title}}</h2>
@@ -38,7 +36,7 @@
                   <h1 class="govuk-heading-xl">{{ step.title}}</h1>
               </div>
                 <form action="" method="post" novalidate>
-                    {{ form.hidden_tag() }}
+                    {{ form.csrf_token }}
                     {% for form_field in form %}
                         {{ field.render(form_field) }}
                     {% endfor %}
@@ -46,7 +44,5 @@
                 </form>
           </div>
         </div>
-
-  </main>
 </div>
 {% endblock %}

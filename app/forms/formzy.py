@@ -284,7 +284,10 @@ def create_formzy_from_xgov_json(form_name: str, status: str = "public"):
     json_path = os.path.join(
         APPLICATION_ROOT, FORMS_SERVICE_JSONS_PATH, status, form_name + ".json"
     )
-    f = open(json_path)
+    try:
+        f = open(json_path)
+    except OSError:
+        return None
     forms_json = json.load(f)
     name = form_name
     title = form_name.replace("_", " ").replace("-", " ").title()

@@ -1,3 +1,4 @@
+from flask import abort
 from flask import Blueprint
 from flask import render_template
 
@@ -16,6 +17,8 @@ def landing_page():
     formzy = None
     if len(forms) > 0:
         formzy = create_formzy_from_xgov_json(forms[0].replace(".json", ""))
+        if not formzy:
+            abort(404)
 
     return render_template("landing.html", formzy=formzy)
 
@@ -24,5 +27,7 @@ def landing_page():
 def form_steps(form_name: str):
 
     formzy = create_formzy_from_xgov_json(form_name)
+    if not formzy:
+        abort(404)
 
     return render_template("steps.html", formzy=formzy)

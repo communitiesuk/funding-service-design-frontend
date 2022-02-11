@@ -1,3 +1,4 @@
+from flask import abort
 from flask import redirect
 from flask import render_template
 from flask.views import MethodView
@@ -57,7 +58,6 @@ class FormzyStepView(MethodView):
             pass
 
         for f in self.current_step.fields:
-            print(f.name)
 
             setattr(DynamicForm, f.name, self.get_field(f))
 
@@ -67,7 +67,11 @@ class FormzyStepView(MethodView):
         return d
 
     def get(self, form_name: str, step: str):
-        self.formzy = create_formzy_from_xgov_json(form_name)
+        formzy = create_formzy_from_xgov_json(form_name)
+        if not formzy:
+            abort(404)
+        else:
+            self.formzy = formzy
         self.set_step(step)
         form = self.form()
 
@@ -91,7 +95,6 @@ class FormzyStepView(MethodView):
         )
 
     def get_field(self, field):
-        f = HiddenField(field.name)
         validators = []
         choices = []
 
@@ -131,17 +134,19 @@ class FormzyStepView(MethodView):
             "WebsiteField",
         ]:
             f = StringField(field.label, validators=validators)
-        if field.field_type in ["YesNoField"]:
+        elif field.field_type in ["YesNoField"]:
             f = RadioField(
                 field.label,
                 choices=(("yes", "Yes"), ("no", "No")),
                 validators=validators,
             )
-        if field.field_type in ["RadiosField"]:
+        elif field.field_type in ["RadiosField"]:
             f = RadioField(field.label, choices=choices, validators=validators)
-        if field.field_type in ["MultilineTextField"]:
+        elif field.field_type in ["MultilineTextField"]:
             f = TextAreaField(field.label, validators=validators)
-        if field.field_type == "password":
+        elif field.field_type == "password":
             f = PasswordField(field.label)
+        else:
+            f = HiddenField(field.name)
 
         return f
