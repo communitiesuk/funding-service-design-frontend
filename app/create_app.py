@@ -1,3 +1,4 @@
+import imp
 from flask import Flask
 from flask_compress import Compress
 from flask_talisman import Talisman
@@ -5,12 +6,20 @@ from flask_wtf.csrf import CSRFProtect
 from jinja2 import ChoiceLoader
 from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
+from build import build_assets
 
 
 def create_app() -> Flask:
     flask_app = Flask(__name__, static_url_path="/assets")
 
     flask_app.config.from_pyfile("config.py")
+
+        # Auto build the static assets if we are in the dev environment.
+    # In production we will most likely install static assets differently.
+    if flask_app.config.get("ENV") == "development":
+
+        build_assets()
+
 
     flask_app.jinja_loader = ChoiceLoader(
         [

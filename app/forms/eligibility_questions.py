@@ -5,7 +5,19 @@ from wtforms.validators import DataRequired
 from wtforms.validators import NumberRange
 
 
-def minimium_money_question_page(max_amount: int, success_url: str):
+def minimium_money_question_page(max_amount: int, success_url: str, data_hook: callable = print):
+    """Returns a Flask view function which checks the eligibility 
+    of a fund using the gov.uk design system.
+
+    Args:
+        max_amount (int): The maximium amount one can apply for.
+        success_url (str): The url one is redirected to if eliglible.
+        data_hook (callable): This function will be ran on the inputted
+        data if the fund is eligible. By default prints to console.
+
+    Returns:
+        function: A function which renders a template.
+    """
     class MinimiumMoneyForm(FlaskForm):
 
         money_field = IntegerField(
@@ -24,6 +36,7 @@ def minimium_money_question_page(max_amount: int, success_url: str):
                 ),
             )
         if form.validate_on_submit():
+            data_hook(form.money_field.data)
             return render_template(
                 "eligible.html",
                 service_url=success_url,
