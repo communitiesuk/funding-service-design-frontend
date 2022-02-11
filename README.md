@@ -43,7 +43,10 @@ Enter the virtual environment as described above, then:
 
 ### Create static files
 
-    python build.py
+If your flask env is set to "development" then the static files will be built out automatically. If you
+would like to manually download the static files then run
+
+    python3 build.py
 
 Developer note: If you receive a certification error when running the above command on macOS,
 consider if you need to run the Python
