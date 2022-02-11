@@ -67,16 +67,30 @@ def create_app() -> Flask:
             service_meta_author="DLUHC",
         )
 
-    from .default.routes import default_bp, not_found, internal_server_error
+    from .default.routes import (
+        default_bp,
+        not_found,
+        internal_server_error,
+        csrf_error,
+    )
     from .forms.routes import forms_bp
     from .forms.views import FormzyStepView
 
     flask_app.register_error_handler(404, not_found)
     flask_app.register_error_handler(500, internal_server_error)
+    flask_app.register_error_handler(400, csrf_error)
     flask_app.register_blueprint(default_bp)
     flask_app.register_blueprint(forms_bp)
     flask_app.add_url_rule(
-        "/forms/<form_name>/<step>/",
+        "/"
+        + "/".join(
+            [
+                flask_app.config["LOCAL_FORMS_SERVICE_ROOT"],
+                "<form_name>",
+                "<step>",
+            ]
+        )
+        + "/",
         view_func=FormzyStepView.as_view("formzy_step"),
     )
 

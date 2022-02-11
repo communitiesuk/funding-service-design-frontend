@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block pageTitle %}Forbidden - 400 Error – {{ service_title }}{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Forbidden - 400 Error</h1>
+    <p class="govuk-body-l">This request is not allowed for site security reasons</p>
+    <p class="govuk-body-s">{{ reason }}</p>
+  </div>
+</div>
+{% endblock %}
