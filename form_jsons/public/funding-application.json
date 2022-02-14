@@ -161,7 +161,7 @@
         {
           "name": "QKxzxf",
           "options": {
-            "maxWords": "200"
+            "maxWords": "100"
           },
           "type": "MultilineTextField",
           "title": "Who is endorsing your application?",
