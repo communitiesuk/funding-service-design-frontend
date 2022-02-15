@@ -26,9 +26,9 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  FORMS_SERVICE_PREVIEW_HOST: "https://funding-service-design-form-runner.london.cloudapps.digital"
-  FORMS_SERVICE_PUBLIC_HOST: "https://funding-service-design-form-runner.london.cloudapps.digital"
-  FORMS_SERVICE_HOST: "https://funding-service-design-form-runner.london.cloudapps.digital"
+  FORMS_SERVICE_PREVIEW_HOST: ${{ secrets.FORMS_SERVICE_HOST}}
+  FORMS_SERVICE_PUBLIC_HOST: ${{ secrets.FORMS_SERVICE_HOST}}
+  FORMS_SERVICE_HOST: ${{ secrets.FORMS_SERVICE_HOST}}
 
 
 jobs:
@@ -126,3 +126,15 @@ jobs:
           name: accessibility-test-report
           path: /home/runner/work/funding-service-design-frontend/funding-service-design-frontend/axe_reports/*.html
           retention-days: 5
+      - name: Zap Baseline Scan
+        uses: zaproxy/action-baseline@v0.6.1
+        with:
+          target: ${{ secrets.FORMS_SERVICE_HOST }}
+          allow_issue_writing: False
+
+      - name: ZAP Full Scan
+        uses: zaproxy/action-full-scan@v0.3.0
+        with:
+          target: ${{ secrets.FORMS_SERVICE_HOST }}
+          allow_issue_writing: False
+          
