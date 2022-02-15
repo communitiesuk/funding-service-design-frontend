@@ -22,6 +22,11 @@ def max_funding_criterion():
         "/about-you",
     )
 
+@default_bp.route("/not-eligible")
+def not_eligible():
+    return render_template(
+    "not_eligible.html"
+    )
 
 @default_bp.errorhandler(404)
 def not_found(error):

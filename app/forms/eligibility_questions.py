@@ -1,9 +1,14 @@
-from flask import render_template
+from flask import redirect, render_template
+from flask import flash, url_for
 from flask_wtf import FlaskForm
 from wtforms import IntegerField
 from wtforms.validators import DataRequired
 from wtforms.validators import NumberRange
 
+def not_eligible_page(message):
+    flash(message)
+    return redirect(url_for(
+        "routes.not_eligible"))
 
 def minimium_money_question_page(
     max_amount: int, success_url: str, data_hook: callable = print
@@ -31,13 +36,10 @@ def minimium_money_question_page(
     def min_money_page():
 
         form = MinimiumMoneyForm()
+        #If the user has entered data and they are not valid...
         if form.money_field.data is not None and not form.validate_on_submit():
-            return render_template(
-                "not_eligible.html",
-                message=(
-                    f"You can apply for a maximium amount of £{max_amount}."
-                ),
-            )
+            #...then flash the message and redirect.
+            return not_eligible_page(f"You can apply for a maximium amount of £{max_amount}.")
         if form.validate_on_submit():
             data_hook(form.money_field.data)
             return render_template(
