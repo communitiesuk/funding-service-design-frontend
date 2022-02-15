@@ -104,6 +104,10 @@ class Step(object):
             for json_list in form_json["lists"]
             if json_list["name"] == key
         ]
+        if len(list_dict) == 0:
+            raise Exception(
+                "List with key '" + key + "' does not exist in form json"
+            )
         items_type = list_dict[0]["type"]
         items_list = list_dict[0]["items"]
         return items_type, items_list
