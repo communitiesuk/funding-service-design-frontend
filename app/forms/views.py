@@ -42,8 +42,8 @@ class FormzyStepView(MethodView):
                 choice_items = []
                 if d_field.choices and len(d_field.choices) > 0:
                     choice_items = [
-                        {"key": key, "text": text}
-                        for key, text in d_field.choices
+                        {"value": value, "text": text}
+                        for value, text in d_field.choices
                     ]
                 setattr(d_field, "choice_items", choice_items)
 
@@ -83,6 +83,8 @@ class FormzyStepView(MethodView):
         self.formzy = create_formzy_from_xgov_json(form_name)
         self.set_step(step)
         form = self.form()
+
+        print("This is the data : " + str(form.data))
         if form.validate_on_submit():
             print("Validated")
             return redirect(self.formzy.next_url)
