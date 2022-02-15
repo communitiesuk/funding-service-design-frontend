@@ -137,5 +137,4 @@ jobs:
         with:
           target: ${{ secrets.FORMS_SERVICE_HOST }}
           allow_issue_writing: False
-          fail_action: true
           
