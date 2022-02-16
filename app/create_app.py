@@ -1,4 +1,3 @@
-from build import build_assets
 from flask import Flask
 from flask_compress import Compress
 from flask_talisman import Talisman
@@ -6,6 +5,7 @@ from flask_wtf.csrf import CSRFProtect
 from jinja2 import ChoiceLoader
 from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
+
 
 def create_app() -> Flask:
     flask_app = Flask(__name__, static_url_path="/assets")
