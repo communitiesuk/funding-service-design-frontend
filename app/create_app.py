@@ -58,8 +58,7 @@ def create_app() -> Flask:
     @flask_app.context_processor
     def inject_global_constants():
         return dict(
-            stage="alpha",
-            region="United Kingdom",
+            stage="beta",
             service_title="DLUHC Funding Service Design Iteration 2",
             service_meta_description=(
                 "DLUHC Funding Service Design Iteration 2"
