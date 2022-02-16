@@ -26,6 +26,10 @@ from selenium.webdriver.remote.errorhandler import NoSuchElementException
 from tests.test_accessibility import run_axe_and_print_report
 from tests.utils import print_html_page
 
+# from urllib import parse
+# from urllib import request
+# from urllib.error import HTTPError
+
 
 @pytest.mark.usefixtures("selenium_chrome_driver")
 @pytest.mark.usefixtures("live_server")
@@ -122,6 +126,7 @@ class TestFormURLsWithChrome:
                 form_attrs = page["components"]
                 route_rel = "/" + form_name + path
                 url = self.get_form_service_host(form_dir) + route_rel
+                self.driver.get(url=url)
                 source = self.driver.page_source
                 print_html_page(
                     html=source,
@@ -131,7 +136,6 @@ class TestFormURLsWithChrome:
                     },
                     route_rel=route_rel,
                 )
-                self.driver.get(url=url)
                 error_message = ""
                 for component in form_attrs:
                     found_input = None
@@ -171,3 +175,24 @@ class TestFormURLsWithChrome:
                 for viols in results["violations"]
             ]
         )
+
+    # TODO: Ensure that CSRF Protection is available on the Forms Service
+    # def test_insecure_form_post_returns_403(self):
+    #     """
+    #     GIVEN Our FORM SERVICE Application is running
+    #     WHEN testing the first given route in test_form_routes
+    #     THEN check that an insecure form post returns 403
+    #     """
+    #     for form_dir, form_name, pages in self.get_test_form_pages():
+    #         for page in pages:
+    #             path = page["path"]
+    #             route_rel = "/" + form_name + path
+    #             url = self.get_form_service_host(form_dir) + route_rel
+    #             data = parse.urlencode({"name": "Bad Data"}).encode()
+    #             req = request.Request(url, data=data)
+    #             try:
+    #                 response = request.urlopen(req)
+    #                 response_code = response.code
+    #             except HTTPError as err:
+    #                 response_code = err.code
+    #             assert response_code == 403
