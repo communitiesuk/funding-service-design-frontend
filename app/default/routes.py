@@ -2,7 +2,7 @@ from app.forms.eligibility_questions import minimium_money_question_page
 from flask import Blueprint
 from flask import render_template
 from flask import url_for
-import flask.config
+from app.config import FORMS_SERVICE_PUBLIC_HOST
 
 default_bp = Blueprint("routes", __name__, template_folder="templates")
 
@@ -17,7 +17,7 @@ def index():
 def max_funding_criterion():
     return minimium_money_question_page(
         1000,
-         flask.config["FORMS_SERVICE_PUBLIC_HOST"]
+         FORMS_SERVICE_PUBLIC_HOST
     )
 
 @default_bp.route("/not-eligible")
