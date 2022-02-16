@@ -41,8 +41,7 @@ Enter the virtual environment as described above, then:
 
 ### Create static files
 
-If your flask env is set to "development" then the static files will be built out automatically. If you
-would like to manually download the static files then run
+If you would like to manually download the static files and extract them then run
 
     python3 build.py
 

@@ -7,20 +7,10 @@ from jinja2 import ChoiceLoader
 from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
 
-BUILT_ONCE = False
-
 def create_app() -> Flask:
     flask_app = Flask(__name__, static_url_path="/assets")
 
     flask_app.config.from_pyfile("config.py")
-
-    # Auto build the static assets if we are in the dev environment.
-    # In production we will most likely install static assets differently.
-    if flask_app.config.get("ENV") == "development" and BUILT_ONCE==False:
-
-        build_assets()
-
-        BUILT_ONCE=True
 
     flask_app.jinja_loader = ChoiceLoader(
         [
