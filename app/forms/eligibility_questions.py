@@ -42,17 +42,18 @@ def minimium_money_question_page(
         form = MinimiumMoneyForm()
         # If the user has entered data and they are not valid...
         if request.method == "POST":
-            if not form.validate():
-                # ...then flash the message and redirect.
-                return not_eligible_page(
-                    f"You can apply for a maximium amount of £{max_amount}."
-                )
             if form.validate_on_submit():
                 data_hook(form.money_field.data)
                 return render_template(
                     "eligible.html",
                     service_url=success_url,
                 )
+            else:
+                # ...then flash the message and redirect.
+                return not_eligible_page(
+                    f"You can apply for a maximium amount of £{max_amount}."
+                )
+
         return render_template("min_funding_amount.html", form=form)
 
     return min_money_page()
