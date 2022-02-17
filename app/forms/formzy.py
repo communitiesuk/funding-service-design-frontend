@@ -1,5 +1,6 @@
 import json
 import os
+from typing import List
 
 from flask import url_for
 
@@ -52,6 +53,39 @@ class Section(object):
         self.start_path = start_path
 
 
+class Condition(object):
+    """A class to hold form sections"""
+
+    def __init__(
+        self,
+        name: str,
+        operator: str,
+        value: str,
+    ):
+        self.name = name
+        self.operator = operator
+        self.value = value
+
+
+class Redirect(object):
+    """A class to hold form sections"""
+
+    def __init__(
+        self,
+        path: str,
+        conditions: List[Condition] = None,
+    ):
+        self.path = path
+        self.conditions = conditions
+
+    def add_condition(self, name: str, value: str, operator: str = "is"):
+        if not self.conditions:
+            self.conditions = []
+        self.conditions.append(
+            Condition(name=name, operator=operator, value=value)
+        )
+
+
 class Step(object):
     """A class to hold form steps"""
 
@@ -59,22 +93,43 @@ class Step(object):
         self,
         path: str,
         title: str,
-        next: str,
         submit_text: str,
-        fields: [] = None,
+        fields: List[Field] = None,
         section: Section = None,
+        redirects: List[Redirect] = None,
     ):
         self.path = path
         self.title = title
-        self.next = next
         self.submit_text = submit_text
         self.fields = fields
         self.section = section
+        self.redirects = redirects
+
+    def conditional_redirect(self, form_data: dict):
+        if len(self.redirects) == 1:
+            return self.redirects[0].path
+        elif len(self.redirects) > 1:
+            for redirect in self.redirects:
+                conditions = redirect.conditions
+                for condition in conditions:
+                    if (
+                        condition.name in form_data
+                        and condition.operator == "is"
+                        and condition.value == form_data[condition.name]
+                    ):
+                        return redirect.path
+
+        return "/bob"
 
     def add_field(self, field: Field):
         if not self.fields:
             self.fields = []
         self.fields.append(field)
+
+    def add_redirect(self, redirect: Redirect):
+        if not self.redirects:
+            self.redirects = []
+        self.redirects.append(redirect)
 
     def add_field_from_json(self, field_json: dict):
         field = Field(
@@ -111,6 +166,36 @@ class Step(object):
         items_type = list_dict[0]["type"]
         items_list = list_dict[0]["items"]
         return items_type, items_list
+
+    def get_xgov_form_conditions(self, key: str, form_json: dict):
+        condition_dict = [
+            json_condition
+            for json_condition in form_json["conditions"]
+            if json_condition["name"] == key
+        ]
+        if len(condition_dict) == 0:
+            raise Exception(
+                "Condition with key '" + key + "' does not exist in form json"
+            )
+        conditions_list = condition_dict[0]["value"]["conditions"]
+        return conditions_list
+
+    def add_redirect_from_xgov_json(
+        self, redirect_json: dict, form_json: dict
+    ):
+
+        redirect = Redirect(path=redirect_json["path"])
+        if "condition" in redirect_json:
+            conditions = self.get_xgov_form_conditions(
+                key=redirect_json["condition"], form_json=form_json
+            )
+            for condition in conditions:
+                redirect.add_condition(
+                    name=condition["field"]["name"],
+                    operator=condition["operator"],
+                    value=condition["value"]["value"],
+                )
+        self.add_redirect(redirect)
 
     def add_field_from_xgov_json(self, component_json: dict, form_json: dict):
         field_xgov_json_mapping = {
@@ -179,10 +264,11 @@ class Formzy(object):
         self.steps = steps
         self.sections = sections
 
-    @property
-    def next_url(self):
+    def next_url(self, form_data: dict):
         url = url_for(
-            "formzy_step", form_name=self.name, step=self.current_step.next[1:]
+            "formzy_step",
+            form_name=self.name,
+            step=self.current_step.conditional_redirect(form_data),
         )
         return url
 
@@ -209,7 +295,6 @@ class Formzy(object):
         step = Step(
             path=step_path,
             title=step_json["title"],
-            next=step_json["next"],
             submit_text=step_json["submit_text"],
         )
         for field_json in step_json["fields"]:
@@ -231,21 +316,19 @@ class Formzy(object):
         return section
 
     def add_step_from_xgov_json(self, page_json: dict, form_json: dict):
-        next = None
-        if "next" in page_json and len(page_json["next"]) > 0:
-            if "path" in page_json["next"][0]:
-                next = page_json["next"][0]["path"]
         section = self.add_section_from_xgov_json(page_json, form_json)
 
         step = Step(
             path=page_json["path"],
             title=page_json["title"],
-            next=next,
             submit_text="Next",
             section=section,
         )
         for component_json in page_json["components"]:
             step.add_field_from_xgov_json(component_json, form_json)
+
+        for redirect_json in page_json["next"]:
+            step.add_redirect_from_xgov_json(redirect_json, form_json)
         self.add_step(step)
 
     @property

@@ -87,7 +87,7 @@ class FormzyStepView(MethodView):
         print("This is the data : " + str(form.data))
         if form.validate_on_submit():
             print("Validated")
-            return redirect(self.formzy.next_url)
+            return redirect(self.formzy.next_url(form.data))
         else:
             self.set_error_list(form)
             print("Invalid")
