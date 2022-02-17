@@ -52,7 +52,7 @@ def create_app() -> Flask:
     Compress(flask_app)
     Talisman(
         flask_app, content_security_policy=csp, strict_transport_security=hss
-    )  # noqa
+    )
 
     @flask_app.context_processor
     def inject_global_constants():

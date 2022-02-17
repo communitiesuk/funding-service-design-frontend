@@ -11,9 +11,8 @@ from axe_selenium_python import Axe
 from flask import url_for
 from json2html import json2html
 from selenium.webdriver.chrome.webdriver import WebDriver
-
-from .utils import get_service
-from .utils import get_service_html_filepath
+from tests.utils import get_service
+from tests.utils import get_service_html_filepath
 
 
 def get_report_heading(service_dict: dict, route_rel: str):
