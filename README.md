@@ -1,9 +1,7 @@
 # Funding service design frontend.
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
-
 ![Funding Service Design Frontend Deploy](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/govcloud.yml/badge.svg)
-
 [![CodeQL](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/codeql-analysis.yml)
 
 Repo for the funding service design frontend.
@@ -43,7 +41,9 @@ Enter the virtual environment as described above, then:
 
 ### Create static files
 
-    python build.py
+If you would like to manually download the static files and extract them then run
+
+    python3 build.py
 
 Developer note: If you receive a certification error when running the above command on macOS,
 consider if you need to run the Python
@@ -61,7 +61,7 @@ This is configurable in .flaskenv
 
 You should see the following:
 
-![Preview of the end result](https://user-images.githubusercontent.com/56394038/148535451-469d8fa4-2354-47a0-9d71-1052bfae78c4.png)
+![Preview of the end result](https://user-images.githubusercontent.com/65361824/153576751-9cb8799f-4737-40c4-9f6f-d38d4bcc188e.png)
 
 # Forms Engine Configuration
 

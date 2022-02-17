@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_compress import Compress
-from flask_seasurf import SeaSurf
 from flask_talisman import Talisman
+from flask_wtf.csrf import CSRFProtect
 from jinja2 import ChoiceLoader
 from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
@@ -9,9 +9,6 @@ from jinja2 import PrefixLoader
 
 def create_app() -> Flask:
     flask_app = Flask(__name__, static_url_path="/assets")
-
-    csrf = SeaSurf()
-    csrf.init_app(flask_app)
 
     flask_app.config.from_pyfile("config.py")
 
@@ -54,14 +51,17 @@ def create_app() -> Flask:
         flask_app, content_security_policy=csp, strict_transport_security=hss
     )
 
+    csrf = CSRFProtect()
+
+    csrf.init_app(flask_app)
+
     @flask_app.context_processor
     def inject_global_constants():
         return dict(
-            stage="alpha",
-            region="NA",
-            service_title="DLUHC Funding Service Design Iteration 1",
+            stage="beta",
+            service_title="DLUHC Funding Service Design Iteration 2",
             service_meta_description=(
-                "DLUHC Funding Service Design Iteration 1"
+                "DLUHC Funding Service Design Iteration 2"
             ),
             service_meta_keywords="DLUHC Funding Service Design Iteration 1",
             service_meta_author="DLUHC",
