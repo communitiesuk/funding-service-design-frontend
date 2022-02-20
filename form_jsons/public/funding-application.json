@@ -243,7 +243,7 @@
       ],
       "next": [
         {
-          "path": "/summary-england"
+          "path": "/summary"
         }
       ]
     },
@@ -266,7 +266,7 @@
       ],
       "next": [
         {
-          "path": "/summary-scotland"
+          "path": "/summary-MsorFh"
         }
       ]
     },
@@ -289,7 +289,7 @@
       ],
       "next": [
         {
-          "path": "/summary-wales"
+          "path": "/summary-erIVow"
         }
       ]
     },
@@ -312,34 +312,34 @@
       ],
       "next": [
         {
-          "path": "/summary-northern-ireland"
+          "path": "/summary-PyDysq"
         }
       ]
     },
     {
-      "path": "/summary-england",
-      "title": "Summary England",
+      "path": "/summary",
+      "title": "Summary ",
       "components": [],
       "next": [],
       "controller": "./pages/summary.js"
     },
     {
-      "path": "/summary-scotland",
-      "title": "Summary Scotland",
+      "path": "/summary-MsorFh",
+      "title": "Summary ",
       "components": [],
       "next": [],
       "controller": "./pages/summary.js"
     },
     {
-      "path": "/summary-wales",
-      "title": "Summary Wales",
+      "path": "/summary-erIVow",
+      "title": "Summary",
       "components": [],
       "next": [],
       "controller": "./pages/summary.js"
     },
     {
-      "path": "/summary-northern-ireland",
-      "title": "Summary Northern Ireland",
+      "path": "/summary-PyDysq",
+      "title": "Summary ",
       "components": [],
       "next": [],
       "controller": "./pages/summary.js"
