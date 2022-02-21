@@ -243,7 +243,7 @@
       ],
       "next": [
         {
-          "path": "/summary"
+          "path": "/dummy-page"
         }
       ]
     },
@@ -266,7 +266,7 @@
       ],
       "next": [
         {
-          "path": "/summary-KJkZlb"
+          "path": "/dummy-page"
         }
       ]
     },
@@ -289,7 +289,7 @@
       ],
       "next": [
         {
-          "path": "/summary-FczArP"
+          "path": "/dummy-page"
         }
       ]
     },
@@ -312,37 +312,23 @@
       ],
       "next": [
         {
-          "path": "/summary-lSJwka"
+          "path": "/dummy-page"
         }
       ]
     },
     {
-      "path": "/summary",
-      "title": "Summary",
-      "components": [],
-      "next": [],
-      "controller": "./pages/summary.js"
-    },
-    {
-      "path": "/summary-KJkZlb",
-      "title": "Summary",
-      "components": [],
-      "next": [],
-      "controller": "./pages/summary.js"
-    },
-    {
-      "path": "/summary-FczArP",
-      "title": "Summary",
-      "components": [],
-      "next": [],
-      "controller": "./pages/summary.js"
-    },
-    {
-      "path": "/summary-lSJwka",
-      "title": "Summary",
-      "components": [],
-      "next": [],
-      "controller": "./pages/summary.js"
+      "path": "/dummy-page",
+      "title": "Dummy page",
+      "components": [
+        {
+          "name": "rKyliy",
+          "options": {},
+          "type": "TextField",
+          "title": "Next page",
+          "schema": {}
+        }
+      ],
+      "next": []
     }
   ],
   "lists": [
