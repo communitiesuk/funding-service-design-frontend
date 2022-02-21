@@ -181,7 +181,8 @@
       "next": [
         {
           "path": "/choose-country"
-        }],
+        }
+      ],
       "section": "cxVIPK"
     },
     {
@@ -241,6 +242,9 @@
         }
       ],
       "next": [
+        {
+          "path": "/dummy-page"
+        }
       ]
     },
     {
@@ -261,6 +265,9 @@
         }
       ],
       "next": [
+        {
+          "path": "/dummy-page"
+        }
       ]
     },
     {
@@ -281,6 +288,9 @@
         }
       ],
       "next": [
+        {
+          "path": "/dummy-page"
+        }
       ]
     },
     {
@@ -301,7 +311,27 @@
         }
       ],
       "next": [
+        {
+          "path": "/dummy-page"
+        }
       ]
+    },
+    {
+      "path": "/dummy-page",
+      "title": "Dummy page",
+      "components": [],
+      "next": [
+        {
+          "path": "/summary"
+        }
+      ]
+    },
+    {
+      "path": "/summary",
+      "title": "Summary",
+      "components": [],
+      "next": [],
+      "controller": "./pages/summary.js"
     }
   ],
   "lists": [
@@ -693,7 +723,16 @@
     }
   ],
   "fees": [],
-  "outputs": [],
+  "outputs": [
+    {
+      "name": "UQDJzL",
+      "title": "Application summary",
+      "type": "webhook",
+      "outputConfiguration": {
+        "url": "https://en45dijqmkzl7.x.pipedream.net/"
+      }
+    }
+  ],
   "version": 2,
   "skipSummary": false,
   "name": "Funding Service Design",
@@ -705,3 +744,4 @@
     "phase": "beta"
   }
 }
+
