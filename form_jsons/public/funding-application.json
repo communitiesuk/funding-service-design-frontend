@@ -243,7 +243,7 @@
       ],
       "next": [
         {
-          "path": "/dummy-page"
+          "path": "/summary"
         }
       ]
     },
@@ -266,7 +266,7 @@
       ],
       "next": [
         {
-          "path": "/dummy-page"
+          "path": "/summary-KJkZlb"
         }
       ]
     },
@@ -289,7 +289,7 @@
       ],
       "next": [
         {
-          "path": "/dummy-page"
+          "path": "/summary-FczArP"
         }
       ]
     },
@@ -312,22 +312,33 @@
       ],
       "next": [
         {
-          "path": "/dummy-page"
-        }
-      ]
-    },
-    {
-      "path": "/dummy-page",
-      "title": "Dummy page",
-      "components": [],
-      "next": [
-        {
-          "path": "/summary"
+          "path": "/summary-lSJwka"
         }
       ]
     },
     {
       "path": "/summary",
+      "title": "Summary",
+      "components": [],
+      "next": [],
+      "controller": "./pages/summary.js"
+    },
+    {
+      "path": "/summary-KJkZlb",
+      "title": "Summary",
+      "components": [],
+      "next": [],
+      "controller": "./pages/summary.js"
+    },
+    {
+      "path": "/summary-FczArP",
+      "title": "Summary",
+      "components": [],
+      "next": [],
+      "controller": "./pages/summary.js"
+    },
+    {
+      "path": "/summary-lSJwka",
       "title": "Summary",
       "components": [],
       "next": [],
@@ -744,4 +755,3 @@
     "phase": "beta"
   }
 }
-
