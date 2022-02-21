@@ -243,7 +243,7 @@
       ],
       "next": [
         {
-          "path": "/summary"
+          "path": "/dummy-page"
         }
       ]
     },
@@ -266,7 +266,7 @@
       ],
       "next": [
         {
-          "path": "/summary-MsorFh"
+          "path": "/dummy-page"
         }
       ]
     },
@@ -289,7 +289,7 @@
       ],
       "next": [
         {
-          "path": "/summary-erIVow"
+          "path": "/dummy-page"
         }
       ]
     },
@@ -312,34 +312,23 @@
       ],
       "next": [
         {
-          "path": "/summary-PyDysq"
+          "path": "/dummy-page"
+        }
+      ]
+    },
+    {
+      "path": "/dummy-page",
+      "title": "Dummy page",
+      "components": [],
+      "next": [
+        {
+          "path": "/summary"
         }
       ]
     },
     {
       "path": "/summary",
-      "title": "Summary ",
-      "components": [],
-      "next": [],
-      "controller": "./pages/summary.js"
-    },
-    {
-      "path": "/summary-MsorFh",
-      "title": "Summary ",
-      "components": [],
-      "next": [],
-      "controller": "./pages/summary.js"
-    },
-    {
-      "path": "/summary-erIVow",
       "title": "Summary",
-      "components": [],
-      "next": [],
-      "controller": "./pages/summary.js"
-    },
-    {
-      "path": "/summary-PyDysq",
-      "title": "Summary ",
       "components": [],
       "next": [],
       "controller": "./pages/summary.js"
