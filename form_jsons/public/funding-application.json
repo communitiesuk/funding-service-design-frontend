@@ -729,7 +729,7 @@
       "title": "Application summary",
       "type": "webhook",
       "outputConfiguration": {
-        "url": "https://en45dijqmkzl7.x.pipedream.net/"
+        "url": ""
       }
     }
   ],
