@@ -319,16 +319,19 @@
     {
       "path": "/dummy-page",
       "title": "Dummy page",
-      "components": [
+      "components": [],
+      "next": [
         {
-          "name": "rKyliy",
-          "options": {},
-          "type": "TextField",
-          "title": "Next page",
-          "schema": {}
+          "path": "/summary"
         }
-      ],
-      "next": []
+      ]
+    },
+    {
+      "path": "/summary",
+      "title": "Summary",
+      "components": [],
+      "next": [],
+      "controller": "./pages/summary.js"
     }
   ],
   "lists": [
@@ -741,3 +744,4 @@
     "phase": "beta"
   }
 }
+
