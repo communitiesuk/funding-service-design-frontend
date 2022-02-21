@@ -106,7 +106,7 @@ class TestFormURLsWithChrome:
                     },
                     route_rel,
                 )
-                assert len(results["violations"]) <= 4
+                assert len(results["violations"]) <= 5
                 assert len(results["violations"]) == 0 or all(
                     [
                         viols["impact"] not in ["serious", "critical"]
