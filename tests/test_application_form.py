@@ -15,7 +15,7 @@ https://github.com/XGovFormBuilder/digital-form-builder/tree/main/runner/src/ser
 import fnmatch
 import json
 import os
-
+from tests import config
 import pytest
 from app.config import FORMS_SERVICE_JSONS_PATH
 from app.config import FORMS_SERVICE_NAME
@@ -106,8 +106,8 @@ class TestFormURLsWithChrome:
                     },
                     route_rel,
                 )
-                assert len(results["violations"]) <= 2
-                assert len(results["violations"]) == 0 or all(
+                assert len(results["violations"]) <= config.max_minor_viols
+                assert len(results["violations"]) == config.max_serious_viols or all(
                     [
                         viols["impact"] not in ["serious", "critical"]
                         for viols in results["violations"]
@@ -168,8 +168,8 @@ class TestFormURLsWithChrome:
             route_rel,
         )
 
-        assert len(results["violations"]) <= 2
-        assert len(results["violations"]) == 0 or all(
+        assert len(results["violations"]) <= config.minor_viols
+        assert len(results["violations"]) == config.zero_viols or all(
             [
                 viols["impact"] not in ["serious", "critical"]
                 for viols in results["violations"]
