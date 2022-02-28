@@ -243,7 +243,7 @@
       ],
       "next": [
         {
-          "path": "/dummy-page"
+          "path": "/summary"
         }
       ]
     },
@@ -266,7 +266,7 @@
       ],
       "next": [
         {
-          "path": "/dummy-page"
+          "path": "/summary"
         }
       ]
     },
@@ -289,7 +289,7 @@
       ],
       "next": [
         {
-          "path": "/dummy-page"
+          "path": "/summary"
         }
       ]
     },
@@ -310,16 +310,6 @@
           "nameHasError": false
         }
       ],
-      "next": [
-        {
-          "path": "/dummy-page"
-        }
-      ]
-    },
-    {
-      "path": "/dummy-page",
-      "title": "Dummy page",
-      "components": [],
       "next": [
         {
           "path": "/summary"
@@ -734,7 +724,7 @@
     }
   ],
   "version": 2,
-  "skipSummary": true,
+  "skipSummary": false,
   "name": "Funding Service Design",
   "feedback": {
     "feedbackForm": false,
@@ -744,3 +734,4 @@
     "phase": "beta"
   }
 }
+
