@@ -1434,7 +1434,7 @@
             "title": "summary application",
             "type": "webhook",
             "outputConfiguration": {
-                "url": "https://funding-service-design-application-store-dev.london.cloudapps.digital/application"
+                "url": "https://funding-service-design-application-store-dev.london.cloudapps.digital/applications"
             }
         }
     ],
