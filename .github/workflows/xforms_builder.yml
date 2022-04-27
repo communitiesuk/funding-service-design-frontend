@@ -17,7 +17,7 @@ jobs:
     environment: Dev
     services:
       runner:
-        image: ghcr.io/xgovformbuilder/digital-form-builder-runner:latest
+        image: ghcr.io/harryyo/runner:latest
         ports:
            - 3009:3009
     steps:
