@@ -15,11 +15,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     environment: Dev
-    services:
-      runner:
-        image: ghcr.io/harryyo/runner:latest
-        ports:
-           - 3009:3009
     steps:
       - name: Checkout
         uses: actions/checkout@v2
