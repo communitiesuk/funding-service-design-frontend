@@ -129,11 +129,11 @@ jobs:
       - name: Zap Baseline Scan
         uses: zaproxy/action-baseline@v0.6.1
         with:
-          target: ${{ secrets.FORMS_SERVICE_HOST }}baseline-application-questions/about-your-organisation
+          target: ${{ secrets.FORMS_SERVICE_HOST }}/baseline-application-questions/about-your-organisation
           allow_issue_writing: False
 
       - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.3.0
         with:
-          target: ${{ secrets.FORMS_SERVICE_HOST }}baseline-application-questions/about-your-organisation
+          target: ${{ secrets.FORMS_SERVICE_HOST }}/baseline-application-questions/about-your-organisation
           allow_issue_writing: False
