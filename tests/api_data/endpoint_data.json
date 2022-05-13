@@ -1,0 +1,41 @@
+{
+    "application_store/applications/hydra-app": {
+        "round_id": "spring",
+        "fund_id": "hydra",
+        "date_submitted": "2022-02-23T12:00:00.000",
+        "assessment_deadline": "2022-06-23T12:00:00.000",
+        "status": "NOT_STARTED",
+        "id": "hydra-application",
+        "questions": [
+            {
+                "question": "Favourite colour",
+                "status": "COMPLETED",
+                "fields": [
+                    {
+                        "key": "iowjZl",
+                        "title": "Favorite Colour",
+                        "type": "text",
+                        "answer": ""
+                    }
+                ],
+                "index": 0
+            },
+            {
+                "question": "Age",
+                "status": "COMPLETED",
+                "fields": [
+                    {
+                        "key": "IUyTiL",
+                        "title": "Age",
+                        "type": "text",
+                        "answer": "25"
+                    }
+                ],
+                "index": 0
+            }
+        ],
+        "metadata": {
+            "paymentSkipped": false
+        }
+    }
+}
