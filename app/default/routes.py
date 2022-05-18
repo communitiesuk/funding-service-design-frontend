@@ -13,6 +13,12 @@ def index():
         "index.html", service_url=url_for("routes.max_funding_criterion")
     )
 
+@default_bp.route("/account/<account_id>")
+def dashboard(account_id):
+    return render_template(
+        "dashboard.html", account_id=account_id
+    )
+
 
 @default_bp.route("/funding_amount_eligibility", methods=["GET", "POST"])
 def max_funding_criterion():
