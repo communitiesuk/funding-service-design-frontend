@@ -23,3 +23,6 @@ FORMS_SERVICE_PREVIEW_HOST = (
 FORMS_SERVICE_JSONS_PATH = (
     environ.get("FORMS_SERVICE_JSONS_PATH") or "form_jsons"
 )
+APPLICATION_STORE_HOST = (
+    environ.get("APPLICATION_STORE_HOST") or "http://localhost:3001"
+)
