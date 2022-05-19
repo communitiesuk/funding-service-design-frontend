@@ -1,6 +1,9 @@
+import requests
 from app.config import FORMS_SERVICE_PUBLIC_HOST
 from app.forms.eligibility_questions import minimium_money_question_page
+from app.models.application_summary import ApplicationSummary
 from flask import Blueprint
+from flask import current_app
 from flask import render_template
 from flask import url_for
 
@@ -13,11 +16,14 @@ def index():
         "index.html", service_url=url_for("routes.max_funding_criterion")
     )
 
+
 @default_bp.route("/account/<account_id>")
 def dashboard(account_id):
-    return render_template(
-        "dashboard.html", account_id=account_id
-    )
+    response = requests.get(
+        f'{current_app.config.get("APPLICATION_STORE_HOST")}/applications/search?account_id={account_id}'
+    ).json()
+    application_summary = [ApplicationSummary(**response[0])]
+    return render_template("dashboard.html", account_id=account_id)
 
 
 @default_bp.route("/funding_amount_eligibility", methods=["GET", "POST"])
