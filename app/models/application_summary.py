@@ -1,9 +1,6 @@
 import dataclasses
-import inspect
 from dataclasses import dataclass
 from datetime import datetime
-
-from typing_extensions import TypedDict
 
 
 @dataclass
@@ -17,6 +14,12 @@ class ApplicationSummary:
 
     def __post_init__(self):
         self.date_submitted = datetime.fromisoformat(self.date_submitted)
-        self.assessment_deadline = datetime.fromisoformat(
-            self.assessment_deadline
-        )
+        self.assessment_deadline = datetime.fromisoformat(self.assessment_deadline)
+
+    def __init__(self, **kwargs):
+        # Ignore unknown fields for future compatability
+        names = set([f.name for f in dataclasses.fields(self)])
+        for k, v in kwargs.items():
+            if k in names:
+                setattr(self, k, v)
+

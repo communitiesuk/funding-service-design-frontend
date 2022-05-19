@@ -1,1 +1,16 @@
-Account ID {{ account_id }}
+{%- from "govuk_frontend_jinja/components/tag/macro.html" import govukTag -%}
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+{%  for application in applications %}
+  <li>
+  {{ application }}
+      {{ govukTag({
+        'text': application.status
+        }) }}
+  </li>
+{% endfor %}
+</ul>
+
+{% endblock %}
