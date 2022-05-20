@@ -22,7 +22,7 @@ def dashboard(account_id):
     response = requests.get(
         f'{current_app.config.get("APPLICATION_STORE_HOST")}/applications/search?account_id={account_id}'
     ).json()
-    applications: list[ApplicationSummary] = [ApplicationSummary(**application) for application in response]
+    applications: list[ApplicationSummary] = [ApplicationSummary.from_dict(application) for application in response]
     return render_template("dashboard.html", account_id=account_id, applications=applications)
 
 
