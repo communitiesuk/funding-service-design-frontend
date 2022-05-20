@@ -80,3 +80,8 @@ def create_app() -> Flask:
 
 
 app = create_app()
+
+
+@app.template_filter("datetime_format")
+def datetime_format(value, format="%d/%m/%y"):
+    return value.strftime(format)
