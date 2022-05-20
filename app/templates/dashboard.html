@@ -1,16 +1,55 @@
 {%- from "govuk_frontend_jinja/components/tag/macro.html" import govukTag -%}
+{%- from "govuk_frontend_jinja/components/table/macro.html" import govukTable -%}
 {% extends "base.html" %}
-
 {% block content %}
-<ul>
-{%  for application in applications %}
-  <li>
-  {{ application }}
-      {{ govukTag({
+    {% set ns = namespace(rows = []) %}
+    {% for application in applications %}
+        {% set row = ns.rows.append(
+        [
+        {
+        'text': 'foo'
+        },
+        {
+        'text':  govukTag({
+        'text': application.status
+        })
+        },
+        {
+        'text': 'baz'
+        },
+        {
+        'text': 'quo'
+        },
+        {
+        'text': 'qua'
+        }
+        ]
+        ) %}
+    {% endfor %}
+    {{ govukTable({
+    'head': [
+    {
+    'text': 'Project name'
+    },
+    {
+    'text': 'Status'
+    },
+    {
+    'text': 'Started on'
+    },
+    {
+    'text': 'Last edited'
+    },
+    {
+    'text': ''
+    }
+    ],
+    'rows': ns.rows
+    }) }}
+    {% for application in applications %}
+        {{ application }}
+        {{ govukTag({
         'text': application.status
         }) }}
-  </li>
-{% endfor %}
-</ul>
-
+    {% endfor %}
 {% endblock %}
