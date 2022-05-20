@@ -4,52 +4,52 @@
 {% block content %}
     {% set ns = namespace(rows = []) %}
     {% for application in applications %}
-        {% set row = ns.rows.append(
-        [
-        {
-        'text': 'foo'
-        },
-        {
-        'text':  govukTag({
-        'text': application.status
-        })
-        },
-        {
-        'text': 'baz'
-        },
-        {
-        'text': application.assessment_deadline|datetime_format
-        },
-        {
-        'text': 'qua'
-        }
-        ]
-        ) %}
-    {% endfor %}
-    {{ govukTable({
-    'head': [
+        {% set status_class %}
+        {%  if application.status == 'COMPLETED' %}
+            govuk-tag--green
+        {% endif %}
+    {% endset %}
+    {% set row = ns.rows.append(
+    [
     {
-    'text': 'Project name'
+    'text': 'foo'
     },
     {
-    'text': 'Status'
+    'text':  govukTag({
+    'text': application.status,
+    'classes': status_class
+    })
     },
     {
-    'text': 'Started on'
+    'text': 'baz'
     },
     {
-    'text': 'Last edited'
+    'text': application.assessment_deadline|datetime_format
     },
     {
-    'text': ''
+    'text': 'qua'
     }
-    ],
-    'rows': ns.rows
-    }) }}
-    {% for application in applications %}
-        {{ application }}
-        {{ govukTag({
-        'text': application.status
-        }) }}
-    {% endfor %}
+    ]
+    ) %}
+{% endfor %}
+{{ govukTable({
+'head': [
+{
+'text': 'Project name'
+},
+{
+'text': 'Status'
+},
+{
+'text': 'Started on'
+},
+{
+'text': 'Last edited'
+},
+{
+'text': ''
+}
+],
+'rows': ns.rows
+}) }}
 {% endblock %}
