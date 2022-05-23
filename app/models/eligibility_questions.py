@@ -17,7 +17,8 @@ def not_eligible_page(message):
 def minimium_money_question_page(
     max_amount: int, success_url: str, data_hook: callable = print
 ):
-    """Returns a Flask view function which checks the eligibility
+    """
+    Returns a Flask view function which checks the eligibility
     of a fund using the gov.uk design system.
 
     Args:

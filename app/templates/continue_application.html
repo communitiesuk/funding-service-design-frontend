@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block content %}
+
+<h1 class="govuk-heading-xl">Continue Your Application Form</h1>
+
+<form method="POST">
+  {{ form.csrf_token }}
+  <div class="govuk-form-group">
+    <h1 class="govuk-label-wrapper">
+      <label class="govuk-label govuk-label--l" for="event-name">
+        Please Enter Your Application ID
+      </label>
+      {% if error %}
+      <p id="applciation-id-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span> {{error}}
+      </p>
+      {% endif %}
+    </h1>
+    <input class="govuk-input" id="application_id" name="application_id" type="text" />
+  </div>
+  <button class="govuk-button" data-module="govuk-button">
+    Save and continue
+  </button>
+</form>
+
+{% if token %}
+<h1>Token: {{token}}</h1>
+{% endif %}
+{% endblock %}
