@@ -7,7 +7,7 @@ from app.config import GET_APPLICATION_ENDPOINT
 
 
 def get_data(endpoint: str):
-    if endpoint[:8] == "https://":
+    if endpoint.startswith("https://"):
         data = get_remote_data(endpoint)
     else:
         data = get_local_data(endpoint)

@@ -44,7 +44,7 @@ def continue_application(application_id):
     continue_form_section(
         application_id, form_name, page_name, FORM_REHYDRATION_URL
     )
-    return redirect("/tasklist", 302)
+    return redirect(f"/tasklist/{application_id}", 302)
 
 
 @default_bp.route("/submit_application", methods=["POST"])
