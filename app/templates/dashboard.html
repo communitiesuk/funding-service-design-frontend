@@ -15,7 +15,7 @@
     {% set row = ns.rows.append(
     [
     {
-    'text': 'foo'
+    'html': "<a class='govuk-link' href='/tasklist/" + application.id +"'>PROJECT NAME GOES HERE</a>"
     },
     {
     'text':  govukTag({
@@ -28,9 +28,6 @@
     },
     {
     'text': application.assessment_deadline|datetime_format
-    },
-    {
-    'text': 'qua'
     }
     ]
     ) %}
@@ -48,9 +45,6 @@
 },
 {
 'text': 'Last edited'
-},
-{
-'text': ''
 }
 ],
 'rows': ns.rows
