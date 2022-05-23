@@ -15,6 +15,7 @@ distlib==0.3.4
 dparse==0.5.1
 filelock==3.4.2
 Flask==2.0.2
+Flask-Babel==2.0.0
 Flask-Compress==1.10.1
 Flask-SeaSurf==0.3.1
 flask-talisman==0.8.1

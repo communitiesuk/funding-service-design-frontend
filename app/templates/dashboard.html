@@ -2,6 +2,9 @@
 {%- from "govuk_frontend_jinja/components/table/macro.html" import govukTable -%}
 {% extends "base.html" %}
 {% block content %}
+<h1 class="govuk-heading-xl">Your applications</h1>
+
+<p class="govuk-body">You have started {% trans count=applications|length %} {{ count }} application {% pluralize %} applications {% endtrans %} using this email address.</p>
     {% set ns = namespace(rows = []) %}
     {% for application in applications %}
         {% set status_class %}

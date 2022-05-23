@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_babel import Babel
 from flask_compress import Compress
 from flask_talisman import Talisman
 from flask_wtf.csrf import CSRFProtect
@@ -11,6 +12,7 @@ def create_app() -> Flask:
     flask_app = Flask(__name__, static_url_path="/assets")
 
     flask_app.config.from_pyfile("config.py")
+    Babel(flask_app)
 
     flask_app.jinja_loader = ChoiceLoader(
         [
@@ -23,6 +25,7 @@ def create_app() -> Flask:
 
     flask_app.jinja_env.trim_blocks = True
     flask_app.jinja_env.lstrip_blocks = True
+    flask_app.jinja_env.add_extension("jinja2.ext.i18n")
 
     csp = {
         "default-src": "'self'",
