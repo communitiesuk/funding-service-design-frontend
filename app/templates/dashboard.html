@@ -12,12 +12,14 @@
         {% set status_class %}
         {%  if application.status == 'COMPLETED' %}
             govuk-tag--green
+        {%  elif application.status == 'NOT_STARTED' %}
+            govuk-tag--red
         {% endif %}
     {% endset %}
     {% set row = ns.rows.append(
     [
     {
-    'html': "<a class='govuk-link' href='/tasklist/" + application.id +"'>PROJECT NAME GOES HERE</a>"
+    'html': '<a class="govuk-link" href="/tasklist/{}">{}</a>'.format(application.id, application.project_name if application.project_name else 'Untitled project')
     },
     {
     'text':  govukTag({
@@ -29,7 +31,7 @@
     'text': application.started_at|datetime_format
     },
     {
-    'text': 'foo'
+    'text': application.last_edited|datetime_format if application.last_edited
     }
     ]
     ) %}
