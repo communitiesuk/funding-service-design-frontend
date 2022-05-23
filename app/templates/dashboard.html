@@ -1,10 +1,12 @@
 {%- from "govuk_frontend_jinja/components/tag/macro.html" import govukTag -%}
 {%- from "govuk_frontend_jinja/components/table/macro.html" import govukTable -%}
+{%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
+
 {% extends "base.html" %}
 {% block content %}
 <h1 class="govuk-heading-xl">Your applications</h1>
 
-<p class="govuk-body">You have started {% trans count=applications|length %} {{ count }} application {% pluralize %} applications {% endtrans %} using this email address.</p>
+<p class="govuk-body">You have started {% trans count=applications|length %} {{ count }} application {% pluralize %} {{ count }} applications {% endtrans %} using this email address.</p>
     {% set ns = namespace(rows = []) %}
     {% for application in applications %}
         {% set status_class %}
@@ -19,15 +21,15 @@
     },
     {
     'text':  govukTag({
-    'text': application.status,
+    'text': application.status|replace('_',' ') ,
     'classes': status_class
     })
     },
     {
-    'text': 'baz'
+    'text': application.started_at|datetime_format
     },
     {
-    'text': application.assessment_deadline|datetime_format
+    'text': 'foo'
     }
     ]
     ) %}
@@ -49,4 +51,11 @@
 ],
 'rows': ns.rows
 }) }}
+
+<form method="POST" action={{ url_for('routes.new', account_id=account_id) }} >
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+{{ govukButton({
+  'text': "Start new application"
+}) }}
+</form>
 {% endblock %}

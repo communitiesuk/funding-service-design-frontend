@@ -8,15 +8,12 @@ class ApplicationSummary:
     id: str
     status: str
     round_id: str
-    date_submitted: datetime
-    assessment_deadline: datetime
     fund_id: str
+    started_at: datetime
+
 
     def __post_init__(self):
-        self.date_submitted = datetime.fromisoformat(self.date_submitted)
-        self.assessment_deadline = datetime.fromisoformat(
-            self.assessment_deadline
-        )
+        self.started_at = datetime.fromisoformat(self.started_at)
 
     @classmethod
     def from_dict(cls, env):
