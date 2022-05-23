@@ -2,11 +2,8 @@ import json
 import os
 
 import requests
-from app.config import APPLICATION_STORE_API_HOST
 from app.config import FLASK_ROOT
-
-# Application Store Endpoints
-APPLICATION_ENDPOINT = "/applications/{application_id}"
+from app.config import GET_APPLICATION_ENDPOINT
 
 
 def get_data(endpoint: str):
@@ -39,72 +36,8 @@ def get_local_data(endpoint: str):
 
 
 def get_application_data(application_id):
-    applications_endpoint = (
-        APPLICATION_STORE_API_HOST
-        + APPLICATION_ENDPOINT.format(application_id=application_id)
+    applications_endpoint = GET_APPLICATION_ENDPOINT.format(
+        application_id=application_id
     )
     applications_response = get_data(applications_endpoint)
     return applications_response
-
-
-def extract_subset_of_data_from_application(
-    application_data: dict, data_subset_name: str
-):
-    """
-    Returns a subset of application data.
-
-            Parameters:
-                    application_data (dict):
-                     The application data for a single application,
-                     returned from the application store
-                    data_subset_name (str): The name of the application
-                     data subset to be returned
-
-            Returns:
-                    application_data (dict):
-                     A data subset of a single application
-    """
-    return application_data[data_subset_name]
-
-
-def format_application_rehydrate_data(application_data):
-    """
-    Returns information in a JSON format that provides the
-     POST body for the utilisation of the save and return
-     functionality of the XGovFormBuilder
-
-            Parameters:
-                    application_data (dict): application data to reformat
-
-            Returns:
-                    formatted_data (dict): formatted application data
-    """
-
-    formatted_data = {}
-    redirect_path = "/summary"
-
-    """
-    formatted_data = {
-        "options": {
-            "callbackUrl": Str,
-            "redirectPath": Str,
-            "message": Str,
-            "components": [], // extra components to show on page?
-            "customText": {
-                "paymentSkipped": false,
-                "nextSteps": false
-            },
-        },
-        "questions": [],
-        "metadata": {}
-    }
-    """
-
-    formatted_data["options"] = {"redirectPath": redirect_path}
-    formatted_data["questions"] = extract_subset_of_data_from_application(
-        application_data, "questions"
-    )
-    formatted_data["metadata"] = extract_subset_of_data_from_application(
-        application_data, "metadata"
-    )
-    return formatted_data

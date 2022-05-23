@@ -1,0 +1,21 @@
+{% macro tasklist_section(section, application_id, index) %}
+<li>
+    <h2 class="app-task-list__section">
+      <span class="app-task-list__section-number">{{index}}. </span> {{section["section_name"].replace("-", " ")|title}}
+    </h2>
+
+    <ul class="app-task-list__items">
+
+      {% for question_page in section["questions"]%}
+      <li class="app-task-list__item">
+        <span class="app-task-list__task-name">
+          <a href="/continue_application/{{application_id}}?section_name={{section["section_name"]}}&page_name={{question_page["question"]}}" aria-describedby="page-title">
+            <p id="page-title" class="govuk-body">{{question_page["question"]}}</p>
+          </a>
+        </span>
+        <strong class="govuk-tag app-task-list__tag" id="read-declaration-status">{{section["status"]}}</strong>
+      </li>
+      {% endfor %}
+    </ul>
+  </li>
+{% endmacro %}

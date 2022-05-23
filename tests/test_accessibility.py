@@ -137,6 +137,22 @@ class TestURLsWithChrome:
             or results["violations"][0]["impact"] == "minor"
         )
 
+    def test_tasklist_page_accessible(self):
+        """
+        GIVEN Our Flask Application is running
+        WHEN the '/tasklist' page is requested (GET)
+        THEN check that page returned conforms to WCAG standards
+        """
+        route_rel = "/tasklist"
+        results = run_axe_and_print_report(
+            driver=self.driver, route_rel=str(route_rel)
+        )
+        assert len(results["violations"]) <= 1
+        assert (
+            len(results["violations"]) == 0
+            or results["violations"][0]["impact"] == "minor"
+        )
+
     def test_unknown_page_returns_accessible_404(self):
         """
         GIVEN Our Flask Application is running

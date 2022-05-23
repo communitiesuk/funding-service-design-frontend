@@ -27,6 +27,12 @@ FORMS_SERVICE_PREVIEW_HOST = (
 FORMS_SERVICE_JSONS_PATH = (
     environ.get("FORMS_SERVICE_JSONS_PATH") or "form_jsons"
 )
+FORM_GET_REHYDRATION_TOKEN_URL = (
+    FORMS_SERVICE_PUBLIC_HOST + "/session/{form_name}"
+)
+FORM_REHYDRATION_URL = (
+    FORMS_SERVICE_PUBLIC_HOST + "/session/{rehydration_token}"
+)
 
 """
 Application Store Service Config
@@ -34,4 +40,13 @@ Application Store Service Config
 APPLICATION_STORE_API_HOST = (
     environ.get("APPLICATION_STORE_API_HOST")
     or TEST_APPLICATION_STORE_API_HOST
+)
+GET_APPLICATION_ENDPOINT = (
+    APPLICATION_STORE_API_HOST + "/applications/{application_id}"
+)
+UPDATE_APPLICATION_SECTION_ENDPOINT = (
+    APPLICATION_STORE_API_HOST + "/applications/sections"
+)
+SUBMIT_APPLICATION_ENDPOINT = (
+    APPLICATION_STORE_API_HOST + "/applications/{application_id}/submit"
 )
