@@ -1,0 +1,389 @@
+{
+    "metadata": {},
+    "startPage": "/declarations",
+    "pages": [
+        {
+            "path": "/declarations",
+            "title": "Declarations",
+            "components": [
+                {
+                    "name": "vqOlyr",
+                    "options": {},
+                    "type": "Para",
+                    "content": "Confirm the following details before you submit your application.",
+                    "schema": {}
+                },
+                {
+                    "name": "declarations-state-aid",
+                    "options": {},
+                    "type": "YesNoField",
+                    "title": "Would funding your organisation be classed as State Aid?",
+                    "nameHasError": false,
+                    "schema": {}
+                },
+                {
+                    "name": "declarations-explain-state-aid",
+                    "options": {
+                        "required": false
+                    },
+                    "type": "MultilineTextField",
+                    "title": "If yes to the above, explain how your project is compliant with the UK subsidy control regime",
+                    "nameHasError": false,
+                    "schema": {}
+                },
+                {
+                    "name": "declarations-protected-characteristics",
+                    "options": {},
+                    "type": "MultilineTextField",
+                    "title": "Describe how your project will impact people with protected characteristics?",
+                    "nameHasError": false,
+                    "schema": {}
+                },
+                {
+                    "name": "XGeAzD",
+                    "options": {},
+                    "type": "Html",
+                    "content": "<details class=\"govuk-details\" data-module=\"govuk-details\">\n  <summary class=\"govuk-details__summary\">\n    <span class=\"govuk-details__summary-text\">\n      Help with protected characteristics\n    </span>\n  </summary>\n  <div class=\"govuk-details__text\">\n    The characteristics that are protected by the Equality Act 2010 are:\n    <ul class=\"govuk-list govuk-list--bullet\">\n<li>age</li>\n<li>disability</li>\n<li>gender reassignment</li>\n<li>marriage or civil partnership (in employment only)</li>\n<li>pregnancy and maternity</li>\n<li>race</li>\n<li>religion or belief</li>\n<li>sex</li>\n<li>sexual orientation</li>\n</ul>\n  </div>\n</details>",
+                    "schema": {}
+                },
+                {
+                    "name": "declarations-environmental",
+                    "options": {},
+                    "type": "YesNoField",
+                    "title": "Does your application comply with all relevant environmental standards?",
+                    "nameHasError": false,
+                    "schema": {}
+                },
+                {
+                    "name": "declarations-support-environmental",
+                    "options": {
+                        "required": false
+                    },
+                    "type": "FileUploadField",
+                    "title": "If yes to the above, upload a file in support of your answer",
+                    "nameHasError": false,
+                    "schema": {}
+                }
+            ],
+            "next": [
+                {
+                    "path": "/summary"
+                }
+            ]
+        },
+        {
+            "path": "/summary",
+            "title": "Summary",
+            "components": [],
+            "next": [],
+            "controller": "./pages/summary.js"
+        }
+    ],
+    "lists": [
+        {
+            "title": "cost type",
+            "name": "YNyohE",
+            "type": "string",
+            "items": [
+                {
+                    "text": "Indirect",
+                    "description": "Day to day business expenses that are not related to the project",
+                    "value": "Indirect"
+                },
+                {
+                    "text": "Direct",
+                    "description": "Costs that relate directly to the project",
+                    "value": "Direct"
+                },
+                {
+                    "text": "Operating",
+                    "description": "Costs required to keep the business running",
+                    "value": "Operating"
+                },
+                {
+                    "text": "Capital",
+                    "description": "Land, buildings or equipment used to produce a product or service",
+                    "value": "Capital"
+                }
+            ]
+        },
+        {
+            "title": "organisation risk",
+            "name": "fOscog",
+            "type": "string",
+            "items": [
+                {
+                    "text": "Risk averse",
+                    "value": "Risk averse"
+                },
+                {
+                    "text": "Somewhat risk averse",
+                    "value": "Somewhat risk averse"
+                },
+                {
+                    "text": "Somewhat risk tolerant",
+                    "value": "Somewhat risk tolerant"
+                },
+                {
+                    "text": "Risk tolerant",
+                    "value": "Risk tolerant"
+                }
+            ]
+        },
+        {
+            "title": "risk level",
+            "name": "koOHzL",
+            "type": "string",
+            "items": [
+                {
+                    "text": "high",
+                    "value": "high"
+                },
+                {
+                    "text": "medium",
+                    "value": "medium"
+                },
+                {
+                    "text": "low",
+                    "value": "low"
+                }
+            ]
+        },
+        {
+            "title": "risk category",
+            "name": "zeecjj",
+            "type": "string",
+            "items": [
+                {
+                    "text": "reputational risk",
+                    "value": "reputational risk"
+                },
+                {
+                    "text": "financial risk",
+                    "value": "financial risk"
+                },
+                {
+                    "text": "delivery risk",
+                    "value": "delivery risk"
+                }
+            ]
+        },
+        {
+            "title": "types of organisation",
+            "name": "EuSWdk",
+            "type": "string",
+            "items": [
+                {
+                    "text": "Local authority",
+                    "value": "Local authority"
+                },
+                {
+                    "text": "Mayoral authority",
+                    "value": "Mayoral authority"
+                },
+                {
+                    "text": "Limited company",
+                    "value": "Limited company"
+                },
+                {
+                    "text": "Registered charity",
+                    "value": "Registered charity"
+                },
+                {
+                    "text": "Social enterprise",
+                    "value": "Social enterprise"
+                },
+                {
+                    "text": "Other",
+                    "value": "Other"
+                }
+            ]
+        },
+        {
+            "title": "who-is-endorsing",
+            "name": "YtqtLo",
+            "type": "string",
+            "items": [
+                {
+                    "text": "Member of parliament (MP)",
+                    "value": "Member of parliament (MP)"
+                }
+            ]
+        },
+        {
+            "title": "Placeholder",
+            "name": "AAfvRE",
+            "type": "string",
+            "items": [
+                {
+                    "text": "1",
+                    "value": 1
+                }
+            ]
+        },
+        {
+            "title": "policy-aims",
+            "name": "SJMQKM",
+            "type": "string",
+            "items": [
+                {
+                    "text": "Net zero",
+                    "value": "Net zero"
+                },
+                {
+                    "text": "Regeneration",
+                    "value": "regeneration"
+                },
+                {
+                    "description": "",
+                    "text": "Support local community",
+                    "value": "Support local community"
+                },
+                {
+                    "text": "Level up skills",
+                    "value": "Level up skills"
+                },
+                {
+                    "text": "Fight climate change",
+                    "value": "Fight climate change"
+                },
+                {
+                    "text": "Increase trade and prosperity",
+                    "value": "Increase trade and prosperity"
+                }
+            ]
+        },
+        {
+            "title": "yesorno",
+            "name": "zuYFmF",
+            "type": "string",
+            "items": [
+                {
+                    "text": "Yes",
+                    "value": "Yes"
+                },
+                {
+                    "text": "No",
+                    "value": "No"
+                }
+            ]
+        }
+    ],
+    "sections": [
+        {
+            "name": "ZtqkbP",
+            "title": "Deliver your project"
+        }
+    ],
+    "conditions": [
+        {
+            "displayName": "plan-your-project-review",
+            "name": "ibmyWB",
+            "value": {
+                "name": "plan-your-project-review",
+                "conditions": [
+                    {
+                        "field": {
+                            "name": "plan-your-project-review",
+                            "type": "YesNoField",
+                            "display": "Before you continue, would you like to review what you've told us about your project?"
+                        },
+                        "operator": "is",
+                        "value": {
+                            "type": "Value",
+                            "value": "true",
+                            "display": "true"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "displayName": "no-review",
+            "name": "Kryhrd",
+            "value": {
+                "name": "no-review",
+                "conditions": [
+                    {
+                        "field": {
+                            "name": "plan-your-project-review",
+                            "type": "RadiosField",
+                            "display": "Before you continue, would you like to review what you've told us about your project?"
+                        },
+                        "operator": "is not",
+                        "value": {
+                            "type": "Value",
+                            "value": "Yes",
+                            "display": "Yes"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "displayName": "working-with-partner",
+            "name": "LTqUZZ",
+            "value": {
+                "name": "working-with-partner",
+                "conditions": [
+                    {
+                        "field": {
+                            "name": "plan-your-project-will-work-with-delivery-partner",
+                            "type": "YesNoField",
+                            "display": "Will you work with a delivery partner on this project?"
+                        },
+                        "operator": "is",
+                        "value": {
+                            "type": "Value",
+                            "value": "true",
+                            "display": "true"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "displayName": "not-working-with-partner",
+            "name": "UVGPIT",
+            "value": {
+                "name": "not-working-with-partner",
+                "conditions": [
+                    {
+                        "field": {
+                            "name": "plan-your-project-will-work-with-delivery-partner",
+                            "type": "YesNoField",
+                            "display": "Will you work with a delivery partner on this project?"
+                        },
+                        "operator": "is not",
+                        "value": {
+                            "type": "Value",
+                            "value": "true",
+                            "display": "true"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "fees": [],
+    "outputs": [
+        {
+            "name": "json-to-post",
+            "title": "summary application",
+            "type": "webhook",
+            "outputConfiguration": {
+                "url": "https://funding-service-design-application-store-dev.london.cloudapps.digital/applications"
+            }
+        }
+    ],
+    "version": 2,
+    "skipSummary": false,
+    "name": "declaration",
+    "feedback": {
+        "feedbackForm": false,
+        "url": ""
+    },
+    "phaseBanner": {
+        "phase": "alpha"
+    }
+}

@@ -7,7 +7,7 @@ from tests.route_testing_conf import routes_and_test_content
 
 def test_routes_status_code(flask_test_client):
     """
-    GIVEN Our Flask Hello World Application
+    GIVEN Our Flask Application
     WHEN a route is requested
     THEN check that the get response is successful
     If this test succeedes then our flask application's
@@ -21,7 +21,7 @@ def test_routes_status_code(flask_test_client):
 
 def test_routes_content(flask_test_client):
     """
-    GIVEN Our Flask Hello World Application
+    GIVEN Our Flask Application
     WHEN a route is requested
     THEN check that the get response contains the
     expected content.

@@ -1,0 +1,504 @@
+{
+    "metadata": {},
+    "startPage": "/about-your-project",
+    "pages": [
+        {
+            "path": "/about-your-project",
+            "title": "About your project",
+            "components": [
+                {
+                    "name": "BUldza",
+                    "options": {},
+                    "type": "Html",
+                    "content": "<h1 class=\"govuk-heading-l\">What you'll need</h1>",
+                    "schema": {}
+                },
+                {
+                    "name": "lQJhnb",
+                    "options": {},
+                    "type": "Html",
+                    "content": "<p class=\"govuk-body\">In this section we will ask you about:</p>\n<ul class=\"govuk-list govuk-list--bullet govuk-list--spaced\">\n  <li>\n    your project details\n  </li>\n  <li>\n    the amount of money you're asking for\n  </li>\n  <li>\n    which policy aims your project will deliver against\n  </li>\n</ul>",
+                    "schema": {}
+                }
+            ],
+            "next": [
+                {
+                    "path": "/project-details"
+                }
+            ]
+        },
+        {
+            "path": "/project-details",
+            "title": "Project details",
+            "components": [
+                {
+                    "name": "fsmMyX",
+                    "options": {},
+                    "type": "Html",
+                    "content": "<h1 class=\"govuk-heading-l\">Project details</h1>",
+                    "schema": {}
+                },
+                {
+                    "name": "your-project-name",
+                    "options": {},
+                    "type": "TextField",
+                    "title": "Project name",
+                    "nameHasError": false,
+                    "schema": {}
+                },
+                {
+                    "name": "your-project-location",
+                    "options": {},
+                    "type": "UkAddressField",
+                    "title": "Project location",
+                    "nameHasError": false,
+                    "schema": {}
+                },
+                {
+                    "name": "your-project-sector",
+                    "options": {},
+                    "type": "SelectField",
+                    "list": "AAfvRE",
+                    "title": "Project sector",
+                    "nameHasError": false,
+                    "schema": {}
+                },
+                {
+                    "name": "your-project-long-description",
+                    "options": {
+                        "rows": ""
+                    },
+                    "type": "MultilineTextField",
+                    "title": "Project description",
+                    "hint": "Describe your project in more detail",
+                    "nameHasError": false,
+                    "schema": {
+                        "max": 100,
+                        "length": "10"
+                    }
+                },
+                {
+                    "name": "your-project-short-description",
+                    "options": {
+                        "rows": ""
+                    },
+                    "type": "MultilineTextField",
+                    "title": "Project summary",
+                    "nameHasError": false,
+                    "hint": "Summarise your project in 25 words or fewer",
+                    "schema": {}
+                }
+            ],
+            "next": [
+                {
+                    "path": "/funding-requested"
+                }
+            ]
+        },
+        {
+            "path": "/funding-requested",
+            "title": "Funding requested",
+            "components": [
+                {
+                    "name": "PSINpo",
+                    "options": {},
+                    "type": "Html",
+                    "content": "<h1 class=\"govuk-heading-l\">Funding requested</h1>",
+                    "schema": {}
+                },
+                {
+                    "name": "yyaGOn",
+                    "options": {},
+                    "type": "Html",
+                    "content": "<h2 class=\"govuk-heading-m\">How much money do you need?</h2>",
+                    "schema": {}
+                },
+                {
+                    "name": "about-your-project-capital-expenditure",
+                    "options": {
+                        "classes": ""
+                    },
+                    "type": "NumberField",
+                    "schema": {
+                        "precision": "0"
+                    },
+                    "title": "Capital expenditure",
+                    "hint": "The purchase of property or equipment",
+                    "nameHasError": false
+                },
+                {
+                    "name": "about-your-project-revenue",
+                    "options": {},
+                    "type": "NumberField",
+                    "title": "Revenue",
+                    "hint": "The provision of services",
+                    "nameHasError": false,
+                    "schema": {}
+                },
+                {
+                    "name": "about-your-project-subsidy",
+                    "options": {},
+                    "type": "NumberField",
+                    "title": "Subsidy",
+                    "hint": "Subsidising an existing organisation",
+                    "nameHasError": false,
+                    "schema": {}
+                },
+                {
+                    "name": "wxZrNf",
+                    "options": {},
+                    "type": "Html",
+                    "content": "<p class=\"govuk-body govuk-!-font-weight-bold\">Total funding requested: IN DEV</p>",
+                    "schema": {}
+                }
+            ],
+            "next": [
+                {
+                    "path": "/project-aims"
+                }
+            ]
+        },
+        {
+            "path": "/project-aims",
+            "title": "Project aims",
+            "components": [
+                {
+                    "name": "YbceEI",
+                    "options": {},
+                    "type": "Html",
+                    "content": "<h1 class=\"govuk-heading-l\">Project aims</h1>",
+                    "schema": {}
+                },
+                {
+                    "name": "about-your-project-policy-aims",
+                    "options": {},
+                    "type": "CheckboxesField",
+                    "title": "Which policy aims will your project deliver against?",
+                    "hint": "Select all that apply",
+                    "nameHasError": false,
+                    "list": "SJMQKM",
+                    "schema": {}
+                }
+            ],
+            "next": [
+                {
+                    "path": "/summary"
+                }
+            ]
+        },
+        {
+            "path": "/summary",
+            "title": "Summary",
+            "components": [],
+            "next": [],
+            "controller": "./pages/summary.js"
+        }
+    ],
+    "lists": [
+        {
+            "title": "cost type",
+            "name": "YNyohE",
+            "type": "string",
+            "items": [
+                {
+                    "text": "Indirect",
+                    "description": "Day to day business expenses that are not related to the project",
+                    "value": "Indirect"
+                },
+                {
+                    "text": "Direct",
+                    "description": "Costs that relate directly to the project",
+                    "value": "Direct"
+                },
+                {
+                    "text": "Operating",
+                    "description": "Costs required to keep the business running",
+                    "value": "Operating"
+                },
+                {
+                    "text": "Capital",
+                    "description": "Land, buildings or equipment used to produce a product or service",
+                    "value": "Capital"
+                }
+            ]
+        },
+        {
+            "title": "organisation risk",
+            "name": "fOscog",
+            "type": "string",
+            "items": [
+                {
+                    "text": "Risk averse",
+                    "value": "Risk averse"
+                },
+                {
+                    "text": "Somewhat risk averse",
+                    "value": "Somewhat risk averse"
+                },
+                {
+                    "text": "Somewhat risk tolerant",
+                    "value": "Somewhat risk tolerant"
+                },
+                {
+                    "text": "Risk tolerant",
+                    "value": "Risk tolerant"
+                }
+            ]
+        },
+        {
+            "title": "risk level",
+            "name": "koOHzL",
+            "type": "string",
+            "items": [
+                {
+                    "text": "high",
+                    "value": "high"
+                },
+                {
+                    "text": "medium",
+                    "value": "medium"
+                },
+                {
+                    "text": "low",
+                    "value": "low"
+                }
+            ]
+        },
+        {
+            "title": "risk category",
+            "name": "zeecjj",
+            "type": "string",
+            "items": [
+                {
+                    "text": "reputational risk",
+                    "value": "reputational risk"
+                },
+                {
+                    "text": "financial risk",
+                    "value": "financial risk"
+                },
+                {
+                    "text": "delivery risk",
+                    "value": "delivery risk"
+                }
+            ]
+        },
+        {
+            "title": "types of organisation",
+            "name": "EuSWdk",
+            "type": "string",
+            "items": [
+                {
+                    "text": "Local authority",
+                    "value": "Local authority"
+                },
+                {
+                    "text": "Mayoral authority",
+                    "value": "Mayoral authority"
+                },
+                {
+                    "text": "Limited company",
+                    "value": "Limited company"
+                },
+                {
+                    "text": "Registered charity",
+                    "value": "Registered charity"
+                },
+                {
+                    "text": "Social enterprise",
+                    "value": "Social enterprise"
+                },
+                {
+                    "text": "Other",
+                    "value": "Other"
+                }
+            ]
+        },
+        {
+            "title": "who-is-endorsing",
+            "name": "YtqtLo",
+            "type": "string",
+            "items": [
+                {
+                    "text": "Member of parliament (MP)",
+                    "value": "Member of parliament (MP)"
+                }
+            ]
+        },
+        {
+            "title": "Placeholder",
+            "name": "AAfvRE",
+            "type": "string",
+            "items": [
+                {
+                    "text": "1",
+                    "value": 1
+                }
+            ]
+        },
+        {
+            "title": "policy-aims",
+            "name": "SJMQKM",
+            "type": "string",
+            "items": [
+                {
+                    "text": "Net zero",
+                    "value": "Net zero"
+                },
+                {
+                    "text": "Regeneration",
+                    "value": "regeneration"
+                },
+                {
+                    "description": "",
+                    "text": "Support local community",
+                    "value": "Support local community"
+                },
+                {
+                    "text": "Level up skills",
+                    "value": "Level up skills"
+                },
+                {
+                    "text": "Fight climate change",
+                    "value": "Fight climate change"
+                },
+                {
+                    "text": "Increase trade and prosperity",
+                    "value": "Increase trade and prosperity"
+                }
+            ]
+        },
+        {
+            "title": "yesorno",
+            "name": "zuYFmF",
+            "type": "string",
+            "items": [
+                {
+                    "text": "Yes",
+                    "value": "Yes"
+                },
+                {
+                    "text": "No",
+                    "value": "No"
+                }
+            ]
+        }
+    ],
+    "sections": [
+        {
+            "name": "ZtqkbP",
+            "title": "Deliver your project"
+        }
+    ],
+    "conditions": [
+        {
+            "displayName": "plan-your-project-review",
+            "name": "ibmyWB",
+            "value": {
+                "name": "plan-your-project-review",
+                "conditions": [
+                    {
+                        "field": {
+                            "name": "plan-your-project-review",
+                            "type": "YesNoField",
+                            "display": "Before you continue, would you like to review what you've told us about your project?"
+                        },
+                        "operator": "is",
+                        "value": {
+                            "type": "Value",
+                            "value": "true",
+                            "display": "true"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "displayName": "no-review",
+            "name": "Kryhrd",
+            "value": {
+                "name": "no-review",
+                "conditions": [
+                    {
+                        "field": {
+                            "name": "plan-your-project-review",
+                            "type": "RadiosField",
+                            "display": "Before you continue, would you like to review what you've told us about your project?"
+                        },
+                        "operator": "is not",
+                        "value": {
+                            "type": "Value",
+                            "value": "Yes",
+                            "display": "Yes"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "displayName": "working-with-partner",
+            "name": "LTqUZZ",
+            "value": {
+                "name": "working-with-partner",
+                "conditions": [
+                    {
+                        "field": {
+                            "name": "plan-your-project-will-work-with-delivery-partner",
+                            "type": "YesNoField",
+                            "display": "Will you work with a delivery partner on this project?"
+                        },
+                        "operator": "is",
+                        "value": {
+                            "type": "Value",
+                            "value": "true",
+                            "display": "true"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "displayName": "not-working-with-partner",
+            "name": "UVGPIT",
+            "value": {
+                "name": "not-working-with-partner",
+                "conditions": [
+                    {
+                        "field": {
+                            "name": "plan-your-project-will-work-with-delivery-partner",
+                            "type": "YesNoField",
+                            "display": "Will you work with a delivery partner on this project?"
+                        },
+                        "operator": "is not",
+                        "value": {
+                            "type": "Value",
+                            "value": "true",
+                            "display": "true"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "fees": [],
+    "outputs": [
+        {
+            "name": "json-to-post",
+            "title": "summary application",
+            "type": "webhook",
+            "outputConfiguration": {
+                "url": "https://funding-service-design-application-store-dev.london.cloudapps.digital/applications"
+            }
+        }
+    ],
+    "version": 2,
+    "skipSummary": false,
+    "name": "about-your-project",
+    "feedback": {
+        "feedbackForm": false,
+        "url": ""
+    },
+    "phaseBanner": {
+        "phase": "alpha"
+    }
+}

@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% from
+"govuk_frontend_jinja/components/button/macro.html" import govukButton -%} {%
+from "partials/tasklist_section.html" import tasklist_section %} {% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{application_meta_data["fund"].replace("-", " ")|title}}
+      Round: {{application_meta_data["round"].replace("-", " ")|title}}
+    </h1>
+    <h2 class="govuk-body govuk-!-font-weight-bold">
+      {% if application_meta_data["number_of_completed_sections"] == application_meta_data["number_of_sections"] %}
+       All sections complete
+      {% else %}
+       In progress
+      {% endif %}
+    </h2>
+    <p class="govuk-body govuk-!-margin-bottom-7">
+      You have completed
+      {{application_meta_data["number_of_completed_sections"]}} of
+      {{application_meta_data["number_of_sections"]}} sections.
+    </p>
+    <ol class="app-task-list">
+      {% for section in application_response['sections'] %}
+      {{tasklist_section(section, application_meta_data["application_id"],
+      loop.index)}} {% endfor %}
+    </ol>
+  </div>
+</div>
+
+<form method="POST" action="/submit_application">
+  {{ form.csrf_token }}
+  <input type="hidden" id="application_id" name="application_id" value="{{application_meta_data["application_id"]}}">
+  <button class="govuk-button" data-module="govuk-button"
+  {% if application_meta_data["number_of_incomplete_sections"] == application_meta_data["number_of_sections"] %}
+  disabled
+ {% endif %}
+  >Submit</button>
+
+</form>
+
+{% endblock %}

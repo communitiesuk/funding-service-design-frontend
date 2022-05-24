@@ -23,7 +23,7 @@ def test_flask_initiates(flask_test_client):
 
 def test_helloworld_homepage(flask_test_client):
     """
-    GIVEN Our Flask Hello World Application
+    GIVEN Our Flask Application
     WHEN the '/' page (index) is requested (GET)
     THEN check that the homepage (/) contains the phrase
     "Hello World".
