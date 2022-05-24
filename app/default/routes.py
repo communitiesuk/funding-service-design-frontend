@@ -4,6 +4,7 @@ from flask import current_app
 from flask import redirect
 from flask import render_template
 from flask import url_for
+from flask import request
 
 from app.config import FORMS_SERVICE_PUBLIC_HOST
 from app.forms.eligibility_questions import minimium_money_question_page
@@ -30,16 +31,12 @@ def dashboard(account_id):
 
 @default_bp.route("/account/<account_id>/new", methods=['POST'])
 def new(account_id):
-    response = requests.get(
-        f'{current_app.config.get("APPLICATION_STORE_HOST")}/applications?account_id={account_id}'
-    ).json()
-    first_application = [ApplicationSummary.from_dict(application) for application in response][0]
     new_application = requests.post(url=f'{current_app.config.get("APPLICATION_STORE_HOST")}/applications',
-                             json={'account_id': account_id,
-                                   'round_id': first_application.round_id,
-                                   'fund_id': first_application.fund_id
-                                   }
-                             )
+                                    json={'account_id': account_id,
+                                          'round_id': request.form['round_id'],
+                                          'fund_id': request.form['fund_id']
+                                          }
+                                    )
     return redirect(f'/tasklist/{new_application.json().get("id")}')
 
 

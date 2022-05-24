@@ -19,9 +19,9 @@ class ApplicationSummary:
         self.last_edited = datetime.fromisoformat(self.last_edited) if self.last_edited else None
 
     @classmethod
-    def from_dict(cls, env):
+    def from_dict(cls, d: dict):
         # Filter unknown fields from JSON dictionary
         return cls(**{
-            k: v for k, v in env.items()
+            k: v for k, v in d.items()
             if k in inspect.signature(cls).parameters
         })
