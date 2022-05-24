@@ -1,5 +1,5 @@
 {
-    "application_store/applications/test_id": {
+    "http://application_store/applications/test_id": {
         "application_id": "test_id",
         "account_id": "AccountA",
         "round_id": "Round Two",

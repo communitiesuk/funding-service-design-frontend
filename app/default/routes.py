@@ -1,7 +1,9 @@
 import requests
+from app.config import APPLICATION_STORE_API_HOST
 from app.config import FORM_REHYDRATION_URL
 from app.config import FORMS_SERVICE_PUBLIC_HOST
 from app.config import SUBMIT_APPLICATION_ENDPOINT
+from app.models.application_summary import ApplicationSummary
 from app.models.continue_application import continue_form_section
 from app.models.eligibility_questions import minimium_money_question_page
 from app.models.tasklist import tasklist_page
@@ -18,6 +20,36 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 def index():
     return render_template(
         "index.html", service_url=url_for("routes.max_funding_criterion")
+    )
+
+
+@default_bp.route("/account/<account_id>")
+def dashboard(account_id):
+    response = requests.get(
+        f"{APPLICATION_STORE_API_HOST}/applications?account_id={account_id}"
+    ).json()
+    applications: list[ApplicationSummary] = [
+        ApplicationSummary.from_dict(application) for application in response
+    ]
+    return render_template(
+        "dashboard.html", account_id=account_id, applications=applications
+    )
+
+
+@default_bp.route("/account/<account_id>/new", methods=["POST"])
+def new(account_id):
+    new_application = requests.post(
+        url=f"{APPLICATION_STORE_API_HOST}/applications",
+        json={
+            "account_id": account_id,
+            "round_id": request.form["round_id"],
+            "fund_id": request.form["fund_id"],
+        },
+    )
+    return redirect(
+        url_for(
+            "routes.tasklist", application_id=new_application.json().get("id")
+        )
     )
 
 
