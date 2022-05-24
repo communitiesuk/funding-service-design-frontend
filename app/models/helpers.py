@@ -9,8 +9,6 @@ def get_token_to_return_to_application(form_name: str, rehydrate_payload):
         FORM_GET_REHYDRATION_TOKEN_URL.format(form_name=form_name),
         json=rehydrate_payload,
     )
-    dictFromServer = res.json()
-    print(dictFromServer)
     if res.status_code == 201:
         token_json = res.json()
         return token_json["token"]
