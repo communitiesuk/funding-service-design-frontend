@@ -1,8 +1,7 @@
-import webbrowser
-
 from app.default.data import get_application_data
 from app.models.helpers import format_rehydrate_payload
 from app.models.helpers import get_token_to_return_to_application
+from flask import redirect
 
 
 def continue_form_section(
@@ -33,7 +32,8 @@ def continue_form_section(
     rehydration_token = get_token_to_return_to_application(
         form_name, rehydrate_payload
     )
-    webbrowser.open_new_tab(
+
+    return redirect(
         rehydration_url.format(rehydration_token=rehydration_token)
     )
 

@@ -6,7 +6,6 @@ from app.models.continue_application import continue_form_section
 from app.models.eligibility_questions import minimium_money_question_page
 from app.models.tasklist import tasklist_page
 from flask import Blueprint
-from flask import redirect
 from flask import render_template
 from flask import request
 from flask import url_for
@@ -41,10 +40,9 @@ def continue_application(application_id):
     args = request.args
     form_name = args.get("section_name")
     page_name = args.get("page_name")
-    continue_form_section(
+    return continue_form_section(
         application_id, form_name, page_name, FORM_REHYDRATION_URL
     )
-    return redirect(f"/tasklist/{application_id}", 302)
 
 
 @default_bp.route("/submit_application", methods=["POST"])
