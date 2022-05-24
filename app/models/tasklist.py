@@ -14,6 +14,11 @@ def tasklist_page(application_id):
         function: a function which renders the tasklist template.
     """
     application_response = get_application_data(application_id)
+    if not (application_response and application_response["sections"]):
+        return render_template(
+            "application_unknown.html", application_id=application_id
+        )
+
     application_meta_data = {
         "application_id": application_id,
         "round": application_response["round_id"],
