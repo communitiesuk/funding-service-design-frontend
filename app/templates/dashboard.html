@@ -1,0 +1,67 @@
+{%- from "govuk_frontend_jinja/components/tag/macro.html" import govukTag -%}
+{%- from "govuk_frontend_jinja/components/table/macro.html" import govukTable -%}
+{%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="govuk-heading-xl">Your applications</h1>
+    <p class="govuk-body">
+        You have started {% trans count=applications|length %} {{ count }} application {% pluralize %} {{ count }} applications {% endtrans %} using this email address.
+    </p>
+    {% set ns = namespace(rows = []) %}
+    {% for application in applications %}
+        {% set status_class %}
+        {%  if application.status == 'COMPLETED' %}
+            govuk-tag--green
+        {%  elif application.status == 'NOT_STARTED' %}
+            govuk-tag--red
+        {% endif %}
+    {% endset %}
+    {% set row = ns.rows.append(
+    [
+    {
+    'html': '<a class="govuk-link" href="{}">{}</a>'.format(url_for('routes.tasklist', application_id=application.id), application.project_name if application.project_name else 'Untitled project')
+    },
+    {
+    'text':  govukTag({
+    'text': application.status|replace('_',' ') ,
+    'classes': status_class
+    })
+    },
+    {
+    'text': application.started_at|datetime_format
+    },
+    {
+    'text': application.last_edited|datetime_format if application.last_edited
+    }
+    ]
+    ) %}
+{% endfor %}
+{{ govukTable({
+'head': [
+{
+'text': 'Project name'
+},
+{
+'text': 'Status'
+},
+{
+'text': 'Started on'
+},
+{
+'text': 'Last edited'
+}
+],
+'rows': ns.rows
+}) }}
+<form method="POST" action={{ url_for('routes.new', account_id=account_id) }}>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="account_id" value="{{ account_id }}">
+    <input type="hidden" name="fund_id" value="{{ applications[0]['fund_id'] }}">
+    <input type="hidden"
+           name="round_id"
+           value="{{ applications[0]['round_id'] }}">
+    {{ govukButton({
+    'text': "Start new application"
+    }) }}
+</form>
+{% endblock %}
