@@ -2,7 +2,7 @@
 from os import environ
 from os import path
 
-TEST_APPLICATION_STORE_API_HOST = "application_store"
+TEST_APPLICATION_STORE_API_HOST = "http://application_store"
 
 """
 Application Config
