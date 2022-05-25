@@ -46,6 +46,15 @@ def new(account_id):
             "fund_id": request.form["fund_id"],
         },
     )
+    new_application_json = new_application.json()
+    if new_application.status_code != 201 or not new_application_json.get(
+        "id"
+    ):
+        raise Exception(
+            "Unexpected response from application store when creating new"
+            " application: "
+            + str(new_application.status_code)
+        )
     return redirect(
         url_for(
             "routes.tasklist", application_id=new_application.json().get("id")
