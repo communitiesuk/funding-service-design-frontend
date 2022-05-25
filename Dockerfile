@@ -18,6 +18,5 @@ EXPOSE 3009
 
 ENV NODE_ENV=production
 ENV NODE_CONFIG='{"safelist": ["funding-service-design-application-store-dev.london.cloudapps.digital"]}'
-ENV NODE_CONFIG='{"whitelist": ["funding-service-design-application-store-dev.london.cloudapps.digital"]}'
 USER 1001
 CMD [ "yarn", "runner", "start"]
