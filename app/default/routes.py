@@ -10,6 +10,7 @@ from app.models.tasklist import tasklist_page
 from flask import Blueprint
 from flask import render_template
 from flask import request
+from flask import redirect
 from flask import url_for
 
 default_bp = Blueprint("routes", __name__, template_folder="templates")
