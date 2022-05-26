@@ -28,7 +28,7 @@ from "partials/tasklist_section.html" import tasklist_section %} {% block conten
   </div>
 </div>
 
-<form method="POST" action="/submit_application">
+<form method="POST" action="{{url_for('routes.submit_application')}}"">
   {{ form.csrf_token }}
   <input type="hidden" id="application_id" name="application_id" value="{{application_meta_data["application_id"]}}">
   <button class="govuk-button" data-module="govuk-button"

@@ -19,20 +19,20 @@ def test_routes_status_code(flask_test_client):
         assert response.status_code == 200
 
 
-# def test_routes_content(flask_test_client):
-#     """
-#     GIVEN Our Flask Application
-#     WHEN a route is requested
-#     THEN check that the get response contains the
-#     expected content.
+def test_routes_content(flask_test_client):
+    """
+    GIVEN Our Flask Application
+    WHEN a route is requested
+    THEN check that the get response contains the
+    expected content.
 
-#     If this test succeedes then our flask application's
-#     routes are correctly initialised.
-#     """
-#     for route, should_contain_this in routes_and_test_content.items():
+    If this test succeedes then our flask application's
+    routes are correctly initialised.
+    """
+    for route, should_contain_this in routes_and_test_content.items():
 
-#         response = flask_test_client.get(route, follow_redirects=True)
-#         assert should_contain_this in response.data
+        response = flask_test_client.get(route, follow_redirects=True)
+        assert should_contain_this in response.data
 
 
 def test_dodgy_url_returns_404(flask_test_client):

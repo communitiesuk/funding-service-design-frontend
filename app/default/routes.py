@@ -3,15 +3,19 @@ from app.config import APPLICATION_STORE_API_HOST
 from app.config import FORM_REHYDRATION_URL
 from app.config import FORMS_SERVICE_PUBLIC_HOST
 from app.config import SUBMIT_APPLICATION_ENDPOINT
+from app.default.data import get_application_data
+from app.models.application import Application
 from app.models.application_summary import ApplicationSummary
-from app.models.continue_application import continue_form_section
 from app.models.eligibility_questions import minimium_money_question_page
-from app.models.tasklist import tasklist_page
+from app.models.helpers import format_rehydrate_payload
+from app.models.helpers import get_token_to_return_to_application
 from flask import Blueprint
+from flask import redirect
 from flask import render_template
 from flask import request
-from flask import redirect
 from flask import url_for
+from flask_wtf import FlaskForm
+
 
 default_bp = Blueprint("routes", __name__, template_folder="templates")
 
@@ -74,16 +78,86 @@ def not_eligible():
 
 @default_bp.route("/tasklist/<application_id>", methods=["GET"])
 def tasklist(application_id):
-    return tasklist_page(application_id)
+    """
+    Returns a Flask function which constructs a tasklist for an application id.
+
+    Args:
+        application_id (str): the id of an application in the application store
+
+    Returns:
+        function: a function which renders the tasklist template.
+    """
+    application_response = get_application_data(application_id)
+    application = Application.from_dict(application_response)
+    if not (application and application.sections):
+        return render_template(
+            "application_unknown.html", application_id=application_id
+        )
+    form = FlaskForm()
+    application_meta_data = {
+        "application_id": application_id,
+        "round": application_response["round_id"],
+        "fund": application_response["fund_id"],
+        "number_of_sections": len(application_response["sections"]),
+        "number_of_completed_sections": len(
+            list(
+                filter(
+                    lambda section: section["status"] == "COMPLETED",
+                    application_response["sections"],
+                )
+            )
+        ),
+        "number_of_incomplete_sections": len(
+            list(
+                filter(
+                    lambda section: section["status"] == "NOT_STARTED",
+                    application_response["sections"],
+                )
+            )
+        ),
+    }
+    return render_template(
+        "tasklist.html",
+        application_response=application_response,
+        application_meta_data=application_meta_data,
+        form=form,
+    )
 
 
 @default_bp.route("/continue_application/<application_id>", methods=["GET"])
 def continue_application(application_id):
+    """
+    Returns a Flask function to return to an active application form.
+    This provides a way of returning to an applicants partially completed
+        application.
+
+    Args:
+        application_id (str): The id of an application in the application store
+        form_name (str): The name of the application sub form/section
+        page_name (str): The form page to redirect the user to.
+
+    Returns:
+        A function: given a users application id they are redirected to
+        the specified application form page within the form runner service
+    """
     args = request.args
     form_name = args.get("section_name")
     page_name = args.get("page_name")
-    return continue_form_section(
-        application_id, form_name, page_name, FORM_REHYDRATION_URL
+
+    response = get_application_data(application_id)
+    application_data = Application.from_dict(response)
+    section = application_data.get_section_data(application_data, form_name)
+
+    rehydrate_payload = format_rehydrate_payload(
+        section, application_id, page_name
+    )
+
+    rehydration_token = get_token_to_return_to_application(
+        form_name, rehydrate_payload
+    )
+
+    return redirect(
+        FORM_REHYDRATION_URL.format(rehydration_token=rehydration_token)
     )
 
 
