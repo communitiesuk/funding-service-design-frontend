@@ -55,11 +55,7 @@ def new(account_id):
             " application: "
             + str(new_application.status_code)
         )
-    return redirect(
-        url_for(
-            "routes.tasklist", application_id=new_application.json().get("id")
-        )
-    )
+    return redirect("/tasklist/" + new_application.json().get("id"))
 
 
 @default_bp.route("/funding_amount_eligibility", methods=["GET", "POST"])
