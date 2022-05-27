@@ -17,6 +17,6 @@ USER appuser
 
 EXPOSE 3009
 
-ENV NODE_ENV=development
+ENV NODE_ENV=production
 USER 1001
 CMD [ "yarn", "runner", "start"]
