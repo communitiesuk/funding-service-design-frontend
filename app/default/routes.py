@@ -9,6 +9,7 @@ from app.models.application_summary import ApplicationSummary
 from app.models.eligibility_questions import minimium_money_question_page
 from app.models.helpers import format_rehydrate_payload
 from app.models.helpers import get_token_to_return_to_application
+from flask import abort
 from flask import Blueprint
 from flask import redirect
 from flask import render_template
@@ -89,7 +90,7 @@ def tasklist(application_id):
     """
     application_response = get_application_data(application_id)
     if not (application_response and application_response["sections"]):
-        return render_template("404.html")
+        return abort(404)
     application = Application.from_dict(application_response)
     form = FlaskForm()
     application_meta_data = {
