@@ -36,4 +36,3 @@ applications:
   sandbox: true
   env:
     PREVIEW_MODE: TRUE
-    NODE_CONFIG: '{"safelist": ["funding-service-design-application-store-dev.london.cloudapps.digital"]}'

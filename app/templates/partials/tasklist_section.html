@@ -9,7 +9,7 @@
       {% for question_page in section["questions"]%}
       <li class="app-task-list__item">
         <span class="app-task-list__task-name">
-          <a class="govuk-body govuk-link govuk-link--no-visited-state" href="/continue_application/{{application_id}}?section_name={{section["section_name"]}}&page_name={{question_page["question"]}}">
+          <a class="govuk-body govuk-link govuk-link--no-visited-state" href="{{url_for("routes.continue_application", application_id=application_id, section_name=section["section_name"], page_name=question_page["question"])}}">
             {{question_page["question"]}}
           </a>
         </span>
