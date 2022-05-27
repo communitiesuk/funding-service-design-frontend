@@ -88,22 +88,20 @@ def tasklist(application_id):
         function: a function which renders the tasklist template.
     """
     application_response = get_application_data(application_id)
+    if not (application_response and application_response["sections"]):
+        return render_template("404.html")
     application = Application.from_dict(application_response)
-    if not (application and application.sections):
-        return render_template(
-            "application_unknown.html", application_id=application_id
-        )
     form = FlaskForm()
     application_meta_data = {
         "application_id": application_id,
-        "round": application_response["round_id"],
-        "fund": application_response["fund_id"],
-        "number_of_sections": len(application_response["sections"]),
+        "round": application.round_id,
+        "fund": application.fund_id,
+        "number_of_sections": len(application.sections),
         "number_of_completed_sections": len(
             list(
                 filter(
-                    lambda section: section["status"] == "COMPLETED",
-                    application_response["sections"],
+                    lambda section: section["status"] == "SUBMITTED",
+                    application.sections,
                 )
             )
         ),
@@ -111,14 +109,14 @@ def tasklist(application_id):
             list(
                 filter(
                     lambda section: section["status"] == "NOT_STARTED",
-                    application_response["sections"],
+                    application.sections,
                 )
             )
         ),
     }
     return render_template(
         "tasklist.html",
-        application_response=application_response,
+        application_response=application,
         application_meta_data=application_meta_data,
         form=form,
     )
