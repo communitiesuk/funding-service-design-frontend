@@ -42,6 +42,7 @@ pluggy==1.0.0
 pre-commit==2.16.0
 py==1.11.0
 pycparser==2.21
+PyJWT[crypto]==2.4.0
 pyOpenSSL==22.0.0
 pyparsing==3.0.6
 pytest==6.2.5

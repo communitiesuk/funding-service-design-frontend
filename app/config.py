@@ -1,4 +1,5 @@
 """Flask configuration."""
+import os
 from os import environ
 from os import path
 
@@ -38,9 +39,10 @@ FORM_REHYDRATION_URL = (
 # Application Store Service Config
 
 APPLICATION_STORE_API_HOST = (
-    environ.get("APPLICATION_STORE_API_HOST")
-    or TEST_APPLICATION_STORE_API_HOST
+    environ.get("APPLICATION_STORE_API_HOST", TEST_APPLICATION_STORE_API_HOST)
 )
+  
+
 GET_APPLICATION_ENDPOINT = (
     APPLICATION_STORE_API_HOST + "/applications/{application_id}"
 )
@@ -54,3 +56,15 @@ SUBMIT_APPLICATION_ENDPOINT = (
 DEFAULT_FUND_ID = "funding-service-design"
 DEFAULT_ROUND_ID = "summer"
 FSD_USER_TOKEN_COOKIE_NAME = "fsd_user_token"
+
+RSA256_PUBLIC_KEY = (
+    environ.get("RSA256_PUBLIC_KEY")
+    or """# This is public key used for testing only
+-----BEGIN PUBLIC KEY-----
+MIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgHGbtF1yVGW+rCAFOIdakUVwCfuv
+xHE38lE/i0KWpMwdSHZFFLYnHjBVOOh15EiizYza4FTJTMvL2E4QrLpqYj6KE6tv
+HrhyP/N5fypSzt8vCj9spZ8+0kFucW9zyMkPuDisYtmkWGdxBmkd3gtYp3mOI53V
+VDgKbtoIFU3sIk5NAgMBAAE=
+-----END PUBLIC KEY-----
+"""
+)

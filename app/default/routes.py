@@ -8,6 +8,7 @@ from app.models.application_summary import ApplicationSummary
 from app.models.continue_application import continue_form_section
 from app.models.eligibility_questions import minimium_money_question_page
 from app.models.tasklist import tasklist_page
+from app.security.decorator import token_required
 from flask import Blueprint
 from flask import redirect
 from flask import render_template
@@ -25,6 +26,7 @@ def index():
 
 
 @default_bp.route("/account/<account_id>")
+@token_required
 def dashboard(account_id):
     response = requests.get(
         f"{APPLICATION_STORE_API_HOST}/applications?account_id={account_id}"
@@ -83,6 +85,7 @@ def not_eligible():
     return render_template("not_eligible.html")
 
 
+@token_required
 @default_bp.route("/tasklist/<application_id>", methods=["GET"])
 def tasklist(application_id):
     return tasklist_page(application_id)
