@@ -15,14 +15,14 @@ def _check_access_token():
         return abort(403)
 
 
-def token_required(f):
-    """Execute function if request contains valid access token."""
+def login_required(f):
+    """Execute function if request contains valid JWT
+    and pass account_id to route."""
 
     @wraps(f)
     def decorated(*args, **kwargs):
         token_payload = _check_access_token()
-        for name, val in token_payload.items():
-            setattr(decorated, name, val)
+        kwargs["account_id"] = token_payload.get("accountId")
         return f(*args, **kwargs)
 
     return decorated
