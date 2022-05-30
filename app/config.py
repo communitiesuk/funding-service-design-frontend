@@ -53,3 +53,4 @@ SUBMIT_APPLICATION_ENDPOINT = (
 
 DEFAULT_FUND_ID = "funding-service-design"
 DEFAULT_ROUND_ID = "summer"
+FSD_USER_TOKEN_COOKIE_NAME = "fsd_user_token"
