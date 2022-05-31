@@ -36,30 +36,30 @@
     ]
     ) %}
 {% endfor %}
-{{ govukTable({
-'head': [
-{
-'text': 'Project name'
-},
-{
-'text': 'Status'
-},
-{
-'text': 'Started on'
-},
-{
-'text': 'Last edited'
-}
-],
-'rows': ns.rows
-}) }}
+{% if applications|length > 0 %}
+    {{ govukTable({
+    'head': [
+    {
+    'text': 'Project name'
+    },
+    {
+    'text': 'Status'
+    },
+    {
+    'text': 'Started on'
+    },
+    {
+    'text': 'Last edited'
+    }
+    ],
+    'rows': ns.rows
+    }) }}
+{% endif %}
 <form method="POST" action={{ url_for('routes.new', account_id=account_id) }}>
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <input type="hidden" name="account_id" value="{{ account_id }}">
-    <input type="hidden" name="fund_id" value="{{ applications[0]['fund_id'] }}">
-    <input type="hidden"
-           name="round_id"
-           value="{{ applications[0]['round_id'] }}">
+    <input type="hidden" name="fund_id" value="{{ fund_id }}">
+    <input type="hidden" name="round_id" value="{{ round_id }}">
     {{ govukButton({
     'text': "Start new application"
     }) }}

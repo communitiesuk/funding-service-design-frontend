@@ -1,4 +1,5 @@
 import requests
+from app import config
 from app.config import APPLICATION_STORE_API_HOST
 from app.config import FORM_REHYDRATION_URL
 from app.config import FORMS_SERVICE_PUBLIC_HOST
@@ -31,8 +32,18 @@ def dashboard(account_id):
     applications: list[ApplicationSummary] = [
         ApplicationSummary.from_dict(application) for application in response
     ]
+    if len(applications) > 0:
+        round_id = applications[0].round_id
+        fund_id = applications[0].fund_id
+    else:
+        round_id = config.DEFAULT_ROUND_ID
+        fund_id = config.DEFAULT_FUND_ID
     return render_template(
-        "dashboard.html", account_id=account_id, applications=applications
+        "dashboard.html",
+        account_id=account_id,
+        applications=applications,
+        round_id=round_id,
+        fund_id=fund_id,
     )
 
 
@@ -42,8 +53,8 @@ def new(account_id):
         url=f"{APPLICATION_STORE_API_HOST}/applications",
         json={
             "account_id": account_id,
-            "round_id": request.form["round_id"],
-            "fund_id": request.form["fund_id"],
+            "round_id": request.form["round_id"] or config.DEFAULT_ROUND_ID,
+            "fund_id": request.form["fund_id"] or config.DEFAULT_FUND_ID,
         },
     )
     new_application_json = new_application.json()
