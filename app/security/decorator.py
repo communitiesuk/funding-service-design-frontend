@@ -2,7 +2,7 @@ from functools import wraps
 
 from app import config
 from app.security.utils import validate_token
-from flask import abort
+from flask import redirect
 from flask import request
 
 
@@ -12,7 +12,10 @@ def _check_access_token():
         valid_token = validate_token(login_cookie)
         return valid_token
     else:
-        return abort(403)
+        return redirect(
+            f"{config.AUTHENTICATOR_HOST}/magic-links/"
+            f"new?return_url={request.url}"
+        )
 
 
 def login_required(f):

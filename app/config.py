@@ -57,14 +57,19 @@ DEFAULT_FUND_ID = "funding-service-design"
 DEFAULT_ROUND_ID = "summer"
 FSD_USER_TOKEN_COOKIE_NAME = "fsd_user_token"
 
-RSA256_PUBLIC_KEY = (
-    environ.get("RSA256_PUBLIC_KEY")
-    or """# This is public key used for testing only
+AUTHENTICATOR_HOST = (
+    environ.get("AUTHENTICATOR_HOST"),
+    "http://localhost:3004",
+)
+
+RSA256_PUBLIC_KEY = environ.get(
+    "RSA256_PUBLIC_KEY",
+    """# This is public key used for testing only
 -----BEGIN PUBLIC KEY-----
 MIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgHGbtF1yVGW+rCAFOIdakUVwCfuv
 xHE38lE/i0KWpMwdSHZFFLYnHjBVOOh15EiizYza4FTJTMvL2E4QrLpqYj6KE6tv
 HrhyP/N5fypSzt8vCj9spZ8+0kFucW9zyMkPuDisYtmkWGdxBmkd3gtYp3mOI53V
 VDgKbtoIFU3sIk5NAgMBAAE=
 -----END PUBLIC KEY-----
-"""
+""",
 )
