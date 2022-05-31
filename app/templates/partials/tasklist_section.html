@@ -1,7 +1,7 @@
-{% macro tasklist_section(section, application_id, index, format_text) %}
+{% macro tasklist_section(section, application_id, index) %}
 <li>
     <h2 class="app-task-list__section">
-      <span class="app-task-list__section-number">{{index}}. </span> {{format_text(section["section_name"])}}
+      <span class="app-task-list__section-number">{{index}}. </span> {{section["section_name"]|kebab_case_to_human}}
     </h2>
 
     <ul class="app-task-list__items">
@@ -13,7 +13,7 @@
             {{question_page["question"]}}
           </a>
         </span>
-        <span class="app-task-list__tag" id="read-declaration-status">{{format_text(section["status"])}}</span>
+        <span class="app-task-list__tag" id="read-declaration-status">{{section["status"]|snake_case_to_human}}</span>
       </li>
       {% endfor %}
     </ul>
