@@ -50,3 +50,6 @@ UPDATE_APPLICATION_SECTION_ENDPOINT = (
 SUBMIT_APPLICATION_ENDPOINT = (
     APPLICATION_STORE_API_HOST + "/applications/{application_id}/submit"
 )
+
+DEFAULT_FUND_ID = "funding-service-design"
+DEFAULT_ROUND_ID = "summer"
