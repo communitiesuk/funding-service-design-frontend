@@ -5,8 +5,8 @@ from "partials/tasklist_section.html" import tasklist_section %} {% block conten
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
-      {{application_meta_data["fund"].replace("-", " ")|title}}
-      Round: {{application_meta_data["round"].replace("-", " ")|title}}
+      {{format_text(application_meta_data["fund"])}}
+      Round: {{format_text(application_meta_data["round"])}}
     </h1>
     <h2 class="govuk-body govuk-!-font-weight-bold">
       {% if application_meta_data["number_of_completed_sections"] == application_meta_data["number_of_sections"] %}
@@ -23,7 +23,8 @@ from "partials/tasklist_section.html" import tasklist_section %} {% block conten
     <ol class="app-task-list">
       {% for section in application_response['sections'] %}
       {{tasklist_section(section, application_meta_data["application_id"],
-      loop.index)}} {% endfor %}
+      loop.index, format_text)}}
+      {% endfor %}
     </ol>
   </div>
 </div>

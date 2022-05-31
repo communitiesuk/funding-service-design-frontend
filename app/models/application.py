@@ -3,6 +3,8 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import List
 
+from app.models.application_parts.section import Section
+
 
 @dataclass
 class Application:
@@ -15,7 +17,7 @@ class Application:
     date_submitted: datetime
     started_at: datetime
     last_edited: datetime
-    sections: List
+    sections: List[Section]
 
     @classmethod
     def get_section_data(cls, application_data, section_name):
@@ -34,3 +36,12 @@ class Application:
                 if k in inspect.signature(cls).parameters
             }
         )
+
+    # TO DO: ENFORCE TYPES
+    # def __post_init__(self):
+    #     for (name, field_type) in self.__annotations__.items():
+    #         if not isinstance(self.__dict__[name], field_type):
+    #             current_type = type(self.__dict__[name])
+    #             raise TypeError(f"The field `{name}` was assigned by
+    #               `{current_type}` instead of `{field_type}`")
+    #     print("Check is passed successfully")
