@@ -1,4 +1,4 @@
-"""Flask configuration."""
+# Flask configuration.
 from os import environ
 from os import path
 

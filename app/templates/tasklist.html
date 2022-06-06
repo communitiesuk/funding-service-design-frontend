@@ -5,8 +5,8 @@ from "partials/tasklist_section.html" import tasklist_section %} {% block conten
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
-      {{application_meta_data["fund"].replace("-", " ")|title}}
-      Round: {{application_meta_data["round"].replace("-", " ")|title}}
+      {{application_meta_data["fund"]|kebab_case_to_human}}
+      Round: {{application_meta_data["round"]|snake_case_to_human}}
     </h1>
     <h2 class="govuk-body govuk-!-font-weight-bold">
       {% if application_meta_data["number_of_completed_sections"] == application_meta_data["number_of_sections"] %}
@@ -23,12 +23,13 @@ from "partials/tasklist_section.html" import tasklist_section %} {% block conten
     <ol class="app-task-list">
       {% for section in application_response['sections'] %}
       {{tasklist_section(section, application_meta_data["application_id"],
-      loop.index)}} {% endfor %}
+      loop.index)}}
+      {% endfor %}
     </ol>
   </div>
 </div>
 
-<form method="POST" action="/submit_application">
+<form method="POST" action="{{url_for('routes.submit_application')}}"">
   {{ form.csrf_token }}
   <input type="hidden" id="application_id" name="application_id" value="{{application_meta_data["application_id"]}}">
   <button class="govuk-button" data-module="govuk-button"

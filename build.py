@@ -50,6 +50,12 @@ def build_assets():
 
     print("Deleting app/static/assets")
 
+    # Copy css
+    os.makedirs("./app/static/styles")
+    shutil.copyfile(
+        "static/src/styles/tasklist.css", "./app/static/styles/tasklist.css"
+    )
+
     # Deletes temp. files.
     shutil.rmtree("./app/static/assets")
     os.remove("./govuk_frontend.zip")
