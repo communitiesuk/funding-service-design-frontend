@@ -112,7 +112,7 @@ def tasklist(application_id):
         "number_of_completed_sections": len(
             list(
                 filter(
-                    lambda section: section["status"] == "SUBMITTED",
+                    lambda section: section["status"] == "COMPLETED",
                     application.sections,
                 )
             )

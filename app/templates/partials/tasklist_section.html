@@ -13,7 +13,9 @@
             {{question_page["question"]}}
           </a>
         </span>
-        <span class="app-task-list__tag" id="read-declaration-status">{{section["status"]|snake_case_to_human}}</span>
+        <span class="app-task-list__tag" id="read-declaration-status">
+          {{ question_page["status"]|snake_case_to_human or "Not Started"}}
+        </span>
       </li>
       {% endfor %}
     </ul>
