@@ -222,6 +222,7 @@ jobs:
 
   deploy_test:
     needs: security
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: test
     steps:
