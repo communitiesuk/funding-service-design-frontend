@@ -1,11 +1,11 @@
 import requests
 from app import config
-from app.config import APPLICATION_STATUSES
 from app.config import APPLICATION_STORE_API_HOST
 from app.config import FORM_REHYDRATION_URL
 from app.config import FORMS_SERVICE_PUBLIC_HOST
 from app.config import SUBMIT_APPLICATION_ENDPOINT
 from app.default.data import get_application_data
+from app.enums import APPLICATION_STATUSES
 from app.models.application import Application
 from app.models.application_summary import ApplicationSummary
 from app.models.eligibility_questions import minimium_money_question_page
@@ -109,13 +109,14 @@ def tasklist(application_id):
         "application_id": application_id,
         "round": application.round_id,
         "fund": application.fund_id,
-        "application_statuses": APPLICATION_STATUSES,
+        "completed_status": APPLICATION_STATUSES.COMPLETED.name,
+        "submitted_status": APPLICATION_STATUSES.SUBMITTED.name,
         "number_of_sections": len(application.sections),
         "number_of_completed_sections": len(
             list(
                 filter(
                     lambda section: section["status"]
-                    == APPLICATION_STATUSES[2],
+                    == APPLICATION_STATUSES.COMPLETED.name,
                     application.sections,
                 )
             )
