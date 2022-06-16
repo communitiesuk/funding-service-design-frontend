@@ -40,7 +40,9 @@ from "partials/tasklist_section.html" import tasklist_section %} {% block conten
   {% if not application_response["status"] == application_meta_data["completed_status"] %}
     disabled
   {% endif %}
-  >Submit</button>
+  >
+    Submit
+  </button>
 </form>
 {% endif %}
 {% endblock %}
