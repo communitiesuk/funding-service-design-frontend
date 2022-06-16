@@ -1,11 +1,11 @@
 import requests
 from app import config
+from app.application_status import ApplicationStatus
 from app.config import APPLICATION_STORE_API_HOST
 from app.config import FORM_REHYDRATION_URL
 from app.config import FORMS_SERVICE_PUBLIC_HOST
 from app.config import SUBMIT_APPLICATION_ENDPOINT
 from app.default.data import get_application_data
-from app.enums import ApplicationStatus
 from app.models.application import Application
 from app.models.application_summary import ApplicationSummary
 from app.models.eligibility_questions import minimium_money_question_page
