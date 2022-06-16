@@ -1,5 +1,6 @@
 import requests
 from app import config
+from app.application_status import ApplicationStatus
 from app.config import APPLICATION_STORE_API_HOST
 from app.config import FORM_REHYDRATION_URL
 from app.config import FORMS_SERVICE_PUBLIC_HOST
@@ -108,19 +109,14 @@ def tasklist(application_id):
         "application_id": application_id,
         "round": application.round_id,
         "fund": application.fund_id,
+        "completed_status": ApplicationStatus.COMPLETED.name,
+        "submitted_status": ApplicationStatus.SUBMITTED.name,
         "number_of_sections": len(application.sections),
         "number_of_completed_sections": len(
             list(
                 filter(
-                    lambda section: section["status"] == "COMPLETED",
-                    application.sections,
-                )
-            )
-        ),
-        "number_of_incomplete_sections": len(
-            list(
-                filter(
-                    lambda section: section["status"] == "NOT_STARTED",
+                    lambda section: section["status"]
+                    == ApplicationStatus.COMPLETED.name,
                     application.sections,
                 )
             )

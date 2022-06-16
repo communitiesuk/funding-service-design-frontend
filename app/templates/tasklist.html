@@ -8,6 +8,7 @@ from "partials/tasklist_section.html" import tasklist_section %} {% block conten
       {{application_meta_data["fund"]|kebab_case_to_human}}
       Round: {{application_meta_data["round"]|snake_case_to_human}}
     </h1>
+    {% if not application_response["status"] == application_meta_data["submitted_status"] %}
     <h2 class="govuk-body govuk-!-font-weight-bold">
       {% if application_meta_data["number_of_completed_sections"] == application_meta_data["number_of_sections"] %}
        All sections complete
@@ -20,6 +21,7 @@ from "partials/tasklist_section.html" import tasklist_section %} {% block conten
       {{application_meta_data["number_of_completed_sections"]}} of
       {{application_meta_data["number_of_sections"]}} sections.
     </p>
+    {% endif %}
     <ol class="app-task-list">
       {% for section in application_response['sections'] %}
       {{tasklist_section(section, application_meta_data["application_id"],
@@ -29,15 +31,18 @@ from "partials/tasklist_section.html" import tasklist_section %} {% block conten
   </div>
 </div>
 
+
+{% if not application_response["status"] == application_meta_data["submitted_status"] %}
 <form method="POST" action="{{url_for('routes.submit_application')}}"">
   {{ form.csrf_token }}
   <input type="hidden" id="application_id" name="application_id" value="{{application_meta_data["application_id"]}}">
   <button class="govuk-button" data-module="govuk-button"
-  {% if application_meta_data["number_of_incomplete_sections"] == application_meta_data["number_of_sections"] %}
-  disabled
- {% endif %}
-  >Submit</button>
-
+  {% if not application_response["status"] == application_meta_data["completed_status"] %}
+    disabled
+  {% endif %}
+  >
+    Submit
+  </button>
 </form>
-
+{% endif %}
 {% endblock %}
