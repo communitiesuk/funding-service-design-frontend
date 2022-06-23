@@ -36,3 +36,6 @@ applications:
   sandbox: true
   env:
     PREVIEW_MODE: TRUE
+    LOG_PRETTY_PRINT: FALSE
+  services: # eg. Redis
+    - logit-ssl-drain
