@@ -2,7 +2,6 @@
     "isTest": true,
     "previewMode": true,
     "enforceCsrf": false,
-    "logPrettyPrint": false,
     "env": "development",
     "safelist": ["funding-service-design-application-store-dev.london.cloudapps.digital", "funding-service-design-application-store-test.london.cloudapps.digital"]
   }
