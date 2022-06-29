@@ -163,7 +163,11 @@ def continue_application(application_id):
     )
 
     return redirect(
-        Config.FORM_REHYDRATION_URL.format(rehydration_token=rehydration_token)
+        Config.FORM_REHYDRATION_URL.format(
+            rehydration_token=rehydration_token
+        ).replace(
+            Config.FORMS_SERVICE_PRIVATE_HOST, Config.FORMS_SERVICE_PUBLIC_HOST
+        )
     )
 
 

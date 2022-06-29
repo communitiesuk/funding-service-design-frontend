@@ -5,12 +5,13 @@ import requests
 from config import Config
 
 
+
 def get_data(endpoint: str):
-    if endpoint.startswith("https://"):
-        data = get_remote_data(endpoint)
-    else:
-        data = get_local_data(endpoint)
-    return data
+    return (
+        get_local_data(endpoint)
+        if Config.USE_LOCAL_DATA
+        else get_remote_data(endpoint)
+    )
 
 
 def get_remote_data(endpoint):
@@ -26,6 +27,7 @@ def get_local_data(endpoint: str):
     api_data_json = os.path.join(
         Config.FLASK_ROOT, "tests", "api_data", "endpoint_data.json"
     )
+
     fp = open(api_data_json)
     api_data = json.load(fp)
     fp.close()

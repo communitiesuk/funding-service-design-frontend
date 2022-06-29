@@ -1,7 +1,9 @@
 """Flask configuration."""
 from os import environ
+from os import getenv
 from pathlib import Path
 
+from distutils.util import strtobool
 from fsd_utils import configclass
 
 
@@ -51,12 +53,15 @@ class DefaultConfig:
     )
     FORMS_SERVICE_JSONS_PATH = "form_jsons"
 
+    FORMS_SERVICE_PRIVATE_HOST = getenv("FORMS_SERVICE_PRIVATE_HOST")
+
     FORM_GET_REHYDRATION_TOKEN_URL = (
-        FORMS_SERVICE_PUBLIC_HOST + "/session/{form_name}"
-    )
+        FORMS_SERVICE_PRIVATE_HOST or FORMS_SERVICE_PUBLIC_HOST
+    ) + "/session/{form_name}"
+
     FORM_REHYDRATION_URL = (
-        FORMS_SERVICE_PUBLIC_HOST + "/session/{rehydration_token}"
-    )
+        FORMS_SERVICE_PRIVATE_HOST or FORMS_SERVICE_PUBLIC_HOST
+    ) + "/session/{rehydration_token}"
 
     # Content Security Policy
     SECURE_CSP = {
@@ -112,3 +117,5 @@ class DefaultConfig:
         "x_content_type_options": True,
         "x_xss_protection": True,
     }
+
+    USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "False"))
