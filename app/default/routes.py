@@ -100,6 +100,9 @@ def tasklist(application_id):
     Returns:
         function: a function which renders the tasklist template.
     """
+    import logging
+
+    logging.error("IN TASKLIST FUNCTION")
     application_response = get_application_data(application_id)
     if not (application_response and application_response["sections"]):
         return abort(404)

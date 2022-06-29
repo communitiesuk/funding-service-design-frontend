@@ -4,14 +4,15 @@ import os
 import requests
 from app.config import FLASK_ROOT
 from app.config import GET_APPLICATION_ENDPOINT
+from app.config import USE_LOCAL_DATA
 
 
 def get_data(endpoint: str):
-    if endpoint.startswith("https://"):
-        data = get_remote_data(endpoint)
-    else:
-        data = get_local_data(endpoint)
-    return data
+    return (
+        get_local_data(endpoint)
+        if USE_LOCAL_DATA
+        else get_remote_data(endpoint)
+    )
 
 
 def get_remote_data(endpoint):
@@ -27,6 +28,7 @@ def get_local_data(endpoint: str):
     api_data_json = os.path.join(
         FLASK_ROOT, "tests", "api_data", "endpoint_data.json"
     )
+
     fp = open(api_data_json)
     api_data = json.load(fp)
     fp.close()

@@ -1,6 +1,9 @@
 # Flask configuration.
 from os import environ
+from os import getenv
 from os import path
+
+from distutils.util import strtobool
 
 TEST_APPLICATION_STORE_API_HOST = "http://application_store"
 
@@ -40,6 +43,11 @@ FORM_REHYDRATION_URL = (
 APPLICATION_STORE_API_HOST = (
     environ.get("APPLICATION_STORE_API_HOST")
     or TEST_APPLICATION_STORE_API_HOST
+)
+
+# Needs a value and that value must be True
+USE_LOCAL_DATA = getenv("USE_LOCAL_DATA") is not None and strtobool(
+    getenv("USE_LOCAL_DATA")
 )
 GET_APPLICATION_ENDPOINT = (
     APPLICATION_STORE_API_HOST + "/applications/{application_id}"
