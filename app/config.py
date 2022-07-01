@@ -3,7 +3,7 @@ from os import environ
 from os import path
 
 TEST_APPLICATION_STORE_API_HOST = "http://application_store"
-
+FLASK_ENV = "development"
 
 # Application Config
 

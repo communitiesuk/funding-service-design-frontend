@@ -13,6 +13,7 @@ from app.models.helpers import format_rehydrate_payload
 from app.models.helpers import get_token_to_return_to_application
 from flask import abort
 from flask import Blueprint
+from flask import current_app
 from flask import redirect
 from flask import render_template
 from flask import request
@@ -25,6 +26,7 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 
 @default_bp.route("/")
 def index():
+    current_app.logger.info("Hello world page loaded.")
     return render_template(
         "index.html", service_url=url_for("routes.max_funding_criterion")
     )
