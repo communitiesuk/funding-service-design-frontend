@@ -30,12 +30,16 @@ FORMS_SERVICE_PREVIEW_HOST = (
 FORMS_SERVICE_JSONS_PATH = (
     environ.get("FORMS_SERVICE_JSONS_PATH") or "form_jsons"
 )
+
+FORMS_SERVICE_PRIVATE_HOST = getenv("FORMS_SERVICE_PRIVATE_HOST")
+
 FORM_GET_REHYDRATION_TOKEN_URL = (
-    FORMS_SERVICE_PUBLIC_HOST + "/session/{form_name}"
-)
+    FORMS_SERVICE_PRIVATE_HOST or FORMS_SERVICE_PUBLIC_HOST
+) + "/session/{form_name}"
+
 FORM_REHYDRATION_URL = (
-    FORMS_SERVICE_PUBLIC_HOST + "/session/{rehydration_token}"
-)
+    FORMS_SERVICE_PRIVATE_HOST or FORMS_SERVICE_PUBLIC_HOST
+) + "/session/{rehydration_token}"
 
 
 # Application Store Service Config
