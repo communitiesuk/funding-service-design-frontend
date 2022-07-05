@@ -31,8 +31,9 @@ def index():
 @default_bp.route("/account/<account_id>")
 def dashboard(account_id):
     response = requests.get(
-        f"{Config.APPLICATION_STORE_API_HOST}/applications?"
-        "account_id={account_id}"
+        Config.GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT.format(
+            account_id=account_id
+        )
     ).json()
     applications: list[ApplicationSummary] = [
         ApplicationSummary.from_dict(application) for application in response
