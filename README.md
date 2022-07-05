@@ -32,9 +32,18 @@ Clone the repository
     .venv\Scripts\activate.bat
 
 ### Install dependencies
+
+requirements-dev.txt and requirements.txt are updated using [pip-tools pip-compile](https://github.com/jazzband/pip-tools)
+To update requirements please manually add the dependencies in the .in files (not the requirements.txt files)
+Then run (in the following order):
+
+    pip-compile requirements.in
+
+    pip-compile requirements-dev.in
+
 From the top-level directory enter the command to install pip and the dependencies of the project
 
-    python3 -m pip install --upgrade pip && pip install -r requirements.txt
+    python3 -m pip install --upgrade pip && pip install -r requirements-dev.txt
 
 ## How to use
 Enter the virtual environment as described above, then:
@@ -90,17 +99,7 @@ Place brief descriptions of Pipelines here
 
 To run all tests including aXe accessibility tests (using Chrome driver for Selenium) in a development environment run:
 
-...on macOS
-
-    pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_mac64
-
-...on linux64
-
-    pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_linux64
-
-...on win32
-
-    pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_win32.exe
+    pytest
 
 The aXe reports are printed at /axe_reports
 

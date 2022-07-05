@@ -1,0 +1,13 @@
+-r requirements.txt
+axe_selenium_python
+bandit
+pytest
+pytest-env
+pytest-flask
+pytest-mock
+pytest-selenium
+pytest-selenium
+requests-mock
+safety
+selenium
+webdriver_manager

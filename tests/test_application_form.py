@@ -17,18 +17,11 @@ import json
 import os
 
 import pytest
-from app.config import FORMS_SERVICE_JSONS_PATH
-from app.config import FORMS_SERVICE_NAME
-from app.config import FORMS_SERVICE_PREVIEW_HOST
-from app.config import FORMS_SERVICE_PUBLIC_HOST
+from config import Config
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.errorhandler import NoSuchElementException
 from tests.test_accessibility import run_axe_and_print_report
 from tests.utils import print_html_page
-
-# from urllib import parse
-# from urllib import request
-# from urllib.error import HTTPError
 
 
 @pytest.mark.usefixtures("selenium_chrome_driver")
@@ -38,9 +31,9 @@ class TestFormURLsWithChrome:
 
     @staticmethod
     def get_form_service_host(form_dir):
-        host = FORMS_SERVICE_PUBLIC_HOST
+        host = Config.FORMS_SERVICE_PUBLIC_HOST
         if form_dir == "preview":
-            host = FORMS_SERVICE_PREVIEW_HOST
+            host = Config.FORMS_SERVICE_PREVIEW_HOST
         return host
 
     def get_test_form_pages(self):
@@ -55,7 +48,7 @@ class TestFormURLsWithChrome:
         forms = {}
         for form_dir in self.form_dirs:
             form_jsons_dir = os.path.join(
-                ".", FORMS_SERVICE_JSONS_PATH, form_dir
+                ".", Config.FORMS_SERVICE_JSONS_PATH, form_dir
             )
             form_jsons = fnmatch.filter(os.listdir(form_jsons_dir), "*.json")
             forms.update({form_dir: {}})
@@ -71,7 +64,9 @@ class TestFormURLsWithChrome:
                 + str(
                     ", ".join(
                         [
-                            "/".join([FORMS_SERVICE_JSONS_PATH, form_dir])
+                            "/".join(
+                                [Config.FORMS_SERVICE_JSONS_PATH, form_dir]
+                            )
                             for form_dir in self.form_dirs
                         ]
                     )
@@ -101,7 +96,7 @@ class TestFormURLsWithChrome:
                 route_rel = form_name + path
                 results = self.run_axe_print_and_return_results(
                     {
-                        "name": FORMS_SERVICE_NAME,
+                        "name": Config.FORMS_SERVICE_NAME,
                         "host": self.get_form_service_host(form_dir),
                     },
                     route_rel,
@@ -131,7 +126,7 @@ class TestFormURLsWithChrome:
                 print_html_page(
                     html=source,
                     service_dict={
-                        "name": FORMS_SERVICE_NAME,
+                        "name": Config.FORMS_SERVICE_NAME,
                         "host": self.get_form_service_host(form_dir),
                     },
                     route_rel=route_rel,
@@ -162,7 +157,7 @@ class TestFormURLsWithChrome:
         route_rel = "page-does-not-exist"
         results = self.run_axe_print_and_return_results(
             {
-                "name": FORMS_SERVICE_NAME,
+                "name": Config.FORMS_SERVICE_NAME,
                 "host": self.get_form_service_host("public"),
             },
             route_rel,

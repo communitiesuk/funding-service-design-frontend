@@ -3,7 +3,7 @@ Utility functions for running tests and generating reports
 """
 import os
 
-from app.config import LOCAL_SERVICE_NAME
+from config import Config
 from flask import url_for
 
 
@@ -19,7 +19,7 @@ def get_service_html_filepath(
         filename = "index"
     filename = filename + ".html"
 
-    if service["name"] and service["name"] != LOCAL_SERVICE_NAME:
+    if service["name"] and service["name"] != Config.LOCAL_SERVICE_NAME:
         path.append(service["name"])
 
     if len(route_list) > 0:
@@ -48,7 +48,7 @@ def print_html_page(html: str, service_dict: dict, route_rel: str):
 def get_service(service: dict):
     if not service:
         service = {
-            "name": LOCAL_SERVICE_NAME,
+            "name": Config.LOCAL_SERVICE_NAME,
             "host": url_for("routes.index", _external=True),
         }
     else:

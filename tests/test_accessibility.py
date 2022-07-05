@@ -6,8 +6,8 @@ import os
 from urllib.request import urlopen
 
 import pytest
-from app.config import LOCAL_SERVICE_NAME
 from axe_selenium_python import Axe
+from config import Config
 from flask import url_for
 from json2html import json2html
 from selenium.webdriver.chrome.webdriver import WebDriver
@@ -33,7 +33,7 @@ def get_report_filename(service_dict: dict, route_rel: str, route_name: str):
     service = get_service(service_dict)
     report_root = ""
 
-    if service["name"] != LOCAL_SERVICE_NAME:
+    if service["name"] != Config.LOCAL_SERVICE_NAME:
         report_root = service["name"] + "__"
 
     if not route_name:
