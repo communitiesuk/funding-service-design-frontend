@@ -3,12 +3,12 @@ Flask_Babel
 Flask_Compress
 flask_talisman
 Flask_WTF
+govuk-frontend-jinja
 Jinja2
 json2html
 requests
 unicode_slugify
 WTForms
-govuk-frontend-jinja
 
 #-----------------------------------
 #   FSD Utils

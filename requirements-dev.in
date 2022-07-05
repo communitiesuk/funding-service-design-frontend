@@ -1,11 +1,13 @@
 -r requirements.txt
+axe_selenium_python
+bandit
 pytest
-axe_selenium_python==2.1.6
 pytest-env
 pytest-flask
-pytest-mock==3.7.0
-pytest-selenium==2.0.1
-requests-mock==1.9.3
-selenium==4.3.0
-webdriver_manager==3.7.0
+pytest-mock
 pytest-selenium
+pytest-selenium
+requests-mock
+safety
+selenium
+webdriver_manager
