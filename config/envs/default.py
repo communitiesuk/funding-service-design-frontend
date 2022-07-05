@@ -7,9 +7,7 @@ from fsd_utils import configclass
 
 @configclass
 class DefaultConfig:
-    """
-    Application Config
-    """
+    # Application Config
 
     FLASK_ENV = environ.get("FLASK_ENV", "development")
     SECRET_KEY = environ.get("SECRET_KEY", "dev")
@@ -19,9 +17,7 @@ class DefaultConfig:
     LOCAL_SERVICE_NAME = "local_flask"
     FLASK_ROOT = str(Path(__file__).parent.parent.parent)
 
-    """
-    APIs Config
-    """
+    # APIs Config
     TEST_APPLICATION_STORE_API_HOST = "http://application_store"
 
     APPLICATION_STORE_API_HOST = environ.get(
@@ -62,7 +58,7 @@ class DefaultConfig:
         FORMS_SERVICE_PUBLIC_HOST + "/session/{rehydration_token}"
     )
 
-    """Content Security Policy"""
+    # Content Security Policy
     SECURE_CSP = {
         "default-src": "'self'",
         "script-src": [
@@ -74,9 +70,7 @@ class DefaultConfig:
         "img-src": ["data:", "'self'"],
     }
 
-    """Talisman Config"""
-
-    # Security headers and other policies
+    # Talisman Config
     FSD_REFERRER_POLICY = "strict-origin-when-cross-origin"
     FSD_SESSION_COOKIE_SAMESITE = "Lax"
     FSD_PERMISSIONS_POLICY = {"interest-cohort": "()"}
