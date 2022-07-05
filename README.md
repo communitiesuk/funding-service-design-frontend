@@ -35,7 +35,7 @@ Clone the repository
 
 requirements-dev.txt and requirements.txt are updated using [pip-tools pip-compile](https://github.com/jazzband/pip-tools)
 To update requirements please manually add the dependencies in the .in files (not the requirements.txt files)
-Then run:
+Then run (in the following order):
 
     pip-compile requirements.in
 
