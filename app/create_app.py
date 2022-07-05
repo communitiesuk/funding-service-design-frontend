@@ -1,6 +1,7 @@
 from app.filters import datetime_format
 from app.filters import kebab_case_to_human
 from app.filters import snake_case_to_human
+from config import Config
 from flask import Flask
 from flask_babel import Babel
 from flask_compress import Compress
@@ -15,7 +16,8 @@ from jinja2 import PrefixLoader
 def create_app() -> Flask:
     flask_app = Flask(__name__, static_url_path="/assets")
 
-    flask_app.config.from_pyfile("config.py")
+    flask_app.config.from_object("config.Config")
+
     Babel(flask_app)
 
     flask_app.jinja_loader = ChoiceLoader(
@@ -31,6 +33,26 @@ def create_app() -> Flask:
     flask_app.jinja_env.lstrip_blocks = True
     flask_app.jinja_env.add_extension("jinja2.ext.i18n")
 
+    # Initialise logging
+    logging.init_app(flask_app)
+
+    # Configure application security with Talisman
+    Talisman(flask_app, **Config.TALISMAN_SETTINGS)
+
+    csrf = CSRFProtect()
+    csrf.init_app(flask_app)
+
+    Compress(flask_app)
+
+    from app.default.routes import default_bp, not_found, internal_server_error
+
+    flask_app.register_error_handler(404, not_found)
+    flask_app.register_error_handler(500, internal_server_error)
+    flask_app.register_blueprint(default_bp)
+    flask_app.jinja_env.filters["datetime_format"] = datetime_format
+    flask_app.jinja_env.filters["snake_case_to_human"] = snake_case_to_human
+    flask_app.jinja_env.filters["kebab_case_to_human"] = kebab_case_to_human
+
     @flask_app.context_processor
     def inject_global_constants():
         return dict(
@@ -42,54 +64,6 @@ def create_app() -> Flask:
             service_meta_keywords="DLUHC Funding Service Design Iteration 1",
             service_meta_author="DLUHC",
         )
-
-    from app.default.routes import default_bp, not_found, internal_server_error
-
-    flask_app.register_error_handler(404, not_found)
-    flask_app.register_error_handler(500, internal_server_error)
-    flask_app.register_blueprint(default_bp)
-    flask_app.jinja_env.filters["datetime_format"] = datetime_format
-    flask_app.jinja_env.filters["snake_case_to_human"] = snake_case_to_human
-    flask_app.jinja_env.filters["kebab_case_to_human"] = kebab_case_to_human
-
-    # Initialise logging
-    logging.init_app(flask_app)
-
-    # Configure Talisman Security Settings
-    # csp = {
-    #     "default-src": "'self'",
-    #     "script-src": [
-    #         "'self'",
-    #         "'sha256-+6WnXIl4mbFTCARd8N3COQmT3bJJmo32N8q8ZSQAIcU='",
-    #         "'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ='",
-    #     ],
-    #     "img-src": ["data:", "'self'"],
-    # }
-
-    # hss = {
-    #     "Strict-Transport-Security": (
-    #         "max-age=31536000; includeSubDomains; preload"
-    #     ),
-    #     "X-Content-Type-Options": "nosniff",
-    #     "X-Frame-Options": "SAMEORIGIN",
-    #     "X-XSS-Protection": "1; mode=block",
-    #     "Feature_Policy": (
-    #         "microphone 'none'; camera 'none'; geolocation 'none'"
-    #     ),
-    # }
-
-    Talisman(
-        flask_app,
-        # AWAITING CONFIG UPDATE FIX
-        # content_security_policy=csp,
-        # strict_transport_security=hss,
-        # force_https=False,
-    )
-
-    csrf = CSRFProtect()
-    csrf.init_app(flask_app)
-
-    Compress(flask_app)
 
     return flask_app
 

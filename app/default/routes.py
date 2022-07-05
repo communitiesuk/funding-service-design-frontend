@@ -1,16 +1,12 @@
 import requests
-from app import config
 from app.application_status import ApplicationStatus
-from app.config import APPLICATION_STORE_API_HOST
-from app.config import FORM_REHYDRATION_URL
-from app.config import FORMS_SERVICE_PUBLIC_HOST
-from app.config import SUBMIT_APPLICATION_ENDPOINT
 from app.default.data import get_application_data
 from app.models.application import Application
 from app.models.application_summary import ApplicationSummary
 from app.models.eligibility_questions import minimium_money_question_page
 from app.models.helpers import format_rehydrate_payload
 from app.models.helpers import get_token_to_return_to_application
+from config import Config
 from flask import abort
 from flask import Blueprint
 from flask import current_app
@@ -35,7 +31,8 @@ def index():
 @default_bp.route("/account/<account_id>")
 def dashboard(account_id):
     response = requests.get(
-        f"{APPLICATION_STORE_API_HOST}/applications?account_id={account_id}"
+        f"{Config.APPLICATION_STORE_API_HOST}/applications?"
+        "account_id={account_id}"
     ).json()
     applications: list[ApplicationSummary] = [
         ApplicationSummary.from_dict(application) for application in response
@@ -44,8 +41,8 @@ def dashboard(account_id):
         round_id = applications[0].round_id
         fund_id = applications[0].fund_id
     else:
-        round_id = config.DEFAULT_ROUND_ID
-        fund_id = config.DEFAULT_FUND_ID
+        round_id = Config.DEFAULT_ROUND_ID
+        fund_id = Config.DEFAULT_FUND_ID
     return render_template(
         "dashboard.html",
         account_id=account_id,
@@ -58,11 +55,11 @@ def dashboard(account_id):
 @default_bp.route("/account/<account_id>/new", methods=["POST"])
 def new(account_id):
     new_application = requests.post(
-        url=f"{APPLICATION_STORE_API_HOST}/applications",
+        url=f"{Config.APPLICATION_STORE_API_HOST}/applications",
         json={
             "account_id": account_id,
-            "round_id": request.form["round_id"] or config.DEFAULT_ROUND_ID,
-            "fund_id": request.form["fund_id"] or config.DEFAULT_FUND_ID,
+            "round_id": request.form["round_id"] or Config.DEFAULT_ROUND_ID,
+            "fund_id": request.form["fund_id"] or Config.DEFAULT_FUND_ID,
         },
     )
     new_application_json = new_application.json()
@@ -83,7 +80,7 @@ def new(account_id):
 
 @default_bp.route("/funding_amount_eligibility", methods=["GET", "POST"])
 def max_funding_criterion():
-    return minimium_money_question_page(1000, FORMS_SERVICE_PUBLIC_HOST)
+    return minimium_money_question_page(1000, Config.FORMS_SERVICE_PUBLIC_HOST)
 
 
 @default_bp.route("/not-eligible")
@@ -165,7 +162,7 @@ def continue_application(application_id):
     )
 
     return redirect(
-        FORM_REHYDRATION_URL.format(rehydration_token=rehydration_token)
+        Config.FORM_REHYDRATION_URL.format(rehydration_token=rehydration_token)
     )
 
 
@@ -174,7 +171,9 @@ def submit_application():
     application_id = request.form.get("application_id")
     payload = {"application_id": application_id}
     requests.post(
-        SUBMIT_APPLICATION_ENDPOINT.format(application_id=application_id),
+        Config.SUBMIT_APPLICATION_ENDPOINT.format(
+            application_id=application_id
+        ),
         json=payload,
     )
     return render_template(

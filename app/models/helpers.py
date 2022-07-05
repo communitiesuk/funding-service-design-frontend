@@ -1,12 +1,11 @@
 import requests
-from app.config import FORM_GET_REHYDRATION_TOKEN_URL
-from app.config import UPDATE_APPLICATION_SECTION_ENDPOINT
-from slugify import slugify
+import slugify
+from config import Config
 
 
 def get_token_to_return_to_application(form_name: str, rehydrate_payload):
     res = requests.post(
-        FORM_GET_REHYDRATION_TOKEN_URL.format(form_name=form_name),
+        Config.FORM_GET_REHYDRATION_TOKEN_URL.format(form_name=form_name),
         json=rehydrate_payload,
     )
     if res.status_code == 201:
@@ -73,7 +72,7 @@ def format_rehydrate_payload(micro_form_data, application_id, page_name):
 
     formatted_data = {}
     redirect_path = slugify(f"{page_name}")
-    callback_url = UPDATE_APPLICATION_SECTION_ENDPOINT
+    callback_url = Config.UPDATE_APPLICATION_SECTION_ENDPOINT
 
     formatted_data["options"] = {
         "callbackUrl": callback_url,
