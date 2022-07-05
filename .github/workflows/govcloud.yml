@@ -156,10 +156,8 @@ jobs:
         run: python build.py
       - name: Install Chromium
         uses: browser-actions/setup-chrome@latest
-      - name: setup Chromedriver
-        uses: nanasess/setup-chromedriver@v1
       - name: Run tests
-        run: pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_linux64
+        run: pytest
       - name: "Upload Accessibility Testing reports"
         uses: actions/upload-artifact@v2
         with:
