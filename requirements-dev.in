@@ -6,7 +6,6 @@ pytest-env
 pytest-flask
 pytest-mock
 pytest-selenium
-pytest-selenium
 requests-mock
 safety
 selenium
