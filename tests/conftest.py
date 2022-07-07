@@ -89,7 +89,8 @@ def selenium_chrome_driver(request):
 def mocked_application_store(mocker):
     file = open("tests/api_data/endpoint_data.json")
     data = json.loads(file.read())
+    # mock the function in the file it is invoked (not where it is declared)
     mocker.patch(
-        "app.default.data.get_data",
+        "app.default.routes.get_data",
         return_value=data["http://application_store/applications/test_id"],
     )

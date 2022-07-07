@@ -13,8 +13,8 @@ def test_routes_status_code(flask_test_client, mocked_application_store):
     If this test succeedes then our flask application's
     routes are correctly initialised.
     """
-    for route, _ in routes_and_test_content.items():
 
+    for route, _ in routes_and_test_content.items():
         response = flask_test_client.get(route, follow_redirects=True)
         assert response.status_code == 200
 

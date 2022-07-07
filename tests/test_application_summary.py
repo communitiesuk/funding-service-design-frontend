@@ -29,6 +29,20 @@ TEST_APPLICATION_STORE_DATA = """[
     }
 ]"""
 
+TEST_SUBMITTED_APPLICATION_STORE_DATA = """
+    [{
+        "id": "uuidv4",
+        "status": "SUBMITTED",
+        "account_id": "test-user",
+        "fund_id": "funding-service-design",
+        "round_id": "summer",
+        "project_name": null,
+        "date_submitted": null,
+        "started_at": "2022-05-20 14:47:12",
+        "last_edited": "2022-05-24 11:03:59"
+    }]
+    """
+
 
 def test_serialise_application_summary():
     application_list = json.loads(TEST_APPLICATION_STORE_DATA)
@@ -51,8 +65,28 @@ def test_dashboard_route(flask_test_client, requests_mock):
         "/account/test-user", follow_redirects=True
     )
     assert response.status_code == 200
-    assert b"IN PROGRESS" in response.data
+    assert b"In Progress" in response.data
+    assert b"Untitled project</p>" not in response.data
+    assert b"Untitled project</a>" in response.data
     assert b"20/05/22" in response.data
+
+
+def test_submitted_dashboard_route_shows_no_application_link(
+    flask_test_client, requests_mock
+):
+    requests_mock.get(
+        "http://application_store/applications?account_id=test-user",
+        text=TEST_SUBMITTED_APPLICATION_STORE_DATA,
+    )
+    response = flask_test_client.get(
+        "/account/test-user", follow_redirects=True
+    )
+    assert response.status_code == 200
+    # assert b"Submitted" in response.data
+    # there should be no link to application on the page
+    assert b"Untitled project</p>" in response.data
+    assert b"Untitled project</a>" not in response.data
+    assert b"Submitted" in response.data
 
 
 def test_dashboard_route_no_applications(flask_test_client, requests_mock):

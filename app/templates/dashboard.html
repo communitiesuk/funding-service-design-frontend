@@ -10,20 +10,28 @@
     {% set ns = namespace(rows = []) %}
     {% for application in applications %}
         {% set status_class %}
-        {%  if application.status == 'COMPLETED' %}
-            govuk-tag--green
-        {%  elif application.status == 'NOT_STARTED' %}
-            govuk-tag--red
+            {%  if application.status == 'COMPLETED' %}
+                govuk-tag--green
+            {%  elif application.status == 'NOT_STARTED' %}
+                govuk-tag--red
+            {% endif %}
+        {% endset %}
+
+        {% if application.status == 'SUBMITTED' %}
+            {% set application_link = '<p class="govuk-body govuk-!-margin-bottom-0">{}</p>'.format(application.project_name if application.project_name else 'Untitled project') %}
+        {% else %}
+            {% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('routes.tasklist', application_id=application.id), application.project_name if application.project_name else 'Untitled project') %}
         {% endif %}
-    {% endset %}
+
+
     {% set row = ns.rows.append(
     [
     {
-    'html': '<a class="govuk-link" href="{}">{}</a>'.format(url_for('routes.tasklist', application_id=application.id), application.project_name if application.project_name else 'Untitled project')
+    'html': application_link
     },
     {
     'text':  govukTag({
-    'text': application.status|replace('_',' ') ,
+    'text': application.status|snake_case_to_human ,
     'classes': status_class
     })
     },
@@ -34,8 +42,10 @@
     'text': application.last_edited|datetime_format if application.last_edited
     }
     ]
-    ) %}
+    )
+    %}
 {% endfor %}
+
 {% if applications|length > 0 %}
     {{ govukTable({
     'head': [

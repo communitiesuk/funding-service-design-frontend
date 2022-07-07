@@ -1,6 +1,6 @@
 import requests
-import slugify
 from config import Config
+from slugify import slugify
 
 
 def get_token_to_return_to_application(form_name: str, rehydrate_payload):
