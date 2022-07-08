@@ -66,8 +66,7 @@ def test_dashboard_route(flask_test_client, requests_mock):
     )
     assert response.status_code == 200
     assert b"In Progress" in response.data
-    assert b"Untitled project</p>" not in response.data
-    assert b"Untitled project</a>" in response.data
+    assert b"Continue application" in response.data
     assert b"20/05/22" in response.data
 
 
@@ -82,10 +81,8 @@ def test_submitted_dashboard_route_shows_no_application_link(
         "/account/test-user", follow_redirects=True
     )
     assert response.status_code == 200
-    # assert b"Submitted" in response.data
     # there should be no link to application on the page
-    assert b"Untitled project</p>" in response.data
-    assert b"Untitled project</a>" not in response.data
+    assert b"Continue application" not in response.data
     assert b"Submitted" in response.data
 
 

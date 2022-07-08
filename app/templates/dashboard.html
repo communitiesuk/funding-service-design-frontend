@@ -18,16 +18,16 @@
         {% endset %}
 
         {% if application.status == 'SUBMITTED' %}
-            {% set application_link = '<p class="govuk-body govuk-!-margin-bottom-0">{}</p>'.format(application.project_name if application.project_name else 'Untitled project') %}
+            {% set application_link = '<p class="govuk-body govuk-!-margin-bottom-0"></p>' %}
         {% else %}
-            {% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('routes.tasklist', application_id=application.id), application.project_name if application.project_name else 'Untitled project') %}
+            {% set application_link = '<a class="govuk-link" href="{}">Continue application</a>'.format(url_for('routes.tasklist', application_id=application.id)) %}
         {% endif %}
 
 
     {% set row = ns.rows.append(
     [
     {
-    'html': application_link
+    'text': application.project_name if application.project_name else 'Untitled project'
     },
     {
     'text':  govukTag({
@@ -40,6 +40,9 @@
     },
     {
     'text': application.last_edited|datetime_format if application.last_edited
+    },
+    {
+    'html': application_link
     }
     ]
     )
@@ -60,6 +63,9 @@
     },
     {
     'text': 'Last edited'
+    },
+    {
+    'text': ''
     }
     ],
     'rows': ns.rows
