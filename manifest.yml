@@ -34,5 +34,5 @@ applications:
     image: ghcr.io/communitiesuk/digital-form-builder/runner:latest
   memory: 528M
   sandbox: true
-  env:
-    PREVIEW_MODE: TRUE
+  services: # eg. Redis
+    - logit-ssl-drain
