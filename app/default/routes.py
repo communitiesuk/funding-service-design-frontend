@@ -162,13 +162,14 @@ def continue_application(application_id):
         form_name, rehydrate_payload
     )
 
-    return redirect(
-        Config.FORM_REHYDRATION_URL.format(
-            rehydration_token=rehydration_token
-        ).replace(
+    redirect_url = Config.FORM_REHYDRATION_URL.format(
+        rehydration_token=rehydration_token
+    )
+    if Config.FORMS_SERVICE_PRIVATE_HOST:
+        redirect_url = redirect_url.replace(
             Config.FORMS_SERVICE_PRIVATE_HOST, Config.FORMS_SERVICE_PUBLIC_HOST
         )
-    )
+    return redirect(redirect_url)
 
 
 @default_bp.route("/submit_application", methods=["POST"])
