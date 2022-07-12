@@ -45,8 +45,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/communitiesuk/frontend-runner-${{ REF_NAME }}:latest
-            ghcr.io/communitiesuk/frontend-runner-${{ REF_NAME }}:1.0
+            ghcr.io/communitiesuk/frontend-runner-${ REF_NAME }:latest
+            ghcr.io/communitiesuk/frontend-runner-${ REF_NAME }:1.0
 
   use:
     runs-on: ubuntu-latest
@@ -54,7 +54,7 @@ jobs:
     needs: build
     services:
       runner:
-        image: ghcr.io/communitiesuk/frontend-runner-${{ REF_NAME }}:latest
+        image: ghcr.io/communitiesuk/frontend-runner-${ REF_NAME }:latest
         credentials:
           username: ${{ secrets.GHCR_USER }}
           password: ${{ secrets.GHCR_PAT }}
