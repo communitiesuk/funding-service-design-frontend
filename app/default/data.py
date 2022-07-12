@@ -5,7 +5,6 @@ import requests
 from config import Config
 
 
-
 def get_data(endpoint: str):
     return (
         get_local_data(endpoint)
