@@ -34,7 +34,7 @@ jobs:
           username: ${{ secrets.GHCR_USER }}
           password: ${{ secrets.GHCR_PAT }}
 
-     - name: downcase ref_name
+      - name: downcase ref_name
         run: |
           echo "REF_NAME=${GITHUB_REF,,}" >>${GITHUB_ENV}
 
