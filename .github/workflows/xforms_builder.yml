@@ -34,9 +34,13 @@ jobs:
           username: ${{ secrets.GHCR_USER }}
           password: ${{ secrets.GHCR_PAT }}
 
-     - name: downcase ref_name
-        run: |
-          echo "REF_NAME=${GITHUB_REF,,}" >>${GITHUB_ENV}
+      - name: Read Lower case branch name
+        id: lower
+        run: >-
+          echo "::set-output name=LOWER_CASE_BRANCH::$(
+            echo ${{ github.ref_name }} |
+            tr "[:upper:]" "[:lower:]"
+          )"
 
       -
         name: Build and push
@@ -45,8 +49,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/communitiesuk/frontend-runner-${{ REF_NAME }}:latest
-            ghcr.io/communitiesuk/frontend-runner-${{ REF_NAME }}:1.0
+            ghcr.io/communitiesuk/frontend-runner-${{ github.ref_name }}:latest
+            ghcr.io/communitiesuk/frontend-runner-${{ github.ref_name }}:1.0
 
   use:
     runs-on: ubuntu-latest
@@ -54,7 +58,7 @@ jobs:
     needs: build
     services:
       runner:
-        image: ghcr.io/communitiesuk/frontend-runner-${{ REF_NAME }}:latest
+        image: ghcr.io/communitiesuk/frontend-runner-${{ github.ref_name }}:latest
         credentials:
           username: ${{ secrets.GHCR_USER }}
           password: ${{ secrets.GHCR_PAT }}
