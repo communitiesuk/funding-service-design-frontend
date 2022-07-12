@@ -42,26 +42,33 @@ def test_serialise_application_summary():
     assert applications[1].last_edited is None
 
 
-def test_dashboard_route(flask_test_client, requests_mock):
+def test_dashboard_route(flask_test_client, requests_mock, monkeypatch):
+    monkeypatch.setattr(
+        "fsd_utils.authentication.decorators._check_access_token",
+        lambda: {"accountId": "test-user"},
+    )
     requests_mock.get(
         "http://application_store/applications?account_id=test-user",
         text=TEST_APPLICATION_STORE_DATA,
     )
-    response = flask_test_client.get(
-        "/account/test-user", follow_redirects=True
-    )
+    response = flask_test_client.get("/account", follow_redirects=True)
     assert response.status_code == 200
     assert b"IN PROGRESS" in response.data
     assert b"20/05/22" in response.data
 
 
-def test_dashboard_route_no_applications(flask_test_client, requests_mock):
+def test_dashboard_route_no_applications(
+    flask_test_client, requests_mock, monkeypatch
+):
+    monkeypatch.setattr(
+        "fsd_utils.authentication.decorators._check_access_token",
+        lambda: {"accountId": "test-user"},
+    )
+
     requests_mock.get(
         "http://application_store/applications?account_id=test-user",
         text="[]",
     )
-    response = flask_test_client.get(
-        "/account/test-user", follow_redirects=True
-    )
+    response = flask_test_client.get("/account", follow_redirects=True)
     assert response.status_code == 200
     assert b"Start new application" in response.data

@@ -15,6 +15,7 @@ from flask import render_template
 from flask import request
 from flask import url_for
 from flask_wtf import FlaskForm
+from fsd_utils.authentication.decorators import login_required
 
 
 default_bp = Blueprint("routes", __name__, template_folder="templates")
@@ -28,7 +29,8 @@ def index():
     )
 
 
-@default_bp.route("/account/<account_id>")
+@default_bp.route("/account")
+@login_required
 def dashboard(account_id):
     response = requests.get(
         Config.GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT.format(
@@ -53,7 +55,8 @@ def dashboard(account_id):
     )
 
 
-@default_bp.route("/account/<account_id>/new", methods=["POST"])
+@default_bp.route("/account/new", methods=["POST"])
+@login_required
 def new(account_id):
     new_application = requests.post(
         url=f"{Config.APPLICATION_STORE_API_HOST}/applications",

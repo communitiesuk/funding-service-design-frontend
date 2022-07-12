@@ -1,16 +1,44 @@
-Flask
-Flask_Babel
-Flask_Compress
-flask_talisman
-Flask_WTF
-govuk-frontend-jinja
-Jinja2
-json2html
-requests
-unicode_slugify
-WTForms
-
 #-----------------------------------
 #   FSD Utils
 #-----------------------------------
-https://github.com/communitiesuk/funding-service-design-utils/archive/refs/tags/0.0.8.tar.gz
+git+https://github.com/communitiesuk/funding-service-design-utils.git@fs-1163-add-security-util
+requests
+
+#-----------------------------------
+#   Flask Version
+#-----------------------------------
+Flask==2.1.1
+
+#-----------------------------------
+#   Security
+#-----------------------------------
+flask-talisman==0.8.1
+
+#-----------------------------------
+#   Static Assets
+#-----------------------------------
+Flask-Assets==2.0
+Flask-Compress==1.10.1
+cssmin==0.2.0
+pyScss==1.4.0
+jsmin==3.0.1
+govuk-frontend-jinja==2.0.0
+
+#-----------------------------------
+#   i18n
+#-----------------------------------
+Flask-Babel>=2.0.0
+
+#-----------------------------------
+#   Forms
+#-----------------------------------
+Flask-WTF==1.0.0
+email-validator==1.2.1
+
+#-----------------------------------
+#   Optional
+#-----------------------------------
+python-slugify==6.0.1
+
+#Jinja2
+#json2html
