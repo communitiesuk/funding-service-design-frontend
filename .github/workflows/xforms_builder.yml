@@ -13,6 +13,8 @@ on:
 
 jobs:
   build:
+    outputs:
+      LOWER_CASE_BRANCH: ${{ steps.lower.outputs.LOWER_CASE_BRANCH }}
     runs-on: ubuntu-latest
     environment: Dev
     services:
@@ -33,6 +35,7 @@ jobs:
           registry: ghcr.io
           username: ${{ secrets.GHCR_USER }}
           password: ${{ secrets.GHCR_PAT }}
+
 
       - name: Read Lower case branch name
         id: lower
@@ -58,7 +61,7 @@ jobs:
     needs: build
     services:
       runner:
-        image: ghcr.io/communitiesuk/frontend-runner-${{ github.ref_name }}:latest
+        image: ghcr.io/communitiesuk/frontend-runner-${{ needs.build.outputs.LOWER_CASE_BRANCH }}:latest
         credentials:
           username: ${{ secrets.GHCR_USER }}
           password: ${{ secrets.GHCR_PAT }}
