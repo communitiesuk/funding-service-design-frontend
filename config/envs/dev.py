@@ -11,7 +11,7 @@ class DevConfig(DefaultConfig):
 
     FSD_LOGGING_LEVEL = logging.INFO
     COOKIE_DOMAIN = getenv("COOKIE_DOMAIN", ".london.cloudapps.digital")
-    SESSION_COOKIE_DOMAIN = COOKIE_DOMAIN
+    SESSION_COOKIE_DOMAIN = getenv("SESSION_COOKIE_DOMAIN")
 
     # RSA 256 KEYS
     _test_private_key_path = (

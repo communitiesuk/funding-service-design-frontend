@@ -14,7 +14,7 @@ class DevelopmentConfig(DefaultConfig):
     USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "True"))
 
     COOKIE_DOMAIN = getenv("COOKIE_DOMAIN", ".localhost.localhost")
-    SESSION_COOKIE_DOMAIN = COOKIE_DOMAIN
+    SESSION_COOKIE_DOMAIN = getenv("SESSION_COOKIE_DOMAIN")
 
     # RSA 256 KEYS
     _test_private_key_path = (
