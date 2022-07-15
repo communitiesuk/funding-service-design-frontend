@@ -1,3 +1,6 @@
+import json
+import os
+
 import requests
 from config import Config
 from flask import current_app
@@ -14,22 +17,40 @@ def get_data(endpoint: str):
     Returns:
         data (json): data response in json format
     """
-    if endpoint.startswith("https://") or Config.ALLOW_HTTP_API_CALLS:
-        response = requests.get(endpoint)
-        if response.status_code == 200:
-            data = response.json()
-        else:
-            current_app.logger.warning(
-                f"Function: {__name__} failed with status code"
-                f" {response.status_code}."
-            )
-            return None
+
+    current_app.logger.info(f"Fetching data from '{endpoint}'.")
+    return (
+        get_local_data(endpoint)
+        if Config.USE_LOCAL_DATA
+        else get_remote_data(endpoint)
+    )
+
+
+def get_remote_data(endpoint):
+    response = requests.get(endpoint)
+    if response.status_code == 200:
+        data = response.json()
+        return data
     else:
-        current_app.logger.error(
-            f"Function: {__name__} failed as the endpoint provided:"
-            f" {endpoint}, is not using https."
-        )
-        raise RuntimeError(
-            f"The endpoint provided: {endpoint}, is not using https."
-        )
-    return data
+        return None
+
+
+def get_local_data(endpoint: str):
+    api_data_json = os.path.join(
+        Config.FLASK_ROOT, "tests", "api_data", "endpoint_data.json"
+    )
+
+    fp = open(api_data_json)
+    api_data = json.load(fp)
+    fp.close()
+    if endpoint in api_data:
+        return api_data.get(endpoint)
+    return None
+
+
+def get_application_data(application_id):
+    applications_endpoint = Config.GET_APPLICATION_ENDPOINT.format(
+        application_id=application_id
+    )
+    applications_response = get_data(applications_endpoint)
+    return applications_response
