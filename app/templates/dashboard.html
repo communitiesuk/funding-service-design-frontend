@@ -17,9 +17,7 @@
             {% endif %}
         {% endset %}
 
-        {% if application.status == 'SUBMITTED' %}
-            {% set application_link = '<p class="govuk-body govuk-!-margin-bottom-0"></p>' %}
-        {% else %}
+        {% if not application.status == 'SUBMITTED' %}
             {% set application_link = '<a class="govuk-link" href="{}">Continue application</a>'.format(url_for('routes.tasklist', application_id=application.id)) %}
         {% endif %}
 
