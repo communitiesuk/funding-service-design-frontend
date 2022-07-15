@@ -1,19 +1,17 @@
-import json
-
 from app.models.application_summary import ApplicationSummary
 
 
-TEST_APPLICATION_STORE_DATA = """[
+TEST_APPLICATION_STORE_DATA = [
     {
         "id": "uuidv4",
         "status": "IN_PROGRESS",
         "account_id": "test-user",
         "fund_id": "funding-service-design",
         "round_id": "summer",
-        "project_name": null,
-        "date_submitted": null,
+        "project_name": None,
+        "date_submitted": None,
         "started_at": "2022-05-20 14:47:12",
-        "last_edited": "2022-05-24 11:03:59"
+        "last_edited": "2022-05-24 11:03:59",
     },
     {
         "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",
@@ -22,30 +20,30 @@ TEST_APPLICATION_STORE_DATA = """[
         "fund_id": "funding-service-design",
         "round_id": "summer",
         "project_name": "",
-        "date_submitted": null,
+        "date_submitted": None,
         "started_at": "2022-05-24 10:42:41",
-        "last_edited": null,
-        "Unknown": "DOES NOT MAKE ME FAIL"
-    }
-]"""
+        "last_edited": None,
+        "Unknown": "DOES NOT MAKE ME FAIL",
+    },
+]
 
-TEST_SUBMITTED_APPLICATION_STORE_DATA = """
-    [{
+TEST_SUBMITTED_APPLICATION_STORE_DATA = [
+    {
         "id": "uuidv4",
         "status": "SUBMITTED",
         "account_id": "test-user",
         "fund_id": "funding-service-design",
         "round_id": "summer",
-        "project_name": null,
-        "date_submitted": null,
+        "project_name": None,
+        "date_submitted": None,
         "started_at": "2022-05-20 14:47:12",
-        "last_edited": "2022-05-24 11:03:59"
-    }]
-    """
+        "last_edited": "2022-05-24 11:03:59",
+    }
+]
 
 
 def test_serialise_application_summary():
-    application_list = json.loads(TEST_APPLICATION_STORE_DATA)
+    application_list = TEST_APPLICATION_STORE_DATA
 
     applications = [
         ApplicationSummary.from_dict(application)
@@ -56,11 +54,12 @@ def test_serialise_application_summary():
     assert applications[1].last_edited is None
 
 
-def test_dashboard_route(flask_test_client, requests_mock):
-    requests_mock.get(
-        "http://application_store/applications?account_id=test-user",
-        text=TEST_APPLICATION_STORE_DATA,
+def test_dashboard_route(flask_test_client, mocker):
+    mocker.patch(
+        "app.default.data.get_local_data",
+        return_value=TEST_APPLICATION_STORE_DATA,
     )
+
     response = flask_test_client.get(
         "/account/test-user", follow_redirects=True
     )
@@ -71,11 +70,11 @@ def test_dashboard_route(flask_test_client, requests_mock):
 
 
 def test_submitted_dashboard_route_shows_no_application_link(
-    flask_test_client, requests_mock
+    flask_test_client, mocker
 ):
-    requests_mock.get(
-        "http://application_store/applications?account_id=test-user",
-        text=TEST_SUBMITTED_APPLICATION_STORE_DATA,
+    mocker.patch(
+        "app.default.data.get_local_data",
+        return_value=TEST_SUBMITTED_APPLICATION_STORE_DATA,
     )
     response = flask_test_client.get(
         "/account/test-user", follow_redirects=True
@@ -86,10 +85,10 @@ def test_submitted_dashboard_route_shows_no_application_link(
     assert b"Submitted" in response.data
 
 
-def test_dashboard_route_no_applications(flask_test_client, requests_mock):
-    requests_mock.get(
-        "http://application_store/applications?account_id=test-user",
-        text="[]",
+def test_dashboard_route_no_applications(flask_test_client, mocker):
+    mocker.patch(
+        "app.default.data.get_local_data",
+        return_value=[],
     )
     response = flask_test_client.get(
         "/account/test-user", follow_redirects=True
