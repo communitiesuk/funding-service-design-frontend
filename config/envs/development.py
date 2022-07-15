@@ -13,7 +13,6 @@ class DevelopmentConfig(DefaultConfig):
     FSD_LOGGING_LEVEL = logging.DEBUG
     USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "True"))
 
-    COOKIE_DOMAIN = getenv("COOKIE_DOMAIN", ".localhost.localhost")
     SESSION_COOKIE_DOMAIN = getenv("SESSION_COOKIE_DOMAIN")
 
     # RSA 256 KEYS

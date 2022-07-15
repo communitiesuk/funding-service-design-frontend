@@ -22,7 +22,6 @@ class DefaultConfig:
     # Funding Service Design
     FSD_USER_TOKEN_COOKIE_NAME = "fsd_user_token"
     AUTHENTICATOR_HOST = environ.get("AUTHENTICATOR_HOST")
-    COOKIE_DOMAIN = ".london.cloudapps.digital"
     SESSION_COOKIE_DOMAIN = environ.get("SESSION_COOKIE_DOMAIN")
 
     # APIs Config
