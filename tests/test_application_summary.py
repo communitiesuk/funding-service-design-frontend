@@ -1,44 +1,14 @@
+import json
+
 from app.models.application_summary import ApplicationSummary
 
-
-TEST_APPLICATION_STORE_DATA = [
-    {
-        "id": "uuidv4",
-        "status": "IN_PROGRESS",
-        "account_id": "test-user",
-        "fund_id": "funding-service-design",
-        "round_id": "summer",
-        "project_name": None,
-        "date_submitted": None,
-        "started_at": "2022-05-20 14:47:12",
-        "last_edited": "2022-05-24 11:03:59",
-    },
-    {
-        "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",
-        "status": "NOT_STARTED",
-        "account_id": "test-user",
-        "fund_id": "funding-service-design",
-        "round_id": "summer",
-        "project_name": "",
-        "date_submitted": None,
-        "started_at": "2022-05-24 10:42:41",
-        "last_edited": None,
-        "Unknown": "DOES NOT MAKE ME FAIL",
-    },
+file = open("tests/api_data/endpoint_data.json")
+data = json.loads(file.read())
+TEST_APPLICATION_STORE_DATA = data[
+    "http://application_store/applications?account_id=test-user"
 ]
-
-TEST_SUBMITTED_APPLICATION_STORE_DATA = [
-    {
-        "id": "uuidv4",
-        "status": "SUBMITTED",
-        "account_id": "test-user",
-        "fund_id": "funding-service-design",
-        "round_id": "summer",
-        "project_name": None,
-        "date_submitted": None,
-        "started_at": "2022-05-20 14:47:12",
-        "last_edited": "2022-05-24 11:03:59",
-    }
+TEST_SUBMITTED_APPLICATION_STORE_DATA = data[
+    "http://application_store/applications?account_id=test-user-2"
 ]
 
 
@@ -56,7 +26,7 @@ def test_serialise_application_summary():
 
 def test_dashboard_route(flask_test_client, mocker):
     mocker.patch(
-        "app.default.data.get_local_data",
+        "app.default.routes.get_data",
         return_value=TEST_APPLICATION_STORE_DATA,
     )
 
@@ -73,11 +43,11 @@ def test_submitted_dashboard_route_shows_no_application_link(
     flask_test_client, mocker
 ):
     mocker.patch(
-        "app.default.data.get_local_data",
+        "app.default.routes.get_data",
         return_value=TEST_SUBMITTED_APPLICATION_STORE_DATA,
     )
     response = flask_test_client.get(
-        "/account/test-user", follow_redirects=True
+        "/account/test-user-2", follow_redirects=True
     )
     assert response.status_code == 200
     # there should be no link to application on the page

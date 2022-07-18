@@ -5,7 +5,7 @@ Tests the routes and their contents using the dict within
 from tests.route_testing_conf import routes_and_test_content
 
 
-def test_routes_status_code(flask_test_client, mocked_application_store):
+def test_routes_status_code(flask_test_client, mock_get_application):
     """
     GIVEN Our Flask Application
     WHEN a route is requested
@@ -19,7 +19,7 @@ def test_routes_status_code(flask_test_client, mocked_application_store):
         assert response.status_code == 200
 
 
-def test_routes_content(flask_test_client, mocked_application_store):
+def test_routes_content(flask_test_client, mock_get_application):
     """
     GIVEN Our Flask Application
     WHEN a route is requested

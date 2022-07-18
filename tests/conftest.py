@@ -86,7 +86,7 @@ def selenium_chrome_driver(request):
 
 
 @pytest.fixture()
-def mocked_application_store(mocker):
+def mock_get_application(mocker):
     file = open("tests/api_data/endpoint_data.json")
     data = json.loads(file.read())
     # mock the function in the file it is invoked (not where it is declared)
