@@ -33,7 +33,7 @@ From the top-level directory enter the command to install pip and the dependenci
 
 ## Create static files
 
-If you would like to manually download the static files and extract them then run
+Download and extract the static files by running:
 
     python3 build.py
 
