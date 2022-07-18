@@ -1,3 +1,4 @@
+import json
 import multiprocessing
 
 import pytest
@@ -82,3 +83,14 @@ def selenium_chrome_driver(request):
     request.cls.driver = chrome_driver
     yield
     request.cls.driver.close()
+
+
+@pytest.fixture()
+def mock_get_application(mocker):
+    file = open("tests/api_data/endpoint_data.json")
+    data = json.loads(file.read())
+    # mock the function in the file it is invoked (not where it is declared)
+    mocker.patch(
+        "app.default.routes.get_data",
+        return_value=data["http://application_store/applications/test_id"],
+    )
