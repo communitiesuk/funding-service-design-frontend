@@ -87,7 +87,7 @@ def test_submitted_dashboard_route_shows_no_application_link(
 
 def test_dashboard_route_no_applications(flask_test_client, mocker):
     mocker.patch(
-        "app.default.data.get_local_data",
+        "app.default.routes.get_data",
         return_value=[],
     )
     response = flask_test_client.get(
