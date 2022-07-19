@@ -14,8 +14,8 @@ from jinja2 import PrefixLoader
 
 
 def create_app() -> Flask:
-    flask_app = Flask(__name__, static_url_path="/frontend/assets")
 
+    flask_app = Flask(__name__, static_url_path=Config.STATIC_URL_PATH)
     flask_app.config.from_object("config.Config")
 
     Babel(flask_app)

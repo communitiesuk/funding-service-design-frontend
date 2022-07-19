@@ -119,3 +119,6 @@ class DefaultConfig:
     }
 
     USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "False"))
+
+    STATIC_URL_PATH = "/assets"
+    URL_PREFIX = None

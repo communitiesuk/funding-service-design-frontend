@@ -9,3 +9,5 @@ from fsd_utils import configclass
 class DevConfig(DefaultConfig):
 
     FSD_LOGGING_LEVEL = logging.INFO
+    STATIC_URL_PATH = "/frontend/assets"
+    URL_PREFIX = "/frontend"

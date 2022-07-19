@@ -18,7 +18,10 @@ from flask_wtf import FlaskForm
 
 
 default_bp = Blueprint(
-    "routes", __name__, template_folder="templates", url_prefix="/frontend"
+    "routes",
+    __name__,
+    template_folder="templates",
+    url_prefix=Config.URL_PREFIX,
 )
 
 
