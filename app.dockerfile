@@ -4,6 +4,7 @@ WORKDIR /app
 COPY requirements.txt requirements.txt
 RUN python3 -m pip install --upgrade pip && pip install -r requirements.txt
 COPY . .
+RUN python3 build.py
 
 EXPOSE 8080
 

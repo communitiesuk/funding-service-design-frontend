@@ -17,7 +17,9 @@ from flask import url_for
 from flask_wtf import FlaskForm
 
 
-default_bp = Blueprint("routes", __name__, template_folder="templates")
+default_bp = Blueprint(
+    "routes", __name__, template_folder="templates", url_prefix="/frontend"
+)
 
 
 @default_bp.route("/")
