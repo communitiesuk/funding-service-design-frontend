@@ -19,6 +19,11 @@ class DefaultConfig:
     LOCAL_SERVICE_NAME = "local_flask"
     FLASK_ROOT = str(Path(__file__).parent.parent.parent)
 
+    # Funding Service Design
+    FSD_USER_TOKEN_COOKIE_NAME = "fsd_user_token"
+    AUTHENTICATOR_HOST = environ.get("AUTHENTICATOR_HOST")
+    SESSION_COOKIE_DOMAIN = environ.get("SESSION_COOKIE_DOMAIN")
+
     # APIs Config
     TEST_APPLICATION_STORE_API_HOST = "http://application_store"
 
