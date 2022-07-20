@@ -16,6 +16,28 @@ from "partials/tasklist_section.html" import tasklist_section %} {% block conten
        In progress
       {% endif %}
     </h2>
+
+    <p class="govuk-body-l govuk-!-font-weight-bold">
+      Status: 
+      {% set completed_count = application.question_status_summary.get("COMPLETED") %}
+       
+      {% if completed_count == 0 %}
+      <strong class="govuk-tag govuk-tag--grey">
+        Not Started
+      </strong>
+      {% endif %}
+      {% if completed_count > 0 and completed_count < application.questions|length %}
+      <strong class="govuk-tag govuk-tag--blue">
+        In Progress
+      </strong>
+      {% endif %}
+      {% if completed_count == application.questions|length %}
+      <strong class="govuk-tag govuk-tag--green">
+        Complete
+      </strong>
+      {% endif %}
+    </p>
+    
     <p class="govuk-body govuk-!-margin-bottom-7">
       You have completed
       {{application_meta_data["number_of_completed_sections"]}} of
