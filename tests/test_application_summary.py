@@ -24,14 +24,14 @@ def test_serialise_application_summary():
     assert applications[1].last_edited is None
 
 
-def test_dashboard_route(flask_test_client, requests_mock, monkeypatch):
+def test_dashboard_route(flask_test_client, mocker, monkeypatch):
     monkeypatch.setattr(
         "fsd_utils.authentication.decorators._check_access_token",
         lambda: {"accountId": "test-user"},
     )
-    requests_mock.get(
-        "http://application_store/applications?account_id=test-user",
-        text=TEST_APPLICATION_STORE_DATA,
+    mocker.patch(
+        "app.default.routes.get_data",
+        return_value=TEST_APPLICATION_STORE_DATA,
     )
     response = flask_test_client.get("/account", follow_redirects=True)
     assert response.status_code == 200
@@ -40,17 +40,35 @@ def test_dashboard_route(flask_test_client, requests_mock, monkeypatch):
     assert b"20/05/22" in response.data
 
 
+def test_submitted_dashboard_route_shows_no_application_link(
+    flask_test_client, mocker, monkeypatch
+):
+    monkeypatch.setattr(
+        "fsd_utils.authentication.decorators._check_access_token",
+        lambda: {"accountId": "test-user"},
+    )
+    mocker.patch(
+        "app.default.routes.get_data",
+        return_value=TEST_SUBMITTED_APPLICATION_STORE_DATA,
+    )
+    response = flask_test_client.get("/account", follow_redirects=True)
+    assert response.status_code == 200
+    # there should be no link to application on the page
+    assert b"Continue application" not in response.data
+    assert b"Submitted" in response.data
+
+
 def test_dashboard_route_no_applications(
-    flask_test_client, requests_mock, monkeypatch
+    flask_test_client, mocker, monkeypatch
 ):
     monkeypatch.setattr(
         "fsd_utils.authentication.decorators._check_access_token",
         lambda: {"accountId": "test-user"},
     )
 
-    requests_mock.get(
-        "http://application_store/applications?account_id=test-user",
-        text="[]",
+    mocker.patch(
+        "app.default.routes.get_data",
+        return_value=TEST_SUBMITTED_APPLICATION_STORE_DATA,
     )
     response = flask_test_client.get("/account", follow_redirects=True)
     assert response.status_code == 200
