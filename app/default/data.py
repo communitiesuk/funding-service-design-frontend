@@ -3,9 +3,21 @@ import os
 
 import requests
 from config import Config
-
+from flask import current_app
 
 def get_data(endpoint: str):
+    """
+        Queries the api endpoint provided and returns a
+        data response in json format.
+
+    Args:
+        endpoint (str): an API get data address
+
+    Returns:
+        data (json): data response in json format
+    """
+
+    current_app.logger.info(f"Fetching data from '{endpoint}'.")
     return (
         get_local_data(endpoint)
         if Config.USE_LOCAL_DATA

@@ -2,36 +2,18 @@ import json
 
 from app.models.application_summary import ApplicationSummary
 
-
-TEST_APPLICATION_STORE_DATA = """[
-    {
-        "id": "uuidv4",
-        "status": "IN_PROGRESS",
-        "account_id": "test-user",
-        "fund_id": "funding-service-design",
-        "round_id": "summer",
-        "project_name": null,
-        "date_submitted": null,
-        "started_at": "2022-05-20 14:47:12",
-        "last_edited": "2022-05-24 11:03:59"
-    },
-    {
-        "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",
-        "status": "NOT_STARTED",
-        "account_id": "test-user",
-        "fund_id": "funding-service-design",
-        "round_id": "summer",
-        "project_name": "",
-        "date_submitted": null,
-        "started_at": "2022-05-24 10:42:41",
-        "last_edited": null,
-        "Unknown": "DOES NOT MAKE ME FAIL"
-    }
-]"""
+file = open("tests/api_data/endpoint_data.json")
+data = json.loads(file.read())
+TEST_APPLICATION_STORE_DATA = data[
+    "http://application_store/applications?account_id=test-user"
+]
+TEST_SUBMITTED_APPLICATION_STORE_DATA = data[
+    "http://application_store/applications?account_id=test-user-2"
+]
 
 
 def test_serialise_application_summary():
-    application_list = json.loads(TEST_APPLICATION_STORE_DATA)
+    application_list = TEST_APPLICATION_STORE_DATA
 
     applications = [
         ApplicationSummary.from_dict(application)
@@ -53,7 +35,8 @@ def test_dashboard_route(flask_test_client, requests_mock, monkeypatch):
     )
     response = flask_test_client.get("/account", follow_redirects=True)
     assert response.status_code == 200
-    assert b"IN PROGRESS" in response.data
+    assert b"In Progress" in response.data
+    assert b"Continue application" in response.data
     assert b"20/05/22" in response.data
 
 

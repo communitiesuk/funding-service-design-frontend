@@ -7,8 +7,8 @@ pre-commit
 pytest
 pytest-env
 pytest-flask
-pytest-mock==3.7.0
-pytest-selenium==2.0.1
+pytest-mock
+pytest-selenium
 requests-mock
 pip-tools
 axe-selenium-python==2.1.6

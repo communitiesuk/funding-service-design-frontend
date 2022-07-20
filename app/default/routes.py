@@ -1,6 +1,6 @@
 import requests
 from app.application_status import ApplicationStatus
-from app.default.data import get_application_data
+from app.default.data import get_data
 from app.models.application import Application
 from app.models.application_summary import ApplicationSummary
 from app.models.eligibility_questions import minimium_money_question_page
@@ -32,11 +32,11 @@ def index():
 @default_bp.route("/account")
 @login_required
 def dashboard(account_id):
-    response = requests.get(
+    response = get_data(
         Config.GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT.format(
             account_id=account_id
         )
-    ).json()
+    )
     applications: list[ApplicationSummary] = [
         ApplicationSummary.from_dict(application) for application in response
     ]
@@ -103,7 +103,9 @@ def tasklist(application_id):
     Returns:
         function: a function which renders the tasklist template.
     """
-    application_response = get_application_data(application_id)
+    application_response = get_data(
+        Config.GET_APPLICATION_ENDPOINT.format(application_id=application_id)
+    )
     if not (application_response and application_response["sections"]):
         return abort(404)
     application = Application.from_dict(application_response)
@@ -152,8 +154,9 @@ def continue_application(application_id):
     args = request.args
     form_name = args.get("section_name")
     page_name = args.get("page_name")
-
-    response = get_application_data(application_id)
+    response = get_data(
+        Config.GET_APPLICATION_ENDPOINT.format(application_id=application_id)
+    )
     application_data = Application.from_dict(response)
     section = application_data.get_section_data(application_data, form_name)
 
