@@ -17,9 +17,13 @@ from "partials/tasklist_section.html" import tasklist_section %} {% block conten
       {% endif %}
     </h2>
     <p class="govuk-body govuk-!-margin-bottom-7">
+      {% if application_meta_data["number_of_completed_sections"] == 0 %}
+      None of the sections have been completed.
+      {% else %}
       You have completed
       {{application_meta_data["number_of_completed_sections"]}} of
       {{application_meta_data["number_of_sections"]}} sections.
+      {% endif %}
     </p>
     {% endif %}
     <ol class="app-task-list">
