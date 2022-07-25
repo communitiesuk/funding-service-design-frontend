@@ -71,7 +71,7 @@ jobs:
           build-args: |
             COMMIT_SHA=$GITHUB_SHA
 
-      - name: Install cloudfoundary
+      - name: Install cloudfoundry
         shell: bash
         id: install-cf-cli
         run: |
