@@ -69,7 +69,7 @@
     'rows': ns.rows
     }) }}
 {% endif %}
-<form method="POST" action={{ url_for('routes.new', account_id=account_id) }}>
+<form method="POST" action={{ url_for('routes.new')}}>
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <input type="hidden" name="account_id" value="{{ account_id }}">
     <input type="hidden" name="fund_id" value="{{ fund_id }}">
