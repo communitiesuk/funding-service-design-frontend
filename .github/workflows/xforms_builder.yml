@@ -1,4 +1,4 @@
-name: Deploy xforms to Gov PaaS
+name: Build xforms image
 
 on:
   workflow_dispatch:
