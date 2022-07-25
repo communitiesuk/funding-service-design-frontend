@@ -10,7 +10,7 @@ applications:
     ACCOUNT_STORE_API_HOST: https://funding-service-design-account-store-dev.london.cloudapps.digital
     APPLICATION_STORE_API_HOST: https://funding-service-design-application-store-dev.london.cloudapps.digital
     NOTIFICATION_SERVICE_HOST: http://funding-service-design-notification-dev.apps.internal:8080
-    FORMS_SERVICE_PUBLIC_HOST: https://funding-service-design-form-runner.london.cloudapps.digital
+    FORMS_SERVICE_PUBLIC_HOST: forms.dev.fundingservice.co.uk
     FLASK_ENV: dev
     FLASK_DEBUG: 1
   routes:
@@ -36,5 +36,7 @@ applications:
     image: ghcr.io/communitiesuk/digital-form-builder/runner:latest
   memory: 528M
   sandbox: true
+  routes: 
+    - route: forms.dev.fundingservice.co.uk
   env:
     PREVIEW_MODE: TRUE
