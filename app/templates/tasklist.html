@@ -18,13 +18,11 @@ from "partials/tasklist_section.html" import tasklist_section %} {% block conten
       <strong class="govuk-tag govuk-tag--grey">
         Not Started
       </strong>
-      {% endif %}
-      {% if completed_count > 0 and completed_count < section_count %}
+      {% elif completed_count > 0 and completed_count < section_count %}
       <strong class="govuk-tag govuk-tag--blue">
         In Progress
       </strong>
-      {% endif %}
-      {% if completed_count == section_count %}
+      {% elif completed_count == section_count %}
       <strong class="govuk-tag govuk-tag--green">
         Complete
       </strong>
