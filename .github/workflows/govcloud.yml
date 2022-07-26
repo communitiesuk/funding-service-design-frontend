@@ -190,7 +190,7 @@ jobs:
           cf_space: ${{secrets.CF_SPACE }}
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
-          command: push funding-service-design-frontend-dev
+          command: push -f manifest-dev.yml funding-service-design-frontend-dev
 
   security:
     needs: deploy_dev
@@ -241,7 +241,7 @@ jobs:
           cf_space: ${{secrets.CF_SPACE }}
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
-          command: push funding-service-design-frontend-test --var RSA256_PRIVATE_KEY_BASE64="${{secrets.RSA256_PRIVATE_KEY_BASE64}}" --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
+          command: push -f manifest-test.yml funding-service-design-frontend-test --var RSA256_PRIVATE_KEY_BASE64="${{secrets.RSA256_PRIVATE_KEY_BASE64}}" --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
 
   # TODO: Add back when performance tests finished
   # run_performance_tests:
