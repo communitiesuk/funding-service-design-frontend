@@ -241,7 +241,8 @@
         "title": "Check your answers",
         "components": [],
         "next": [],
-        "controller": "./pages/summary.js"
+        "controller": "./pages/summary.js",
+        "section": "PzjpUJ"
       },
       {
         "path": "/about-your-organisation-SEFJGZ",
@@ -251,7 +252,7 @@
             "name": "LwVCtR",
             "options": {},
             "type": "Html",
-            "content": "<h1 class=\"govuk-heading-m\">Organisation information</h1>",
+            "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
             "schema": {}
           },
           {
@@ -562,6 +563,10 @@
       {
         "name": "mGVlqF",
         "title": "About your organisation"
+      },
+      {
+        "name": "PzjpUJ",
+        "title": "Organisation information"
       }
     ],
     "conditions": [
