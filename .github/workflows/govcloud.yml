@@ -31,7 +31,7 @@ env:
   FORMS_SERVICE_HOST: ${{ secrets.FORMS_SERVICE_HOST}}
 
 jobs:
-  build-runner:
+  deploy-forms-to-paas:
     environment: ${{ github.event.inputs.environment }}
     runs-on: ubuntu-latest
     permissions:
@@ -71,7 +71,7 @@ jobs:
           build-args: |
             COMMIT_SHA=$GITHUB_SHA
 
-      - name: Install cloudfoundary
+      - name: Install cloudfoundry
         shell: bash
         id: install-cf-cli
         run: |
@@ -140,7 +140,7 @@ jobs:
   #         allow_issue_writing: False
 
   testing:
-    needs: build-runner
+    needs: deploy-forms-to-paas
     runs-on: ubuntu-latest
     environment: Dev
     steps:
@@ -166,7 +166,7 @@ jobs:
           retention-days: 5
 
   deploy_dev:
-    needs: [testing, build-runner]
+    needs: [testing, deploy-forms-to-paas]
     runs-on: ubuntu-latest
     environment: Dev
     steps:
@@ -190,7 +190,7 @@ jobs:
           cf_space: ${{secrets.CF_SPACE }}
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
-          command: push funding-service-design-frontend-dev
+          command: push -f manifest-dev.yml funding-service-design-frontend-dev
 
   security:
     needs: deploy_dev
@@ -241,7 +241,7 @@ jobs:
           cf_space: ${{secrets.CF_SPACE }}
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
-          command: push funding-service-design-frontend-test
+          command: push -f manifest-test.yml funding-service-design-frontend-test --var RSA256_PRIVATE_KEY_BASE64="${{secrets.RSA256_PRIVATE_KEY_BASE64}}" --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
 
   # TODO: Add back when performance tests finished
   # run_performance_tests:

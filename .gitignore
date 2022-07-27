@@ -139,3 +139,4 @@ app/.DS_Store
 .vscode/settings.json
 axe_reports/
 html/
+.vscode/launch.json
