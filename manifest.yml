@@ -1,11 +1,21 @@
 ---
 applications:
-- name: funding-service-design-form-runner
+- name: funding-service-design-form-runner-dev
   docker:
     image: ghcr.io/communitiesuk/digital-form-builder/runner:latest
   memory: 528M
   sandbox: true
   routes:
     - route: forms.dev.fundingservice.co.uk
+  env:
+    PREVIEW_MODE: TRUE
+    
+ - name: funding-service-design-form-runner-test
+  docker:
+    image: ghcr.io/communitiesuk/digital-form-builder/runner:latest
+  memory: 528M
+  sandbox: true
+  routes:
+    - route: forms.test.fundingservice.co.uk
   env:
     PREVIEW_MODE: TRUE
