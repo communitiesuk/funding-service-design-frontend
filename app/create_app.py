@@ -57,9 +57,9 @@ def create_app() -> Flask:
     def inject_global_constants():
         return dict(
             stage="beta",
-            service_title="Task List - Funding Service Design",
+            service_title="Funding Service Design",
             service_meta_description=(
-                "Task List - Funding Service Design"
+                "Funding Service Design"
             ),
             service_meta_keywords="Task List - Funding Service Design",
             service_meta_author="DLUHC",
