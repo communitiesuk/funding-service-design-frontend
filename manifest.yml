@@ -10,7 +10,7 @@ applications:
   env:
     PREVIEW_MODE: TRUE
     
- - name: funding-service-design-form-runner-test
+- name: funding-service-design-form-runner-test
   docker:
     image: ghcr.io/communitiesuk/digital-form-builder/runner:latest
   memory: 528M
