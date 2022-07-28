@@ -227,7 +227,7 @@ jobs:
           allow_issue_writing: False
 
   deploy_test:
-    #needs: security
+    needs: security
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: test
