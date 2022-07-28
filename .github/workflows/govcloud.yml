@@ -81,7 +81,7 @@ jobs:
           sudo apt-get install cf8-cli
 
       - name: Deploy to Gov.uk PaaS Dev
-        id: deploy-to-paas
+        id: deploy-to-paas Dev
         shell: bash
         run: |
           cf api ${{ secrets.CF_API }}
@@ -92,7 +92,7 @@ jobs:
             --docker-username ${{ github.actor }}
             
       - name: Deploy to Gov.uk PaaS test
-        id: deploy-to-paas
+        id: deploy-to-paas Test
         shell: bash
         run: |
           cf api ${{ secrets.CF_API }}
