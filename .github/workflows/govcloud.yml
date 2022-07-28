@@ -173,7 +173,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: accessibility-test-report
-          path: /home/runner/work/funding-service-design-design-frontend/axe_reports/*.html
+          path: /home/runner/work/funding-service-design-design-frontend/funding-service-design-frontend/axe_reports/*.html
           retention-days: 5
 
   deploy_dev:
@@ -227,7 +227,7 @@ jobs:
           allow_issue_writing: False
 
   deploy_test:
-    needs: security
+    #needs: security
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: test
