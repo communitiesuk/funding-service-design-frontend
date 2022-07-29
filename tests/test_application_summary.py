@@ -2,7 +2,7 @@ import json
 
 from app.models.application_summary import ApplicationSummary
 
-file = open("../tests/api_data/endpoint_data.json")
+file = open("tests/api_data/endpoint_data.json")
 data = json.loads(file.read())
 TEST_APPLICATION_STORE_DATA = data[
     "http://application_store/applications?account_id=test-user"
