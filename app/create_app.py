@@ -61,7 +61,7 @@ def create_app() -> Flask:
             service_meta_description=(
                 "Funding Service Design"
             ),
-            service_meta_keywords="Task List - Funding Service Design",
+            service_meta_keywords="Funding Service Design",
             service_meta_author="DLUHC",
         )
 
