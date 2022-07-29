@@ -1,0 +1,63 @@
+{
+    "metadata": {},
+    "startPage": "/declarations",
+    "pages": [
+      {
+        "title": "Declarations",
+        "path": "/declarations",
+        "components": [
+          {
+            "name": "sBiSgs",
+            "options": {},
+            "type": "Html",
+            "content": "<h2 class=\"govuk-heading-m\">Final confirmations</h2>"
+          },
+          {
+            "name": "LlvhYl",
+            "options": {},
+            "type": "YesNoField",
+            "title": "Confirm you have considered subsidy control / state aid implications for your project, and the information you have given us is correct"
+          },
+          {
+            "name": "wJrJWY",
+            "options": {},
+            "type": "YesNoField",
+            "title": "Confirm you have considered people with protected characteristics throughout the planning of your project"
+          },
+          {
+            "name": "COiwQr",
+            "options": {},
+            "type": "YesNoField",
+            "title": "Confirm you have considered sustainability and the environment throughout the planning of your project, including compliance with the government's Net Zero ambitions"
+          }
+        ],
+        "next": [
+          {
+            "path": "/check-your-answers"
+          }
+        ]
+      },
+      {
+        "title": "Check your answers",
+        "path": "/check-your-answers",
+        "controller": "./pages/summary.js",
+        "components": [],
+        "next": []
+      }
+    ],
+    "lists": [],
+    "sections": [],
+    "conditions": [],
+    "fees": [],
+    "outputs": [],
+    "version": 2,
+    "skipSummary": false,
+    "name": "Apply for funding",
+    "feedback": {
+      "feedbackForm": false,
+      "url": ""
+    },
+    "phaseBanner": {
+      "phase": "beta"
+    }
+  }
