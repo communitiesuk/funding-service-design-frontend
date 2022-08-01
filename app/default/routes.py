@@ -26,6 +26,13 @@ def index():
     return render_template("index.html")
 
 
+@default_bp.route("/example_submit")
+def example_submit_pattern():
+    current_app.logger.info("Example submit page loaded.")
+    return render_template("example_tasklist_submit.html", application_id="123")
+
+
+
 @default_bp.route("/account")
 @login_required
 def dashboard(account_id):
