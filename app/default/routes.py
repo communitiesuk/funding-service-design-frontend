@@ -23,9 +23,7 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 @default_bp.route("/")
 def index():
     current_app.logger.info("Service landing page loaded.")
-    return render_template(
-        "index.html", service_url=url_for("routes.max_funding_criterion")
-    )
+    return render_template("index.html")
 
 
 @default_bp.route("/account")
