@@ -1,3 +1,22 @@
 {% from "govuk_frontend_jinja/components/footer/macro.html" import govukFooter -%}
 
-{{ govukFooter({'meta': {'visuallyHiddenTitle': 'Items', 'items': [{'href': '#1', 'text': 'Item 1'}, {'href': '#2', 'text': 'Item 2'}, {'href': '#3', 'text': 'Item 3'}]}}) }}
+{{ govukFooter(
+    {
+        'meta': {
+            'visuallyHiddenTitle': 'Items',
+            'items': [
+                {
+                    'href': '/accessibility_statement',
+                    'text': 'Accessibility statement'
+                },
+                {
+                    'href': '#2',
+                    'text': 'Item 2'
+                },
+                {
+                    'href': '#3',
+                    'text': 'Item 3'
+                }
+            ]
+    }
+    }) }}
