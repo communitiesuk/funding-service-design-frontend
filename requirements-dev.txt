@@ -62,7 +62,7 @@ click==8.1.3
     #   safety
 colorama==0.4.5
     # via
-    #   -r requirements.txt
+    #   -r requirements-dev.txt
     #   rich
 cryptography==37.0.4
     # via
