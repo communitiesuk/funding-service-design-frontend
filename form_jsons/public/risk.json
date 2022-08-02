@@ -1,0 +1,165 @@
+{
+    "metadata": {},
+    "startPage": "/management-case",
+    "pages": [
+      {
+        "title": "Management case",
+        "path": "/management-case",
+        "components": [
+          {
+            "name": "nDfjRY",
+            "options": {},
+            "type": "Html",
+            "content": "<h2 class=\"govuk-heading-m\">Risk</h2>"
+          },
+          {
+            "name": "LVXUhZ",
+            "options": {},
+            "type": "Details",
+            "title": "See guidance",
+            "content": "<div class=\"govuk-body\">\n<p>We want to understand any risks your project may face and how you intend to mitigate them. They can be during the planning or delivery stages, or after you have taken ownership of the asset.</p>\n<p> This does not include any risks to the asset or why it may close, which we asked you about earlier in your application.</p>\n<p>Examples of risks include:</p>\n\n<div>\n<li>planning consent for any work needed on the asset</li>\n<li>potential issues with the supply of building materials</li>\n<li>staffing departures during delivery of your project</li>\n</div>\n\n</div>"
+          },
+          {
+            "name": "pwslCf",
+            "options": {},
+            "type": "TextField",
+            "title": "Type of risk"
+          },
+          {
+            "name": "tpXXWt",
+            "options": {
+              "maxWords": "200"
+            },
+            "type": "MultilineTextField",
+            "title": "Describe the risk"
+          },
+          {
+            "name": "fCddUh",
+            "options": {},
+            "type": "RadiosField",
+            "title": "Level of risk",
+            "hint": "Based on the impact it could have on your project.",
+            "list": "jqTCKc"
+          },
+          {
+            "name": "PqVZFh",
+            "options": {},
+            "type": "RadiosField",
+            "title": "Likelihood of risk",
+            "hint": "How likely it is to occur if nothing is done.",
+            "list": "urqCeh"
+          },
+          {
+            "name": "BtljVL",
+            "options": {},
+            "type": "RadiosField",
+            "hint": "When the risk is likely to occur if it is not mitigated.",
+            "title": "Timeframe of risk",
+            "list": "EoHjdf"
+          },
+          {
+            "name": "mYRwas",
+            "options": {
+              "maxWords": "200"
+            },
+            "type": "MultilineTextField",
+            "title": "Mitigation",
+            "hint": "How you will address the risk and attempt to prevent it."
+          },
+          {
+            "name": "xGAVRU",
+            "options": {},
+            "type": "RadiosField",
+            "title": "Risk after mitgation",
+            "hint": "How likely it is to occur after you have attempted to prevent it.",
+            "list": "urqCeh"
+          }
+        ],
+        "next": [
+          {
+            "path": "/check-your-answers"
+          }
+        ]
+      },
+      {
+        "title": "Check your answers",
+        "path": "/check-your-answers",
+        "controller": "./pages/summary.js",
+        "components": [],
+        "next": []
+      }
+    ],
+    "lists": [
+      {
+        "title": "Level of risk",
+        "name": "jqTCKc",
+        "type": "string",
+        "items": [
+          {
+            "text": "High",
+            "value": "high"
+          },
+          {
+            "text": "Medium",
+            "value": "medium"
+          },
+          {
+            "text": "Low",
+            "value": "low"
+          }
+        ]
+      },
+      {
+        "title": "Likelihood of risk",
+        "name": "urqCeh",
+        "type": "string",
+        "items": [
+          {
+            "text": "Very likely",
+            "value": "very-likely"
+          },
+          {
+            "text": "Moderately likely",
+            "value": "moderately-likely"
+          },
+          {
+            "text": "Not very likely",
+            "value": "not-very-likely"
+          }
+        ]
+      },
+      {
+        "title": "Timeframe of risk",
+        "name": "EoHjdf",
+        "type": "string",
+        "items": [
+          {
+            "text": "Within 6 months",
+            "value": "6-months"
+          },
+          {
+            "text": "Within 12 months",
+            "value": "12-months"
+          },
+          {
+            "text": "After a year",
+            "value": "year"
+          }
+        ]
+      }
+    ],
+    "sections": [],
+    "conditions": [],
+    "fees": [],
+    "outputs": [],
+    "version": 2,
+    "skipSummary": false,
+    "name": "Apply for funding",
+    "feedback": {
+      "feedbackForm": false,
+      "url": ""
+    },
+    "phaseBanner": {
+      "phase": "beta"
+    }
+  }

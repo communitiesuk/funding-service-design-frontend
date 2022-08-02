@@ -2,11 +2,13 @@
 "govuk_frontend_jinja/components/button/macro.html" import govukButton -%} {%
 from "partials/tasklist_section.html" import tasklist_section %} {% block content %}
 
+{% block pageTitle %}Task List - {{ service_title }}{% endblock %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
       {{application_meta_data["fund"]|kebab_case_to_human}}
-      Round: {{application_meta_data["round"]|snake_case_to_human}}
+      application
     </h1>
     {% if not application_response["status"] == application_meta_data["submitted_status"] %}
 
