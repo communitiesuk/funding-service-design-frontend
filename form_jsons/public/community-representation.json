@@ -1,0 +1,71 @@
+{
+    "metadata": {},
+    "startPage": "/management-case",
+    "pages": [
+      {
+        "title": "Management case",
+        "path": "/management-case",
+        "components": [
+          {
+            "name": "GHjwwB",
+            "options": {},
+            "type": "Html",
+            "content": "<h2 class=\"govuk-heading-m\">Community representation</h2>"
+          },
+          {
+            "name": "JnvsPq",
+            "options": {
+              "maxWords": "200"
+            },
+            "type": "MultilineTextField",
+            "hint": "Please include their:\n<p>\n<li>role</li>\n<li>main responsibilities</li>\n</p>\n\n\n",
+            "title": "List the members of your board"
+          },
+          {
+            "name": "yMCivI",
+            "options": {
+              "maxWords": "200"
+            },
+            "type": "MultilineTextField",
+            "title": "Tell us about your governance and membership structures"
+          },
+          {
+            "name": "NUZOvS",
+            "options": {
+              "maxWords": "200"
+            },
+            "type": "MultilineTextField",
+            "title": "Explain how you will consider the views of the community in the running of the asset",
+            "hint": "Please include how they will be involved in decision making, and how you will measure public support for your decisions."
+          }
+        ],
+        "next": [
+          {
+            "path": "/check-your-answers"
+          }
+        ]
+      },
+      {
+        "title": "Check your answers",
+        "path": "/check-your-answers",
+        "controller": "./pages/summary.js",
+        "components": [],
+        "next": []
+      }
+    ],
+    "lists": [],
+    "sections": [],
+    "conditions": [],
+    "fees": [],
+    "outputs": [],
+    "version": 2,
+    "skipSummary": false,
+    "name": "Apply for funding",
+    "feedback": {
+      "feedbackForm": false,
+      "url": ""
+    },
+    "phaseBanner": {
+      "phase": "beta"
+    }
+  }

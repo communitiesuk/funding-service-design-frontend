@@ -1,0 +1,106 @@
+{
+    "metadata": {},
+    "startPage": "/potential-to-deliver-community-benefits",
+    "pages": [
+      {
+        "title": "Potential to deliver community benefits",
+        "path": "/potential-to-deliver-community-benefits",
+        "components": [
+          {
+            "name": "UiHVet",
+            "options": {},
+            "type": "Html",
+            "content": "<h2 class=\"govuk-heading-m\">Community benefits</h2>"
+          },
+          {
+            "name": "QjJtbs",
+            "options": {},
+            "type": "CheckboxesField",
+            "title": "What community benefits do you expect to deliver with this project? ",
+            "hint": "Select all that apply.",
+            "list": "crPmPN"
+          },
+          {
+            "name": "gDTsgG",
+            "options": {
+              "maxWords": "200"
+            },
+            "type": "MultilineTextField",
+            "title": "Tell us about these benefits in detail, and explain how you will measure the benefits it will bring for the community"
+          },
+          {
+            "name": "kYjJFy",
+            "options": {
+              "maxWords": "200"
+            },
+            "type": "MultilineTextField",
+            "title": "Explain how you will deliver and sustain these benefits over time"
+          },
+          {
+            "name": "UbjYqE",
+            "options": {
+              "maxWords": "200"
+            },
+            "type": "MultilineTextField",
+            "title": "Explain how community ownership of the asset will be inclusive and benefit the wider community",
+            "hint": "For example, how you intend to reach different parts of your community."
+          }
+        ],
+        "next": [
+          {
+            "path": "/check-your-answers"
+          }
+        ]
+      },
+      {
+        "title": "Check your answers",
+        "path": "/check-your-answers",
+        "controller": "./pages/summary.js",
+        "components": [],
+        "next": []
+      }
+    ],
+    "lists": [
+      {
+        "title": "What community benefits do you expect to deliver with this project",
+        "name": "crPmPN",
+        "type": "string",
+        "items": [
+          {
+            "text": "Community pride and perceptions of the local area as a place to live",
+            "value": "community-pride"
+          },
+          {
+            "text": "Social trust, cohesion and a sense of belonging",
+            "value": "social-trust"
+          },
+          {
+            "text": "Participation in community life, arts and culture, or sport",
+            "value": "participation "
+          },
+          {
+            "text": "Local economic outcomes, such as employment and volunteering opportunities, and employability and skills",
+            "value": "local-economic "
+          },
+          {
+            "text": "Delivering positive impact in physical and mental health, and reducing loneliness and isolation",
+            "value": "delivering-positive"
+          }
+        ]
+      }
+    ],
+    "sections": [],
+    "conditions": [],
+    "fees": [],
+    "outputs": [],
+    "version": 2,
+    "skipSummary": false,
+    "name": "Apply for funding",
+    "feedback": {
+      "feedbackForm": false,
+      "url": ""
+    },
+    "phaseBanner": {
+      "phase": "beta"
+    }
+  }
