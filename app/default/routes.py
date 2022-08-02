@@ -26,6 +26,12 @@ def index():
     return render_template("index.html")
 
 
+@default_bp.route("/accessibility_statement", methods=["GET"])
+def accessibility_statement():
+    current_app.logger.info("Accessibility statement page loaded.")
+    return render_template("accessibility-statement.html")
+
+
 @default_bp.route("/account")
 @login_required
 def dashboard(account_id):
