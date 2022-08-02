@@ -3,7 +3,6 @@ from app.application_status import ApplicationStatus
 from app.default.data import get_data
 from app.models.application import Application
 from app.models.application_summary import ApplicationSummary
-from app.models.eligibility_questions import minimium_money_question_page
 from app.models.helpers import format_rehydrate_payload
 from app.models.helpers import get_token_to_return_to_application
 from config import Config
@@ -23,10 +22,8 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 
 @default_bp.route("/")
 def index():
-    current_app.logger.info("Hello world page loaded.")
-    return render_template(
-        "index.html", service_url=url_for("routes.max_funding_criterion")
-    )
+    current_app.logger.info("Service landing page loaded.")
+    return render_template("index.html")
 
 
 @default_bp.route("/account")
@@ -80,16 +77,6 @@ def new(account_id):
             "routes.tasklist", application_id=new_application.json().get("id")
         )
     )
-
-
-@default_bp.route("/funding_amount_eligibility", methods=["GET", "POST"])
-def max_funding_criterion():
-    return minimium_money_question_page(1000, Config.FORMS_SERVICE_PUBLIC_HOST)
-
-
-@default_bp.route("/not-eligible")
-def not_eligible():
-    return render_template("not_eligible.html")
 
 
 @default_bp.route("/tasklist/<application_id>", methods=["GET"])
