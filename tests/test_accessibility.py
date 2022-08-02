@@ -131,7 +131,7 @@ class TestURLsWithChrome:
         results = run_axe_and_print_report(
             driver=self.driver, route_rel=str(route_rel)
         )
-        assert len(results["violations"]) <= 3
+        assert len(results["violations"]) <= 4
         assert (
             len(results["violations"]) == 0
             or results["violations"][0]["impact"] == "minor"
@@ -147,7 +147,7 @@ class TestURLsWithChrome:
         results = run_axe_and_print_report(
             driver=self.driver, route_rel=str(route_rel)
         )
-        assert len(results["violations"]) <= 3
+        assert len(results["violations"]) <= 4
         assert (
             len(results["violations"]) == 0
             or results["violations"][0]["impact"] == "minor"
@@ -164,7 +164,7 @@ class TestURLsWithChrome:
             driver=self.driver, route_rel=str(route_rel)
         )
 
-        assert len(results["violations"]) <= 3
+        assert len(results["violations"]) <= 4
         assert (
             len(results["violations"]) == 0
             or results["violations"][0]["impact"] == "minor"
