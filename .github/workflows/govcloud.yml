@@ -39,6 +39,16 @@ jobs:
     env:
       DOCKER_IMAGE: communitiesuk/digital-form-builder/runner
     steps:
+      - name: Read Lower case branch name
+        id: lower
+        run: |
+          echo ref_nam: ${{github.ref_name}}
+          echo ref: ${{github.ref}}
+          echo ${GITHUB_REF#refs/heads/}
+          echo "::set-env name=LOWER_CASE_BRANCH::$(
+            echo ${{ github.ref_name }} |
+            tr "[:upper:]" "[:lower:]"
+          )"
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
@@ -65,7 +75,6 @@ jobs:
           context: .
           tags: |
             ${{ env.DOCKER_IMAGE_TAG }}
-            ${{ env.REGISTRY }}/${{ env.DOCKER_IMAGE }}:${{ steps.lower.outputs.LOWER_CASE_BRANCH }}
           push: true
           file: Dockerfile
           build-args: |
