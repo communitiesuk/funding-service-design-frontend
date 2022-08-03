@@ -9,7 +9,9 @@ applications:
     - route: forms.dev.fundingservice.co.uk
   env:
     PREVIEW_MODE: TRUE
-    
+  services:
+    - form-uploads-dev
+
 - name: funding-service-design-form-runner-test
   docker:
     image: ghcr.io/communitiesuk/digital-form-builder/runner:latest
@@ -19,3 +21,5 @@ applications:
     - route: forms.test.fundingservice.co.uk
   env:
     PREVIEW_MODE: TRUE
+  services:
+    - form-uploads-test
