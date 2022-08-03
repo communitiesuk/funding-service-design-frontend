@@ -31,7 +31,7 @@ jobs:
   build-and-push-runner:
     runs-on: ubuntu-latest
     outputs:
-      docker_image_tag: ${{steps.set-tag.outputs.DOCKER_IMAGE_TAG}}
+      docker_image_tag: ${{steps.set-vars.outputs.DOCKER_IMAGE_TAG}}
       lower_case_branch: ${{steps.set-vars.outputs.LOWER_CASE_BRANCH}}
     permissions:
       contents: read
