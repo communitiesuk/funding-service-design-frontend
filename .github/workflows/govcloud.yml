@@ -81,6 +81,12 @@ jobs:
           build-args: |
             COMMIT_SHA=$GITHUB_SHA
 
+  
+  deploy-forms-to-paas:
+    environment: ${{ github.event.inputs.environment }}
+    runs-on: ubuntu-latest
+    needs: [ build-and-push-runner ]
+    steps:
       - name: Install cloudfoundry
         shell: bash
         id: install-cf-cli
