@@ -32,6 +32,11 @@ def example_submit_pattern():
     return render_template("example_tasklist_submit.html", application_id="123")
 
 
+@default_bp.route("/accessibility_statement", methods=["GET"])
+def accessibility_statement():
+    current_app.logger.info("Accessibility statement page loaded.")
+    return render_template("accessibility-statement.html")
+
 
 @default_bp.route("/account")
 @login_required

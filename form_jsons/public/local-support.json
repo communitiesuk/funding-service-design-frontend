@@ -1,0 +1,107 @@
+{
+    "metadata": {},
+    "startPage": "/strategic-case",
+    "pages": [
+      {
+        "title": "Strategic case",
+        "path": "/strategic-case",
+        "components": [
+          {
+            "name": "tztfSa",
+            "options": {},
+            "type": "Html",
+            "content": "<h2 class=\"govuk-heading-m\">Local support</h2>"
+          },
+          {
+            "name": "KqoaJL",
+            "options": {},
+            "type": "YesNoField",
+            "hint": "This could include: \n<p>\n<li>surveys of the community </li>\n<li>town hall meetings you have run</li>\n<li>the estimated number of volunteers you have for your project</li>\n</p>\n",
+            "title": "Is there local support for your project?",
+            "values": {
+              "type": "listRef"
+            }
+          }
+        ],
+        "next": [
+          {
+            "path": "/check-your-answers"
+          },
+          {
+            "path": "/strategic-case-CVieGm",
+            "condition": "xlCiWk"
+          }
+        ]
+      },
+      {
+        "path": "/strategic-case-CVieGm",
+        "title": "Strategic case",
+        "components": [
+          {
+            "name": "abqMko",
+            "options": {},
+            "type": "Html",
+            "content": "<h2 class=\"govuk-heading-m\">Local support</h2>"
+          },
+          {
+            "name": "BFbzux",
+            "options": {
+              "maxWords": "200"
+            },
+            "type": "MultilineTextField",
+            "title": "Tell us more about the local support for your project"
+          }
+        ],
+        "next": [
+          {
+            "path": "/check-your-answers"
+          }
+        ]
+      },
+      {
+        "title": "Check your answers",
+        "path": "/check-your-answers",
+        "controller": "./pages/summary.js",
+        "components": [],
+        "next": []
+      }
+    ],
+    "lists": [],
+    "sections": [],
+    "conditions": [
+      {
+        "displayName": "Is there local support for your project-yes",
+        "name": "xlCiWk",
+        "value": {
+          "name": "Is there local support for your project-yes",
+          "conditions": [
+            {
+              "field": {
+                "name": "KqoaJL",
+                "type": "YesNoField",
+                "display": "Is there local support for your project?"
+              },
+              "operator": "is",
+              "value": {
+                "type": "Value",
+                "value": "true",
+                "display": "true"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "fees": [],
+    "outputs": [],
+    "version": 2,
+    "skipSummary": false,
+    "name": "Apply for funding",
+    "feedback": {
+      "feedbackForm": false,
+      "url": ""
+    },
+    "phaseBanner": {
+      "phase": "beta"
+    }
+  }
