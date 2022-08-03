@@ -26,9 +26,9 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  FORMS_SERVICE_PREVIEW_HOST: ${{ secrets.FORMS_SERVICE_HOST}}
-  FORMS_SERVICE_PUBLIC_HOST: ${{ secrets.FORMS_SERVICE_HOST}}
-  FORMS_SERVICE_HOST: ${{ secrets.FORMS_SERVICE_HOST}}
+  FORMS_SERVICE_PREVIEW_HOST: https://forms.dev.fundingservice.co.uk
+  FORMS_SERVICE_PUBLIC_HOST: https://forms.dev.fundingservice.co.uk
+  FORMS_SERVICE_HOST: https://forms.dev.fundingservice.co.uk
 
 jobs:
   deploy-forms-to-paas:
