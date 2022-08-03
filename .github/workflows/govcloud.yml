@@ -71,7 +71,7 @@ jobs:
           context: .
           tags: |
             ${{ env.DOCKER_IMAGE_TAG }}
-            steps.lower.outputs.LOWER_CASE_BRANCH
+            ${{ steps.lower.outputs.LOWER_CASE_BRANCH }}
           push: true
           file: Dockerfile
           build-args: |
