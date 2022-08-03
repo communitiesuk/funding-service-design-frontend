@@ -39,22 +39,14 @@ jobs:
     env:
       DOCKER_IMAGE: communitiesuk/digital-form-builder/runner
     steps:
-      - name: Set vars
-        id: set-vars
-        run: |
-          echo ref_nam: ${{github.ref_name}}
-          echo ref: ${{github.ref}}
-          echo ${GITHUB_REF#refs/heads/}
-          echo "::set-output name=LOWER_CASE_BRANCH::$(
-            echo ${GITHUB_REF#refs/heads/} |
-            tr "[:upper:]" "[:lower:]"
-          )"
-          echo "::set-output name=DOCKER_IMAGE_TAG::${{ env.REGISTRY }}/${{ env.DOCKER_IMAGE }}:$GITHUB_SHA"
-
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.ref }}
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Set environment variables
+        run: |
+          echo "DOCKER_IMAGE_TAG=${{ env.REGISTRY }}/${{ env.DOCKER_IMAGE }}:$GITHUB_SHA" >> $GITHUB_ENV
 
       - name: list environment
         run: |
