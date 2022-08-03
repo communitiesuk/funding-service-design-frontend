@@ -35,7 +35,7 @@ def extract_subset_of_data_from_application(
     return application_data[data_subset_name]
 
 
-def format_rehydrate_payload(micro_form_data, application_id, page_name, redirectToUrl):
+def format_rehydrate_payload(micro_form_data, application_id, page_name, returnUrl):
     """
     Returns information in a JSON format that provides the
     POST body for the utilisation of the save and return
@@ -78,7 +78,7 @@ def format_rehydrate_payload(micro_form_data, application_id, page_name, redirec
         "callbackUrl": callback_url,
         "redirectPath": redirect_path,
         "customText": {"nextSteps": "Form Submitted"},
-        "redirectToUrl": redirectToUrl
+        "returnUrl": returnUrl
     }
     formatted_data["questions"] = extract_subset_of_data_from_application(
         micro_form_data, "questions"

@@ -147,10 +147,10 @@ def continue_application(application_id):
     args = request.args
     form_name = args.get("section_name")
     page_name = args.get("page_name")
-    redirectToUrl = request.host_url + url_for(
+    returnUrl = request.host_url + url_for(
             "routes.tasklist", application_id=application_id
         )   
-    current_app.logger.info(f"base:url'{redirectToUrl}'.")    
+    current_app.logger.info(f"base:url'{returnUrl}'.")    
 
     response = get_data(
         Config.GET_APPLICATION_ENDPOINT.format(application_id=application_id)
@@ -159,7 +159,7 @@ def continue_application(application_id):
     section = application_data.get_section_data(application_data, form_name)
 
     rehydrate_payload = format_rehydrate_payload(
-        section, application_id, page_name, redirectToUrl
+        section, application_id, page_name, returnUrl
     )
 
     rehydration_token = get_token_to_return_to_application(
