@@ -30,17 +30,14 @@ env:
 jobs:
   build-and-push-runner:
     runs-on: ubuntu-latest
-    outputs:
-      docker_image_tag: ${{steps.set-vars.outputs.DOCKER_IMAGE_TAG}}
-      lower_case_branch: ${{steps.set-vars.outputs.LOWER_CASE_BRANCH}}
     permissions:
       contents: read
       packages: write
     env:
       DOCKER_IMAGE: communitiesuk/digital-form-builder/runner
     steps:
-      - name: Read Lower case branch name
-        id: lower
+      - name: Set vars
+        id: set-vars
         run: |
           echo ref_nam: ${{github.ref_name}}
           echo ref: ${{github.ref}}
@@ -49,14 +46,12 @@ jobs:
             echo ${GITHUB_REF#refs/heads/} |
             tr "[:upper:]" "[:lower:]"
           )"
+          echo "::set-output name=DOCKER_IMAGE_TAG::${{ env.REGISTRY }}/${{ env.DOCKER_IMAGE }}:$GITHUB_SHA"
+
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
           ref: ${{ github.ref }}
-
-      - name: Set environment variables
-        run: |
-          echo "DOCKER_IMAGE_TAG=${{ env.REGISTRY }}/${{ env.DOCKER_IMAGE }}:$GITHUB_SHA" >> $GITHUB_ENV
 
       - name: list environment
         run: |
@@ -75,7 +70,7 @@ jobs:
           context: .
           tags: |
             ${{ env.DOCKER_IMAGE_TAG }}
-            ${{ steps.lower.outputs.LOWER_CASE_BRANCH }}
+            ${{ env.REGISTRY }}/${{ env.DOCKER_IMAGE }}:${{ steps.lower.outputs.LOWER_CASE_BRANCH }}
           push: true
           file: Dockerfile
           build-args: |
@@ -107,9 +102,8 @@ jobs:
           ls -al
           CF_DOCKER_PASSWORD=${{ secrets.GHCR_PAT }} cf push funding-service-design-form-runner-dev -f ./manifest.yml \
             --docker-image ${{ env.DOCKER_IMAGE_TAG }} \
-            --docker-username ${{ github.actor }} \
-            --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
-
+            --docker-username ${{ github.actor }}
+            
       - name: Deploy to Gov.uk PaaS test
         id: deploy-to-paas-test
         if: github.ref == 'refs/heads/main'
@@ -119,7 +113,7 @@ jobs:
           cf auth "${{ secrets.CF_USER }}" "${{ secrets.CF_PASSWORD }}"
           cf target -o dluhc-funding-service-design -s sandbox
           CF_DOCKER_PASSWORD=${{ secrets.GHCR_PAT }} cf push funding-service-design-form-runner-test -f ./manifest.yml \
-            --docker-image ${{ env.DOCKER_IMAGE_TAG }} \
+            --docker-image ${{ needs.build-and-push-runner.outputs.docker_image_tag }} \
             --docker-username ${{ github.actor }}
 
 
