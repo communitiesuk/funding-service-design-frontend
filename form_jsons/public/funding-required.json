@@ -5,6 +5,17 @@
       {
         "title": "Management case",
         "path": "/management-case",
+        "controller": "RepeatingFieldPageController",
+        "options": {
+            "summaryDisplayMode": {
+              "samePage": true,
+              "separatePage": false,
+              "hideRowTitles": false
+            },
+            "customText": {
+              "separatePageTitle": "You have selected these languages"
+            }
+          },
         "components": [
           {
             "name": "uKmWaC",
@@ -38,10 +49,16 @@
             "content": "<h2 class=\"govuk-heading-m\">Your capital costs</h2>"
           },
           {
-            "name": "GDisLj",
-            "options": {},
-            "type": "Para",
-            "content": "<p class=\"govuk-caption-m\"> Adam's template goes here</p>"
+            "name": "MultiInputField",
+            "options": {
+              "prefix": "£",
+              "textFieldTitle": "Describe the cost",
+              "numberFieldTitle": "Amount"
+            },
+            "type": "MultiInputField",
+            "title": "Capital costs",
+            "hint": "The MultiInputField needed",
+            "schema": {}
           }
         ],
         "next": [
@@ -53,6 +70,17 @@
       {
         "path": "/management-case-RRVytx",
         "title": "Management case",
+        "controller": "RepeatingFieldPageController",
+        "options": {
+            "summaryDisplayMode": {
+              "samePage": true,
+              "separatePage": false,
+              "hideRowTitles": false
+            },
+            "customText": {
+              "separatePageTitle": "You have selected these languages"
+            }
+          },
         "components": [
           {
             "name": "eJdudr",
@@ -79,10 +107,16 @@
             "content": "<h2 class=\"govuk-heading-m\">Your revenue costs</h2>"
           },
           {
-            "name": "FNfukd",
-            "options": {},
-            "type": "Para",
-            "content": "<p class=\"govuk-caption-m\"> Adam's template goes here</p>"
+            "name": "MultiInputField-2",
+            "options": {
+              "prefix": "£",
+              "textFieldTitle": "Describe the cost",
+              "numberFieldTitle": "Amount"
+            },
+            "type": "MultiInputField",
+            "title": "Revenue costs",
+            "hint": "The MultiInputField needed",
+            "schema": {}
           }
         ],
         "next": [
@@ -94,6 +128,17 @@
       {
         "path": "/management-case-OYWrsW",
         "title": "Management case",
+        "controller": "RepeatingFieldPageController",
+        "options": {
+            "summaryDisplayMode": {
+              "samePage": true,
+              "separatePage": false,
+              "hideRowTitles": false
+            },
+            "customText": {
+              "separatePageTitle": "You have selected these languages"
+            }
+          },
         "components": [
           {
             "name": "ZLsNnZ",
@@ -120,10 +165,16 @@
             "content": "<h2 class=\"govuk-heading-m\">Your match funding</h2>"
           },
           {
-            "name": "tgNrhK",
-            "options": {},
-            "type": "Para",
-            "content": "<p class=\"govuk-caption-m\"> Adam's template goes here</p>"
+            "name": "MultiInputField-3",
+            "options": {
+              "prefix": "£",
+              "textFieldTitle": "Source of funding",
+              "numberFieldTitle": "Amount"
+            },
+            "type": "MultiInputField",
+            "title": "Match funding",
+            "hint": "The MultiInputField needed",
+            "schema": {}
           }
         ],
         "next": [
