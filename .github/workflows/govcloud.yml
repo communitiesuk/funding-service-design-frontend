@@ -103,8 +103,6 @@ jobs:
           cf api ${{ secrets.CF_API }}
           cf auth "${{ secrets.CF_USER }}" "${{ secrets.CF_PASSWORD }}"
           cf target -o dluhc-funding-service-design -s sandbox
-          pwd
-          ls -al
           CF_DOCKER_PASSWORD=${{ secrets.GHCR_PAT }} cf push funding-service-design-form-runner-dev -f ./manifest.yml \
             --docker-image ${{ needs.build-and-push-runner.outputs.docker_image_tag }} \
             --docker-username ${{ github.actor }}
