@@ -1,42 +1,22 @@
 {% from "govuk_frontend_jinja/components/footer/macro.html" import govukFooter -%}
 
-{{ govukFooter({
-    'navigation': [
-      {
-        'title': 'This demo uses',
-        'columns': 1,
-        'items': [
-            {
-              'href': 'https://github.com/alphagov/govuk-frontend/releases/tag/v4.0.0',
-              'text': 'GOV.UK Frontend v4.0.0'
-            },
-            {
-              'href': 'https://github.com/LandRegistry/govuk-frontend-jinja/releases/tag/2.0.0',
-              'text': 'GOV.UK Frontend Jinja v2.0.0'
-            }
-          ]
-      },
-      {
-        'title': 'More information',
-        'columns': 1,
-        'items': [
-            {
-              'href': "https://github.com/LandRegistry/govuk-frontend-jinja",
-              'text': "Package source code"
-            },
-            {
-              'href': "https://github.com/LandRegistry/govuk-frontend-jinja/actions",
-              'text': "Build pipeline"
-            },
-            {
-              'href': "https://pypi.org/project/govuk-frontend-jinja/",
-              'text': "PyPI package"
-            },
-            {
-              'href': "https://github.com/LandRegistry/govuk-frontend-jinja-demo",
-              'text': "Demo source code"
-            }
-          ]
-      }
-    ]
-  }) }}
+{{ govukFooter(
+    {
+        'meta': {
+            'visuallyHiddenTitle': 'Items',
+            'items': [
+                {
+                    'href': '/accessibility_statement',
+                    'text': 'Accessibility statement'
+                },
+                {
+                    'href': '#2',
+                    'text': 'Item 2'
+                },
+                {
+                    'href': '#3',
+                    'text': 'Item 3'
+                }
+            ]
+    }
+    }) }}

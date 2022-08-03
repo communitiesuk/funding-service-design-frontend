@@ -1,0 +1,254 @@
+{
+    "metadata": {},
+    "startPage": "/management-case",
+    "pages": [
+      {
+        "title": "Management case",
+        "path": "/management-case",
+        "components": [
+          {
+            "name": "uKmWaC",
+            "options": {},
+            "type": "Html",
+            "content": "<h2 class=\"govuk-heading-m\">Funding required</h2>"
+          },
+          {
+            "name": "FhOGcz",
+            "options": {},
+            "type": "Details",
+            "content": "We are looking to understand:\n<div>\n<br>\n<li>how much funding you are applying for from this fund</li>\n<li>your full project costs </li>\n<li>any funding you've already received for your project so far</li>\n<li>any funding you've plan to secure for your project</li>\n<li>any funding you've already received towards capital costs</li>\n<br>\n\n<p>This fund can offer up to 50% of your capital costs to renovate and repair the asset.</p>\n</div>",
+            "title": "See guidance"
+          },
+          {
+            "name": "hccOGv",
+            "options": {},
+            "type": "Para",
+            "content": "<h2 class=\"govuk-heading-m\">Capital costs</h2>"
+          },
+          {
+            "name": "dPYuee",
+            "options": {},
+            "type": "Para",
+            "content": "<span class=\"govuk-caption-m\">This is used to purchase or lease the asset and pay for refurbishment costs. You can apply for up to £250,000 (up to £1 million for sporting assets)</span>"
+          },
+          {
+            "name": "mRBKeC",
+            "options": {},
+            "type": "Para",
+            "content": "<h2 class=\"govuk-heading-m\">Your capital costs</h2>"
+          },
+          {
+            "name": "GDisLj",
+            "options": {},
+            "type": "Para",
+            "content": "<p class=\"govuk-caption-m\"> Adam's template goes here</p>"
+          }
+        ],
+        "next": [
+          {
+            "path": "/management-case-RRVytx"
+          }
+        ]
+      },
+      {
+        "path": "/management-case-RRVytx",
+        "title": "Management case",
+        "components": [
+          {
+            "name": "eJdudr",
+            "options": {},
+            "type": "Html",
+            "content": "<h2 class=\"govuk-heading-m\">Funding required</h2>"
+          },
+          {
+            "name": "rNZTuD",
+            "options": {},
+            "type": "Para",
+            "content": "<h2 class=\"govuk-heading-m\">Revenue costs</h2>"
+          },
+          {
+            "name": "DfTiAW",
+            "options": {},
+            "type": "Para",
+            "content": "<div class=\"govuk-body\">\n<p class=\"govuk-caption-m\">This is used for the running costs of the project. This might include legal fees or general costs, including for:</p>\n\n<div class=\"govuk-caption-m\">\n<li>utilities</li>\n<li>staffing</li>\n<li>appointing external consultants</li>\n</div>\n<p class=\"govuk-caption-m\">It should be no more than £50,000, and no more than 20% of your capital funding.</p>\n</div>"
+          },
+          {
+            "name": "thwwYG",
+            "options": {},
+            "type": "Para",
+            "content": "<h2 class=\"govuk-heading-m\">Your revenue costs</h2>"
+          },
+          {
+            "name": "FNfukd",
+            "options": {},
+            "type": "Para",
+            "content": "<p class=\"govuk-caption-m\"> Adam's template goes here</p>"
+          }
+        ],
+        "next": [
+          {
+            "path": "/management-case-OYWrsW"
+          }
+        ]
+      },
+      {
+        "path": "/management-case-OYWrsW",
+        "title": "Management case",
+        "components": [
+          {
+            "name": "ZLsNnZ",
+            "options": {},
+            "type": "Html",
+            "content": "<h2 class=\"govuk-heading-m\">Funding required</h2>"
+          },
+          {
+            "name": "FqiBUI",
+            "options": {},
+            "type": "Para",
+            "content": "<h2 class=\"govuk-heading-m\">Match funding</h2>"
+          },
+          {
+            "name": "GYgAmx",
+            "options": {},
+            "type": "Para",
+            "content": "<div class=\"govuk-body\">\n<p class=\"govuk-caption-m\">You need to raise other sources of funding alongside investment from this fund.</p>\n<p class=\"govuk-caption-m\">Having a range of funders contributing to your project can show the quality of your project and the support it has in the community.</p>\n<p class=\"govuk-caption-m\">Match funding sources can include:</p>\n\n<div class=\"govuk-caption-m\">\n<li>public bodies</li>\n<li>devolved administrations</li>\n<li>charitable trusts</li>\n<li>national lottery funders</li>\n<li>community shares</li>\n<li>social investors</li>\n<li>other lenders</li>\n\n</div>\n</div>"
+          },
+          {
+            "name": "xyxxRh",
+            "options": {},
+            "type": "Para",
+            "content": "<h2 class=\"govuk-heading-m\">Your match funding</h2>"
+          },
+          {
+            "name": "tgNrhK",
+            "options": {},
+            "type": "Para",
+            "content": "<p class=\"govuk-caption-m\"> Adam's template goes here</p>"
+          }
+        ],
+        "next": [
+          {
+            "path": "/management-case-FWhylC"
+          }
+        ]
+      },
+      {
+        "path": "/management-case-FWhylC",
+        "title": "Management case",
+        "components": [
+          {
+            "name": "PtVfWP",
+            "options": {},
+            "type": "Html",
+            "content": "<h2 class=\"govuk-heading-m\">Funding required</h2>"
+          },
+          {
+            "name": "yquoIb",
+            "options": {},
+            "type": "RadiosField",
+            "title": "Have you already secured this (your match) funding?",
+            "list": "OaMCxF",
+            "hint": "",
+            "values": {
+              "type": "listRef"
+            }
+          }
+        ],
+        "next": [
+          {
+            "path": "/management-case-diwcLQ"
+          }
+        ]
+      },
+      {
+        "path": "/management-case-diwcLQ",
+        "title": "Management case",
+        "components": [
+          {
+            "name": "smwSHp",
+            "options": {},
+            "type": "Html",
+            "content": "<h2 class=\"govuk-heading-m\">Funding required</h2>"
+          },
+          {
+            "name": "HXkiDB",
+            "options": {},
+            "type": "Para",
+            "content": "<h2 class=\"govuk-heading-m\">Asset value</h2>"
+          },
+          {
+            "name": "dihVHL",
+            "options": {},
+            "type": "Para",
+            "content": "<div class=\"govuk-body\">\n\n<p class=\"govuk-caption-m\">You need to have the asset valued by someone independent before you take control of it.</p>\n<p class=\"govuk-caption-m\">This includes the building and its contents, including fixtures and fittings, and any stock.</p>\n<p class=\"govuk-caption-m\">If you have already bought or leased the asset, use its current valuation.</p>\n\n</div>"
+          },
+          {
+            "name": "fnIdkJ",
+            "options": {
+              "prefix": "£"
+            },
+            "type": "NumberField",
+            "title": "Asset value"
+          }
+        ],
+        "next": [
+          {
+            "path": "/check-your-answers"
+          }
+        ]
+      },
+      {
+        "path": "/check-your-answers",
+        "title": "Check your answers",
+        "components": [],
+        "next": [],
+        "controller": "./pages/summary.js"
+      }
+    ],
+    "lists": [
+      {
+        "title": "one",
+        "name": "nFbaHM",
+        "type": "string",
+        "items": [
+          {
+            "text": "one",
+            "value": "one"
+          },
+          {
+            "text": "two",
+            "value": "two"
+          }
+        ]
+      },
+      {
+        "title": "Have you already secured this funding",
+        "name": "OaMCxF",
+        "type": "string",
+        "items": [
+          {
+            "text": "Yes",
+            "value": "yes"
+          },
+          {
+            "text": "No",
+            "value": "no"
+          }
+        ]
+      }
+    ],
+    "sections": [],
+    "conditions": [],
+    "fees": [],
+    "outputs": [],
+    "version": 2,
+    "skipSummary": false,
+    "name": "Apply for funding",
+    "feedback": {
+      "feedbackForm": false,
+      "url": ""
+    },
+    "phaseBanner": {
+      "phase": "beta"
+    }
+  }

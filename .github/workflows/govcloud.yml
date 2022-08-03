@@ -26,12 +26,12 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  FORMS_SERVICE_PREVIEW_HOST: ${{ secrets.FORMS_SERVICE_HOST}}
-  FORMS_SERVICE_PUBLIC_HOST: ${{ secrets.FORMS_SERVICE_HOST}}
-  FORMS_SERVICE_HOST: ${{ secrets.FORMS_SERVICE_HOST}}
+  FORMS_SERVICE_PREVIEW_HOST: https://forms.dev.fundingservice.co.uk
+  FORMS_SERVICE_PUBLIC_HOST: https://forms.dev.fundingservice.co.uk
+  FORMS_SERVICE_HOST: https://forms.dev.fundingservice.co.uk
 
 jobs:
-  build-runner:
+  deploy-forms-to-paas:
     environment: ${{ github.event.inputs.environment }}
     runs-on: ubuntu-latest
     permissions:
@@ -71,7 +71,7 @@ jobs:
           build-args: |
             COMMIT_SHA=$GITHUB_SHA
 
-      - name: Install cloudfoundary
+      - name: Install cloudfoundry
         shell: bash
         id: install-cf-cli
         run: |
@@ -80,14 +80,25 @@ jobs:
           sudo apt-get update
           sudo apt-get install cf8-cli
 
-      - name: Deploy to Gov.uk PaaS
-        id: deploy-to-paas
+      - name: Deploy to Gov.uk PaaS Dev
+        id: deploy-to-paas-dev
         shell: bash
         run: |
           cf api ${{ secrets.CF_API }}
           cf auth "${{ secrets.CF_USER }}" "${{ secrets.CF_PASSWORD }}"
           cf target -o dluhc-funding-service-design -s sandbox
-          CF_DOCKER_PASSWORD=${{ secrets.GHCR_PAT }} cf push funding-service-design-form-runner -f ./manifest.yml \
+          CF_DOCKER_PASSWORD=${{ secrets.GHCR_PAT }} cf push funding-service-design-form-runner-dev -f ./manifest.yml \
+            --docker-image ${{ env.DOCKER_IMAGE_TAG }} \
+            --docker-username ${{ github.actor }}
+            
+      - name: Deploy to Gov.uk PaaS test
+        id: deploy-to-paas-test
+        shell: bash
+        run: |
+          cf api ${{ secrets.CF_API }}
+          cf auth "${{ secrets.CF_USER }}" "${{ secrets.CF_PASSWORD }}"
+          cf target -o dluhc-funding-service-design -s sandbox
+          CF_DOCKER_PASSWORD=${{ secrets.GHCR_PAT }} cf push funding-service-design-form-runner-test -f ./manifest.yml \
             --docker-image ${{ env.DOCKER_IMAGE_TAG }} \
             --docker-username ${{ github.actor }}
 
@@ -140,7 +151,7 @@ jobs:
   #         allow_issue_writing: False
 
   testing:
-    needs: build-runner
+    needs: deploy-forms-to-paas
     runs-on: ubuntu-latest
     environment: Dev
     steps:
@@ -151,15 +162,13 @@ jobs:
         with:
           python-version: 3.10.1
       - name: install dependencies
-        run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements-dev.txt
       - name: build static assets
         run: python build.py
       - name: Install Chromium
         uses: browser-actions/setup-chrome@latest
-      - name: setup Chromedriver
-        uses: nanasess/setup-chromedriver@v1
       - name: Run tests
-        run: pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_linux64
+        run: pytest
       - name: "Upload Accessibility Testing reports"
         uses: actions/upload-artifact@v2
         with:
@@ -168,7 +177,7 @@ jobs:
           retention-days: 5
 
   deploy_dev:
-    needs: [testing, build-runner]
+    needs: [testing, deploy-forms-to-paas]
     runs-on: ubuntu-latest
     environment: Dev
     steps:
@@ -192,7 +201,7 @@ jobs:
           cf_space: ${{secrets.CF_SPACE }}
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
-          command: push funding-service-design-frontend-dev
+          command: push -f manifest-dev.yml funding-service-design-frontend-dev
 
   security:
     needs: deploy_dev
@@ -206,7 +215,7 @@ jobs:
         with:
           python-version: 3.10.1
       - name: install dependencies
-        run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements-dev.txt
       - name: Bandit
         run: bandit -r ./app
       - name: Safety
@@ -219,6 +228,7 @@ jobs:
 
   deploy_test:
     needs: security
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: test
     steps:
@@ -242,7 +252,7 @@ jobs:
           cf_space: ${{secrets.CF_SPACE }}
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
-          command: push funding-service-design-frontend-test
+          command: push -f manifest-test.yml funding-service-design-frontend-test --var RSA256_PRIVATE_KEY_BASE64="${{secrets.RSA256_PRIVATE_KEY_BASE64}}" --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
 
   # TODO: Add back when performance tests finished
   # run_performance_tests:

@@ -1,23 +1,20 @@
 import requests
-from app import config
 from app.application_status import ApplicationStatus
-from app.config import APPLICATION_STORE_API_HOST
-from app.config import FORM_REHYDRATION_URL
-from app.config import FORMS_SERVICE_PUBLIC_HOST
-from app.config import SUBMIT_APPLICATION_ENDPOINT
-from app.default.data import get_application_data
+from app.default.data import get_data
 from app.models.application import Application
 from app.models.application_summary import ApplicationSummary
-from app.models.eligibility_questions import minimium_money_question_page
 from app.models.helpers import format_rehydrate_payload
 from app.models.helpers import get_token_to_return_to_application
+from config import Config
 from flask import abort
 from flask import Blueprint
+from flask import current_app
 from flask import redirect
 from flask import render_template
 from flask import request
 from flask import url_for
 from flask_wtf import FlaskForm
+from fsd_utils.authentication.decorators import login_required
 
 
 default_bp = Blueprint("routes", __name__, template_folder="templates")
@@ -25,16 +22,24 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 
 @default_bp.route("/")
 def index():
-    return render_template(
-        "index.html", service_url=url_for("routes.max_funding_criterion")
-    )
+    current_app.logger.info("Service landing page loaded.")
+    return render_template("index.html")
 
 
-@default_bp.route("/account/<account_id>")
+@default_bp.route("/accessibility_statement", methods=["GET"])
+def accessibility_statement():
+    current_app.logger.info("Accessibility statement page loaded.")
+    return render_template("accessibility-statement.html")
+
+
+@default_bp.route("/account")
+@login_required
 def dashboard(account_id):
-    response = requests.get(
-        f"{APPLICATION_STORE_API_HOST}/applications?account_id={account_id}"
-    ).json()
+    response = get_data(
+        Config.GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT.format(
+            account_id=account_id
+        )
+    )
     applications: list[ApplicationSummary] = [
         ApplicationSummary.from_dict(application) for application in response
     ]
@@ -42,8 +47,8 @@ def dashboard(account_id):
         round_id = applications[0].round_id
         fund_id = applications[0].fund_id
     else:
-        round_id = config.DEFAULT_ROUND_ID
-        fund_id = config.DEFAULT_FUND_ID
+        round_id = Config.DEFAULT_ROUND_ID
+        fund_id = Config.DEFAULT_FUND_ID
     return render_template(
         "dashboard.html",
         account_id=account_id,
@@ -53,14 +58,15 @@ def dashboard(account_id):
     )
 
 
-@default_bp.route("/account/<account_id>/new", methods=["POST"])
+@default_bp.route("/account/new", methods=["POST"])
+@login_required
 def new(account_id):
     new_application = requests.post(
-        url=f"{APPLICATION_STORE_API_HOST}/applications",
+        url=f"{Config.APPLICATION_STORE_API_HOST}/applications",
         json={
             "account_id": account_id,
-            "round_id": request.form["round_id"] or config.DEFAULT_ROUND_ID,
-            "fund_id": request.form["fund_id"] or config.DEFAULT_FUND_ID,
+            "round_id": request.form["round_id"] or Config.DEFAULT_ROUND_ID,
+            "fund_id": request.form["fund_id"] or Config.DEFAULT_FUND_ID,
         },
     )
     new_application_json = new_application.json()
@@ -79,16 +85,6 @@ def new(account_id):
     )
 
 
-@default_bp.route("/funding_amount_eligibility", methods=["GET", "POST"])
-def max_funding_criterion():
-    return minimium_money_question_page(1000, FORMS_SERVICE_PUBLIC_HOST)
-
-
-@default_bp.route("/not-eligible")
-def not_eligible():
-    return render_template("not_eligible.html")
-
-
 @default_bp.route("/tasklist/<application_id>", methods=["GET"])
 def tasklist(application_id):
     """
@@ -100,7 +96,9 @@ def tasklist(application_id):
     Returns:
         function: a function which renders the tasklist template.
     """
-    application_response = get_application_data(application_id)
+    application_response = get_data(
+        Config.GET_APPLICATION_ENDPOINT.format(application_id=application_id)
+    )
     if not (application_response and application_response["sections"]):
         return abort(404)
     application = Application.from_dict(application_response)
@@ -149,8 +147,9 @@ def continue_application(application_id):
     args = request.args
     form_name = args.get("section_name")
     page_name = args.get("page_name")
-
-    response = get_application_data(application_id)
+    response = get_data(
+        Config.GET_APPLICATION_ENDPOINT.format(application_id=application_id)
+    )
     application_data = Application.from_dict(response)
     section = application_data.get_section_data(application_data, form_name)
 
@@ -162,9 +161,14 @@ def continue_application(application_id):
         form_name, rehydrate_payload
     )
 
-    return redirect(
-        FORM_REHYDRATION_URL.format(rehydration_token=rehydration_token)
+    redirect_url = Config.FORM_REHYDRATION_URL.format(
+        rehydration_token=rehydration_token
     )
+    if Config.FORMS_SERVICE_PRIVATE_HOST:
+        redirect_url = redirect_url.replace(
+            Config.FORMS_SERVICE_PRIVATE_HOST, Config.FORMS_SERVICE_PUBLIC_HOST
+        )
+    return redirect(redirect_url)
 
 
 @default_bp.route("/submit_application", methods=["POST"])
@@ -172,7 +176,9 @@ def submit_application():
     application_id = request.form.get("application_id")
     payload = {"application_id": application_id}
     requests.post(
-        SUBMIT_APPLICATION_ENDPOINT.format(application_id=application_id),
+        Config.SUBMIT_APPLICATION_ENDPOINT.format(
+            application_id=application_id
+        ),
         json=payload,
     )
     return render_template(

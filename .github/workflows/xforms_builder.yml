@@ -1,4 +1,4 @@
-name: Deploy xforms to Gov PaaS
+name: Build xforms image
 
 on:
   workflow_dispatch:
@@ -13,6 +13,8 @@ on:
 
 jobs:
   build:
+    outputs:
+      LOWER_CASE_BRANCH: ${{ steps.lower.outputs.LOWER_CASE_BRANCH }}
     runs-on: ubuntu-latest
     environment: Dev
     services:
@@ -34,6 +36,15 @@ jobs:
           username: ${{ secrets.GHCR_USER }}
           password: ${{ secrets.GHCR_PAT }}
 
+
+      - name: Read Lower case branch name
+        id: lower
+        run: >-
+          echo "::set-output name=LOWER_CASE_BRANCH::$(
+            echo ${{ github.ref_name }} |
+            tr "[:upper:]" "[:lower:]"
+          )"
+
       -
         name: Build and push
         uses: docker/build-push-action@v2
@@ -41,8 +52,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/communitiesuk/frontend-runner-${{ github.ref_name }}:latest
-            ghcr.io/communitiesuk/frontend-runner-${{ github.ref_name }}:1.0
+            ghcr.io/communitiesuk/frontend-runner-${{ steps.lower.outputs.LOWER_CASE_BRANCH }}:latest
+            ghcr.io/communitiesuk/frontend-runner-${{ steps.lower.outputs.LOWER_CASE_BRANCH }}:1.0
 
   use:
     runs-on: ubuntu-latest
@@ -50,7 +61,7 @@ jobs:
     needs: build
     services:
       runner:
-        image: ghcr.io/communitiesuk/frontend-runner-${{ github.ref_name }}:latest
+        image: ghcr.io/communitiesuk/frontend-runner-${{ needs.build.outputs.LOWER_CASE_BRANCH }}:latest
         credentials:
           username: ${{ secrets.GHCR_USER }}
           password: ${{ secrets.GHCR_PAT }}

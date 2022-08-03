@@ -2,16 +2,27 @@ import json
 import os
 
 import requests
-from app.config import FLASK_ROOT
-from app.config import GET_APPLICATION_ENDPOINT
-
+from config import Config
+from flask import current_app
 
 def get_data(endpoint: str):
-    if endpoint.startswith("https://"):
-        data = get_remote_data(endpoint)
-    else:
-        data = get_local_data(endpoint)
-    return data
+    """
+        Queries the api endpoint provided and returns a
+        data response in json format.
+
+    Args:
+        endpoint (str): an API get data address
+
+    Returns:
+        data (json): data response in json format
+    """
+
+    current_app.logger.info(f"Fetching data from '{endpoint}'.")
+    return (
+        get_local_data(endpoint)
+        if Config.USE_LOCAL_DATA
+        else get_remote_data(endpoint)
+    )
 
 
 def get_remote_data(endpoint):
@@ -25,8 +36,9 @@ def get_remote_data(endpoint):
 
 def get_local_data(endpoint: str):
     api_data_json = os.path.join(
-        FLASK_ROOT, "tests", "api_data", "endpoint_data.json"
+        Config.FLASK_ROOT, "tests", "api_data", "endpoint_data.json"
     )
+
     fp = open(api_data_json)
     api_data = json.load(fp)
     fp.close()
@@ -36,7 +48,7 @@ def get_local_data(endpoint: str):
 
 
 def get_application_data(application_id):
-    applications_endpoint = GET_APPLICATION_ENDPOINT.format(
+    applications_endpoint = Config.GET_APPLICATION_ENDPOINT.format(
         application_id=application_id
     )
     applications_response = get_data(applications_endpoint)

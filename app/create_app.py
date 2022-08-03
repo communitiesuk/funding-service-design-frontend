@@ -1,11 +1,13 @@
 from app.filters import datetime_format
 from app.filters import kebab_case_to_human
 from app.filters import snake_case_to_human
+from config import Config
 from flask import Flask
 from flask_babel import Babel
 from flask_compress import Compress
 from flask_talisman import Talisman
 from flask_wtf.csrf import CSRFProtect
+from fsd_utils.logging import logging
 from jinja2 import ChoiceLoader
 from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
@@ -14,7 +16,8 @@ from jinja2 import PrefixLoader
 def create_app() -> Flask:
     flask_app = Flask(__name__, static_url_path="/assets")
 
-    flask_app.config.from_pyfile("config.py")
+    flask_app.config.from_object("config.Config")
+
     Babel(flask_app)
 
     flask_app.jinja_loader = ChoiceLoader(
@@ -30,51 +33,16 @@ def create_app() -> Flask:
     flask_app.jinja_env.lstrip_blocks = True
     flask_app.jinja_env.add_extension("jinja2.ext.i18n")
 
-    csp = {
-        "default-src": "'self'",
-        "script-src": [
-            "'self'",
-            "'sha256-+6WnXIl4mbFTCARd8N3COQmT3bJJmo32N8q8ZSQAIcU='",
-            "'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ='",
-        ],
-        "img-src": ["data:", "'self'"],
-    }
+    # Initialise logging
+    logging.init_app(flask_app)
 
-    hss = {
-        "Strict-Transport-Security": (
-            "max-age=31536000; includeSubDomains; preload"
-        ),
-        "X-Content-Type-Options": "nosniff",
-        "X-Frame-Options": "SAMEORIGIN",
-        "X-XSS-Protection": "1; mode=block",
-        "Feature_Policy": (
-            "microphone 'none'; camera 'none'; geolocation 'none'"
-        ),
-    }
-
-    Compress(flask_app)
-    Talisman(
-        flask_app,
-        content_security_policy=csp,
-        strict_transport_security=hss,
-        force_https=False,
-    )
+    # Configure application security with Talisman
+    Talisman(flask_app, **Config.TALISMAN_SETTINGS)
 
     csrf = CSRFProtect()
-
     csrf.init_app(flask_app)
 
-    @flask_app.context_processor
-    def inject_global_constants():
-        return dict(
-            stage="beta",
-            service_title="DLUHC Funding Service Design Iteration 2",
-            service_meta_description=(
-                "DLUHC Funding Service Design Iteration 2"
-            ),
-            service_meta_keywords="DLUHC Funding Service Design Iteration 1",
-            service_meta_author="DLUHC",
-        )
+    Compress(flask_app)
 
     from app.default.routes import default_bp, not_found, internal_server_error
 
@@ -84,6 +52,18 @@ def create_app() -> Flask:
     flask_app.jinja_env.filters["datetime_format"] = datetime_format
     flask_app.jinja_env.filters["snake_case_to_human"] = snake_case_to_human
     flask_app.jinja_env.filters["kebab_case_to_human"] = kebab_case_to_human
+
+    @flask_app.context_processor
+    def inject_global_constants():
+        return dict(
+            stage="beta",
+            service_title="Apply for funding to save a building in your community",
+            service_meta_description=(
+                "Apply for funding to save a building in your community"
+            ),
+            service_meta_keywords="Apply for funding to save a building in your community",
+            service_meta_author="Department for Levelling up Housing and Communities",
+        )
 
     return flask_app
 

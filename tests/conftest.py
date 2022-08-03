@@ -1,13 +1,16 @@
+import json
 import multiprocessing
+import platform
 
 import pytest
 from app.create_app import create_app
-from chromedriver_py import binary_path
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
-multiprocessing.set_start_method("fork")  # Required on macOSX
+if platform.system() == "Darwin":
+    multiprocessing.set_start_method("fork")  # Required on macOSX
 
 
 def post_driver(driver, path, params):
@@ -71,7 +74,7 @@ def selenium_chrome_driver(request):
     @pytest.mark.uses_fixture('selenium_chrome_driver')
     :return: A selenium chrome driver.
     """
-    service_object = Service(binary_path)
+    service_object = Service(ChromeDriverManager().install())
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     # TODO: set chrome_options.binary_location = ...
@@ -82,3 +85,14 @@ def selenium_chrome_driver(request):
     request.cls.driver = chrome_driver
     yield
     request.cls.driver.close()
+
+
+@pytest.fixture()
+def mock_get_application(mocker):
+    file = open("tests/api_data/endpoint_data.json")
+    data = json.loads(file.read())
+    # mock the function in the file it is invoked (not where it is declared)
+    mocker.patch(
+        "app.default.routes.get_data",
+        return_value=data["http://application_store/applications/test_id"],
+    )

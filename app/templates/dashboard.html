@@ -10,20 +10,26 @@
     {% set ns = namespace(rows = []) %}
     {% for application in applications %}
         {% set status_class %}
-        {%  if application.status == 'COMPLETED' %}
-            govuk-tag--green
-        {%  elif application.status == 'NOT_STARTED' %}
-            govuk-tag--red
+            {%  if application.status == 'COMPLETED' %}
+                govuk-tag--green
+            {%  elif application.status == 'NOT_STARTED' %}
+                govuk-tag--red
+            {% endif %}
+        {% endset %}
+
+        {% if not application.status == 'SUBMITTED' %}
+            {% set application_link = '<a class="govuk-link" href="{}">Continue application</a>'.format(url_for('routes.tasklist', application_id=application.id)) %}
         {% endif %}
-    {% endset %}
+
+
     {% set row = ns.rows.append(
     [
     {
-    'html': '<a class="govuk-link" href="{}">{}</a>'.format(url_for('routes.tasklist', application_id=application.id), application.project_name if application.project_name else 'Untitled project')
+    'text': application.project_name if application.project_name else 'Untitled project'
     },
     {
     'text':  govukTag({
-    'text': application.status|replace('_',' ') ,
+    'text': application.status|snake_case_to_human ,
     'classes': status_class
     })
     },
@@ -32,10 +38,15 @@
     },
     {
     'text': application.last_edited|datetime_format if application.last_edited
+    },
+    {
+    'html': application_link
     }
     ]
-    ) %}
+    )
+    %}
 {% endfor %}
+
 {% if applications|length > 0 %}
     {{ govukTable({
     'head': [
@@ -50,12 +61,15 @@
     },
     {
     'text': 'Last edited'
+    },
+    {
+    'text': ''
     }
     ],
     'rows': ns.rows
     }) }}
 {% endif %}
-<form method="POST" action={{ url_for('routes.new', account_id=account_id) }}>
+<form method="POST" action={{ url_for('routes.new')}}>
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <input type="hidden" name="account_id" value="{{ account_id }}">
     <input type="hidden" name="fund_id" value="{{ fund_id }}">

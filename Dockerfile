@@ -1,4 +1,4 @@
-ARG BASE_IMAGE_TAG="latest"
+ARG BASE_IMAGE_TAG="3.25.11-rc.870"
 FROM ghcr.io/xgovformbuilder/digital-form-builder-runner:$BASE_IMAGE_TAG as base
 ARG FORMS_DIR="forms-v3"
 WORKDIR /usr/src/app

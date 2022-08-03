@@ -2,24 +2,43 @@
 "govuk_frontend_jinja/components/button/macro.html" import govukButton -%} {%
 from "partials/tasklist_section.html" import tasklist_section %} {% block content %}
 
+{% block pageTitle %}Task List - {{ service_title }}{% endblock %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
       {{application_meta_data["fund"]|kebab_case_to_human}}
-      Round: {{application_meta_data["round"]|snake_case_to_human}}
+      application
     </h1>
     {% if not application_response["status"] == application_meta_data["submitted_status"] %}
-    <h2 class="govuk-body govuk-!-font-weight-bold">
-      {% if application_meta_data["number_of_completed_sections"] == application_meta_data["number_of_sections"] %}
-       All sections complete
-      {% else %}
-       In progress
+
+    <p class="govuk-body-l govuk-!-font-weight-bold">
+      Status: 
+      {% set completed_count = application_meta_data["number_of_completed_sections"] %}
+      {% set section_count = application_meta_data["number_of_sections"] %}
+      {% if completed_count == 0 %}
+      <strong class="govuk-tag govuk-tag--grey">
+        Not Started
+      </strong>
+      {% elif completed_count > 0 and completed_count < section_count %}
+      <strong class="govuk-tag govuk-tag--blue">
+        In Progress
+      </strong>
+      {% elif completed_count == section_count %}
+      <strong class="govuk-tag govuk-tag--green">
+        Complete
+      </strong>
       {% endif %}
-    </h2>
+    </p>
+    
     <p class="govuk-body govuk-!-margin-bottom-7">
+      {% if application_meta_data["number_of_completed_sections"] == 0 %}
+      None of the sections have been completed.
+      {% else %}
       You have completed
       {{application_meta_data["number_of_completed_sections"]}} of
       {{application_meta_data["number_of_sections"]}} sections.
+      {% endif %}
     </p>
     {% endif %}
     <ol class="app-task-list">
