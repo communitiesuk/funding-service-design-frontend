@@ -79,6 +79,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ build-and-push-runner ]
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
       - name: Install cloudfoundry
         shell: bash
         id: install-cf-cli
