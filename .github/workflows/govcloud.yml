@@ -42,8 +42,8 @@ jobs:
           echo ref_nam: ${{github.ref_name}}
           echo ref: ${{github.ref}}
           echo ${GITHUB_REF#refs/heads/}
-          echo "::set-env name=LOWER_CASE_BRANCH::$(
-            echo ${{ github.ref_name }} |
+          echo "::set-output name=LOWER_CASE_BRANCH::$(
+            echo ${GITHUB_REF#refs/heads/} |
             tr "[:upper:]" "[:lower:]"
           )"
       - name: Checkout repo
@@ -72,6 +72,7 @@ jobs:
           context: .
           tags: |
             ${{ env.DOCKER_IMAGE_TAG }}
+            steps.lower.outputs.LOWER_CASE_BRANCH
           push: true
           file: Dockerfile
           build-args: |
