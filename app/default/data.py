@@ -5,6 +5,7 @@ import requests
 from config import Config
 from flask import current_app
 
+
 def get_data(endpoint: str):
     """
         Queries the api endpoint provided and returns a
