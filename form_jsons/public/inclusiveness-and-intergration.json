@@ -1,71 +1,94 @@
 {
-    "metadata": {},
-    "startPage": "/management-case",
-    "pages": [
-      {
-        "title": "Management case",
-        "path": "/management-case",
-        "components": [
-          {
-            "name": "XWvsQw",
-            "options": {},
-            "type": "Html",
-            "content": "<h2 class=\"govuk-heading-m\">Inclusiveness and intergration</h2>"
+  "metadata": {},
+  "startPage": "/management-case-ZtFGCc",
+  "pages": [
+    {
+      "title": "Management case",
+      "path": "/management-case",
+      "components": [
+        {
+          "name": "XWvsQw",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Inclusiveness and intergration</h2>"
+        },
+        {
+          "name": "YbfbSC",
+          "options": {
+            "maxWords": "200"
           },
-          {
-            "name": "YbfbSC",
-            "options": {
-              "maxWords": "200"
-            },
-            "type": "MultilineTextField",
-            "title": "Describe anything that might prevent people from using the asset or participating in its running",
-            "hint": "For example, membership costs or eligibility criteria."
+          "type": "MultilineTextField",
+          "title": "Describe anything that might prevent people from using the asset or participating in its running",
+          "hint": "For example, membership costs or eligibility criteria."
+        },
+        {
+          "name": "KuhSWw",
+          "options": {
+            "maxWords": "200"
           },
-          {
-            "name": "KuhSWw",
-            "options": {
-              "maxWords": "200"
-            },
-            "type": "MultilineTextField",
-            "title": "Tell us how you will make your project accessible and inclusive to everyone in the community",
-            "hint": "This includes considering disability access needs and making the space attractive to everyone."
+          "type": "MultilineTextField",
+          "title": "Tell us how you will make your project accessible and inclusive to everyone in the community",
+          "hint": "This includes considering disability access needs and making the space attractive to everyone."
+        },
+        {
+          "name": "bkJsiO",
+          "options": {
+            "maxWords": "200"
           },
-          {
-            "name": "bkJsiO",
-            "options": {
-              "maxWords": "200"
-            },
-            "type": "MultilineTextField",
-            "title": "Describe how the project will bring people together from all over the community"
-          }
-        ],
-        "next": [
-          {
-            "path": "/check-your-answers"
-          }
-        ]
-      },
-      {
-        "title": "Check your answers",
-        "path": "/check-your-answers",
-        "controller": "./pages/summary.js",
-        "components": [],
-        "next": []
-      }
-    ],
-    "lists": [],
-    "sections": [],
-    "conditions": [],
-    "fees": [],
-    "outputs": [],
-    "version": 2,
-    "skipSummary": false,
-    "name": "Apply for funding",
-    "feedback": {
-      "feedbackForm": false,
-      "url": ""
+          "type": "MultilineTextField",
+          "title": "Describe how the project will bring people together from all over the community"
+        }
+      ],
+      "next": [
+        {
+          "path": "/check-your-answers"
+        }
+      ]
     },
-    "phaseBanner": {
-      "phase": "beta"
+    {
+      "title": "Check your answers",
+      "path": "/check-your-answers",
+      "controller": "./pages/summary.js",
+      "components": [],
+      "next": []
+    },
+    {
+      "path": "/management-case-ZtFGCc",
+      "title": "Management case",
+      "components": [
+        {
+          "name": "jhcFBw",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Inclusiveness and intergration</h2>"
+        },
+        {
+          "name": "dHyMmB",
+          "options": {},
+          "type": "Para",
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>What might prevent people from using the asset</li>\n<li>How you will make your project accessible to everyone</li>\n<li>How the project will bring the community together</li>\n\n</div>"
+        }
+      ],
+      "next": [
+        {
+          "path": "/management-case"
+        }
+      ]
     }
+  ],
+  "lists": [],
+  "sections": [],
+  "conditions": [],
+  "fees": [],
+  "outputs": [],
+  "version": 2,
+  "skipSummary": false,
+  "name": "Apply for funding to save a building in your community",
+  "feedback": {
+    "feedbackForm": false,
+    "url": ""
+  },
+  "phaseBanner": {
+    "phase": "beta"
   }
+}

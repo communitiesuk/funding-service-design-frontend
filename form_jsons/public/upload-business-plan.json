@@ -1,0 +1,125 @@
+{
+    "metadata": {},
+    "startPage": "/management-case",
+    "pages": [
+      {
+        "title": "Management case",
+        "path": "/management-case",
+        "components": [
+          {
+            "name": "Jbsntw",
+            "options": {},
+            "type": "Html",
+            "content": "<h2 class=\"govuk-heading-m\">Upload business plan</h2>"
+          },
+          {
+            "name": "wruiyh",
+            "options": {},
+            "type": "Para",
+            "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Business plan (document upload, optional)</li>\n\n</div>"
+          }
+        ],
+        "next": [
+          {
+            "path": "/management-case-BCJuTq"
+          }
+        ]
+      },
+      {
+        "path": "/management-case-BCJuTq",
+        "title": "Management case",
+        "components": [
+          {
+            "name": "vWnWVW",
+            "options": {},
+            "type": "Html",
+            "content": "<h2 class=\"govuk-heading-m\">Business plan (Optional)</h2>"
+          },
+          {
+            "name": "gdmhaq",
+            "options": {},
+            "type": "YesNoField",
+            "title": "Do you want to upload a business plan?",
+            "hint": "You do not have to provide a business plan.\n<p>If you do upload a business plan, it must match the figures and information you have provided in the management case.</p>\n<p>Any extra information you include will not count towards your assessment.</p>"
+          }
+        ],
+        "next": [
+          {
+            "path": "/management-case-HFDUpa",
+            "condition": "SGPOBW"
+          },
+          {
+            "path": "/summary"
+          }
+        ]
+      },
+      {
+        "title": "Summary",
+        "path": "/summary",
+        "controller": "./pages/summary.js",
+        "components": [],
+        "next": []
+      },
+      {
+        "path": "/management-case-HFDUpa",
+        "title": "Management case",
+        "components": [
+          {
+            "name": "QAgOjR",
+            "options": {},
+            "type": "Html",
+            "content": "<h2 class=\"govuk-heading-m\">Business plan</h2>"
+          },
+          {
+            "name": "rFXeZo",
+            "options": {},
+            "type": "FileUploadField",
+            "title": "Upload business plan"
+          }
+        ],
+        "next": [
+          {
+            "path": "/summary"
+          }
+        ]
+      }
+    ],
+    "lists": [],
+    "sections": [],
+    "conditions": [
+      {
+        "displayName": "Do you want to upload a business plan-yes",
+        "name": "SGPOBW",
+        "value": {
+          "name": "Do you want to upload a business plan-yes",
+          "conditions": [
+            {
+              "field": {
+                "name": "gdmhaq",
+                "type": "YesNoField",
+                "display": "Do you want to upload a business plan?"
+              },
+              "operator": "is",
+              "value": {
+                "type": "Value",
+                "value": "true",
+                "display": "true"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "fees": [],
+    "outputs": [],
+    "version": 2,
+    "skipSummary": false,
+    "name": "Apply for funding to save a building in your community",
+    "feedback": {
+      "feedbackForm": false,
+      "url": ""
+    },
+    "phaseBanner": {
+      "phase": "beta"
+    }
+  }

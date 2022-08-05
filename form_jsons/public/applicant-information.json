@@ -1,0 +1,92 @@
+{
+  "metadata": {},
+  "startPage": "/about-your-organisation-xLTyXv",
+  "pages": [
+    {
+      "title": "About your organisation",
+      "path": "/about-your-organisation",
+      "components": [
+        {
+          "name": "ZAKTgH",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Applicant information</h2>"
+        },
+        {
+          "name": "ZBjDTn",
+          "options": {},
+          "type": "TextField",
+          "title": "Name of lead contact",
+          "hint": "This person will receive all the information about this application"
+        },
+        {
+          "name": "LZBrEj",
+          "options": {},
+          "type": "EmailAddressField",
+          "title": "Lead contact email address"
+        },
+        {
+          "name": "lRfhGB",
+          "options": {},
+          "type": "TelephoneNumberField",
+          "title": "Lead contact telephone number"
+        }
+      ],
+      "next": [
+        {
+          "path": "/check-your-answers"
+        }
+      ]
+    },
+    {
+      "path": "/check-your-answers",
+      "title": "Check your answers",
+      "components": [],
+      "next": [],
+      "controller": "./pages/summary.js"
+    },
+    {
+      "path": "/about-your-organisation-xLTyXv",
+      "title": "About your organisation",
+      "components": [
+        {
+          "name": "xdywoY",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Applicant information</h2>"
+        },
+        {
+          "name": "BOWelg",
+          "options": {},
+          "type": "Para",
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Lead contact name</li>\n<li>Lead contact email adress</li>\n<li>Lead contact telephone number</li>\n\n\n</div>"
+        }
+      ],
+      "next": [
+        {
+          "path": "/about-your-organisation"
+        }
+      ]
+    }
+  ],
+  "lists": [],
+  "sections": [
+    {
+      "name": "zjcAIa",
+      "title": "Applicant information"
+    }
+  ],
+  "conditions": [],
+  "fees": [],
+  "outputs": [],
+  "version": 2,
+  "skipSummary": false,
+  "name": "Apply for funding to save a building in your community",
+  "feedback": {
+    "feedbackForm": false,
+    "url": ""
+  },
+  "phaseBanner": {
+    "phase": "beta"
+  }
+}

@@ -1,200 +1,165 @@
 {
-    "metadata": {},
-    "startPage": "/about-your-project",
-    "pages": [
-      {
-        "title": "About your project",
-        "path": "/about-your-project",
-        "components": [
-          {
-            "name": "YxyEix",
-            "options": {},
-            "type": "Html",
-            "content": "<h2 class=\"govuk-heading-m\">Project information</h2>"
+  "metadata": {},
+  "startPage": "/about-your-project-wdIOob",
+  "pages": [
+    {
+      "path": "/about-your-project-oSoKqq",
+      "title": "About your project",
+      "components": [
+        {
+          "name": "PqmTLR",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Project information</h2>"
+        },
+        {
+          "name": "uKwRXL",
+          "options": {},
+          "type": "TextField",
+          "title": "Project name",
+          "hint": "Please choose a name that describes your project. For example, the name of your asset, or a link to your asset's location"
+        },
+        {
+          "name": "BfYLWC",
+          "options": {
+            "maxWords": "200"
           },
-          {
-            "name": "RKuzIW",
-            "options": {},
-            "type": "YesNoField",
-            "title": "Have you been given funding through the Community Ownership Fund before?"
-          }
-        ],
-        "next": [
-          {
-            "path": "/about-your-project-TOxCqh",
-            "condition": "JzSbVh"
+          "type": "MultilineTextField",
+          "title": "Tell us how the asset is currently being used, or how it has been used before, and why it's important to the community"
+        },
+        {
+          "name": "KZKFGE",
+          "options": {
+            "maxWords": "200"
           },
-          {
-            "path": "/about-your-project-oSoKqq"
-          }
-        ]
-      },
-      {
-        "path": "/about-your-project-TOxCqh",
-        "title": "About your project",
-        "components": [
-          {
-            "name": "PMnYbp",
-            "options": {},
-            "type": "Html",
-            "content": "<h2 class=\"govuk-heading-m\">Project information</h2>"
+          "type": "MultilineTextField",
+          "title": "Explain why the asset is at risk of being lost to the community, or why it has already been lost"
+        },
+        {
+          "name": "efPrAo",
+          "options": {
+            "maxWords": "200"
           },
-          {
-            "name": "iktvZS",
-            "options": {},
-            "type": "TextField",
-            "title": "Name of previous project"
-          },
-          {
-            "name": "LQcTUZ",
-            "options": {
-              "prefix": "£"
-            },
-            "type": "NumberField",
-            "title": "Amount of funding received"
-          }
-        ],
-        "next": [
-          {
-            "path": "/about-your-project-oSoKqq"
-          }
-        ]
-      },
-      {
-        "path": "/about-your-project-oSoKqq",
-        "title": "About your project",
-        "components": [
-          {
-            "name": "PqmTLR",
-            "options": {},
-            "type": "Html",
-            "content": "<h2 class=\"govuk-heading-m\">Project information</h2>"
-          },
-          {
-            "name": "uKwRXL",
-            "options": {},
-            "type": "TextField",
-            "title": "Project name",
-            "hint": "Please choose a name that describes your project. For example, the name of your asset, or a link to your asset's location"
-          },
-          {
-            "name": "BfYLWC",
-            "options": {
-              "maxWords": "200"
-            },
-            "type": "MultilineTextField",
-            "title": "Tell us how the asset is currently being used, or how it has been used before, and why it's important to the community"
-          },
-          {
-            "name": "KZKFGE",
-            "options": {
-              "maxWords": "200"
-            },
-            "type": "MultilineTextField",
-            "title": "Explain why the asset is at risk of being lost to the community, or why it has already been lost"
-          },
-          {
-            "name": "efPrAo",
-            "options": {
-              "maxWords": "200"
-            },
-            "type": "MultilineTextField",
-            "title": "Give a brief summary of your project, including what you hope to achieve"
-          }
-        ],
-        "next": [
-          {
-            "path": "/about-your-project-LCBCcL"
-          }
-        ]
-      },
-      {
-        "path": "/about-your-project-LCBCcL",
-        "title": "About your project",
-        "components": [
-          {
-            "name": "ukJIQL",
-            "options": {},
-            "type": "Html",
-            "content": "<h2 class=\"govuk-heading-m\">Project information</h2>"
-          },
-          {
-            "name": "HhXUhD",
-            "options": {},
-            "type": "UkAddressField",
-            "title": "Address of the community asset"
-          },
-          {
-            "name": "rmiVDZ",
-            "options": {
-              "required": false
-            },
-            "type": "TextField",
-            "title": "County"
-          },
-          {
-            "name": "SdZbFW",
-            "options": {},
-            "type": "TextField",
-            "title": "In which constituency is your asset?"
-          }
-        ],
-        "next": [
-          {
-            "path": "/check-your-answers"
-          }
-        ]
-      },
-      {
-        "path": "/check-your-answers",
-        "title": "Check your answers",
-        "components": [],
-        "next": [],
-        "controller": "./pages/summary.js"
-      }
-    ],
-    "lists": [],
-    "sections": [
-      {
-        "name": "PekDNQ",
-        "title": "Apply for funding"
-      }
-    ],
-    "conditions": [
-      {
-        "displayName": "Have you been given funding through the Community Ownership Fund before -yes",
-        "name": "JzSbVh",
-        "value": {
-          "name": "Have you been given funding through the Community Ownership Fund before -yes",
-          "conditions": [
-            {
-              "field": {
-                "name": "RKuzIW",
-                "type": "YesNoField",
-                "display": "Have you been given funding through the Community Ownership Fund before?"
-              },
-              "operator": "is",
-              "value": {
-                "type": "Value",
-                "value": "true",
-                "display": "true"
-              }
-            }
-          ]
+          "type": "MultilineTextField",
+          "title": "Give a brief summary of your project, including what you hope to achieve"
         }
+      ],
+      "next": [
+        {
+          "path": "/about-your-project-LCBCcL"
+        }
+      ]
+    },
+    {
+      "path": "/about-your-project-LCBCcL",
+      "title": "About your project",
+      "components": [
+        {
+          "name": "ukJIQL",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Project information</h2>"
+        },
+        {
+          "name": "HhXUhD",
+          "options": {},
+          "type": "UkAddressField",
+          "title": "Address of the community asset"
+        },
+        {
+          "name": "rmiVDZ",
+          "options": {
+            "required": false
+          },
+          "type": "TextField",
+          "title": "County"
+        },
+        {
+          "name": "SdZbFW",
+          "options": {},
+          "type": "TextField",
+          "title": "In which constituency is your asset?"
+        }
+      ],
+      "next": [
+        {
+          "path": "/check-your-answers"
+        }
+      ]
+    },
+    {
+      "path": "/check-your-answers",
+      "title": "Check your answers",
+      "components": [],
+      "next": [],
+      "controller": "./pages/summary.js"
+    },
+    {
+      "path": "/about-your-project-wdIOob",
+      "title": "About your project",
+      "components": [
+        {
+          "name": "NKsYNp",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Project information</h2>"
+        },
+        {
+          "name": "mrzruF",
+          "options": {},
+          "type": "Para",
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Previous COF funding received (if applicable)</li>\n<li>How the asset is being used</li>\n<li>Why the asset is at risk</li>\n<li>Project summary</li>\n<li>Asset address</li>\n<li>Constituency of asset</li>\n\n\n\n</div>"
+        }
+      ],
+      "next": [
+        {
+          "path": "/about-your-project-oSoKqq"
+        }
+      ]
+    }
+  ],
+  "lists": [],
+  "sections": [
+    {
+      "name": "PekDNQ",
+      "title": "Apply for funding"
+    }
+  ],
+  "conditions": [
+    {
+      "displayName": "Have you been given funding through the Community Ownership Fund before -yes",
+      "name": "JzSbVh",
+      "value": {
+        "name": "Have you been given funding through the Community Ownership Fund before -yes",
+        "conditions": [
+          {
+            "field": {
+              "name": "RKuzIW",
+              "type": "YesNoField",
+              "display": "Have you been given funding through the Community Ownership Fund before?"
+            },
+            "operator": "is",
+            "value": {
+              "type": "Value",
+              "value": "true",
+              "display": "true"
+            }
+          }
+        ]
       }
-    ],
-    "fees": [],
-    "outputs": [],
-    "version": 2,
-    "skipSummary": false,
-    "name": "Apply for funding",
-    "feedback": {
-      "feedbackForm": false,
-      "url": ""
-    },
-    "phaseBanner": {
-      "phase": "beta"
-    },
-    "declaration": ""
-  }
+    }
+  ],
+  "fees": [],
+  "outputs": [],
+  "version": 2,
+  "skipSummary": false,
+  "name": "Apply for funding to save a building in your community",
+  "feedback": {
+    "feedbackForm": false,
+    "url": ""
+  },
+  "phaseBanner": {
+    "phase": "beta"
+  },
+  "declaration": ""
+}
