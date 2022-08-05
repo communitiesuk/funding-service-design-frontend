@@ -9,7 +9,7 @@ applications:
     - route: forms.dev.fundingservice.co.uk
   env:
     PREVIEW_MODE: TRUE
-    NODE_CONFIG: '{"RSA256_PUBLIC_KEY_BASE64": "((RSA256_PUBLIC_KEY_BASE64))"}'
+    RSA256_PUBLIC_KEY_BASE64: ((RSA256_PUBLIC_KEY_BASE64))
   services:
     - form-uploads-dev
     - logit-ssl-drain
@@ -23,7 +23,7 @@ applications:
     - route: forms.test.fundingservice.co.uk
   env:
     PREVIEW_MODE: TRUE
-    NODE_CONFIG: '{"RSA256_PUBLIC_KEY_BASE64": "((RSA256_PUBLIC_KEY_BASE64))"}'
+    RSA256_PUBLIC_KEY_BASE64: ((RSA256_PUBLIC_KEY_BASE64))
   services:
     - form-uploads-test
     - logit-ssl-drain
