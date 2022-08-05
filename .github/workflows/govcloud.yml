@@ -26,9 +26,10 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  FORMS_SERVICE_PREVIEW_HOST: https://forms.dev.fundingservice.co.uk
-  FORMS_SERVICE_PUBLIC_HOST: https://forms.dev.fundingservice.co.uk
-  FORMS_SERVICE_HOST: https://forms.dev.fundingservice.co.uk
+  # TODO: restore this to a custom domain once DNS is restored
+  FORMS_SERVICE_PREVIEW_HOST: https://funding-service-design-form-runner-dev.london.cloudapps.digital
+  FORMS_SERVICE_PUBLIC_HOST: https://funding-service-design-form-runner-dev.london.cloudapps.digital
+  FORMS_SERVICE_HOST: https://funding-service-design-form-runner-dev.london.cloudapps.digital
 
 jobs:
   deploy-forms-to-paas:
