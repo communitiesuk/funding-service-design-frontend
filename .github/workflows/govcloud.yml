@@ -90,8 +90,9 @@ jobs:
           cf target -o dluhc-funding-service-design -s sandbox
           CF_DOCKER_PASSWORD=${{ secrets.GHCR_PAT }} cf push funding-service-design-form-runner-dev -f ./manifest.yml \
             --docker-image ${{ env.DOCKER_IMAGE_TAG }} \
-            --docker-username ${{ github.actor }}
-            
+            --docker-username ${{ github.actor }} \
+            --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
+
       - name: Deploy to Gov.uk PaaS test
         id: deploy-to-paas-test
         shell: bash
@@ -101,7 +102,8 @@ jobs:
           cf target -o dluhc-funding-service-design -s sandbox
           CF_DOCKER_PASSWORD=${{ secrets.GHCR_PAT }} cf push funding-service-design-form-runner-test -f ./manifest.yml \
             --docker-image ${{ env.DOCKER_IMAGE_TAG }} \
-            --docker-username ${{ github.actor }}
+            --docker-username ${{ github.actor }} \
+            --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
 
 
   # TODO: Add back when form runner is switched to use fork (ZAP form 404 issue is resolved here)
