@@ -22,6 +22,7 @@ jobs:
           )"
   docker-build:
     needs: setup-env-vars
+    if: 1==2
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -48,7 +49,7 @@ jobs:
             COMMIT_SHA=:${{ github.sha }}
 
   deploy-and-test-dev:
-    needs: docker-build
+   # needs: docker-build
     runs-on: ubuntu-latest
     steps:
       - name: checkout code
@@ -62,7 +63,10 @@ jobs:
           cf_space:    ${{secrets.CF_SPACE }}
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
-          command: push funding-service-design-form-runner-dev --docker-image ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:${{ github.sha }} -f ./manifest.yml
+          command: push funding-service-design-form-runner-dev \
+            --docker-image ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:d710d532bce71ba4616e69ca380c39279a6c7ebc
+            -f ./manifest.yml \
+            --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
 
       - name: Set up Python
         uses: actions/setup-python@v2
