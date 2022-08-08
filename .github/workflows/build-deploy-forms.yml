@@ -46,7 +46,14 @@ jobs:
           file: Dockerfile
           build-args: |
             COMMIT_SHA=:${{ github.sha }}
-      
+
+  deploy-and-test-dev:
+    needs: docker-build
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+
       - name: Deploy to Gov PaaS Dev
         uses: citizen-of-planet-earth/cf-cli-action@v2
         with:
@@ -57,13 +64,6 @@ jobs:
           cf_password: ${{secrets.CF_PASSWORD}}
           command: push funding-service-design-form-runner-dev --docker-image ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:${{ github.sha }} -f ./manifest.yml
 
-
-  test-forms-dev:
-    needs: deploy-forms-to-paas
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout code
-        uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
