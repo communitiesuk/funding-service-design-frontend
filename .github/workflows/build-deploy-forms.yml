@@ -2,8 +2,8 @@ name: Build and deploy forms
 on:
   workflow_dispatch:
   push:
-    paths:
-      - "form_jsons/**"
+    # paths:
+    #   - "form_jsons/**"
 env:
   DOCKER_REGISTRY: ghcr.io
 jobs:
