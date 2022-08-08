@@ -1,8 +1,10 @@
 {% extends "base.html" %} {% from
 "govuk_frontend_jinja/components/button/macro.html" import govukButton -%} {%
-from "partials/tasklist_section.html" import tasklist_section %} {% block content %}
+from "partials/tasklist_section.html" import tasklist_section %}
 
 {% block pageTitle %}Task List - {{ service_title }}{% endblock %}
+
+{% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
@@ -13,7 +15,7 @@ from "partials/tasklist_section.html" import tasklist_section %} {% block conten
     {% if not application_response["status"] == application_meta_data["submitted_status"] %}
 
     <p class="govuk-body-l govuk-!-font-weight-bold">
-      Status: 
+      Status:
       {% set completed_count = application_meta_data["number_of_completed_sections"] %}
       {% set section_count = application_meta_data["number_of_sections"] %}
       {% if completed_count == 0 %}
@@ -30,7 +32,7 @@ from "partials/tasklist_section.html" import tasklist_section %} {% block conten
       </strong>
       {% endif %}
     </p>
-    
+
     <p class="govuk-body govuk-!-margin-bottom-7">
       {% if application_meta_data["number_of_completed_sections"] == 0 %}
       None of the sections have been completed.
