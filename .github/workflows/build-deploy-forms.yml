@@ -64,9 +64,9 @@ jobs:
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
           command: push funding-service-design-form-runner-dev \
-            --docker-image ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:d710d532bce71ba4616e69ca380c39279a6c7ebc
-            -f ./manifest.yml \
-            --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
+           --docker-image ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:d710d532bce71ba4616e69ca380c39279a6c7ebc
+           -f ./manifest.yml \
+           --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
 
       - name: Set up Python
         uses: actions/setup-python@v2
