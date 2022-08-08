@@ -39,8 +39,8 @@ jobs:
         with:
           context: .
           tags: |
-            $IMAGE_REPO_PATH/${IMAGE_NAME}${{ matrix.app }}:${{ github.sha }}
-            $IMAGE_REPO_PATH/${IMAGE_NAME}${{ matrix.app }}:${{ needs.setup-env-vars.outputs.BRANCH_NAME }}
+            ${{IMAGE_REPO_PATH}}/${{IMAGE_NAME}}:${{ github.sha }}
+            ${{IMAGE_REPO_PATH}}/${{IMAGE_NAME}}:${{ needs.setup-env-vars.outputs.BRANCH_NAME }}
           push: true
           file: Dockerfile
           build-args: |
