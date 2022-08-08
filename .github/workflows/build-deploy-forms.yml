@@ -50,6 +50,7 @@ jobs:
 
   deploy-and-test-dev:
    # needs: docker-build
+    if: 1==2
     runs-on: ubuntu-latest
     steps:
       - name: checkout code
@@ -78,6 +79,46 @@ jobs:
       - name: Run tests
         env: 
           FORMS_SERVICE_PUBLIC_HOST: https://funding-service-design-form-runner-dev.london.cloudapps.digital
+      # TODO: Restore form-runner tests once fork is running
+        run: pytest #--ignore=tests/test_application_form.py
+      - name: "Upload Accessibility Testing reports"
+        uses: actions/upload-artifact@v2
+        with:
+          name: accessibility-test-report
+          path: /home/runner/work/funding-service-design-design-frontend/funding-service-design-frontend/axe_reports/*.html
+          retention-days: 5
+
+  deploy-and-test-test:
+   # needs: deploy-and-test-dev
+    #if: needs.setup-env-vars.outputs.BRANCH_NAME == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to Gov PaaS Test
+        uses: citizen-of-planet-earth/cf-cli-action@v2
+        with:
+          cf_api:      ${{secrets.CF_API}}
+          cf_org:      ${{secrets.CF_ORG}}
+          cf_space:    ${{secrets.CF_SPACE }}
+          cf_username: ${{secrets.CF_USER}}
+          cf_password: ${{secrets.CF_PASSWORD}}
+          command: push funding-service-design-form-runner-test --docker-image ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:d710d532bce71ba4616e69ca380c39279a6c7ebc -f ./manifest.yml --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.1
+      - name: install dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements-dev.txt
+      - name: build static assets
+        run: python build.py
+      - name: Install Chromium
+        uses: browser-actions/setup-chrome@latest
+      - name: Run tests
+        env: 
+          FORMS_SERVICE_PUBLIC_HOST: https://funding-service-design-form-runner-test.london.cloudapps.digital
       # TODO: Restore form-runner tests once fork is running
         run: pytest #--ignore=tests/test_application_form.py
       - name: "Upload Accessibility Testing reports"
