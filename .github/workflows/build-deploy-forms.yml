@@ -1,0 +1,45 @@
+name: Build and deploy forms
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "form_jsons/**"
+env:
+  DOCKER_REGISTRY: ghcr.io
+jobs:
+  setup-env-vars:
+    runs-on: ubuntu-latest
+    outputs:
+      BRANCH_NAME: ${{steps.set-vars.outputs.LOWER_CASE_BRANCH}}
+    steps:
+      - id: set-vars
+        run: |
+          echo "::set-output name=LOWER_CASE_BRANCH::$(
+            echo ${GITHUB_REF#refs/heads/} |
+            tr "[:upper:]" "[:lower:]"
+          )"
+  docker-build:
+    needs: setup-env-vars
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v1
+        with:
+          registry: ${{ env.DOCKER_REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          tags: |
+            $GITHUB_SHA
+            ${{ needs.setup-env-vars.outputs.BRANCH_NAME }}
+          push: true
+          file: Dockerfile
+          build-args: |
+            COMMIT_SHA=$GITHUB_SHA
