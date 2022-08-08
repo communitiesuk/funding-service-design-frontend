@@ -37,7 +37,7 @@ jobs:
         with:
           context: .
           tags: |
-            $GITHUB_SHA
+            ${{ env.GITHUB_SHA }}
             ${{ needs.setup-env-vars.outputs.BRANCH_NAME }}
           push: true
           file: Dockerfile
