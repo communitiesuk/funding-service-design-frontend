@@ -11,7 +11,7 @@ on:
         description: The environment to deploy with
         required: true
         default: Dev
-  push:
+  #push:
     # branches:
     # - master
     # - FS-389
