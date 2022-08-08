@@ -6,6 +6,8 @@ on:
     #   - "form_jsons/**"
 env:
   DOCKER_REGISTRY: ghcr.io
+  IMAGE_NAME: "frontend-form-runner"
+  IMAGE_REPO_PATH: "ghcr.io/${{github.repository_owner}}"
 jobs:
   setup-env-vars:
     runs-on: ubuntu-latest
@@ -37,9 +39,9 @@ jobs:
         with:
           context: .
           tags: |
-            ${{ env.GITHUB_SHA }}
-            ${{ needs.setup-env-vars.outputs.BRANCH_NAME }}
+            $IMAGE_REPO_PATH/${IMAGE_NAME}${{ matrix.app }}:${{ github.sha }}
+            $IMAGE_REPO_PATH/${IMAGE_NAME}${{ matrix.app }}:${{ needs.setup-env-vars.outputs.BRANCH_NAME }}
           push: true
           file: Dockerfile
           build-args: |
-            COMMIT_SHA=$GITHUB_SHA
+            COMMIT_SHA=:${{ github.sha }}
