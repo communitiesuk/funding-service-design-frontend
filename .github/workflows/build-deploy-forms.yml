@@ -6,8 +6,8 @@ on:
     #   - "form_jsons/**"
 env:
   DOCKER_REGISTRY: ghcr.io
-  IMAGE_NAME: "frontend-form-runner"
-  IMAGE_REPO_PATH: "ghcr.io/${{github.repository_owner}}"
+  IMAGE_NAME: "runner"
+  IMAGE_REPO_PATH: "ghcr.io/${{github.repository}}"
 jobs:
   setup-env-vars:
     runs-on: ubuntu-latest
@@ -41,7 +41,47 @@ jobs:
           tags: |
             ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:${{ github.sha }}
             ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:${{ needs.setup-env-vars.outputs.BRANCH_NAME }}
+            ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:latest
           push: true
           file: Dockerfile
           build-args: |
             COMMIT_SHA=:${{ github.sha }}
+      
+      - name: Deploy to Gov PaaS Dev
+        uses: citizen-of-planet-earth/cf-cli-action@v2
+        with:
+          cf_api:      ${{secrets.CF_API}}
+          cf_org:      ${{secrets.CF_ORG}}
+          cf_space:    ${{secrets.CF_SPACE }}
+          cf_username: ${{secrets.CF_USER}}
+          cf_password: ${{secrets.CF_PASSWORD}}
+          command: push funding-service-design-form-runner-dev --docker-image ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:${{ github.sha }} -f ./manifest.yml
+
+
+  test-forms-dev:
+    needs: deploy-forms-to-paas
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.1
+      - name: install dependencies
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements-dev.txt
+      - name: build static assets
+        run: python build.py
+      - name: Install Chromium
+        uses: browser-actions/setup-chrome@latest
+      - name: Run tests
+        env: 
+          FORMS_SERVICE_PUBLIC_HOST: https://funding-service-design-form-runner-dev.london.cloudapps.digital
+      # TODO: Restore form-runner tests once fork is running
+        run: pytest #--ignore=tests/test_application_form.py
+      - name: "Upload Accessibility Testing reports"
+        uses: actions/upload-artifact@v2
+        with:
+          name: accessibility-test-report
+          path: /home/runner/work/funding-service-design-design-frontend/funding-service-design-frontend/axe_reports/*.html
+          retention-days: 5
