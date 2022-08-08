@@ -14,7 +14,7 @@ env:
 
 
 jobs:
-  deploy_dev:
+  release_tag:
     runs-on: ubuntu-latest
     steps:
 
