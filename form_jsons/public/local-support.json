@@ -49,7 +49,16 @@
             "maxWords": "200"
           },
           "type": "MultilineTextField",
-          "title": "Tell us more about the local support for your project"
+          "title": "Tell us more about the local support for your project",
+          "hint": "\nThis can include: \n\n<p>\n<li>surveys of the community</li>\n<li>town hall meetings you have run</li>\n<li>the estimated number of volunteers you have for your project</li>\n<li>a letter from your local MP</li>\n</p>"
+        },
+        {
+          "name": "EEBFao",
+          "options": {
+            "required": false
+          },
+          "type": "FileUploadField",
+          "title": "Upload supporting evidence"
         }
       ],
       "next": [
