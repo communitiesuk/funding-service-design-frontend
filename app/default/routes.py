@@ -24,8 +24,8 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 def index():
     current_app.logger.info("Service landing page loaded.")
     return render_template("index.html")
-
-
+    
+    
 @default_bp.route("/accessibility_statement", methods=["GET"])
 def accessibility_statement():
     current_app.logger.info("Accessibility statement page loaded.")
