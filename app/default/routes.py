@@ -23,7 +23,8 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 @default_bp.route("/")
 def index():
     current_app.logger.info("Service landing page loaded.")
-    return render_template("index.html")
+    service_url = Config.AUTHENTICATOR_HOST + "/service/magic-links/new?fund_id=47aef2f5-3fcb-4d45-acb5-f0152b5f03c4&round_id=c603d114-5364-4474-a0c4-c41cbf4d3bbd"
+    return render_template("index.html", service_url=service_url)
     
     
 @default_bp.route("/accessibility_statement", methods=["GET"])
@@ -49,6 +50,9 @@ def dashboard(account_id):
     else:
         round_id = Config.DEFAULT_ROUND_ID
         fund_id = Config.DEFAULT_FUND_ID
+
+    current_app.logger.info(f"Setting up applicant dashboard for :'{account_id}' to apply for fund {fund_id} on round {round_id}")
+
     return render_template(
         "dashboard.html",
         account_id=account_id,
@@ -65,11 +69,12 @@ def new(account_id):
         url=f"{Config.APPLICATION_STORE_API_HOST}/applications",
         json={
             "account_id": account_id,
-            "round_id": request.form["round_id"] or Config.DEFAULT_ROUND_ID,
-            "fund_id": request.form["fund_id"] or Config.DEFAULT_FUND_ID,
+            "round_id": Config.DEFAULT_ROUND_ID,
+            "fund_id": Config.DEFAULT_FUND_ID,
         },
     )
     new_application_json = new_application.json()
+    current_app.logger.info(f"Creating new application:{new_application_json}")
     if new_application.status_code != 201 or not new_application_json.get(
         "id"
     ):

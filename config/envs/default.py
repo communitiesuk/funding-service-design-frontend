@@ -43,8 +43,8 @@ class DefaultConfig:
         APPLICATION_STORE_API_HOST + "/applications/{application_id}/submit"
     )
 
-    DEFAULT_FUND_ID = "funding-service-design"
-    DEFAULT_ROUND_ID = "summer"
+    DEFAULT_FUND_ID = "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4"
+    DEFAULT_ROUND_ID = "c603d114-5364-4474-a0c4-c41cbf4d3bbd"
 
     FORMS_TEST_HOST = "http://localhost:3009"
     FORMS_SERVICE_NAME = environ.get(
