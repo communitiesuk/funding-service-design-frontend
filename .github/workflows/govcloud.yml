@@ -31,7 +31,7 @@ jobs:
   build-and-push-runner:
     runs-on: ubuntu-latest
     outputs:
-      docker_image_tag: ${{steps.set-tag.outputs.DOCKER_IMAGE_TAG}}
+      docker_image_tag: ${{steps.set-vars.outputs.DOCKER_IMAGE_TAG}}
       lower_case_branch: ${{steps.set-vars.outputs.LOWER_CASE_BRANCH}}
     permissions:
       contents: read
@@ -42,9 +42,6 @@ jobs:
       - name: Set vars
         id: set-vars
         run: |
-          echo ref_nam: ${{github.ref_name}}
-          echo ref: ${{github.ref}}
-          echo ${GITHUB_REF#refs/heads/}
           echo "::set-output name=LOWER_CASE_BRANCH::$(
             echo ${GITHUB_REF#refs/heads/} |
             tr "[:upper:]" "[:lower:]"
@@ -53,8 +50,6 @@ jobs:
 
       - name: Checkout repo
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.ref }}
 
       - name: list environment
         run: |
@@ -73,7 +68,6 @@ jobs:
           context: .
           tags: |
             ${{ env.DOCKER_IMAGE_TAG }}
-            ${{ env.REGISTRY }}/${{ env.DOCKER_IMAGE }}:${{ steps.lower.outputs.LOWER_CASE_BRANCH }}
           push: true
           file: Dockerfile
           build-args: |
@@ -85,6 +79,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ build-and-push-runner ]
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
       - name: Install cloudfoundry
         shell: bash
         id: install-cf-cli
@@ -102,7 +98,7 @@ jobs:
           cf auth "${{ secrets.CF_USER }}" "${{ secrets.CF_PASSWORD }}"
           cf target -o dluhc-funding-service-design -s sandbox
           CF_DOCKER_PASSWORD=${{ secrets.GHCR_PAT }} cf push funding-service-design-form-runner-dev -f ./manifest.yml \
-            --docker-image ${{ env.DOCKER_IMAGE_TAG }} \
+            --docker-image ${{ needs.build-and-push-runner.outputs.docker_image_tag }} \
             --docker-username ${{ github.actor }}
             
       - name: Deploy to Gov.uk PaaS test
