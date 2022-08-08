@@ -23,8 +23,7 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 @default_bp.route("/")
 def index():
     current_app.logger.info("Service landing page loaded.")
-    service_url = Config.AUTHENTICATOR_HOST + "/service/magic-links/new?fund_id=47aef2f5-3fcb-4d45-acb5-f0152b5f03c4&round_id=c603d114-5364-4474-a0c4-c41cbf4d3bbd"
-    return render_template("index.html", service_url=service_url)
+    return render_template("index.html", service_url=Config.ENTER_APPLICATION_URL)
     
     
 @default_bp.route("/accessibility_statement", methods=["GET"])
