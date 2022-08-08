@@ -27,6 +27,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
+      - name: Docker metadata
+        id: metadata
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}
+
       - name: Log in to the Container registry
         uses: docker/login-action@v1
         with:
@@ -38,10 +44,11 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          tags: |
-            ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:${{ github.sha }}
-            ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:${{ needs.setup-env-vars.outputs.BRANCH_NAME }}
-            ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:latest
+          tags: ${{ steps.metadata.outputs.tags}}
+            # ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:${{ github.sha }}
+            # ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:${{ needs.setup-env-vars.outputs.BRANCH_NAME }}
+            # ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:latest
+          labels: ${{ steps.metadata.outputs.labels }}
           push: true
           file: Dockerfile
           build-args: |
