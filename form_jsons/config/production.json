@@ -1,3 +1,8 @@
 {
-    "safelist": ["funding-service-design-application-store-dev.london.cloudapps.digital", "funding-service-design-application-store-test.london.cloudapps.digital"]
+    "env": "production",
+    "logPrettyPrint": false,
+    "enableCsrf": true,
+    "safelist": ["funding-service-design-application-store-dev.london.cloudapps.digital", "funding-service-design-application-store-test.london.cloudapps.digital"],
+    "jwtAuthCookieName": "fsd_user_token",
+    "jwtAuthenticationUrl": "https://authenticator.live.fundingservice.co.uk/service/magic-links/invalid"
 }

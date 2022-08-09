@@ -1,0 +1,69 @@
+{
+    "metadata": {},
+    "startPage": "/about-your-organisation",
+    "pages": [
+      {
+        "title": "About your organisation",
+        "path": "/about-your-organisation",
+        "components": [
+          {
+            "name": "ZAKTgH",
+            "options": {},
+            "type": "Html",
+            "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>"
+          },
+          {
+            "name": "ZBjDTn",
+            "options": {},
+            "type": "TextField",
+            "title": "Name of lead contact",
+            "hint": "This person will receive all the information about this application"
+          },
+          {
+            "name": "LZBrEj",
+            "options": {},
+            "type": "EmailAddressField",
+            "title": "Lead contact email address"
+          },
+          {
+            "name": "lRfhGB",
+            "options": {},
+            "type": "TelephoneNumberField",
+            "title": "Lead contact telephone number"
+          }
+        ],
+        "next": [
+          {
+            "path": "/check-your-answers"
+          }
+        ]
+      },
+      {
+        "path": "/check-your-answers",
+        "title": "Check your answers",
+        "components": [],
+        "next": [],
+        "controller": "./pages/summary.js"
+      }
+    ],
+    "lists": [],
+    "sections": [
+      {
+        "name": "zjcAIa",
+        "title": "Applicant information"
+      }
+    ],
+    "conditions": [],
+    "fees": [],
+    "outputs": [],
+    "version": 2,
+    "skipSummary": false,
+    "name": "Apply for funding",
+    "feedback": {
+      "feedbackForm": false,
+      "url": ""
+    },
+    "phaseBanner": {
+      "phase": "beta"
+    }
+  }
