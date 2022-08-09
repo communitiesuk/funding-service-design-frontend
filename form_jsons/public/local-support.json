@@ -17,7 +17,7 @@
           "options": {},
           "type": "YesNoField",
           "hint": "This could include: \n<p>\n<li>surveys of the community </li>\n<li>town hall meetings you have run</li>\n<li>the estimated number of volunteers you have for your project</li>\n</p>\n",
-          "title": "Is there local support for your project?",
+          "title": "Are you confident there is local support for your project?",
           "values": {
             "type": "listRef"
           }
