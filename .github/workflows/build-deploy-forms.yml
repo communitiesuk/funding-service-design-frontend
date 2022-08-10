@@ -6,7 +6,7 @@ on:
        - "form_jsons/**"
        - "Dockerfile"
        - "manifest.yml"
-       - "build-deploy-forms.yml"
+       - ".github/workflows/build-deploy-forms.yml"
 env:
   DOCKER_REGISTRY: ghcr.io
   IMAGE_NAME: "runner"
