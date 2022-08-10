@@ -2,8 +2,8 @@ name: Build and deploy forms
 on:
   workflow_dispatch:
   push:
-     paths:
-       - "form_jsons/**"
+    #  paths:
+    #    - "form_jsons/**"
 env:
   DOCKER_REGISTRY: ghcr.io
   IMAGE_NAME: "runner"
@@ -85,13 +85,7 @@ jobs:
       - name: Run tests
         env: 
           FORMS_SERVICE_PUBLIC_HOST: https://funding-service-design-form-runner-dev.london.cloudapps.digital
-        run: pytest 
-      - name: "Upload Accessibility Testing reports"
-        uses: actions/upload-artifact@v2
-        with:
-          name: accessibility-test-report
-          path: /home/runner/work/funding-service-design-design-frontend/funding-service-design-frontend/axe_reports/*.html
-          retention-days: 5
+        run: pytest tests/test_application_form.py
 
   deploy-and-test-test:
     needs: deploy-and-test-dev
@@ -124,10 +118,4 @@ jobs:
       - name: Run tests
         env: 
           FORMS_SERVICE_PUBLIC_HOST: https://funding-service-design-form-runner-test.london.cloudapps.digital
-        run: pytest
-      - name: "Upload Accessibility Testing reports"
-        uses: actions/upload-artifact@v2
-        with:
-          name: accessibility-test-report
-          path: /home/runner/work/funding-service-design-design-frontend/funding-service-design-frontend/axe_reports/*.html
-          retention-days: 5
+        run: pytest tests/test_application_form.py
