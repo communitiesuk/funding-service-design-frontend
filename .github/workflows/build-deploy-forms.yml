@@ -85,7 +85,7 @@ jobs:
       - name: Install Chromium
         uses: browser-actions/setup-chrome@latest
       - name: Run tests
-        env: 
+        env:
           # TODO Add in basic auth creds to URL when secret setup
           FORMS_SERVICE_PUBLIC_HOST: https://forms.dev.gids.dev/
         run: pytest tests/test_application_form.py
@@ -119,7 +119,6 @@ jobs:
       - name: Install Chromium
         uses: browser-actions/setup-chrome@latest
       - name: Run tests
-        env: 
-          # TODO Add in basic auth creds to URL when secret setup
-          FORMS_SERVICE_PUBLIC_HOST: https://forms.test.gids.dev/
+        env:
+          FORMS_SERVICE_PUBLIC_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
         run: pytest tests/test_application_form.py
