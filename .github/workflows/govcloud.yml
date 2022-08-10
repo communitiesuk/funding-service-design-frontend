@@ -54,6 +54,7 @@ jobs:
           command: push -f manifest-dev.yml funding-service-design-frontend-dev
       - name: Run tests
         run: |
+          source .venv/bin/activate
           pytest --ignore=tests/test_application_form.py
       - name: "Upload Accessibility Testing reports"
         uses: actions/upload-artifact@v2
@@ -119,6 +120,7 @@ jobs:
           FORMS_SERVICE_PUBLIC_HOST: https://funding-service-design-form-runner-test.london.cloudapps.digital
           FORMS_SERVICE_HOST: https://funding-service-design-form-runner-test.london.cloudapps.digital
         run: |
+          source .venv/bin/activate
           pytest --ignore=tests/test_application_form.py
       - name: "Upload Accessibility Testing reports"
         uses: actions/upload-artifact@v2
