@@ -84,7 +84,8 @@ jobs:
         uses: browser-actions/setup-chrome@latest
       - name: Run tests
         env: 
-          FORMS_SERVICE_PUBLIC_HOST: https://funding-service-design-form-runner-dev.london.cloudapps.digital
+          # TODO Add in basic auth creds to URL when secret setup
+          FORMS_SERVICE_PUBLIC_HOST: https://forms.dev.gids.dev/
         run: pytest tests/test_application_form.py
 
   deploy-and-test-test:
@@ -117,5 +118,6 @@ jobs:
         uses: browser-actions/setup-chrome@latest
       - name: Run tests
         env: 
-          FORMS_SERVICE_PUBLIC_HOST: https://funding-service-design-form-runner-test.london.cloudapps.digital
+          # TODO Add in basic auth creds to URL when secret setup
+          FORMS_SERVICE_PUBLIC_HOST: https://forms.test.gids.dev/
         run: pytest tests/test_application_form.py
