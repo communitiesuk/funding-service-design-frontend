@@ -22,9 +22,9 @@ on:
 
 env:
   # TODO: restore this to a custom domain once DNS is restored
-  FORMS_SERVICE_PREVIEW_HOST: https://funding-service-design-form-runner-dev.london.cloudapps.digital
-  FORMS_SERVICE_PUBLIC_HOST: https://funding-service-design-form-runner-dev.london.cloudapps.digital
-  FORMS_SERVICE_HOST: https://funding-service-design-form-runner-dev.london.cloudapps.digital
+  FORMS_SERVICE_PREVIEW_HOST: https://forms.dev.gids.dev
+  FORMS_SERVICE_PUBLIC_HOST: https://forms.dev.gids.dev
+  FORMS_SERVICE_HOST: https://forms.dev.gids.dev
 jobs:
 
   deploy_dev:
@@ -54,8 +54,7 @@ jobs:
           command: push -f manifest-dev.yml funding-service-design-frontend-dev
       - name: Run tests
         run: |
-          source .venv/bin/activate
-          pytest --ignore=tests/test_application_form.py
+          python -m pip install pytest && python -m pytest --ignore=tests/test_application_form.py
       - name: "Upload Accessibility Testing reports"
         uses: actions/upload-artifact@v2
         with:
@@ -116,12 +115,11 @@ jobs:
       - name: Run tests
         env:
           # TODO: restore this to a custom domain once DNS is restored
-          FORMS_SERVICE_PREVIEW_HOST: https://funding-service-design-form-runner-test.london.cloudapps.digital
-          FORMS_SERVICE_PUBLIC_HOST: https://funding-service-design-form-runner-test.london.cloudapps.digital
-          FORMS_SERVICE_HOST: https://funding-service-design-form-runner-test.london.cloudapps.digital
+          FORMS_SERVICE_PREVIEW_HOST: https://forms.test.gids.dev
+          FORMS_SERVICE_PUBLIC_HOST: https://forms.test.gids.dev
+          FORMS_SERVICE_HOST: https://forms.test.gids.dev
         run: |
-          source .venv/bin/activate
-          pytest --ignore=tests/test_application_form.py
+          python -m pip install pytest && python -m pytest --ignore=tests/test_application_form.py
       - name: "Upload Accessibility Testing reports"
         uses: actions/upload-artifact@v2
         with:
