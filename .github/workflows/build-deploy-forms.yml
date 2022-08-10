@@ -4,6 +4,8 @@ on:
   push:
     #  paths:
     #    - "form_jsons/**"
+    #    - "Dockerfile"
+    #    - "manifest.yml"
 env:
   DOCKER_REGISTRY: ghcr.io
   IMAGE_NAME: "runner"
