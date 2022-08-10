@@ -1,6 +1,6 @@
 {
   "metadata": {},
-  "startPage": "/about-your-organisation-xLTyXv",
+  "startPage": "/about-your-organisation",
   "pages": [
     {
       "title": "About your organisation",
@@ -14,20 +14,26 @@
         },
         {
           "name": "ZBjDTn",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-full"
+          },
           "type": "TextField",
           "title": "Name of lead contact",
           "hint": "This person will receive all the information about this application"
         },
         {
           "name": "LZBrEj",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-full"
+          },
           "type": "EmailAddressField",
           "title": "Lead contact email address"
         },
         {
           "name": "lRfhGB",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-full"
+          },
           "type": "TelephoneNumberField",
           "title": "Lead contact telephone number"
         }
@@ -59,7 +65,7 @@
           "name": "BOWelg",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Lead contact name</li>\n<li>Lead contact email adress</li>\n<li>Lead contact telephone number</li>\n\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Lead contact name</li>\n<li>Lead contact email address</li>\n<li>Lead contact telephone number</li>\n\n\n</div>"
         }
       ],
       "next": [
@@ -81,7 +87,7 @@
   "outputs": [],
   "version": 2,
   "skipSummary": false,
-  "name": "Apply for funding to save a building in your community",
+  "name": "Apply for funding",
   "feedback": {
     "feedbackForm": false,
     "url": ""

@@ -101,7 +101,9 @@
         },
         {
           "name": "ymlmrX",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-full"
+          },
           "type": "TextField",
           "title": "Name of current asset owner"
         }
@@ -152,7 +154,9 @@
         },
         {
           "name": "FtDJfK",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-full"
+          },
           "type": "TextField",
           "title": "Describe the current ownership status"
         }
@@ -174,9 +178,9 @@
           "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
         },
         {
-          "name": "MopSeN",
+          "name": "FdUOoL",
           "options": {},
-          "type": "TextField",
+          "type": "WebsiteField",
           "title": "Please provide a link to the listing"
         }
       ],
@@ -198,7 +202,9 @@
         },
         {
           "name": "FXQwZT",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-full"
+          },
           "type": "TextField",
           "title": "Describe the expected sale process, and whether the owner is currently willing to sell"
         },
@@ -255,7 +261,9 @@
         },
         {
           "name": "fHvilU",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-full"
+          },
           "type": "TextField",
           "title": "Tell us about the person you have spoken to at the relevant public body about your asset",
           "hint": "<span class=\"govuk-body\">Name of contact</span>"
@@ -263,7 +271,8 @@
         {
           "name": "scYeIU",
           "options": {
-            "hideTitle": true
+            "hideTitle": true,
+            "classes": "govuk-!-width-full"
           },
           "type": "TextField",
           "title": "Job title of contact",
@@ -272,7 +281,8 @@
         {
           "name": "ZHPwln",
           "options": {
-            "hideTitle": true
+            "hideTitle": true,
+            "classes": "govuk-!-width-full"
           },
           "type": "TextField",
           "title": "Organisation name",
@@ -419,7 +429,9 @@
         },
         {
           "name": "WnVRIZ",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-full"
+          },
           "type": "TextField",
           "title": "Please provide a link to the asset certification"
         }
@@ -474,9 +486,9 @@
           "hint": "For example, 27 3 2007"
         },
         {
-          "name": "HfQvzB",
+          "name": "kBCjwC",
           "options": {},
-          "type": "TextField",
+          "type": "WebsiteField",
           "title": "Please provide a link to the listing"
         },
         {

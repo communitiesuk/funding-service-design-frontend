@@ -15,7 +15,9 @@
         },
         {
           "name": "MhTuux",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-full"
+          },
           "type": "TextField",
           "title": "Organisation name",
           "schema": {}
@@ -211,7 +213,7 @@
       ],
       "next": [
         {
-          "path": "/about-your-organisation-fDsclQ"
+          "path": "/about-your-organisation-ZQaRFE"
         },
         {
           "path": "/about-your-organisation-ioMEkw",
@@ -220,7 +222,7 @@
       ]
     },
     {
-      "path": "/about-your-organisation-fDsclQ",
+      "path": "/about-your-organisation-ZQaRFE",
       "title": "About your organisation",
       "components": [
         {
@@ -251,15 +253,48 @@
           "type": "YesNoField",
           "title": "Is your correspondence address different to the organisation address?",
           "schema": {}
+        },
+        {
+          "name": "rIwzbT",
+          "options": {
+            "classes": "govuk-!-width-two-thirds"
+          },
+          "type": "TextField",
+          "title": "Website and social media ",
+          "hint": "For example, your company's Facebook, Instagram or Twitter accounts (if applicable)\n<br>\n<br>\n<span class=\"govuk-body\">Link or username 1</span>\n"
+        },
+        {
+          "name": "YkgLOB",
+          "options": {
+            "required": false,
+            "hideTitle": true,
+            "optionalText": true,
+            "classes": "govuk-!-width-two-thirds"
+          },
+          "type": "TextField",
+          "title": "Website and social media - Link or username 2",
+          "hint": "<span class=\"govuk-body\">Link or username 2 (Optional)</span>"
+        },
+        {
+          "name": "gsNQNt",
+          "options": {
+            "hideTitle": true,
+            "required": false,
+            "optionalText": true,
+            "classes": "govuk-!-width-two-thirds"
+          },
+          "type": "TextField",
+          "title": "Website and social media - Link or username 3",
+          "hint": "<span class=\"govuk-body\">Link or username 3 (Optional)</span>"
         }
       ],
       "next": [
         {
-          "path": "/about-your-organisation-SEFJGZ"
+          "path": "/about-your-organisation-UflhmA",
+          "condition": "YmbVCF"
         },
         {
-          "path": "/about-your-organisation-Cioaqv",
-          "condition": "YmbVCF"
+          "path": "/check-your-answers"
         }
       ]
     },
@@ -270,54 +305,6 @@
       "next": [],
       "controller": "./pages/summary.js",
       "section": "PzjpUJ"
-    },
-    {
-      "path": "/about-your-organisation-SEFJGZ",
-      "title": "About your organisation",
-      "components": [
-        {
-          "name": "LwVCtR",
-          "options": {},
-          "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
-          "schema": {}
-        },
-        {
-          "name": "EsVKLG",
-          "options": {},
-          "type": "TextField",
-          "title": "Website and social media ",
-          "hint": "For example, your company's Facebook, Instagram or Twitter accounts (if applicable)\n<br>\n<br>\n<span class=\"govuk-body\">Link or username 1</span>\n",
-          "schema": {}
-        },
-        {
-          "name": "rsbnrx",
-          "options": {
-            "hideTitle": true,
-            "required": false,
-            "optionalText": true
-          },
-          "type": "TextField",
-          "hint": "<span class=\"govuk-body\">Link or username 2 (optional)</span>",
-          "title": "Website and social media - Link or username 2 "
-        },
-        {
-          "name": "qyfLdR",
-          "options": {
-            "hideTitle": true,
-            "required": false,
-            "optionalText": true
-          },
-          "type": "TextField",
-          "hint": "<span class=\"govuk-body\">Link or username 3 (optional)</span>",
-          "title": "Website and social media - Link or username 3"
-        }
-      ],
-      "next": [
-        {
-          "path": "/check-your-answers"
-        }
-      ]
     },
     {
       "path": "/about-your-organisation-LSOGHS",
@@ -334,7 +321,9 @@
         },
         {
           "name": "zLVqhx",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-two-thirds"
+          },
           "type": "TextField",
           "title": "Charity number",
           "schema": {}
@@ -359,7 +348,9 @@
         },
         {
           "name": "hcpmyY",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-full"
+          },
           "type": "TextField",
           "title": "Alternative names of your organisation",
           "schema": {},
@@ -370,23 +361,25 @@
           "options": {
             "required": false,
             "hideTitle": true,
-            "optionalText": true
+            "optionalText": true,
+            "classes": "govuk-!-width-full"
           },
           "type": "TextField",
-          "title": "Alternative names of your organisation",
+          "title": "Alternative names of your organisation - Alternative name 2 ",
           "schema": {},
-          "hint": "<span class=\"govuk-body\">Alternative name 2 (optional)</span>"
+          "hint": "<span class=\"govuk-body\">Alternative name 2 (Optional)</span>"
         },
         {
           "name": "LmRjjs",
           "options": {
             "hideTitle": true,
             "required": false,
-            "optionalText": true
+            "optionalText": true,
+            "classes": "govuk-!-width-full"
           },
           "type": "TextField",
-          "title": "Alternative names of your organisation",
-          "hint": "<span class=\"govuk-body\">Alternative name 3 (optional)</span>"
+          "title": "Alternative names of your organisation - Alternative name 3 ",
+          "hint": "<span class=\"govuk-body\">Alternative name 3 (Optional)</span>"
         }
       ],
       "next": [
@@ -425,9 +418,9 @@
             "hideTitle": true
           },
           "type": "MultilineTextField",
-          "title": "Describe your previous projects",
+          "title": "Describe your previous projects - Project 2 ",
           "schema": {},
-          "hint": "<span class=\"govuk-body\">Project 2 (optional)</span>"
+          "hint": "<span class=\"govuk-body\">Project 2 (Optional)</span>"
         },
         {
           "name": "yTElNp",
@@ -438,8 +431,8 @@
             "optionalText": true
           },
           "type": "MultilineTextField",
-          "hint": "<span class=\"govuk-body\">Project 3 (optional)</span>",
-          "title": "Describe your previous projects"
+          "hint": "<span class=\"govuk-body\">Project 3 (Optional)</span>",
+          "title": "Describe your previous projects - Project 3 "
         },
         {
           "name": "akACNl",
@@ -470,7 +463,9 @@
         },
         {
           "name": "etkDkH",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-two-thirds"
+          },
           "type": "TextField",
           "title": "Company registration number",
           "schema": {}
@@ -495,7 +490,9 @@
         },
         {
           "name": "HmuXka",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-two-thirds"
+          },
           "type": "TextField",
           "title": "Type of organisation  (other)",
           "schema": {}
@@ -520,9 +517,11 @@
         },
         {
           "name": "OSPqMW",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-full"
+          },
           "type": "TextField",
-          "title": "Which regulatory body is your company registered with? (other)",
+          "title": "Which regulatory body is your company registered with? (Other)",
           "schema": {}
         }
       ],
@@ -545,7 +544,9 @@
         },
         {
           "name": "YYiALI",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-full"
+          },
           "type": "TextField",
           "title": "Name of parent organisation",
           "schema": {}
@@ -561,12 +562,12 @@
       ],
       "next": [
         {
-          "path": "/about-your-organisation-fDsclQ"
+          "path": "/about-your-organisation-ZQaRFE"
         }
       ]
     },
     {
-      "path": "/about-your-organisation-Cioaqv",
+      "path": "/about-your-organisation-UflhmA",
       "title": "About your organisation",
       "components": [
         {
@@ -594,7 +595,7 @@
       ],
       "next": [
         {
-          "path": "/about-your-organisation-SEFJGZ"
+          "path": "/check-your-answers"
         }
       ]
     },

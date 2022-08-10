@@ -34,7 +34,7 @@
           "name": "dPYuee",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-m\">Capital costs</h2>\n<div class=\"govuk-caption-m\">This is used to purchase or lease the asset and pay for refurbishment costs. You can apply for up to £250,000 (up to £1 million for sporting assets)</div>\n<p>\n<h2 class=\"govuk-heading-m\">Your capital costs</h2>\n</p>"
+          "content": "<h2 class=\"govuk-heading-s\">Capital costs</h2>\n<div class=\"govuk-caption-m\">This is used to purchase or lease the asset and pay for refurbishment costs. You can apply for up to £250,000 (up to £1 million for sporting assets)</div>\n<p>\n<h2 class=\"govuk-heading-m\">Your capital costs</h2>\n</p>"
         },
         {
           "name": "MultiInputField",
@@ -77,10 +77,17 @@
           "content": "<h2 class=\"govuk-heading-m\">Funding required</h2>"
         },
         {
+          "name": "PZANlN",
+          "options": {},
+          "type": "Details",
+          "content": "We are looking to understand:\n<div>\n<br>\n<li>how much funding you are applying for from this fund</li>\n<li>your full project costs </li>\n<li>any funding you've already received for your project so far</li>\n<li>any funding you've plan to secure for your project</li>\n<li>any funding you've already received towards capital costs</li>\n<br>\n\n<p>This fund can offer up to 50% of your capital costs to renovate and repair the asset.</p>\n</div>",
+          "title": "Help with management case"
+        },
+        {
           "name": "DfTiAW",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-m\">Revenue costs (Optional)</h2>\n<div class=\"govuk-caption-m\">\n<p>If you’re not applying for revenue costs, leave this section blank.</p>\n<p class=\"govuk-caption-m\">This is used for the running costs of the project. This might include legal fees or general costs, including for:</p>\n\n<div class=\"govuk-caption-m\">\n<li>utilities</li>\n<li>staffing</li>\n<li>appointing external consultants</li>\n</div>\n<p class=\"govuk-caption-m\">It should be no more than £50,000, and no more than 20% of your capital funding.</p>\n<h2 class=\"govuk-heading-m\">Your revenue costs</h2>\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">Revenue costs (Optional)</h2>\n<div class=\"govuk-caption-m\">\n<p>If you’re not applying for revenue costs, leave this section blank.</p>\n<p class=\"govuk-caption-m\">This is used for the running costs of the project. This might include legal fees or general costs, including for:</p>\n\n<div class=\"govuk-caption-m\">\n<li>utilities</li>\n<li>staffing</li>\n<li>appointing external consultants</li>\n</div>\n<p class=\"govuk-caption-m\">It should be no more than £50,000, and no more than 20% of your capital funding.</p>\n<h2 class=\"govuk-heading-m\">Your revenue costs</h2>\n</div>"
         },
         {
           "name": "MultiInputField-2",
@@ -134,7 +141,7 @@
           "name": "FqiBUI",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-m\">Secured match funding</h2>\n<p>\n<div class=\"govuk-body\">\n<p class=\"govuk-caption-m\">You need to raise other sources of funding alongside investment from this fund.</p>\n<p class=\"govuk-caption-m\">Having a range of funders contributing to your project can show the quality of your project and the support it has in the community.</p>\n<p class=\"govuk-caption-m\">Match funding sources can include:</p>\n\n<div class=\"govuk-caption-m\">\n<li>public bodies</li>\n<li>devolved administrations</li>\n<li>charitable trusts</li>\n<li>national lottery funders</li>\n<li>community shares</li>\n<li>social investors</li>\n<li>other lenders</li>\n\n</div>\n</div>\n</p>\n<h2 class=\"govuk-heading-m\">Your secured match funding</h2>"
+          "content": "<h2 class=\"govuk-heading-s\">Secured match funding</h2>\n<p>\n<div class=\"govuk-body\">\n<p class=\"govuk-caption-m\">You need to raise other sources of funding alongside investment from this fund.</p>\n<p class=\"govuk-caption-m\">Having a range of funders contributing to your project can show the quality of your project and the support it has in the community.</p>\n<p class=\"govuk-caption-m\">Match funding sources can include:</p>\n\n<div class=\"govuk-caption-m\">\n<li>public bodies</li>\n<li>devolved administrations</li>\n<li>charitable trusts</li>\n<li>national lottery funders</li>\n<li>community shares</li>\n<li>social investors</li>\n<li>other lenders</li>\n\n</div>\n</div>\n</p>\n<h2 class=\"govuk-heading-m\">Your secured match funding</h2>"
         },
         {
           "name": "MultiInputField-3",
@@ -202,7 +209,8 @@
         {
           "name": "fnIdkJ",
           "options": {
-            "prefix": "£"
+            "prefix": "£",
+            "classes": "govuk-!-width-one-third"
           },
           "type": "NumberField",
           "title": "Asset value",
@@ -337,7 +345,7 @@
           "name": "NJBCOa",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-m\">Unsecured match funding</h2>\n<p>\n<div class=\"govuk-body\">\n<p class=\"govuk-caption-m\">You need to raise other sources of funding alongside investment from this fund.</p>\n<p class=\"govuk-caption-m\">Having a range of funders contributing to your project can show the quality of your project and the support it has in the community.</p>\n<p class=\"govuk-caption-m\">Match funding sources can include:</p>\n\n<div class=\"govuk-caption-m\">\n<li>public bodies</li>\n<li>devolved administrations</li>\n<li>charitable trusts</li>\n<li>national lottery funders</li>\n<li>community shares</li>\n<li>social investors</li>\n<li>other lenders</li>\n\n</div>\n</div>\n</p>\n<h2 class=\"govuk-heading-m\">Your unsecured match funding</h2>"
+          "content": "<h2 class=\"govuk-heading-s\">Unsecured match funding</h2>\n<p>\n<div class=\"govuk-body\">\n<p class=\"govuk-caption-m\">You need to raise other sources of funding alongside investment from this fund.</p>\n<p class=\"govuk-caption-m\">Having a range of funders contributing to your project can show the quality of your project and the support it has in the community.</p>\n<p class=\"govuk-caption-m\">Match funding sources can include:</p>\n\n<div class=\"govuk-caption-m\">\n<li>public bodies</li>\n<li>devolved administrations</li>\n<li>charitable trusts</li>\n<li>national lottery funders</li>\n<li>community shares</li>\n<li>social investors</li>\n<li>other lenders</li>\n\n</div>\n</div>\n</p>\n<h2 class=\"govuk-heading-m\">Your unsecured match funding</h2>"
         },
         {
           "name": "MultiInputField-4",
