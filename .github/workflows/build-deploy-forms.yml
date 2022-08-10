@@ -87,7 +87,7 @@ jobs:
       - name: Run tests
         env:
           # TODO Add in basic auth creds to URL when secret setup
-          FORMS_SERVICE_PUBLIC_HOST: https://forms.dev.gids.dev/
+          FORMS_SERVICE_PUBLIC_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev/
         run: pytest tests/test_application_form.py
 
   deploy-and-test-test:
