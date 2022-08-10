@@ -59,7 +59,7 @@ jobs:
       - name: Run tests
         run: |
           python -m venv .venv
-          source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements.txt && pip install pytest
+          source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements-dev.txt
           pytest --ignore=tests/test_application_form.py
       - name: "Upload Accessibility Testing reports"
         uses: actions/upload-artifact@v2
@@ -126,7 +126,7 @@ jobs:
           FORMS_SERVICE_HOST: https://forms.test.gids.dev
         run: |
           python -m venv .venv
-          source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements.txt && pip install pytest
+          source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements-dev.txt
           pytest --ignore=tests/test_application_form.py
       - name: "Upload Accessibility Testing reports"
         uses: actions/upload-artifact@v2
