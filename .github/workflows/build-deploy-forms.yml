@@ -2,10 +2,11 @@ name: Build and deploy forms
 on:
   workflow_dispatch:
   push:
-    # paths:
-    #    - "form_jsons/**"
-    #    - "Dockerfile"
-    #    - "manifest.yml"
+    paths:
+       - "form_jsons/**"
+       - "Dockerfile"
+       - "manifest.yml"
+       - "build-deploy-forms.yml"
 env:
   DOCKER_REGISTRY: ghcr.io
   IMAGE_NAME: "runner"
@@ -77,17 +78,18 @@ jobs:
           FORMS_SERVICE_PUBLIC_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
         run: pytest tests/test_application_form.py
       
-      - name: Zap Baseline Scan
-        uses: zaproxy/action-baseline@v0.6.1
-        with:
-          target: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
-          allow_issue_writing: False
+      # Restore once domains are put back (no basic auth)
+      # - name: Zap Baseline Scan
+      #   uses: zaproxy/action-baseline@v0.6.1
+      #   with:
+      #     target: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
+      #     allow_issue_writing: False
 
-      - name: ZAP Full Scan
-        uses: zaproxy/action-full-scan@v0.3.0
-        with:
-          target: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
-          allow_issue_writing: False
+      # - name: ZAP Full Scan
+      #   uses: zaproxy/action-full-scan@v0.3.0
+      #   with:
+      #     target: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
+      #     allow_issue_writing: False
 
   deploy-and-test-test:
     needs: deploy-and-test-dev
