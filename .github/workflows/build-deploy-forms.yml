@@ -76,6 +76,18 @@ jobs:
         env:
           FORMS_SERVICE_PUBLIC_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
         run: pytest tests/test_application_form.py
+      
+      - name: Zap Baseline Scan
+        uses: zaproxy/action-baseline@v0.6.1
+        with:
+          target: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
+          allow_issue_writing: False
+
+      - name: ZAP Full Scan
+        uses: zaproxy/action-full-scan@v0.3.0
+        with:
+          target: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
+          allow_issue_writing: False
 
   deploy-and-test-test:
     needs: deploy-and-test-dev
