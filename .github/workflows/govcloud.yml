@@ -54,7 +54,9 @@ jobs:
           command: push -f manifest-dev.yml funding-service-design-frontend-dev
       - name: Run tests
         run: |
-          python -m pip install pytest && python -m pytest --ignore=tests/test_application_form.py
+          python -m venv .venv
+          source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements.txt
+          pytest --ignore=tests/test_application_form.py
       - name: "Upload Accessibility Testing reports"
         uses: actions/upload-artifact@v2
         with:
@@ -119,7 +121,9 @@ jobs:
           FORMS_SERVICE_PUBLIC_HOST: https://forms.test.gids.dev
           FORMS_SERVICE_HOST: https://forms.test.gids.dev
         run: |
-          python -m pip install pytest && python -m pytest --ignore=tests/test_application_form.py
+          python -m venv .venv
+          source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements.txt
+          pytest --ignore=tests/test_application_form.py
       - name: "Upload Accessibility Testing reports"
         uses: actions/upload-artifact@v2
         with:
