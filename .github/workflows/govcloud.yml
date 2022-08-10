@@ -12,17 +12,11 @@ on:
         required: true
         default: Dev
   push:
-    #  paths-ignore:
-    #    - "form_jsons/**"
-    #    - "Dockerfile"
-    #    - "manifest.yml"
-    # branches:
-    # - master
-    # - FS-389
-    # - FS-390
-
-    paths-ignore:
-      - "**/README.md"
+      paths-ignore:
+        - "form_jsons/**"
+        - "Dockerfile"
+        - "manifest.yml"
+        - "**/README.md"
 
 env:
   # TODO: restore this to a custom domain once DNS is restored

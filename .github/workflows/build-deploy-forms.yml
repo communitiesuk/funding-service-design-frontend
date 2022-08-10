@@ -2,28 +2,16 @@ name: Build and deploy forms
 on:
   workflow_dispatch:
   push:
-    #  paths:
-    #    - "form_jsons/**"
-    #    - "Dockerfile"
-    #    - "manifest.yml"
+      paths:
+        - "form_jsons/**"
+        - "Dockerfile"
+        - "manifest.yml"
 env:
   DOCKER_REGISTRY: ghcr.io
   IMAGE_NAME: "runner"
   IMAGE_REPO_PATH: "ghcr.io/${{github.repository}}"
 jobs:
-  setup-env-vars:
-    runs-on: ubuntu-latest
-    outputs:
-      BRANCH_NAME: ${{steps.set-vars.outputs.LOWER_CASE_BRANCH}}
-    steps:
-      - id: set-vars
-        run: |
-          echo "::set-output name=LOWER_CASE_BRANCH::$(
-            echo ${GITHUB_REF#refs/heads/} |
-            tr "[:upper:]" "[:lower:]"
-          )"
   docker-build:
-    needs: setup-env-vars
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
@@ -86,13 +74,12 @@ jobs:
         uses: browser-actions/setup-chrome@latest
       - name: Run tests
         env:
-          # TODO Add in basic auth creds to URL when secret setup
           FORMS_SERVICE_PUBLIC_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
         run: pytest tests/test_application_form.py
 
   deploy-and-test-test:
     needs: deploy-and-test-dev
-    if: needs.setup-env-vars.outputs.BRANCH_NAME == 'main'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: checkout code

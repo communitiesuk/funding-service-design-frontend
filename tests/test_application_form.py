@@ -31,7 +31,6 @@ class TestFormURLsWithChrome:
 
     @staticmethod
     def get_form_service_host(form_dir):
-        print('FORMS_SERVICE_PUBLIC_HOST:', Config.FORMS_SERVICE_PUBLIC_HOST)
         host = Config.FORMS_SERVICE_PUBLIC_HOST
         if form_dir == "preview":
             host = Config.FORMS_SERVICE_PREVIEW_HOST
