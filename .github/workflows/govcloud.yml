@@ -12,12 +12,13 @@ on:
         required: true
         default: Dev
   push:
-      paths-ignore:
-        - "form_jsons/**"
-        - "Dockerfile"
-        - "manifest.yml"
-        - "build-deploy-forms.yml"
-        - "**/README.md"
+    paths-ignore:
+      - "form_jsons/**"
+      - "Dockerfile"
+      - "manifest.yml"
+      - "build-deploy-forms.yml"
+      - "**/README.md"
+      - "docs/**"
 
 env:
   # TODO: restore this to a custom domain once DNS is restored
