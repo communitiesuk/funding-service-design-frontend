@@ -26,9 +26,9 @@ on:
 
 env:
   # TODO: restore this to a custom domain once DNS is restored
-  FORMS_SERVICE_PREVIEW_HOST: https://forms.dev.gids.dev
-  FORMS_SERVICE_PUBLIC_HOST: https://forms.dev.gids.dev
-  FORMS_SERVICE_HOST: https://forms.dev.gids.dev
+  FORMS_SERVICE_PREVIEW_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
+  FORMS_SERVICE_PUBLIC_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
+  FORMS_SERVICE_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
 jobs:
 
   deploy-and-test-dev:
