@@ -1,6 +1,6 @@
 {
   "metadata": {},
-  "startPage": "/about-your-organisation-zlXmCu",
+  "startPage": "/about-your-organisation",
   "pages": [
     {
       "title": "About your organisation",
@@ -80,7 +80,7 @@
             "optionalText": true
           },
           "type": "MultilineTextField",
-          "title": "Tell us about your organisation's main activities ",
+          "title": "Tell us about your organisation's main activities - Activity 2 ",
           "schema": {},
           "hint": "<span class=\"govuk-body\">Activity 2 (optional)</span>"
         },
@@ -93,7 +93,7 @@
             "optionalText": true
           },
           "type": "MultilineTextField",
-          "title": "Tell us about your organisation's main activities",
+          "title": "Tell us about your organisation's main activities - Activity 3 ",
           "hint": "<span class=\"govuk-body\">Activity 3 (optional)</span>"
         },
         {
@@ -299,7 +299,7 @@
           },
           "type": "TextField",
           "hint": "<span class=\"govuk-body\">Link or username 2 (optional)</span>",
-          "title": "Website and social media"
+          "title": "Website and social media - Link or username 2 "
         },
         {
           "name": "qyfLdR",
@@ -310,7 +310,7 @@
           },
           "type": "TextField",
           "hint": "<span class=\"govuk-body\">Link or username 3 (optional)</span>",
-          "title": "Website and social media"
+          "title": "Website and social media - Link or username 3"
         }
       ],
       "next": [
