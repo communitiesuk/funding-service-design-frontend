@@ -16,6 +16,7 @@ on:
         - "form_jsons/**"
         - "Dockerfile"
         - "manifest.yml"
+        - "build-deploy-forms.yml"
         - "**/README.md"
 
 env:
