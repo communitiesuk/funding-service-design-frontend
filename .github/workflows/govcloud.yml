@@ -121,9 +121,9 @@ jobs:
       - name: Run tests
         env:
           # TODO: restore this to a custom domain once DNS is restored
-          FORMS_SERVICE_PREVIEW_HOST: https://forms.test.gids.dev
-          FORMS_SERVICE_PUBLIC_HOST: https://forms.test.gids.dev
-          FORMS_SERVICE_HOST: https://forms.test.gids.dev
+          FORMS_SERVICE_PREVIEW_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.test.gids.dev
+          FORMS_SERVICE_PUBLIC_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.test.gids.dev
+          FORMS_SERVICE_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.test.gids.dev
         run: |
           python -m venv .venv
           source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements-dev.txt
