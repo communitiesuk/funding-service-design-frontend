@@ -14,6 +14,7 @@ applications:
     FORMS_SERVICE_PUBLIC_HOST: https://forms.test.gids.dev
     RSA256_PUBLIC_KEY_BASE64: ((RSA256_PUBLIC_KEY_BASE64))
     RSA256_PRIVATE_KEY_BASE64: ((RSA256_PRIVATE_KEY_BASE64))
+    FORMS_SERVICE_PRIVATE_HOST: ((FORMS_SERVICE_PRIVATE_HOST))
     FLASK_ENV: test
   routes:
     - route: frontend.test.fundingservice.co.uk

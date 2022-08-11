@@ -51,7 +51,7 @@ jobs:
           cf_space: ${{secrets.CF_SPACE }}
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
-          command: push -f manifest-dev.yml funding-service-design-frontend-dev
+          command: push -f manifest-dev.yml funding-service-design-frontend-dev --var FORMS_SERVICE_PRIVATE_HOST="${{secrets.FORMS_SERVICE_PRIVATE_HOST}}"
       - name: Run tests
         run: |
           python -m venv .venv
@@ -113,7 +113,7 @@ jobs:
           cf_space: ${{secrets.CF_SPACE }}
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
-          command: push -f manifest-test.yml funding-service-design-frontend-test --var RSA256_PRIVATE_KEY_BASE64="${{secrets.RSA256_PRIVATE_KEY_BASE64}}" --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
+          command: push -f manifest-test.yml funding-service-design-frontend-test --var RSA256_PRIVATE_KEY_BASE64="${{secrets.RSA256_PRIVATE_KEY_BASE64}}" --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}" --var FORMS_SERVICE_PRIVATE_HOST="${{secrets.FORMS_SERVICE_PRIVATE_HOST}}"
       - name: Run tests
         env:
           # TODO: restore this to a custom domain once DNS is restored
