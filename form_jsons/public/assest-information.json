@@ -179,9 +179,11 @@
         },
         {
           "name": "FdUOoL",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-full"
+          },
           "type": "WebsiteField",
-          "title": "Please provide a link to the listing"
+          "title": "Provide a link to the listing"
         }
       ],
       "next": [
@@ -292,41 +294,46 @@
           "name": "nkPfyn",
           "options": {},
           "type": "CheckboxesField",
-          "title": "When you buy or lease a publicly owned asset, the public authority must continue to be responsible for delivering any statutory services the asset provides.",
-          "hint": "This includes things like social care, s16-stat-services-confirmation collection and planning services.\n",
+          "title": "When you buy or lease a publicly owned asset, the public authority must continue to be responsible for delivering any statutory services the asset provides",
+          "hint": "This includes things like social care, s16-stat-services-confirmation collection and planning services\n",
           "list": "YlLedV"
         },
         {
           "name": "PraPAq",
           "options": {},
           "type": "CheckboxesField",
-          "title": "Grants from this fund cannot be used to buy the freehold or premium on the lease of a publicly owned asset. Money must only be used for renovation and refurbishment costs.",
+          "title": "Grants from this fund cannot be used to buy the freehold or premium on the lease of a publicly owned asset. Money must only be used for renovation and refurbishment costs",
           "list": "YlLedV"
         },
         {
-          "name": "uVPTrD",
+          "name": "youEaj",
           "options": {},
-          "type": "Html",
-          "content": "<h2 class=\"govuk-heading-s\">Please upload supporting evidence to summarise:</h2>"
+          "type": "Para",
+          "content": "<h2 class=\"govuk-heading-s\">Upload supporting evidence\n<br>\n\n<span class=\"govuk-body\">Please upload supporting evidence to summarise:</span> </h2>\n"
         },
         {
           "name": "ifqmeE",
-          "options": {},
+          "options": {
+            "hideTitle": false
+          },
           "type": "List",
-          "title": "Please upload supporting evidence to summarise:",
+          "title": "Upload supporting evidence",
           "list": "GnDlnn",
           "values": {
             "type": "listRef"
-          }
+          },
+          "hint": ""
         },
         {
           "name": "GdgVHI",
           "options": {
-            "required": false,
-            "optionalText": true
+            "required": true,
+            "optionalText": false,
+            "hideTitle": true
           },
           "type": "FileUploadField",
-          "title": "For example, this evidence can include confirmation from the public owner or a letter from the local authority."
+          "title": "For example, this evidence can include confirmation from the public owner or a letter from the local authority",
+          "hint": "<span class=\"govuk-body\">For example, this evidence can include confirmation from the public owner or a letter from the local authority.</span>"
         }
       ],
       "next": [
@@ -354,16 +361,16 @@
       ],
       "next": [
         {
-          "path": "/about-your-project-cTqpSS",
+          "path": "/about-your-project-vsBLWQ",
           "condition": "SnbdGs"
         },
         {
-          "path": "/about-your-project-egJEng"
+          "path": "/about-your-project-eXLZjQ"
         }
       ]
     },
     {
-      "path": "/about-your-project-cTqpSS",
+      "path": "/about-your-project-vsBLWQ",
       "title": "About your project",
       "components": [
         {
@@ -376,23 +383,21 @@
           "name": "MLwpjP",
           "options": {},
           "type": "YesNoField",
-          "title": "Do you have a link to the asset certification?"
+          "title": "Will you purchase the asset within the appropriate time frame?",
+          "values": {
+            "type": "listRef"
+          }
         }
       ],
       "next": [
         {
-          "path": "/about-your-project-CoBJSH",
-          "condition": "UTSgZg"
-        },
-        {
-          "path": "/about-your-project-RpBmMU",
-          "condition": "KsWFsc"
+          "path": "/about-your-project-eXLZjQ"
         }
       ]
     },
     {
-      "path": "/about-your-project-egJEng",
-      "title": "About your project",
+      "path": "/about-your-project-eXLZjQ",
+      "title": "About your project ",
       "components": [
         {
           "name": "iZzvMF",
@@ -409,7 +414,7 @@
       ],
       "next": [
         {
-          "path": "/about-your-project-oWuFnx",
+          "path": "/about-your-project-CoBJSH",
           "condition": "HoaLcA"
         },
         {
@@ -419,57 +424,6 @@
     },
     {
       "path": "/about-your-project-CoBJSH",
-      "title": "About your project",
-      "components": [
-        {
-          "name": "GFBNCt",
-          "options": {},
-          "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
-        },
-        {
-          "name": "WnVRIZ",
-          "options": {
-            "classes": "govuk-!-width-full"
-          },
-          "type": "TextField",
-          "title": "Please provide a link to the asset certification"
-        }
-      ],
-      "next": [
-        {
-          "path": "/about-your-project-egJEng"
-        }
-      ]
-    },
-    {
-      "path": "/about-your-project-RpBmMU",
-      "title": "About your project",
-      "components": [
-        {
-          "name": "ujWFmW",
-          "options": {},
-          "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
-        },
-        {
-          "name": "MeZGOc",
-          "options": {
-            "required": true,
-            "optionalText": false
-          },
-          "type": "FileUploadField",
-          "title": "Provide evidence"
-        }
-      ],
-      "next": [
-        {
-          "path": "/about-your-project-egJEng"
-        }
-      ]
-    },
-    {
-      "path": "/about-your-project-oWuFnx",
       "title": "About your project",
       "components": [
         {
@@ -552,7 +506,7 @@
           "name": "NDqkBg",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Asset type</li>\n<li>What you intend to do with the asset</li>\n<li>Asset ownership details (if applicable)</li>\n<li>Asset ownership status</li>\n<li>Public ownership details (if applicable)</li>\n<li>Asset of Community Value details (if applicable)</li>\n<li>Community Asset Transfer details (if applicable)</li>\n<li>Reason asset is at risk</li>\n\n\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>asset type</li>\n<li>what you intend to do with the asset</li>\n<li>asset ownership details (if applicable)</li>\n<li>asset ownership status</li>\n<li>public ownership details (if applicable)</li>\n<li>asset of Community Value details (if applicable)</li>\n<li>community Asset Transfer details (if applicable)</li>\n<li>reason asset is at risk</li>\n\n\n\n</div>"
         }
       ],
       "next": [
@@ -642,18 +596,19 @@
       ]
     },
     {
-      "title": "Confirm you understand",
+      "title": "I confirm",
       "name": "YlLedV",
       "type": "string",
       "items": [
         {
-          "text": "Confirm you understand",
-          "value": "confirm"
+          "text": "I confirm",
+          "value": "confirm",
+          "description": ""
         }
       ]
     },
     {
-      "title": "Please upload supporting evidence",
+      "title": "Upload supporting evidence",
       "name": "GnDlnn",
       "type": "string",
       "items": [

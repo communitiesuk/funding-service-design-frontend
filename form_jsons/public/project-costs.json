@@ -125,7 +125,7 @@
           "name": "CeCEtD",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">Running costs</h2>\n\n<p class=\"govuk-caption-m\">Money used to regularly maintain the asset and keep it open to the community. This can include:.</p>\n\n<h2 class=\"govuk-heading-m\">Your running costs</h2>\n"
+          "content": "<h2 class=\"govuk-heading-s\">Running costs</h2>\n\n<p class=\"govuk-caption-m\">Money used to regularly maintain the asset and keep it open to the community. This can include:</p>\n\n<h2 class=\"govuk-heading-m\">Your running costs</h2>\n"
         },
         {
           "name": "MultiInputField-2",
