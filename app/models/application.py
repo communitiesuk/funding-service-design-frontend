@@ -3,7 +3,8 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import List
 
-from app.models.application_parts.section import Section
+from app.models.application_parts.form import Form
+from config import Config
 
 
 @dataclass
@@ -17,14 +18,13 @@ class Application:
     date_submitted: datetime
     started_at: datetime
     last_edited: datetime
-    sections: List[Section]
+    forms: List[Form]
 
     @classmethod
-    def get_section_data(cls, application_data, section_name):
-        sections_belonging_to_application = application_data.sections
-        for section in sections_belonging_to_application:
-            if section["section_name"] == section_name:
-                return section
+    def get_form_data(cls, application_data, form_name):
+        for form in application_data.forms:
+            if form["form_name"] == form_name:
+                return form
 
     @classmethod
     def from_dict(cls, d: dict):
@@ -36,3 +36,18 @@ class Application:
                 if k in inspect.signature(cls).parameters
             }
         )
+
+    def create_sections(self):
+        for form in self.forms:
+            form_name = form["form_name"]
+            # update the sections with the applications form state
+            for (
+                section,
+                section_config,
+            ) in Config.COF_R2_SECTION_CONFIG.items():
+                if form_name in section_config["forms_within_section"]:
+                    section_config["forms_within_section"][form_name] = form
+            # TODO
+            # Update the section weighting using the FUND STORE weightings
+            # i.e query the fund store HERE
+        self.sections = Config.COF_R2_SECTION_CONFIG

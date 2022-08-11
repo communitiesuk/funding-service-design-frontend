@@ -10,7 +10,6 @@ from fsd_utils import configclass
 @configclass
 class DefaultConfig:
     # Application Config
-
     FLASK_ENV = environ.get("FLASK_ENV", "development")
     SECRET_KEY = environ.get("SECRET_KEY", "dev")
     SESSION_COOKIE_NAME = environ.get("SESSION_COOKIE_NAME", "session_cookie")
@@ -36,8 +35,8 @@ class DefaultConfig:
     GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT = (
         APPLICATION_STORE_API_HOST + "/applications?account_id={account_id}"
     )
-    UPDATE_APPLICATION_SECTION_ENDPOINT = (
-        APPLICATION_STORE_API_HOST + "/applications/sections"
+    UPDATE_APPLICATION_FORM_ENDPOINT = (
+        APPLICATION_STORE_API_HOST + "/applications/forms"
     )
     SUBMIT_APPLICATION_ENDPOINT = (
         APPLICATION_STORE_API_HOST + "/applications/{application_id}/submit"
@@ -124,3 +123,58 @@ class DefaultConfig:
     }
 
     USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "False"))
+
+    COF_R2_SECTION_CONFIG = {
+        "About your organisation": {
+            "forms_within_section": {
+                "organisation-information": None,
+                "applicant-information": None,
+            },
+            "section_weighting": None,
+        },
+        "About your project": {
+            "forms_within_section": {
+                "project-information": None,
+                "asset-information": None,
+            },
+            "section_weighting": None,
+        },
+        "Strategic case": {
+            "forms_within_section": {
+                "community-use": None,
+                "community-engagement": None,
+                "local-support": None,
+                "environmental-sustainability": None,
+            },
+            "section_weighting": 30,
+        },
+        "Management case": {
+            "forms_within_section": {
+                "funding-required": None,
+                "feasibility": None,
+                "risk": None,
+                "project-costs": None,
+                "skills-and-resources": None,
+                "community-representation": None,
+                "inclusiveness-and-intergration": None,
+                "upload-business-plan": None,
+            },
+            "section_weighting": 30,
+        },
+        "Potential to deliver community benefits": {
+            "forms_within_section": {"community-benefits": None},
+            "section_weighting": 30,
+        },
+        "Added value to community": {
+            "forms_within_section": {"value-to-the-community": None},
+            "section_weighting": 10,
+        },
+        "Subsidy control / state aid": {
+            "forms_within_section": {"project-qualification": None},
+            "section_weighting": None,
+        },
+        "Check declarations": {
+            "forms_within_section": {"declarations": None},
+            "section_weighting": None,
+        },
+    }
