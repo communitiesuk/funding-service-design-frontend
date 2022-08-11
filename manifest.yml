@@ -10,6 +10,7 @@ applications:
   env:
     PREVIEW_MODE: TRUE
     RSA256_PUBLIC_KEY_BASE64: ((RSA256_PUBLIC_KEY_BASE64))
+    SERVICE_START_PAGE: https://frontend.dev.gids.dev/account
   services:
     - form-uploads-dev
     - logit-ssl-drain
@@ -24,6 +25,7 @@ applications:
   env:
     PREVIEW_MODE: TRUE
     RSA256_PUBLIC_KEY_BASE64: ((RSA256_PUBLIC_KEY_BASE64))
+    SERVICE_START_PAGE: https://frontend.test.gids.dev/account
   services:
     - form-uploads-test
     - logit-ssl-drain
