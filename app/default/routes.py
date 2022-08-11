@@ -1,6 +1,6 @@
 import requests
 from app.application_status import ApplicationStatus
-from app.default.data import get_data
+from app.default.data import get_data, get_application_data, get_fund_data
 from app.models.application import Application
 from app.models.application_summary import ApplicationSummary
 from app.models.helpers import format_rehydrate_payload
@@ -107,18 +107,8 @@ def tasklist(application_id):
     Returns:
         function: a function which renders the tasklist template.
     """
-    application_response = get_data(
-        Config.GET_APPLICATION_ENDPOINT.format(application_id=application_id)
-    )
-    if not (application_response and application_response["sections"]):
-        return abort(500)
-    application = Application.from_dict(application_response)
-
-    fund_response = get_data(Config.GET_FUND_DATA_ENDPOINT.format(fund_id=application.fund_id))
-    if not fund_response:
-        return abort(500)
-    fund = Fund.from_dict(fund_response)
-
+    application = get_application_data(application_id, as_dict=True)
+    fund = get_fund_data(application.fund_id, as_dict=True)
     form = FlaskForm()
     application_meta_data = {
         "application_id": application_id,
