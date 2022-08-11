@@ -2,7 +2,10 @@ import json
 import os
 
 import requests
+from app.models.application import Application
+from app.models.fund import Fund
 from config import Config
+from flask import abort
 from flask import current_app
 
 
@@ -48,9 +51,32 @@ def get_local_data(endpoint: str):
     return None
 
 
-def get_application_data(application_id):
-    applications_endpoint = Config.GET_APPLICATION_ENDPOINT.format(
+def get_application_data(application_id, as_dict=False):
+    application_request_url = Config.GET_APPLICATION_ENDPOINT.format(
         application_id=application_id
     )
-    applications_response = get_data(applications_endpoint)
-    return applications_response
+    application_response = get_data(application_request_url)
+    if not (application_response):
+        current_app.logger.error(
+            "Application Data Store request failed, unable to recover:"
+            f" {application_request_url}"
+        )
+        return abort(500)
+    if as_dict:
+        return Application.from_dict(application_response)
+    else:
+        return application_response
+
+
+def get_fund_data(fund_id, as_dict=False):
+    fund_request_url = Config.GET_FUND_DATA_ENDPOINT.format(fund_id=fund_id)
+    fund_response = get_data(fund_request_url)
+    if not fund_response:
+        current_app.logger.error(
+            f"Fund Store request failed, unable to recover: {fund_request_url}"
+        )
+        return abort(500)
+    if as_dict:
+        return Fund.from_dict(fund_response)
+    else:
+        return fund_response

@@ -6,7 +6,7 @@ applications:
   memory: 528M
   sandbox: true
   routes:
-    - route: forms.dev.fundingservice.co.uk
+    - route: forms.dev.gids.dev
   env:
     PREVIEW_MODE: TRUE
     RSA256_PUBLIC_KEY_BASE64: ((RSA256_PUBLIC_KEY_BASE64))
@@ -20,7 +20,7 @@ applications:
   memory: 528M
   sandbox: true
   routes:
-    - route: forms.test.fundingservice.co.uk
+    - route: forms.test.gids.dev
   env:
     PREVIEW_MODE: TRUE
     RSA256_PUBLIC_KEY_BASE64: ((RSA256_PUBLIC_KEY_BASE64))

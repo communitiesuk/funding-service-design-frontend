@@ -3,10 +3,6 @@ name: Deploy to Gov PaaS
 on:
   workflow_dispatch:
     inputs:
-      branch:
-        description: The branch to create a build from
-        required: true
-        default: main
       space:
         description: The space to deploy to
         required: true
@@ -16,172 +12,22 @@ on:
         required: true
         default: Dev
   push:
-    # branches:
-    # - master
-    # - FS-389
-    # - FS-390
-
     paths-ignore:
+      - "form_jsons/**"
+      - "Dockerfile"
+      - "manifest.yml"
+      - "build-deploy-forms.yml"
       - "**/README.md"
+      - "docs/**"
 
 env:
-  REGISTRY: ghcr.io
   # TODO: restore this to a custom domain once DNS is restored
-  FORMS_SERVICE_PREVIEW_HOST: https://funding-service-design-form-runner-dev.london.cloudapps.digital
-  FORMS_SERVICE_PUBLIC_HOST: https://funding-service-design-form-runner-dev.london.cloudapps.digital
-  FORMS_SERVICE_HOST: https://funding-service-design-form-runner-dev.london.cloudapps.digital
-
+  FORMS_SERVICE_PREVIEW_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
+  FORMS_SERVICE_PUBLIC_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
+  FORMS_SERVICE_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
 jobs:
-  deploy-forms-to-paas:
-    environment: ${{ github.event.inputs.environment }}
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    env:
-      DOCKER_IMAGE: communitiesuk/digital-form-builder/runner
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.inputs.branch }}
 
-      - name: Set environment variables
-        run: |
-          echo "DOCKER_IMAGE_TAG=${{ env.REGISTRY }}/${{ env.DOCKER_IMAGE }}:$GITHUB_SHA" >> $GITHUB_ENV
-
-      - name: list environment
-        run: |
-          echo $GITHUB_ENV
-
-      - name: Log in to the Container registry
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and push docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          tags: |
-            ${{ env.DOCKER_IMAGE_TAG }}
-          push: true
-          file: Dockerfile
-          build-args: |
-            COMMIT_SHA=$GITHUB_SHA
-
-      - name: Install cloudfoundry
-        shell: bash
-        id: install-cf-cli
-        run: |
-          wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
-          echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
-          sudo apt-get update
-          sudo apt-get install cf8-cli
-
-      - name: Deploy to Gov.uk PaaS Dev
-        id: deploy-to-paas-dev
-        shell: bash
-        run: |
-          cf api ${{ secrets.CF_API }}
-          cf auth "${{ secrets.CF_USER }}" "${{ secrets.CF_PASSWORD }}"
-          cf target -o dluhc-funding-service-design -s sandbox
-          CF_DOCKER_PASSWORD=${{ secrets.GHCR_PAT }} cf push funding-service-design-form-runner-dev -f ./manifest.yml \
-            --docker-image ${{ env.DOCKER_IMAGE_TAG }} \
-            --docker-username ${{ github.actor }} \
-            --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
-
-      - name: Deploy to Gov.uk PaaS test
-        id: deploy-to-paas-test
-        shell: bash
-        run: |
-          cf api ${{ secrets.CF_API }}
-          cf auth "${{ secrets.CF_USER }}" "${{ secrets.CF_PASSWORD }}"
-          cf target -o dluhc-funding-service-design -s sandbox
-          CF_DOCKER_PASSWORD=${{ secrets.GHCR_PAT }} cf push funding-service-design-form-runner-test -f ./manifest.yml \
-            --docker-image ${{ env.DOCKER_IMAGE_TAG }} \
-            --docker-username ${{ github.actor }} \
-            --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
-
-
-  # TODO: Add back when form runner is switched to use fork (ZAP form 404 issue is resolved here)
-  # runner-testing:
-  #   needs: build-runner
-  #   runs-on: ubuntu-latest
-  #   environment: Dev
-  #   env:
-  #     DOCKER_IMAGE: communitiesuk/digital-form-builder/runner
-  #   steps:
-  #     - name: checkout code
-  #       uses: actions/checkout@v2
-  #     - name: Set up Python
-  #       uses: actions/setup-python@v2
-  #       with:
-  #         python-version: 3.10.1
-  #     - name: install dependencies
-  #       run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
-  #     - name: build static assets
-  #       run: python build.py
-  #     - name: run unit tests
-  #       run: python -m pip install pytest && python -m pytest .
-  #     - name: Install Chromium
-  #       uses: browser-actions/setup-chrome@latest
-  #     - name: setup Chromedriver
-  #       uses: nanasess/setup-chromedriver@v1
-  #       with:
-  #       # Optional: do not specify to match Chrome's version
-  #         chromedriver-version: '88.0.4324.96'
-  #     - name: Run Accessability tests
-  #       run: pytest --driver Chrome --driver-path .venv/lib/python3.10/site-packages/chromedriver_py/chromedriver_linux64
-  #     - name: 'Upload Accessibility Testing reports'
-  #       uses: actions/upload-artifact@v2
-  #       with:
-  #         name: accessibility-test-report
-  #         path: /home/runner/work/funding-service-design-frontend/funding-service-design-frontend/axe_reports/*.html
-  #         retention-days: 5
-  #     - name: Zap Baseline Scan
-  #       uses: zaproxy/action-baseline@v0.6.1
-  #       with:
-  #         target: ${{ secrets.FORMS_SERVICE_HOST }}
-  #         allow_issue_writing: False
-
-  #     - name: ZAP Full Scan
-  #       uses: zaproxy/action-full-scan@v0.3.0
-  #       with:
-  #         target: ${{ secrets.FORMS_SERVICE_HOST }}
-  #         allow_issue_writing: False
-
-  testing:
-    needs: deploy-forms-to-paas
-    runs-on: ubuntu-latest
-    environment: Dev
-    steps:
-      - name: checkout code
-        uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.10.1
-      - name: install dependencies
-        run: python -m pip install --upgrade pip && python -m pip install -r requirements-dev.txt
-      - name: build static assets
-        run: python build.py
-      - name: Install Chromium
-        uses: browser-actions/setup-chrome@latest
-      - name: Run tests
-      # TODO: Restore form-runner tests once fork is running
-        run: pytest --ignore=tests/test_application_form.py
-      - name: "Upload Accessibility Testing reports"
-        uses: actions/upload-artifact@v2
-        with:
-          name: accessibility-test-report
-          path: /home/runner/work/funding-service-design-design-frontend/funding-service-design-frontend/axe_reports/*.html
-          retention-days: 5
-
-  deploy_dev:
-    needs: [testing, deploy-forms-to-paas]
+  deploy-and-test-dev:
     runs-on: ubuntu-latest
     environment: Dev
     steps:
@@ -206,9 +52,20 @@ jobs:
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
           command: push -f manifest-dev.yml funding-service-design-frontend-dev
+      - name: Run tests
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements-dev.txt
+          pytest --ignore=tests/test_application_form.py
+      - name: "Upload Accessibility Testing reports"
+        uses: actions/upload-artifact@v2
+        with:
+          name: accessibility-test-report
+          path: /home/runner/work/funding-service-design-design-frontend/funding-service-design-frontend/axe_reports/*.html
+          retention-days: 5
 
   security:
-    needs: deploy_dev
+    needs: deploy-and-test-dev
     runs-on: ubuntu-latest
     environment: Dev
     steps:
@@ -230,7 +87,7 @@ jobs:
           target: "https://funding-service-design-frontend-dev.london.cloudapps.digital"
           allow_issue_writing: False
 
-  deploy_test:
+  deploy-and-test-test:
     needs: security
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
@@ -257,6 +114,23 @@ jobs:
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
           command: push -f manifest-test.yml funding-service-design-frontend-test --var RSA256_PRIVATE_KEY_BASE64="${{secrets.RSA256_PRIVATE_KEY_BASE64}}" --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
+      - name: Run tests
+        env:
+          # TODO: restore this to a custom domain once DNS is restored
+          FORMS_SERVICE_PREVIEW_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.test.gids.dev
+          FORMS_SERVICE_PUBLIC_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.test.gids.dev
+          FORMS_SERVICE_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.test.gids.dev
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements-dev.txt
+          pytest --ignore=tests/test_application_form.py
+      - name: "Upload Accessibility Testing reports"
+        uses: actions/upload-artifact@v2
+        with:
+          name: accessibility-test-report
+          path: /home/runner/work/funding-service-design-design-frontend/funding-service-design-frontend/axe_reports/*.html
+          retention-days: 5
+
 
   # TODO: Add back when performance tests finished
   # run_performance_tests:
