@@ -9,8 +9,7 @@ from "partials/tasklist_section.html" import tasklist_section %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">
-      {{application_meta_data["fund"]|kebab_case_to_human}}
-      application
+      {{application_meta_data["fund_name"]|kebab_case_to_human}} application
     </h1>
     {% if not application_response["status"] == application_meta_data["submitted_status"] %}
 

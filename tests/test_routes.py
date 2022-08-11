@@ -10,10 +10,9 @@ def test_routes_status_code(flask_test_client, mock_get_application):
     GIVEN Our Flask Application
     WHEN a route is requested
     THEN check that the get response is successful
-    If this test succeedes then our flask application's
+    If this test succeeds then our flask application's
     routes are correctly initialised.
     """
-
     for route, _ in routes_and_test_content.items():
         response = flask_test_client.get(route, follow_redirects=True)
         assert response.status_code == 200

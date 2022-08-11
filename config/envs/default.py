@@ -21,11 +21,13 @@ class DefaultConfig:
 
     # Funding Service Design
     FSD_USER_TOKEN_COOKIE_NAME = "fsd_user_token"
-    AUTHENTICATOR_HOST = environ.get("AUTHENTICATOR_HOST")
+    AUTHENTICATOR_HOST = environ.get("AUTHENTICATOR_HOST", "authenticator")
+    ENTER_APPLICATION_URL = AUTHENTICATOR_HOST + "/service/magic-links/new?fund_id=47aef2f5-3fcb-4d45-acb5-f0152b5f03c4&round_id=c603d114-5364-4474-a0c4-c41cbf4d3bbd"
     SESSION_COOKIE_DOMAIN = environ.get("SESSION_COOKIE_DOMAIN")
 
     # APIs Config
     TEST_APPLICATION_STORE_API_HOST = "http://application_store"
+    TEST_FUND_STORE_API_HOST = "http://fund_store"
 
     APPLICATION_STORE_API_HOST = environ.get(
         "APPLICATION_STORE_API_HOST", TEST_APPLICATION_STORE_API_HOST
@@ -42,9 +44,10 @@ class DefaultConfig:
     SUBMIT_APPLICATION_ENDPOINT = (
         APPLICATION_STORE_API_HOST + "/applications/{application_id}/submit"
     )
-
-    DEFAULT_FUND_ID = "funding-service-design"
-    DEFAULT_ROUND_ID = "summer"
+    FUND_STORE_API_HOST = environ.get("FUND_STORE_API_HOST", TEST_FUND_STORE_API_HOST)
+    GET_FUND_DATA_ENDPOINT = (FUND_STORE_API_HOST + "/funds/{fund_id}")
+    DEFAULT_FUND_ID = "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4"
+    DEFAULT_ROUND_ID = "c603d114-5364-4474-a0c4-c41cbf4d3bbd"
 
     FORMS_TEST_HOST = "http://localhost:3009"
     FORMS_SERVICE_NAME = environ.get(

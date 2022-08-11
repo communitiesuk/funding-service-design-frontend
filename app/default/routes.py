@@ -1,10 +1,11 @@
 import requests
 from app.application_status import ApplicationStatus
-from app.default.data import get_data
+from app.default.data import get_data, get_application_data, get_fund_data
 from app.models.application import Application
 from app.models.application_summary import ApplicationSummary
 from app.models.helpers import format_rehydrate_payload
 from app.models.helpers import get_token_to_return_to_application
+from app.models.fund import Fund
 from config import Config
 from flask import abort
 from flask import Blueprint
@@ -23,7 +24,7 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 @default_bp.route("/")
 def index():
     current_app.logger.info("Service landing page loaded.")
-    return render_template("index.html")
+    return render_template("index.html", service_url=Config.ENTER_APPLICATION_URL)
     
     
 @default_bp.route("/accessibility_statement", methods=["GET"])
@@ -55,6 +56,9 @@ def dashboard(account_id):
     else:
         round_id = Config.DEFAULT_ROUND_ID
         fund_id = Config.DEFAULT_FUND_ID
+
+    current_app.logger.info(f"Setting up applicant dashboard for :'{account_id}' to apply for fund {fund_id} on round {round_id}")
+
     return render_template(
         "dashboard.html",
         account_id=account_id,
@@ -76,6 +80,7 @@ def new(account_id):
         },
     )
     new_application_json = new_application.json()
+    current_app.logger.info(f"Creating new application:{new_application_json}")
     if new_application.status_code != 201 or not new_application_json.get(
         "id"
     ):
@@ -102,17 +107,14 @@ def tasklist(application_id):
     Returns:
         function: a function which renders the tasklist template.
     """
-    application_response = get_data(
-        Config.GET_APPLICATION_ENDPOINT.format(application_id=application_id)
-    )
-    if not (application_response and application_response["sections"]):
-        return abort(404)
-    application = Application.from_dict(application_response)
+    application = get_application_data(application_id, as_dict=True)
+    fund = get_fund_data(application.fund_id, as_dict=True)
     form = FlaskForm()
     application_meta_data = {
         "application_id": application_id,
         "round": application.round_id,
         "fund": application.fund_id,
+        "fund_name": fund.name,
         "completed_status": ApplicationStatus.COMPLETED.name,
         "submitted_status": ApplicationStatus.SUBMITTED.name,
         "number_of_sections": len(application.sections),
