@@ -32,6 +32,12 @@ def accessibility_statement():
     return render_template("accessibility-statement.html")
 
 
+@default_bp.route("/cookie_policy", methods=["GET"])
+def cookie_policy():
+    current_app.logger.info("Cookie policy page loaded.")
+    return render_template("cookie_policy.html")
+
+
 @default_bp.route("/account")
 @login_required
 def dashboard(account_id):
