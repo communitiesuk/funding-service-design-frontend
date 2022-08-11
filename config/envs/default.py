@@ -27,6 +27,7 @@ class DefaultConfig:
 
     # APIs Config
     TEST_APPLICATION_STORE_API_HOST = "http://application_store"
+    TEST_FUND_STORE_API_HOST = "http://fund_store:8080"
 
     APPLICATION_STORE_API_HOST = environ.get(
         "APPLICATION_STORE_API_HOST", TEST_APPLICATION_STORE_API_HOST
@@ -43,7 +44,8 @@ class DefaultConfig:
     SUBMIT_APPLICATION_ENDPOINT = (
         APPLICATION_STORE_API_HOST + "/applications/{application_id}/submit"
     )
-
+    FUND_STORE_API_HOST = environ.get("FUND_STORE_API_HOST", TEST_FUND_STORE_API_HOST)
+    GET_FUND_DATA_ENDPOINT = (FUND_STORE_API_HOST + "/funds/{fund_id}")
     DEFAULT_FUND_ID = "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4"
     DEFAULT_ROUND_ID = "c603d114-5364-4474-a0c4-c41cbf4d3bbd"
 

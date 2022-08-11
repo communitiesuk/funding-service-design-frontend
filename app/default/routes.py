@@ -5,6 +5,7 @@ from app.models.application import Application
 from app.models.application_summary import ApplicationSummary
 from app.models.helpers import format_rehydrate_payload
 from app.models.helpers import get_token_to_return_to_application
+from app.models.fund import Fund
 from config import Config
 from flask import abort
 from flask import Blueprint
@@ -74,8 +75,8 @@ def new(account_id):
         url=f"{Config.APPLICATION_STORE_API_HOST}/applications",
         json={
             "account_id": account_id,
-            "round_id": Config.DEFAULT_ROUND_ID,
-            "fund_id": Config.DEFAULT_FUND_ID,
+            "round_id": request.form["round_id"] or Config.DEFAULT_ROUND_ID,
+            "fund_id": request.form["fund_id"] or Config.DEFAULT_FUND_ID,
         },
     )
     new_application_json = new_application.json()
@@ -110,13 +111,20 @@ def tasklist(application_id):
         Config.GET_APPLICATION_ENDPOINT.format(application_id=application_id)
     )
     if not (application_response and application_response["sections"]):
-        return abort(404)
+        return abort(500)
     application = Application.from_dict(application_response)
+
+    fund_response = get_data(Config.GET_FUND_DATA_ENDPOINT.format(fund_id=application.fund_id))
+    if not fund_response:
+        return abort(500)
+    fund = Fund.from_dict(fund_response)
+
     form = FlaskForm()
     application_meta_data = {
         "application_id": application_id,
         "round": application.round_id,
         "fund": application.fund_id,
+        "fund_name": fund.name,
         "completed_status": ApplicationStatus.COMPLETED.name,
         "submitted_status": ApplicationStatus.SUBMITTED.name,
         "number_of_sections": len(application.sections),
