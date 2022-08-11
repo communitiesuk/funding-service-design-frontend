@@ -27,7 +27,7 @@ class DefaultConfig:
 
     # APIs Config
     TEST_APPLICATION_STORE_API_HOST = "http://application_store"
-    TEST_FUND_STORE_API_HOST = "http://fund_store:8080"
+    TEST_FUND_STORE_API_HOST = "http://fund_store"
 
     APPLICATION_STORE_API_HOST = environ.get(
         "APPLICATION_STORE_API_HOST", TEST_APPLICATION_STORE_API_HOST

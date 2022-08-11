@@ -1,4 +1,9 @@
 {
+    "http://fund_store/funds/funding-service-design": {
+        "id": "funding-service-design",
+        "name": "Test Fund",
+        "description": "test test"
+    },
     "http://application_store/applications/test_id": {
         "id": "test_id",
         "account_id": "test-user",
