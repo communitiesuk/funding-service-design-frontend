@@ -37,7 +37,7 @@ class Application:
             }
         )
 
-    def create_sections(self):
+    def create_sections(self, fund_id, round_id):
         for form in self.forms:
             form_name = form["form_name"]
             # update the sections with the applications form state
@@ -47,7 +47,8 @@ class Application:
             ) in Config.COF_R2_SECTION_CONFIG.items():
                 if form_name in section_config["forms_within_section"]:
                     section_config["forms_within_section"][form_name] = form
-            # TODO
+            # TODO post mvp
             # Update the section weighting using the FUND STORE weightings
-            # i.e query the fund store HERE
+            # i.e query the fund store HERE and load weightings into sections
+            # get_round_data(fund_id=fund_id, round_id=round_id)
         self.sections = Config.COF_R2_SECTION_CONFIG

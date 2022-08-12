@@ -51,8 +51,9 @@ class DefaultConfig:
         "FUND_STORE_API_HOST", TEST_FUND_STORE_API_HOST
     )
     GET_FUND_DATA_ENDPOINT = FUND_STORE_API_HOST + "/funds/{fund_id}"
-    DEFAULT_FUND_ID = "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4"
-    DEFAULT_ROUND_ID = "c603d114-5364-4474-a0c4-c41cbf4d3bbd"
+    GET_ROUND_DATA_FOR_FUND_ENDPOINT = (
+        FUND_STORE_API_HOST + "/funds/{fund_id}/rounds/{round_id}"
+    )
 
     FORMS_TEST_HOST = "http://localhost:3009"
     FORMS_SERVICE_NAME = environ.get(
@@ -133,6 +134,8 @@ class DefaultConfig:
 
     USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "False"))
 
+    COF_FUND_ID = "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4"
+    COF_R2_ROUND_ID = "c603d114-5364-4474-a0c4-c41cbf4d3bbd"
     COF_R2_SECTION_CONFIG = {
         "About your organisation": {
             "forms_within_section": {

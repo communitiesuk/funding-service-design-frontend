@@ -4,6 +4,7 @@ import os
 import requests
 from app.models.application import Application
 from app.models.fund import Fund
+from app.models.round import Round
 from config import Config
 from flask import abort
 from flask import current_app
@@ -80,3 +81,20 @@ def get_fund_data(fund_id, as_dict=False):
         return Fund.from_dict(fund_response)
     else:
         return fund_response
+
+
+def get_round_data(fund_id, round_id, as_dict=False):
+    round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(
+        fund_id=fund_id, round_id=round_id
+    )
+    round_response = get_data(round_request_url)
+    if not round_response:
+        current_app.logger.error(
+            "Fund Store request failed, unable to recover:"
+            f" {round_request_url}"
+        )
+        return abort(500)
+    if as_dict:
+        return Round.from_dict(round_response)
+    else:
+        return round_response

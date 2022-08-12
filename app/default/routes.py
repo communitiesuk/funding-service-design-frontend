@@ -3,7 +3,6 @@ from app.application_status import ApplicationStatus
 from app.default.data import get_application_data
 from app.default.data import get_data
 from app.default.data import get_fund_data
-from app.models.application import Application
 from app.models.application_summary import ApplicationSummary
 from app.models.helpers import format_rehydrate_payload
 from app.models.helpers import get_token_to_return_to_application
@@ -114,14 +113,12 @@ def tasklist(application_id):
     """
 
     application = get_application_data(application_id, as_dict=True)
-    application.create_sections()
     fund = get_fund_data(application.fund_id, as_dict=True)
+    application.create_sections(application.fund_id, application.round_id)
 
     form = FlaskForm()
     application_meta_data = {
         "application_id": application_id,
-        "round": application.round_id,
-        "fund": application.fund_id,
         "fund_name": fund.name,
         "not_started_status": ApplicationStatus.NOT_STARTED.name,
         "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
@@ -172,11 +169,8 @@ def continue_application(application_id):
         f"Url the form runner should return to '{return_url}'."
     )
 
-    response = get_data(
-        Config.GET_APPLICATION_ENDPOINT.format(application_id=application_id)
-    )
-    application_data = Application.from_dict(response)
-    form_data = application_data.get_form_data(application_data, form_name)
+    application = get_application_data(application_id, as_dict=True)
+    form_data = application.get_form_data(application, form_name)
 
     rehydrate_payload = format_rehydrate_payload(
         form_data, application_id, return_url, form_name

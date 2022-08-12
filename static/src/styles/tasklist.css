@@ -128,3 +128,14 @@
       margin-bottom: 0;
     }
   }
+
+  .assessment-alert {
+    border-left: 8px solid #2b8cc4;
+    background-color: #dbeff9;
+    padding: 1px 10px;
+    font-family: "GDS Transport",arial,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+  }
