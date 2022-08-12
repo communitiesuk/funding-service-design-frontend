@@ -16,7 +16,7 @@
           "name": "vUdzKC",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Previous COF funding received (if applicable)</li>\n<li>How the asset is being used</li>\n<li>Why the asset is at risk</li>\n<li>Project summary</li>\n<li>Asset address</li>\n<li>Constituency of asset</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>previous COF funding received (if applicable)</li>\n<li>how the asset is being used</li>\n<li>why the asset is at risk</li>\n<li>project summary</li>\n<li>asset address</li>\n<li>constituency of asset</li>\n\n</div>"
         }
       ],
       "next": [
@@ -103,7 +103,7 @@
           },
           "type": "TextField",
           "title": "Project name",
-          "hint": "Please choose a name that describes your project. For example, the name of your asset, or a link to your asset's location"
+          "hint": "This is what your project will be called within your organisation and by the public.\n<br> <br>\nPlease choose a name that describes your project. For example, the name of your asset, or a link to your asset's location"
         },
         {
           "name": "wudRxx",
@@ -162,9 +162,19 @@
         },
         {
           "name": "iTeLGU",
-          "options": {},
+          "options": {
+            "classes": "govuk-!-width-full"
+          },
           "type": "TextField",
           "title": "In which constituency is your asset?"
+        },
+        {
+          "name": "MGRlEi",
+          "options": {
+            "classes": "govuk-!-width-full"
+          },
+          "type": "TextField",
+          "title": "In which local council area is your asset?"
         }
       ],
       "next": [
@@ -178,8 +188,7 @@
       "title": "Check your answers",
       "components": [],
       "next": [],
-      "controller": "./pages/summary.js",
-      "section": "kLrefe"
+      "controller": "./pages/summary.js"
     }
   ],
   "lists": [],
@@ -216,5 +225,13 @@
   "fees": [],
   "outputs": [],
   "version": 2,
-  "skipSummary": false
+  "skipSummary": false,
+  "name": "Apply for funding to save a building in your community",
+  "feedback": {
+    "feedbackForm": false,
+    "url": ""
+  },
+  "phaseBanner": {
+    "phase": "beta"
+  }
 }

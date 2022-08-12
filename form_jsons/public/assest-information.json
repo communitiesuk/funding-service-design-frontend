@@ -208,13 +208,13 @@
             "classes": "govuk-!-width-full"
           },
           "type": "TextField",
-          "title": "Describe the expected sale process, and whether the owner is currently willing to sell"
+          "title": "Describe the expected sale process, or the proposed terms of your lease if you are renting the asset"
         },
         {
           "name": "ghzLRv",
           "options": {},
           "type": "DatePartsField",
-          "title": "Expected date of sale",
+          "title": "Expected date of sale or lease",
           "hint": "For example, 27 3 2007"
         }
       ],
@@ -295,7 +295,7 @@
           "options": {},
           "type": "CheckboxesField",
           "title": "When you buy or lease a publicly owned asset, the public authority must continue to be responsible for delivering any statutory services the asset provides",
-          "hint": "This includes things like social care, s16-stat-services-confirmation collection and planning services\n",
+          "hint": "This includes things like social care, waste collection and planning services\n",
           "list": "YlLedV"
         },
         {
@@ -309,7 +309,7 @@
           "name": "youEaj",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">Upload supporting evidence\n<br>\n\n<span class=\"govuk-body\">Please upload supporting evidence to summarise:</span> </h2>\n"
+          "content": "<h2 class=\"govuk-heading-s\">Upload supporting evidence\n<br>\n\n\n<span class=\"govuk-body\">Please upload supporting evidence to summarise:</span>\n</h2>\n"
         },
         {
           "name": "ifqmeE",
@@ -333,7 +333,7 @@
           },
           "type": "FileUploadField",
           "title": "For example, this evidence can include confirmation from the public owner or a letter from the local authority",
-          "hint": "<span class=\"govuk-body\">For example, this evidence can include confirmation from the public owner or a letter from the local authority.</span>"
+          "hint": "<span class=\"govuk-body\">For example, this evidence can include confirmation from the public owner or a letter from the local authority</span>"
         }
       ],
       "next": [
@@ -356,7 +356,10 @@
           "name": "hvzzWB",
           "options": {},
           "type": "YesNoField",
-          "title": "Is this a registered asset of community value (ACV)?"
+          "title": "Is this a registered Asset of Community Value (ACV)?",
+          "values": {
+            "type": "listRef"
+          }
         }
       ],
       "next": [
@@ -441,9 +444,11 @@
         },
         {
           "name": "kBCjwC",
-          "options": {},
+          "options": {
+              "classes": "govuk-!-width-full"
+            },
           "type": "WebsiteField",
-          "title": "Please provide a link to the listing"
+          "title": "Provide a link to the listing"
         },
         {
           "name": "vKSMwi",
@@ -475,7 +480,7 @@
           "options": {},
           "type": "CheckboxesField",
           "title": "Why is the asset at risk of closure?",
-          "hint": "Select all that apply.",
+          "hint": "Select all that apply",
           "list": "bEHBZY"
         }
       ],
