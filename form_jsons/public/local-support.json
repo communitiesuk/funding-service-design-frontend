@@ -16,7 +16,7 @@
           "name": "KqoaJL",
           "options": {},
           "type": "YesNoField",
-          "hint": "This support can be from: \n<p>\n<li>community groups</li>\n<li>local businesses</li>\n<li>public sector partners</li>\n</p>\n",
+          "hint": "This support can be from: \n<p>\n<li>community groups</li>\n<li>local businesses</li>\n<li>public sector partners</li>\n</p> \n",
           "title": "Are you confident there is local support for your project?",
           "values": {
             "type": "listRef"
@@ -88,7 +88,7 @@
           "name": "NdCUwM",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Local support for your project</li>\n\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>local support for your project</li>\n\n\n</div>"
         }
       ],
       "next": [

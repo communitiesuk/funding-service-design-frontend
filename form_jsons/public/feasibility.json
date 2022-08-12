@@ -62,7 +62,7 @@
           "name": "DojAvA",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Feasibility studies carried out</li>\n\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>feasibility studies carried out</li>\n\n\n</div>"
         }
       ],
       "next": [

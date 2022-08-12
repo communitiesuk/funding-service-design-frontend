@@ -108,7 +108,7 @@
           "name": "Nbtcbl",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Who you have engaged with in the community</li>\n<li>Fundraising activities (if applicable)</li>\n<li>How your project supports wider plans</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>who you have engaged with in the community</li>\n<li>fundraising activities (if applicable)</li>\n<li>how your project supports wider plans</li>\n\n</div>"
         }
       ],
       "next": [

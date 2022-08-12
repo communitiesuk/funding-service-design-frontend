@@ -49,7 +49,7 @@
           "name": "OwgQMC",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Environmental sustainability of your project</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>environmental sustainability of your project</li>\n\n</div>"
         }
       ],
       "next": [

@@ -35,8 +35,8 @@
             "maxWords": "200"
           },
           "type": "MultilineTextField",
-          "title": "Explain how you will consider the views of the community in the running of the asset",
-          "hint": "Please include how they will be involved in decision making, and how you will measure public support for your decisions."
+          "title": "Explain how you'll consider the views of the community in the running of the asset",
+          "hint": "Include how they'll be involved in decision making, and how you'll measure public support for your decisions"
         }
       ],
       "next": [
@@ -66,7 +66,7 @@
           "name": "ZhyrfW",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Members of your board</li>\n<li>Governance and membership structures</li>\n<li>How you'll consider the community's views</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>members of your board</li>\n<li>governance and membership structures</li>\n<li>how you'll consider the community's views</li>\n\n</div>"
         }
       ],
       "next": [

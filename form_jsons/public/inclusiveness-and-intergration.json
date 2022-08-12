@@ -19,7 +19,7 @@
           },
           "type": "MultilineTextField",
           "title": "Describe anything that might prevent people from using the asset or participating in its running",
-          "hint": "For example, membership costs or eligibility criteria."
+          "hint": "For example, membership costs or eligibility criteria"
         },
         {
           "name": "KuhSWw",
@@ -27,8 +27,8 @@
             "maxWords": "200"
           },
           "type": "MultilineTextField",
-          "title": "Tell us how you will make your project accessible and inclusive to everyone in the community",
-          "hint": "This includes considering disability access needs and making the space attractive to everyone."
+          "title": "Tell us how you'll make your project accessible and inclusive to everyone in the community",
+          "hint": "This includes considering disability access needs and making the space attractive to everyone"
         },
         {
           "name": "bkJsiO",
@@ -66,7 +66,7 @@
           "name": "dHyMmB",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>What might prevent people from using the asset</li>\n<li>How you will make your project accessible to everyone</li>\n<li>How the project will bring the community together</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>what might prevent people from using the asset</li>\n<li>how you will make your project accessible to everyone</li>\n<li>how the project will bring the community together</li>\n\n</div>"
         }
       ],
       "next": [

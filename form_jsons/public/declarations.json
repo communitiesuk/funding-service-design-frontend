@@ -16,7 +16,10 @@
           "name": "LlvhYl",
           "options": {},
           "type": "YesNoField",
-          "title": "Confirm you have considered subsidy control / state aid implications for your project, and the information you have given us is correct"
+          "title": "Confirm you have considered subsidy control and state aid implications for your project, and the information you have given us is correct",
+          "values": {
+            "type": "listRef"
+          }
         },
         {
           "name": "wJrJWY",
@@ -58,7 +61,7 @@
           "name": "Lbjxyj",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Confirmation of subsidy control / state aid information</li>\n<li>Confirmation you have considered people with protected characteristics</li>\n<li>Confirmation you have considered sustainability and the environment</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>confirmation of subsidy control / state aid information</li>\n<li>confirmation you have considered people with protected characteristics</li>\n<li>confirmation you have considered sustainability and the environment</li>\n\n</div>"
         }
       ],
       "next": [

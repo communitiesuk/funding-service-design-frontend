@@ -17,7 +17,7 @@
           "options": {},
           "type": "CheckboxesField",
           "title": "What community benefits do you expect to deliver with this project? ",
-          "hint": "Select all that apply.",
+          "hint": "Select all that apply",
           "list": "crPmPN"
         },
         {
@@ -26,7 +26,7 @@
             "maxWords": "200"
           },
           "type": "MultilineTextField",
-          "title": "Tell us about these benefits in detail, and explain how you will measure the benefits it will bring for the community"
+          "title": "Tell us about these benefits in detail, and explain how you'll measure the benefits it'll bring for the community"
         },
         {
           "name": "kYjJFy",
@@ -34,7 +34,7 @@
             "maxWords": "200"
           },
           "type": "MultilineTextField",
-          "title": "Explain how you will deliver and sustain these benefits over time"
+          "title": "Explain how you'll deliver and sustain these benefits over time"
         },
         {
           "name": "UbjYqE",
@@ -43,7 +43,7 @@
           },
           "type": "MultilineTextField",
           "title": "Explain how community ownership of the asset will be inclusive and benefit the wider community",
-          "hint": "For example, how you intend to reach different parts of your community."
+          "hint": "For example, how you intend to reach different parts of your community"
         }
       ],
       "next": [
@@ -73,7 +73,7 @@
           "name": "JHbfIz",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Community benefits project will deliver</li>\n<li>How you’ll measure benefits</li>\n<li>How benefits will be delivered and sustained</li>\n<li>How community ownership will be inclusive</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>community benefits project will deliver</li>\n<li>how you’ll measure benefits</li>\n<li>how benefits will be delivered and sustained</li>\n<li>how community ownership will be inclusive</li>\n\n</div>"
         }
       ],
       "next": [

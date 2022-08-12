@@ -1,10 +1,10 @@
 {
   "metadata": {},
-  "startPage": "/subsidy-control-state-aid-DYVzkX",
+  "startPage": "/subsidy-control-and-state-aid-XQBpkr",
   "pages": [
     {
-      "title": "Subsidy control / state aid",
-      "path": "/subsidy-control-state-aid",
+      "title": "Subsidy control and state aid",
+      "path": "/subsidy-control-and-state-aid-XQBpkr",
       "components": [
         {
           "name": "jsBTOY",
@@ -17,7 +17,7 @@
           "options": {},
           "type": "YesNoField",
           "title": "Does your project meet the definition of a subsidy?",
-          "hint": "For projects in England, Northern Ireland, Scotland and Wales, this definition is laid out in Paragraph 2 of the <a class=\"govuk-link\" href=\"https://www.gov.uk/government/publications/complying-with-the-uks-international-obligations-on-subsidy-control-guidance-for-public-authorities/technical-guidance-on-the-uks-international-subsidy-control-commitments\">Subsidy Control Act (2022)</a>.",
+          "hint": "For projects in England, Northern Ireland, Scotland and Wales, this definition is laid out in Paragraph 2 of the <a class=\"govuk-link\" href=\"https://www.gov.uk/government/publications/complying-with-the-uks-international-obligations-on-subsidy-control-guidance-for-public-authorities/technical-guidance-on-the-uks-international-subsidy-control-commitments\">Subsidy Control Act (2022)</a>",
           "values": {
             "type": "listRef"
           }
@@ -25,7 +25,7 @@
       ],
       "next": [
         {
-          "path": "/subsidy-control-state-aid-eonmCo",
+          "path": "/subsidy-control-and-state-aid-oSzYuW",
           "condition": "pTwpAH"
         },
         {
@@ -35,8 +35,8 @@
       ]
     },
     {
-      "path": "/subsidy-control-state-aid-eonmCo",
-      "title": "Subsidy control / State aid",
+      "path": "/subsidy-control-and-state-aid-oSzYuW",
+      "title": "Subsidy control and  State aid",
       "components": [
         {
           "name": "IoCBIO",
@@ -51,7 +51,7 @@
           },
           "type": "MultilineTextField",
           "title": "Explain how you think a grant from this fund can provided in compliance with the Subsidy Control Act (2022)",
-          "hint": "This is measured by the 7 common principles laid out in Schedule 1."
+          "hint": "This is measured by the 7 common principles laid out in Schedule 1"
         },
         {
           "name": "UPmQrD",
@@ -62,7 +62,7 @@
       ],
       "next": [
         {
-          "path": "/subsidy-control-state-aid-XAVhHb",
+          "path": "/subsidy-control-and-state-aid-CWggGL",
           "condition": "szyucC"
         },
         {
@@ -79,8 +79,8 @@
       "next": []
     },
     {
-      "path": "/subsidy-control-state-aid-XAVhHb",
-      "title": "Subsidy control / State aid",
+      "path": "/subsidy-control-and-state-aid-CWggGL",
+      "title": "Subsidy control  and State aid",
       "components": [
         {
           "name": "tYvkAL",
@@ -94,8 +94,8 @@
             "maxWords": "200"
           },
           "type": "MultilineTextField",
-          "title": "If your project is based in Northern Ireland, explain how it will comply with State Aid rules",
-          "hint": "You can find more information about when State Aid rules apply in Northern Ireland in the <a class=\"govuk-link\" href=\"https://www.gov.uk/government/publications/complying-with-the-uks-international-obligations-on-subsidy-control-guidance-for-public-authorities\">government guidance</a>."
+          "title": "Explain how your project will comply with state aid rules",
+          "hint": "You can find more information about when state aid rules apply in Northern Ireland in the <a class=\"govuk-link\" href=\"https://www.gov.uk/government/publications/complying-with-the-uks-international-obligations-on-subsidy-control-guidance-for-public-authorities\">government guidance</a>."
         }
       ],
       "next": [
@@ -105,8 +105,8 @@
       ]
     },
     {
-      "path": "/subsidy-control-state-aid-DYVzkX",
-      "title": "Subsidy control / state aid",
+      "path": "/subsidy-control-and-state-aid",
+      "title": "Subsidy control  and state aid",
       "components": [
         {
           "name": "Ulfbvv",
@@ -118,12 +118,12 @@
           "name": "GcHIsP",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Whether your project meets the definition of a subsidy</li>\n<li>Whether state aid rules apply (if in Northern Ireland)</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>whether your project meets the definition of a subsidy</li>\n<li>whether state aid rules apply (if in Northern Ireland)</li>\n\n</div>"
         }
       ],
       "next": [
         {
-          "path": "/subsidy-control-state-aid"
+          "path": "/subsidy-control-and-state-aid-XQBpkr"
         }
       ]
     }

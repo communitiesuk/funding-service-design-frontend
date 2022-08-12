@@ -54,7 +54,7 @@
           "name": "Fgwetg",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Risks to your project (document upload)</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>risks to your project (document upload)</li>\n\n</div>"
         }
       ],
       "next": [

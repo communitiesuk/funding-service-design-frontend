@@ -19,7 +19,7 @@
           },
           "type": "MultilineTextField",
           "title": "Tell us about your local community as a whole",
-          "hint": "This includes details of any needs it has and how your project will look to support these.\n<p>Where possible, please reference any data you have on protected characteristics and equality impacts.</p>"
+          "hint": "This includes details of any needs it has and how your project will look to support these.\n<p>Where possible, reference any data you have on protected characteristics and equality impacts.</p>"
         },
         {
           "name": "NKOmNL",
@@ -57,7 +57,7 @@
           "name": "HNjLSt",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Overview of the local community</li>\n<li>Challenges the community faces</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>overview of the local community</li>\n<li>challenges the community faces</li>\n\n</div>"
         }
       ],
       "next": [
