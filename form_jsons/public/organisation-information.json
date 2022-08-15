@@ -25,7 +25,8 @@
         {
           "path": "/about-your-organisation-xcKoIi"
         }
-      ]
+      ],
+      "controller": "./pages/start.js"
     },
     {
       "path": "/about-your-organisation-xcKoIi",

@@ -80,7 +80,8 @@
         {
           "path": "/potential-to-deliver-community-benefits"
         }
-      ]
+      ],
+      "controller": "./pages/start.js"
     }
   ],
   "lists": [

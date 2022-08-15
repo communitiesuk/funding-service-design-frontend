@@ -68,7 +68,8 @@
         {
           "path": "/declarations"
         }
-      ]
+      ],
+      "controller": "./pages/start.js"
     }
   ],
   "lists": [],

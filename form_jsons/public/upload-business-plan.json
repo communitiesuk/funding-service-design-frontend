@@ -23,7 +23,8 @@
         {
           "path": "/management-case-BCJuTq"
         }
-      ]
+      ],
+      "controller": "./pages/start.js"
     },
     {
       "path": "/management-case-BCJuTq",

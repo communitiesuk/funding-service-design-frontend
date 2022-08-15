@@ -95,7 +95,8 @@
         {
           "path": "/strategic-case"
         }
-      ]
+      ],
+      "controller": "./pages/start.js"
     }
   ],
   "lists": [],

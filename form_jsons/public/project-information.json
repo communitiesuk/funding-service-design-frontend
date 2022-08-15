@@ -23,7 +23,8 @@
         {
           "path": "/about-your-project-CBHWZS"
         }
-      ]
+      ],
+      "controller": "./pages/start.js"
     },
     {
       "path": "/about-your-project-CBHWZS",

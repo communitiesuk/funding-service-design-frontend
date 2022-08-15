@@ -251,7 +251,8 @@
         {
           "path": "/management-case-BfQiRw"
         }
-      ]
+      ],
+      "controller": "./pages/start.js"
     },
     {
       "path": "/management-case-WyEICz",

@@ -125,7 +125,8 @@
         {
           "path": "/subsidy-control-and-state-aid-XQBpkr"
         }
-      ]
+      ],
+      "controller": "./pages/start.js"
     }
   ],
   "lists": [],

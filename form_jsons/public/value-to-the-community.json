@@ -64,7 +64,8 @@
         {
           "path": "/added-value-to-the-community"
         }
-      ]
+      ],
+      "controller": "./pages/start.js"
     }
   ],
   "lists": [],

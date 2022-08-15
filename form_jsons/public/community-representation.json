@@ -73,7 +73,8 @@
         {
           "path": "/management-case"
         }
-      ]
+      ],
+      "controller": "./pages/start.js"
     }
   ],
   "lists": [],

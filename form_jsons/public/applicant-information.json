@@ -72,7 +72,8 @@
         {
           "path": "/about-your-organisation"
         }
-      ]
+      ],
+      "controller": "./pages/start.js"
     }
   ],
   "lists": [],

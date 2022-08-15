@@ -518,7 +518,8 @@
         {
           "path": "/about-your-project"
         }
-      ]
+      ],
+      "controller": "./pages/start.js"
     }
   ],
   "lists": [
