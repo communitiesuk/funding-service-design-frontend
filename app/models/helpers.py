@@ -12,7 +12,11 @@ def get_token_to_return_to_application(form_name: str, rehydrate_payload):
         token_json = res.json()
         return token_json["token"]
     else:
-        return None
+        raise Exception(
+            "Unexpected response POSTing form token to"
+            f" {Config.FORM_GET_REHYDRATION_TOKEN_URL.format(form_name=form_name)},"  # noqa: E501
+            f" response code {res.status_code}"
+        )
 
 
 def extract_subset_of_data_from_application(
@@ -35,7 +39,9 @@ def extract_subset_of_data_from_application(
     return application_data[data_subset_name]
 
 
-def format_rehydrate_payload(micro_form_data, application_id, page_name, returnUrl):
+def format_rehydrate_payload(
+    micro_form_data, application_id, page_name, returnUrl
+):
     """
     Returns information in a JSON format that provides the
     POST body for the utilisation of the save and return
@@ -78,7 +84,7 @@ def format_rehydrate_payload(micro_form_data, application_id, page_name, returnU
         "callbackUrl": callback_url,
         "redirectPath": redirect_path,
         "customText": {"nextSteps": "Form Submitted"},
-        "returnUrl": returnUrl
+        "returnUrl": returnUrl,
     }
     formatted_data["questions"] = extract_subset_of_data_from_application(
         micro_form_data, "questions"
