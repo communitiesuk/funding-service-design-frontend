@@ -7,7 +7,7 @@ applications:
   command: gunicorn wsgi:app -c run/gunicorn/devtest.py
   # TODO: Remove gids.dev domain if fundingservice.co.uk domain DNS gets restored.
   env:
-    AUTHENTICATOR_HOST: https://authenticator2.dev.gids.dev/
+    AUTHENTICATOR_HOST: https://authenticator2.dev.gids.dev
     ACCOUNT_STORE_API_HOST: https://funding-service-design-account-store-dev.london.cloudapps.digital
     APPLICATION_STORE_API_HOST: https://funding-service-design-application-store-dev.london.cloudapps.digital
     NOTIFICATION_SERVICE_HOST: http://funding-service-design-notification-dev.apps.internal:8080
