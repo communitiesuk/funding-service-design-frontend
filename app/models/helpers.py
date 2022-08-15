@@ -16,7 +16,11 @@ def get_token_to_return_to_application(form_name: str, rehydrate_payload):
         token_json = res.json()
         return token_json["token"]
     else:
-        return None
+        raise Exception(
+            "Unexpected response POSTing form token to"
+            f" {Config.FORM_GET_REHYDRATION_TOKEN_URL.format(form_name=form_name)},"  # noqa: E501
+            f" response code {res.status_code}"
+        )
 
 
 def extract_subset_of_data_from_application(
