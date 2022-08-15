@@ -114,7 +114,7 @@ def tasklist(application_id):
 
     application = get_application_data(application_id, as_dict=True)
     fund = get_fund_data(application.fund_id, as_dict=True)
-    application.create_sections(application.fund_id, application.round_id)
+    application.create_sections(application)
 
     form = FlaskForm()
     application_meta_data = {
@@ -187,6 +187,7 @@ def continue_application(application_id):
         redirect_url = redirect_url.replace(
             Config.FORMS_SERVICE_PRIVATE_HOST, Config.FORMS_SERVICE_PUBLIC_HOST
         )
+    current_app.logger.info("redirecting to form runner")
     return redirect(redirect_url)
 
 

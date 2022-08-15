@@ -1,8 +1,13 @@
 import requests
 from config import Config
+from flask import current_app
 
 
 def get_token_to_return_to_application(form_name: str, rehydrate_payload):
+    current_app.logger.info(
+        "obtaining session rehydration token for application id:"
+        f" {rehydrate_payload['metadata']['application_id']}."
+    )
     res = requests.post(
         Config.FORM_GET_REHYDRATION_TOKEN_URL.format(form_name=form_name),
         json=rehydrate_payload,
@@ -71,6 +76,10 @@ def format_rehydrate_payload(form_data, application_id, returnUrl, form_name):
         }
     """
 
+    current_app.logger.info(
+        "constructing session rehydration payload for application"
+        f" id:{application_id}."
+    )
     formatted_data = {}
     callback_url = Config.UPDATE_APPLICATION_FORM_ENDPOINT
 
