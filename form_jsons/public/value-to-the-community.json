@@ -72,7 +72,16 @@
   "sections": [],
   "conditions": [],
   "fees": [],
-  "outputs": [],
+  "outputs": [
+    {
+      "name": "update-form",
+      "title": "Update form in application store",
+      "type": "savePerPage",
+      "outputConfiguration": {
+        "savePerPageUrl": "{{application_store_host}}/applications/forms"
+      }
+    }
+  ],
   "version": 2,
   "skipSummary": false,
   "name": "Apply for funding to save a building in your community",
