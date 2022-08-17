@@ -36,6 +36,10 @@ def get_remote_data(endpoint):
         data = response.json()
         return data
     else:
+        current_app.logger.warn(
+            "GET remote data call was unsuccessful with status code:"
+            f" {response.status_code}."
+        )
         return None
 
 
