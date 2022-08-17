@@ -6,9 +6,11 @@ applications:
   memory: 528M
   sandbox: true
   routes:
-    - route: forms.dev.fundingservice.co.uk
+    - route: forms.dev.gids.dev
   env:
     PREVIEW_MODE: TRUE
+    RSA256_PUBLIC_KEY_BASE64: ((RSA256_PUBLIC_KEY_BASE64))
+    SERVICE_START_PAGE: https://frontend.dev.gids.dev/account
   services:
     - form-uploads-dev
     - logit-ssl-drain
@@ -19,9 +21,11 @@ applications:
   memory: 528M
   sandbox: true
   routes:
-    - route: forms.test.fundingservice.co.uk
+    - route: forms.test.gids.dev
   env:
     PREVIEW_MODE: TRUE
+    RSA256_PUBLIC_KEY_BASE64: ((RSA256_PUBLIC_KEY_BASE64))
+    SERVICE_START_PAGE: https://frontend.test.gids.dev/account
   services:
     - form-uploads-test
     - logit-ssl-drain

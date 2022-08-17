@@ -2,7 +2,7 @@ name: Build xforms image
 
 on:
   workflow_dispatch:
-  push:
+ # push:
     # branches:
     # - master
     # - FS-389

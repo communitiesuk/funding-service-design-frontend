@@ -87,6 +87,12 @@ def selenium_chrome_driver(request):
     request.cls.driver.close()
 
 
+def mock_get_data(endpoint):
+    file = open("tests/api_data/endpoint_data.json")
+    data = json.loads(file.read())
+    return data[endpoint]
+
+
 @pytest.fixture()
 def mock_get_application(mocker):
     file = open("tests/api_data/endpoint_data.json")
@@ -94,5 +100,5 @@ def mock_get_application(mocker):
     # mock the function in the file it is invoked (not where it is declared)
     mocker.patch(
         "app.default.routes.get_data",
-        return_value=data["http://application_store/applications/test_id"],
+        new=mock_get_data,
     )

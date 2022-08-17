@@ -1,4 +1,6 @@
-FROM ghcr.io/xgovformbuilder/digital-form-builder-runner:latest as base
+ARG BASE_IMAGE_TAG="b833677ea06f6409f8555b2743f73bcbd05b6eba"
+FROM ghcr.io/communitiesuk/digital-form-builder-dluhc-runner:$BASE_IMAGE_TAG as base
+
 ARG FORMS_DIR="forms-v3"
 WORKDIR /usr/src/app
 RUN rm -r runner/dist/server/forms && rm -r runner/src && rm -r runner/test
