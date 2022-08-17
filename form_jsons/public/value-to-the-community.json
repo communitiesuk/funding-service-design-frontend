@@ -1,62 +1,86 @@
 {
-    "metadata": {},
-    "startPage": "/added-value-to-the-community",
-    "pages": [
-      {
-        "title": "Added value to the community",
-        "path": "/added-value-to-the-community",
-        "components": [
-          {
-            "name": "zbEFpO",
-            "options": {},
-            "type": "Html",
-            "content": "<h2 class=\"govuk-heading-m\">Value to the community</h2>"
+  "metadata": {},
+  "startPage": "/added-value-to-the-community-XXYtSd",
+  "pages": [
+    {
+      "title": "Added value to the community",
+      "path": "/added-value-to-the-community",
+      "components": [
+        {
+          "name": "zbEFpO",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Value to the community</h2>"
+        },
+        {
+          "name": "oOPUXI",
+          "options": {
+            "maxWords": "200"
           },
-          {
-            "name": "oOPUXI",
-            "options": {
-              "maxWords": "200"
-            },
-            "type": "MultilineTextField",
-            "title": "Tell us about your local community as a whole",
-            "hint": "This includes details of any needs it has and how your project will look to support these.\n<p>Where possible, please reference any data you have on protected characteristics and equality impacts.</p>"
+          "type": "MultilineTextField",
+          "title": "Tell us about your local community as a whole",
+          "hint": "This includes details of any needs it has and how your project will look to support these.\n<p>Where possible, reference any data you have on protected characteristics and equality impacts.</p>"
+        },
+        {
+          "name": "NKOmNL",
+          "options": {
+            "maxWords": "200"
           },
-          {
-            "name": "NKOmNL",
-            "options": {
-              "maxWords": "200"
-            },
-            "type": "MultilineTextField",
-            "title": "Describe any specific challenges your community faces, and how the asset will address these"
-          }
-        ],
-        "next": [
-          {
-            "path": "/check-your-answers"
-          }
-        ]
-      },
-      {
-        "title": "Check your answers",
-        "path": "/check-your-answers",
-        "controller": "./pages/summary.js",
-        "components": [],
-        "next": []
-      }
-    ],
-    "lists": [],
-    "sections": [],
-    "conditions": [],
-    "fees": [],
-    "outputs": [],
-    "version": 2,
-    "skipSummary": false,
-    "name": "Apply for funding",
-    "feedback": {
-      "feedbackForm": false,
-      "url": ""
+          "type": "MultilineTextField",
+          "title": "Describe any specific challenges your community faces, and how the asset will address these"
+        }
+      ],
+      "next": [
+        {
+          "path": "/check-your-answers"
+        }
+      ]
     },
-    "phaseBanner": {
-      "phase": "beta"
+    {
+      "title": "Check your answers",
+      "path": "/check-your-answers",
+      "controller": "./pages/summary.js",
+      "components": [],
+      "next": []
+    },
+    {
+      "path": "/added-value-to-the-community-XXYtSd",
+      "title": "Added value to the community",
+      "components": [
+        {
+          "name": "dryWCd",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Value to the community</h2>"
+        },
+        {
+          "name": "HNjLSt",
+          "options": {},
+          "type": "Para",
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>overview of the local community</li>\n<li>challenges the community faces</li>\n\n</div>"
+        }
+      ],
+      "next": [
+        {
+          "path": "/added-value-to-the-community"
+        }
+      ],
+      "controller": "./pages/start.js"
     }
+  ],
+  "lists": [],
+  "sections": [],
+  "conditions": [],
+  "fees": [],
+  "outputs": [],
+  "version": 2,
+  "skipSummary": false,
+  "name": "Apply for funding to save a building in your community",
+  "feedback": {
+    "feedbackForm": false,
+    "url": ""
+  },
+  "phaseBanner": {
+    "phase": "beta"
   }
+}

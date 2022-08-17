@@ -1,199 +1,230 @@
 {
-    "metadata": {},
-    "startPage": "/management-case",
-    "pages": [
-      {
-        "title": "Management case",
-        "path": "/management-case",
-        "components": [
-          {
-            "name": "jdiAQM",
-            "options": {},
-            "type": "Html",
-            "content": "<h2 class=\"govuk-heading-m\">Skills and resources</h2>"
-          },
-          {
-            "name": "eenpQC",
-            "options": {},
-            "type": "Details",
-            "title": "See guidance",
-            "content": "<p>We will be assessing how you have considered the management requirements of your project.</p>\n<p>This includes the steps you are taking to make sure your organisation has the right capacity and resources to run the asset sustainably.</p>\n<p>Please demonstrate you have considered succession planning for your organisation’s staff and trustees.</p>\n<p>If you are planning to recruit staff to manage and run the asset and its services, please provide an overview of these plans.</p>"
-          },
-          {
-            "name": "CBIWnt",
-            "options": {},
-            "type": "YesNoField",
-            "title": "Do you have experience of managing a community asset?"
-          }
-        ],
-        "next": [
-          {
-            "path": "/management-case-HUfEIU"
-          },
-          {
-            "path": "/management-case-SmoquO",
-            "condition": "qCSZyG"
-          }
-        ]
-      },
-      {
-        "path": "/management-case-HUfEIU",
-        "title": "Management case",
-        "components": [
-          {
-            "name": "KVYefk",
-            "options": {},
-            "type": "Html",
-            "content": "<h2 class=\"govuk-heading-m\">Skills and resources</h2>"
-          },
-          {
-            "name": "uMhZAI",
-            "options": {},
-            "type": "Details",
-            "content": "<strong>Example </strong>Guidance text here",
-            "title": "See guidance"
-          },
-          {
-            "name": "vKnMPG",
-            "options": {},
-            "type": "YesNoField",
-            "title": "Do you have any plans to recruit people to help you manage the asset?"
-          }
-        ],
-        "next": [
-          {
-            "path": "/check-your-answers"
-          },
-          {
-            "path": "/management-case-GauEsn",
-            "condition": "NQAPSg"
-          }
-        ]
-      },
-      {
-        "title": "Check your answers",
-        "path": "/check-your-answers",
-        "controller": "./pages/summary.js",
-        "components": [],
-        "next": []
-      },
-      {
-        "path": "/management-case-SmoquO",
-        "title": "Management case",
-        "components": [
-          {
-            "name": "SUVlQH",
-            "options": {},
-            "type": "Html",
-            "content": "<h2 class=\"govuk-heading-m\">Skills and resources</h2>"
-          },
-          {
-            "name": "pepEsp",
-            "options": {},
-            "type": "Details",
-            "title": "See guidance",
-            "content": "<strong>Example </strong>Guidance text here"
-          },
-          {
-            "name": "QWveYc",
-            "options": {
-              "maxWords": "200"
-            },
-            "type": "MultilineTextField",
-            "title": "Describe any experience you have with community assets similar to this"
-          }
-        ],
-        "next": [
-          {
-            "path": "/management-case-HUfEIU"
-          }
-        ]
-      },
-      {
-        "path": "/management-case-GauEsn",
-        "title": "Management case",
-        "components": [
-          {
-            "name": "OtWwRe",
-            "options": {},
-            "type": "Html",
-            "content": "<h2 class=\"govuk-heading-m\">Skills and resources</h2>"
-          },
-          {
-            "name": "VNjRgZ",
-            "options": {
-              "maxWords": "200"
-            },
-            "type": "MultilineTextField",
-            "hint": "These should be positions which will help you effectively manage the asset during community ownership.\n<p> Please include the:</p>\n\n\n<li>role</li>\n<li>main responsibilities</li>\n\n\n",
-            "title": "Tell us about the roles you will recruit"
-          }
-        ],
-        "next": [
-          {
-            "path": "/check-your-answers"
-          }
-        ]
-      }
-    ],
-    "lists": [],
-    "sections": [],
-    "conditions": [
-      {
-        "displayName": "Do you have experience of managing a community asset-yes",
-        "name": "qCSZyG",
-        "value": {
-          "name": "Do you have experience of managing a community asset-yes",
-          "conditions": [
-            {
-              "field": {
-                "name": "CBIWnt",
-                "type": "YesNoField",
-                "display": "Do you have experience of managing a community asset?"
-              },
-              "operator": "is",
-              "value": {
-                "type": "Value",
-                "value": "true",
-                "display": "true"
-              }
-            }
-          ]
+  "metadata": {},
+  "startPage": "/management-case-yIfLRl",
+  "pages": [
+    {
+      "title": "Management case",
+      "path": "/management-case",
+      "components": [
+        {
+          "name": "jdiAQM",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Skills and resources</h2>"
+        },
+        {
+          "name": "eenpQC",
+          "options": {},
+          "type": "Details",
+          "title": "Help with skills and resources",
+          "content": "<p>We will be assessing how you have considered the management requirements of your project.</p>\n<p>This includes the steps you are taking to make sure your organisation has the right capacity and resources to run the asset sustainably.</p>\n<p>You need to demonstrate you have considered succession planning for your organisation’s staff and trustees.</p>\n<p>If you are planning to recruit staff to manage and run the asset and its services, please provide an overview of these plans.</p>"
+        },
+        {
+          "name": "CBIWnt",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Do you have experience of managing a community asset?"
         }
-      },
-      {
-        "displayName": "Do you have any plans to recruit people to help you manage the asset-yes",
-        "name": "NQAPSg",
-        "value": {
-          "name": "Do you have any plans to recruit people to help you manage the asset-yes",
-          "conditions": [
-            {
-              "field": {
-                "name": "vKnMPG",
-                "type": "YesNoField",
-                "display": "Do you have any plans to recruit people to help you manage the asset?"
-              },
-              "operator": "is",
-              "value": {
-                "type": "Value",
-                "value": "true",
-                "display": "true"
-              }
-            }
-          ]
+      ],
+      "next": [
+        {
+          "path": "/management-case-HUfEIU"
+        },
+        {
+          "path": "/management-case-SmoquO",
+          "condition": "qCSZyG"
         }
-      }
-    ],
-    "fees": [],
-    "outputs": [],
-    "version": 2,
-    "skipSummary": false,
-    "name": "Apply for funding",
-    "feedback": {
-      "feedbackForm": false,
-      "url": ""
+      ]
     },
-    "phaseBanner": {
-      "phase": "beta"
+    {
+      "path": "/management-case-HUfEIU",
+      "title": "Management case",
+      "components": [
+        {
+          "name": "KVYefk",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Skills and resources</h2>"
+        },
+        {
+          "name": "uMhZAI",
+          "options": {},
+          "type": "Details",
+          "content": "<p>We will be assessing how you have considered the management requirements of your project.</p>\n<p>This includes the steps you are taking to make sure your organisation has the right capacity and resources to run the asset sustainably.</p>\n<p>You need to demonstrate you have considered succession planning for your organisation’s staff and trustees.</p>\n<p>If you are planning to recruit staff to manage and run the asset and its services, please provide an overview of these plans.</p>",
+          "title": "Help with skills and resources"
+        },
+        {
+          "name": "vKnMPG",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Do you have any plans to recruit people to help you manage the asset?"
+        }
+      ],
+      "next": [
+        {
+          "path": "/check-your-answers"
+        },
+        {
+          "path": "/management-case-GauEsn",
+          "condition": "NQAPSg"
+        }
+      ]
+    },
+    {
+      "title": "Check your answers",
+      "path": "/check-your-answers",
+      "controller": "./pages/summary.js",
+      "components": [],
+      "next": []
+    },
+    {
+      "path": "/management-case-SmoquO",
+      "title": "Management case",
+      "components": [
+        {
+          "name": "SUVlQH",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Skills and resources</h2>"
+        },
+        {
+          "name": "pepEsp",
+          "options": {},
+          "type": "Details",
+          "title": "Help with skills and resources",
+          "content": "<p>We will be assessing how you have considered the management requirements of your project.</p>\n<p>This includes the steps you are taking to make sure your organisation has the right capacity and resources to run the asset sustainably.</p>\n<p>You need to demonstrate you have considered succession planning for your organisation’s staff and trustees.</p>\n<p>If you are planning to recruit staff to manage and run the asset and its services, please provide an overview of these plans.</p>"
+        },
+        {
+          "name": "QWveYc",
+          "options": {
+            "maxWords": "200"
+          },
+          "type": "MultilineTextField",
+          "title": "Describe any experience you have with community assets similar to this"
+        }
+      ],
+      "next": [
+        {
+          "path": "/management-case-HUfEIU"
+        }
+      ]
+    },
+    {
+      "path": "/management-case-GauEsn",
+      "title": "Management case",
+      "components": [
+        {
+          "name": "OtWwRe",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Skills and resources</h2>"
+        },
+        {
+          "name": "mxgewf",
+          "options": {},
+          "type": "Details",
+          "content": "<p>We will be assessing how you have considered the management requirements of your project.</p>\n<p>This includes the steps you are taking to make sure your organisation has the right capacity and resources to run the asset sustainably.</p>\n<p>You need to demonstrate you have considered succession planning for your organisation’s staff and trustees.</p>\n<p>If you are planning to recruit staff to manage and run the asset and its services, please provide an overview of these plans.</p>",
+          "title": "Help with skills and resources"
+        },
+        {
+          "name": "VNjRgZ",
+          "options": {
+            "maxWords": "200"
+          },
+          "type": "MultilineTextField",
+          "hint": "These should be positions which will help you effectively manage the asset during community ownership.\n<p> Please include the:</p>\n\n\n<li>role</li>\n<li>main responsibilities</li>\n\n\n",
+          "title": "Tells us about the roles you'll recruit"
+        }
+      ],
+      "next": [
+        {
+          "path": "/check-your-answers"
+        }
+      ]
+    },
+    {
+      "path": "/management-case-yIfLRl",
+      "title": "Management case",
+      "components": [
+        {
+          "name": "CFpwef",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Skills and resources</h2>"
+        },
+        {
+          "name": "QfmkfT",
+          "options": {},
+          "type": "Para",
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>community asset management experience (if applicable)</li>\n<li>roles you’ll recruit in future (if applicable)</li>\n\n</div>"
+        }
+      ],
+      "next": [
+        {
+          "path": "/management-case"
+        }
+      ],
+      "controller": "./pages/start.js"
     }
+  ],
+  "lists": [],
+  "sections": [],
+  "conditions": [
+    {
+      "displayName": "Do you have experience of managing a community asset-yes",
+      "name": "qCSZyG",
+      "value": {
+        "name": "Do you have experience of managing a community asset-yes",
+        "conditions": [
+          {
+            "field": {
+              "name": "CBIWnt",
+              "type": "YesNoField",
+              "display": "Do you have experience of managing a community asset?"
+            },
+            "operator": "is",
+            "value": {
+              "type": "Value",
+              "value": "true",
+              "display": "true"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "displayName": "Do you have any plans to recruit people to help you manage the asset-yes",
+      "name": "NQAPSg",
+      "value": {
+        "name": "Do you have any plans to recruit people to help you manage the asset-yes",
+        "conditions": [
+          {
+            "field": {
+              "name": "vKnMPG",
+              "type": "YesNoField",
+              "display": "Do you have any plans to recruit people to help you manage the asset?"
+            },
+            "operator": "is",
+            "value": {
+              "type": "Value",
+              "value": "true",
+              "display": "true"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "fees": [],
+  "outputs": [],
+  "version": 2,
+  "skipSummary": false,
+  "name": "Apply for funding to save a building in your community",
+  "feedback": {
+    "feedbackForm": false,
+    "url": ""
+  },
+  "phaseBanner": {
+    "phase": "beta"
   }
+}

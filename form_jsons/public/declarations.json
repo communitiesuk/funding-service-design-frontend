@@ -1,63 +1,90 @@
 {
-    "metadata": {},
-    "startPage": "/declarations",
-    "pages": [
-      {
-        "title": "Declarations",
-        "path": "/declarations",
-        "components": [
-          {
-            "name": "sBiSgs",
-            "options": {},
-            "type": "Html",
-            "content": "<h2 class=\"govuk-heading-m\">Final confirmations</h2>"
-          },
-          {
-            "name": "LlvhYl",
-            "options": {},
-            "type": "YesNoField",
-            "title": "Confirm you have considered subsidy control / state aid implications for your project, and the information you have given us is correct"
-          },
-          {
-            "name": "wJrJWY",
-            "options": {},
-            "type": "YesNoField",
-            "title": "Confirm you have considered people with protected characteristics throughout the planning of your project"
-          },
-          {
-            "name": "COiwQr",
-            "options": {},
-            "type": "YesNoField",
-            "title": "Confirm you have considered sustainability and the environment throughout the planning of your project, including compliance with the government's Net Zero ambitions"
+  "metadata": {},
+  "startPage": "/declarations-YcIHbL",
+  "pages": [
+    {
+      "title": "Declarations",
+      "path": "/declarations",
+      "components": [
+        {
+          "name": "sBiSgs",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Final confirmations</h2>"
+        },
+        {
+          "name": "LlvhYl",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Confirm you have considered subsidy control and state aid implications for your project, and the information you have given us is correct",
+          "values": {
+            "type": "listRef"
           }
-        ],
-        "next": [
-          {
-            "path": "/check-your-answers"
-          }
-        ]
-      },
-      {
-        "title": "Check your answers",
-        "path": "/check-your-answers",
-        "controller": "./pages/summary.js",
-        "components": [],
-        "next": []
-      }
-    ],
-    "lists": [],
-    "sections": [],
-    "conditions": [],
-    "fees": [],
-    "outputs": [],
-    "version": 2,
-    "skipSummary": false,
-    "name": "Apply for funding",
-    "feedback": {
-      "feedbackForm": false,
-      "url": ""
+        },
+        {
+          "name": "wJrJWY",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Confirm you have considered people with protected characteristics throughout the planning of your project"
+        },
+        {
+          "name": "COiwQr",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Confirm you have considered sustainability and the environment throughout the planning of your project, including compliance with the government's Net Zero ambitions"
+        }
+      ],
+      "next": [
+        {
+          "path": "/check-your-answers"
+        }
+      ]
     },
-    "phaseBanner": {
-      "phase": "beta"
+    {
+      "title": "Check your answers",
+      "path": "/check-your-answers",
+      "controller": "./pages/summary.js",
+      "components": [],
+      "next": []
+    },
+    {
+      "path": "/declarations-YcIHbL",
+      "title": "Declarations",
+      "components": [
+        {
+          "name": "miInAI",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Final confirmations</h2>"
+        },
+        {
+          "name": "Lbjxyj",
+          "options": {},
+          "type": "Para",
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>confirmation of subsidy control / state aid information</li>\n<li>confirmation you have considered people with protected characteristics</li>\n<li>confirmation you have considered sustainability and the environment</li>\n\n</div>"
+        }
+      ],
+      "next": [
+        {
+          "path": "/declarations"
+        }
+      ],
+      "controller": "./pages/start.js"
     }
+  ],
+  "lists": [],
+  "sections": [],
+  "conditions": [],
+  "fees": [],
+  "outputs": [],
+  "version": 2,
+  "skipSummary": false,
+  "name": "Apply for funding to save a building in your community",
+  "feedback": {
+    "feedbackForm": false,
+    "url": ""
+  },
+  "phaseBanner": {
+    "phase": "beta"
   }
+}

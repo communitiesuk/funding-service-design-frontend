@@ -1,60 +1,91 @@
 {
-    "metadata": {},
-    "startPage": "/management-case",
-    "pages": [
-      {
-        "title": "Management case",
-        "path": "/management-case",
-        "components": [
-          {
-            "name": "VjoSon",
-            "options": {},
-            "type": "Html",
-            "content": "<h2 class=\"govuk-heading-m\">Feasibility</h2>"
+  "metadata": {},
+  "startPage": "/management-case-gJtyMO",
+  "pages": [
+    {
+      "title": "Management case",
+      "path": "/management-case",
+      "components": [
+        {
+          "name": "VjoSon",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Feasibility</h2>"
+        },
+        {
+          "name": "FIKWHB",
+          "options": {},
+          "type": "Details",
+          "content": "<div class=\"govuk-body\">\n<p class=\"govuk-caption-m\">This is analysis which tests the ability of your project to deliver its objectives.</p>\n<p class=\"govuk-caption-m\"> You should use your feasibility studies to:</p>\n\n<div class=\"govuk-caption-m\">\n\n<li>test the context and resources within which the project is operating, &emsp;&nbsp; including market analysis and whether the financial, technical and <br>&emsp;&nbsp; management capabilities are strong enough to deliver the range of <br>&emsp;&nbsp; uses planned for the asset</li>\n<li>test the viability and sustainability of the project in the long term</li>\n<li>develop a strong business plan</li>\n\n</div>\n\n</div>",
+          "title": "Help with feasibility"
+        },
+        {
+          "name": "ieRCkI",
+          "options": {
+            "maxWords": "200"
           },
-          {
-            "name": "ieRCkI",
-            "options": {
-              "maxWords": "200"
-            },
-            "type": "MultilineTextField",
-            "hint": "<div class=\"govuk-body\">\n<p class=\"govuk-caption-m\">This is analysis which tests the ability of your project to deliver its objectives.</p>\n<p class=\"govuk-caption-m\"> You should use your feasibility studies to:</p>\n\n<div class=\"govuk-caption-m\">\n<li>test the context and resources within which the project is operating,  including market analysis and whether the financial, technical and  management capabilities are strong enough to deliver the range of uses  planned for the asset</li>\n<li>test the viability and sustainability of the project in the long term</li>\n<li>develop a strong business plan</li>\n</div>\n\n</div>",
-            "title": "Tell us about the feasibility studies you have carried out for your project"
-          },
-          {
-            "name": "aAeszH",
-            "options": {},
-            "type": "YesNoField",
-            "title": "Do you need to do any further feasibility work?"
-          }
-        ],
-        "next": [
-          {
-            "path": "/check-your-answers"
-          }
-        ]
-      },
-      {
-        "title": "Check your answers",
-        "path": "/check-your-answers",
-        "controller": "./pages/summary.js",
-        "components": [],
-        "next": []
-      }
-    ],
-    "lists": [],
-    "sections": [],
-    "conditions": [],
-    "fees": [],
-    "outputs": [],
-    "version": 2,
-    "skipSummary": false,
-    "name": "Apply for funding",
-    "feedback": {
-      "feedbackForm": false,
-      "url": ""
+          "type": "MultilineTextField",
+          "hint": "",
+          "title": "Tell us about the feasibility studies you have carried out for your project"
+        },
+        {
+          "name": "aAeszH",
+          "options": {},
+          "type": "YesNoField",
+          "title": "Do you need to do any further feasibility work?"
+        }
+      ],
+      "next": [
+        {
+          "path": "/check-your-answers"
+        }
+      ]
     },
-    "phaseBanner": {
-      "phase": "beta"
+    {
+      "title": "Check your answers",
+      "path": "/check-your-answers",
+      "controller": "./pages/summary.js",
+      "components": [],
+      "next": []
+    },
+    {
+      "path": "/management-case-gJtyMO",
+      "title": "Management case",
+      "components": [
+        {
+          "name": "lgyZWP",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Feasibility</h2>"
+        },
+        {
+          "name": "DojAvA",
+          "options": {},
+          "type": "Para",
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>feasibility studies carried out</li>\n\n\n</div>"
+        }
+      ],
+      "next": [
+        {
+          "path": "/management-case"
+        }
+      ],
+      "controller": "./pages/start.js"
     }
+  ],
+  "lists": [],
+  "sections": [],
+  "conditions": [],
+  "fees": [],
+  "outputs": [],
+  "version": 2,
+  "skipSummary": false,
+  "name": "Apply for funding to save a building in your community",
+  "feedback": {
+    "feedbackForm": false,
+    "url": ""
+  },
+  "phaseBanner": {
+    "phase": "beta"
   }
+}
