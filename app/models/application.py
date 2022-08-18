@@ -29,7 +29,7 @@ class Application:
     @classmethod
     def get_form_data(cls, application_data, form_name):
         for form in application_data.forms:
-            if form["form_name"] == form_name:
+            if form["name"] == form_name:
                 return form
 
     @classmethod
@@ -49,7 +49,7 @@ class Application:
             f" application id:{application.id}."
         )
         for form in self.forms:
-            form_name = form["form_name"]
+            form_name = form["name"]
             for (
                 section,
                 section_config,
