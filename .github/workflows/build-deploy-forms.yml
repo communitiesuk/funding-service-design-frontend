@@ -5,7 +5,7 @@ on:
     paths:
        - "form_jsons/**"
        - "Dockerfile"
-       - "manifest.yml"
+       - "manifest-form-runner.yml"
        - ".github/workflows/build-deploy-forms.yml"
 env:
   DOCKER_REGISTRY: ghcr.io
@@ -61,7 +61,7 @@ jobs:
           cf_space:    ${{secrets.CF_SPACE }}
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
-          command: push funding-service-design-form-runner-dev --docker-image ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:sha-${{ github.sha }} -f ./manifest.yml --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
+          command: push funding-service-design-form-runner-dev --docker-image ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:sha-${{ github.sha }} -f ./manifest-form-runner.yml --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -107,7 +107,7 @@ jobs:
           cf_space:    ${{secrets.CF_SPACE }}
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
-          command: push funding-service-design-form-runner-test --docker-image ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:sha-${{ github.sha }} -f ./manifest.yml --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
+          command: push funding-service-design-form-runner-test --docker-image ${{env.IMAGE_REPO_PATH}}/${{env.IMAGE_NAME}}:sha-${{ github.sha }} -f ./manifest-form-runner.yml --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
 
       - name: Set up Python
         uses: actions/setup-python@v2

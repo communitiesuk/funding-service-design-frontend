@@ -16,7 +16,7 @@ on:
     paths-ignore:
       - "form_jsons/**"
       - "Dockerfile"
-      - "manifest.yml"
+      - "manifest-form-runner.yml"
       - "build-deploy-forms.yml"
       - "**/README.md"
     branches: [ main ]
@@ -26,7 +26,7 @@ on:
     paths-ignore:
       - "form_jsons/**"
       - "Dockerfile"
-      - "manifest.yml"
+      - "manifest-form-runner.yml"
       - "build-deploy-forms.yml"
       - "**/README.md"
       
