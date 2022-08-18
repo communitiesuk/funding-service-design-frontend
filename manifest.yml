@@ -14,8 +14,6 @@ applications:
   services:
     - form-uploads-dev
     - logit-ssl-drain
-  health-check-http-endpoint: /healthcheck
-  health-check-type: http
 
 - name: funding-service-design-form-runner-test
   docker:
@@ -31,5 +29,3 @@ applications:
   services:
     - form-uploads-test
     - logit-ssl-drain
-  health-check-http-endpoint: /healthcheck
-  health-check-type: http

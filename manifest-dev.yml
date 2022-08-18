@@ -19,3 +19,5 @@ applications:
   routes:
     - route: frontend.dev.fundingservice.co.uk
     - route: frontend.dev.gids.dev
+  health-check-http-endpoint: /healthcheck
+  health-check-type: http
