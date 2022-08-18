@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  users: 1
+  users: 500
   spawn-rate: 1
   run-time: 10s
 
