@@ -16,102 +16,102 @@
         "last_edited": null,
         "forms": [
             {
-                "form_name": "applicant-information",
+                "name": "applicant-information",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "asset-information",
+                "name": "asset-information",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "community-benefits",
+                "name": "community-benefits",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "community-engagement",
+                "name": "community-engagement",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "community-representation",
+                "name": "community-representation",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "community-use",
+                "name": "community-use",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "declarations",
+                "name": "declarations",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "environmental-sustainability",
+                "name": "environmental-sustainability",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "feasibility",
+                "name": "feasibility",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "funding-required",
+                "name": "funding-required",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "inclusiveness-and-intergration",
+                "name": "inclusiveness-and-intergration",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "local-support",
+                "name": "local-support",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "organisation-information",
+                "name": "organisation-information",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "project-costs",
+                "name": "project-costs",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "project-information",
+                "name": "project-information",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "project-qualification",
+                "name": "project-qualification",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "risk",
+                "name": "risk",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "skills-and-resources",
+                "name": "skills-and-resources",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "value-to-the-community",
+                "name": "value-to-the-community",
                 "questions": [],
                 "status": "NOT_STARTED"
             },
             {
-                "form_name": "upload-business-plan",
+                "name": "upload-business-plan",
                 "questions": [],
                 "status": "NOT_STARTED"
             }
