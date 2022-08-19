@@ -188,7 +188,7 @@
       "title": "Update form in application store",
       "type": "savePerPage",
       "outputConfiguration": {
-        "savePerPageUrl": "{{application_store_host}}/applications/forms"
+        "savePerPageUrl": "True"
       }
     }
   ],
