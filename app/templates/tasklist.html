@@ -2,7 +2,9 @@
 {% from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
 {% from "partials/tasklist_section.html" import tasklist_section %}
 {% from "partials/tasklist_submit.html" import tasklist_submit %}
-
+{% block beforeContent %}
+<a href="{{url_for('routes.dashboard')}}" class="govuk-back-link">Back to your applications</a>
+{% endblock %}
 {% block pageTitle %}Task List - {{ service_title }}{% endblock %}
 
 {% block content %}
