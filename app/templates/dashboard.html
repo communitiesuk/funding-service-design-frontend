@@ -69,7 +69,21 @@
     'rows': ns.rows
     }) }}
 {% endif %}
-<form method="POST" action={{ url_for('routes.new')}}>
+
+{% if applications|length > 0 %}
+<form method="POST" action={{url_for('routes.new')}}>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="account_id" value="{{ account_id }}">
+    <input type="hidden" name="fund_id" value="{{ fund_id }}">
+    <input type="hidden" name="round_id" value="{{ round_id }}">
+    {{ govukButton({
+    'text': "Start new application",
+    'classes': "govuk-button--secondary"
+    }) }}
+</form>
+
+{% else %}
+<form method="POST" action={{url_for('routes.new')}}>
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <input type="hidden" name="account_id" value="{{ account_id }}">
     <input type="hidden" name="fund_id" value="{{ fund_id }}">
@@ -78,4 +92,6 @@
     'text': "Start new application"
     }) }}
 </form>
+{% endif %}
+
 {% endblock %}
