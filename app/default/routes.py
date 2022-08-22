@@ -1,7 +1,7 @@
 import requests
 from app.application_status import ApplicationStatus
 from app.default.data import get_application_data
-from app.default.data import get_data
+from app.default.data import get_applications_for_account
 from app.default.data import get_fund_data
 from app.models.application_summary import ApplicationSummary
 from app.models.helpers import format_rehydrate_payload
@@ -43,13 +43,12 @@ def cookie_policy():
 @default_bp.route("/account")
 @login_required
 def dashboard(account_id):
-    response = get_data(
-        Config.GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT.format(
-            account_id=account_id
-        )
+    application_store_response = get_applications_for_account(
+        account_id=account_id, as_dict=False
     )
     applications: list[ApplicationSummary] = [
-        ApplicationSummary.from_dict(application) for application in response
+        ApplicationSummary.from_dict(application)
+        for application in application_store_response
     ]
     if len(applications) > 0:
         round_id = applications[0].round_id

@@ -23,11 +23,16 @@ def get_data(endpoint: str):
     """
 
     current_app.logger.info(f"Fetching data from '{endpoint}'.")
-    return (
-        get_local_data(endpoint)
-        if Config.USE_LOCAL_DATA
-        else get_remote_data(endpoint)
-    )
+    if Config.USE_LOCAL_DATA:
+        data = get_local_data(endpoint)
+    else:
+        data = get_remote_data(endpoint)
+    if data is None:
+        current_app.logger.error(
+            f"Data request failed, unable to recover: {endpoint}"
+        )
+        return abort(500)
+    return data
 
 
 def get_remote_data(endpoint):
@@ -61,12 +66,19 @@ def get_application_data(application_id, as_dict=False):
         application_id=application_id
     )
     application_response = get_data(application_request_url)
-    if not (application_response):
-        current_app.logger.error(
-            "Application Data Store request failed, unable to recover:"
-            f" {application_request_url}"
+    if as_dict:
+        return Application.from_dict(application_response)
+    else:
+        return application_response
+
+
+def get_applications_for_account(account_id, as_dict=False):
+    application_request_url = (
+        Config.GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT.format(
+            account_id=account_id
         )
-        return abort(500)
+    )
+    application_response = get_data(application_request_url)
     if as_dict:
         return Application.from_dict(application_response)
     else:
@@ -76,11 +88,6 @@ def get_application_data(application_id, as_dict=False):
 def get_fund_data(fund_id, as_dict=False):
     fund_request_url = Config.GET_FUND_DATA_ENDPOINT.format(fund_id=fund_id)
     fund_response = get_data(fund_request_url)
-    if not fund_response:
-        current_app.logger.error(
-            f"Fund Store request failed, unable to recover: {fund_request_url}"
-        )
-        return abort(500)
     if as_dict:
         return Fund.from_dict(fund_response)
     else:
@@ -92,12 +99,6 @@ def get_round_data(fund_id, round_id, as_dict=False):
         fund_id=fund_id, round_id=round_id
     )
     round_response = get_data(round_request_url)
-    if not round_response:
-        current_app.logger.error(
-            "Fund Store request failed, unable to recover:"
-            f" {round_request_url}"
-        )
-        return abort(500)
     if as_dict:
         return Round.from_dict(round_response)
     else:
