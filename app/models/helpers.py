@@ -1,9 +1,13 @@
 import requests
 from config import Config
-from slugify import slugify
+from flask import current_app
 
 
 def get_token_to_return_to_application(form_name: str, rehydrate_payload):
+    current_app.logger.info(
+        "obtaining session rehydration token for application id:"
+        f" {rehydrate_payload['metadata']['application_id']}."
+    )
     res = requests.post(
         Config.FORM_GET_REHYDRATION_TOKEN_URL.format(form_name=form_name),
         json=rehydrate_payload,
@@ -39,16 +43,16 @@ def extract_subset_of_data_from_application(
     return application_data[data_subset_name]
 
 
-def format_rehydrate_payload(
-    micro_form_data, application_id, page_name, returnUrl
-):
+def format_rehydrate_payload(form_data, application_id, returnUrl, form_name):
     """
     Returns information in a JSON format that provides the
     POST body for the utilisation of the save and return
     functionality in the XGovFormBuilder
+    PR instructions here:
+    https://github.com/XGovFormBuilder/digital-form-builder/pull/760
 
     Parameters:
-        micro_form_data (dict):
+        form_data (dict):
         application data to reformat
         application_id (str):
         The id of an application in the application store
@@ -76,21 +80,24 @@ def format_rehydrate_payload(
         }
     """
 
+    current_app.logger.info(
+        "constructing session rehydration payload for application"
+        f" id:{application_id}."
+    )
     formatted_data = {}
-    redirect_path = slugify(page_name)
-    callback_url = Config.UPDATE_APPLICATION_SECTION_ENDPOINT
+    callback_url = Config.UPDATE_APPLICATION_FORM_ENDPOINT
 
     formatted_data["options"] = {
         "callbackUrl": callback_url,
-        "redirectPath": redirect_path,
         "customText": {"nextSteps": "Form Submitted"},
         "returnUrl": returnUrl,
     }
     formatted_data["questions"] = extract_subset_of_data_from_application(
-        micro_form_data, "questions"
+        form_data, "questions"
     )
     formatted_data["metadata"] = extract_subset_of_data_from_application(
-        micro_form_data, "metadata"
+        form_data, "metadata"
     )
     formatted_data["metadata"]["application_id"] = application_id
+    formatted_data["metadata"]["form_name"] = form_name
     return formatted_data

@@ -10,7 +10,6 @@ from fsd_utils import configclass
 @configclass
 class DefaultConfig:
     # Application Config
-
     FLASK_ENV = environ.get("FLASK_ENV", "development")
     SECRET_KEY = environ.get("SECRET_KEY", "dev")
     SESSION_COOKIE_NAME = environ.get("SESSION_COOKIE_NAME", "session_cookie")
@@ -22,7 +21,11 @@ class DefaultConfig:
     # Funding Service Design
     FSD_USER_TOKEN_COOKIE_NAME = "fsd_user_token"
     AUTHENTICATOR_HOST = environ.get("AUTHENTICATOR_HOST", "authenticator")
-    ENTER_APPLICATION_URL = AUTHENTICATOR_HOST + "/service/magic-links/new?fund_id=47aef2f5-3fcb-4d45-acb5-f0152b5f03c4&round_id=c603d114-5364-4474-a0c4-c41cbf4d3bbd"
+    ENTER_APPLICATION_URL = (
+        AUTHENTICATOR_HOST
+        + "/service/magic-links/new?fund_id=47aef2f5-3fcb-4d45-acb5-f0152b"
+        "5f03c4&round_id=c603d114-5364-4474-a0c4-c41cbf4d3bbd"
+    )
     SESSION_COOKIE_DOMAIN = environ.get("SESSION_COOKIE_DOMAIN")
 
     # APIs Config
@@ -38,16 +41,19 @@ class DefaultConfig:
     GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT = (
         APPLICATION_STORE_API_HOST + "/applications?account_id={account_id}"
     )
-    UPDATE_APPLICATION_SECTION_ENDPOINT = (
-        APPLICATION_STORE_API_HOST + "/applications/sections"
+    UPDATE_APPLICATION_FORM_ENDPOINT = (
+        APPLICATION_STORE_API_HOST + "/applications/forms"
     )
     SUBMIT_APPLICATION_ENDPOINT = (
         APPLICATION_STORE_API_HOST + "/applications/{application_id}/submit"
     )
-    FUND_STORE_API_HOST = environ.get("FUND_STORE_API_HOST", TEST_FUND_STORE_API_HOST)
-    GET_FUND_DATA_ENDPOINT = (FUND_STORE_API_HOST + "/funds/{fund_id}")
-    DEFAULT_FUND_ID = "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4"
-    DEFAULT_ROUND_ID = "c603d114-5364-4474-a0c4-c41cbf4d3bbd"
+    FUND_STORE_API_HOST = environ.get(
+        "FUND_STORE_API_HOST", TEST_FUND_STORE_API_HOST
+    )
+    GET_FUND_DATA_ENDPOINT = FUND_STORE_API_HOST + "/funds/{fund_id}"
+    GET_ROUND_DATA_FOR_FUND_ENDPOINT = (
+        FUND_STORE_API_HOST + "/funds/{fund_id}/rounds/{round_id}"
+    )
 
     FORMS_TEST_HOST = "http://localhost:3009"
     FORMS_SERVICE_NAME = environ.get(

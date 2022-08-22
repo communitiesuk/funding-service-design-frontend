@@ -1,13 +1,12 @@
 import requests
 from app.application_status import ApplicationStatus
-from app.default.data import get_data, get_application_data, get_fund_data
-from app.models.application import Application
+from app.default.data import get_application_data
+from app.default.data import get_data
+from app.default.data import get_fund_data
 from app.models.application_summary import ApplicationSummary
 from app.models.helpers import format_rehydrate_payload
 from app.models.helpers import get_token_to_return_to_application
-from app.models.fund import Fund
 from config import Config
-from flask import abort
 from flask import Blueprint
 from flask import current_app
 from flask import redirect
@@ -24,9 +23,11 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 @default_bp.route("/")
 def index():
     current_app.logger.info("Service landing page loaded.")
-    return render_template("index.html", service_url=Config.ENTER_APPLICATION_URL)
-    
-    
+    return render_template(
+        "index.html", service_url=Config.ENTER_APPLICATION_URL
+    )
+
+
 @default_bp.route("/accessibility_statement", methods=["GET"])
 def accessibility_statement():
     current_app.logger.info("Accessibility statement page loaded.")
@@ -57,7 +58,10 @@ def dashboard(account_id):
         round_id = Config.DEFAULT_ROUND_ID
         fund_id = Config.DEFAULT_FUND_ID
 
-    current_app.logger.info(f"Setting up applicant dashboard for :'{account_id}' to apply for fund {fund_id} on round {round_id}")
+    current_app.logger.info(
+        f"Setting up applicant dashboard for :'{account_id}' to apply for fund"
+        f" {fund_id} on round {round_id}"
+    )
 
     return render_template(
         "dashboard.html",
@@ -107,30 +111,33 @@ def tasklist(application_id):
     Returns:
         function: a function which renders the tasklist template.
     """
+
     application = get_application_data(application_id, as_dict=True)
     fund = get_fund_data(application.fund_id, as_dict=True)
+    application.create_sections(application)
+
     form = FlaskForm()
     application_meta_data = {
         "application_id": application_id,
-        "round": application.round_id,
-        "fund": application.fund_id,
         "fund_name": fund.name,
+        "not_started_status": ApplicationStatus.NOT_STARTED.name,
+        "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
         "completed_status": ApplicationStatus.COMPLETED.name,
         "submitted_status": ApplicationStatus.SUBMITTED.name,
-        "number_of_sections": len(application.sections),
-        "number_of_completed_sections": len(
+        "number_of_forms": len(application.forms),
+        "number_of_completed_forms": len(
             list(
                 filter(
-                    lambda section: section["status"]
+                    lambda form: form["status"]
                     == ApplicationStatus.COMPLETED.name,
-                    application.sections,
+                    application.forms,
                 )
             )
         ),
     }
     return render_template(
         "tasklist.html",
-        application_response=application,
+        application=application,
         application_meta_data=application_meta_data,
         form=form,
     )
@@ -145,7 +152,7 @@ def continue_application(application_id):
 
     Args:
         application_id (str): The id of an application in the application store
-        form_name (str): The name of the application sub form/section
+        form_name (str): The name of the application sub form
         page_name (str): The form page to redirect the user to.
 
     Returns:
@@ -153,21 +160,20 @@ def continue_application(application_id):
         the specified application form page within the form runner service
     """
     args = request.args
-    form_name = args.get("section_name")
-    page_name = args.get("page_name")
-    returnUrl = request.host_url + url_for(
-            "routes.tasklist", application_id=application_id
-        )   
-    current_app.logger.info(f"base:url'{returnUrl}'.")    
-
-    response = get_data(
-        Config.GET_APPLICATION_ENDPOINT.format(application_id=application_id)
+    form_name = args.get("form_name")
+    return_url = (
+        request.host_url
+        + url_for("routes.tasklist", application_id=application_id)[1:]
     )
-    application_data = Application.from_dict(response)
-    section = application_data.get_section_data(application_data, form_name)
+    current_app.logger.info(
+        f"Url the form runner should return to '{return_url}'."
+    )
+
+    application = get_application_data(application_id, as_dict=True)
+    form_data = application.get_form_data(application, form_name)
 
     rehydrate_payload = format_rehydrate_payload(
-        section, application_id, page_name, returnUrl
+        form_data, application_id, return_url, form_name
     )
 
     rehydration_token = get_token_to_return_to_application(
@@ -181,6 +187,7 @@ def continue_application(application_id):
         redirect_url = redirect_url.replace(
             Config.FORMS_SERVICE_PRIVATE_HOST, Config.FORMS_SERVICE_PUBLIC_HOST
         )
+    current_app.logger.info("redirecting to form runner")
     return redirect(redirect_url)
 
 
