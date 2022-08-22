@@ -81,7 +81,6 @@
     'classes': "govuk-button--secondary"
     }) }}
 </form>
-
 {% else %}
 <form method="POST" action={{url_for('routes.new')}}>
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
