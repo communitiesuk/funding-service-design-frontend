@@ -170,7 +170,8 @@ def continue_application(application_id):
         f"Url the form runner should return to '{return_url}'."
     )
 
-    application = get_application_data(application_id, as_dict=True)
+    current_app.logger.info(f"Sending request cookies {str(request.cookies)}")
+    application = get_application_data(application_id, as_dict=True, cookies=request.cookies.to_dict())
     form_data = application.get_form_data(application, form_name)
 
     rehydrate_payload = format_rehydrate_payload(

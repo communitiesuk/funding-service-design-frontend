@@ -10,13 +10,14 @@ from flask import abort
 from flask import current_app
 
 
-def get_data(endpoint: str):
+def get_data(endpoint: str, cookies = None):
     """
         Queries the api endpoint provided and returns a
         data response in json format.
 
     Args:
         endpoint (str): an API get data address
+        cookies (dict|None): optional cookies dictionary
 
     Returns:
         data (json): data response in json format
@@ -26,7 +27,7 @@ def get_data(endpoint: str):
     if Config.USE_LOCAL_DATA:
         data = get_local_data(endpoint)
     else:
-        data = get_remote_data(endpoint)
+        data = get_remote_data(endpoint, cookies = cookies)
     if data is None:
         current_app.logger.error(
             f"Data request failed, unable to recover: {endpoint}"
@@ -35,8 +36,10 @@ def get_data(endpoint: str):
     return data
 
 
-def get_remote_data(endpoint):
-    response = requests.get(endpoint)
+def get_remote_data(endpoint, cookies = None):
+    if cookies:
+        current_app.logger.info(f"Sending cookies with get request: {str(cookies)}")
+    response = requests.get(endpoint, cookies=cookies)
     if response.status_code == 200:
         data = response.json()
         return data
@@ -61,11 +64,16 @@ def get_local_data(endpoint: str):
     return None
 
 
-def get_application_data(application_id, as_dict=False):
+def get_application_data(application_id, as_dict=False, cookies=None):
     application_request_url = Config.GET_APPLICATION_ENDPOINT.format(
         application_id=application_id
     )
-    application_response = get_data(application_request_url)
+    application_response = get_data(application_request_url, cookies=cookies)
+    if not (application_response):
+        current_app.logger.error(
+            "Application Data Store request failed, unable to recover:"
+            f" {application_request_url}"
+        )
     if as_dict:
         return Application.from_dict(application_response)
     else:
