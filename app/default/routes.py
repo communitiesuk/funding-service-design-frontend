@@ -100,12 +100,14 @@ def new(account_id):
 
 
 @default_bp.route("/tasklist/<application_id>", methods=["GET"])
-def tasklist(application_id):
+@login_required
+def tasklist(application_id, account_id):
     """
     Returns a Flask function which constructs a tasklist for an application id.
 
     Args:
         application_id (str): the id of an application in the application store
+        account_id (str): the account_id of the logged-in user
 
     Returns:
         function: a function which renders the tasklist template.
