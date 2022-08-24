@@ -4,6 +4,6 @@
     "enableCsrf": true,
     "safelist": ["funding-service-design-application-store-dev.london.cloudapps.digital", "funding-service-design-application-store-test.london.cloudapps.digital", "funding-service-design-application-store.apps.internal"],
     "jwtAuthCookieName": "fsd_user_token",
-    "jwtAuthenticationUrl": "https://authenticator.live.fundingservice.co.uk/service/magic-links/invalid",
+    "jwtRedirectToAuthenticationUrl": "https://authenticator2.test.gids.dev/sessions/sign-out",
     "sessionTimeout": 86400000
 }
