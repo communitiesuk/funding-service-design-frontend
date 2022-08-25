@@ -73,7 +73,7 @@
           "name": "JHbfIz",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>community benefits project will deliver</li>\n<li>how you’ll measure benefits</li>\n<li>how benefits will be delivered and sustained</li>\n<li>how community ownership will be inclusive</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>community benefits project will deliver</li>\n<li>how you’ll measure benefits</li>\n<li>how benefits will be delivered and sustained</li>\n<li>how community ownership will be inclusive</li>\n</ul>\n</div>"
         }
       ],
       "next": [

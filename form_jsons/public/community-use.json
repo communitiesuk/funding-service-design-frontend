@@ -72,7 +72,7 @@
           "name": "jcjHke",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>policy aims project will deliver</li>\n<li>who uses and benefits from the asset</li>\n<li>how losing the asset would affect the community</li>\n<li>why the asset will be lost without intervention</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>policy aims project will deliver</li>\n<li>who uses and benefits from the asset</li>\n<li>how losing the asset would affect the community</li>\n<li>why the asset will be lost without intervention</li>\n</ul>\n</div>"
         }
       ],
       "next": [

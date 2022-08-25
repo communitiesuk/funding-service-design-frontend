@@ -16,7 +16,7 @@
           "name": "vUdzKC",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>previous COF funding received (if applicable)</li>\n<li>how the asset is being used</li>\n<li>why the asset is at risk</li>\n<li>project summary</li>\n<li>asset address</li>\n<li>constituency of asset</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>previous COF funding received (if applicable)</li>\n<li>how the asset is being used</li>\n<li>why the asset is at risk</li>\n<li>project summary</li>\n<li>asset address</li>\n<li>constituency of asset</li>\n</ul>\n</div>"
         }
       ],
       "next": [

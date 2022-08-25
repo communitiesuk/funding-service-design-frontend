@@ -244,7 +244,7 @@
           "name": "XeNlFF",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>Capital costs</li>\n<li>Revenue costs (optional)</li>\n<li>Match funding</li>\n<li>Asset valuation</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>Capital costs</li>\n<li>Revenue costs (optional)</li>\n<li>Match funding</li>\n<li>Asset valuation</li>\n</ul>\n</div>"
         }
       ],
       "next": [

@@ -61,7 +61,7 @@
           "name": "Lbjxyj",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>confirmation of subsidy control / state aid information</li>\n<li>confirmation you have considered people with protected characteristics</li>\n<li>confirmation you have considered sustainability and the environment</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>confirmation of subsidy control / state aid information</li>\n<li>confirmation you have considered people with protected characteristics</li>\n<li>confirmation you have considered sustainability and the environment</li>\n</ul>\n</div>"
         }
       ],
       "next": [

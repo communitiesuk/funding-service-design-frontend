@@ -65,7 +65,7 @@
           "name": "BOWelg",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>lead contact name</li>\n<li>lead contact email address</li>\n<li>lead contact telephone number</li>\n\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>lead contact name</li>\n<li>lead contact email address</li>\n<li>lead contact telephone number</li>\n</ul>\n\n</div>"
         }
       ],
       "next": [
