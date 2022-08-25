@@ -2,7 +2,6 @@
     "env": "production",
     "logPrettyPrint": false,
     "enableCsrf": true,
-    "safelist": ["funding-service-design-application-store-dev.london.cloudapps.digital", "funding-service-design-application-store-test.london.cloudapps.digital", "funding-service-design-application-store.apps.internal"],
     "jwtAuthCookieName": "fsd_user_token",
     "sessionTimeout": 86400000
 }
