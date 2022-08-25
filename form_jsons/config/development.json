@@ -3,8 +3,8 @@
     "previewMode": true,
     "enforceCsrf": false,
     "env": "development",
-    "safelist": ["funding-service-design-application-store-dev.london.cloudapps.digital", "funding-service-design-application-store-test.london.cloudapps.digital"],
     "jwtAuthCookieName": "fsd_user_token",
     "jwtRedirectToAuthenticationUrl": "http://localhost:3004/sessions/sign-out",
+    "safelist": ["localhost:3003"],
     "sessionTimeout": 86400000
   }
