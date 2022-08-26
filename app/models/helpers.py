@@ -95,9 +95,7 @@ def format_rehydrate_payload(form_data, application_id, returnUrl, form_name):
     formatted_data["questions"] = extract_subset_of_data_from_application(
         form_data, "questions"
     )
-    formatted_data["metadata"] = extract_subset_of_data_from_application(
-        form_data, "metadata"
-    )
+    formatted_data["metadata"] = {}
     formatted_data["metadata"]["application_id"] = application_id
     formatted_data["metadata"]["form_name"] = form_name
     return formatted_data
