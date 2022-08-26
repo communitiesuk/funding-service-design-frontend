@@ -19,3 +19,5 @@ applications:
     FLASK_ENV: test
   routes:
     - route: frontend.test.fundingservice.co.uk
+  health-check-http-endpoint: /healthcheck
+  health-check-type: http

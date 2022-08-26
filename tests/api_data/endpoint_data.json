@@ -14,621 +14,106 @@
         "date_submitted": null,
         "started_at": "2022-05-20 14:47:12",
         "last_edited": null,
-        "sections": [
+        "forms": [
             {
-                "section_name": "about-your-org",
-                "status": "NOT_STARTED",
-                "questions": [
-                    {
-                        "question": "Application information",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "application-name",
-                                "title": "Applicant name",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "applicant-email",
-                                "title": "Email",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "applicant-telephone-number",
-                                "title": "Telephone number",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "applicant-website",
-                                "title": "Website",
-                                "type": "text",
-                                "answer": ""
-                            }
-                        ],
-                        "category": null,
-                        "index": null
-                    },
-                    {
-                        "question": "Organisation information",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "organisation-name",
-                                "title": "Organisation name",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "organisation-address",
-                                "title": "Organisation address",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "type-of-organisation",
-                                "title": "Type of organisation",
-                                "type": "list",
-                                "answer": ""
-                            },
-                            {
-                                "key": "delivered-projects-like-this-before",
-                                "title": "Have you delivered projects like this before?",
-                                "type": "list",
-                                "answer": ""
-                            }
-                        ],
-                        "category": null,
-                        "index": null
-                    },
-                    {
-                        "question": "Responsible people",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "organisation-accountant",
-                                "title": "Your accountant",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "responsible-person",
-                                "title": "Responsible person",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "SpLmlI",
-                                "title": "Do you have endorsements for this ",
-                                "type": "list",
-                                "answer": ""
-                            },
-                            {
-                                "key": "organisation-do-you-have-endorsements",
-                                "title": "Do you have endorsements to support your application?",
-                                "type": "list",
-                                "answer": ""
-                            },
-                            {
-                                "key": "who-is-endorsing-your-application",
-                                "title": "Who is endorsing your application?",
-                                "type": "list",
-                                "answer": ""
-                            }
-                        ],
-                        "category": null,
-                        "index": null
-                    }
-                ],
-                "metadata": {
-                    "paymentSkipped": null
-                }
+                "name": "applicant-information",
+                "questions": [],
+                "status": "NOT_STARTED"
             },
             {
-                "section_name": "about-your-project",
-                "status": "NOT_STARTED",
-                "questions": [
-                    {
-                        "question": "Project details",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "your-project-name",
-                                "title": "Project name",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "your-project-location",
-                                "title": "Project location",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "your-project-sector",
-                                "title": "Project sector",
-                                "type": "list",
-                                "answer": ""
-                            },
-                            {
-                                "key": "your-project-long-description",
-                                "title": "Project description",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "your-project-short-description",
-                                "title": "Project summary",
-                                "type": "text",
-                                "answer": ""
-                            }
-                        ],
-                        "category": null,
-                        "index": null
-                    },
-                    {
-                        "question": "Funding requested",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "about-your-project-capital-expenditure",
-                                "title": "Capital expenditure",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "about-your-project-revenue",
-                                "title": "Revenue",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "about-your-project-subsidy",
-                                "title": "Subsidy",
-                                "type": "text",
-                                "answer": ""
-                            }
-                        ],
-                        "category": null,
-                        "index": null
-                    },
-                    {
-                        "question": "Project aims",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "about-your-project-policy-aims",
-                                "title": "Which policy aims will your project deliver against?",
-                                "type": "list",
-                                "answer": ""
-                            }
-                        ],
-                        "category": null,
-                        "index": null
-                    }
-                ],
-                "metadata": {
-                    "paymentSkipped": null
-                }
+                "name": "asset-information",
+                "questions": [],
+                "status": "NOT_STARTED"
             },
             {
-                "section_name": "plan-your-project",
-                "status": "NOT_STARTED",
-                "questions": [
-                    {
-                        "question": "Plan your project",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "plan-your-project-start-date",
-                                "title": "When will you start your project?",
-                                "type": "monthYear",
-                                "answer": ""
-                            },
-                            {
-                                "key": "plan-your-project-activity-name",
-                                "title": "Activity",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "plan-your-project-activity-duration",
-                                "title": "Duration",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "plan-your-project-activity-cost",
-                                "title": "Cost",
-                                "type": "text",
-                                "answer": ""
-                            }
-                        ],
-                        "category": null,
-                        "index": null
-                    },
-                    {
-                        "question": "Delivery partner",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "plan-your-project-will-work-with-delivery-partner",
-                                "title": "Will you work with a delivery partner on this project?",
-                                "type": "list",
-                                "answer": ""
-                            }
-                        ],
-                        "category": null,
-                        "index": null
-                    },
-                    {
-                        "question": "Plan your project (With Delivery Partner Page)",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "plan-your-project-delivery-partner",
-                                "title": "Who is your delivery partner on this project?",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "plan-your-project-why-this-partner",
-                                "title": "Why is this delivery partner the best choice for this project?",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "plan-your-project-what-skills",
-                                "title": "What skills and expertise are needed to deliver this project?",
-                                "type": "text",
-                                "answer": ""
-                            }
-                        ],
-                        "category": null,
-                        "index": null
-                    },
-                    {
-                        "question": "Plan your project (without delivery partner page)",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "plan-your-project-internal-resources",
-                                "title": "Do you have the internal resources needed to deliver this project?",
-                                "type": "list",
-                                "answer": ""
-                            },
-                            {
-                                "key": "plan-your-project-how-did-you-internal-resources",
-                                "title": "If yes to the above, how did you work that out?",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "plan-your-project-how-will-you-recruit-resources",
-                                "title": "If no, tell us how you are going to recruit the resources you need",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "plan-your-project-which-skills-needed",
-                                "title": "What skills and expertise are needed to deliver this project?",
-                                "type": "text",
-                                "answer": ""
-                            }
-                        ],
-                        "category": null,
-                        "index": null
-                    },
-                    {
-                        "question": "Who will govern",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "plan-your-project-govern-role",
-                                "title": "Role",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "plan-your-project-govern-resposibility",
-                                "title": "Responsibility",
-                                "type": "text",
-                                "answer": ""
-                            }
-                        ],
-                        "category": null,
-                        "index": null
-                    },
-                    {
-                        "question": "Governance processes",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "plan-your-project-what-governance-processes",
-                                "title": "What governance processes do you have in place to make sure the project succeeds?",
-                                "type": "text",
-                                "answer": ""
-                            }
-                        ],
-                        "category": null,
-                        "index": null
-                    }
-                ],
-                "metadata": {
-                    "paymentSkipped": null
-                }
+                "name": "community-benefits",
+                "questions": [],
+                "status": "NOT_STARTED"
             },
             {
-                "section_name": "deliver-your-project",
-                "status": "NOT_STARTED",
-                "questions": [
-                    {
-                        "question": "What your project benefits are",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "eblbkX",
-                                "title": "Outcome 1",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "oQEWUg",
-                                "title": "Outcome 2",
-                                "type": "text",
-                                "answer": ""
-                            }
-                        ],
-                        "category": "ZtqkbP",
-                        "index": null
-                    },
-                    {
-                        "question": "Who your project benefits",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "YaGZms",
-                                "title": "Who does your project benefit?",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "SYlMhT",
-                                "title": "How can you prove this quantitatively?",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "MNkdUT",
-                                "title": "How can you prove this qualitatively?",
-                                "type": "text",
-                                "answer": ""
-                            }
-                        ],
-                        "category": "ZtqkbP",
-                        "index": null
-                    },
-                    {
-                        "question": "Your project budget",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "kKyBnL",
-                                "title": "Add your costs",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "zyfPIu",
-                                "title": "Project cost type",
-                                "type": "list",
-                                "answer": ""
-                            },
-                            {
-                                "key": "tfqDZZ",
-                                "title": "Cost",
-                                "type": "text",
-                                "answer": ""
-                            }
-                        ],
-                        "category": "ZtqkbP",
-                        "index": null
-                    },
-                    {
-                        "question": "Your project risks",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "ZJUaPq",
-                                "title": "Describe your organisation's attitude to risk",
-                                "type": "list",
-                                "answer": ""
-                            },
-                            {
-                                "key": "cMdGPb",
-                                "title": "Explain your answer",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "LpKdsv",
-                                "title": "How does your organisation balance innovation with risk?",
-                                "type": "text",
-                                "answer": ""
-                            }
-                        ],
-                        "category": null,
-                        "index": null
-                    },
-                    {
-                        "question": "Your risk register",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "WcJUsi",
-                                "title": "Risk",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "OecMxU",
-                                "title": "Mitigation",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "rDyIBy",
-                                "title": "Risk Level",
-                                "type": "list",
-                                "answer": ""
-                            },
-                            {
-                                "key": "XBxwLy",
-                                "title": "Categorise your risk",
-                                "type": "list",
-                                "answer": ""
-                            }
-                        ],
-                        "category": "ZtqkbP",
-                        "index": null
-                    },
-                    {
-                        "question": "How you manage risk",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "NNYdkz",
-                                "title": "Tell us how you identified the risks in your risk register",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "ihDAjW",
-                                "title": "Tell us how you will manage the risks in your risk register",
-                                "type": "text",
-                                "answer": ""
-                            }
-                        ],
-                        "category": "ZtqkbP",
-                        "index": null
-                    },
-                    {
-                        "question": "Monitoring and evaluation plan",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "mvBPSb",
-                                "title": "What do you want to know?",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "ASwuiF",
-                                "title": "How will you know it?",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "eAJwgs",
-                                "title": "Where will the data come from?",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "ktaiVA",
-                                "title": "Who will capture the data?",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "MiosEa",
-                                "title": "When will data be captured?",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "NrdwqP",
-                                "title": "How much will it cost?",
-                                "type": "text",
-                                "answer": ""
-                            }
-                        ],
-                        "category": "ZtqkbP",
-                        "index": null
-                    },
-                    {
-                        "question": "How you measure progress",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "VWskeQ",
-                                "title": "How are you going to make sure that the project is delivered on time?",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "iiGucM",
-                                "title": "How are you going to make sure that the project is delivered on budget?",
-                                "type": "text",
-                                "answer": ""
-                            }
-                        ],
-                        "category": "ZtqkbP",
-                        "index": null
-                    }
-                ],
-                "metadata": {
-                    "paymentSkipped": null
-                }
+                "name": "community-engagement",
+                "questions": [],
+                "status": "NOT_STARTED"
             },
             {
-                "section_name": "declaration",
-                "status": "NOT_STARTED",
-                "questions": [
-                    {
-                        "question": "Declarations",
-                        "status": null,
-                        "fields": [
-                            {
-                                "key": "declarations-state-aid",
-                                "title": "Would funding your organisation be classed as State Aid?",
-                                "type": "list",
-                                "answer": ""
-                            },
-                            {
-                                "key": "declarations-explain-state-aid",
-                                "title": "If yes to the above, explain how your project is compliant with the UK subsidy control regime",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "declarations-protected-characteristics",
-                                "title": "Describe how your project will impact people with protected characteristics?",
-                                "type": "text",
-                                "answer": ""
-                            },
-                            {
-                                "key": "declarations-environmental",
-                                "title": "Does your application comply with all relevant environmental standards?",
-                                "type": "list",
-                                "answer": ""
-                            },
-                            {
-                                "key": "declarations-support-environmental",
-                                "title": "If yes to the above, upload a file in support of your answer",
-                                "type": "file",
-                                "answer": ""
-                            }
-                        ],
-                        "category": null,
-                        "index": null
-                    }
-                ],
-                "metadata": {
-                    "paymentSkipped": null
-                }
+                "name": "community-representation",
+                "questions": [],
+                "status": "NOT_STARTED"
+            },
+            {
+                "name": "community-use",
+                "questions": [],
+                "status": "NOT_STARTED"
+            },
+            {
+                "name": "declarations",
+                "questions": [],
+                "status": "NOT_STARTED"
+            },
+            {
+                "name": "environmental-sustainability",
+                "questions": [],
+                "status": "NOT_STARTED"
+            },
+            {
+                "name": "feasibility",
+                "questions": [],
+                "status": "NOT_STARTED"
+            },
+            {
+                "name": "funding-required",
+                "questions": [],
+                "status": "NOT_STARTED"
+            },
+            {
+                "name": "inclusiveness-and-intergration",
+                "questions": [],
+                "status": "NOT_STARTED"
+            },
+            {
+                "name": "local-support",
+                "questions": [],
+                "status": "NOT_STARTED"
+            },
+            {
+                "name": "organisation-information",
+                "questions": [],
+                "status": "NOT_STARTED"
+            },
+            {
+                "name": "project-costs",
+                "questions": [],
+                "status": "NOT_STARTED"
+            },
+            {
+                "name": "project-information",
+                "questions": [],
+                "status": "NOT_STARTED"
+            },
+            {
+                "name": "project-qualification",
+                "questions": [],
+                "status": "NOT_STARTED"
+            },
+            {
+                "name": "risk",
+                "questions": [],
+                "status": "NOT_STARTED"
+            },
+            {
+                "name": "skills-and-resources",
+                "questions": [],
+                "status": "NOT_STARTED"
+            },
+            {
+                "name": "value-to-the-community",
+                "questions": [],
+                "status": "NOT_STARTED"
+            },
+            {
+                "name": "upload-business-plan",
+                "questions": [],
+                "status": "NOT_STARTED"
             }
         ]
     },

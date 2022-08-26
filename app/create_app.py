@@ -7,6 +7,8 @@ from flask_babel import Babel
 from flask_compress import Compress
 from flask_talisman import Talisman
 from flask_wtf.csrf import CSRFProtect
+from fsd_utils.healthchecks.checkers import FlaskRunningChecker
+from fsd_utils.healthchecks.healthcheck import Healthcheck
 from fsd_utils.logging import logging
 from jinja2 import ChoiceLoader
 from jinja2 import PackageLoader
@@ -70,6 +72,9 @@ def create_app() -> Flask:
                 "Department for Levelling up Housing and Communities"
             ),
         )
+
+    health = Healthcheck(flask_app)
+    health.add_check(FlaskRunningChecker())
 
     return flask_app
 
