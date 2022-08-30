@@ -86,7 +86,7 @@
   }
   @media (min-width: 40.0625em) {
     .app-task-list__items {
-      padding-left: 30px;
+      padding-left: 0px;
     }
   }
 

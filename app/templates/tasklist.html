@@ -30,7 +30,7 @@
       {% elif application["status"] == application_meta_data["completed_status"] %}
       <strong class="govuk-tag govuk-tag--green">
       {% endif %}
-      {{application.status}}
+      {{application.status|snake_case_to_human}}
       </strong>
     </h2>
     <p class="govuk-body govuk-!-margin-bottom-7">
