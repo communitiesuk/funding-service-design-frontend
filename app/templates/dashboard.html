@@ -1,6 +1,8 @@
 {%- from "govuk_frontend_jinja/components/tag/macro.html" import govukTag -%}
 {%- from "govuk_frontend_jinja/components/table/macro.html" import govukTable -%}
 {%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
+{% from "partials/start-application-button.html" import startButtonGreen %}
+{% from "partials/start-application-button.html" import startButtonGrey %}
 {% extends "base.html" %}
 {% block content %}
     <h1 class="govuk-heading-xl">Your applications</h1>
@@ -71,26 +73,8 @@
 {% endif %}
 
 {% if applications|length > 0 %}
-<form method="POST" action={{url_for('routes.new')}}>
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-    <input type="hidden" name="account_id" value="{{ account_id }}">
-    <input type="hidden" name="fund_id" value="{{ fund_id }}">
-    <input type="hidden" name="round_id" value="{{ round_id }}">
-    {{ govukButton({
-    'text': "Start new application",
-    'classes': "govuk-button--secondary"
-    }) }}
-</form>
+{{startButtonGrey(form, url_for('routes.new'))}}
 {% else %}
-<form method="POST" action={{url_for('routes.new')}}>
-    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-    <input type="hidden" name="account_id" value="{{ account_id }}">
-    <input type="hidden" name="fund_id" value="{{ fund_id }}">
-    <input type="hidden" name="round_id" value="{{ round_id }}">
-    {{ govukButton({
-    'text': "Start new application"
-    }) }}
-</form>
+{{startButtonGreen(form, url_for('routes.new'))}}
 {% endif %}
-
 {% endblock %}
