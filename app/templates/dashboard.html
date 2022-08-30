@@ -1,8 +1,8 @@
 {%- from "govuk_frontend_jinja/components/tag/macro.html" import govukTag -%}
 {%- from "govuk_frontend_jinja/components/table/macro.html" import govukTable -%}
 {%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
-{% from "partials/start-application-button.html" import startButtonGreen %}
-{% from "partials/start-application-button.html" import startButtonGrey %}
+{% from "partials/start-application-button.html" import startApplicationButton %}
+
 {% extends "base.html" %}
 {% block content %}
     <h1 class="govuk-heading-xl">Your applications</h1>
@@ -73,8 +73,8 @@
 {% endif %}
 
 {% if applications|length > 0 %}
-{{startButtonGrey(form, url_for('routes.new'))}}
+{{startApplicationButton(form, url_for('routes.new'),  button="govuk-button--secondary")}}
 {% else %}
-{{startButtonGreen(form, url_for('routes.new'))}}
+{{startApplicationButton(form, url_for('routes.new') )}}
 {% endif %}
 {% endblock %}
