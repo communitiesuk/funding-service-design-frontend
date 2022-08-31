@@ -77,7 +77,7 @@ jobs:
         env:
           FORMS_SERVICE_PUBLIC_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
         run: pytest tests/test_application_form.py
-      
+
       # Restore once domains are put back (no basic auth)
       # - name: Zap Baseline Scan
       #   uses: zaproxy/action-baseline@v0.6.1

@@ -8,7 +8,7 @@
     <input type="hidden" name="round_id" value="{{ round_id }}">
     {{ govukButton({
     'text': "Start new application",
-    'classes': "govuk-button--secondary" if applications|length>0 
+    'classes': "govuk-button--secondary" if applications|length>0
     }) }}
 </form>
 {% endmacro %}

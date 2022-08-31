@@ -111,10 +111,14 @@ class TestLiveServer:
         """
         GIVEN Our Flask Application is running
         WHEN the '/' page (index) is requested (GET)
-        THEN check that page returns a 'Apply for funding to save a building in your community' message
+        THEN check that page returns a 'Apply for funding to
+        save a building in your community' message
         """
         res = urlopen(url_for("routes.index", _external=True))
-        assert b"Apply for funding to save a building in your community" in res.read()
+        assert (
+            b"Apply for funding to save a building in your community"
+            in res.read()
+        )
         assert res.code == 200
 
 

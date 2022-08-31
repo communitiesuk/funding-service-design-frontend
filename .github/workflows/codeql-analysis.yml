@@ -29,7 +29,7 @@ on:
       - "manifest-form-runner.yml"
       - "build-deploy-forms.yml"
       - "**/README.md"
-      
+
   schedule:
     - cron: '44 9 * * 2'
 

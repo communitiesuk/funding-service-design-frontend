@@ -36,6 +36,6 @@ def test_helloworld_homepage(flask_test_client):
 def test_healthcheck(flask_test_client):
     response = flask_test_client.get("/healthcheck")
 
-    expected_dict = {"checks":[{"check_flask_running":"OK"}]}
+    expected_dict = {"checks": [{"check_flask_running": "OK"}]}
     assert response.status_code == 200, "Unexpected status code"
     assert response.json == expected_dict, "Unexpected json body"
