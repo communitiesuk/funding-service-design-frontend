@@ -73,7 +73,6 @@ jobs:
         run: python build.py
       - name: Install Chromium
         uses: browser-actions/setup-chrome@latest
-
       # Restore once domains are put back (no basic auth)
       # - name: Zap Baseline Scan
       #   uses: zaproxy/action-baseline@v0.6.1

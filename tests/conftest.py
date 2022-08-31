@@ -91,3 +91,14 @@ def mock_get_data(endpoint):
     file = open("tests/api_data/endpoint_data.json")
     data = json.loads(file.read())
     return data[endpoint]
+
+
+@pytest.fixture()
+def mock_get_application(mocker):
+    file = open("tests/api_data/endpoint_data.json")
+    data = json.loads(file.read())  # noqa
+    # mock the function in the file it is invoked (not where it is declared)
+    mocker.patch(
+        "app.default.routes.get_data",
+        new=mock_get_data,
+    )
