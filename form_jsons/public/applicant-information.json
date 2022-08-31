@@ -1,6 +1,6 @@
 {
   "metadata": {},
-  "startPage": "/about-your-organisation",
+  "startPage": "/about-your-organisation-xLTyXv",
   "pages": [
     {
       "title": "About your organisation",
@@ -65,7 +65,7 @@
           "name": "BOWelg",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>lead contact name</li>\n<li>lead contact email address</li>\n<li>lead contact telephone number</li>\n\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>lead contact name</li>\n<li>lead contact email address</li>\n<li>lead contact telephone number</li>\n</ul>\n\n</div>"
         }
       ],
       "next": [
@@ -85,7 +85,16 @@
   ],
   "conditions": [],
   "fees": [],
-  "outputs": [],
+  "outputs": [
+    {
+      "name": "update-form",
+      "title": "Update form in application store",
+      "type": "savePerPage",
+      "outputConfiguration": {
+        "savePerPageUrl": "True"
+      }
+    }
+  ],
   "version": 2,
   "skipSummary": false,
   "name": "Apply for funding to save a building in your community",

@@ -16,7 +16,7 @@
           "name": "FIKWHB",
           "options": {},
           "type": "Details",
-          "content": "<div class=\"govuk-body\">\n<p class=\"govuk-caption-m\">This is analysis which tests the ability of your project to deliver its objectives.</p>\n<p class=\"govuk-caption-m\"> You should use your feasibility studies to:</p>\n\n<div class=\"govuk-caption-m\">\n\n<li>test the context and resources within which the project is operating, &emsp;&nbsp; including market analysis and whether the financial, technical and <br>&emsp;&nbsp; management capabilities are strong enough to deliver the range of <br>&emsp;&nbsp; uses planned for the asset</li>\n<li>test the viability and sustainability of the project in the long term</li>\n<li>develop a strong business plan</li>\n\n</div>\n\n</div>",
+          "content": "<div class=\"govuk-body\">\n<p class=\"govuk-caption-m\">This is analysis which tests the ability of your project to deliver its objectives.</p>\n<p class=\"govuk-caption-m\"> You should use your feasibility studies to:</p>\n\n<div>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m\">\n<li>test the context and resources within which the project is operating,  including market analysis and whether the financial, technical and  management capabilities are strong enough to deliver the range of  uses planned for the asset</li>\n<li>test the viability and sustainability of the project in the long term</li>\n<li>develop a strong business plan</li>\n</ul>\n</div>\n</div>",
           "title": "Help with feasibility"
         },
         {
@@ -62,7 +62,7 @@
           "name": "DojAvA",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>feasibility studies carried out</li>\n\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>feasibility studies carried out</li>\n</ul>\n</div>"
         }
       ],
       "next": [
@@ -77,7 +77,16 @@
   "sections": [],
   "conditions": [],
   "fees": [],
-  "outputs": [],
+  "outputs": [
+    {
+      "name": "update-form",
+      "title": "Update form in application store",
+      "type": "savePerPage",
+      "outputConfiguration": {
+        "savePerPageUrl": "True"
+      }
+    }
+  ],
   "version": 2,
   "skipSummary": false,
   "name": "Apply for funding to save a building in your community",

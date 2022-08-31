@@ -27,13 +27,8 @@
         }
       ],
       "next": [
-        {
-          "path": "/management-case-HUfEIU"
-        },
-        {
-          "path": "/management-case-SmoquO",
-          "condition": "qCSZyG"
-        }
+        { "path": "/management-case-HUfEIU" },
+        { "path": "/management-case-SmoquO", "condition": "qCSZyG" }
       ]
     },
     {
@@ -61,13 +56,8 @@
         }
       ],
       "next": [
-        {
-          "path": "/check-your-answers"
-        },
-        {
-          "path": "/management-case-GauEsn",
-          "condition": "NQAPSg"
-        }
+        { "path": "/check-your-answers" },
+        { "path": "/management-case-GauEsn", "condition": "NQAPSg" }
       ]
     },
     {
@@ -96,18 +86,12 @@
         },
         {
           "name": "QWveYc",
-          "options": {
-            "maxWords": "200"
-          },
+          "options": { "maxWords": "200" },
           "type": "MultilineTextField",
           "title": "Describe any experience you have with community assets similar to this"
         }
       ],
-      "next": [
-        {
-          "path": "/management-case-HUfEIU"
-        }
-      ]
+      "next": [{ "path": "/management-case-HUfEIU" }]
     },
     {
       "path": "/management-case-GauEsn",
@@ -128,19 +112,13 @@
         },
         {
           "name": "VNjRgZ",
-          "options": {
-            "maxWords": "200"
-          },
+          "options": { "maxWords": "200" },
           "type": "MultilineTextField",
-          "hint": "These should be positions which will help you effectively manage the asset during community ownership.\n<p> Please include the:</p>\n\n\n<li>role</li>\n<li>main responsibilities</li>\n\n\n",
+          "hint": "These should be positions which will help you effectively manage the asset during community ownership.\n<br> <br>\nPlease include their:\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m\">\n<li>role</li>\n<li>main responsibilities</li>\n</ul>\n\n",
           "title": "Tells us about the roles you'll recruit"
         }
       ],
-      "next": [
-        {
-          "path": "/check-your-answers"
-        }
-      ]
+      "next": [{ "path": "/check-your-answers" }]
     },
     {
       "path": "/management-case-yIfLRl",
@@ -156,14 +134,10 @@
           "name": "QfmkfT",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>community asset management experience (if applicable)</li>\n<li>roles you’ll recruit in future (if applicable)</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>community asset management experience (if applicable)</li>\n<li>roles you’ll recruit in future (if applicable)</li>\n</ul>\n</div>"
         }
       ],
-      "next": [
-        {
-          "path": "/management-case"
-        }
-      ],
+      "next": [{ "path": "/management-case" }],
       "controller": "./pages/start.js"
     }
   ],
@@ -183,11 +157,7 @@
               "display": "Do you have experience of managing a community asset?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "true",
-              "display": "true"
-            }
+            "value": { "type": "Value", "value": "true", "display": "true" }
           }
         ]
       }
@@ -205,26 +175,24 @@
               "display": "Do you have any plans to recruit people to help you manage the asset?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "true",
-              "display": "true"
-            }
+            "value": { "type": "Value", "value": "true", "display": "true" }
           }
         ]
       }
     }
   ],
   "fees": [],
-  "outputs": [],
+  "outputs": [
+    {
+      "name": "update-form",
+      "title": "Update form in application store",
+      "type": "savePerPage",
+      "outputConfiguration": { "savePerPageUrl": "True" }
+    }
+  ],
   "version": 2,
   "skipSummary": false,
   "name": "Apply for funding to save a building in your community",
-  "feedback": {
-    "feedbackForm": false,
-    "url": ""
-  },
-  "phaseBanner": {
-    "phase": "beta"
-  }
+  "feedback": { "feedbackForm": false, "url": "" },
+  "phaseBanner": { "phase": "beta" }
 }

@@ -17,7 +17,7 @@
           "name": "orUXQc",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>organisation name</li>\n<li>alternative names of your organisation (if applicable)</li>\n<li>organisation purpose</li>\n<li>organisation activities</li>\n<li>previous experience of similar projects (if applicable)</li>\n<li>organisation type</li>\n<li>parent company details (if applicable)</li>\n<li>organisation address and social media</li>\n<li>partner organisation (if applicable)</li>\n\n\n</div>",
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>organisation name</li>\n<li>alternative names of your organisation (if applicable)</li>\n<li>organisation purpose</li>\n<li>organisation activities</li>\n<li>previous experience of similar projects (if applicable)</li>\n<li>organisation type</li>\n<li>parent company details (if applicable)</li>\n<li>organisation address and social media</li>\n<li>partner organisation (if applicable)</li>\n</ul>\n</div>",
           "schema": {}
         }
       ],
@@ -1150,7 +1150,16 @@
     }
   ],
   "fees": [],
-  "outputs": [],
+  "outputs": [
+    {
+      "name": "update-form",
+      "title": "Update form in application store",
+      "type": "savePerPage",
+      "outputConfiguration": {
+        "savePerPageUrl": "True"
+      }
+    }
+  ],
   "version": 2,
   "skipSummary": false,
   "name": "Apply for funding to save a building in your community",

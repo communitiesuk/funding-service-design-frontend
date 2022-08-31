@@ -1,6 +1,6 @@
 {
   "metadata": {},
-  "startPage": "/subsidy-control-and-state-aid-XQBpkr",
+  "startPage": "/subsidy-control-and-state-aid",
   "pages": [
     {
       "title": "Subsidy control and state aid",
@@ -118,7 +118,7 @@
           "name": "GcHIsP",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>whether your project meets the definition of a subsidy</li>\n<li>whether state aid rules apply (if in Northern Ireland)</li>\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>whether your project meets the definition of a subsidy</li>\n<li>whether state aid rules apply (if in Northern Ireland)</li>\n</ul>\n</div>"
         }
       ],
       "next": [
@@ -222,7 +222,16 @@
     }
   ],
   "fees": [],
-  "outputs": [],
+  "outputs": [
+    {
+      "name": "update-form",
+      "title": "Update form in application store",
+      "type": "savePerPage",
+      "outputConfiguration": {
+        "savePerPageUrl": "True"
+      }
+    }
+  ],
   "version": 2,
   "skipSummary": false,
   "name": "Apply for funding to save a building in your community",

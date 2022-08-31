@@ -73,11 +73,6 @@ jobs:
         run: python build.py
       - name: Install Chromium
         uses: browser-actions/setup-chrome@latest
-      - name: Run tests
-        env:
-          FORMS_SERVICE_PUBLIC_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
-        run: pytest tests/test_application_form.py
-
       # Restore once domains are put back (no basic auth)
       # - name: Zap Baseline Scan
       #   uses: zaproxy/action-baseline@v0.6.1
@@ -91,7 +86,7 @@ jobs:
       #     target: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
       #     allow_issue_writing: False
 
-  deploy-and-test-test:
+  deploy-to-test:
     needs: deploy-and-test-dev
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
@@ -119,7 +114,3 @@ jobs:
         run: python build.py
       - name: Install Chromium
         uses: browser-actions/setup-chrome@latest
-      - name: Run tests
-        env:
-          FORMS_SERVICE_PUBLIC_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
-        run: pytest tests/test_application_form.py
