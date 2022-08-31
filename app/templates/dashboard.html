@@ -72,9 +72,7 @@
     }) }}
 {% endif %}
 
-{% if applications|length > 0 %}
-{{startApplicationButton(form, url_for('routes.new'),  button="govuk-button--secondary")}}
-{% else %}
-{{startApplicationButton(form, url_for('routes.new') )}}
-{% endif %}
+{{startApplicationButton(form, url_for('routes.new'), applications=applications)}}
+
 {% endblock %}
+ 
