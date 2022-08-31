@@ -88,7 +88,7 @@
           "name": "NdCUwM",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n\n<li>local support for your project</li>\n\n\n</div>"
+          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>local support for your project</li>\n</ul>\n</div>"
         }
       ],
       "next": [
@@ -126,7 +126,16 @@
     }
   ],
   "fees": [],
-  "outputs": [],
+  "outputs": [
+    {
+      "name": "update-form",
+      "title": "Update form in application store",
+      "type": "savePerPage",
+      "outputConfiguration": {
+        "savePerPageUrl": "True"
+      }
+    }
+  ],
   "version": 2,
   "skipSummary": false,
   "name": "Apply for funding to save a building in your community",
