@@ -30,7 +30,7 @@ def test_dashboard_route(flask_test_client, mocker, monkeypatch):
         lambda: {"accountId": "test-user"},
     )
     mocker.patch(
-        "app.default.routes.get_data",
+        "app.default.routes.get_applications_for_account",
         return_value=TEST_APPLICATION_STORE_DATA,
     )
     response = flask_test_client.get("/account", follow_redirects=True)
@@ -48,7 +48,7 @@ def test_submitted_dashboard_route_shows_no_application_link(
         lambda: {"accountId": "test-user"},
     )
     mocker.patch(
-        "app.default.routes.get_data",
+        "app.default.routes.get_applications_for_account",
         return_value=TEST_SUBMITTED_APPLICATION_STORE_DATA,
     )
     response = flask_test_client.get("/account", follow_redirects=True)
@@ -67,7 +67,7 @@ def test_dashboard_route_no_applications(
     )
 
     mocker.patch(
-        "app.default.routes.get_data",
+        "app.default.routes.get_applications_for_account",
         return_value=TEST_SUBMITTED_APPLICATION_STORE_DATA,
     )
     response = flask_test_client.get("/account", follow_redirects=True)

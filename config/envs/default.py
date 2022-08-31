@@ -21,11 +21,7 @@ class DefaultConfig:
     # Funding Service Design
     FSD_USER_TOKEN_COOKIE_NAME = "fsd_user_token"
     AUTHENTICATOR_HOST = environ.get("AUTHENTICATOR_HOST", "authenticator")
-    ENTER_APPLICATION_URL = (
-        AUTHENTICATOR_HOST
-        + "/service/magic-links/new?fund_id=47aef2f5-3fcb-4d45-acb5-f0152b"
-        "5f03c4&round_id=c603d114-5364-4474-a0c4-c41cbf4d3bbd"
-    )
+    ENTER_APPLICATION_URL = AUTHENTICATOR_HOST + "/service/magic-links/new"
     SESSION_COOKIE_DOMAIN = environ.get("SESSION_COOKIE_DOMAIN")
 
     # APIs Config
@@ -133,3 +129,6 @@ class DefaultConfig:
     }
 
     USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "False"))
+
+    DEFAULT_ROUND_ID = "c603d114-5364-4474-a0c4-c41cbf4d3bbd"
+    DEFAULT_FUND_ID = "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4"

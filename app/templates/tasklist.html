@@ -2,7 +2,9 @@
 {% from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
 {% from "partials/tasklist_section.html" import tasklist_section %}
 {% from "partials/tasklist_submit.html" import tasklist_submit %}
-
+{% block beforeContent %}
+<a href="{{url_for('routes.dashboard')}}" class="govuk-back-link">Back to your applications</a>
+{% endblock %}
 {% block pageTitle %}Task List - {{ service_title }}{% endblock %}
 
 {% block content %}
@@ -28,7 +30,7 @@
       {% elif application["status"] == application_meta_data["completed_status"] %}
       <strong class="govuk-tag govuk-tag--green">
       {% endif %}
-      {{application.status}}
+      {{application.status|snake_case_to_human}}
       </strong>
     </h2>
     <p class="govuk-body govuk-!-margin-bottom-7">
