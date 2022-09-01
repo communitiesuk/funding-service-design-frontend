@@ -13,6 +13,7 @@ applications:
     NOTIFICATION_SERVICE_HOST: http://funding-service-design-notification-dev.apps.internal:8080
     FORMS_SERVICE_PUBLIC_HOST: https://fsd:fsd@forms.dev.gids.dev
     FUND_STORE_API_HOST: https://funding-service-design-fund-store-dev.london.cloudapps.digital
+    RSA256_PUBLIC_KEY_BASE64: ((RSA256_PUBLIC_KEY_BASE64))
     FORMS_SERVICE_PRIVATE_HOST: ((FORMS_SERVICE_PRIVATE_HOST))
     FLASK_ENV: dev
     FLASK_DEBUG: 1
