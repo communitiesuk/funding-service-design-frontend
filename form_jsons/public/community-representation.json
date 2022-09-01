@@ -33,11 +33,11 @@
           "hint": "Include how they'll be involved in decision making, and how you'll measure public support for your decisions"
         }
       ],
-      "next": [{ "path": "/check-your-answers" }]
+      "next": [{ "path": "/summary" }]
     },
     {
       "title": "Check your answers",
-      "path": "/check-your-answers",
+      "path": "/summary",
       "controller": "./pages/summary.js",
       "components": [],
       "next": []
