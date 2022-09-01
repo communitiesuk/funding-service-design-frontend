@@ -1,5 +1,4 @@
 """Flask configuration."""
-import base64
 from os import environ
 from os import getenv
 from pathlib import Path
@@ -25,7 +24,7 @@ class DefaultConfig:
     ENTER_APPLICATION_URL = AUTHENTICATOR_HOST + "/service/magic-links/new"
     SESSION_COOKIE_DOMAIN = environ.get("SESSION_COOKIE_DOMAIN")
     RSA256_PUBLIC_KEY_BASE64 = environ.get("RSA256_PUBLIC_KEY_BASE64")
-    RSA256_PUBLIC_KEY = base64.b64decode(RSA256_PUBLIC_KEY_BASE64).decode()
+    RSA256_PUBLIC_KEY = environ.get("RSA256_PUBLIC_KEY")
 
     # APIs Config
     TEST_APPLICATION_STORE_API_HOST = "http://application_store"
