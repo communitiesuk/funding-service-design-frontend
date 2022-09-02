@@ -12,7 +12,6 @@ applications:
     RSA256_PUBLIC_KEY_BASE64: ((RSA256_PUBLIC_KEY_BASE64))
     SERVICE_START_PAGE: https://frontend.dev.gids.dev/account
     JWT_REDIRECT_TO_AUTHENTICATION_URL: https://authenticator2.dev.gids.dev/sessions/sign-out
-    SAFELIST: '["funding-service-design-application-store-dev.london.cloudapps.digital"]'
   services:
     - form-uploads-dev
     - logit-ssl-drain
@@ -31,7 +30,6 @@ applications:
     RSA256_PUBLIC_KEY_BASE64: ((RSA256_PUBLIC_KEY_BASE64))
     SERVICE_START_PAGE: https://frontend.test.gids.dev/account
     JWT_REDIRECT_TO_AUTHENTICATION_URL: https://authenticator2.test.gids.dev/sessions/sign-out
-    SAFELIST: '["funding-service-design-application-store-test.london.cloudapps.digital"]'
   services:
     - form-uploads-test
     - logit-ssl-drain
