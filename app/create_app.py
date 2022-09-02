@@ -9,6 +9,8 @@ from flask_talisman import Talisman
 from flask_wtf.csrf import CSRFProtect
 from fsd_utils.healthchecks.checkers import FlaskRunningChecker
 from fsd_utils.healthchecks.healthcheck import Healthcheck
+from fsd_utils.locale_selector.get_lang import get_lang
+from fsd_utils.locale_selector.set_lang import LanguageSelector
 from fsd_utils.logging import logging
 from jinja2 import ChoiceLoader
 from jinja2 import PackageLoader
@@ -20,7 +22,8 @@ def create_app() -> Flask:
 
     flask_app.config.from_object("config.Config")
 
-    Babel(flask_app)
+    babel = Babel(flask_app)
+    babel.locale_selector_func = get_lang
 
     flask_app.jinja_loader = ChoiceLoader(
         [
@@ -74,7 +77,10 @@ def create_app() -> Flask:
         )
 
     health = Healthcheck(flask_app)
+
     health.add_check(FlaskRunningChecker())
+
+    LanguageSelector(flask_app)
 
     return flask_app
 
