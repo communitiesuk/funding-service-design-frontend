@@ -9,6 +9,7 @@ applications:
     - route: forms.dev.gids.dev
   env:
     NODE_ENV: production
+    CHECK_ENV: 17.04.runner
     RSA256_PUBLIC_KEY_BASE64: ((RSA256_PUBLIC_KEY_BASE64))
     SERVICE_START_PAGE: https://frontend.dev.gids.dev/account
     JWT_REDIRECT_TO_AUTHENTICATION_URL: https://authenticator2.dev.gids.dev/sessions/sign-out
