@@ -15,7 +15,7 @@ class DevelopmentConfig(DefaultConfig):
     SESSION_COOKIE_DOMAIN = getenv("SESSION_COOKIE_DOMAIN")
 
     # RSA 256 KEYS
-    if "RSA256_PUBLIC_KEY" not in DefaultConfig:
+    if not hasattr(DefaultConfig, "RSA256_PUBLIC_KEY"):
         _test_public_key_path = (
             DefaultConfig.FLASK_ROOT + "/tests/keys/rsa256/public.pem"
         )
