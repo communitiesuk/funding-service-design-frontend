@@ -17,6 +17,7 @@ applications:
     RSA256_PRIVATE_KEY_BASE64: ((RSA256_PRIVATE_KEY_BASE64))
     FORMS_SERVICE_PRIVATE_HOST: ((FORMS_SERVICE_PRIVATE_HOST))
     FLASK_ENV: test
+    SESSION_COOKIE_DOMAIN: .test.gids.dev
   routes:
     - route: frontend.test.fundingservice.co.uk
   health-check-http-endpoint: /healthcheck
