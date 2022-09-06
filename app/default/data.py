@@ -69,24 +69,27 @@ def get_application_data(application_id, as_dict=False, cookies=None):
         application_id=application_id
     )
     application_response = get_data(application_request_url, cookies=cookies)
-    if not (application_response):
+    if not application_response:
         current_app.logger.error(
             "Application Data Store request failed, unable to recover:"
-            f" {application_request_url}"
-        )
+            f" {application_request_url}")
     if as_dict:
         return Application.from_dict(application_response)
     else:
         return application_response
 
 
-def get_applications_for_account(account_id, as_dict=False):
+def get_applications_for_account(account_id, as_dict=False, cookies=None):
     application_request_url = (
         Config.GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT.format(
             account_id=account_id
         )
     )
-    application_response = get_data(application_request_url)
+    application_response = get_data(application_request_url, cookies=cookies)
+    if not application_response:
+        current_app.logger.error(
+            "Application Data Store request failed, unable to recover:"
+            f" {application_request_url}")
     if as_dict:
         return Application.from_dict(application_response)
     else:
