@@ -23,9 +23,7 @@
             </a>
         </div>
         <div class="govuk-header__content govuk-header__link--service-name">
-            <a href="{% url_for('routes.dashboard') %}" class="govuk-header__link govuk-header__link--service-name">
-              {{ service_title }}
-            </a>
+            {{ service_title }}
             {% if g.is_authenticated and g.logout_url %}
             <nav>
               <ul id="navigation" class="govuk-header__navigation " aria-label="Navigation menu">
