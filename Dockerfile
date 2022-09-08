@@ -1,4 +1,4 @@
-ARG BASE_IMAGE_TAG="0b3cf39e543b872c177def4836b6b34c83a24f78"
+ARG BASE_IMAGE_TAG="sha-0b3cf39e543b872c177def4836b6b34c83a24f78"
 FROM ghcr.io/communitiesuk/digital-form-builder-dluhc-runner:$BASE_IMAGE_TAG as base
 ARG FORMS_DIR="forms-v3"
 WORKDIR /usr/src/app
