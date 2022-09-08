@@ -9,6 +9,7 @@ from app.models.helpers import get_token_to_return_to_application
 from config import Config
 from flask import Blueprint
 from flask import current_app
+from flask import g
 from flask import redirect
 from flask import render_template
 from flask import request
@@ -42,7 +43,8 @@ def cookie_policy():
 
 @default_bp.route("/account")
 @login_required
-def dashboard(account_id):
+def dashboard():
+    account_id = g.account_id
     application_store_response = get_applications_for_account(
         account_id=account_id, as_dict=False
     )
@@ -73,7 +75,8 @@ def dashboard(account_id):
 
 @default_bp.route("/account/new", methods=["POST"])
 @login_required
-def new(account_id):
+def new():
+    account_id = g.account_id
     new_application = requests.post(
         url=f"{Config.APPLICATION_STORE_API_HOST}/applications",
         json={
@@ -101,13 +104,12 @@ def new(account_id):
 
 @default_bp.route("/tasklist/<application_id>", methods=["GET"])
 @login_required
-def tasklist(application_id, account_id):
+def tasklist(application_id):
     """
     Returns a Flask function which constructs a tasklist for an application id.
 
     Args:
         application_id (str): the id of an application in the application store
-        account_id (str): the account_id of the logged-in user
 
     Returns:
         function: a function which renders the tasklist template.

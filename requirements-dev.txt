@@ -91,14 +91,16 @@ flask==2.1.1
 flask-assets==2.0
     # via -r requirements.txt
 flask-babel==2.0.0
-    # via -r requirements.txt
+    # via
+    #   -r requirements.txt
+    #   funding-service-design-utils
 flask-compress==1.10.1
     # via -r requirements.txt
 flask-talisman==0.8.1
     # via -r requirements.txt
 flask-wtf==1.0.0
     # via -r requirements.txt
-funding-service-design-utils @ https://github.com/communitiesuk/funding-service-design-utils/archive/refs/tags/0.0.15.tar.gz
+funding-service-design-utils @ git+https://github.com/communitiesuk/funding-service-design-utils.git@fs-1450-is-authenticated-flag
     # via -r requirements.txt
 gitdb==4.0.9
     # via gitpython
