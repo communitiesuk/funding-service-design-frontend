@@ -55,6 +55,7 @@ def build_assets():
     shutil.copyfile(
         "static/src/styles/tasklist.css", "./app/static/styles/tasklist.css"
     )
+    shutil.copyfile("static/src/styles/app.css", "./app/static/styles/app.css")
 
     # Deletes temp. files.
     shutil.rmtree("./app/static/assets")

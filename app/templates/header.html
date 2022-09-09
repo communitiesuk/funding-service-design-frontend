@@ -22,11 +22,12 @@
                 </span>
             </a>
         </div>
-        <div class="govuk-header__content govuk-header__link--service-name">
-            {{ service_title }}
+        <div class="govuk-header__content">
+            <span class="app-service-name govuk-header__link--service-name">{{ service_title }}</span>
             {% if g.is_authenticated and g.logout_url %}
+            <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide navigation menu" aria-expanded="true">Menu</button>
             <nav>
-              <ul id="navigation" class="govuk-header__navigation " aria-label="Navigation menu">
+              <ul id="navigation" class="govuk-header__navigation app-navigation" aria-label="Navigation menu">
                     <li class="govuk-header__navigation-item">
                         <a class="govuk-header__link" href="{{ g.logout_url }}">Sign out</a>
                     </li>
@@ -40,6 +41,6 @@
 
 <div class="govuk-width-container">
     {{ govukPhaseBanner({'tag': {'text': 'beta'}, 'html':
-    'This is a new service - your <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=EGg0v32c3kOociSi7zmVqN48ORk8WN5LlJITE3Swt-lURUNCR0dHMjgxWFZOMTMxQzlOTVIxVkQ0Sy4u" class="govuk-link">feedback</a> will help us to improve it.'
+    'This is a new service – your <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=EGg0v32c3kOociSi7zmVqN48ORk8WN5LlJITE3Swt-lURUNCR0dHMjgxWFZOMTMxQzlOTVIxVkQ0Sy4u" class="govuk-link">feedback</a> will help us to improve it.'
     })}}
 </div>
