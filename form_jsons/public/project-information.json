@@ -149,10 +149,36 @@
           "content": "<h2 class=\"govuk-heading-m\">Project information</h2>"
         },
         {
-          "name": "yEmHpp",
+          "name": "jQdQpA",
           "options": {},
-          "type": "UkAddressField",
-          "title": "Address of the community asset"
+          "type": "Para",
+          "content": "<b>Address of the community asset</b>"
+        },
+        {
+          "name": "DSFIvl",
+          "options": {},
+          "type": "TextField",
+          "title": "Address Line 1"
+        },
+        {
+          "name": "rASHeq",
+          "options": {
+            "required": false
+          },
+          "type": "TextField",
+          "title": "Address Line 2"
+        },
+        {
+          "name": "BifFQD",
+          "options": {},
+          "type": "TextField",
+          "title": "Town or City"
+        },
+        {
+          "name": "sofCUe",
+          "options": {},
+          "type": "TextField",
+          "title": "Postcode"
         },
         {
           "name": "mDcTOs",

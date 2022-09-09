@@ -461,11 +461,36 @@
           "schema": {}
         },
         {
-          "name": "ZQolYb",
+          "name": "jQdQpA",
           "options": {},
-          "type": "UkAddressField",
-          "title": "Organisation address",
-          "schema": {}
+          "type": "Para",
+          "content": "<b>Organisation address</b>"
+        },
+        {
+          "name": "DSFIvl",
+          "options": {},
+          "type": "TextField",
+          "title": "Address Line 1"
+        },
+        {
+          "name": "rASHeq",
+          "options": {
+            "required": false
+          },
+          "type": "TextField",
+          "title": "Address Line 2"
+        },
+        {
+          "name": "BifFQD",
+          "options": {},
+          "type": "TextField",
+          "title": "Town or City"
+        },
+        {
+          "name": "sofCUe",
+          "options": {},
+          "type": "TextField",
+          "title": "Postcode"
         },
         {
           "name": "KfXhvS",
@@ -541,11 +566,36 @@
           "schema": {}
         },
         {
-          "name": "VhkCbM",
+          "name": "jQdQpA",
           "options": {},
-          "type": "UkAddressField",
-          "title": "Correspondence address",
-          "schema": {}
+          "type": "Para",
+          "content": "<b>Correspondence address</b>"
+        },
+        {
+          "name": "DSFIvl",
+          "options": {},
+          "type": "TextField",
+          "title": "Address Line 1"
+        },
+        {
+          "name": "rASHeq",
+          "options": {
+            "required": false
+          },
+          "type": "TextField",
+          "title": "Address Line 2"
+        },
+        {
+          "name": "BifFQD",
+          "options": {},
+          "type": "TextField",
+          "title": "Town or City"
+        },
+        {
+          "name": "sofCUe",
+          "options": {},
+          "type": "TextField",
+          "title": "Postcode"
         },
         {
           "name": "XNgtoe",
@@ -614,11 +664,36 @@
           "schema": {}
         },
         {
-          "name": "biTJjF",
+          "name": "jQdQpA",
           "options": {},
-          "type": "UkAddressField",
-          "title": "Partner organisation address",
-          "schema": {}
+          "type": "Para",
+          "content": "<b>Correspondence address</b>"
+        },
+        {
+          "name": "DSFIvl",
+          "options": {},
+          "type": "TextField",
+          "title": "Address Line 1"
+        },
+        {
+          "name": "rASHeq",
+          "options": {
+            "required": false
+          },
+          "type": "TextField",
+          "title": "Address Line 2"
+        },
+        {
+          "name": "BifFQD",
+          "options": {},
+          "type": "TextField",
+          "title": "Town or City"
+        },
+        {
+          "name": "sofCUe",
+          "options": {},
+          "type": "TextField",
+          "title": "Postcode"
         },
         {
           "name": "feueTa",
