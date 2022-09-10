@@ -41,6 +41,12 @@ def accessibility_statement():
     return render_template("accessibility_statement.html")
 
 
+@default_bp.route("/cof-r2w2-all-questions", methods=["GET"])
+def all_questions():
+    current_app.logger.info("All questions page loaded.")
+    return render_template("cof-r2w2-all-questions.html")
+
+
 @default_bp.route("/contact_us", methods=["GET"])
 def contact_us():
     current_app.logger.info("Contact us page loaded.")
