@@ -9,7 +9,7 @@
 
     <ul class="app-task-list__items">
       {% for form_name, form_data in forms_within_section.items() %}
-      <li class="app-task-list__item">
+      <li class="app-task-list__item task-list__new-design">
         <span class="app-task-list__task-name">
           <a class="govuk-body govuk-link govuk-link--no-visited-state" href="{{url_for("routes.continue_application", application_id=application_meta_data["application_id"], form_name=form_name)}}">
             {{form_name|kebab_case_to_human}}
