@@ -1,6 +1,7 @@
 {
   "metadata": {},
   "startPage": "/management-case-fPzRPo",
+  "backLinkText": "Go back to application overview",
   "pages": [
     {
       "title": "Management case",
@@ -27,11 +28,11 @@
           "title": "Risks to your project (document upload)"
         }
       ],
-      "next": [{ "path": "/check-your-answers" }]
+      "next": [{ "path": "/summary" }]
     },
     {
       "title": "Check your answers",
-      "path": "/check-your-answers",
+      "path": "/summary",
       "controller": "./pages/summary.js",
       "components": [],
       "next": []

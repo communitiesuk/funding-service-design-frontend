@@ -7,51 +7,30 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <span class="govuk-caption-l">Community Ownership Fund</span>
-            <h1 class="govuk-heading-xl">Apply for funding to save a building in your community</h1>
-            <h2 class="govuk-heading-m">Before you start</h2>
-            <p class="govuk-body">You must have received an invitation to apply. If we did not invite you, first <a
-                    class="govuk-link"
-                    href="https://www.gov.uk/guidance/community-ownership-fund-round-2-how-to-express-your-interest-in-applying">express
-                your interest in the fund</a>.</p>
-            <p class="govuk-body"><a class="govuk-link"
-                                     href="https://www.gov.uk/government/publications/community-ownership-fund-prospectus/community-ownership-fund-prospectus--2">Read
-                the fund's prospectus</a> before you apply.</p>
-            <h2 class="govuk-heading-m">When you must apply</h2>
-            <p class="govuk-body">You must submit this form and all supporting documents by <strong>midday on {date}
-                2022</strong>.</p>
-            <h2 class="govuk-heading-m">Who can apply</h2>
-            <h3 class="govuk-heading-s">Applying with other groups</h3>
-            <p class="govuk-body">You can apply jointly with other community groups.</p>
-            <p class="govuk-body">One of the groups must take responsibility for completing and submitting the
-                application.</p>
-            <p class="govuk-body">If we award you funding, only the group that submitted will sign the grant agreement
-                with us.</p>
-            <h3 class="govuk-heading-s">Number of applications for each group</h3>
-            <p class="govuk-body">You can apply just once for each community asset or amenity.</p>
+            <span class="govuk-caption-l">Community Ownership Fund round 2</span>
+            <h1 class="govuk-heading-xl">Apply for funding to save an asset in your community</h1>
+            <p class="govuk-body"><strong>Submission deadline:</strong> midday, {date} 2022</p>
+            {{ govukButton({"isStartButton": True, "href" : service_url, "text": "Continue"}) }}
             <h2 class="govuk-heading-m">How to complete your application</h2>
             <h3 class="govuk-heading-s">Moving through the form</h3>
-            <p class="govuk-body">This form is split into sections based on how it will be assessed. You do not have to
-                complete it in order, or all at once.</p>
-            <p class="govuk-body">When you have written something in every field in a section, the section will be
-                marked as complete. You can still change your responses in sections that are marked as complete.</p>
-            <h3 class="govuk-heading-s">Making changes</h3>
-            <p class="govuk-body">If you need to edit or revisit any sections while you’re filling in the application,
-                use the <strong>browser back button</strong>. The screen you’re editing will not save automatically, so
-                select <strong>Save and continue</strong> before you go back.</p>
+            <p class="govuk-body">This form is split into sections based on how it will be assessed.</p>
+            <p class="govuk-body">You do not have to complete it in order, or all at once.</p>
+            <p class="govuk-body">You can preview the <a href="/">full list of application questions.</a></p>
+            <p class="govuk-body">If you're inactive for 20 minutes, you'll be signed out and lose any information you have not saved.</p>
+            <p class="govuk-body">When you have written something in every field in a section, the section will be marked as complete. You can still change your responses in sections that are marked as complete.</p>
+            <h3 class="govuk-heading-s">Saving progress and making changes</h3>
+            <p class="govuk-body">If you need to edit or revisit any sections while you’re filling in the application, use the browser back button. The screen you’re editing will not save automatically, so select <strong>Save and continue</strong> before you go back.</p>
             <p class="govuk-body">You can edit your responses as many times as you like before you submit.</p>
             <h3 class="govuk-heading-s">Submitting your application</h3>
             <p class="govuk-body">When you have completed all sections, you’ll be able to submit your application.</p>
-            <p class="govuk-body">Once you have submitted your application, you’ll not be able to edit, add or change
-                any sections.</p>
-            {{ govukButton({"isStartButton": True, "href" : service_url, "text": "Start now"}) }}
+            <p class="govuk-body">Once you have submitted your application, you’ll not be able to edit, add or change any sections.</p>
             <h2 class="govuk-heading-m">Get help</h2>
-            <p class="govuk-body">If you have questions about the form or the fund, email us at <a class="govuk-link"
-                                                                                                   href="mailto:COF@levellingup.gov.uk">COF@levellingup.gov.uk</a>.
-            </p>
+            <p class="govuk-body">If you have questions about the form or the fund, email us at
+                <a class="govuk-link"
+                href="mailto:COF@levellingup.gov.uk">COF@levellingup.gov.uk</a></p>
             <h2 class="govuk-heading-m">How we'll use your information</h2>
             <p class="govuk-body">Read how we'll use the information from your application in our <a class="govuk-body"
-                                                                                                     href="">privacy
+                                                                                                     href="https://www.gov.uk/government/publications/community-ownership-fund-privacy-notice">privacy
                 notice</a>.</p>
         </div>
     </div>

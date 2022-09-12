@@ -1,6 +1,7 @@
 {
   "metadata": {},
   "startPage": "/added-value-to-the-community-XXYtSd",
+  "backLinkText": "Go back to application overview",
   "pages": [
     {
       "title": "Added value to the community",
@@ -32,13 +33,13 @@
       ],
       "next": [
         {
-          "path": "/check-your-answers"
+          "path": "/summary"
         }
       ]
     },
     {
       "title": "Check your answers",
-      "path": "/check-your-answers",
+      "path": "/summary",
       "controller": "./pages/summary.js",
       "components": [],
       "next": []

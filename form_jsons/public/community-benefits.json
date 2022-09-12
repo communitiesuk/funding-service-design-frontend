@@ -1,6 +1,7 @@
 {
   "metadata": {},
   "startPage": "/potential-to-deliver-community-benefits-rofqAG",
+  "backLinkText": "Go back to application overview",
   "pages": [
     {
       "title": "Potential to deliver community benefits",
@@ -48,13 +49,13 @@
       ],
       "next": [
         {
-          "path": "/check-your-answers"
+          "path": "/summary"
         }
       ]
     },
     {
       "title": "Check your answers",
-      "path": "/check-your-answers",
+      "path": "/summary",
       "controller": "./pages/summary.js",
       "components": [],
       "next": []

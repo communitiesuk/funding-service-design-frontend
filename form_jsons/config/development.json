@@ -5,5 +5,6 @@
     "env": "development",
     "safelist": ["funding-service-design-application-store-dev.london.cloudapps.digital", "funding-service-design-application-store-test.london.cloudapps.digital"],
     "jwtAuthCookieName": "fsd_user_token",
-    "jwtAuthenticationUrl": "https://authenticator.dev.fundingservice.co.uk/service/magic-links/invalid"
+    "jwtRedirectToAuthenticationUrl": "http://localhost:3004/sessions/sign-out",
+    "sessionTimeout": 86400000
   }

@@ -1,6 +1,7 @@
 {
   "metadata": {},
   "startPage": "/management-case-oqAeVI",
+  "backLinkText": "Go back to application overview",
   "pages": [
     {
       "title": "Management case",
@@ -142,12 +143,12 @@
       ],
       "next": [
         {
-          "path": "/check-your-answers"
+          "path": "/summary"
         }
       ]
     },
     {
-      "path": "/check-your-answers",
+      "path": "/summary",
       "title": "Check your answers",
       "components": [],
       "next": [],

@@ -1,6 +1,7 @@
 {
   "metadata": {},
   "startPage": "/management-case",
+  "backLinkText": "Go back to application overview",
   "pages": [
     {
       "title": "Management case",
@@ -145,10 +146,10 @@
           "hint": "<div class=\"govuk-body\">\n\n<span class=\"govuk-caption-m\">You need to have the asset valued by someone independent before you take control of it.</span>\n<p class=\"govuk-caption-m\">This includes the building and its contents, including fixtures and fittings, and any stock.</p>\n<p class=\"govuk-caption-m\">If you have already bought or leased the asset, use its current valuation.</p>\n\n</div>"
         }
       ],
-      "next": [{ "path": "/check-your-answers" }]
+      "next": [{ "path": "/summary" }]
     },
     {
-      "path": "/check-your-answers",
+      "path": "/summary",
       "title": "Check your answers",
       "components": [],
       "next": [],

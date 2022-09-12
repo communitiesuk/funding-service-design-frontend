@@ -1,6 +1,7 @@
 {
   "metadata": {},
   "startPage": "/management-case-yIfLRl",
+  "backLinkText": "Go back to application overview",
   "pages": [
     {
       "title": "Management case",
@@ -56,13 +57,13 @@
         }
       ],
       "next": [
-        { "path": "/check-your-answers" },
+        { "path": "/summary" },
         { "path": "/management-case-GauEsn", "condition": "NQAPSg" }
       ]
     },
     {
       "title": "Check your answers",
-      "path": "/check-your-answers",
+      "path": "/summary",
       "controller": "./pages/summary.js",
       "components": [],
       "next": []
@@ -118,7 +119,7 @@
           "title": "Tells us about the roles you'll recruit"
         }
       ],
-      "next": [{ "path": "/check-your-answers" }]
+      "next": [{ "path": "/summary" }]
     },
     {
       "path": "/management-case-yIfLRl",

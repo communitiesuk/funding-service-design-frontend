@@ -1,6 +1,7 @@
 {
   "metadata": {},
   "startPage": "/management-case-ZtFGCc",
+  "backLinkText": "Go back to application overview",
   "pages": [
     {
       "title": "Management case",
@@ -41,13 +42,13 @@
       ],
       "next": [
         {
-          "path": "/check-your-answers"
+          "path": "/summary"
         }
       ]
     },
     {
       "title": "Check your answers",
-      "path": "/check-your-answers",
+      "path": "/summary",
       "controller": "./pages/summary.js",
       "components": [],
       "next": []

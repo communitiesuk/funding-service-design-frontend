@@ -1,6 +1,7 @@
 {
   "metadata": {},
   "startPage": "/strategic-case-cpcjGC",
+  "backLinkText": "Go back to application overview",
   "pages": [
     {
       "title": "Strategic case",
@@ -58,13 +59,13 @@
       ],
       "next": [
         {
-          "path": "/check-your-answers"
+          "path": "/summary"
         }
       ]
     },
     {
       "title": "Check your answers",
-      "path": "/check-your-answers",
+      "path": "/summary",
       "controller": "./pages/summary.js",
       "components": [],
       "next": []
