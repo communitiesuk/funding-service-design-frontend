@@ -1,6 +1,7 @@
 {
   "metadata": {},
   "startPage": "/management-case",
+  "backLinkText": "Go back to application overview",
   "pages": [
     {
       "title": "Management case",
