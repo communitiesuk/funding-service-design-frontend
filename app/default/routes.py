@@ -44,7 +44,10 @@ def accessibility_statement():
 @default_bp.route("/cof-r2w2-all-questions", methods=["GET"])
 def all_questions():
     current_app.logger.info("All questions page loaded.")
-    return render_template("cof-r2w2-all-questions.html")
+    round_data = get_round_data(Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, as_dict=True)
+    return render_template(
+        "cof-r2w2-all-questions.html",
+        round_title=round_data.title,)
 
 
 @default_bp.route("/contact_us", methods=["GET"])
