@@ -17,9 +17,8 @@
           "name": "wruiyh",
           "options": {},
           "type": "Para",
-
           "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>business plan (document upload)</li>\n</ul>\n</div>"
-
+        }
       ],
       "next": [{ "path": "/management-case-HFDUpa" }],
       "controller": "./pages/start.js"
