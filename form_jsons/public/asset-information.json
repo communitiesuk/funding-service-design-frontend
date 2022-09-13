@@ -22,13 +22,8 @@
         }
       ],
       "next": [
-        {
-          "path": "/about-your-project-umfOSi",
-          "condition": "FhToUH"
-        },
-        {
-          "path": "/about-your-project-KEWyLG"
-        }
+        { "path": "/about-your-project-umfOSi", "condition": "FhToUH" },
+        { "path": "/about-your-project-KEWyLG" }
       ]
     },
     {
@@ -48,11 +43,7 @@
           "title": "Asset type (other)"
         }
       ],
-      "next": [
-        {
-          "path": "/about-your-project-KEWyLG"
-        }
-      ]
+      "next": [{ "path": "/about-your-project-KEWyLG" }]
     },
     {
       "path": "/about-your-project-KEWyLG",
@@ -79,14 +70,8 @@
         }
       ],
       "next": [
-        {
-          "path": "/about-your-project-lihYAc",
-          "condition": "HWKrzb"
-        },
-        {
-          "path": "/about-your-project-SJlcKS",
-          "condition": "pFWlCn"
-        }
+        { "path": "/about-your-project-lihYAc", "condition": "HWKrzb" },
+        { "path": "/about-your-project-SJlcKS", "condition": "pFWlCn" }
       ]
     },
     {
@@ -101,18 +86,12 @@
         },
         {
           "name": "ymlmrX",
-          "options": {
-            "classes": "govuk-!-width-full"
-          },
+          "options": { "classes": "govuk-!-width-full" },
           "type": "TextField",
           "title": "Name of current asset owner"
         }
       ],
-      "next": [
-        {
-          "path": "/about-your-project-soncep"
-        }
-      ]
+      "next": [{ "path": "/about-your-project-soncep" }]
     },
     {
       "path": "/about-your-project-soncep",
@@ -129,20 +108,12 @@
           "options": {},
           "type": "YesNoField",
           "title": "Have you already completed the purchase or lease?",
-          "values": {
-            "type": "listRef"
-          }
+          "values": { "type": "listRef" }
         }
       ],
       "next": [
-        {
-          "path": "/about-your-project-WBhVru",
-          "condition": "SptdkQ"
-        },
-        {
-          "path": "/about-your-project-KHVTgJ",
-          "condition": "xeSSXt"
-        }
+        { "path": "/about-your-project-WBhVru", "condition": "SptdkQ" },
+        { "path": "/about-your-project-KHVTgJ", "condition": "xeSSXt" }
       ]
     },
     {
@@ -157,18 +128,12 @@
         },
         {
           "name": "FtDJfK",
-          "options": {
-            "classes": "govuk-!-width-full"
-          },
+          "options": { "classes": "govuk-!-width-full" },
           "type": "TextField",
           "title": "Describe the current ownership status"
         }
       ],
-      "next": [
-        {
-          "path": "/about-your-project-soncep"
-        }
-      ]
+      "next": [{ "path": "/about-your-project-soncep" }]
     },
     {
       "path": "/about-your-project-WBhVru",
@@ -188,11 +153,7 @@
           "hint": "For example, an auction"
         }
       ],
-      "next": [
-        {
-          "path": "/about-your-project-OAmLlm"
-        }
-      ]
+      "next": [{ "path": "/about-your-project-OAmLlm" }]
     },
     {
       "path": "/about-your-project-KHVTgJ",
@@ -219,11 +180,7 @@
           "hint": "For example, 27 3 2007"
         }
       ],
-      "next": [
-        {
-          "path": "/about-your-project-OAmLlm"
-        }
-      ]
+      "next": [{ "path": "/about-your-project-OAmLlm" }]
     },
     {
       "path": "/about-your-project-OAmLlm",
@@ -243,13 +200,8 @@
         }
       ],
       "next": [
-        {
-          "path": "/about-your-project-mKvSMq",
-          "condition": "JRPHWC"
-        },
-        {
-          "path": "/about-your-project-IBygRC"
-        }
+        { "path": "/about-your-project-mKvSMq", "condition": "JRPHWC" },
+        { "path": "/about-your-project-IBygRC" }
       ]
     },
     {
@@ -264,29 +216,21 @@
         },
         {
           "name": "fHvilU",
-          "options": {
-            "classes": "govuk-!-width-full"
-          },
+          "options": { "classes": "govuk-!-width-full" },
           "type": "TextField",
           "title": "Tell us about the person you have spoken to at the relevant public body about your asset",
           "hint": "<span class=\"govuk-body\">Name of contact</span>"
         },
         {
           "name": "scYeIU",
-          "options": {
-            "hideTitle": true,
-            "classes": "govuk-!-width-full"
-          },
+          "options": { "hideTitle": true, "classes": "govuk-!-width-full" },
           "type": "TextField",
           "title": "Job title of contact",
           "hint": "<label class=\"govuk-body\">Job title of contact</label>"
         },
         {
           "name": "ZHPwln",
-          "options": {
-            "hideTitle": true,
-            "classes": "govuk-!-width-full"
-          },
+          "options": { "hideTitle": true, "classes": "govuk-!-width-full" },
           "type": "TextField",
           "title": "Organisation name",
           "hint": "<label class=\"govuk-body\">Organisation name</label>"
@@ -308,19 +252,13 @@
         },
         {
           "name": "ArVrka",
-          "options": {
-            "required": false
-          },
+          "options": { "required": true },
           "type": "FileUploadField",
           "hint": "<label>Upload supporting evidence to summarise:</label>\n<p>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m\">\n<li>the risk the asset is facing</li>\n<li>that any statutory services will not be transferred from the public authority</li>\n<li>that the asset will be sustainable after it has been transferred</li>\n</ul>\n\n<label class=\"govuk-caption-m\">For example, this evidence can include confirmation from the public owner or a letter from the local authority.</label>\n<p>It should be a single file no bigger than 5MB in any of the following formats:</p>\n\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m\">\n<li>jpg</li>\n<li>jpeg</li>\n<li>png</li>\n<li>pdf</li>\n<li>txt</li>\n<li>doc</li>\n<li>docx</li>\n<li>odt</li>\n<li>csv</li>\n<li>xls</li>\n<li>xlsx</li>\n<li>ods</li>\n</ul>\n</p>",
           "title": "Upload supporting evidence"
         }
       ],
-      "next": [
-        {
-          "path": "/about-your-project-IBygRC"
-        }
-      ]
+      "next": [{ "path": "/about-your-project-IBygRC" }]
     },
     {
       "path": "/about-your-project-IBygRC",
@@ -337,19 +275,12 @@
           "options": {},
           "type": "YesNoField",
           "title": "Is this a registered Asset of Community Value (ACV)?",
-          "values": {
-            "type": "listRef"
-          }
+          "values": { "type": "listRef" }
         }
       ],
       "next": [
-        {
-          "path": "/about-your-project-vsBLWQ",
-          "condition": "SnbdGs"
-        },
-        {
-          "path": "/about-your-project-eXLZjQ"
-        }
+        { "path": "/about-your-project-vsBLWQ", "condition": "SnbdGs" },
+        { "path": "/about-your-project-eXLZjQ" }
       ]
     },
     {
@@ -367,16 +298,10 @@
           "options": {},
           "type": "YesNoField",
           "title": "Will you purchase the asset within the appropriate time frame?",
-          "values": {
-            "type": "listRef"
-          }
+          "values": { "type": "listRef" }
         }
       ],
-      "next": [
-        {
-          "path": "/about-your-project-eXLZjQ"
-        }
-      ]
+      "next": [{ "path": "/about-your-project-eXLZjQ" }]
     },
     {
       "path": "/about-your-project-eXLZjQ",
@@ -396,13 +321,8 @@
         }
       ],
       "next": [
-        {
-          "path": "/about-your-project-CoBJSH",
-          "condition": "HoaLcA"
-        },
-        {
-          "path": "/about-your-project-jkBuhn"
-        }
+        { "path": "/about-your-project-CoBJSH", "condition": "HoaLcA" },
+        { "path": "/about-your-project-jkBuhn" }
       ]
     },
     {
@@ -424,26 +344,18 @@
         },
         {
           "name": "kBCjwC",
-          "options": {
-            "classes": "govuk-!-width-full"
-          },
+          "options": { "classes": "govuk-!-width-full" },
           "type": "WebsiteField",
           "title": "Provide a link to the listing"
         },
         {
           "name": "vKSMwi",
-          "options": {
-            "maxWords": "500"
-          },
+          "options": { "maxWords": "500" },
           "type": "MultilineTextField",
           "title": "Describe the current status of the Community Asset Transfer"
         }
       ],
-      "next": [
-        {
-          "path": "/about-your-project-jkBuhn"
-        }
-      ]
+      "next": [{ "path": "/about-your-project-jkBuhn" }]
     },
     {
       "path": "/about-your-project-jkBuhn",
@@ -464,11 +376,7 @@
           "list": "bEHBZY"
         }
       ],
-      "next": [
-        {
-          "path": "/check-your-answers"
-        }
-      ]
+      "next": [{ "path": "/check-your-answers" }]
     },
     {
       "path": "/check-your-answers",
@@ -494,11 +402,7 @@
           "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>asset type</li>\n<li>what you intend to do with the asset</li>\n<li>asset ownership details (if applicable)</li>\n<li>asset ownership status</li>\n<li>sales process (if applicable)</li>\n<li>public ownership details (if applicable)</li>\n<li>Asset of Community Value details (if applicable)</li>\n<li>Community Asset Transfer details (if applicable)</li>\n<li>reason asset is at risk</li>\n</ul>\n</div>"
         }
       ],
-      "next": [
-        {
-          "path": "/about-your-project"
-        }
-      ],
+      "next": [{ "path": "/about-your-project" }],
       "controller": "./pages/start.js"
     }
   ],
@@ -508,54 +412,18 @@
       "name": "AwCSoL",
       "type": "string",
       "items": [
-        {
-          "text": "Community centre",
-          "value": "community-centre"
-        },
-        {
-          "text": "Cinema",
-          "value": "cinema"
-        },
-        {
-          "text": "Gallery",
-          "value": "gallery"
-        },
-        {
-          "text": "Museum",
-          "value": "museum"
-        },
-        {
-          "text": "Music venue",
-          "value": "music-venue"
-        },
-        {
-          "text": "Park",
-          "value": "park"
-        },
-        {
-          "text": "Post office building",
-          "value": "post-office"
-        },
-        {
-          "text": "Pub",
-          "value": "pub"
-        },
-        {
-          "text": "Shop",
-          "value": "shop"
-        },
-        {
-          "text": "Sporting or leisure facility",
-          "value": "sporting"
-        },
-        {
-          "text": "Theatre",
-          "value": "theatre"
-        },
-        {
-          "text": "Other",
-          "value": "other"
-        }
+        { "text": "Community centre", "value": "community-centre" },
+        { "text": "Cinema", "value": "cinema" },
+        { "text": "Gallery", "value": "gallery" },
+        { "text": "Museum", "value": "museum" },
+        { "text": "Music venue", "value": "music-venue" },
+        { "text": "Park", "value": "park" },
+        { "text": "Post office building", "value": "post-office" },
+        { "text": "Pub", "value": "pub" },
+        { "text": "Shop", "value": "shop" },
+        { "text": "Sporting or leisure facility", "value": "sporting" },
+        { "text": "Theatre", "value": "theatre" },
+        { "text": "Other", "value": "other" }
       ]
     },
     {
@@ -563,14 +431,8 @@
       "name": "ClZhyp",
       "type": "string",
       "items": [
-        {
-          "text": "Buy the asset",
-          "value": "buy-the-asset"
-        },
-        {
-          "text": "Lease the asset",
-          "value": "lease-the-asset"
-        },
+        { "text": "Buy the asset", "value": "buy-the-asset" },
+        { "text": "Lease the asset", "value": "lease-the-asset" },
         {
           "text": "Already owned by organisation",
           "value": "already-owned-by-organisation"
@@ -585,13 +447,7 @@
       "title": "I confirm",
       "name": "YlLedV",
       "type": "string",
-      "items": [
-        {
-          "text": "I confirm",
-          "value": "confirm",
-          "description": ""
-        }
-      ]
+      "items": [{ "text": "I confirm", "value": "confirm", "description": "" }]
     },
     {
       "title": "Upload supporting evidence",
@@ -621,10 +477,7 @@
           "text": "For sale or listed for disposal",
           "value": "for-sale-or-listed-for-disposal"
         },
-        {
-          "text": "Future use not secured",
-          "value": "future-use-not-secured"
-        },
+        { "text": "Future use not secured", "value": "future-use-not-secured" },
         {
           "text": "Unprofitable under current business model",
           "value": "unprofitable-under-current-business-model"
@@ -651,11 +504,7 @@
               "display": "Asset type"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "other",
-              "display": "other"
-            }
+            "value": { "type": "Value", "value": "other", "display": "other" }
           }
         ]
       }
@@ -673,11 +522,7 @@
               "display": "Do you know who currently owns your asset?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "true",
-              "display": "true"
-            }
+            "value": { "type": "Value", "value": "true", "display": "true" }
           }
         ]
       }
@@ -695,11 +540,7 @@
               "display": "Do you know who currently owns your asset?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "false",
-              "display": "false"
-            }
+            "value": { "type": "Value", "value": "false", "display": "false" }
           }
         ]
       }
@@ -717,11 +558,7 @@
               "display": "Is the asset currently for sale?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "true",
-              "display": "true"
-            }
+            "value": { "type": "Value", "value": "true", "display": "true" }
           }
         ]
       }
@@ -739,11 +576,7 @@
               "display": "Is the asset currently for sale?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "false",
-              "display": "false"
-            }
+            "value": { "type": "Value", "value": "false", "display": "false" }
           }
         ]
       }
@@ -761,11 +594,7 @@
               "display": "Is your asset currently publicly owned?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "true",
-              "display": "true"
-            }
+            "value": { "type": "Value", "value": "true", "display": "true" }
           }
         ]
       }
@@ -783,11 +612,7 @@
               "display": "Is this a registered asset of community value (ACV)?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "true",
-              "display": "true"
-            }
+            "value": { "type": "Value", "value": "true", "display": "true" }
           }
         ]
       }
@@ -805,11 +630,7 @@
               "display": "Do you have a link to the asset certification?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "true",
-              "display": "true"
-            }
+            "value": { "type": "Value", "value": "true", "display": "true" }
           }
         ]
       }
@@ -827,11 +648,7 @@
               "display": "Do you have a link to the asset certification?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "true",
-              "display": "true"
-            }
+            "value": { "type": "Value", "value": "true", "display": "true" }
           }
         ]
       }
@@ -849,11 +666,7 @@
               "display": "Do you have a link to the asset certification?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "false",
-              "display": "false"
-            }
+            "value": { "type": "Value", "value": "false", "display": "false" }
           }
         ]
       }
@@ -871,11 +684,7 @@
               "display": "Is the asset listed for disposal, or part of a Community Asset Transfer?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "true",
-              "display": "true"
-            }
+            "value": { "type": "Value", "value": "true", "display": "true" }
           }
         ]
       }
@@ -895,11 +704,6 @@
   "version": 2,
   "skipSummary": false,
   "name": "Apply for funding to save a building in your community",
-  "feedback": {
-    "feedbackForm": false,
-    "url": ""
-  },
-  "phaseBanner": {
-    "phase": "beta"
-  }
+  "feedback": { "feedbackForm": false, "url": "" },
+  "phaseBanner": { "phase": "beta" }
 }
