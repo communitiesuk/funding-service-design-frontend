@@ -1,7 +1,6 @@
 {
   "metadata": {},
   "startPage": "/management-case-ZtFGCc",
-  "backLinkText": "Go back to application overview",
   "pages": [
     {
       "title": "Management case",
@@ -14,37 +13,33 @@
           "content": "<h2 class=\"govuk-heading-m\">Inclusiveness and intergration</h2>"
         },
         {
+          "name": "SrtVAs",
+          "options": { "maxWords": "500" },
+          "type": "MultilineTextField",
+          "title": "Describe the planned activities or services that will take place at the asset"
+        },
+        {
           "name": "YbfbSC",
-          "options": {
-            "maxWords": "200"
-          },
+          "options": { "maxWords": "500" },
           "type": "MultilineTextField",
           "title": "Describe anything that might prevent people from using the asset or participating in its running",
           "hint": "For example, membership costs or eligibility criteria"
         },
         {
           "name": "KuhSWw",
-          "options": {
-            "maxWords": "200"
-          },
+          "options": { "maxWords": "500" },
           "type": "MultilineTextField",
           "title": "Tell us how you'll make your project accessible and inclusive to everyone in the community",
-          "hint": "This includes considering disability access needs and making the space attractive to everyone"
+          "hint": "This includes considering people with protected characteristics, disability access needs, and making the space attractive to everyone"
         },
         {
           "name": "bkJsiO",
-          "options": {
-            "maxWords": "200"
-          },
+          "options": { "maxWords": "500" },
           "type": "MultilineTextField",
           "title": "Describe how the project will bring people together from all over the community"
         }
       ],
-      "next": [
-        {
-          "path": "/summary"
-        }
-      ]
+      "next": [{ "path": "/summary" }]
     },
     {
       "title": "Check your answers",
@@ -67,14 +62,10 @@
           "name": "dHyMmB",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>what might prevent people from using the asset</li>\n<li>how you will make your project accessible to everyone</li>\n<li>how the project will bring the community together</li>\n</ul>\n</div>"
+          "content": "<label class=\"govuk-!-font-weight-bold\">In this section, we'll ask about:\n</label>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>planned services or activities taking place at the asset</li>\n<li>what might prevent people from using the asset</li>\n<li>how you will make your project accessible to everyone</li>\n<li>how the project will bring the community together</li>\n</ul>\n</div>"
         }
       ],
-      "next": [
-        {
-          "path": "/management-case"
-        }
-      ],
+      "next": [{ "path": "/management-case" }],
       "controller": "./pages/start.js"
     }
   ],
@@ -84,22 +75,17 @@
   "fees": [],
   "outputs": [
     {
-      "name": "update-form",
-      "title": "Update form in application store",
-      "type": "savePerPage",
-      "outputConfiguration": {
-        "savePerPageUrl": "True"
+        "name": "update-form",
+        "title": "Update form in application store",
+        "type": "savePerPage",
+        "outputConfiguration": {
+          "savePerPageUrl": "True"
+        }
       }
-    }
   ],
   "version": 2,
   "skipSummary": false,
   "name": "Apply for funding to save a building in your community",
-  "feedback": {
-    "feedbackForm": false,
-    "url": ""
-  },
-  "phaseBanner": {
-    "phase": "beta"
-  }
+  "feedback": { "feedbackForm": false, "url": "" },
+  "phaseBanner": { "phase": "beta" }
 }
