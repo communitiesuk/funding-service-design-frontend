@@ -1,7 +1,6 @@
 {
   "metadata": {},
   "startPage": "/management-case-gJtyMO",
-  "backLinkText": "Go back to application overview",
   "pages": [
     {
       "title": "Management case",
@@ -17,14 +16,12 @@
           "name": "FIKWHB",
           "options": {},
           "type": "Details",
-          "content": "<div class=\"govuk-body\">\n<p class=\"govuk-caption-m\">This is analysis which tests the ability of your project to deliver its objectives.</p>\n<p class=\"govuk-caption-m\"> You should use your feasibility studies to:</p>\n\n<div>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m\">\n<li>test the context and resources within which the project is operating,  including market analysis and whether the financial, technical and  management capabilities are strong enough to deliver the range of  uses planned for the asset</li>\n<li>test the viability and sustainability of the project in the long term</li>\n<li>develop a strong business plan</li>\n</ul>\n</div>\n</div>",
+          "content": "<p class=\"govuk-body\">This is analysis which tests the ability of your project to deliver its objectives.</p>\n<p class=\"govuk-body\"> You should use your feasibility studies to:</p>\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-body\">\n<li>test the context and resources within which the project is operating,  including market analysis and whether the financial, technical and  management capabilities are strong enough to deliver the range of  uses planned for the asset</li>\n<li>test the viability and sustainability of the project in the long term</li>\n<li>develop a strong business plan</li>\n</ul>\n\n<p class=\"govuk-body\">You can use your business plan to provide evidence to support your answers.</p>\n",
           "title": "Help with feasibility"
         },
         {
           "name": "ieRCkI",
-          "options": {
-            "maxWords": "200"
-          },
+          "options": { "maxWords": "500" },
           "type": "MultilineTextField",
           "hint": "",
           "title": "Tell us about the feasibility studies you have carried out for your project"
@@ -36,11 +33,7 @@
           "title": "Do you need to do any further feasibility work?"
         }
       ],
-      "next": [
-        {
-          "path": "/summary"
-        }
-      ]
+      "next": [{ "path": "/summary" }]
     },
     {
       "title": "Check your answers",
@@ -63,14 +56,10 @@
           "name": "DojAvA",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>feasibility studies carried out</li>\n</ul>\n</div>"
+          "content": "<label class=\"govuk-!-font-weight-bold\">In this section, we'll ask about:\n</label>\n\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>feasibility studies carried out</li>\n</ul>\n"
         }
       ],
-      "next": [
-        {
-          "path": "/management-case"
-        }
-      ],
+      "next": [{ "path": "/management-case" }],
       "controller": "./pages/start.js"
     }
   ],
@@ -80,22 +69,17 @@
   "fees": [],
   "outputs": [
     {
-      "name": "update-form",
-      "title": "Update form in application store",
-      "type": "savePerPage",
-      "outputConfiguration": {
-        "savePerPageUrl": "True"
+        "name": "update-form",
+        "title": "Update form in application store",
+        "type": "savePerPage",
+        "outputConfiguration": {
+          "savePerPageUrl": "True"
+        }
       }
-    }
   ],
   "version": 2,
   "skipSummary": false,
   "name": "Apply for funding to save a building in your community",
-  "feedback": {
-    "feedbackForm": false,
-    "url": ""
-  },
-  "phaseBanner": {
-    "phase": "beta"
-  }
+  "feedback": { "feedbackForm": false, "url": "" },
+  "phaseBanner": { "phase": "beta" }
 }
