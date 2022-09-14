@@ -376,10 +376,10 @@
           "list": "bEHBZY"
         }
       ],
-      "next": [{ "path": "/check-your-answers" }]
+      "next": [{ "path": "/summary" }]
     },
     {
-      "path": "/check-your-answers",
+      "path": "/summary",
       "title": "Check your answers",
       "components": [],
       "next": [],

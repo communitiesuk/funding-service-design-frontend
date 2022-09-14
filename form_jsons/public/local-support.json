@@ -22,7 +22,7 @@
         }
       ],
       "next": [
-        { "path": "/check-your-answers" },
+        { "path": "/summary" },
         { "path": "/strategic-case-CVieGm", "condition": "xlCiWk" }
       ]
     },
@@ -51,11 +51,11 @@
           "hint": "It should be a single file no bigger than 5MB in any of the following formats:\n\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>jpg</li>\n<li>jpeg</li>\n<li>png</li>\n<li>pdf</li>\n<li>txt</li>\n<li>doc</li>\n<li>docx</li>\n<li>odt</li>\n<li>csv</li>\n<li>xls</li>\n<li>xlsx</li>\n<li>ods</li>\n</ul>\n"
         }
       ],
-      "next": [{ "path": "/check-your-answers" }]
+      "next": [{ "path": "/summary" }]
     },
     {
       "title": "Check your answers",
-      "path": "/check-your-answers",
+      "path": "/summary",
       "controller": "./pages/summary.js",
       "components": [],
       "next": []
