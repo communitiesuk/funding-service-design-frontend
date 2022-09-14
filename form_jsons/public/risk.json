@@ -1,7 +1,6 @@
 {
   "metadata": {},
   "startPage": "/management-case-fPzRPo",
-  "backLinkText": "Go back to application overview",
   "pages": [
     {
       "title": "Management case",
@@ -24,7 +23,7 @@
           "name": "ozgwXq",
           "options": {},
           "type": "FileUploadField",
-          "hint": "<div class=\"govuk-caption-m\">\n<p>Upload a document detailing any risks your project may face.</p>\n<p>You should include:</p>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m\">\n<li>a description of the risk</li>\n<li>the likelihood of it happening</li>\n<li>when it may occur</li>\n<li>how you intend to mitigate it</li>\n<li>the likelihood of it happening after mitigation</li>\n</ul>\n<p>Do not include any risks to the asset or why it may close, which we asked you about earlier in your application.</p>\n</div>\n<h2 class=\"govuk-heading-s\">Upload risk document</h2>",
+          "hint": "<div class=\"govuk-caption-m\">\n<p>It should be a single file no bigger than 5MB in any of the following formats:</p>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m\">\n<li>jpg</li>\n<li>jpeg</li>\n<li>png</li>\n<li>pdf</li>\n<li>txt</li>\n<li>doc</li>\n<li>docx</li>\n<li>odt</li>\n<li>csv</li>\n<li>xls</li>\n<li>xlsx</li>\n<li>ods</li>\n</ul> \n\n<p>Upload a document detailing any risks your project may face.</p>\n<label >You should include:</label>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>a description of the risk</li>\n<li>the likelihood of it happening</li>\n<li>when it may occur</li>\n<li>how you intend to mitigate it</li>\n<li>the likelihood of it happening after mitigation</li>\n</ul>\n\n<p>Do not include any risks to the asset or why it may close, which we asked you about earlier in your application.</p>\n</div>\n\n<h2 class=\"govuk-heading-s\">Upload risk document</h2>",
           "title": "Risks to your project (document upload)"
         }
       ],
@@ -51,7 +50,7 @@
           "name": "Fgwetg",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>risks to your project (document upload)</li>\n</ul>\n</div>"
+          "content": "<label class=\"govuk-!-font-weight-bold\">In this section, we'll ask about:\n</label>\n\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>risks to your project (document upload)</li>\n</ul>\n"
         }
       ],
       "next": [{ "path": "/management-case" }],
@@ -64,11 +63,11 @@
   "fees": [],
   "outputs": [
     {
-      "name": "update-form",
-      "title": "Update form in application store",
-      "type": "savePerPage",
-      "outputConfiguration": { "savePerPageUrl": "True" }
-    }
+        "name": "update-form",
+        "title": "Update form in application store",
+        "type": "savePerPage",
+        "outputConfiguration": { "savePerPageUrl": "True" }
+      }
   ],
   "version": 2,
   "skipSummary": false,
