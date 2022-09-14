@@ -115,10 +115,7 @@ class TestLiveServer:
         save a building in your community' message
         """
         res = urlopen(url_for("routes.index", _external=True))
-        assert (
-            b"Start or continue an application for funding"
-            in res.read()
-        )
+        assert b"Start or continue an application for funding" in res.read()
         assert res.code == 200
 
 
