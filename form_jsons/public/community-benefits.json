@@ -1,7 +1,6 @@
 {
   "metadata": {},
   "startPage": "/potential-to-deliver-community-benefits-rofqAG",
-  "backLinkText": "Go back to application overview",
   "pages": [
     {
       "title": "Potential to deliver community benefits",
@@ -23,35 +22,25 @@
         },
         {
           "name": "gDTsgG",
-          "options": {
-            "maxWords": "200"
-          },
+          "options": { "maxWords": "500" },
           "type": "MultilineTextField",
           "title": "Tell us about these benefits in detail, and explain how you'll measure the benefits it'll bring for the community"
         },
         {
           "name": "kYjJFy",
-          "options": {
-            "maxWords": "200"
-          },
+          "options": { "maxWords": "500" },
           "type": "MultilineTextField",
-          "title": "Explain how you'll deliver and sustain these benefits over time"
+          "title": "Explain how you plan to sustain, and potentially expand, these benefits over time"
         },
         {
           "name": "UbjYqE",
-          "options": {
-            "maxWords": "200"
-          },
+          "options": { "maxWords": "500" },
           "type": "MultilineTextField",
-          "title": "Explain how community ownership of the asset will be inclusive and benefit the wider community",
-          "hint": "For example, how you intend to reach different parts of your community"
+          "title": "Tell us how you'll make sure the whole community benefits from the asset",
+          "hint": "For example, people who have not used the asset in the past"
         }
       ],
-      "next": [
-        {
-          "path": "/summary"
-        }
-      ]
+      "next": [{ "path": "/summary" }]
     },
     {
       "title": "Check your answers",
@@ -74,14 +63,10 @@
           "name": "JHbfIz",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>community benefits project will deliver</li>\n<li>how you’ll measure benefits</li>\n<li>how benefits will be delivered and sustained</li>\n<li>how community ownership will be inclusive</li>\n</ul>\n</div>"
+          "content": "<label class=\"govuk-!-font-weight-bold\">In this section, we'll ask about:\n</label>\n\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>community benefits project will deliver</li>\n<li>how you’ll measure benefits</li>\n<li>how benefits will be delivered and sustained</li>\n<li>how community ownership will be inclusive</li>\n</ul>\n</div>"
         }
       ],
-      "next": [
-        {
-          "path": "/potential-to-deliver-community-benefits"
-        }
-      ],
+      "next": [{ "path": "/potential-to-deliver-community-benefits" }],
       "controller": "./pages/start.js"
     }
   ],
@@ -119,22 +104,17 @@
   "fees": [],
   "outputs": [
     {
-      "name": "update-form",
-      "title": "Update form in application store",
-      "type": "savePerPage",
-      "outputConfiguration": {
-        "savePerPageUrl": "True"
+        "name": "update-form",
+        "title": "Update form in application store",
+        "type": "savePerPage",
+        "outputConfiguration": {
+          "savePerPageUrl": "True"
+        }
       }
-    }
   ],
   "version": 2,
   "skipSummary": false,
   "name": "Apply for funding to save a building in your community",
-  "feedback": {
-    "feedbackForm": false,
-    "url": ""
-  },
-  "phaseBanner": {
-    "phase": "beta"
-  }
+  "feedback": { "feedbackForm": false, "url": "" },
+  "phaseBanner": { "phase": "beta" }
 }
