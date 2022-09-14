@@ -26,6 +26,7 @@ class ContactDetails:
 class SupportAvailability:
     time: str
     days: str
+    closed: str
 
     @classmethod
     def from_dict(cls, d: dict):
@@ -48,6 +49,7 @@ class Round:
     fund_id: str
     opens: str
     title: str
+    short_name: str
     contact_details: ContactDetails
     support_availability: SupportAvailability
 

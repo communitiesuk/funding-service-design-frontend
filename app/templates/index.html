@@ -7,9 +7,12 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <span class="govuk-caption-l">Community Ownership Fund round 2</span>
-            <h1 class="govuk-heading-xl">Start or continue an application for funding to save an asset in your
-                community</h1>
+            {% if round_title|length %}
+                <span class="govuk-caption-l">Community Ownership Fund {{ round_title }}</span>
+            {% else %}
+                <span class="govuk-caption-l">Community Ownership Fund</span>
+            {% endif %}
+            <h1 class="govuk-heading-xl">Start or continue an application for funding to save an asset in your community</h1>
             <p class="govuk-body">You must have received an invitation to apply. If we did not invite you, first <a
                     class="govuk-link"
                     href="https://www.gov.uk/guidance/community-ownership-fund-round-2-how-to-express-your-interest-in-applying">express
@@ -17,14 +20,18 @@
             <p class="govuk-body"><a class="govuk-link"
                                      href=https://www.gov.uk/government/publications/community-ownership-fund-prospectus">Read
                 the fund's prospectus</a> before you apply.</p>
-            <p class="govuk-body"><strong>Submission deadline:</strong> midday, {{ submission_deadline }}</p>
+            {% if submission_deadline|length %}
+                <p class="govuk-body"><strong>Submission deadline:</strong>{{ submission_deadline|datetime_format }}</p>
+            {% endif %}
             {{ govukButton({"isStartButton": True, "href" : service_url, "text": "Enter your email address"}) }}
-            <h2 class="govuk-heading-m">Get help</h2>
-            <p class="govuk-body">If you need help, email us at <a class="govuk-link"
+            {% if contact_us_email_address|length %}
+                <h2 class="govuk-heading-m">Get help</h2>
+                <p class="govuk-body">If you need help, email us at <a class="govuk-link"
                                                                    href="mailto:{{ contact_us_email_address }}">{{ contact_us_email_address }}</a>
-            </p>
-            <p class="govuk-body">Do not send any applications or attachments by email. We'll only accept applications
-                through this service.</p>
+                </p>
+                <p class="govuk-body">Do not send any applications or attachments by email. We'll only accept applications
+                    through this service.</p>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

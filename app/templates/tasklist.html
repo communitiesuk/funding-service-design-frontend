@@ -22,7 +22,7 @@
                 <div class="govuk-details__text">
                     <h2 class="govuk-heading govuk-heading-s">What we'll ask you for</h2>
                     <p class="govuk-body">
-                        You can preview the <a class="govuk-link" href="/cof-r2w2-all-questions">full list of application questions</a>.
+                        You can preview the <a class="govuk-link" href="/cof_r2w2_all_questions">full list of application questions</a>.
                     </p>
                     <p class="govuk-body">
                         We'll also ask you to upload a business plan to support the answers you've given us in the
@@ -89,7 +89,7 @@
                 </div>
             </details>
             <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Submission deadline: <span
-                    class="govuk-body"> midday, {{ submission_deadline }}</span></h2>
+                    class="govuk-body"> {{ submission_deadline|datetime_format }}</span></h2>
             {% if application["status"] == application_meta_data["completed_status"] %}
                 {{ tasklist_submit(application_id, application_meta_data, form, url_for('routes.submit_application')) }}
             {% elif not application["status"] == application_meta_data["submitted_status"] %}

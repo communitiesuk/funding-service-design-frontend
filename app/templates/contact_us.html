@@ -9,7 +9,17 @@
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-xl">Contact us</h1>
             <p class="govuk-body">Contact the Community Ownership Fund if you have any questions. </p>
-            {{ contact_details(contact_us_email_address, contact_us_phone, contact_us_text_phone, opening_days, opening_time, closed) }}
+            {% if round_data.contact_details["email_address"]|length %}
+                {{ contact_details(
+                        round_data.contact_details["email_address"],
+                        round_data.contact_details["phone"],
+                        round_data.contact_details["text_phone"],
+                        round_data.support_availability["days"],
+                        round_data.support_availability["time"],
+                        round_data.support_availability["closed"]
+                    )
+                }}
+            {%  endif %}
         </div>
     </div>
 {% endblock %}

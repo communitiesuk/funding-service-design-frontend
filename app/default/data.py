@@ -28,9 +28,7 @@ def get_data(endpoint: str):
     else:
         data = get_remote_data(endpoint)
     if data is None:
-        current_app.logger.error(
-            f"Data request failed, unable to recover: {endpoint}"
-        )
+        current_app.logger.error(f"Data request failed, unable to recover: {endpoint}")
         return abort(500)
     return data
 
@@ -103,3 +101,15 @@ def get_round_data(fund_id, round_id, as_dict=False):
         return Round.from_dict(round_response)
     else:
         return round_response
+
+
+def get_round_data_fail_gracefully(fund_id, round_id):
+    try:
+        round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(fund_id=fund_id, round_id=round_id)
+        round_response = get_data(round_request_url)
+        current_app.logger.error(f"{ round_response }")
+        return Round.from_dict(round_response)
+    except:
+        current_app.logger.error(f"Call to Fund Store failed GET { round_request_url }")
+        # return valid Round object with no values so we know we've failed and can handle in templates appropriately
+        return Round("", [], "", "", "", "", "", "", {}, {})

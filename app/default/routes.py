@@ -2,7 +2,7 @@ from datetime import datetime
 
 import requests
 from app.application_status import ApplicationStatus
-from app.default.data import get_application_data, get_round_data
+from app.default.data import get_application_data, get_round_data_fail_gracefully, get_round_data
 from app.default.data import get_applications_for_account
 from app.default.data import get_fund_data
 from app.models.application_summary import ApplicationSummary
@@ -25,13 +25,22 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 @default_bp.route("/")
 def index():
     current_app.logger.info("Service landing page loaded.")
-    round_data = get_round_data(Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, as_dict=True)
-    submission_deadline = datetime.strptime(round_data.deadline, "%Y-%m-%d %X").strftime("%d %B %Y")
+    try:
+        round_data = get_round_data(Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, as_dict=True)
+        submission_deadline = round_data.deadline
+        contact_us_email_address = round_data.contact_details["email_address"]
+        round_title = round_data.title
+    except:
+        round_title = ""
+        submission_deadline = ""
+        contact_us_email_address = ""
+
     return render_template(
         "index.html",
         service_url=Config.ENTER_APPLICATION_URL,
+        round_title=round_title,
         submission_deadline=submission_deadline,
-        contact_us_email_address=round_data.contact_details["email_address"]
+        contact_us_email_address=contact_us_email_address
     )
 
 
@@ -41,28 +50,18 @@ def accessibility_statement():
     return render_template("accessibility_statement.html")
 
 
-@default_bp.route("/cof-r2w2-all-questions", methods=["GET"])
+@default_bp.route("/cof_r2w2_all_questions", methods=["GET"])
 def all_questions():
     current_app.logger.info("All questions page loaded.")
-    round_data = get_round_data(Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, as_dict=True)
-    return render_template(
-        "cof-r2w2-all-questions.html",
-        round_title=round_data.title,)
+    round_data = get_round_data_fail_gracefully(Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID)
+    return render_template("cof_r2w2_all_questions.html", round_data=round_data)
 
 
 @default_bp.route("/contact_us", methods=["GET"])
 def contact_us():
     current_app.logger.info("Contact us page loaded.")
-    round_data = get_round_data(Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, as_dict=True)
-    return render_template(
-        "contact_us.html",
-        contact_us_phone=round_data.contact_details["phone"],
-        contact_us_email_address=round_data.contact_details["email_address"],
-        contact_us_text_phone=round_data.contact_details["text_phone"],
-        opening_time=round_data.support_availability["time"],
-        opening_days=round_data.support_availability["days"],
-        closed=round_data.support_availability["closed"]
-    )
+    round_data = get_round_data_fail_gracefully(Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID)
+    return render_template("contact_us.html", round_data=round_data)
 
 
 @default_bp.route("/cookie_policy", methods=["GET"])
@@ -146,8 +145,7 @@ def tasklist(application_id, account_id):
 
     application = get_application_data(application_id, as_dict=True)
     fund = get_fund_data(application.fund_id, as_dict=True)
-    round_data = get_round_data(Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, as_dict=True)
-    submission_deadline = datetime.strptime(round_data.deadline, "%Y-%m-%d %X").strftime("%d %B %Y")
+    round_data = get_round_data(Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, True)
     application.create_sections(application)
 
     form = FlaskForm()
@@ -171,13 +169,15 @@ def tasklist(application_id, account_id):
         ),
     }
 
+    current_app.logger.error(round_data.deadline)
+
     return render_template(
         "tasklist.html",
         application=application,
         application_meta_data=application_meta_data,
         form=form,
         contact_us_email_address=round_data.contact_details["email_address"],
-        submission_deadline=submission_deadline
+        submission_deadline=round_data.deadline
     )
 
 
@@ -246,29 +246,13 @@ def submit_application():
 
 @default_bp.errorhandler(404)
 def not_found(error):
-    current_app.logger.error(f"Encountered 404: {error}")
-    round_data = get_round_data(Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, as_dict=True)
-    return render_template(
-        "404.html",
-        contact_us_phone=round_data.contact_details["phone"],
-        contact_us_email_address=round_data.contact_details["email_address"],
-        contact_us_text_phone=round_data.contact_details["text_phone"],
-        opening_time=round_data.support_availability["time"],
-        opening_days=round_data.support_availability["days"],
-        closed=round_data.support_availability["closed"]
-    ), 404
+    current_app.logger.warning(f"Encountered 404: {error}")
+    round_data = get_round_data_fail_gracefully(Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID)
+    return render_template("404.html", round_data=round_data), 404
 
 
 @default_bp.errorhandler(500)
 def internal_server_error(error):
     current_app.logger.error(f"Encountered 500: {error}")
-    round_data = get_round_data(Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, as_dict=True)
-    return render_template(
-        "500.html",
-        contact_us_phone=round_data.contact_details["phone"],
-        contact_us_email_address=round_data.contact_details["email_address"],
-        contact_us_text_phone=round_data.contact_details["text_phone"],
-        opening_time=round_data.support_availability["time"],
-        opening_days=round_data.support_availability["days"],
-        closed=round_data.support_availability["closed"]
-    ), 500
+    return render_template("500.html"), 500
+
