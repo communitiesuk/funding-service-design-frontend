@@ -13,9 +13,9 @@
     {% for application in applications %}
         {% set status_class %}
             {%  if application.status == 'COMPLETED' %}
-                govuk-tag--green
+                complete-tag
             {%  elif application.status == 'NOT_STARTED' %}
-                govuk-tag--red
+                not-started-tag
             {% endif %}
         {% endset %}
 

@@ -174,8 +174,6 @@ def tasklist(application_id, account_id):
         ),
     }
 
-    current_app.logger.error(round_data.deadline)
-
     return render_template(
         "tasklist.html",
         application=application,

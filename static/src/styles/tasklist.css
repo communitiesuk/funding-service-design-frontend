@@ -139,3 +139,34 @@
     font-weight: 400;
     font-size: 16px;
   }
+
+.incomplete-tag-new, .in-progress-tag-new {
+    color: #0c2d4a !important;
+    background-color: #c7dbed !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    line-height: 1.1 !important;
+    font-weight: 400 !important;
+    padding: 2.5px !important;
+    text-transform: capitalize !important;
+}
+
+.not-started-tag {
+    color: #282d30 !important;
+    background-color: #e5e6e7 !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    line-height: 1.1 !important;
+    font-weight: 400 !important;
+    padding: 2.5px !important;
+    text-transform: capitalize !important;
+}
+
+.complete-tag {
+    background-color: white !important;
+    line-height: 1.1 !important;
+    font-weight: 400 !important;
+    padding: 2.5px !important;
+    color: #0b0c0c !important;
+    text-transform: capitalize !important;
+}
