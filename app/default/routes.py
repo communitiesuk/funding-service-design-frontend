@@ -3,6 +3,8 @@ from app.application_status import ApplicationStatus
 from app.default.data import get_application_data
 from app.default.data import get_applications_for_account
 from app.default.data import get_fund_data
+from app.default.data import get_round_data
+from app.default.data import get_round_data_fail_gracefully
 from app.models.application_summary import ApplicationSummary
 from app.models.helpers import format_rehydrate_payload
 from app.models.helpers import get_token_to_return_to_application
@@ -24,15 +26,46 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 @default_bp.route("/")
 def index():
     current_app.logger.info("Service landing page loaded.")
+    try:
+        round_data = get_round_data(
+            Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, as_dict=True
+        )
+        submission_deadline = round_data.deadline
+        contact_us_email_address = round_data.contact_details["email_address"]
+        round_title = round_data.title
+    except:  # noqa
+        round_title = ""
+        submission_deadline = ""
+        contact_us_email_address = ""
+
     return render_template(
-        "index.html", service_url=Config.ENTER_APPLICATION_URL
+        "index.html",
+        service_url=Config.ENTER_APPLICATION_URL,
+        round_title=round_title,
+        submission_deadline=submission_deadline,
+        contact_us_email_address=contact_us_email_address,
     )
 
 
 @default_bp.route("/accessibility_statement", methods=["GET"])
 def accessibility_statement():
     current_app.logger.info("Accessibility statement page loaded.")
-    return render_template("accessibility-statement.html")
+    return render_template("accessibility_statement.html")
+
+
+@default_bp.route("/cof_r2w2_all_questions", methods=["GET"])
+def all_questions():
+    current_app.logger.info("All questions page loaded.")
+    return render_template("cof_r2w2_all_questions.html")
+
+
+@default_bp.route("/contact_us", methods=["GET"])
+def contact_us():
+    current_app.logger.info("Contact us page loaded.")
+    round_data = get_round_data_fail_gracefully(
+        Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID
+    )
+    return render_template("contact_us.html", round_data=round_data)
 
 
 @default_bp.route("/cookie_policy", methods=["GET"])
@@ -117,12 +150,16 @@ def tasklist(application_id):
 
     application = get_application_data(application_id, as_dict=True)
     fund = get_fund_data(application.fund_id, as_dict=True)
+    round_data = get_round_data(
+        Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, True
+    )
     application.create_sections(application)
 
     form = FlaskForm()
     application_meta_data = {
         "application_id": application_id,
         "fund_name": fund.name,
+        "round_name": round_data.title,
         "not_started_status": ApplicationStatus.NOT_STARTED.name,
         "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
         "completed_status": ApplicationStatus.COMPLETED.name,
@@ -138,11 +175,14 @@ def tasklist(application_id):
             )
         ),
     }
+
     return render_template(
         "tasklist.html",
         application=application,
         application_meta_data=application_meta_data,
         form=form,
+        contact_us_email_address=round_data.contact_details["email_address"],
+        submission_deadline=round_data.deadline,
     )
 
 
@@ -211,9 +251,14 @@ def submit_application():
 
 @default_bp.errorhandler(404)
 def not_found(error):
-    return render_template("404.html"), 404
+    current_app.logger.warning(f"Encountered 404: {error}")
+    round_data = get_round_data_fail_gracefully(
+        Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID
+    )
+    return render_template("404.html", round_data=round_data), 404
 
 
 @default_bp.errorhandler(500)
 def internal_server_error(error):
+    current_app.logger.error(f"Encountered 500: {error}")
     return render_template("500.html"), 500

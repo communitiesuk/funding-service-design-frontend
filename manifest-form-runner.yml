@@ -13,6 +13,10 @@ applications:
     SERVICE_START_PAGE: https://frontend.dev.gids.dev/account
     JWT_REDIRECT_TO_AUTHENTICATION_URL: https://authenticator2.dev.gids.dev/sessions/sign-out
     LOGOUT_URL: https://authenticator2.dev.gids.dev/sessions/sign-out
+    BASIC_AUTH_ON: true
+    CONTACT_US_URL: https://frontend.dev.gids.dev/contact_us
+    COOKIE_POLICY_URL: https://frontend.dev.gids.dev/cookie_policy
+    ACCESSIBILITY_STATEMENT_URL: https://frontend.dev.gids.dev/accessibility_statement
   services:
     - form-uploads-dev
     - logit-ssl-drain
@@ -32,6 +36,10 @@ applications:
     SERVICE_START_PAGE: https://frontend.test.gids.dev/account
     JWT_REDIRECT_TO_AUTHENTICATION_URL: https://authenticator2.test.gids.dev/sessions/sign-out
     LOGOUT_URL: https://authenticator2.test.gids.dev/sessions/sign-out
+    BASIC_AUTH_ON: true
+    CONTACT_US_URL: https://frontend.test.gids.dev/contact_us
+    COOKIE_POLICY_URL: https://frontend.test.gids.dev/cookie_policy
+    ACCESSIBILITY_STATEMENT_URL: https://frontend.test.gids.dev/accessibility_statement
   services:
     - form-uploads-test
     - logit-ssl-drain

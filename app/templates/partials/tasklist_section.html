@@ -9,7 +9,7 @@
 
     <ul class="app-task-list__items">
       {% for form_name, form_data in forms_within_section.items() %}
-      <li class="app-task-list__item">
+      <li class="app-task-list__item task-list__new-design">
         <span class="app-task-list__task-name">
           <a class="govuk-body govuk-link govuk-link--no-visited-state" href="{{url_for("routes.continue_application", application_id=application_meta_data["application_id"], form_name=form_name)}}">
             {{form_name|kebab_case_to_human}}
@@ -18,13 +18,13 @@
 
         <span class="app-task-list__tag" id="read-declaration-status">
         {% if form_data["status"] == application_meta_data["not_started_status"] %}
-        <strong class="govuk-tag govuk-tag--grey">
+        <strong class="govuk-tag not-started-tag">
         {% elif form_data["status"] == application_meta_data["in_progress_status"] %}
-        <strong class="govuk-tag govuk-tag--blue">
+        <strong class="govuk-tag in-progress-tag-new">
         {% elif form_data["status"] == application_meta_data["completed_status"] %}
-        <strong class="govuk-tag govuk-tag--green">
+        <strong class="govuk-tag complete-tag">
         {% endif %}
-        {{ form_data["status"]|snake_case_to_human}}
+        {{ form_data["status"]|snake_case_to_human|lower}}
         </strong>
         </span>
       </li>
