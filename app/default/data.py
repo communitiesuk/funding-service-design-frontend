@@ -111,7 +111,6 @@ def get_round_data_fail_gracefully(fund_id, round_id):
             fund_id=fund_id, round_id=round_id
         )
         round_response = get_data(round_request_url)
-        current_app.logger.error(f"{ round_response }")
         return Round.from_dict(round_response)
     except:  # noqa
         current_app.logger.error(
