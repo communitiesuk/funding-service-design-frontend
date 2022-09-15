@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
-{% from "partials/contact_details.html" import contact_details %}
-
 {% block pageTitle %}Sorry, there is a problem with the service – {{ service_title }}{% endblock %}
 
 {% block content %}
@@ -9,7 +7,7 @@
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-xl">Sorry, there is a problem with the service</h1>
             <p class="govuk-body">Try again later.</p>
-            <p class="govuk-body"><a class="govuk-link" href="{{ contact_us_url }}">Contact the Community Ownership Fund</a> if you have any questions.</p>
+            <p class="govuk-body"><a class="govuk-link" href="/contact_us">Contact the Community Ownership Fund</a> if you have any questions.</p>
         </div>
     </div>
 {% endblock %}
