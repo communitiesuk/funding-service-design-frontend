@@ -72,7 +72,7 @@
   ],
   "version": 2,
   "skipSummary": false,
-  "name": "Apply for funding to save a building in your community",
+  "name": "Apply for funding to save an asset in your community",
   "feedback": { "feedbackForm": false, "url": "" },
   "phaseBanner": { "phase": "beta" }
 }
