@@ -13,9 +13,9 @@
     {% for application in applications %}
         {% set status_class %}
             {%  if application.status == 'COMPLETED' %}
-                govuk-tag--green
+                complete-tag
             {%  elif application.status == 'NOT_STARTED' %}
-                govuk-tag--red
+                not-started-tag
             {% endif %}
         {% endset %}
 
@@ -36,10 +36,10 @@
     })
     },
     {
-    'text': application.started_at|datetime_format
+    'text': application.started_at|date_format_short_month
     },
     {
-    'text': application.last_edited|datetime_format if application.last_edited
+    'html': application.last_edited|datetime_format_short_month if application.last_edited
     },
     {
     'html': application_link
@@ -65,7 +65,7 @@
     'text': 'Last edited'
     },
     {
-    'text': ''
+    'text': 'Action'
     }
     ],
     'rows': ns.rows

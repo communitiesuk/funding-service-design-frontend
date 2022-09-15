@@ -107,7 +107,7 @@ class TestLiveServer:
         res = urlopen(url_for("routes.index", _external=True))
         assert res.code == 200
 
-    def test_hello_world_message(self):
+    def test_start_page_message_correct(self):
         """
         GIVEN Our Flask Application is running
         WHEN the '/' page (index) is requested (GET)
@@ -115,10 +115,7 @@ class TestLiveServer:
         save a building in your community' message
         """
         res = urlopen(url_for("routes.index", _external=True))
-        assert (
-            b"Apply for funding to save a building in your community"
-            in res.read()
-        )
+        assert b"Start or continue an application for funding" in res.read()
         assert res.code == 200
 
 
