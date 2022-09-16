@@ -241,7 +241,7 @@
           "options": {},
           "type": "CheckboxesField",
           "title": "When you buy or lease a publicly owned asset, the public authority cannot transfer statutory services or duties to the community group.",
-          "hint": "This includes things like social care, waste collection and planning services\n<p>We do not define individual libraries as statutory services for this purpose.</p>\n",
+          "hint": "This includes things like social care, waste collection and planning services.\n<p>We do not define individual libraries as statutory services for this purpose.</p>\n",
           "list": "YlLedV"
         },
         {

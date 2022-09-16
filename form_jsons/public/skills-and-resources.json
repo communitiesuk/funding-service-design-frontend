@@ -1,7 +1,6 @@
 {
   "metadata": {},
   "startPage": "/management-case-yIfLRl",
-  "backLinkText": "Go back to application overview",
   "pages": [
     {
       "title": "Management case",
@@ -18,7 +17,7 @@
           "options": {},
           "type": "Details",
           "title": "Help with skills and resources",
-          "content": "<p>We will be assessing how you have considered the management requirements of your project.</p>\n<p>This includes the steps you are taking to make sure your organisation has the right capacity and resources to run the asset sustainably.</p>\n<p>You need to demonstrate you have considered succession planning for your organisation’s staff and trustees.</p>\n<p>If you are planning to recruit staff to manage and run the asset and its services, please provide an overview of these plans.</p>\n\n<p>You can use your business plan to provide information that supports your answers.</p>"
+          "content": "<p>We will be assessing how you have considered the management requirements of your project.</p>\n<p>This includes the steps you are taking to make sure your organisation has the right capacity and resources to run the asset sustainably.</p>\n<p>You need to demonstrate you have considered succession planning for your organisation’s staff and trustees.</p>\n<p>If you're planning to recruit staff to manage and run the asset and its services, please provide an overview of these plans.</p>\n\n<p>You can use your business plan to provide information that supports your answers.</p>"
         },
         {
           "name": "CBIWnt",
@@ -46,7 +45,7 @@
           "name": "uMhZAI",
           "options": {},
           "type": "Details",
-          "content": "<p>We will be assessing how you have considered the management requirements of your project.</p>\n<p>This includes the steps you are taking to make sure your organisation has the right capacity and resources to run the asset sustainably.</p>\n<p>You need to demonstrate you have considered succession planning for your organisation’s staff and trustees.</p>\n<p>If you are planning to recruit staff to manage and run the asset and its services, please provide an overview of these plans.</p>\n<p>You can use your business plan to provide information that supports your answers.</p>",
+          "content": "<p>We will be assessing how you have considered the management requirements of your project.</p>\n<p>This includes the steps you are taking to make sure your organisation has the right capacity and resources to run the asset sustainably.</p>\n<p>You need to demonstrate you have considered succession planning for your organisation’s staff and trustees.</p>\n<p>If you're planning to recruit staff to manage and run the asset and its services, please provide an overview of these plans.</p>\n<p>You can use your business plan to provide information that supports your answers.</p>",
           "title": "Help with skills and resources"
         },
         {
@@ -83,7 +82,7 @@
           "options": {},
           "type": "Details",
           "title": "Help with skills and resources",
-          "content": "<p>We will be assessing how you have considered the management requirements of your project.</p>\n<p>This includes the steps you are taking to make sure your organisation has the right capacity and resources to run the asset sustainably.</p>\n<p>You need to demonstrate you have considered succession planning for your organisation’s staff and trustees.</p>\n<p>If you are planning to recruit staff to manage and run the asset and its services, please provide an overview of these plans.</p>\n\n<p>You can use your business plan to provide information that supports your answers.</p>"
+          "content": "<p>We will be assessing how you have considered the management requirements of your project.</p>\n<p>This includes the steps you are taking to make sure your organisation has the right capacity and resources to run the asset sustainably.</p>\n<p>You need to demonstrate you have considered succession planning for your organisation’s staff and trustees.</p>\n<p>If you're planning to recruit staff to manage and run the asset and its services, please provide an overview of these plans.</p>\n\n<p>You can use your business plan to provide information that supports your answers.</p>"
         },
         {
           "name": "QWveYc",
@@ -108,7 +107,7 @@
           "name": "mxgewf",
           "options": {},
           "type": "Details",
-          "content": "<p>We will be assessing how you have considered the management requirements of your project.</p>\n<p>This includes the steps you are taking to make sure your organisation has the right capacity and resources to run the asset sustainably.</p>\n<p>You need to demonstrate you have considered succession planning for your organisation’s staff and trustees.</p>\n<p>If you are planning to recruit staff to manage and run the asset and its services, please provide an overview of these plans.</p>\n\n<p>You can use your business plan to provide information that supports your answers.</p>",
+          "content": "<p>We will be assessing how you have considered the management requirements of your project.</p>\n<p>This includes the steps you are taking to make sure your organisation has the right capacity and resources to run the asset sustainably.</p>\n<p>You need to demonstrate you have considered succession planning for your organisation’s staff and trustees.</p>\n<p>If you're planning to recruit staff to manage and run the asset and its services, please provide an overview of these plans.</p>\n\n<p>You can use your business plan to provide information that supports your answers.</p>",
           "title": "Help with skills and resources"
         },
         {
@@ -193,7 +192,7 @@
   ],
   "version": 2,
   "skipSummary": false,
-  "name": "Apply for funding to save an asset in your community",
+  "name": "Apply for funding to save a building in your community",
   "feedback": { "feedbackForm": false, "url": "" },
   "phaseBanner": { "phase": "beta" }
 }
