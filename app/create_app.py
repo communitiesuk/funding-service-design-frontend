@@ -1,4 +1,6 @@
+from app.filters import date_format_short_month
 from app.filters import datetime_format
+from app.filters import datetime_format_short_month
 from app.filters import kebab_case_to_human
 from app.filters import snake_case_to_human
 from config import Config
@@ -51,6 +53,12 @@ def create_app() -> Flask:
     flask_app.register_error_handler(404, not_found)
     flask_app.register_error_handler(500, internal_server_error)
     flask_app.register_blueprint(default_bp)
+    flask_app.jinja_env.filters[
+        "datetime_format_short_month"
+    ] = datetime_format_short_month
+    flask_app.jinja_env.filters[
+        "date_format_short_month"
+    ] = date_format_short_month
     flask_app.jinja_env.filters["datetime_format"] = datetime_format
     flask_app.jinja_env.filters["snake_case_to_human"] = snake_case_to_human
     flask_app.jinja_env.filters["kebab_case_to_human"] = kebab_case_to_human
@@ -60,13 +68,13 @@ def create_app() -> Flask:
         return dict(
             stage="beta",
             service_title=(
-                "Apply for funding to save a building in your community"
+                "Apply for funding to save an asset in your community"
             ),
             service_meta_description=(
-                "Apply for funding to save a building in your community"
+                "Apply for funding to save an asset in your community"
             ),
             service_meta_keywords=(
-                "Apply for funding to save a building in your community"
+                "Apply for funding to save an asset in your community"
             ),
             service_meta_author=(
                 "Department for Levelling up Housing and Communities"

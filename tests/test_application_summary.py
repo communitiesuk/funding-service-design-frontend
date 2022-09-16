@@ -37,7 +37,6 @@ def test_dashboard_route(flask_test_client, mocker, monkeypatch):
     assert response.status_code == 200
     assert b"In Progress" in response.data
     assert b"Continue application" in response.data
-    assert b"20/05/22" in response.data
 
 
 def test_submitted_dashboard_route_shows_no_application_link(
