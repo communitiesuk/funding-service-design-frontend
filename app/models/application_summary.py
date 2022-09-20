@@ -9,6 +9,7 @@ from pytz import timezone
 @dataclass
 class ApplicationSummary:
     id: str
+    reference: str
     status: str
     round_id: str
     fund_id: str
