@@ -14,6 +14,7 @@ class DefaultConfig:
     FLASK_ENV = environ.get("FLASK_ENV", "development")
     SECRET_KEY = environ.get("SECRET_KEY", "dev")
     SESSION_COOKIE_NAME = environ.get("SESSION_COOKIE_NAME", "session_cookie")
+
     STATIC_FOLDER = "static"
     TEMPLATES_FOLDER = "templates"
     LOCAL_SERVICE_NAME = "local_flask"
@@ -93,7 +94,7 @@ class DefaultConfig:
 
     # Talisman Config
     FSD_REFERRER_POLICY = "strict-origin-when-cross-origin"
-    FSD_SESSION_COOKIE_SAMESITE = "Lax"
+    FSD_SESSION_COOKIE_SAMESITE = "Strict"
     FSD_PERMISSIONS_POLICY = {"interest-cohort": "()"}
     FSD_DOCUMENT_POLICY = {}
     FSD_FEATURE_POLICY = {
