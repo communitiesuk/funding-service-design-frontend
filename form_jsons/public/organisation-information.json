@@ -390,13 +390,6 @@
             "schema": {}
           },
           {
-            "name": "KfXhvS",
-            "options": { "required": false },
-            "type": "TextField",
-            "title": "County",
-            "schema": {}
-          },
-          {
             "name": "zsoLdf",
             "options": {},
             "type": "YesNoField",
@@ -458,13 +451,6 @@
             "type": "UkAddressField",
             "title": "Correspondence address",
             "schema": {}
-          },
-          {
-            "name": "XNgtoe",
-            "options": { "required": false },
-            "type": "TextField",
-            "title": "County",
-            "schema": {}
           }
         ],
         "next": [{ "path": "/about-your-organisation-nqCpAH" }]
@@ -517,13 +503,6 @@
             "options": {},
             "type": "UkAddressField",
             "title": "Partner organisation address",
-            "schema": {}
-          },
-          {
-            "name": "feueTa",
-            "options": { "required": false },
-            "type": "TextField",
-            "title": "County",
             "schema": {}
           },
           {

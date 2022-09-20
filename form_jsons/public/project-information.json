@@ -126,12 +126,6 @@
           "title": "Address of the community asset"
         },
         {
-          "name": "mDcTOs",
-          "options": { "required": false },
-          "type": "TextField",
-          "title": "County"
-        },
-        {
           "name": "iTeLGU",
           "options": { "classes": "govuk-!-width-full" },
           "type": "TextField",
