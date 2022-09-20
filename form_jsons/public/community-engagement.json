@@ -15,9 +15,7 @@
         },
         {
           "name": "HJBgvw",
-          "options": {
-            "maxWords": "200"
-          },
+          "options": { "maxWords": "500" },
           "type": "MultilineTextField",
           "title": "Tell us how you have engaged with the community about your intention to take ownership of the asset, and explain how this has shaped your project plans"
         },
@@ -29,13 +27,8 @@
         }
       ],
       "next": [
-        {
-          "path": "/strategic-case-hNBbMM"
-        },
-        {
-          "path": "/strategic-case-ouLnrn",
-          "condition": "rJjpuB"
-        }
+        { "path": "/strategic-case-hNBbMM" },
+        { "path": "/strategic-case-ouLnrn", "condition": "rJjpuB" }
       ]
     },
     {
@@ -50,18 +43,12 @@
         },
         {
           "name": "NZKHOp",
-          "options": {
-            "maxWords": "200"
-          },
+          "options": { "maxWords": "500" },
           "type": "MultilineTextField",
           "title": "Tell us how your project supports any wider local plans"
         }
       ],
-      "next": [
-        {
-          "path": "/summary"
-        }
-      ]
+      "next": [{ "path": "/summary" }]
     },
     {
       "title": "Check your answers",
@@ -82,18 +69,12 @@
         },
         {
           "name": "dpLyQh",
-          "options": {
-            "maxWords": "200"
-          },
+          "options": { "maxWords": "500" },
           "type": "MultilineTextField",
           "title": "Describe your fundraising activities"
         }
       ],
-      "next": [
-        {
-          "path": "/strategic-case-hNBbMM"
-        }
-      ]
+      "next": [{ "path": "/strategic-case-hNBbMM" }]
     },
     {
       "path": "/strategic-case-cpcjGC",
@@ -112,11 +93,7 @@
           "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>who you have engaged with in the community</li>\n<li>fundraising activities (if applicable)</li>\n<li>how your project supports wider plans</li>\n</ul>\n</div>"
         }
       ],
-      "next": [
-        {
-          "path": "/strategic-case"
-        }
-      ],
+      "next": [{ "path": "/strategic-case" }],
       "controller": "./pages/start.js"
     }
   ],
@@ -136,11 +113,7 @@
               "display": "Have you done any fundraising in the community?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "true",
-              "display": "true"
-            }
+            "value": { "type": "Value", "value": "true", "display": "true" }
           }
         ]
       }
@@ -149,22 +122,18 @@
   "fees": [],
   "outputs": [
     {
-      "name": "update-form",
-      "title": "Update form in application store",
-      "type": "savePerPage",
-      "outputConfiguration": {
-        "savePerPageUrl": "True"
+        "name": "update-form",
+        "title": "Update form in application store",
+        "type": "savePerPage",
+        "outputConfiguration": {
+          "savePerPageUrl": "True"
+        }
       }
-    }
   ],
   "version": 2,
   "skipSummary": false,
   "name": "Apply for funding to save an asset in your community",
-  "feedback": {
-    "feedbackForm": false,
-    "url": ""
-  },
-  "phaseBanner": {
-    "phase": "beta"
-  }
+  "feedback": { "feedbackForm": false, "url": "" },
+  "phaseBanner": { "phase": "beta" }
+
 }
