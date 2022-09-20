@@ -12,10 +12,14 @@
     {% set ns = namespace(rows = []) %}
     {% for application in applications %}
         {% set status_class %}
-            {%  if application.status == 'COMPLETED' %}
+            {%  if application.status == 'SUBMITTED' %}
                 complete-tag
             {%  elif application.status == 'NOT_STARTED' %}
                 not-started-tag
+            {%  elif application.status == 'IN_PROGRESS' %}
+                in-progress-tag-new
+            {%  elif application.status == 'READY_TO_SUBMIT' %}
+                in-progress-tag-new
             {% endif %}
         {% endset %}
 
