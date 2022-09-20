@@ -14,6 +14,7 @@ class DefaultConfig:
     FLASK_ENV = environ.get("FLASK_ENV", "development")
     SECRET_KEY = environ.get("SECRET_KEY", "dev")
     SESSION_COOKIE_NAME = environ.get("SESSION_COOKIE_NAME", "session_cookie")
+    SESSION_COOKIE_SECURE = True
 
     STATIC_FOLDER = "static"
     TEMPLATES_FOLDER = "templates"
