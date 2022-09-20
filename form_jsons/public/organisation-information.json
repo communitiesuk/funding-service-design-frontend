@@ -722,24 +722,6 @@
         }
       },
       {
-        "displayName": "Charitable incorporated organisation (CIO)",
-        "name": "brhHMw",
-        "value": {
-          "name": "Charitable incorporated organisation (CIO)",
-          "conditions": [
-            {
-              "field": {
-                "name": "lajFtB",
-                "type": "RadiosField",
-                "display": "Type of organisation"
-              },
-              "operator": "is",
-              "value": { "type": "Value", "value": "CIO", "display": "CIO" }
-            }
-          ]
-        }
-      },
-      {
         "displayName": "Is your organisation a trading subsidiary of a parent company-yes",
         "name": "UlBxQv",
         "value": {
@@ -843,60 +825,6 @@
               },
               "operator": "is",
               "value": { "type": "Value", "value": "false", "display": "false" }
-            }
-          ]
-        }
-      },
-      {
-        "displayName": "Co-operative, such as a community benefit society",
-        "name": "MomaFn",
-        "value": {
-          "name": "Co-operative, such as a community benefit society",
-          "conditions": [
-            {
-              "field": {
-                "name": "lajFtB",
-                "type": "RadiosField",
-                "display": "Type of organisation"
-              },
-              "operator": "is",
-              "value": { "type": "Value", "value": "COOP", "display": "COOP" }
-            }
-          ]
-        }
-      },
-      {
-        "displayName": "Community interest company (CIC)",
-        "name": "Rijpvo",
-        "value": {
-          "name": "Community interest company (CIC)",
-          "conditions": [
-            {
-              "field": {
-                "name": "lajFtB",
-                "type": "RadiosField",
-                "display": "Type of organisation"
-              },
-              "operator": "is",
-              "value": { "type": "Value", "value": "CIC", "display": "CIC" }
-            }
-          ]
-        }
-      },
-      {
-        "displayName": "Scottish charitable incorporated organisation (SCIO)",
-        "name": "CFQZBS",
-        "value": {
-          "name": "Scottish charitable incorporated organisation (SCIO)",
-          "conditions": [
-            {
-              "field": {
-                "name": "lajFtB",
-                "type": "RadiosField",
-                "display": "Type of organisation"
-              },
-              "operator": "is",
-              "value": { "type": "Value", "value": "SCIO", "display": "SCIO" }
             }
           ]
         }
