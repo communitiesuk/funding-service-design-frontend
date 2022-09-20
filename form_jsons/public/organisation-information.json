@@ -595,19 +595,28 @@
         "items": [
           {
             "text": "Charitable incorporated organisation (CIO)",
-            "value": "CHN"
+            "value": "CIO"
           },
           {
             "text": "Co-operative, such as a community benefit society",
-            "value": "RGN"
+            "value": "COOP"
           },
-          { "text": "Community interest company (CIC)", "value": "RGN" },
-          { "text": "Company limited by guarantee", "value": "RGN" },
+          {
+            "text": "Community interest company (CIC)",
+            "value": "CIC"
+          },
+          {
+            "text": "Company limited by guarantee",
+            "value": "CLG"
+          },
           {
             "text": "Scottish charitable incorporated organisation (SCIO)",
-            "value": "CHN"
+            "value": "SCIO"
           },
-          { "text": "Other", "value": "Other" }
+          {
+            "text": "Other",
+            "value": "Other"
+          }
         ]
       },
       {
@@ -905,7 +914,37 @@
                 "display": "Type of organisation"
               },
               "operator": "is",
-              "value": { "type": "Value", "value": "RGN", "display": "RGN" }
+              "value": {
+                "type": "Value",
+                "value": "COOP",
+                "display": "COOP"
+              }
+            },
+            {"coordinator":"or",            
+              "field": {
+                "name": "lajFtB",
+                "type": "RadiosField",
+                "display": "Type of organisation"
+              },
+              "operator": "is",
+              "value": {
+                "type": "Value",
+                "value": "CIC",
+                "display": "CIC"
+              }            
+            },
+            {"coordinator":"or",            
+              "field": {
+                "name": "lajFtB",
+                "type": "RadiosField",
+                "display": "Type of organisation"
+              },
+              "operator": "is",
+              "value": {
+                "type": "Value",
+                "value": "CLG",
+                "display": "CLG"
+              }            
             }
           ]
         }
@@ -923,7 +962,24 @@
                 "display": "Type of organisation"
               },
               "operator": "is",
-              "value": { "type": "Value", "value": "CHN", "display": "CHN" }
+              "value": {
+                "type": "Value",
+                "value": "CIO",
+                "display": "CIO"
+              }
+            },
+            {"coordinator":"or",            
+              "field": {
+                "name": "lajFtB",
+                "type": "RadiosField",
+                "display": "Type of organisation"
+              },
+              "operator": "is",
+              "value": {
+                "type": "Value",
+                "value": "SCIO",
+                "display": "SCIO"
+              }            
             }
           ]
         }
