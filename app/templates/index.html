@@ -21,7 +21,7 @@
                                      href="https://www.gov.uk/government/publications/community-ownership-fund-prospectus">Read
                 the fund's prospectus</a> before you apply.</p>
             {% if submission_deadline|length %}
-                <p class="govuk-body"><strong>Submission deadline:</strong>{{ submission_deadline|datetime_format }}</p>
+                <p class="govuk-body"><strong>Submission deadline:</strong> {{ submission_deadline|datetime_format }}</p>
             {% endif %}
             {{ govukButton({"isStartButton": True, "href" : service_url, "text": "Enter your email address"}) }}
             {% if contact_us_email_address|length %}

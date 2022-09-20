@@ -97,6 +97,10 @@ def dashboard():
         f" {fund_id} on round {round_id}"
     )
 
+    for application in applications:
+        if application.status == "COMPLETED":
+            application.status = "READY_TO_SUBMIT"
+
     return render_template(
         "dashboard.html",
         account_id=account_id,
