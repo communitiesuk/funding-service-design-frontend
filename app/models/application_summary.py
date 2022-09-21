@@ -3,6 +3,8 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 
+from pytz import timezone
+
 
 @dataclass
 class ApplicationSummary:
@@ -15,9 +17,13 @@ class ApplicationSummary:
     last_edited: Optional[datetime] = None
 
     def __post_init__(self):
-        self.started_at = datetime.fromisoformat(self.started_at)
+        self.started_at = datetime.fromisoformat(self.started_at).astimezone(
+            timezone("Europe/London")
+        )
         self.last_edited = (
-            datetime.fromisoformat(self.last_edited)
+            datetime.fromisoformat(self.last_edited).astimezone(
+                timezone("Europe/London")
+            )
             if self.last_edited
             else None
         )
