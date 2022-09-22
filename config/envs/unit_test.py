@@ -7,6 +7,7 @@ from fsd_utils import configclass
 class UnitTestConfig(DefaultConfig):
     DefaultConfig.TALISMAN_SETTINGS["force_https"] = False
     USE_LOCAL_DATA = "True"
+    SESSION_COOKIE_SECURE = False
 
     # RSA 256 KEYS
     _test_private_key_path = (
