@@ -147,6 +147,7 @@
     -moz-osx-font-smoothing: grayscale !important;
     line-height: 1.1 !important;
     font-weight: 400 !important;
+    font-size:19px !important;
     padding: 2.5px !important;
     text-transform: capitalize !important;
 }
@@ -158,6 +159,7 @@
     -moz-osx-font-smoothing: grayscale !important;
     line-height: 1.1 !important;
     font-weight: 400 !important;
+    font-size:19px !important;
     padding: 2.5px !important;
     text-transform: capitalize !important;
 }
@@ -166,6 +168,7 @@
     background-color: white !important;
     line-height: 1.1 !important;
     font-weight: 400 !important;
+    font-size:19px !important;
     padding: 2.5px !important;
     color: #0b0c0c !important;
     text-transform: capitalize !important;
