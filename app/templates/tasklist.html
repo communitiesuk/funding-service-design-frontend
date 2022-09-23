@@ -110,11 +110,11 @@
                 </h2>
                 <p class="govuk-body govuk-!-margin-bottom-7">
                     {% if application_meta_data["number_of_completed_forms"] == 0 %}
-                        None of the forms have been completed.
+                        None of the sections have been completed.
                     {% else %}
                         You have completed
                         {{ application_meta_data["number_of_completed_forms"] }} of
-                        {{ application_meta_data["number_of_forms"] }} forms.
+                        {{ application_meta_data["number_of_forms"] }} sections.
                     {% endif %}
                 </p>
             {% endif %}
