@@ -43,7 +43,7 @@ class DefaultConfig:
         APPLICATION_STORE_API_HOST + "/applications/{application_id}"
     )
     GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT = (
-        APPLICATION_STORE_API_HOST + "/applications?account_id={account_id}&order_by=status&order_rev=0"
+        APPLICATION_STORE_API_HOST + "/applications?account_id={account_id}&order_by=last_edited&order_rev=1"
     )
     UPDATE_APPLICATION_FORM_ENDPOINT = (
         APPLICATION_STORE_API_HOST + "/applications/forms"
