@@ -242,14 +242,17 @@ def continue_application(application_id):
 def submit_application():
     application_id = request.form.get("application_id")
     payload = {"application_id": application_id}
-    requests.post(
+    application_response = requests.post(
         Config.SUBMIT_APPLICATION_ENDPOINT.format(
             application_id=application_id
         ),
         json=payload,
     )
+    application = application_response.json()
     return render_template(
-        "application_submitted.html", application_id=application_id
+        "application_submitted.html",
+        application_id=application.get("id"),
+        application_reference=application.get("reference")
     )
 
 
