@@ -15,20 +15,20 @@
         },
         {
           "name": "JnvsPq",
-          "options": { "maxWords": "200" },
+          "options": { "maxWords": "500" },
           "type": "MultilineTextField",
-          "hint": "Please include their:\n<br> \n<div>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m\">\n<li>role</li>\n<li>main responsibilities</li>\n</ul>\n</div>\n\n\n",
+          "hint": "Please include their:\n<br> \n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>role</li>\n<li>main responsibilities</li>\n</ul>\n<p>You can use your business plan to provide information that supports your answers.</p>\n\n",
           "title": "List the members of your board"
         },
         {
           "name": "yMCivI",
-          "options": { "maxWords": "200" },
+          "options": { "maxWords": "500" },
           "type": "MultilineTextField",
           "title": "Tell us about your governance and membership structures"
         },
         {
           "name": "NUZOvS",
-          "options": { "maxWords": "200" },
+          "options": { "maxWords": "500" },
           "type": "MultilineTextField",
           "title": "Explain how you'll consider the views of the community in the running of the asset",
           "hint": "Include how they'll be involved in decision making, and how you'll measure public support for your decisions"
@@ -57,7 +57,7 @@
           "name": "ZhyrfW",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>members of your board</li>\n<li>governance and membership structures</li>\n<li>how you'll consider the community's views</li>\n</ul>\n</div>"
+          "content": "<label class=\"govuk-!-font-weight-bold\">In this section, we'll ask about:\n</label>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>members of your board</li>\n<li>governance and membership structures</li>\n<li>how you'll consider the community's views</li>\n</ul>\n</div>"
         }
       ],
       "next": [{ "path": "/management-case" }],
@@ -70,11 +70,11 @@
   "fees": [],
   "outputs": [
     {
-      "name": "update-form",
-      "title": "Update form in application store",
-      "type": "savePerPage",
-      "outputConfiguration": { "savePerPageUrl": "True" }
-    }
+        "name": "update-form",
+        "title": "Update form in application store",
+        "type": "savePerPage",
+        "outputConfiguration": { "savePerPageUrl": "True" }
+      }
   ],
   "version": 2,
   "skipSummary": false,

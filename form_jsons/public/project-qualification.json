@@ -18,10 +18,8 @@
           "options": {},
           "type": "YesNoField",
           "title": "Does your project meet the definition of a subsidy?",
-          "hint": "For projects in England, Northern Ireland, Scotland and Wales, this definition is laid out in Paragraph 2 of the <a class=\"govuk-link\" href=\"https://www.gov.uk/government/publications/complying-with-the-uks-international-obligations-on-subsidy-control-guidance-for-public-authorities/technical-guidance-on-the-uks-international-subsidy-control-commitments\">Subsidy Control Act (2022)</a>",
-          "values": {
-            "type": "listRef"
-          }
+          "hint": "For projects in England, Northern Ireland, Scotland and Wales, this definition is laid out in Paragraph 2 of the <a class=\"govuk-body govuk-link\" \n href=\"https://www.gov.uk/government/publications/complying-with-the-uks-international-obligations-on-subsidy-control-guidance-for-public-authorities/technical-guidance-on-the-uks-international-subsidy-control-commitments\">Subsidy Control Act (2022)</a>",
+          "values": { "type": "listRef" }
         }
       ],
       "next": [
@@ -29,10 +27,7 @@
           "path": "/subsidy-control-and-state-aid-oSzYuW",
           "condition": "pTwpAH"
         },
-        {
-          "path": "/summary",
-          "condition": "gvcOBi"
-        }
+        { "path": "/summary", "condition": "gvcOBi" }
       ]
     },
     {
@@ -47,9 +42,7 @@
         },
         {
           "name": "RmMKzM",
-          "options": {
-            "maxWords": "200"
-          },
+          "options": { "maxWords": "500" },
           "type": "MultilineTextField",
           "title": "Explain how you think a grant from this fund can provided in compliance with the Subsidy Control Act (2022)",
           "hint": "This is measured by the 7 common principles laid out in Schedule 1"
@@ -66,10 +59,7 @@
           "path": "/subsidy-control-and-state-aid-CWggGL",
           "condition": "szyucC"
         },
-        {
-          "path": "/summary",
-          "condition": "YymbZt"
-        }
+        { "path": "/summary", "condition": "YymbZt" }
       ]
     },
     {
@@ -91,19 +81,13 @@
         },
         {
           "name": "xPkdRX",
-          "options": {
-            "maxWords": "200"
-          },
+          "options": { "maxWords": "500" },
           "type": "MultilineTextField",
           "title": "Explain how your project will comply with state aid rules",
           "hint": "You can find more information about when state aid rules apply in Northern Ireland in the <a class=\"govuk-link\" href=\"https://www.gov.uk/government/publications/complying-with-the-uks-international-obligations-on-subsidy-control-guidance-for-public-authorities\">government guidance</a>."
         }
       ],
-      "next": [
-        {
-          "path": "/summary"
-        }
-      ]
+      "next": [{ "path": "/summary" }]
     },
     {
       "path": "/subsidy-control-and-state-aid",
@@ -119,14 +103,10 @@
           "name": "GcHIsP",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">In this section, we'll ask about:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>whether your project meets the definition of a subsidy</li>\n<li>whether state aid rules apply (if in Northern Ireland)</li>\n</ul>\n</div>"
+          "content": "<label class=\"govuk-!-font-weight-bold\">In this section, we'll ask about:\n</label>\n\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>whether your project meets the definition of a subsidy</li>\n<li>whether state aid rules apply (if in Northern Ireland)</li>\n</ul>\n</div>"
         }
       ],
-      "next": [
-        {
-          "path": "/subsidy-control-and-state-aid-XQBpkr"
-        }
-      ],
+      "next": [{ "path": "/subsidy-control-and-state-aid-XQBpkr" }],
       "controller": "./pages/start.js"
     }
   ],
@@ -146,11 +126,7 @@
               "display": "Does your project meet the definition of a subsidy?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "true",
-              "display": "true"
-            }
+            "value": { "type": "Value", "value": "true", "display": "true" }
           }
         ]
       }
@@ -168,11 +144,7 @@
               "display": "Is your project based in Northern Ireland?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "true",
-              "display": "true"
-            }
+            "value": { "type": "Value", "value": "true", "display": "true" }
           }
         ]
       }
@@ -190,11 +162,7 @@
               "display": "Is your project based in Northern Ireland?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "false",
-              "display": "false"
-            }
+            "value": { "type": "Value", "value": "false", "display": "false" }
           }
         ]
       }
@@ -212,11 +180,7 @@
               "display": "Does your project meet the definition of a subsidy?"
             },
             "operator": "is",
-            "value": {
-              "type": "Value",
-              "value": "false",
-              "display": "false"
-            }
+            "value": { "type": "Value", "value": "false", "display": "false" }
           }
         ]
       }
@@ -225,22 +189,18 @@
   "fees": [],
   "outputs": [
     {
-      "name": "update-form",
-      "title": "Update form in application store",
-      "type": "savePerPage",
-      "outputConfiguration": {
-        "savePerPageUrl": "True"
+        "name": "update-form",
+        "title": "Update form in application store",
+        "type": "savePerPage",
+        "outputConfiguration": {
+          "savePerPageUrl": "True"
+        }
       }
-    }
   ],
   "version": 2,
   "skipSummary": false,
   "name": "Apply for funding to save an asset in your community",
-  "feedback": {
-    "feedbackForm": false,
-    "url": ""
-  },
-  "phaseBanner": {
-    "phase": "beta"
-  }
+  "feedback": { "feedbackForm": false, "url": "" },
+  "phaseBanner": { "phase": "beta" }
+
 }
