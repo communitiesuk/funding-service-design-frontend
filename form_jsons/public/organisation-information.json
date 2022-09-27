@@ -390,13 +390,6 @@
             "schema": {}
           },
           {
-            "name": "KfXhvS",
-            "options": { "required": false },
-            "type": "TextField",
-            "title": "County",
-            "schema": {}
-          },
-          {
             "name": "zsoLdf",
             "options": {},
             "type": "YesNoField",
@@ -405,8 +398,9 @@
           },
           {
             "name": "FhbaEy",
-            "options": { "classes": "govuk-!-width-two-thirds" },
-            "type": "WebsiteField",
+            "options": { "classes": "govuk-!-width-full" },
+            "type": "TextField",
+
             "title": "Website and social media ",
             "hint": "For example, your company's Facebook, Instagram or Twitter accounts (if applicable)\n<br> <br>\n<label class=\"govuk-body\">Link 1</label>\n",
             "schema": {}
@@ -416,7 +410,7 @@
             "options": {
               "hideTitle": true,
               "required": false,
-              "classes": "govuk-!-width-two-thirds"
+              "classes": "govuk-!-width-full"
             },
             "type": "WebsiteField",
             "title": "Website and social media - Link or username 2",
@@ -428,7 +422,7 @@
             "options": {
               "hideTitle": true,
               "required": false,
-              "classes": "govuk-!-width-two-thirds"
+              "classes": "govuk-!-width-full"
             },
             "type": "WebsiteField",
             "title": "Website and social media - Link or username 3",
@@ -457,13 +451,6 @@
             "options": {},
             "type": "UkAddressField",
             "title": "Correspondence address",
-            "schema": {}
-          },
-          {
-            "name": "XNgtoe",
-            "options": { "required": false },
-            "type": "TextField",
-            "title": "County",
             "schema": {}
           }
         ],
@@ -507,7 +494,7 @@
           },
           {
             "name": "APSjeB",
-            "options": { "classes": "govuk-!-width-two-thirds" },
+            "options": { "classes": "govuk-!-width-full" },
             "type": "TextField",
             "title": "Partner organisation name",
             "schema": {}
@@ -517,13 +504,6 @@
             "options": {},
             "type": "UkAddressField",
             "title": "Partner organisation address",
-            "schema": {}
-          },
-          {
-            "name": "feueTa",
-            "options": { "required": false },
-            "type": "TextField",
-            "title": "County",
             "schema": {}
           },
           {
