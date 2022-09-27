@@ -90,6 +90,8 @@
             </details>
             <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Submission deadline: <span
                     class="govuk-body"> {{ submission_deadline|datetime_format }}</span></h2>
+            <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Reference: <span
+                    class="govuk-body"> {{ application["reference"] }}</span></h2>
             {% if application["status"] == application_meta_data["completed_status"] %}
                 {{ tasklist_submit(application_id, application_meta_data, form, url_for('routes.submit_application')) }}
             {% elif not application["status"] == application_meta_data["submitted_status"] %}

@@ -13,6 +13,7 @@ from flask import current_app
 @dataclass
 class Application:
     id: str
+    reference: str
     account_id: str
     status: str
     fund_id: str
