@@ -40,10 +40,10 @@
     })
     },
     {
-    'text': application.started_at|date_format_short_month
+    'html': application.last_edited|datetime_format_short_month if application.last_edited
     },
     {
-    'html': application.last_edited|datetime_format_short_month if application.last_edited
+    'html': application.reference
     },
     {
     'html': application_link
@@ -63,10 +63,10 @@
     'text': 'Status'
     },
     {
-    'text': 'Started on'
+    'text': 'Last edited'
     },
     {
-    'text': 'Last edited'
+    'text': 'Application Reference'
     },
     {
     'text': 'Action'

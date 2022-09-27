@@ -11,6 +11,7 @@ from fsd_utils import configclass
 class DevelopmentConfig(DefaultConfig):
     FSD_LOGGING_LEVEL = logging.DEBUG
     USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "True"))
+    SESSION_COOKIE_SECURE = False
 
     SESSION_COOKIE_DOMAIN = getenv("SESSION_COOKIE_DOMAIN")
 

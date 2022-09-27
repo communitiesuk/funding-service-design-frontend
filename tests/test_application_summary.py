@@ -21,6 +21,7 @@ def test_serialise_application_summary():
     ]
     assert len(applications) == 2
     assert applications[0].started_at.__class__.__name__ == "datetime"
+    assert str(applications[0].started_at.tzinfo) == "Europe/London"
     assert applications[1].last_edited is None
 
 

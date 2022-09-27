@@ -400,6 +400,7 @@
             "name": "FhbaEy",
             "options": { "classes": "govuk-!-width-full" },
             "type": "TextField",
+
             "title": "Website and social media ",
             "hint": "For example, your company's Facebook, Instagram or Twitter accounts (if applicable)\n<br> <br>\n<label class=\"govuk-body\">Link 1</label>\n",
             "schema": {}
@@ -411,7 +412,7 @@
               "required": false,
               "classes": "govuk-!-width-full"
             },
-            "type": "TextField",
+            "type": "WebsiteField",
             "title": "Website and social media - Link or username 2",
             "hint": "<span class=\"govuk-body\">Link 2 (optional)</span>",
             "schema": {}
@@ -423,7 +424,7 @@
               "required": false,
               "classes": "govuk-!-width-full"
             },
-            "type": "TextField",
+            "type": "WebsiteField",
             "title": "Website and social media - Link or username 3",
             "hint": "<span class=\"govuk-body\">Link 3 (optional)</span>",
             "schema": {}
