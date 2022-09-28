@@ -37,4 +37,4 @@ def kebab_case_to_human(word):
     """Should NOT be used to unslugify as '-' are
     also used to replace other special characters"""
     if word:
-        return word.replace("-", " ").title()
+        return word.replace("-", " ").capitalize()

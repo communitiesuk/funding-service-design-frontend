@@ -39,7 +39,7 @@ COF_R2_SECTION_DISPLAY_CONFIG = {
             "project-costs": None,
             "skills-and-resources": None,
             "community-representation": None,
-            "inclusiveness-and-intergration": None,
+            "inclusiveness-and-integration": None,
             "upload-business-plan": None,
         },
         "section_weighting": 30,
