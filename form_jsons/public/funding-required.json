@@ -243,7 +243,7 @@
           "options": { "required": true },
           "type": "YesNoField",
           "hint": "This is used for the running costs of the project. This might include legal fees or general costs, including for:\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>utilities</li>\n<li>staffing</li>\n<li>appointing external consultants</li>\n</ul>\n<p>It should be no more than £50,000, and no more than 20% of your capital funding.</p>\n\n",
-          "title": "Do you need to add revenue costs? (Optional)",
+          "title": "Do you need to add revenue costs? (optional)",
           "values": { "type": "listRef" }
         }
       ],
