@@ -249,10 +249,9 @@ def submit_application():
         json=payload,
     )
     submitted = submission_response.json()
-    application_id = submitted.get("id")
-    application_reference = submitted.get("reference")
-    application_email = submitted.get("email")
-    if not application_reference or not application_email:
+    if submission_response.status_code != 201 or not submitted.get(
+                "reference"
+        ):
         raise Exception(
             "Unexpected response from application store when submitting application"
             " application: "
@@ -260,6 +259,9 @@ def submit_application():
             "application-store-response: "
             + str(submission_response)
         )
+    application_id = submitted.get("id")
+    application_reference = submitted.get("reference")
+    application_email = submitted.get("email")
 
     response_weeks = 8
 
