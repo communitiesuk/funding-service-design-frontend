@@ -399,8 +399,7 @@
           {
             "name": "FhbaEy",
             "options": { "classes": "govuk-!-width-full" },
-            "type": "TextField",
-
+            "type": "WebsiteField",
             "title": "Website and social media ",
             "hint": "For example, your company's Facebook, Instagram or Twitter accounts (if applicable)\n<br> <br>\n<label class=\"govuk-body\">Link 1</label>\n",
             "schema": {}
