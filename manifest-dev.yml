@@ -18,6 +18,7 @@ applications:
     FLASK_ENV: dev
     CHECK_ENV: 17.04.front
     FLASK_DEBUG: 1
+    SENTRY_DSN: ((SENTRY_DSN))
   routes:
     - route: frontend.dev.fundingservice.co.uk
     - route: frontend.dev.gids.dev

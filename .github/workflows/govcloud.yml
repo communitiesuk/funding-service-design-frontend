@@ -52,7 +52,7 @@ jobs:
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
           # env vars required in the manifest must be declared here
-          command: push -f manifest-dev.yml funding-service-design-frontend-dev --var FORMS_SERVICE_PRIVATE_HOST="${{secrets.FORMS_SERVICE_PRIVATE_HOST}}" --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
+          command: push -f manifest-dev.yml funding-service-design-frontend-dev --var SENTRY_DSN="${{secrets.SENTRY_DSN}}" --var FORMS_SERVICE_PRIVATE_HOST="${{secrets.FORMS_SERVICE_PRIVATE_HOST}}" --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}"
       - name: Run tests
         run: |
           python -m venv .venv
@@ -115,7 +115,7 @@ jobs:
           cf_username: ${{secrets.CF_USER}}
           cf_password: ${{secrets.CF_PASSWORD}}
           # env vars required in the manifest must be declared here
-          command: push -f manifest-test.yml funding-service-design-frontend-test --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}" --var FORMS_SERVICE_PRIVATE_HOST="${{secrets.FORMS_SERVICE_PRIVATE_HOST}}"
+          command: push -f manifest-test.yml funding-service-design-frontend-test --var SENTRY_DSN="${{secrets.SENTRY_DSN}}" --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}" --var FORMS_SERVICE_PRIVATE_HOST="${{secrets.FORMS_SERVICE_PRIVATE_HOST}}"
       - name: Run tests
         env:
           # TODO: restore this to a custom domain once DNS is restored
