@@ -9,6 +9,7 @@ from flask_babel import Babel
 from flask_compress import Compress
 from flask_talisman import Talisman
 from flask_wtf.csrf import CSRFProtect
+from fsd_utils import init_sentry
 from fsd_utils.healthchecks.checkers import FlaskRunningChecker
 from fsd_utils.healthchecks.healthcheck import Healthcheck
 from fsd_utils.logging import logging
@@ -18,6 +19,8 @@ from jinja2 import PrefixLoader
 
 
 def create_app() -> Flask:
+    init_sentry()
+
     flask_app = Flask(__name__, static_url_path="/assets")
 
     flask_app.config.from_object("config.Config")
