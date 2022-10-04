@@ -9,10 +9,14 @@ updates:
     pull-request-branch-name:
       separator: "-"
     rebase-strategy: "auto"
-    # Add reviewers
     reviewers:
       - "communitiesuk/funding-service-design"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+    pull-request-branch-name:
+      separator: "-"
+    rebase-strategy: "auto"
+    reviewers:
+      - "communitiesuk/funding-service-design"
