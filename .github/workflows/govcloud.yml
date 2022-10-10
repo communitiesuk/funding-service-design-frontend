@@ -21,6 +21,7 @@ on:
       - "docs/**"
 
 env:
+  if: ${{ github.actor != 'dependabot[bot]' }}
   # TODO: restore this to a custom domain once DNS is restored
   FORMS_SERVICE_PREVIEW_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
   FORMS_SERVICE_PUBLIC_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
@@ -28,6 +29,7 @@ env:
 jobs:
 
   deploy-and-test-dev:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     runs-on: ubuntu-latest
     environment: Dev
     steps:
@@ -66,6 +68,7 @@ jobs:
           retention-days: 5
 
   security:
+    if: ${{ github.actor != 'dependabot[bot]' }}
     needs: deploy-and-test-dev
     runs-on: ubuntu-latest
     environment: Dev
@@ -87,8 +90,8 @@ jobs:
           allow_issue_writing: False
 
   deploy-and-test-test:
+    if: ${{ github.actor != 'dependabot[bot]' && github.ref == 'refs/heads/main' }}
     needs: security
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: test
     steps:
@@ -132,32 +135,32 @@ jobs:
           retention-days: 5
 
 
-  # TODO: Add back when performance tests finished
-  # run_performance_tests:
-  #   needs: deploy_test
-  #   runs-on: ubuntu-latest
-  #   environment: test
-  #   steps:
-  #     - name: checkout code
-  #       uses: actions/checkout@main
-  #       with:
-  #         repository: communitiesuk/funding-service-design-performance-tests
-  #         path: ./funding-service-design-performance-tests
-  #     - name: Set up Python
-  #       uses: actions/setup-python@v2
-  #       with:
-  #         python-version: 3.10.1
-  #     - name: create python env
-  #       run: python -m venv .venv
-  #     - name: install dependencies
-  #       run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r ./funding-service-design-performance-tests/requirements.txt
+  run_performance_tests:
+    if: ${{ github.actor != 'dependabot[bot]' && github.ref == 'refs/heads/main' }}
+    needs: deploy-and-test-test
+    runs-on: ubuntu-latest
+    environment: test
+    steps:
+      - name: checkout code
+        uses: actions/checkout@main
+        with:
+          repository: communitiesuk/funding-service-design-performance-tests
+          path: ./funding-service-design-performance-tests
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.1
+      - name: create python env
+        run: python -m venv .venv
+      - name: install dependencies
+        run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r ./funding-service-design-performance-tests/requirements.txt
 
-  #     - name: Run performance tests
-  #       run: ls && python -m pip install locust && python -m locust
-  #       working-directory: ./funding-service-design-performance-tests
-  #     - name: "Upload Artifact"
-  #       uses: actions/upload-artifact@v2
-  #       with:
-  #         name: performance-test-report
-  #         path: ./funding-service-design-performance-tests/locust_html_report.html
-  #         retention-days: 5
+      - name: Run performance tests
+        run: ls && python -m pip install locust && python -m locust
+        working-directory: ./funding-service-design-performance-tests
+      - name: "Upload Artifact"
+        uses: actions/upload-artifact@v2
+        with:
+          name: performance-test-report
+          path: ./funding-service-design-performance-tests/locust_html_report.html
+          retention-days: 5
