@@ -13,6 +13,7 @@ from config import Config
 from flask import Blueprint
 from flask import current_app
 from flask import g
+from flask import make_response
 from flask import redirect
 from flask import render_template
 from flask import request
@@ -228,7 +229,15 @@ def continue_application(application_id):
         f"Url the form runner should return to '{return_url}'."
     )
 
+    current_user = g.account_id
     application = get_application_data(application_id, as_dict=True)
+    application_owner = application.account_id
+    if current_user != application_owner:
+        return (
+            make_response({"status": "error", "code": 401, "message": "You are not authorised to update that application"}),
+            401,
+        )
+
     form_data = application.get_form_data(application, form_name)
 
     rehydrate_payload = format_rehydrate_payload(
