@@ -14,7 +14,7 @@
             "hideRowTitles": false
           },
           "customText": {
-            "separatePageTitle": "You have selected these languages"
+            "samePageTitle": "Your capital costs"
           }
         },
       "components": [
@@ -63,7 +63,8 @@
           "hideRowTitles": false
         },
         "customText": {
-          "separatePageTitle": "You have selected these languages"
+          "samePageTitle": "Your income sources",
+          "columnOneTitle": "Source"
         }
       },
       
@@ -113,8 +114,9 @@
           "separatePage": false,
           "hideRowTitles": false
         },
-        "customText": {
-          "separatePageTitle": "You have selected these languages"
+        "customText": {          
+          "samePageTitle": "Your running costs",
+          "columnOneTitle": "Running Costs"
         }
       },
       "components": [
