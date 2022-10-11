@@ -201,8 +201,8 @@ def tasklist(application_id):
         submission_deadline=round_data.deadline,
     )
 
-
 @default_bp.route("/continue_application/<application_id>", methods=["GET"])
+@login_required
 def continue_application(application_id):
     """
     Returns a Flask function to return to an active application form.
@@ -251,6 +251,7 @@ def continue_application(application_id):
 
 
 @default_bp.route("/submit_application", methods=["POST"])
+@login_required
 def submit_application():
     application_id = request.form.get("application_id")
     payload = {"application_id": application_id}
