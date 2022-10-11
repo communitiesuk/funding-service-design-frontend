@@ -45,7 +45,8 @@
               "hideRowTitles": false
             },
             "customText": {
-              "separatePageTitle": "You have selected these languages"
+              "samePageTitle": "Your income sources",
+              "columnOneTitle": "Source"
             }
           },
       "title": "Management case",
@@ -95,7 +96,8 @@
             "hideRowTitles": false
           },
           "customText": {
-            "separatePageTitle": "You have selected these languages"
+            "samePageTitle": "Your running costs",
+            "columnOneTitle": "Running cost"
           }
         },
       "components": [
