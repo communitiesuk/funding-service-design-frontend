@@ -63,8 +63,7 @@
           "hideRowTitles": false
         },
         "customText": {
-          "samePageTitle": "Your income sources",
-          "columnOneTitle": "Source"
+          "samePageTitle": "Your revenue costs"
         }
       },
       
@@ -115,8 +114,8 @@
           "hideRowTitles": false
         },
         "customText": {          
-          "samePageTitle": "Your running costs",
-          "columnOneTitle": "Running Costs"
+          "samePageTitle": "Your secured match funding",
+          "columnOneTitle": "Source"
         }
       },
       "components": [
@@ -287,7 +286,8 @@
           "hideRowTitles": false
         },
         "customText": {
-          "separatePageTitle": "You have selected these languages"
+          "samePageTitle": "Your unsecured match funding",
+          "columnOneTitle": "Source"
         }
       },
       "components": [
