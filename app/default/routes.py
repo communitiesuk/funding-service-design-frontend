@@ -156,7 +156,14 @@ def tasklist(application_id):
         function: a function which renders the tasklist template.
     """
 
+    current_user = g.account_id
     application = get_application_data(application_id, as_dict=True)
+    application_owner = application.account_id
+    if current_user != application_owner:
+        return (
+            make_response({"status": "error", "code": 401, "message": "You are not authorised to view that application"}),
+            401,
+        )
     account = get_account(account_id=application.account_id)
     if application.status == ApplicationStatus.SUBMITTED.name:
         return render_template(
@@ -263,6 +270,27 @@ def continue_application(application_id):
 @login_required
 def submit_application():
     application_id = request.form.get("application_id")
+    current_user = g.account_id
+    application = get_application_data(application_id, as_dict=True)
+    application_owner = application.account_id
+    if current_user != application_owner:
+        return (
+            make_response({"status": "error", "code": 401, "message": "You are not authorised to update that application"}),
+            401,
+        )
+    submitted = format_payload_and_submit_application(application_id)
+
+    response_weeks = 8
+
+    return render_template(
+        "application_submitted.html",
+        application_id=submitted.get("id"),
+        application_reference=submitted.get("reference"),
+        application_email=submitted.get("email"),
+        response_weeks=response_weeks,
+    )
+
+def format_payload_and_submit_application(application_id):
     payload = {"application_id": application_id}
     submission_response = requests.post(
         Config.SUBMIT_APPLICATION_ENDPOINT.format(
@@ -309,6 +337,11 @@ def not_found(error):
 @default_bp.errorhandler(Exception)
 def internal_server_error(error):
     current_app.logger.error(f"Encountered 500: {error}")
+    return render_template("500.html"), 500
+
+@default_bp.errorhandler(401)
+def unauthorised_error(error):
+    current_app.logger.error(f"Encountered 401: {error}")
     return render_template("500.html"), 500
 
 
