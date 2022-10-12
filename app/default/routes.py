@@ -10,6 +10,7 @@ from app.helpers import format_rehydrate_payload
 from app.helpers import get_token_to_return_to_application
 from app.models.application_summary import ApplicationSummary
 from config import Config
+from flask import abort
 from flask import Blueprint
 from flask import current_app
 from flask import g
@@ -160,10 +161,8 @@ def tasklist(application_id):
     application = get_application_data(application_id, as_dict=True)
     application_owner = application.account_id
     if current_user != application_owner:
-        return (
-            make_response({"status": "error", "code": 401, "message": "You are not authorised to view that application"}),
-            401,
-        )
+        abort(401, f"User {current_user} attempted to view tasklist for application {application_id}, owned by {application_owner}")
+
     account = get_account(account_id=application.account_id)
     if application.status == ApplicationStatus.SUBMITTED.name:
         return render_template(
@@ -240,10 +239,7 @@ def continue_application(application_id):
     application = get_application_data(application_id, as_dict=True)
     application_owner = application.account_id
     if current_user != application_owner:
-        return (
-            make_response({"status": "error", "code": 401, "message": "You are not authorised to update that application"}),
-            401,
-        )
+        abort(401, f"User {current_user} attempted to continue_application for application {application_id}, owned by {application_owner}")
 
     form_data = application.get_form_data(application, form_name)
 
@@ -274,10 +270,7 @@ def submit_application():
     application = get_application_data(application_id, as_dict=True)
     application_owner = application.account_id
     if current_user != application_owner:
-        return (
-            make_response({"status": "error", "code": 401, "message": "You are not authorised to update that application"}),
-            401,
-        )
+        abort(401, f"User {current_user} attempted to update_application for application {application_id}, owned by {application_owner}")
     submitted = format_payload_and_submit_application(application_id)
 
     response_weeks = 8
@@ -342,6 +335,15 @@ def internal_server_error(error):
 @default_bp.errorhandler(401)
 def unauthorised_error(error):
     current_app.logger.error(f"Encountered 401: {error}")
+    return render_template("500.html"), 401
+
+
+@default_bp.errorhandler(CSRFError)
+@login_requested
+def csrf_token_expiry(error):
+    if not g.account_id:
+        return redirect(g.logout_url)
+    current_app.logger.error(f"Encountered 500: {error}")
     return render_template("500.html"), 500
 
 
