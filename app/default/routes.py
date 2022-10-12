@@ -270,7 +270,7 @@ def submit_application():
     application = get_application_data(application_id, as_dict=True)
     application_owner = application.account_id
     if current_user != application_owner:
-        abort(401, f"User {current_user} attempted to update_application for application {application_id}, owned by {application_owner}")
+        abort(401, f"User {current_user} attempted to submit_application for application {application_id}, owned by {application_owner}")
     submitted = format_payload_and_submit_application(application_id)
 
     response_weeks = 8
