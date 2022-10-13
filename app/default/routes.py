@@ -1,3 +1,4 @@
+from functools import wraps
 import requests
 from app.constants import ApplicationStatus
 from app.default.data import get_account
@@ -26,6 +27,32 @@ from fsd_utils.authentication.decorators import login_required
 
 
 default_bp = Blueprint("routes", __name__, template_folder="templates")
+
+
+# TODO Move the following three methods into utils. Utils will need a way of accessing application data.
+def verify_application_owner_get_local(f):
+    @wraps(f)
+    def decorator(*args, **kwargs):
+        application_id = kwargs["application_id"]
+        return check_application_owner(application_id, f, *args, **kwargs)
+    return decorator
+
+def verify_application_owner_post_local(f):
+    @wraps(f)
+    def decorator(*args, **kwargs):
+        application_id = request.form["application_id"]
+        return check_application_owner(application_id, f, *args, **kwargs)
+    return decorator
+
+def check_application_owner(app_id, f, *args, **kwargs):
+    application = get_application_data(app_id, as_dict=True)
+    application_owner = application.account_id
+    current_user = g.account_id
+    if current_user == application_owner:
+        return f(*args, **kwargs)
+    else:
+        abort(401, f"User {current_user} attempted to access application {app_id}, owned by {application_owner}")
+# End TODO
 
 
 @default_bp.route("/")
@@ -143,9 +170,9 @@ def new():
         )
     )
 
-
 @default_bp.route("/tasklist/<application_id>", methods=["GET"])
 @login_required
+@verify_application_owner_get_local
 def tasklist(application_id):
     """
     Returns a Flask function which constructs a tasklist for an application id.
@@ -156,12 +183,7 @@ def tasklist(application_id):
     Returns:
         function: a function which renders the tasklist template.
     """
-
-    current_user = g.account_id
     application = get_application_data(application_id, as_dict=True)
-    application_owner = application.account_id
-    if current_user != application_owner:
-        abort(401, f"User {current_user} attempted to view tasklist for application {application_id}, owned by {application_owner}")
 
     account = get_account(account_id=application.account_id)
     if application.status == ApplicationStatus.SUBMITTED.name:
@@ -210,6 +232,7 @@ def tasklist(application_id):
 
 @default_bp.route("/continue_application/<application_id>", methods=["GET"])
 @login_required
+@verify_application_owner_get_local
 def continue_application(application_id):
     """
     Returns a Flask function to return to an active application form.
@@ -235,11 +258,7 @@ def continue_application(application_id):
         f"Url the form runner should return to '{return_url}'."
     )
 
-    current_user = g.account_id
     application = get_application_data(application_id, as_dict=True)
-    application_owner = application.account_id
-    if current_user != application_owner:
-        abort(401, f"User {current_user} attempted to continue_application for application {application_id}, owned by {application_owner}")
 
     form_data = application.get_form_data(application, form_name)
 
@@ -264,13 +283,9 @@ def continue_application(application_id):
 
 @default_bp.route("/submit_application", methods=["POST"])
 @login_required
+@verify_application_owner_post_local
 def submit_application():
     application_id = request.form.get("application_id")
-    current_user = g.account_id
-    application = get_application_data(application_id, as_dict=True)
-    application_owner = application.account_id
-    if current_user != application_owner:
-        abort(401, f"User {current_user} attempted to submit_application for application {application_id}, owned by {application_owner}")
     submitted = format_payload_and_submit_application(application_id)
 
     response_weeks = 8
@@ -348,5 +363,6 @@ def csrf_token_expiry(error):
         return redirect(g.logout_url)
     current_app.logger.error(f"Encountered 500: {error}")
     return render_template("500.html"), 500
+
 
 
