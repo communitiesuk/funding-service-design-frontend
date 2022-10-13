@@ -45,6 +45,10 @@ class TestUserValidation:
             "app.default.data.get_application_data",
             return_value=self.TEST_APPLICATION_STORE_DATA,
         )
+        mocker.patch(
+            "app.default.data.get_round_data_fail_gracefully",
+            return_value=self.TEST_ROUND_DATA
+        )
 
         response = flask_test_client.get(f"/continue_application/{self.TEST_ID}", follow_redirects=False)
         assert 401 == response.status_code, "Incorrect status code"
@@ -81,6 +85,10 @@ class TestUserValidation:
             "app.default.data.get_application_data",
             return_value=self.TEST_APPLICATION_STORE_DATA,
         )
+        mocker.patch(
+            "app.default.data.get_round_data_fail_gracefully",
+            return_value=self.TEST_ROUND_DATA
+        )
 
         response = flask_test_client.get(f"/tasklist/{self.TEST_ID}", follow_redirects=False)
         assert 401 == response.status_code, "Incorrect status code"
@@ -116,6 +124,10 @@ class TestUserValidation:
         mocker.patch(
             "app.default.data.get_application_data",
             return_value=self.TEST_APPLICATION_STORE_DATA,
+        )
+        mocker.patch(
+            "app.default.data.get_round_data_fail_gracefully",
+            return_value=self.TEST_ROUND_DATA
         )
 
         response = flask_test_client.post(f"/submit_application", data={"application_id": self.TEST_ID}, follow_redirects=False)

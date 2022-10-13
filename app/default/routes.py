@@ -335,7 +335,10 @@ def internal_server_error(error):
 @default_bp.errorhandler(401)
 def unauthorised_error(error):
     current_app.logger.error(f"Encountered 401: {error}")
-    return render_template("500.html"), 401
+    round_data = get_round_data_fail_gracefully(
+        Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID
+    )
+    return render_template("500.html", round_data=round_data), 401
 
 
 @default_bp.errorhandler(CSRFError)
