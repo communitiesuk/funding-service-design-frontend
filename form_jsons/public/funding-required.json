@@ -14,7 +14,7 @@
             "hideRowTitles": false
           },
           "customText": {
-            "separatePageTitle": "You have selected these languages"
+            "samePageTitle": "Your capital costs"
           }
         },
       "components": [
@@ -63,7 +63,7 @@
           "hideRowTitles": false
         },
         "customText": {
-          "separatePageTitle": "You have selected these languages"
+          "samePageTitle": "Your revenue costs"
         }
       },
       
@@ -113,8 +113,9 @@
           "separatePage": false,
           "hideRowTitles": false
         },
-        "customText": {
-          "separatePageTitle": "You have selected these languages"
+        "customText": {          
+          "samePageTitle": "Your secured match funding",
+          "columnOneTitle": "Source"
         }
       },
       "components": [
@@ -285,7 +286,8 @@
           "hideRowTitles": false
         },
         "customText": {
-          "separatePageTitle": "You have selected these languages"
+          "samePageTitle": "Your unsecured match funding",
+          "columnOneTitle": "Source"
         }
       },
       "components": [
