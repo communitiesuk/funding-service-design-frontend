@@ -120,7 +120,6 @@
                     {% endif %}
                 </p>
             {% endif %}
-
             <ol class="app-task-list">
                 {% for section_name, section_data in application.sections.items() %}
                     {{ tasklist_section(section_name, section_data["forms_within_section"], section_data["section_weighting"], application_meta_data,
