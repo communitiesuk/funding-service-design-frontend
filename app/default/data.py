@@ -1,7 +1,9 @@
 import json
 import os
+from urllib.parse import urlencode
 
 import requests
+from app.models.account import Account
 from app.models.application import Application
 from app.models.fund import Fund
 from app.models.round import Round
@@ -10,7 +12,7 @@ from flask import abort
 from flask import current_app
 
 
-def get_data(endpoint: str):
+def get_data(endpoint: str, params: dict = None):
     """
         Queries the api endpoint provided and returns a
         data response in json format.
@@ -22,11 +24,12 @@ def get_data(endpoint: str):
         data (json): data response in json format
     """
 
-    current_app.logger.info(f"Fetching data from '{endpoint}'.")
     if Config.USE_LOCAL_DATA:
-        data = get_local_data(endpoint)
+        current_app.logger.info(f"Fetching local data from '{endpoint}'.")
+        data = get_local_data(endpoint, params)
     else:
-        data = get_remote_data(endpoint)
+        current_app.logger.info(f"Fetching data from '{endpoint}'.")
+        data = get_remote_data(endpoint, params)
     if data is None:
         current_app.logger.error(
             f"Data request failed, unable to recover: {endpoint}"
@@ -35,7 +38,14 @@ def get_data(endpoint: str):
     return data
 
 
-def get_remote_data(endpoint):
+def get_remote_data(endpoint, params: dict = None):
+    query_string = ""
+
+    if params:
+        params = {k: v for k, v in params.items() if v is not None}
+        query_string = urlencode(params)
+        endpoint = endpoint + "?" + query_string
+    current_app.logger.info(f"GETing endpoint: {endpoint}")
     response = requests.get(endpoint)
     if response.status_code == 200:
         data = response.json()
@@ -48,16 +58,23 @@ def get_remote_data(endpoint):
         return None
 
 
-def get_local_data(endpoint: str):
+def get_local_data(endpoint: str, params: dict = None):
+    query_string = ""
+    if params:
+        params = {k: v for k, v in params.items() if v is not None}
+        query_string = urlencode(params)
+        endpoint = endpoint + "?" + query_string
     api_data_json = os.path.join(
-        Config.FLASK_ROOT, "tests", "api_data", "endpoint_data.json"
+        Config.FLASK_ROOT, "tests", "api_data", "get_endpoint_data.json"
     )
-
-    fp = open(api_data_json)
-    api_data = json.load(fp)
-    fp.close()
+    with open(api_data_json) as json_file:
+        api_data = json.load(json_file)
     if endpoint in api_data:
-        return api_data.get(endpoint)
+        mocked_response = requests.models.Response()
+        mocked_response.status_code = 200
+        content_str = json.dumps(api_data[endpoint])
+        mocked_response._content = bytes(content_str, "utf-8")
+        return json.loads(mocked_response.text)
     return None
 
 
@@ -119,3 +136,31 @@ def get_round_data_fail_gracefully(fund_id, round_id):
         # return valid Round object with no values so we know we've
         # failed and can handle in templates appropriately
         return Round("", [], "", "", "", "", "", "", {}, {})
+
+
+def get_account(email: str = None, account_id: str = None) -> Account | None:
+    """
+    Get an account from the account store using either
+    an email address or account_id.
+
+    Args:
+        email (str, optional): The account email address
+        Defaults to None.
+        account_id (str, optional): The account id. Defaults to None.
+
+    Raises:
+        TypeError: If both an email address or account id is given,
+        a TypeError is raised.
+
+    Returns:
+        Account object or None
+    """
+    if email is account_id is None:
+        raise TypeError("Requires an email address or account_id")
+
+    url = Config.ACCOUNT_STORE_API_HOST + Config.ACCOUNTS_ENDPOINT
+    params = {"email_address": email, "account_id": account_id}
+    response = get_data(url, params)
+
+    if response and "account_id" in response:
+        return Account.from_json(response)

@@ -1,13 +1,14 @@
 import requests
-from app.application_status import ApplicationStatus
+from app.constants import ApplicationStatus
+from app.default.data import get_account
 from app.default.data import get_application_data
 from app.default.data import get_applications_for_account
 from app.default.data import get_fund_data
 from app.default.data import get_round_data
 from app.default.data import get_round_data_fail_gracefully
+from app.helpers import format_rehydrate_payload
+from app.helpers import get_token_to_return_to_application
 from app.models.application_summary import ApplicationSummary
-from app.models.helpers import format_rehydrate_payload
-from app.models.helpers import get_token_to_return_to_application
 from config import Config
 from flask import Blueprint
 from flask import current_app
@@ -153,6 +154,15 @@ def tasklist(application_id):
     """
 
     application = get_application_data(application_id, as_dict=True)
+    account = get_account(account_id=application.account_id)
+    if application.status == ApplicationStatus.SUBMITTED.name:
+        return render_template(
+            "application_submitted.html",
+            application_id=application.id,
+            application_reference=application.reference,
+            application_email=account.email,
+            response_weeks=Config.RESPONSE_TO_APPLICATION_WEEKS,
+        )
     fund = get_fund_data(application.fund_id, as_dict=True)
     round_data = get_round_data(
         Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, True
@@ -249,13 +259,12 @@ def submit_application():
         json=payload,
     )
     submitted = submission_response.json()
-    response_weeks = 8
     return render_template(
         "application_submitted.html",
         application_id=submitted.get("id"),
         application_reference=submitted.get("reference"),
         application_email=submitted.get("email"),
-        response_weeks=response_weeks,
+        response_weeks=Config.RESPONSE_TO_APPLICATION_WEEKS,
     )
 
 

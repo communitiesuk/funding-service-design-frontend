@@ -35,7 +35,12 @@ class DefaultConfig:
     # APIs Config
     TEST_APPLICATION_STORE_API_HOST = "http://application_store"
     TEST_FUND_STORE_API_HOST = "http://fund_store"
+    TEST_ACCOUNT_STORE_API_HOST = "http://account_store"
 
+    ACCOUNT_STORE_API_HOST = environ.get(
+        "ACCOUNT_STORE_API_HOST", TEST_ACCOUNT_STORE_API_HOST
+    )
+    ACCOUNTS_ENDPOINT = "/accounts"
     APPLICATION_STORE_API_HOST = environ.get(
         "APPLICATION_STORE_API_HOST", TEST_APPLICATION_STORE_API_HOST
     )
@@ -43,7 +48,9 @@ class DefaultConfig:
         APPLICATION_STORE_API_HOST + "/applications/{application_id}"
     )
     GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT = (
-        APPLICATION_STORE_API_HOST + "/applications?account_id={account_id}&order_by=last_edited&order_rev=1"
+        APPLICATION_STORE_API_HOST
+        + "/applications?account_id={account_id}"
+        + "&order_by=last_edited&order_rev=1"
     )
     UPDATE_APPLICATION_FORM_ENDPOINT = (
         APPLICATION_STORE_API_HOST + "/applications/forms"
@@ -142,3 +149,4 @@ class DefaultConfig:
     COF_ROUND2_ID = "c603d114-5364-4474-a0c4-c41cbf4d3bbd"
     DEFAULT_FUND_ID = COF_FUND_ID
     DEFAULT_ROUND_ID = COF_ROUND2_ID
+    RESPONSE_TO_APPLICATION_WEEKS = 8
