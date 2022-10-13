@@ -21,3 +21,5 @@ applications:
     - route: frontend.test.fundingservice.co.uk
   health-check-http-endpoint: /healthcheck
   health-check-type: http
+  services:
+    - logit-ssl-drain
