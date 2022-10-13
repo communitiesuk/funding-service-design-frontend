@@ -51,9 +51,7 @@ def app():
     @pytest.mark.uses_fixture('live_server')
     :return: An instance of the Flask app.
     """
-    app = create_app()
-    # app.config["WTF_CSRF_ENABLED"] = False
-    yield app
+    yield create_app()
 
 
 @pytest.fixture()
