@@ -17,7 +17,8 @@ from flask import render_template
 from flask import request
 from flask import url_for
 from flask_wtf import FlaskForm
-from fsd_utils.authentication.decorators import login_required
+from fsd_utils.authentication.decorators import login_required, login_requested
+from flask_wtf.csrf import CSRFError
 
 
 default_bp = Blueprint("routes", __name__, template_folder="templates")
@@ -285,5 +286,14 @@ def not_found(error):
 
 @default_bp.errorhandler(500)
 def internal_server_error(error):
+    current_app.logger.error(f"Encountered 500: {error}")
+    return render_template("500.html"), 500
+
+
+@default_bp.errorhandler(CSRFError)
+@login_requested
+def csrf_token_expiry(error):
+    if not g.account_id:
+        return redirect(g.logout_url)
     current_app.logger.error(f"Encountered 500: {error}")
     return render_template("500.html"), 500
