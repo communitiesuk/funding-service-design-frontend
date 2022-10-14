@@ -4,6 +4,7 @@ applications:
   docker:
     image: ghcr.io/communitiesuk/digital-form-builder/runner:latest
   memory: 528M
+  disk_quota: 2G
   sandbox: true
   routes:
     - route: forms.dev.gids.dev
@@ -28,6 +29,7 @@ applications:
   docker:
     image: ghcr.io/communitiesuk/digital-form-builder/runner:latest
   memory: 528M
+  disk_quota: 2G
   sandbox: true
   routes:
     - route: forms.test.gids.dev
