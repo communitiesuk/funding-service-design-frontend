@@ -23,3 +23,5 @@ applications:
     - route: frontend.dev.gids.dev
   health-check-http-endpoint: /healthcheck
   health-check-type: http
+  services:
+    - logit-ssl-drain

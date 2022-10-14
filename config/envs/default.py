@@ -5,7 +5,7 @@ from os import getenv
 from pathlib import Path
 
 from distutils.util import strtobool
-from fsd_utils import configclass
+from fsd_utils import configclass, CommonConfig
 
 
 @configclass
@@ -15,6 +15,7 @@ class DefaultConfig:
     SECRET_KEY = environ.get("SECRET_KEY", "dev")
     SESSION_COOKIE_NAME = environ.get("SESSION_COOKIE_NAME", "session_cookie")
     SESSION_COOKIE_SECURE = True
+    WTF_CSRF_TIME_LIMIT = CommonConfig.WTF_CSRF_TIME_LIMIT
 
     STATIC_FOLDER = "static"
     TEMPLATES_FOLDER = "templates"
