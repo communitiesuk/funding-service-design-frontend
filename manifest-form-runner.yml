@@ -17,6 +17,7 @@ applications:
     CONTACT_US_URL: https://frontend.dev.gids.dev/contact_us
     COOKIE_POLICY_URL: https://frontend.dev.gids.dev/cookie_policy
     ACCESSIBILITY_STATEMENT_URL: https://frontend.dev.gids.dev/accessibility_statement
+    SINGLE_REDIS: true
   services:
     - form-uploads-dev
     - logit-ssl-drain
