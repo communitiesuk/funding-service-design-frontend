@@ -18,9 +18,9 @@ from flask import render_template
 from flask import request
 from flask import url_for
 from flask_wtf import FlaskForm
-from fsd_utils.authentication.decorators import login_required
-from fsd_utils.authentication.decorators import login_requested
 from flask_wtf.csrf import CSRFError
+from fsd_utils.authentication.decorators import login_requested
+from fsd_utils.authentication.decorators import login_required
 
 
 default_bp = Blueprint("routes", __name__, template_folder="templates")
@@ -267,7 +267,7 @@ def submit_application():
     ):
         raise Exception(
             "Unexpected response from application store when submitting"
-            " application application: "
+            " application: "
             + str(application_id)
             + "application-store-response: "
             + str(submission_response)

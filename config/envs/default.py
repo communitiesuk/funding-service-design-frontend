@@ -5,7 +5,8 @@ from os import getenv
 from pathlib import Path
 
 from distutils.util import strtobool
-from fsd_utils import configclass, CommonConfig
+from fsd_utils import CommonConfig
+from fsd_utils import configclass
 
 
 @configclass
@@ -34,9 +35,11 @@ class DefaultConfig:
         RSA256_PUBLIC_KEY = base64.b64decode(RSA256_PUBLIC_KEY_BASE64).decode()
 
     # APIs Config
-    TEST_APPLICATION_STORE_API_HOST = "http://application_store"
-    TEST_FUND_STORE_API_HOST = "http://fund_store"
-    TEST_ACCOUNT_STORE_API_HOST = "http://account_store"
+    TEST_APPLICATION_STORE_API_HOST = (
+        CommonConfig.TEST_APPLICATION_STORE_API_HOST
+    )
+    TEST_FUND_STORE_API_HOST = CommonConfig.TEST_FUND_STORE_API_HOST
+    TEST_ACCOUNT_STORE_API_HOST = CommonConfig.TEST_ACCOUNT_STORE_API_HOST
 
     ACCOUNT_STORE_API_HOST = environ.get(
         "ACCOUNT_STORE_API_HOST", TEST_ACCOUNT_STORE_API_HOST

@@ -24,12 +24,18 @@ def get_data(endpoint: str, params: dict = None):
         data (json): data response in json format
     """
 
+    query_string = ""
+    if params:
+        params = {k: v for k, v in params.items() if v is not None}
+        query_string = urlencode(params)
+        endpoint = endpoint + "?" + query_string
+
     if Config.USE_LOCAL_DATA:
         current_app.logger.info(f"Fetching local data from '{endpoint}'.")
-        data = get_local_data(endpoint, params)
+        data = get_local_data(endpoint)
     else:
         current_app.logger.info(f"Fetching data from '{endpoint}'.")
-        data = get_remote_data(endpoint, params)
+        data = get_remote_data(endpoint)
     if data is None:
         current_app.logger.error(
             f"Data request failed, unable to recover: {endpoint}"
@@ -38,14 +44,8 @@ def get_data(endpoint: str, params: dict = None):
     return data
 
 
-def get_remote_data(endpoint, params: dict = None):
-    query_string = ""
+def get_remote_data(endpoint):
 
-    if params:
-        params = {k: v for k, v in params.items() if v is not None}
-        query_string = urlencode(params)
-        endpoint = endpoint + "?" + query_string
-    current_app.logger.info(f"GETing endpoint: {endpoint}")
     response = requests.get(endpoint)
     if response.status_code == 200:
         data = response.json()
@@ -58,12 +58,8 @@ def get_remote_data(endpoint, params: dict = None):
         return None
 
 
-def get_local_data(endpoint: str, params: dict = None):
-    query_string = ""
-    if params:
-        params = {k: v for k, v in params.items() if v is not None}
-        query_string = urlencode(params)
-        endpoint = endpoint + "?" + query_string
+def get_local_data(endpoint: str):
+
     api_data_json = os.path.join(
         Config.FLASK_ROOT, "tests", "api_data", "get_endpoint_data.json"
     )
