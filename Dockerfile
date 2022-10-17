@@ -1,5 +1,6 @@
-ARG BASE_IMAGE_TAG="latest"
+ARG BASE_IMAGE_TAG="fs-1638-add-vcap-services-redis-support"
 FROM ghcr.io/communitiesuk/digital-form-builder-dluhc-runner:$BASE_IMAGE_TAG as base
+#FROM digital-form-builder-dluhc-runner:latest as base
 ARG FORMS_DIR="forms-v3"
 WORKDIR /usr/src/app
 RUN rm -r runner/dist/server/forms && rm -r runner/src && rm -r runner/test
