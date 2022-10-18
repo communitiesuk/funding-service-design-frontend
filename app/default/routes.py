@@ -21,6 +21,7 @@ from flask_wtf import FlaskForm
 from flask_wtf.csrf import CSRFError
 from fsd_utils.authentication.decorators import login_requested
 from fsd_utils.authentication.decorators import login_required
+import requests
 
 
 default_bp = Blueprint("routes", __name__, template_folder="templates")
@@ -141,6 +142,17 @@ def new():
         )
     )
 
+@default_bp.route("/task/<application_id>", methods=["GET"])
+@login_required
+def intermidate_task(application_id):
+    # tasklist_url = (
+    #     request.host_url
+    #     + url_for("routes.tasklist", application_id=application_id)
+    # )
+    # return render_template('redirect.html'), {"Refresh": "3; url=https://google.com;"}
+    response = redirect('https://google.com', code=307)
+    response.headers["Cache-Control"] = 'no-cache, no-store, must-revalidate'  
+    return response    
 
 @default_bp.route("/tasklist/<application_id>", methods=["GET"])
 @login_required
@@ -222,7 +234,7 @@ def continue_application(application_id):
     form_name = args.get("form_name")
     return_url = (
         request.host_url
-        + url_for("routes.tasklist", application_id=application_id)[1:]
+        + url_for("routes.intermidate_task", application_id=application_id)[1:]
     )
     current_app.logger.info(
         f"Url the form runner should return to '{return_url}'."
