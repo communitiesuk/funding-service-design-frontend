@@ -6,13 +6,16 @@ from app.filters import snake_case_to_human
 from config import Config
 from flask import Flask
 from flask_babel import Babel
+from flask_babel import gettext
 from flask_compress import Compress
 from flask_talisman import Talisman
 from flask_wtf.csrf import CSRFProtect
 from fsd_utils import init_sentry
+from fsd_utils.locale_selector.get_lang import get_lang
 from fsd_utils.healthchecks.checkers import FlaskRunningChecker
 from fsd_utils.healthchecks.healthcheck import Healthcheck
 from fsd_utils.logging import logging
+from fsd_utils import LanguageSelector
 from jinja2 import ChoiceLoader
 from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
@@ -25,7 +28,9 @@ def create_app() -> Flask:
 
     flask_app.config.from_object("config.Config")
 
-    Babel(flask_app)
+    babel = Babel(flask_app)
+    babel.locale_selector_func = get_lang
+    LanguageSelector(flask_app)
 
     flask_app.jinja_loader = ChoiceLoader(
         [
@@ -71,7 +76,7 @@ def create_app() -> Flask:
         return dict(
             stage="beta",
             service_title=(
-                "Apply for funding to save an asset in your community"
+                gettext(u'Apply for funding to save an asset in your community')
             ),
             service_meta_description=(
                 "Apply for funding to save an asset in your community"
