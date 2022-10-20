@@ -10,10 +10,10 @@ class TestUserValidation:
     TEST_ID = "test_id"
     TEST_USER = "test-user"
     TEST_APPLICATION_STORE_DATA = data[
-        f"http://application_store/applications/{TEST_ID}"
+        f"application_store/applications/{TEST_ID}"
     ]
-    TEST_FUND_DATA = data["http://fund_store/funds/funding-service-design"]
-    TEST_ROUND_DATA = data["http://fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd"]
+    TEST_FUND_DATA = data["fund_store/funds/funding-service-design"]
+    TEST_ROUND_DATA = data["fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd"]
     REHYDRATION_TOKEN = "test_token"
 
     def test_continue_application_correct_user(self, flask_test_client, mocker, monkeypatch):

@@ -5,7 +5,7 @@ Tests the routes and their contents using the dict within
 from tests.route_testing_conf import routes_and_test_content
 
 
-def test_routes_status_code(flask_test_client, monkeypatch):
+def test_routes_status_code(flask_test_client, monkeypatch, mocker):
     """
     GIVEN Our Flask Application
     WHEN a route is requested
@@ -20,7 +20,7 @@ def test_routes_status_code(flask_test_client, monkeypatch):
     )
     for route, _ in routes_and_test_content.items():
         response = flask_test_client.get(route, follow_redirects=True)
-        assert response.status_code == 200
+        assert 200 == response.status_code, "Incorrect status code returned"
 
 
 def test_routes_content(flask_test_client, monkeypatch):
