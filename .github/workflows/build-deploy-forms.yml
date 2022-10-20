@@ -11,6 +11,7 @@ env:
   DOCKER_REGISTRY: ghcr.io
   IMAGE_NAME: "runner"
   IMAGE_REPO_PATH: "ghcr.io/${{github.repository}}"
+
 jobs:
   docker-build:
     runs-on: ubuntu-latest
