@@ -1,4 +1,8 @@
 import json
+from app.models.account import Account
+from app.models.application import Application
+from app.models.fund import Fund
+from app.models.round import Round
 from config.envs.default import DefaultConfig
 class TestUserValidation:
     file = open("tests/api_data/endpoint_data.json")
@@ -18,8 +22,8 @@ class TestUserValidation:
             lambda: {"accountId": self.TEST_USER},
         )
         mocker.patch(
-            "app.default.data.get_application_data",
-            return_value=self.TEST_APPLICATION_STORE_DATA,
+            "app.default.routes.get_application_data",
+            return_value=Application.from_dict(self.TEST_APPLICATION_STORE_DATA),
         )
         mocker.patch(
             "app.default.routes.format_rehydrate_payload",
@@ -42,8 +46,8 @@ class TestUserValidation:
             lambda: {"accountId": "different-user"},
         )
         mocker.patch(
-            "app.default.data.get_application_data",
-            return_value=self.TEST_APPLICATION_STORE_DATA,
+            "app.default.routes.get_application_data",
+            return_value=Application.from_dict(self.TEST_APPLICATION_STORE_DATA),
         )
         mocker.patch(
             "app.default.data.get_round_data_fail_gracefully",
@@ -59,16 +63,23 @@ class TestUserValidation:
             lambda: {"accountId": self.TEST_USER},
         )
         mocker.patch(
-            "app.default.data.get_application_data",
-            return_value=self.TEST_APPLICATION_STORE_DATA,
+            "app.default.routes.get_account",
+            return_value=Account.from_json({
+                "account_id": self.TEST_USER,
+                "email_address": "test@example.com"
+            }),
         )
         mocker.patch(
-            "app.default.data.get_fund_data",
-            return_value=self.TEST_FUND_DATA,
+            "app.default.routes.get_application_data",
+            return_value=Application.from_dict(self.TEST_APPLICATION_STORE_DATA),
         )
         mocker.patch(
-            "app.default.data.get_round_data",
-            return_value=self.TEST_ROUND_DATA,
+            "app.default.routes.get_fund_data",
+            return_value=Fund.from_dict( self.TEST_FUND_DATA),
+        )
+        mocker.patch(
+            "app.default.routes.get_round_data",
+            return_value=Round.from_dict( self.TEST_ROUND_DATA),
         )
 
         response = flask_test_client.get(f"/tasklist/{self.TEST_ID}", follow_redirects=False)
@@ -82,25 +93,22 @@ class TestUserValidation:
             lambda: {"accountId": "different-user"},
         )
         mocker.patch(
-            "app.default.data.get_application_data",
-            return_value=self.TEST_APPLICATION_STORE_DATA,
-        )
-        mocker.patch(
-            "app.default.data.get_round_data_fail_gracefully",
-            return_value=self.TEST_ROUND_DATA
+            "app.default.routes.get_application_data",
+            return_value=Application.from_dict(self.TEST_APPLICATION_STORE_DATA),
         )
 
         response = flask_test_client.get(f"/tasklist/{self.TEST_ID}", follow_redirects=False)
         assert 401 == response.status_code, "Incorrect status code"
 
     def test_submit_correct_user(self, flask_test_client, mocker, monkeypatch):
+        
+        mocker.patch(
+            "app.default.routes.get_application_data",
+            return_value=Application.from_dict(self.TEST_APPLICATION_STORE_DATA),
+        )
         monkeypatch.setattr(
             "fsd_utils.authentication.decorators._check_access_token",
             lambda: {"accountId": self.TEST_USER},
-        )
-        mocker.patch(
-            "app.default.data.get_application_data",
-            return_value=self.TEST_APPLICATION_STORE_DATA,
         )
         mocker.patch(
             "app.default.routes.format_payload_and_submit_application",
@@ -122,8 +130,8 @@ class TestUserValidation:
             lambda: {"accountId": "different-user"},
         )
         mocker.patch(
-            "app.default.data.get_application_data",
-            return_value=self.TEST_APPLICATION_STORE_DATA,
+            "app.default.routes.get_application_data",
+            return_value=Application.from_dict(self.TEST_APPLICATION_STORE_DATA),
         )
         mocker.patch(
             "app.default.data.get_round_data_fail_gracefully",
