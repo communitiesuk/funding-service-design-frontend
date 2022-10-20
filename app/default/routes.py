@@ -271,6 +271,7 @@ def submit_application():
             + str(application_id)
             + "application-store-response: "
             + str(submission_response)
+            + str(submission_response.json())
         )
     application_id = submitted.get("id")
     application_reference = submitted.get("reference")
@@ -287,7 +288,7 @@ def submit_application():
 
 @default_bp.errorhandler(404)
 def not_found(error):
-    current_app.logger.warning(f"Encountered 404: {error}")
+    current_app.logger.warning(f"Encountered 404 against url {request.path}: {error}")
     round_data = get_round_data_fail_gracefully(
         Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID
     )
@@ -295,6 +296,7 @@ def not_found(error):
 
 
 @default_bp.errorhandler(500)
+@default_bp.errorhandler(Exception)
 def internal_server_error(error):
     current_app.logger.error(f"Encountered 500: {error}")
     return render_template("500.html"), 500
