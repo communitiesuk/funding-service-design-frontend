@@ -32,6 +32,14 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 # TODO Move the following method into utils. Utils will need a way of accessing application data.
 
 def verify_application_owner_local(f):
+    """
+    This decorator determines whether the using trying to access an application is
+    the owner of that application. If they are, passes through to the decorated
+    method. If not, it returns a 401 response.
+
+    It detects whether the call was a GET or a POST and reads the parameters 
+    accordingly.
+    """
     @wraps(f)
     def decorator(*args, **kwargs):
         if request.method == "POST":
