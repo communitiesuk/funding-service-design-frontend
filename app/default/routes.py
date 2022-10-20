@@ -287,38 +287,8 @@ def continue_application(application_id):
 def submit_application():
     application_id = request.form.get("application_id")
     submitted = format_payload_and_submit_application(application_id)
+    
 
-    response_weeks = 8
-
-    return render_template(
-        "application_submitted.html",
-        application_id=submitted.get("id"),
-        application_reference=submitted.get("reference"),
-        application_email=submitted.get("email"),
-        response_weeks=response_weeks,
-    )
-
-def format_payload_and_submit_application(application_id):
-    payload = {"application_id": application_id}
-    submission_response = requests.post(
-        Config.SUBMIT_APPLICATION_ENDPOINT.format(
-            application_id=application_id
-        ),
-        json=payload,
-    )
-    submitted = submission_response.json()
-
-    if submission_response.status_code != 201 or not submitted.get(
-        "reference"
-    ):
-        raise Exception(
-            "Unexpected response from application store when submitting"
-            " application: "
-            + str(application_id)
-            + "application-store-response: "
-            + str(submission_response)
-            + str(submission_response.json())
-        )
     application_id = submitted.get("id")
     application_reference = submitted.get("reference")
     application_email = submitted.get("email")
@@ -330,6 +300,29 @@ def format_payload_and_submit_application(application_id):
         application_email=application_email,
         response_weeks=Config.RESPONSE_TO_APPLICATION_WEEKS,
     )
+
+def format_payload_and_submit_application(application_id):
+    payload = {"application_id": application_id}
+    submission_response = requests.post(
+        Config.SUBMIT_APPLICATION_ENDPOINT.format(
+            application_id=application_id
+        ),
+        json=payload,
+    )
+    submitted = submission_response.json()
+    if submission_response.status_code != 201 or not submitted.get(
+        "reference"
+    ):
+        raise Exception(
+            "Unexpected response from application store when submitting"
+            " application: "
+            + str(application_id)
+            + "application-store-response: "
+            + str(submission_response)
+            + str(submission_response.json())
+        )
+    return submitted
+
 
 
 @default_bp.errorhandler(404)
