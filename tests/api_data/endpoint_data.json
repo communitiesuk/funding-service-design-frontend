@@ -203,7 +203,7 @@
   ],
   "http://application_store/test-application-id": {
     "id": "test-application-id",
-    "account_id": "test_account_id",
+    "account_id": "test-user",
     "date_submitted": "2022-10-11T10:01:25.216743",
     "fund_id": "testfundid",
     "last_edited": "2022-10-11T09:49:00.542371",
@@ -1126,7 +1126,7 @@
   },
   "http://application_store/test-application-submit": {
     "id": "test-application-id",
-    "account_id": "test_account_id",
+    "account_id": "test-user",
     "date_submitted": "2022-10-11T10:01:25.216743",
     "fund_id": "testfundid",
     "last_edited": "2022-10-11T09:49:00.542371",
