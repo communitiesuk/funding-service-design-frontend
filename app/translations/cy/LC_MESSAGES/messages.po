@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-21 16:29+0100\n"
-"PO-Revision-Date: 2022-10-21 16:37+0100\n"
+"POT-Creation-Date: 2022-10-21 17:32+0100\n"
+"PO-Revision-Date: 2022-10-21 17:33+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
 "Language-Team: cy <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: app/create_app.py:79
 msgid "Apply for funding to save an asset in your community"
-msgstr "Cais am gyllid i achub ased yn eich cymuned"
+msgstr "Gwnewch gais am gyllid i arbed ased yn eich cymuned"
 
 #: app/templates/dashboard.html:10
 #, python-format
@@ -43,19 +43,19 @@ msgstr "Cwcis"
 
 #: app/templates/footer.html:19
 msgid "Accessibility Statement"
-msgstr "Datganiad Hygyrchedd"
+msgstr ""
 
 #: app/templates/footer.html:24
 msgid "Contact us"
-msgstr "Cysylltwch â ni"
+msgstr "Datganiad Hygyrchedd"
 
 #: app/templates/footer.html:33
 msgid "All content is available under the"
-msgstr "Mae'r holl gynnwys ar gael o dan y"
+msgstr "Mae’r holl gynnwys ar gael o dan y"
 
 #: app/templates/footer.html:34
 msgid "Open Government Licence v3.0"
-msgstr "Trwydded Llywodraeth Agored v3.0"
+msgstr "Drwydded Llywodraeth Agored v3.0"
 
 #: app/templates/footer.html:34
 msgid "except where otherwise stated"
@@ -71,5 +71,5 @@ msgstr "adborth"
 
 #: app/templates/header.html:49
 msgid "will help us to improve it."
-msgstr "yn ein helpu i'w wella."
+msgstr "n ein helpu i'w wella"
 
