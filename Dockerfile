@@ -1,4 +1,4 @@
-ARG BASE_IMAGE_TAG="latest"
+ARG BASE_IMAGE_TAG="debug-logs"
 FROM ghcr.io/communitiesuk/digital-form-builder-dluhc-runner:$BASE_IMAGE_TAG as base
 ARG FORMS_DIR="forms-v3"
 WORKDIR /usr/src/app
