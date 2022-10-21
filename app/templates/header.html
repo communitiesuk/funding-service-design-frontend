@@ -38,21 +38,18 @@
     </div>
 </header>
 
-
+<!-- Macro call removed for translation syntax to function correctly -->
 <div class="govuk-width-container">
-    {% trans %}{{ govukPhaseBanner({'tag': {'text': 'beta'}, 'html':
-        'This is a new service – your <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=EGg0v32c3kOociSi7zmVqN48ORk8WN5LlJITE3Swt-lURUNCR0dHMjgxWFZOMTMxQzlOTVIxVkQ0Sy4u" class="govuk-link">feedback</a> will help us to improve it.'
-    })}}{% endtrans %}
+    <div class="govuk-phase-banner">
+        <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">
+            beta
+        </strong>
+        <span class="govuk-phase-banner__text">
+            {% trans %}This is a new service - your{% endtrans %}&nbsp;
+            <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=EGg0v32c3kOociSi7zmVqN48ORk8WN5LlJITE3Swt-lURUNCR0dHMjgxWFZOMTMxQzlOTVIxVkQ0Sy4u" 
+            class="govuk-link">{% trans %}feedback{% endtrans %}</a>&nbsp;{% trans %}will help us to improve it.{% endtrans %}
+        </span>
+        </p>
+    </div>
 </div>
-
-
-<!-- <div class="govuk-phase-banner">
-    <p class="govuk-phase-banner__content">
-      <strong class="govuk-tag govuk-phase-banner__content__tag">
-        beta
-      </strong>
-      <span class="govuk-phase-banner__text">
-        {% trans %}This is a new service – your{% endtrans %} <a class="govuk-link" href="#">feedback</a> will help us to improve it.
-      </span>
-    </p>
-  </div> -->

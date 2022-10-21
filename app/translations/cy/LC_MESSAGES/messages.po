@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-21 11:10+0100\n"
-"PO-Revision-Date: 2022-10-21 11:09+0100\n"
+"POT-Creation-Date: 2022-10-21 13:28+0100\n"
+"PO-Revision-Date: 2022-10-21 13:38+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
 "Language-Team: cy <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: app/create_app.py:79
 msgid "Apply for funding to save an asset in your community"
-msgstr "welsh"
+msgstr "Cais am gyllid i achub ased yn eich cymuned"
 
 #: app/templates/dashboard.html:10
 #, python-format
@@ -33,7 +33,16 @@ msgstr[2] ""
 msgstr[3] ""
 msgstr[4] ""
 
-#: app/templates/header.html:53
-msgid "This is a new service – your"
-msgstr "welsh"
+# ## start of Google translate
+#: app/templates/header.html:49
+msgid "This is a new service - your"
+msgstr "Mae hwn yn wasanaeth newydd - bydd eich"
+
+#: app/templates/header.html:51
+msgid "feedback"
+msgstr "adborth"
+
+#: app/templates/header.html:51
+msgid "will help us to improve it."
+msgstr "yn ein helpu i'w wella."
 
