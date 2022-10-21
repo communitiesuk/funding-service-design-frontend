@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-21 13:28+0100\n"
-"PO-Revision-Date: 2022-10-21 13:38+0100\n"
+"POT-Creation-Date: 2022-10-21 16:23+0100\n"
+"PO-Revision-Date: 2022-10-21 16:23+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
 "Language-Team: cy <LL@li.org>\n"
@@ -33,16 +33,43 @@ msgstr[2] ""
 msgstr[3] ""
 msgstr[4] ""
 
-# ## start of Google translate
-#: app/templates/header.html:49
+#: app/templates/footer.html:9
+msgid "Privacy"
+msgstr "Preifatrwydd"
+
+#: app/templates/footer.html:14
+msgid "Cookies"
+msgstr "Cwcis"
+
+#: app/templates/footer.html:19
+msgid "Accessibility Statement"
+msgstr "Datganiad Hygyrchedd"
+
+#: app/templates/footer.html:24
+msgid "Contact us"
+msgstr "Cysylltwch â ni"
+
+#: app/templates/footer.html:33
+msgid "All content is available under the"
+msgstr "Mae'r holl gynnwys ar gael o dan y"
+
+#: app/templates/footer.html:34
+msgid "Open Government Licence v3.0"
+msgstr "Trwydded Llywodraeth Agored v3.0"
+
+#: app/templates/footer.html:34
+msgid "except where otherwise stated"
+msgstr "ac eithrio lle nodir yn wahanol"
+
+#: app/templates/header.html:47
 msgid "This is a new service - your"
 msgstr "Mae hwn yn wasanaeth newydd - bydd eich"
 
-#: app/templates/header.html:51
+#: app/templates/header.html:49
 msgid "feedback"
 msgstr "adborth"
 
-#: app/templates/header.html:51
+#: app/templates/header.html:49
 msgid "will help us to improve it."
 msgstr "yn ein helpu i'w wella."
 
