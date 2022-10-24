@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-21 17:32+0100\n"
+"POT-Creation-Date: 2022-10-24 16:41+0100\n"
 "PO-Revision-Date: 2022-10-21 17:33+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -33,33 +33,13 @@ msgstr[2] ""
 msgstr[3] ""
 msgstr[4] ""
 
-#: app/templates/footer.html:9
+#: app/templates/footer.html:10
 msgid "Privacy"
 msgstr "Preifatrwydd"
 
-#: app/templates/footer.html:14
+#: app/templates/footer.html:15
 msgid "Cookies"
 msgstr "Cwcis"
-
-#: app/templates/footer.html:19
-msgid "Accessibility Statement"
-msgstr ""
-
-#: app/templates/footer.html:24
-msgid "Contact us"
-msgstr "Datganiad Hygyrchedd"
-
-#: app/templates/footer.html:33
-msgid "All content is available under the"
-msgstr "Mae’r holl gynnwys ar gael o dan y"
-
-#: app/templates/footer.html:34
-msgid "Open Government Licence v3.0"
-msgstr "Drwydded Llywodraeth Agored v3.0"
-
-#: app/templates/footer.html:34
-msgid "except where otherwise stated"
-msgstr "ac eithrio lle nodir yn wahanol"
 
 #: app/templates/header.html:47
 msgid "This is a new service - your"
@@ -73,3 +53,17 @@ msgstr "adborth"
 msgid "will help us to improve it."
 msgstr "n ein helpu i'w wella"
 
+#~ msgid "Accessibility Statement"
+#~ msgstr ""
+
+#~ msgid "Contact us"
+#~ msgstr "Datganiad Hygyrchedd"
+
+#~ msgid "All content is available under the"
+#~ msgstr "Mae’r holl gynnwys ar gael o dan y"
+
+#~ msgid "Open Government Licence v3.0"
+#~ msgstr "Drwydded Llywodraeth Agored v3.0"
+
+#~ msgid "except where otherwise stated"
+#~ msgstr "ac eithrio lle nodir yn wahanol"
