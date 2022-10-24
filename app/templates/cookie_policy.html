@@ -5,21 +5,21 @@
 {% block content %}
     <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">Cookies</h1>
+    <h1 class="govuk-heading-l">{% trans %}Cookies{% endtrans %}</h1>
     <p class="govuk-body">
         Cookies are small files saved on your phone, tablet or computer when you visit a website.
     </p>
     <p class="govuk-body">We use cookies to make the {{ service_title }} service work.</p>
 
     <h2 class="govuk-heading-m" id="essential-cookies">Essential cookies</h2>
-    <p class="govuk-body">Essential cookies keep your information secure while you use the {{ service_title }} service. We do not need to ask permission to use them.</p>
+    <p class="govuk-body">{% trans %}Essential cookies keep your information secure while you use the{% endtrans %} {{ service_title }} {% trans %}service. We do not need to ask permission to use them.{% endtrans %}</p>
     <table class="govuk-table">
-        <caption class="govuk-visually-hidden">Essential cookies</caption>
+        <caption class="govuk-visually-hidden">{% trans %}Essential cookies{% endtrans %}</caption>
         <thead class="govuk-table__head">
             <tr>
-                <th class="govuk-table__header">Name</th>
-                <th class="govuk-table__header">Purpose</th>
-                <th class="govuk-table__header">Expires</th>
+                <th class="govuk-table__header">{% trans %}Name{% endtrans %}</th>
+                <th class="govuk-table__header">{% trans %}Purpose{% endtrans %}</th>
+                <th class="govuk-table__header">{% trans %}Expires{% endtrans %}</th>
             </tr>
         </thead>
         <tbody class="govuk-table__body">
@@ -28,10 +28,10 @@
                   session_cookie
                 </td>
                 <td width="50%" class="govuk-table__cell">
-                  Used to keep you connected to your current session
+                  {% trans %}Used to keep you connected to your current session{% endtrans %}
                 </td>
                 <td class="govuk-table__cell">
-                  When you close your browser
+                  {% trans %}When you close your browser{% endtrans %}
                 </td>
             </tr>
             <tr class="govuk-table__row">
@@ -39,10 +39,10 @@
                   fsd_user_token
                 </td>
                 <td width="50%" class="govuk-table__cell">
-                  Used to keep you signed in
+                  {% trans %}Used to keep you signed in{% endtrans %}
                 </td>
                 <td class="govuk-table__cell">
-                  24 hours
+                  {% trans %}24 hours{% endtrans %}
                 </td>
             </tr>
             <tr class="govuk-table__row">
@@ -50,10 +50,10 @@
                   session
                 </td>
                 <td width="50%" class="govuk-table__cell">
-                  Set to remember information you’ve entered into a form
+                  {% trans %}Set to remember information you’ve entered into a form{% endtrans %}
                 </td>
                 <td class="govuk-table__cell">
-                  When you close your browser
+                  {% trans %}When you close your browser{% endtrans %}
                 </td>
             </tr>
             <tr class="govuk-table__row">
@@ -72,10 +72,10 @@
                 language
               </td>
               <td width="50%" class="govuk-table__cell">
-                  Used to remember the language you've chosen to display page information
+                {% trans %}Used to remember the language you've chosen to display page information{% endtrans %}
               </td>
               <td class="govuk-table__cell">
-                30 days
+                {% trans %}30 days{% endtrans %}
               </td>
           </tr>
         </tbody>
