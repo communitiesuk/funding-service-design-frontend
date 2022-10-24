@@ -6,9 +6,13 @@
     <input type="hidden" name="account_id" value="{{ account_id }}">
     <input type="hidden" name="fund_id" value="{{ fund_id }}">
     <input type="hidden" name="round_id" value="{{ round_id }}">
-    {{ govukButton({
-    'text': "Start new application",
-    'classes': "govuk-button--secondary" if applications|length>0
-    }) }}
+
+    {% if applications|length>0 %}
+        <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+    {% else %}
+        <button class="govuk-button" data-module="govuk-button">
+    {% endif %}
+        {% trans %}Start new application{% endtrans %}
+    </button>
 </form>
 {% endmacro %}

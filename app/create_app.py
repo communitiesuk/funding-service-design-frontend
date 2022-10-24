@@ -10,6 +10,8 @@ from flask_compress import Compress
 from flask_talisman import Talisman
 from flask_wtf.csrf import CSRFProtect
 from fsd_utils import init_sentry
+from fsd_utils import LanguageSelector
+from fsd_utils.locale_selector.get_lang import get_lang
 from fsd_utils.healthchecks.checkers import FlaskRunningChecker
 from fsd_utils.healthchecks.healthcheck import Healthcheck
 from fsd_utils.logging import logging
@@ -25,7 +27,9 @@ def create_app() -> Flask:
 
     flask_app.config.from_object("config.Config")
 
-    Babel(flask_app)
+    babel = Babel(flask_app)
+    babel.locale_selector_func = get_lang
+    LanguageSelector(flask_app)
 
     flask_app.jinja_loader = ChoiceLoader(
         [

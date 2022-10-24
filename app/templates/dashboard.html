@@ -1,13 +1,13 @@
 {%- from "govuk_frontend_jinja/components/tag/macro.html" import govukTag -%}
-{%- from "govuk_frontend_jinja/components/table/macro.html" import govukTable -%}
 {%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
 {% from "partials/start-application-button.html" import startApplicationButton %}
 
 {% extends "base.html" %}
 {% block content %}
-    <h1 class="govuk-heading-xl">Your applications</h1>
+    <h1 class="govuk-heading-xl">{% trans %}Your applications{% endtrans %}</h1>
     <p class="govuk-body">
-        You have started {% trans count=applications|length %} {{ count }} application {% pluralize %} {{ count }} applications {% endtrans %} using this email address.
+        {% trans %}You have started{% endtrans %}&nbsp{% trans count=applications|length %} {{ count }} application {% pluralize %} {{ count }} applications {% endtrans %}
+        &nbsp{% trans %}using this email address{% endtrans %}.
     </p>
     {% set ns = namespace(rows = []) %}
     {% for application in applications %}
@@ -30,50 +30,45 @@
 
     {% set row = ns.rows.append(
     [
-    {
-    'text': application.project_name if application.project_name else 'Untitled project'
-    },
-    {
-    'text':  govukTag({
-    'text': application.status|snake_case_to_human ,
-    'classes': status_class
-    })
-    },
-    {
-    'html': application.last_edited|datetime_format_short_month if application.last_edited
-    },
-    {
-    'html': application.reference
-    },
-    {
-    'html': application_link
-    }
-    ]
-    )
-    %}
+        {
+            'text': application.project_name if application.project_name else 'Untitled project'
+        },
+        {
+            'text':  govukTag({
+                'text': application.status|snake_case_to_human ,
+                'classes': status_class
+            })
+        },
+        {
+            'html': application.last_edited|datetime_format_short_month if application.last_edited
+        },
+        {
+            'html': application.reference
+        },
+        {
+            'html': application_link
+        }
+    ])%}
 {% endfor %}
 
 {% if applications|length > 0 %}
-    {{ govukTable({
-    'head': [
-    {
-    'text': 'Project name'
-    },
-    {
-    'text': 'Status'
-    },
-    {
-    'text': 'Last edited'
-    },
-    {
-    'text': 'Application Reference'
-    },
-    {
-    'text': 'Action'
-    }
-    ],
-    'rows': ns.rows
-    }) }}
+    <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">{% trans %}Project name{% endtrans %}</th>
+            <th scope="col" class="govuk-table__header">{% trans %}Status{% endtrans %}</th>
+            <th scope="col" class="govuk-table__header">{% trans %}Last edited{% endtrans %}</th>
+            <th scope="col" class="govuk-table__header">{% trans %}Application Reference{% endtrans %}</th>
+            <th scope="col" class="govuk-table__header">{% trans %}Action{% endtrans %}</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {{ns.rows}}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell"></td>
+          </tr>
+        </tbody>
+      </table>
 {% endif %}
 
 {{startApplicationButton(form, url_for('routes.new'), applications=applications)}}
