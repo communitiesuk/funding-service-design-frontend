@@ -33,7 +33,7 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 
 def verify_application_owner_local(f):
     """
-    This decorator determines whether the using trying to access an application is
+    This decorator determines whether the user trying to access an application is
     the owner of that application. If they are, passes through to the decorated
     method. If not, it returns a 401 response.
 
