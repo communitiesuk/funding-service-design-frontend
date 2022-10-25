@@ -1,3 +1,5 @@
+from functools import wraps
+from http.client import METHOD_NOT_ALLOWED
 import requests
 from app.constants import ApplicationStatus
 from app.default.data import get_account
@@ -10,6 +12,7 @@ from app.helpers import format_rehydrate_payload
 from app.helpers import get_token_to_return_to_application
 from app.models.application_summary import ApplicationSummary
 from config import Config
+from flask import abort
 from flask import Blueprint
 from flask import current_app
 from flask import g
@@ -24,6 +27,38 @@ from fsd_utils.authentication.decorators import login_required
 
 
 default_bp = Blueprint("routes", __name__, template_folder="templates")
+
+
+# TODO Move the following method into utils. Utils will need a way of accessing application data.
+
+def verify_application_owner_local(f):
+    """
+    This decorator determines whether the user trying to access an application is
+    the owner of that application. If they are, passes through to the decorated
+    method. If not, it returns a 401 response.
+
+    It detects whether the call was a GET or a POST and reads the parameters 
+    accordingly.
+    """
+    @wraps(f)
+    def decorator(*args, **kwargs):
+        if request.method == "POST":
+            application_id = request.form["application_id"]
+        elif request.method == "GET":
+            application_id = kwargs["application_id"]
+        else:
+            abort(METHOD_NOT_ALLOWED, f"Http method {request.method} is not supported")
+
+        application = get_application_data(application_id, as_dict=True)
+        application_owner = application.account_id
+        current_user = g.account_id
+        if current_user == application_owner:
+            return f(*args, **kwargs)
+        else:
+            abort(401, f"User {current_user} attempted to access application {application_id}, owned by {application_owner}")
+    return decorator
+
+# End TODO
 
 
 @default_bp.route("/")
@@ -141,9 +176,9 @@ def new():
         )
     )
 
-
 @default_bp.route("/tasklist/<application_id>", methods=["GET"])
 @login_required
+@verify_application_owner_local
 def tasklist(application_id):
     """
     Returns a Flask function which constructs a tasklist for an application id.
@@ -154,8 +189,8 @@ def tasklist(application_id):
     Returns:
         function: a function which renders the tasklist template.
     """
-
     application = get_application_data(application_id, as_dict=True)
+
     account = get_account(account_id=application.account_id)
     if application.status == ApplicationStatus.SUBMITTED.name:
         return render_template(
@@ -201,8 +236,9 @@ def tasklist(application_id):
         submission_deadline=round_data.deadline,
     )
 
-
 @default_bp.route("/continue_application/<application_id>", methods=["GET"])
+@login_required
+@verify_application_owner_local
 def continue_application(application_id):
     """
     Returns a Flask function to return to an active application form.
@@ -229,6 +265,7 @@ def continue_application(application_id):
     )
 
     application = get_application_data(application_id, as_dict=True)
+
     form_data = application.get_form_data(application, form_name)
 
     rehydrate_payload = format_rehydrate_payload(
@@ -251,28 +288,13 @@ def continue_application(application_id):
 
 
 @default_bp.route("/submit_application", methods=["POST"])
+@login_required
+@verify_application_owner_local
 def submit_application():
     application_id = request.form.get("application_id")
-    payload = {"application_id": application_id}
-    submission_response = requests.post(
-        Config.SUBMIT_APPLICATION_ENDPOINT.format(
-            application_id=application_id
-        ),
-        json=payload,
-    )
-    submitted = submission_response.json()
+    submitted = format_payload_and_submit_application(application_id)
+    
 
-    if submission_response.status_code != 201 or not submitted.get(
-        "reference"
-    ):
-        raise Exception(
-            "Unexpected response from application store when submitting"
-            " application: "
-            + str(application_id)
-            + "application-store-response: "
-            + str(submission_response)
-            + str(submission_response.json())
-        )
     application_id = submitted.get("id")
     application_reference = submitted.get("reference")
     application_email = submitted.get("email")
@@ -284,6 +306,29 @@ def submit_application():
         application_email=application_email,
         response_weeks=Config.RESPONSE_TO_APPLICATION_WEEKS,
     )
+
+def format_payload_and_submit_application(application_id):
+    payload = {"application_id": application_id}
+    submission_response = requests.post(
+        Config.SUBMIT_APPLICATION_ENDPOINT.format(
+            application_id=application_id
+        ),
+        json=payload,
+    )
+    submitted = submission_response.json()
+    if submission_response.status_code != 201 or not submitted.get(
+        "reference"
+    ):
+        raise Exception(
+            "Unexpected response from application store when submitting"
+            " application: "
+            + str(application_id)
+            + "application-store-response: "
+            + str(submission_response)
+            + str(submission_response.json())
+        )
+    return submitted
+
 
 
 @default_bp.errorhandler(404)
@@ -301,6 +346,14 @@ def internal_server_error(error):
     current_app.logger.error(f"Encountered 500: {error}")
     return render_template("500.html"), 500
 
+@default_bp.errorhandler(401)
+def unauthorised_error(error):
+    current_app.logger.error(f"Encountered 401: {error}")
+    round_data = get_round_data_fail_gracefully(
+        Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID
+    )
+    return render_template("500.html", round_data=round_data), 401
+
 
 @default_bp.errorhandler(CSRFError)
 @login_requested
@@ -309,3 +362,6 @@ def csrf_token_expiry(error):
         return redirect(g.logout_url)
     current_app.logger.error(f"Encountered 500: {error}")
     return render_template("500.html"), 500
+
+
+
