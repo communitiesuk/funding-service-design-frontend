@@ -304,6 +304,8 @@ tomli==2.0.1
     #   build
     #   pep517
     #   pytest
+tqdm==4.64.1
+    # via webdriver-manager
 trio==0.21.0
     # via
     #   selenium
@@ -324,7 +326,7 @@ webassets==2.0
     # via
     #   -r requirements.txt
     #   flask-assets
-webdriver-manager==3.7.0
+webdriver-manager @ git+https://github.com/SergeyPirogov/webdriver_manager@dc73f4a27e8f40cd81dc4718a3f26c22ede29586
     # via -r requirements-dev.in
 werkzeug==2.1.2
     # via
