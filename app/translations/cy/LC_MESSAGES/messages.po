@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-25 12:25+0100\n"
+"POT-Creation-Date: 2022-10-25 14:59+0100\n"
 "PO-Revision-Date: 2022-10-25 11:27+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -60,6 +60,10 @@ msgstr "Welsh s"
 #: app/templates/dashboard.html:64
 msgid "Last edited"
 msgstr "Welsh le"
+
+#: app/templates/dashboard.html:67
+msgid "Application Reference"
+msgstr "Welsh ar"
 
 #: app/templates/dashboard.html:70
 msgid "Action"
