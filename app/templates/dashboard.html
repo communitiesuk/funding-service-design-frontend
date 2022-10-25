@@ -1,4 +1,5 @@
 {%- from "govuk_frontend_jinja/components/tag/macro.html" import govukTag -%}
+{%- from "govuk_frontend_jinja/components/table/macro.html" import govukTable -%}
 {%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
 {% from "partials/start-application-button.html" import startApplicationButton %}
 
@@ -6,8 +7,7 @@
 {% block content %}
     <h1 class="govuk-heading-xl">{% trans %}Your applications{% endtrans %}</h1>
     <p class="govuk-body">
-        {% trans %}You have started{% endtrans %}&nbsp{% trans count=applications|length %} {{ count }} application {% pluralize %} {{ count }} applications {% endtrans %}
-        &nbsp{% trans %}using this email address{% endtrans %}.
+        {% trans %}You have started{% endtrans %}&nbsp;{% trans count=applications|length %}{{ count }} application{% pluralize %}{{ count }} applications{% endtrans %}&nbsp;{% trans %}using this email address{% endtrans %}.
     </p>
     {% set ns = namespace(rows = []) %}
     {% for application in applications %}
@@ -24,14 +24,14 @@
         {% endset %}
 
         {% if not application.status == 'SUBMITTED' %}
-            {% set application_link = '<a class="govuk-link" href="{}">Continue application</a>'.format(url_for('routes.tasklist', application_id=application.id)) %}
+            {% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('routes.tasklist', application_id=application.id), gettext('Continue application')) %}
         {% endif %}
 
 
     {% set row = ns.rows.append(
     [
         {
-            'text': application.project_name if application.project_name else 'Untitled project'
+            'text': application.project_name if application.project_name else gettext('Untitled project')
         },
         {
             'text':  govukTag({
@@ -52,25 +52,28 @@
 {% endfor %}
 
 {% if applications|length > 0 %}
-    <table class="govuk-table">
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">{% trans %}Project name{% endtrans %}</th>
-            <th scope="col" class="govuk-table__header">{% trans %}Status{% endtrans %}</th>
-            <th scope="col" class="govuk-table__header">{% trans %}Last edited{% endtrans %}</th>
-            <th scope="col" class="govuk-table__header">{% trans %}Application Reference{% endtrans %}</th>
-            <th scope="col" class="govuk-table__header">{% trans %}Action{% endtrans %}</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          {{ns.rows}}
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell"></td>
-          </tr>
-        </tbody>
-      </table>
+    {{ govukTable({
+    'head': [
+    {
+    'text': gettext('Project name')
+    },
+    {
+    'text': gettext('Status')
+    },
+    {
+    'text': gettext('Last edited')
+    },
+    {
+    'text': 'Application Reference'
+    },
+    {
+    'text': gettext('Action')
+    }
+    ],
+    'rows': ns.rows
+    }) }}
 {% endif %}
 
-{{startApplicationButton(form, url_for('routes.new'), applications=applications)}}
+{{ startApplicationButton(form, url_for('routes.new'), applications=applications) }}
 
 {% endblock %}
