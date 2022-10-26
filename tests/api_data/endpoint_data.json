@@ -1,13 +1,15 @@
 {
-  "http://fund_store/funds/funding-service-design": {
+  "fund_store/funds/funding-service-design": {
     "id": "funding-service-design",
     "name": "Test Fund",
-    "description": "test test"
+    "description": "test test",
+    "short_name": "FSD"
   },
-  "http://fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd": {
+  "fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd": {
     "id": "c603d114-5364-4474-a0c4-c41cbf4d3bbd",
     "title": "Round 2 Window 2",
     "fund_id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
+    "short_name": "R2W2",
     "assessment_criteria_weighting": [
       {
         "id": "e2fd30d2-9207-421c-b8b3-c961bcee138b",
@@ -44,7 +46,7 @@
       "closed": "Easter Sunday, Christmas Day, Boxing Day and New Year’s Day"
     }
   },
-  "http://application_store/applications/test_id": {
+  "application_store/applications/test_id": {
     "id": "test_id",
     "account_id": "test-user",
     "status": "NOT_STARTED",
@@ -201,7 +203,7 @@
   ],
   "http://application_store/test-application-id": {
     "id": "test-application-id",
-    "account_id": "test_account_id",
+    "account_id": "test-user",
     "date_submitted": "2022-10-11T10:01:25.216743",
     "fund_id": "testfundid",
     "last_edited": "2022-10-11T09:49:00.542371",
@@ -1124,7 +1126,7 @@
   },
   "http://application_store/test-application-submit": {
     "id": "test-application-id",
-    "account_id": "test_account_id",
+    "account_id": "test-user",
     "date_submitted": "2022-10-11T10:01:25.216743",
     "fund_id": "testfundid",
     "last_edited": "2022-10-11T09:49:00.542371",
@@ -1183,8 +1185,8 @@
       }
     ]
   },
-  "http://account_store/accounts?account_id=test_account_id": {
-        "account_id": "test_account_id",
+  "account_store/accounts?account_id=test-user": {
+        "account_id": "test-user",
         "email_address": "test@example.com"
     }
 

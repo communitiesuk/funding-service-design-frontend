@@ -18,6 +18,7 @@ applications:
     FLASK_ENV: dev
     FLASK_DEBUG: 1
     SENTRY_DSN: ((SENTRY_DSN))
+    GITHUB_SHA: ((GITHUB_SHA))
   routes:
     - route: frontend.dev.fundingservice.co.uk
     - route: frontend.dev.gids.dev

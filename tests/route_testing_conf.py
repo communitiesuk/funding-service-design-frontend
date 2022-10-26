@@ -6,7 +6,5 @@ content.
 """
 routes_and_test_content = {
     "/": b"Apply for funding to save an asset in your community",
-    # TODO: re-implement test of tasklist route once
-    #  @login_reqired decorator is mocked
-    # "/tasklist/test_id": b"Test Fund application",
+    "/tasklist/test_id": b"Application for funding to save an asset in your community",
 }
