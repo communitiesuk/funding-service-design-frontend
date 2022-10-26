@@ -27,8 +27,6 @@
             {% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('routes.tasklist', application_id=application.id), gettext('Continue application')) %}
         {% endif %}
 
-        {% set application.status = gettext('NOT_STARTED') %}
-
         {% set row = ns.rows.append(
         [
             {
