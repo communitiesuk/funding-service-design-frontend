@@ -43,7 +43,7 @@ msgstr "Cwcis"
 
 #: app/templates/footer.html:19
 msgid "Accessibility Statement"
-msgstr "welsh needed"
+msgstr ""
 
 #: app/templates/footer.html:23
 msgid "Contact us"
