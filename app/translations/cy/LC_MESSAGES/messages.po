@@ -35,11 +35,11 @@ msgstr[4] " %(count)s "
 
 #: app/templates/footer.html:10
 msgid "Privacy"
-msgstr "welsh needed"
+msgstr "Preifatrwydd"
 
 #: app/templates/footer.html:15
 msgid "Cookies"
-msgstr "welsh needed"
+msgstr "Cwcis"
 
 #: app/templates/footer.html:19
 msgid "Accessibility Statement"
@@ -47,25 +47,24 @@ msgstr "welsh needed"
 
 #: app/templates/footer.html:23
 msgid "Contact us"
-msgstr "welsh needed"
+msgstr "Cysylltwch â ni"
 
 #: app/templates/header.html:32
 msgid "Sign out"
-msgstr "welsh needed"
+msgstr ""
 
 #: app/templates/header.html:44
 msgid "beta"
-msgstr "welsh needed"
+msgstr ""
 
 #: app/templates/header.html:46
 msgid "This is a new service - your "
-msgstr "welsh needed"
+msgstr ""
 
 #: app/templates/header.html:46
 msgid "feedback"
-msgstr "welsh needed"
+msgstr ""
 
 #: app/templates/header.html:46
 msgid " will help us to improve it."
-msgstr " welsh needed."
-
+msgstr ""
