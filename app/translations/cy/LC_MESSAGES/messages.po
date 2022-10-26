@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-25 14:59+0100\n"
+"POT-Creation-Date: 2022-10-25 16:43+0100\n"
 "PO-Revision-Date: 2022-10-25 11:27+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -45,27 +45,31 @@ msgstr "Welsh email"
 msgid "Continue application"
 msgstr "Welsh ca"
 
-#: app/templates/dashboard.html:34
+#: app/templates/dashboard.html:30
+msgid "NOT_STARTED"
+msgstr "WELSH_STARTED"
+
+#: app/templates/dashboard.html:35
 msgid "Untitled project"
 msgstr "Welsh up"
 
-#: app/templates/dashboard.html:58
+#: app/templates/dashboard.html:60
 msgid "Project name"
 msgstr "Welsh pn"
 
-#: app/templates/dashboard.html:61
+#: app/templates/dashboard.html:63
 msgid "Status"
 msgstr "Welsh s"
 
-#: app/templates/dashboard.html:64
+#: app/templates/dashboard.html:66
 msgid "Last edited"
 msgstr "Welsh le"
 
-#: app/templates/dashboard.html:67
+#: app/templates/dashboard.html:69
 msgid "Application Reference"
 msgstr "Welsh ar"
 
-#: app/templates/dashboard.html:70
+#: app/templates/dashboard.html:72
 msgid "Action"
 msgstr "Welsh a"
 

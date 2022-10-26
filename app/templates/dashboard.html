@@ -27,53 +27,56 @@
             {% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('routes.tasklist', application_id=application.id), gettext('Continue application')) %}
         {% endif %}
 
+        {% set application.status = gettext('NOT_STARTED') %}
 
-    {% set row = ns.rows.append(
-    [
-        {
-            'text': application.project_name if application.project_name else gettext('Untitled project')
-        },
-        {
-            'text':  govukTag({
-                'text': application.status|snake_case_to_human ,
-                'classes': status_class
+        {% set row = ns.rows.append(
+        [
+            {
+                'text': application.project_name if application.project_name else gettext('Untitled project')
+            },
+            {
+                'text':  govukTag({
+                    'text': application.status|snake_case_to_human ,
+                    'classes': status_class
+                })
+            },
+            {
+                'html': application.last_edited|datetime_format_short_month if application.last_edited
+            },
+            {
+                'html': application.reference
+            },
+            {
+                'html': application_link
+            }
+        ])%}
+    {% endfor %}
+
+    {% if applications|length > 0 %}
+        {{ 
+            govukTable({
+            'head': [
+                {
+                    'text': gettext('Project name')
+                },
+                {
+                    'text': gettext('Status')
+                },
+                {
+                    'text': gettext('Last edited')
+                },
+                {
+                    'text': gettext('Application Reference')
+                },
+                {
+                    'text': gettext('Action')
+                }
+            ],
+            'rows': ns.rows
             })
-        },
-        {
-            'html': application.last_edited|datetime_format_short_month if application.last_edited
-        },
-        {
-            'html': application.reference
-        },
-        {
-            'html': application_link
-        }
-    ])%}
-{% endfor %}
+        }}
+    {% endif %}
 
-{% if applications|length > 0 %}
-    {{ govukTable({
-    'head': [
-    {
-    'text': gettext('Project name')
-    },
-    {
-    'text': gettext('Status')
-    },
-    {
-    'text': gettext('Last edited')
-    },
-    {
-    'text': gettext('Application Reference')
-    },
-    {
-    'text': gettext('Action')
-    }
-    ],
-    'rows': ns.rows
-    }) }}
-{% endif %}
-
-{{ startApplicationButton(form, url_for('routes.new'), applications=applications) }}
+    {{ startApplicationButton(form, url_for('routes.new'), applications=applications) }}
 
 {% endblock %}
