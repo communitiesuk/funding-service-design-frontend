@@ -245,7 +245,7 @@
           "name": "NWTKzQ",
           "options": { "required": true },
           "type": "YesNoField",
-          "hint": "This is used for the running costs of the project. This might include legal fees or general costs, including for:\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>utilities</li>\n<li>staffing</li>\n<li>appointing external consultants</li>\n</ul>\n<p>Remember, you can apply for up to £50,000 of your revenue costs (no more than 20% of your capital funding).</p>\n\n",
+          "hint": "This is used for the running costs of the project. This might include general costs, including for:\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>utilities</li>\n<li>staffing</li>\n<li>appointing external consultants</li>\n</ul>\n<p>Remember, you can apply for up to £50,000 of your revenue costs (no more than 20% of your capital funding).</p>\n\n",
           "title": "Are you applying for revenue funding from the Community Ownership Fund? (optional)",
           "values": { "type": "listRef" }
         }
@@ -349,7 +349,7 @@
           "name": "tVziRL",
           "options": {},
           "type": "Html",
-          "content": "<h3 class=\"govuk-heading-s\">Total funding request</h3>\n\n<p class=\"govuk-caption-m\">This is amount you are applying for from the Community Ownership Fund.</p>\n\n<p class=\"govuk-caption-m\">You can apply for up to 50% of your capital costs, up to a maximum of £250,000 (up to £1 million for sporting assets).</p>\n\n<p class=\"govuk-caption-m\">You can apply for up to £50,000 of your revenue costs (no more than 20% of your capital funding).</p>"
+          "content": "<h3 class=\"govuk-heading-s\">Total funding request</h3>\n\n<p class=\"govuk-caption-m\">This is the amount you are applying for from the Community Ownership Fund.</p>\n\n<p class=\"govuk-caption-m\">You can apply for up to 50% of your capital costs, up to a maximum of £250,000 (up to £1 million for sporting assets).</p>\n\n<p class=\"govuk-caption-m\">You can apply for up to £50,000 of your revenue costs (no more than 20% of your capital funding).</p>"
         },
         {
           "name": "JzWvhj",
