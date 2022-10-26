@@ -76,7 +76,7 @@ def create_app() -> Flask:
         return dict(
             stage="beta",
             service_title=(
-                gettext(u'Apply for funding to save an asset in your community')
+                gettext('Apply for funding to save an asset in your community')
             ),
             service_meta_description=(
                 "Apply for funding to save an asset in your community"

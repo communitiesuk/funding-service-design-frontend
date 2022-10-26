@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-25 16:55+0100\n"
+"POT-Creation-Date: 2022-10-26 13:26+0100\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -27,37 +27,45 @@ msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
 #, python-format
 msgid " %(count)s application "
 msgid_plural " %(count)s applications "
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
+msgstr[0] " %(count)s "
+msgstr[1] " %(count)s "
+msgstr[2] " %(count)s "
+msgstr[3] " %(count)s "
+msgstr[4] " %(count)s "
 
 #: app/templates/footer.html:10
 msgid "Privacy"
-msgstr "Preifatrwydd"
+msgstr "welsh needed"
 
 #: app/templates/footer.html:15
 msgid "Cookies"
-msgstr "Cwcis"
+msgstr "welsh needed"
 
 #: app/templates/footer.html:19
 msgid "Accessibility Statement"
-msgstr "Datganiad Hygyrchedd"
+msgstr "welsh needed"
 
 #: app/templates/footer.html:23
 msgid "Contact us"
-msgstr "Cysylltwch â ni"
+msgstr "welsh needed"
+
+#: app/templates/header.html:32
+msgid "Sign out"
+msgstr "welsh needed"
+
+#: app/templates/header.html:44
+msgid "beta"
+msgstr "welsh needed"
 
 #: app/templates/header.html:46
 msgid "This is a new service - your "
-msgstr "Mae hwn yn wasanaeth newydd - bydd eich "
+msgstr "welsh needed"
 
 #: app/templates/header.html:46
 msgid "feedback"
-msgstr "adborth"
+msgstr "welsh needed"
 
 #: app/templates/header.html:46
 msgid " will help us to improve it."
-msgstr " yn ein helpu i'w wella."
+msgstr " welsh needed."
 
