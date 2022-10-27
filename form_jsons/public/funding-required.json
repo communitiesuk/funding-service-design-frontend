@@ -38,7 +38,7 @@
           "content": "<h2 class=\"govuk-heading-s\">Capital costs</h2>\n\n<p class=\"govuk-body\">Tell us about the total capital costs of your project.</p>\n\n<p class=\"govuk-caption-m\">These are used to purchase or lease the asset and pay for refurbishment costs. Remember, you can apply for up to 50% of your capital costs, up to a maximum of £250,000 (up to £1 million for sporting assets).</p>\n<p class=\"govuk-caption-m\">You can use your business plan to provide information that supports your answers.</p>\n<p></p>"
         },
         {
-          "name": "MultiInputField",
+          "name": "NdFwgy",
           "options": {
             "prefix": "£",
             "textFieldTitle": "Describe the cost",
@@ -89,7 +89,7 @@
         },
 
         {
-          "name": "MultiInputField-2",
+          "name": "NyudvF",
           "options": {
             "required": false,
             "prefix": "£",
@@ -139,9 +139,8 @@
           "type": "Para",
           "content": "<label class=\"govuk-heading-s\">Secured match funding</label>\n\n\n<p class=\"govuk-caption-m\">You need to raise other sources of funding alongside investment from this fund.</p>\n<p class=\"govuk-caption-m\">Having a range of funders contributing to your project can show the quality of your project and the support it has in the community.</p>\n<label class=\"govuk-caption-m\">Match funding sources can include:</label>\n\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>public bodies</li>\n<li>devolved administrations</li>\n<li>charitable trusts</li>\n<li>national lottery funders</li>\n<li>community shares</li>\n<li>social investors</li>\n<li>other lenders</li>\n</ul>\n<p class=\"govuk-caption-m\">You can use your business plan to provide evidence to support your answers.</p>"
         },
-
         {
-          "name": "MultiInputField-3",
+          "name": "abkrwo",
           "options": {
             "prefix": "£",
             "textFieldTitle": "Source of secured funding",
@@ -314,7 +313,7 @@
           "content": "<h2 class=\"govuk-heading-s\">Unsecured match funding</h2>\n\n<p class=\"govuk-caption-m\">You need to raise other sources of funding alongside investment from this fund.</p>\n<p class=\"govuk-caption-m\">Having a range of funders contributing to your project can show the quality of your project and the support it has in the community.</p>\n<label class=\"govuk-caption-m\">Match funding sources can include:</label>\n\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>public bodies</li>\n<li>devolved administrations</li>\n<li>charitable trusts</li>\n<li>national lottery funders</li>\n<li>community shares</li>\n<li>social investors</li>\n<li>other lenders</li>\n</ul>\n<label class=\"govuk-caption-m\">You can use your business plan to:</label>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>tell us how long it will likely take to secure any outstanding match funding</li>\n<li>provide any information that supports your answers</li>\n</ul>"
         },
         {
-          "name": "MultiInputField-4",
+          "name": "AOLYnV",
           "options": {
             "prefix": "£",
             "textFieldTitle": "Source of unsecured match funding",
