@@ -198,7 +198,6 @@ def tasklist(application_id):
             application_id=application.id,
             application_reference=application.reference,
             application_email=account.email,
-            response_weeks=Config.RESPONSE_TO_APPLICATION_WEEKS,
         )
     fund = get_fund_data(application.fund_id, as_dict=True)
     round_data = get_round_data(
@@ -304,7 +303,6 @@ def submit_application():
         application_id=application_id,
         application_reference=application_reference,
         application_email=application_email,
-        response_weeks=Config.RESPONSE_TO_APPLICATION_WEEKS,
     )
 
 def format_payload_and_submit_application(application_id):
