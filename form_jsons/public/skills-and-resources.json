@@ -189,14 +189,22 @@
         },
         {
           "name": "hewEEs",
-          "options": { "hideTitle": true, "maxWords": "500" },
+          "options": {
+            "hideTitle": true,
+            "maxWords": "500",
+            "required": false
+          },
           "type": "MultilineTextField",
           "title": "Project 2 (optional)",
           "hint": "<label class=\"govuk-body\">Project 2 (optional)</label>"
         },
         {
           "name": "eGpLuI",
-          "options": { "maxWords": "500", "hideTitle": true },
+          "options": {
+            "maxWords": "500",
+            "hideTitle": true,
+            "required": false
+          },
           "type": "MultilineTextField",
           "title": "Project 3 (optional)",
           "hint": "<label class=\"govuk-body\">Project 3 (optional)</label>"
@@ -284,13 +292,13 @@
   "fees": [],
   "outputs": [
     {
-      "name": "update-form",
-      "title": "Update form in application store",
-      "type": "savePerPage",
-      "outputConfiguration": {
-        "savePerPageUrl": "True"
+        "name": "update-form",
+        "title": "Update form in application store",
+        "type": "savePerPage",
+        "outputConfiguration": {
+          "savePerPageUrl": "True"
+        }
       }
-    }
   ],
   "version": 2,
   "skipSummary": false,
