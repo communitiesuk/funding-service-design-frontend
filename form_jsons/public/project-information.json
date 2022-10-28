@@ -17,7 +17,7 @@
           "name": "vUdzKC",
           "options": {},
           "type": "Para",
-          "content": "<label class=\"govuk-!-font-weight-bold\">In this section, we'll ask about:\n</label>\n\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>previous COF funding received (if applicable)</li>\n<li>project name</li>\n<li>how the asset is being used</li>\n<li>why the asset is at risk</li>\n<li>project summary</li>\n<li>asset address</li>\n<li>constituency of asset</li>\n<li>council area of asset</li>\n</ul>\n"
+          "content": "<label class=\"govuk-!-font-weight-bold\">In this section, we'll ask about:\n</label>\n\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>previous COF funding received (if applicable)</li>\n<li>project name</li>\n<li>how the asset is being used</li>\n<li>why the asset is at risk</li>\n<li>project summary</li>\n</ul>\n"
         }
       ],
       "next": [{ "path": "/about-your-project-CBHWZS" }],
@@ -105,43 +105,6 @@
           "options": { "maxWords": "500" },
           "type": "MultilineTextField",
           "title": "Give a brief summary of your project, including what you hope to achieve"
-        }
-      ],
-      "next": [{ "path": "/about-your-project-vHaMeo" }]
-    },
-    {
-      "path": "/about-your-project-vHaMeo",
-      "title": "About your project",
-      "components": [
-        {
-          "name": "tpQVaN",
-          "options": {},
-          "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Project information</h2>"
-        },
-        {
-          "name": "yEmHpp",
-          "options": {},
-          "type": "UkAddressField",
-          "title": "Address of the community asset"
-        },
-        {
-          "name": "mDcTOs",
-          "options": { "required": false },
-          "type": "TextField",
-          "title": "County"
-        },
-        {
-          "name": "iTeLGU",
-          "options": { "classes": "govuk-!-width-full" },
-          "type": "TextField",
-          "title": "In which constituency is your asset?"
-        },
-        {
-          "name": "MGRlEi",
-          "options": { "classes": "govuk-!-width-full" },
-          "type": "TextField",
-          "title": "In which local council area is your asset?"
         }
       ],
       "next": [{ "path": "/summary" }]
