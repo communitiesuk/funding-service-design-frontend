@@ -14,6 +14,12 @@
           "content": "<h2 class=\"govuk-heading-m\">Inclusiveness and integration</h2>"
         },
         {
+          "name": "SrtVAs",
+          "options": { "maxWords": "500" },
+          "type": "MultilineTextField",
+          "title": "Describe the planned activities or services that will take place at the asset"
+        },
+        {
           "name": "YbfbSC",
           "options": { "maxWords": "500" },
           "type": "MultilineTextField",
@@ -57,7 +63,7 @@
           "name": "dHyMmB",
           "options": {},
           "type": "Para",
-          "content": "<label class=\"govuk-!-font-weight-bold\">In this section, we'll ask about:\n</label>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>what might prevent people from using the asset</li>\n<li>how you will make your project accessible to everyone</li>\n<li>how the project will bring the community together</li>\n</ul>\n</div>"
+          "content": "<label class=\"govuk-!-font-weight-bold\">In this section, we'll ask about:\n</label>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>planned services or activities taking place at the asset</li>\n<li>what might prevent people from using the asset</li>\n<li>how you will make your project accessible to everyone</li>\n<li>how the project will bring the community together</li>\n</ul>\n</div>"
         }
       ],
       "next": [{ "path": "/management-case" }],
@@ -83,4 +89,5 @@
   "name": "Apply for funding to save an asset in your community",
   "feedback": { "feedbackForm": false, "url": "" },
   "phaseBanner": { "phase": "beta" }
+
 }
