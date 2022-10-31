@@ -1,11 +1,11 @@
 {
   "metadata": {},
-  "startPage": "/management-case",
+  "startPage": "/management-case-yIfLRl",
   "backLinkText": "Go back to application overview",
   "pages": [
     {
       "title": "Management case",
-      "path": "/management-case-mxSQAI",
+      "path": "/management-case",
       "components": [
         {
           "name": "jdiAQM",
@@ -122,7 +122,7 @@
       "next": [{ "path": "/summary" }]
     },
     {
-      "path": "/management-case",
+      "path": "/management-case-yIfLRl",
       "title": "Management case",
       "components": [
         {
@@ -135,82 +135,11 @@
           "name": "QfmkfT",
           "options": {},
           "type": "Para",
-          "content": "<label class=\"govuk-!-font-weight-bold\">In this section, we'll ask about:\n</label>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>previous experience of similar projects (if applicable)</li>\n<li>community asset management experience (if applicable)</li>\n<li>roles you’ll recruit in future (if applicable)</li>\n</ul>\n</div>"
+          "content": "<label class=\"govuk-!-font-weight-bold\">In this section, we'll ask about:\n</label>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>community asset management experience (if applicable)</li>\n<li>roles you’ll recruit in future (if applicable)</li>\n</ul>\n</div>"
         }
       ],
-      "next": [{ "path": "/management-case-VhBRox" }],
+      "next": [{ "path": "/management-case" }],
       "controller": "./pages/start.js"
-    },
-    {
-      "path": "/management-case-VhBRox",
-      "title": "Management case",
-      "components": [
-        {
-          "name": "bHDIqw",
-          "options": {},
-          "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Skills and resources</h2>"
-        },
-        {
-          "name": "xiUkdP",
-          "options": {},
-          "type": "Details",
-          "content": "<p>We will be assessing how you have considered the management requirements of your project.</p>\n<p>This includes the steps you are taking to make sure your organisation has the right capacity and resources to run the asset sustainably.</p>\n<p>You need to demonstrate you have considered succession planning for your organisation’s staff and trustees.</p>\n<p>If you're planning to recruit staff to manage and run the asset and its services, please provide an overview of these plans.</p>\n\n<p>You can use your business plan to provide information that supports your answers.</p>",
-          "title": "Help with skills and resources"
-        },
-        {
-          "name": "RvjIiJ",
-          "options": {},
-          "type": "YesNoField",
-          "title": "Have you delivered projects like this before?"
-        }
-      ],
-      "next": [
-        { "path": "/management-case-SuqCNK", "condition": "fFxeOw" },
-        { "path": "/management-case-mxSQAI", "condition": "HtaZEx" }
-      ]
-    },
-    {
-      "path": "/management-case-SuqCNK",
-      "title": "Management case",
-      "components": [
-        {
-          "name": "oHJMjQ",
-          "options": {},
-          "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Skills and resources</h2>"
-        },
-        {
-          "name": "bCRclJ",
-          "options": { "maxWords": "500" },
-          "type": "MultilineTextField",
-          "title": "Describe your previous projects",
-          "hint": "<label class=\"govuk-body\">Project 1</label>"
-        },
-        {
-          "name": "hewEEs",
-          "options": {
-            "hideTitle": true,
-            "maxWords": "500",
-            "required": false
-          },
-          "type": "MultilineTextField",
-          "title": "Project 2 (optional)",
-          "hint": "<label class=\"govuk-body\">Project 2 (optional)</label>"
-        },
-        {
-          "name": "eGpLuI",
-          "options": {
-            "maxWords": "500",
-            "hideTitle": true,
-            "required": false
-          },
-          "type": "MultilineTextField",
-          "title": "Project 3 (optional)",
-          "hint": "<label class=\"govuk-body\">Project 3 (optional)</label>"
-        }
-      ],
-      "next": [{ "path": "/management-case-mxSQAI" }]
     }
   ],
   "lists": [],
@@ -251,42 +180,6 @@
           }
         ]
       }
-    },
-    {
-      "displayName": "Have you delivered projects like this before-YES",
-      "name": "fFxeOw",
-      "value": {
-        "name": "Have you delivered projects like this before-YES",
-        "conditions": [
-          {
-            "field": {
-              "name": "RvjIiJ",
-              "type": "YesNoField",
-              "display": "Have you delivered projects like this before?"
-            },
-            "operator": "is",
-            "value": { "type": "Value", "value": "true", "display": "true" }
-          }
-        ]
-      }
-    },
-    {
-      "displayName": "Have you delivered projects like this before-NO",
-      "name": "HtaZEx",
-      "value": {
-        "name": "Have you delivered projects like this before-NO",
-        "conditions": [
-          {
-            "field": {
-              "name": "RvjIiJ",
-              "type": "YesNoField",
-              "display": "Have you delivered projects like this before?"
-            },
-            "operator": "is",
-            "value": { "type": "Value", "value": "false", "display": "false" }
-          }
-        ]
-      }
     }
   ],
   "fees": [],
@@ -295,9 +188,7 @@
         "name": "update-form",
         "title": "Update form in application store",
         "type": "savePerPage",
-        "outputConfiguration": {
-          "savePerPageUrl": "True"
-        }
+        "outputConfiguration": { "savePerPageUrl": "True" }
       }
   ],
   "version": 2,
