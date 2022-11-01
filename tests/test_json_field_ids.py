@@ -52,23 +52,24 @@ def check_for_duplicate_field_ids_across_form_jsons():
 
         # remove current form_json from comparison
         forms_to_check = copy.deepcopy(all_form_jsons_with_contained_field_ids)
-        for i in range(len(forms_to_check)):
-            if forms_to_check[i]["form_name"] == form_json["form_name"]:
-                del forms_to_check[i]
-                break
+        forms_to_check = [
+            forms_to_check[i]
+            for i in range(len(forms_to_check))
+            if forms_to_check[i]["form_name"] is not form_json["form_name"]
+        ]
 
         for field_id in form_json["field_ids"]:
             record_duplciated_field_ids_across_form_jsons(
                 field_id, forms_to_check
             )
 
-    for field_id, forms in forms_using_field_id.items():
-        # if the field_id is in another form
-        if len(forms) > 0:
-            duplicate_field_ids.append(
-                f'Duplicated field_id: "{field_id}" in multiple forms:'
-                f' {", ".join(forms)}.'
-            )
+    duplicate_field_ids = [
+        f'Duplicated field_id: "{field_id}" in multiple forms:'
+        f' {", ".join(forms)}.'
+        for field_id, forms in forms_using_field_id.items()
+        if len(forms) > 0
+    ]
+
     return duplicate_field_ids
 
 
