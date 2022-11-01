@@ -159,10 +159,12 @@ def new():
             "account_id": account_id,
             "round_id": request.form["round_id"] or Config.DEFAULT_ROUND_ID,
             "fund_id": request.form["fund_id"] or Config.DEFAULT_FUND_ID,
+            "language": get_lang()
         },
     )
     new_application_json = new_application.json()
-    current_app.logger.info(f"Creating new application:{new_application_json}")
+    current_app.logger.error(new_application_json.get("language")) # FOR TESTING - REMOVE
+    current_app.logger.error(f"Creating new application:{new_application_json}")
     if new_application.status_code != 201 or not new_application_json.get(
         "id"
     ):
