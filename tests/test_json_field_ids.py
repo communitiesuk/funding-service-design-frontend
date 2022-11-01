@@ -57,7 +57,7 @@ def check_for_duplicate_field_ids_across_form_jsons():
     for form_json in all_form_jsons_with_contained_field_ids:
 
         # remove current form_json from comparison
-        forms_to_check = copy.deepcopy(form_json_with_field_ids)
+        forms_to_check = copy.deepcopy(all_form_jsons_with_contained_field_ids)
         for i in range(len(forms_to_check)):
             if forms_to_check[i]["form_name"] == form_json["form_name"]:
                 del forms_to_check[i]
