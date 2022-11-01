@@ -24,6 +24,7 @@ from flask_wtf import FlaskForm
 from flask_wtf.csrf import CSRFError
 from fsd_utils.authentication.decorators import login_requested
 from fsd_utils.authentication.decorators import login_required
+from fsd_utils.locale_selector.get_lang import get_lang
 
 
 default_bp = Blueprint("routes", __name__, template_folder="templates")

@@ -87,6 +87,7 @@ def create_app() -> Flask:
             service_meta_author=(
                 "Department for Levelling up Housing and Communities"
             ),
+            lang_cookie_val=get_lang()
         )
 
     health = Healthcheck(flask_app)

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-01 09:47+0000\n"
+"POT-Creation-Date: 2022-11-01 15:41+0000\n"
 "PO-Revision-Date: 2022-11-01 09:48+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -23,6 +23,10 @@ msgstr ""
 msgid "Apply for funding to save an asset in your community"
 msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
 
+#: app/templates/dashboard.html:8
+msgid "Your applications"
+msgstr "Eich ceisiadau"
+
 #: app/templates/dashboard.html:10
 #, python-format
 msgid " %(count)s application "
@@ -32,4 +36,8 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 msgstr[4] ""
+
+#: app/templates/dashboard.html:88
+msgid "You cannot change the language of an existing application."
+msgstr "Ni fyddwch yn gallu newid iaith unwaith y byddwch chi wedi dechrau eich cais."
 

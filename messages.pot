@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-01 09:47+0000\n"
+"POT-Creation-Date: 2022-11-01 15:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,10 +21,18 @@ msgstr ""
 msgid "Apply for funding to save an asset in your community"
 msgstr ""
 
+#: app/templates/dashboard.html:8
+msgid "Your applications"
+msgstr ""
+
 #: app/templates/dashboard.html:10
 #, python-format
 msgid " %(count)s application "
 msgid_plural " %(count)s applications "
 msgstr[0] ""
 msgstr[1] ""
+
+#: app/templates/dashboard.html:88
+msgid "You cannot change the language of an existing application."
+msgstr ""
 
