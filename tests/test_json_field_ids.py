@@ -1,3 +1,4 @@
+import copy
 import json
 from pathlib import Path
 
@@ -6,35 +7,8 @@ forms_using_field_id = {}
 form_json_with_field_ids = []
 
 
-def add_duplicate_field_id(field_id, current_form_name):
-    if field_id not in forms_using_field_id.keys():
-        forms_using_field_id[field_id] = [current_form_name]
-    # if the duplication in a form is already recorded, do not add again
-    elif current_form_name not in forms_using_field_id[field_id]:
-        forms_using_field_id[field_id].append(current_form_name)
-    else:
-        pass
-
-
-def are_strings_are_unique(string_one, string_two):
-    if string_one == string_two:
-        return False
-    else:
-        return True
-
-
-def check_field_id_is_unique(field_id, forms_to_check):
-    # loop through all forms to check where this field id is used
-    for form in forms_to_check:
-        for current_field_id in form["field_ids"]:
-            is_unique_field_id = are_strings_are_unique(
-                field_id, current_field_id
-            )
-            if is_unique_field_id is False:
-                add_duplicate_field_id(field_id, form["form_name"])
-
-
-def check_for_duplicate_field_ids_across_form_jsons():
+def get_form_jsons_with_field_ids():
+    form_json_with_field_ids = []
     for file in files:
         form_name = file.name
         field_ids = []
@@ -48,27 +22,60 @@ def check_for_duplicate_field_ids_across_form_jsons():
         form_json_with_field_ids.append(
             {"form_name": form_name, "field_ids": field_ids}
         )
-    for form_json in form_json_with_field_ids:
-        # get other forms to check against
-        import copy
 
+    return form_json_with_field_ids
+
+
+def are_strings_unique(string_one, string_two):
+    if string_one == string_two:
+        return False
+    else:
+        return True
+
+
+def record_duplicate_field_id(field_id, current_form_name):
+    if field_id not in forms_using_field_id.keys():
+        forms_using_field_id[field_id] = [current_form_name]
+    # if the duplication in a form is already recorded, do not add again
+    elif current_form_name not in forms_using_field_id[field_id]:
+        forms_using_field_id[field_id].append(current_form_name)
+    else:
+        pass
+
+
+def record_duplciated_field_ids_across_form_jsons(field_id, forms_to_check):
+    for form in forms_to_check:
+        for current_field_id in form["field_ids"]:
+            is_unique_field_id = are_strings_unique(field_id, current_field_id)
+            if is_unique_field_id is False:
+                record_duplicate_field_id(field_id, form["form_name"])
+
+
+def check_for_duplicate_field_ids_across_form_jsons():
+    duplicate_field_ids = []
+    all_form_jsons_with_contained_field_ids = get_form_jsons_with_field_ids()
+    for form_json in all_form_jsons_with_contained_field_ids:
+
+        # remove current form_json from comparison
         forms_to_check = copy.deepcopy(form_json_with_field_ids)
         for i in range(len(forms_to_check)):
             if forms_to_check[i]["form_name"] == form_json["form_name"]:
                 del forms_to_check[i]
                 break
-        for field_id in form_json["field_ids"]:
-            check_field_id_is_unique(field_id, forms_to_check)
 
-    duplicates = []
+        for field_id in form_json["field_ids"]:
+            record_duplciated_field_ids_across_form_jsons(
+                field_id, forms_to_check
+            )
+
     for field_id, forms in forms_using_field_id.items():
         # if the field_id is in another form
         if len(forms) > 0:
-            duplicates.append(
+            duplicate_field_ids.append(
                 f'Duplicated field_id: "{field_id}" in multiple forms:'
                 f' {", ".join(forms)}.'
             )
-    return duplicates
+    return duplicate_field_ids
 
 
 def test_check_form_json_for_duplicate_field_ids():
