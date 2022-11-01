@@ -27,20 +27,14 @@ def get_form_jsons_with_field_ids():
 
 
 def are_strings_unique(string_one, string_two):
-    if string_one == string_two:
-        return False
-    else:
-        return True
+    return string_one != string_two
 
 
 def record_duplicate_field_id(field_id, current_form_name):
     if field_id not in forms_using_field_id.keys():
-        forms_using_field_id[field_id] = [current_form_name]
-    # if the duplication in a form is already recorded, do not add again
-    elif current_form_name not in forms_using_field_id[field_id]:
-        forms_using_field_id[field_id].append(current_form_name)
+        forms_using_field_id[field_id] = {current_form_name}
     else:
-        pass
+        forms_using_field_id[field_id].add(current_form_name)
 
 
 def record_duplciated_field_ids_across_form_jsons(field_id, forms_to_check):
