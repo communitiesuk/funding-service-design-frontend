@@ -163,8 +163,7 @@ def new():
         },
     )
     new_application_json = new_application.json()
-    current_app.logger.error(new_application_json.get("language")) # FOR TESTING - REMOVE
-    current_app.logger.error(f"Creating new application:{new_application_json}")
+    current_app.logger.info(f"Creating new application:{new_application_json}")
     if new_application.status_code != 201 or not new_application_json.get(
         "id"
     ):
