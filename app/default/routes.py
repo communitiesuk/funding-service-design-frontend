@@ -159,7 +159,7 @@ def new():
             "account_id": account_id,
             "round_id": request.form["round_id"] or Config.DEFAULT_ROUND_ID,
             "fund_id": request.form["fund_id"] or Config.DEFAULT_FUND_ID,
-            "language": get_lang()
+            "language": get_lang() or Config.DEFAULT_LANGUAGE,
         },
     )
     new_application_json = new_application.json()
