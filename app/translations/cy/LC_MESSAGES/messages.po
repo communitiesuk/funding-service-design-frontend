@@ -43,7 +43,7 @@ msgstr "Cwcis"
 
 #: app/templates/footer.html:19
 msgid "Accessibility Statement"
-msgstr ""
+msgstr "Datganiad Hygyrchedd"
 
 #: app/templates/footer.html:23
 msgid "Contact us"
@@ -55,16 +55,16 @@ msgstr ""
 
 #: app/templates/header.html:44
 msgid "beta"
-msgstr ""
+msgstr "beta"
 
 #: app/templates/header.html:46
 msgid "This is a new service - your "
-msgstr ""
+msgstr "Mae hyn yn wasanaeth newydd - bydd eich "
 
 #: app/templates/header.html:46
 msgid "feedback"
-msgstr ""
+msgstr "adborth"
 
 #: app/templates/header.html:46
 msgid " will help us to improve it."
-msgstr ""
+msgstr " yn ein cefnogi i'w wella"
