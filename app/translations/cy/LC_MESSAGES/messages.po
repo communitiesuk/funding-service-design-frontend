@@ -67,4 +67,4 @@ msgstr "adborth"
 
 #: app/templates/header.html:46
 msgid " will help us to improve it."
-msgstr " yn ein cefnogi i'w wella"
+msgstr " yn ein cefnogi i'w wella."
