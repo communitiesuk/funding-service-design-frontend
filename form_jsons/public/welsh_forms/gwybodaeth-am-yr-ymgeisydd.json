@@ -37,7 +37,7 @@
     },
     {
       "path": "/summary",
-      "title": "Check your answers",
+      "title": "Gwiriwch eich atebion",
       "components": [],
       "next": [],
       "controller": "./pages/summary.js"
