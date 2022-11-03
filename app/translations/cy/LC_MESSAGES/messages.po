@@ -27,11 +27,11 @@ msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
 #, python-format
 msgid " %(count)s application "
 msgid_plural " %(count)s applications "
-msgstr[0] " %(count)s "
-msgstr[1] " %(count)s "
-msgstr[2] " %(count)s "
-msgstr[3] " %(count)s "
-msgstr[4] " %(count)s "
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
 
 #: app/templates/footer.html:10
 msgid "Privacy"
