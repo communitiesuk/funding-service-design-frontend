@@ -76,11 +76,9 @@
     }) }}
 {% endif %}
 
-{% if lang_cookie_val == 'cy' %}
-<p class="govuk-body">Mae'r gwasanaeth yma hefyd ar gael <a href="/language/en" class="govuk-link">yn Saesneg (English)</a>.</p>
-{% else %}
-<p class="govuk-body">This service is also available <a href="/language/cy" class="govuk-link">in Welsh (Cymraeg)</a>.</p>
-{% endif %}
+
+<p class="govuk-body">{% trans url=url_for('select_language', locale=('cy' if get_lang() == 'en' else 'en')) %} This service is also available <a href="{{ url }}" class="govuk-link">in Welsh (Cymraeg){% endtrans %}</a>.</p>
+
 <div class="govuk-warning-text">
     <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
     <strong class="govuk-warning-text__text">

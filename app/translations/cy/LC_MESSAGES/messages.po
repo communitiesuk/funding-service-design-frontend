@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-01 15:41+0000\n"
+"POT-Creation-Date: 2022-11-03 13:33+0000\n"
 "PO-Revision-Date: 2022-11-01 09:48+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: app/create_app.py:79
+#: app/create_app.py:82
 msgid "Apply for funding to save an asset in your community"
 msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
 
@@ -37,7 +37,16 @@ msgstr[2] ""
 msgstr[3] ""
 msgstr[4] ""
 
-#: app/templates/dashboard.html:88
-msgid "You cannot change the language of an existing application."
-msgstr "Ni fyddwch yn gallu newid iaith unwaith y byddwch chi wedi dechrau eich cais."
+#: app/templates/dashboard.html:80
+#, python-format
+msgid ""
+" This service is also available <a href=\"%(url)s\" class=\"govuk-"
+"link\">in Welsh (Cymraeg)"
+msgstr "Mae'r gwasanaeth yma hefyd ar gael <a href=\"%(url)s\" class=\"govuk-"
+"link\">yn Saesneg (English)"
 
+#: app/templates/dashboard.html:86
+msgid "You cannot change the language of an existing application."
+msgstr ""
+"Ni fyddwch yn gallu newid iaith unwaith y byddwch chi wedi dechrau eich "
+"cais."
