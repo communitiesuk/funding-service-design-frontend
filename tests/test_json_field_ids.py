@@ -2,12 +2,11 @@ import copy
 import json
 from pathlib import Path
 
-files = Path("form_jsons/public").glob("*")
 forms_using_field_id = {}
 form_json_with_field_ids = []
 
 
-def get_form_jsons_with_field_ids():
+def get_form_jsons_with_field_ids(files):
     form_json_with_field_ids = []
     for file in files:
         form_name = file.name
@@ -45,9 +44,11 @@ def record_duplciated_field_ids_across_form_jsons(field_id, forms_to_check):
                 record_duplicate_field_id(field_id, form["form_name"])
 
 
-def check_for_duplicate_field_ids_across_form_jsons():
+def check_for_duplicate_field_ids_across_form_jsons(files):
     duplicate_field_ids = []
-    all_form_jsons_with_contained_field_ids = get_form_jsons_with_field_ids()
+    all_form_jsons_with_contained_field_ids = get_form_jsons_with_field_ids(
+        files
+    )
     for form_json in all_form_jsons_with_contained_field_ids:
 
         # remove current form_json from comparison
@@ -74,13 +75,26 @@ def check_for_duplicate_field_ids_across_form_jsons():
 
 
 def test_check_form_json_for_duplicate_field_ids():
-    field_id_duplicates_across_forms = (
-        check_for_duplicate_field_ids_across_form_jsons()
+    english_forms = Path("form_jsons/public/en").glob("*")
+    field_id_duplicates_across_forms_en = (
+        check_for_duplicate_field_ids_across_form_jsons(english_forms)
+    )
+    welsh_forms = Path("form_jsons/public/cy").glob("*")
+    field_id_duplicates_across_forms_cy = (
+        check_for_duplicate_field_ids_across_form_jsons(welsh_forms)
     )
     # Could add check here for duplicates within the same form_json file,
     # the form builder does not currently allow this field_id duplication
     # witin the same file, so a check is not required.
-    number_of_duplicated_field_ids = len(field_id_duplicates_across_forms)
-    assert number_of_duplicated_field_ids == 0, "\n".join(
-        field_id_duplicates_across_forms
+    number_of_duplicated_field_ids_en = len(
+        field_id_duplicates_across_forms_en
+    )
+    number_of_duplicated_field_ids_cy = len(
+        field_id_duplicates_across_forms_cy
+    )
+    assert number_of_duplicated_field_ids_en == 0, "\n".join(
+        field_id_duplicates_across_forms_en
+    )
+    assert number_of_duplicated_field_ids_cy == 0, "\n".join(
+        field_id_duplicates_across_forms_cy
     )

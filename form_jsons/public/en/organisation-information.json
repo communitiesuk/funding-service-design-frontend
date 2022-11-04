@@ -827,7 +827,7 @@
                 "display": "COOP"
               }
             },
-            {"coordinator":"or",            
+            {"coordinator":"or",
               "field": {
                 "name": "lajFtB",
                 "type": "RadiosField",
@@ -838,9 +838,9 @@
                 "type": "Value",
                 "value": "CIC",
                 "display": "CIC"
-              }            
+              }
             },
-            {"coordinator":"or",            
+            {"coordinator":"or",
               "field": {
                 "name": "lajFtB",
                 "type": "RadiosField",
@@ -851,7 +851,7 @@
                 "type": "Value",
                 "value": "CLG",
                 "display": "CLG"
-              }            
+              }
             }
           ]
         }
@@ -875,7 +875,7 @@
                 "display": "CIO"
               }
             },
-            {"coordinator":"or",            
+            {"coordinator":"or",
               "field": {
                 "name": "lajFtB",
                 "type": "RadiosField",
@@ -886,7 +886,7 @@
                 "type": "Value",
                 "value": "SCIO",
                 "display": "SCIO"
-              }            
+              }
             }
           ]
         }
@@ -927,4 +927,3 @@
     "feedback": { "feedbackForm": false, "url": "" },
     "phaseBanner": { "phase": "beta" }
   }
-  
