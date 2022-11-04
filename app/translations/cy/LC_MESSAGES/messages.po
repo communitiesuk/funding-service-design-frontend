@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-25 16:43+0100\n"
-"PO-Revision-Date: 2022-10-25 11:27+0100\n"
+"POT-Creation-Date: 2022-10-26 13:26+0100\n"
+"PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
 "Language-Team: cy <LL@li.org>\n"
@@ -19,61 +19,52 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: app/templates/dashboard.html:8
-msgid "Your applications"
-msgstr "Welsh ya"
+#: app/create_app.py:79
+msgid "Apply for funding to save an asset in your community"
+msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
 
 #: app/templates/dashboard.html:10
-msgid "You have started"
-msgstr "Welsh yhs"
+#, python-format
+msgid " %(count)s application "
+msgid_plural " %(count)s applications "
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
 
-#: app/templates/dashboard.html:10
-#, fuzzy, python-format
-msgid "%(count)s application"
-msgid_plural "%(count)s applications"
-msgstr[0] "%(count)s Welsh as"
-msgstr[1] "%(count)s Welsh a"
-msgstr[2] "%(count)s Welsh as"
-msgstr[3] "%(count)s Welsh as"
-msgstr[4] "%(count)s Welsh as"
+#: app/templates/footer.html:10
+msgid "Privacy"
+msgstr "Preifatrwydd"
 
-#: app/templates/dashboard.html:10
-msgid "using this email address"
-msgstr "Welsh email"
+#: app/templates/footer.html:15
+msgid "Cookies"
+msgstr "Cwcis"
 
-#: app/templates/dashboard.html:27
-msgid "Continue application"
-msgstr "Welsh ca"
+#: app/templates/footer.html:19
+msgid "Accessibility Statement"
+msgstr "Datganiad Hygyrchedd"
 
-#: app/templates/dashboard.html:30
-msgid "NOT_STARTED"
-msgstr "WELSH_STARTED"
+#: app/templates/footer.html:23
+msgid "Contact us"
+msgstr "Cysylltwch â ni"
 
-#: app/templates/dashboard.html:35
-msgid "Untitled project"
-msgstr "Welsh up"
+#: app/templates/header.html:32
+msgid "Sign out"
+msgstr ""
 
-#: app/templates/dashboard.html:60
-msgid "Project name"
-msgstr "Welsh pn"
+#: app/templates/header.html:44
+msgid "beta"
+msgstr "beta"
 
-#: app/templates/dashboard.html:63
-msgid "Status"
-msgstr "Welsh s"
+#: app/templates/header.html:46
+msgid "This is a new service - your "
+msgstr "Mae hyn yn wasanaeth newydd - bydd eich "
 
-#: app/templates/dashboard.html:66
-msgid "Last edited"
-msgstr "Welsh le"
+#: app/templates/header.html:46
+msgid "feedback"
+msgstr "adborth"
 
-#: app/templates/dashboard.html:69
-msgid "Application Reference"
-msgstr "Welsh ar"
-
-#: app/templates/dashboard.html:72
-msgid "Action"
-msgstr "Welsh a"
-
-#: app/templates/partials/start-application-button.html:11
-msgid "Start new application"
-msgstr "Welsh sna"
-
+#: app/templates/header.html:46
+msgid " will help us to improve it."
+msgstr " yn ein cefnogi i'w wella."

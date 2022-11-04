@@ -1,0 +1,428 @@
+{
+  "metadata": {},
+  "startPage": "/achos-rheoli-WeKyYU",
+  "backLinkText": "Go back to application overview",
+  "pages": [
+    {
+      "title": "Achos rheoli",
+      "path": "/achos-rheoli-WeKyYU",
+      "components": [
+        {
+          "name": "uKmWaC",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+        },
+        {
+          "name": "FhOGcz",
+          "options": {},
+          "type": "Details",
+          "content": "Rydym am ddeall:  \n<div>\n<br>\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>faint o gyllid rydych chi'n gwneud cais amdano o'r gronfa hon</li>\n<li> costau llawn eich prosiect</li>\n<li>unrhyw gyllid rydych eisoes wedi'i dderbyn ar gyfer eich prosiect hyd yma</li>\n<li>unrhyw gyllid rydych yn bwriadu'i sicrhau ar gyfer eich prosiect</li>\n<li>unrhyw gyllid rydych eisoes wedi'i dderbyn tuag at gostau cyfalaf</li>\n</ul>\n<p>Byddwn yn gofyn i chi lanlwytho cynllun busnes i gefnogi'r atebion a rowch i ni yn yr adran hon.</p>\n<p>Gall y gronfa hon gynnig hyd at 50% o'ch costau cyfalaf i adnewyddu ac atgyweirio'r ased.</p>\n</div>",
+          "title": "Help gydag achos rheoli"
+        },
+        {
+          "name": "dPYuee",
+          "options": {},
+          "type": "Para",
+          "content": "<h2 class=\"govuk-heading-s\">Costau cyfalaf</h2>\n\n<p class=\"govuk-body\">Tell us about the total capital costs of your project.</p>\n\n<p class=\"govuk-caption-m\">These are used to purchase or lease the asset and pay for refurbishment costs. Remember, you can apply for up to 50% of your capital costs, up to a maximum of £250,000 (up to £1 million for sporting assets).</p>\n<p class=\"govuk-caption-m\">Gallwch ddefnyddio'ch cynllun busnes i ddarparu gwybodaeth sy'n ategu'ch atebion.</p>\n<p></p>"
+        },
+        {
+          "name": "BuFwSp",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Adams component goes here for Capital cost</h2>"
+        }
+      ],
+      "next": [{ "path": "/achos-rheoli-tbc-start" }]
+    },
+    {
+      "path": "/achos-rheoli-cQkHFc",
+      "title": "Achos rheoli",
+      "components": [
+        {
+          "name": "eJdudr",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+        },
+        {
+          "name": "PZANlN",
+          "options": {},
+          "type": "Details",
+          "content": "Rydym am ddeall:  \n<div>\n<br>\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>faint o gyllid rydych chi'n gwneud cais amdano o'r gronfa hon</li>\n<li> costau llawn eich prosiect</li>\n<li>unrhyw gyllid rydych eisoes wedi'i dderbyn ar gyfer eich prosiect hyd yma</li>\n<li>unrhyw gyllid rydych yn bwriadu'i sicrhau ar gyfer eich prosiect</li>\n<li>unrhyw gyllid rydych eisoes wedi'i dderbyn tuag at gostau cyfalaf</li>\n</ul>\n<p>Byddwn yn gofyn i chi lanlwytho cynllun busnes i gefnogi'r atebion a rowch i ni yn yr adran hon.</p>\n<p>Gall y gronfa hon gynnig hyd at 50% o'ch costau cyfalaf i adnewyddu ac atgyweirio'r ased.</p>\n</div>",
+          "title": "Help gydag achos rheoli"
+        },
+        {
+          "name": "DfTiAW",
+          "options": {},
+          "type": "Para",
+          "content": "<h2 class=\"govuk-heading-s\">Costau refeniw (dewisol)</h2>\n<div class=\"govuk-caption-m\">\n\n<p class=\"govuk-body\">Tell us about the total revenue costs of your project.</p>\n\n<label class=\"govuk-caption-m\">These are the running costs of the project. This might include legal fees or general costs, including for:</label>\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>cyfleustodau</li>\n<li>staffio</li>\n<li>penodi ymgynghorwyr allanol</li>\n</ul>\n\n<p class=\"govuk-caption-m\">Remember, you can apply for up to £50,000 of your revenue costs (no more than 20% of your capital funding).</p>\n<label class=\"govuk-!-padding-top-3\">Gallwch ddefnyddio'ch cynllun busnes i:</label>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>ddweud wrthym pam mae angen cyllid refeniw arnoch</li>\n<li>darparu unrhyw wybodaeth sy'n ategu'ch atebion</li>\n</ul></div>"
+        },
+        {
+          "name": "YlwuDb",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Adams component goes here for Revenue cost</h2>"
+        }
+      ],
+      "next": [{ "path": "/achos-rheoli-tbc-no" }]
+    },
+    {
+      "path": "/achos-rheoli-xaObmh",
+      "title": "Achos rheoli",
+      "components": [
+        {
+          "name": "ZLsNnZ",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+        },
+        {
+          "name": "rgGQHh",
+          "options": {},
+          "type": "Details",
+          "content": "Rydym am ddeall:  \n<div>\n<br>\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>faint o gyllid rydych chi'n gwneud cais amdano o'r gronfa hon</li>\n<li> costau llawn eich prosiect</li>\n<li>unrhyw gyllid rydych eisoes wedi'i dderbyn ar gyfer eich prosiect hyd yma</li>\n<li>unrhyw gyllid rydych yn bwriadu'i sicrhau ar gyfer eich prosiect</li>\n<li>unrhyw gyllid rydych eisoes wedi'i dderbyn tuag at gostau cyfalaf</li>\n</ul>\n<p>Byddwn yn gofyn i chi lanlwytho cynllun busnes i gefnogi'r atebion a rowch i ni yn yr adran hon.</p>\n<p>Gall y gronfa hon gynnig hyd at 50% o'ch costau cyfalaf i adnewyddu ac atgyweirio'r ased.</p>\n</div>",
+          "title": "Help gydag achos rheoli"
+        },
+        {
+          "name": "FqiBUI",
+          "options": {},
+          "type": "Para",
+          "content": "<label class=\"govuk-heading-s\">Wedi sicrhau arian cyfatebol</label>\n\n\n<p class=\"govuk-caption-m\">Mae angen i chi godi ffynonellau eraill o gyllid ochr yn ochr â buddsoddiad o'r gronfa hon.</p>\n<p class=\"govuk-caption-m\">Gall cael ystod o gyllidwyr yn cyfrannu at eich prosiect ddangos ansawdd eich prosiect a'r gefnogaeth sydd iddo yn y gymuned.</p>\n<label class=\"govuk-caption-m\">Gall ffynonellau arian cyfatebol gynnwys:</label>\n\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>cyrff cyhoeddus</li>\n<li>gweinyddiaethau datganoledig</li>\n<li>ymddiriedolaethau elusennol</li>\n<li>cyllidwyr y loteri genedlaethol</li>\n<li>cyfranddaliadau cymunedol</li>\n<li>buddsoddwyr cymdeithasol</li>\n<li>benthycwyr eraill</li>\n</ul>\n\n<p class=\"govuk-caption-m\">Gallech ddefnyddio eich cynllun busnes i ddarparu tystiolaeth i gefnogi eich atebion.</p>"
+        },
+        {
+          "name": "jDZmqb",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Adams component goes here for Secured funding</h2>"
+        }
+      ],
+      "next": [{ "path": "/achos-rheoli-tQuiWE" }]
+    },
+    {
+      "path": "/achos-rheoli-tbc-no",
+      "title": "Achos rheoli-TBC-NO",
+      "components": [
+        {
+          "name": "PtVfWP",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+        },
+        {
+          "name": "DIZZOC",
+          "options": {},
+          "type": "YesNoField",
+          "title": "A ydych chi wedi sicrhau unrhyw arian cyfatebol eto?",
+          "values": { "type": "listRef" }
+        }
+      ],
+      "next": [
+        { "path": "/achos-rheoli-xaObmh" },
+        { "path": "/achos-rheoli-tQuiWE", "condition": "FEMEHP" }
+      ]
+    },
+    {
+      "path": "/achos-rheoli-RrfCoS",
+      "title": "Achos rheoli",
+      "components": [
+        {
+          "name": "smwSHp",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+        },
+        {
+          "name": "cGVEui",
+          "options": {},
+          "type": "Details",
+          "content": "Rydym am ddeall:  \n<div>\n<br>\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>faint o gyllid rydych chi'n gwneud cais amdano o'r gronfa hon</li>\n<li> costau llawn eich prosiect</li>\n<li>unrhyw gyllid rydych eisoes wedi'i dderbyn ar gyfer eich prosiect hyd yma</li>\n<li>unrhyw gyllid rydych yn bwriadu'i sicrhau ar gyfer eich prosiect</li>\n<li>unrhyw gyllid rydych eisoes wedi'i dderbyn tuag at gostau cyfalaf</li>\n</ul>\n<p>Byddwn yn gofyn i chi lanlwytho cynllun busnes i gefnogi'r atebion a rowch i ni yn yr adran hon.</p>\n<p>Gall y gronfa hon gynnig hyd at 50% o'ch costau cyfalaf i adnewyddu ac atgyweirio'r ased.</p>\n</div>",
+          "title": "Help gydag achos rheoli"
+        },
+        {
+          "name": "fnIdkJ",
+          "options": { "prefix": "£", "classes": "govuk-!-width-one-third" },
+          "type": "NumberField",
+          "title": "Gwerth yr ased",
+          "hint": "<label class=\"govuk-caption-m\">Mae angen i chi gael rhywun annibynnol i brisio'r ased cyn i chi ymgymryd â rheolaeth ohoni.</label>\n\n<p class=\"govuk-caption-m\">Mae hyn yn cynnwys yr adeilad a'i gynnwys, gan gynnwys gosodiadau a ffitiadau, ac unrhyw stoc.</p>\n\n<p class=\"govuk-caption-m\">Gallech ddefnyddio eich cynllun busnes i ddarparu tystiolaeth i gefnogi eich atebion.</p>\n\n<p class=\"govuk-caption-m\">Os ydych eisoes wedi prynu neu brydlesu'r ased, defnyddiwch ei brisiad presennol.</p>\n\n"
+        }
+      ],
+      "next": [{ "path": "/summary" }]
+    },
+    {
+      "path": "/summary",
+      "title": "Check your answers",
+      "components": [],
+      "next": [],
+      "controller": "./pages/summary.js"
+    },
+    {
+      "path": "/achos-rheoli",
+      "title": "Achos rheoli",
+      "components": [
+        {
+          "name": "cpeDcC",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+        },
+        {
+          "name": "XeNlFF",
+          "options": {},
+          "type": "Para",
+          "content": "<label class=\"govuk-!-font-weight-bold\">Yn yr adran hon, byddwn yn holi ynghylch:\n</label>\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>total funding request</li>\n<li>costau cyfalaf</li>\n<li>cosau refeniw (dewisol)</li>\n<li>arian cyfatebol</li>\n<li>prisio asedau</li>\n</ul>\n</div>\n\n"
+        }
+      ],
+      "next": [{ "path": "/achos-rheoli-FpCRgJ" }],
+      "controller": "./pages/start.js"
+    },
+    {
+      "path": "/achos-rheoli-tbc-start",
+      "title": "Achos rheoli-TBC-START",
+      "components": [
+        {
+          "name": "sXyxUW",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+        },
+        {
+          "name": "NWTKzQ",
+          "options": { "required": true },
+          "type": "YesNoField",
+          "hint": "Defnyddir hwn ar gyfer costau rhedeg y prosiect. Gallai hyn gynnwys ffioedd cyfreithiol neu gostau cyffredinol, gan gynnwys ar gyfer:\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>cyfleustodau</li>\n<li>staffio</li>\n<li>penodi ymgynghorwyr allanol</li>\n</ul>\n<p>Remember, you can apply for up to £50,000 of your revenue costs (no more than 20% of your capital funding).</p>\n",
+          "title": "Are you applying for revenue funding from the Community Ownership Fund? (optional)",
+          "values": { "type": "listRef" }
+        }
+      ],
+      "next": [
+        { "path": "/achos-rheoli-cQkHFc" },
+        { "path": "/achos-rheoli-tbc-no", "condition": "HlFoGW" }
+      ]
+    },
+    {
+      "path": "/achos-rheoli-tQuiWE",
+      "title": "Achos rheoli",
+      "components": [
+        {
+          "name": "NcZEsI",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+        },
+        {
+          "name": "RvbwSX",
+          "options": {},
+          "type": "YesNoField",
+          "title": "A oes gennych unrhyw arian cyfatebol wedi'i nodi ond heb ei sicrhau eto?",
+          "values": { "type": "listRef" }
+        }
+      ],
+      "next": [
+        { "path": "/achos-rheoli-RrfCoS" },
+        { "path": "/achos-rheoli-QPiYOs", "condition": "WWbfRf" }
+      ]
+    },
+    {
+      "path": "/achos-rheoli-QPiYOs",
+      "title": "Achos rheoli",
+      "components": [
+        {
+          "name": "oHcGUy",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+        },
+        {
+          "name": "RafXFy",
+          "options": {},
+          "type": "Details",
+          "content": "Rydym am ddeall:  \n<div>\n<br>\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>faint o gyllid rydych chi'n gwneud cais amdano o'r gronfa hon</li>\n<li> costau llawn eich prosiect</li>\n<li>unrhyw gyllid rydych eisoes wedi'i dderbyn ar gyfer eich prosiect hyd yma</li>\n<li>unrhyw gyllid rydych yn bwriadu'i sicrhau ar gyfer eich prosiect</li>\n<li>unrhyw gyllid rydych eisoes wedi'i dderbyn tuag at gostau cyfalaf</li>\n</ul>\n<p>Byddwn yn gofyn i chi lanlwytho cynllun busnes i gefnogi'r atebion a rowch i ni yn yr adran hon.</p>\n<p>Gall y gronfa hon gynnig hyd at 50% o'ch costau cyfalaf i adnewyddu ac atgyweirio'r ased.</p>\n</div>",
+          "title": "Help gydag achos rheoli"
+        },
+        {
+          "name": "NJBCOa",
+          "options": {},
+          "type": "Para",
+          "content": "<h2 class=\"govuk-heading-s\">Arian cyfatebol heb ei sicrhau</h2>\n\n<p class=\"govuk-caption-m\">Mae angen i chi godi ffynonellau eraill o gyllid ochr yn ochr â buddsoddiad o'r gronfa hon.</p>\n<p class=\"govuk-caption-m\">\nGall cael ystod o gyllidwyr yn cyfrannu at eich prosiect ddangos ansawdd eich prosiect a'r gefnogaeth sydd iddo yn y gymuned.</p>\n<label class=\"govuk-caption-m\">Gall ffynonellau arian cyfatebol gynnwys:</label>\n\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>cyrff cyhoeddus</li>\n<li>gweinyddiaethau datganoledig</li>\n<li>ymddiriedolaethau elusennol</li>\n<li>cyllidwyr y loteri genedlaethol</li>\n<li>cyfranddaliadau cymunedol</li>\n<li>buddsoddwyr cymdeithasol</li>\n<li>benthycwyr eraill</li>\n</ul>\n\n\n\n<label class=\"govuk-caption-m\">Gallech ddefnyddio eich cynllun busnes i: </label>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li> ddweud wrthym faint y maen'n debygol o'i gymryd i sicrhau ffynonellau arian cyfatebol</li>\n<li>ddarparu unrhyw wybodaeth i gefnogi eich atebion</li>\n</ul>"
+        },
+        {
+          "name": "tjdsVg",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Adams component goes here for Unsecured funding</h2>"
+        }
+      ],
+      "next": [{ "path": "/achos-rheoli-RrfCoS" }]
+    },
+    {
+      "path": "/achos-rheoli-FpCRgJ",
+      "title": "Achos rheoli",
+      "components": [
+        {
+          "name": "VfUORj",
+          "options": {},
+          "type": "Html",
+          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+        },
+        {
+          "name": "XcjQVp",
+          "options": {},
+          "type": "Details",
+          "title": "Help gydag achos rheoli",
+          "content": "We are looking to understand:\n<div>\n<br>\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>how much funding you are applying for from this fund</li>\n<li>your full project costs </li>\n<li>any funding you've already received for your project so far</li>\n<li>any funding you've plan to secure for your project</li>\n<li>any funding you've already received towards capital costs</li>\n</ul>\n<p>We'll ask you to upload a business plan to support the answers you give us in this section.</p>\n<p>This fund can offer up to 50% of your capital costs to renovate and repair the asset.</p>\n</div>"
+        },
+        {
+          "name": "tVziRL",
+          "options": {},
+          "type": "Html",
+          "content": "<h3 class=\"govuk-heading-s\">Total funding request</h3>\n\n<p class=\"govuk-caption-m\">This is the amount you are applying for from the Community Ownership Fund.</p>\n\n<p class=\"govuk-caption-m\">You can apply for up to 50% of your capital costs, up to a maximum of £250,000 (up to £1 million for sporting assets).</p>\n\n<p class=\"govuk-caption-m\">You can apply for up to £50,000 of your revenue costs (no more than 20% of your capital funding).</p>"
+        },
+        {
+          "name": "JzWvhj",
+          "options": {
+            "hideTitle": true,
+            "classes": "govuk-!-width-one-third",
+            "prefix": "£"
+          },
+          "type": "NumberField",
+          "title": "Capital funding",
+          "hint": "<label class=\"govuk-body\">Capital funding </label>"
+        },
+        {
+          "name": "jLIgoi",
+          "options": {
+            "required": false,
+            "hideTitle": true,
+            "prefix": "£",
+            "classes": "govuk-!-width-one-third"
+          },
+          "type": "NumberField",
+          "title": "Revenue funding (optional)",
+          "hint": "<label class=\"govuk-body\">Revenue funding (optional)</label>"
+        }
+      ],
+      "next": [{ "path": "/achos-rheoli-WeKyYU" }]
+    }
+  ],
+  "lists": [
+    {
+      "title": "one",
+      "name": "nFbaHM",
+      "type": "string",
+      "items": [
+        { "text": "one", "value": "one" },
+        { "text": "two", "value": "two" }
+      ]
+    },
+    {
+      "title": "Have you already secured this funding",
+      "name": "OaMCxF",
+      "type": "string",
+      "items": [
+        { "text": "Yes", "value": "yes" },
+        { "text": "No", "value": "no" }
+      ]
+    }
+  ],
+  "sections": [],
+  "conditions": [
+    {
+      "displayName": "Do you have any match funding identified but not yet secured-yes",
+      "name": "IzLYPG",
+      "value": {
+        "name": "Do you have any match funding identified but not yet secured-yes",
+        "conditions": [
+          {
+            "field": {
+              "name": "RvbwSX",
+              "type": "YesNoField",
+              "display": "Do you have any match funding identified but not yet secured?"
+            },
+            "operator": "is",
+            "value": { "type": "Value", "value": "true", "display": "true" }
+          }
+        ]
+      }
+    },
+    {
+      "displayName": "Do you need to add revenue costs-no",
+      "name": "HlFoGW",
+      "value": {
+        "name": "Do you need to add revenue costs-no",
+        "conditions": [
+          {
+            "field": {
+              "name": "NWTKzQ",
+              "type": "YesNoField",
+              "display": "Do you need to add revenue costs?"
+            },
+            "operator": "is",
+            "value": { "type": "Value", "value": "false", "display": "false" }
+          }
+        ]
+      }
+    },
+    {
+      "displayName": "Have you secured any match funding yet-no",
+      "name": "ssmMSX",
+      "value": {
+        "name": "Have you secured any match funding yet-no",
+        "conditions": [
+          {
+            "field": {
+              "name": "DIZZOC",
+              "type": "YesNoField",
+              "display": "Have you secured any match funding yet?"
+            },
+            "operator": "is",
+            "value": { "type": "Value", "value": "false", "display": "false" }
+          }
+        ]
+      }
+    },
+    {
+      "displayName": "A ydych chi wedi sicrhau unrhyw arian cyfatebol eto-NO",
+      "name": "FEMEHP",
+      "value": {
+        "name": "A ydych chi wedi sicrhau unrhyw arian cyfatebol eto-NO",
+        "conditions": [
+          {
+            "field": {
+              "name": "DIZZOC",
+              "type": "YesNoField",
+              "display": "A ydych chi wedi sicrhau unrhyw arian cyfatebol eto?"
+            },
+            "operator": "is",
+            "value": { "type": "Value", "value": "false", "display": "false" }
+          }
+        ]
+      }
+    },
+    {
+      "displayName": "A oes gennych unrhyw arian cyfatebol wedi'i nodi ond heb ei sicrhau eto-YES",
+      "name": "WWbfRf",
+      "value": {
+        "name": "A oes gennych unrhyw arian cyfatebol wedi'i nodi ond heb ei sicrhau eto-YES",
+        "conditions": [
+          {
+            "field": {
+              "name": "RvbwSX",
+              "type": "YesNoField",
+              "display": "A oes gennych unrhyw arian cyfatebol wedi'i nodi ond heb ei sicrhau eto?"
+            },
+            "operator": "is",
+            "value": { "type": "Value", "value": "true", "display": "true" }
+          }
+        ]
+      }
+    }
+  ],
+  "fees": [],
+  "outputs": [],
+  "version": 2,
+  "skipSummary": false,
+  "name": "Gwneud cais am gyllid i achub ased yn eich cymuned",
+  "feedback": { "feedbackForm": false, "url": "" },
+  "phaseBanner": { "phase": "beta" }
+}

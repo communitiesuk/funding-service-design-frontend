@@ -5,7 +5,7 @@ Tests the routes and their contents using the dict within
 from tests.route_testing_conf import routes_and_test_content
 
 
-def test_routes_status_code(flask_test_client):
+def test_routes_status_code(flask_test_client, monkeypatch, mocker):
     """
     GIVEN Our Flask Application
     WHEN a route is requested
@@ -13,12 +13,17 @@ def test_routes_status_code(flask_test_client):
     If this test succeeds then our flask application's
     routes are correctly initialised.
     """
+
+    monkeypatch.setattr(
+        "fsd_utils.authentication.decorators._check_access_token",
+        lambda: {"accountId": "test-user"},
+    )
     for route, _ in routes_and_test_content.items():
         response = flask_test_client.get(route, follow_redirects=True)
-        assert response.status_code == 200
+        assert 200 == response.status_code, "Incorrect status code returned"
 
 
-def test_routes_content(flask_test_client):
+def test_routes_content(flask_test_client, monkeypatch):
     """
     GIVEN Our Flask Application
     WHEN a route is requested
@@ -28,6 +33,11 @@ def test_routes_content(flask_test_client):
     If this test succeedes then our flask application's
     routes are correctly initialised.
     """
+
+    monkeypatch.setattr(
+        "fsd_utils.authentication.decorators._check_access_token",
+        lambda: {"accountId": "test-user"},
+    )
     for route, should_contain_this in routes_and_test_content.items():
         response = flask_test_client.get(route, follow_redirects=True)
         assert should_contain_this in response.data

@@ -68,10 +68,10 @@
           "name": "adkAXU",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">Income sources</h2>\n<p class=\"govuk-caption-m\">This is how you expect the asset to make money in future. These should be measured against your running costs.</p>\n<p class=\"govuk-caption-m\">You can use your business plan to provide information that supports your answers.</p>\n<h2 class=\"govuk-heading-m\">Your income sources</h2>\n"
+          "content": "<h2 class=\"govuk-heading-s\">Income sources</h2>\n<p class=\"govuk-caption-m\">This is how you expect the asset to make money in future. These should be measured against your running costs.</p>\n<p class=\"govuk-caption-m\">You can use your business plan to provide information that supports your answers.</p>"
         },
         {
-            "name": "MultiInputField",
+            "name": "TzOokX",
             "options": {
               "prefix": "£",
               "textFieldTitle": "Source",
@@ -118,10 +118,10 @@
           "name": "CeCEtD",
           "options": {},
           "type": "Para",
-          "content": "<h2 class=\"govuk-heading-s\">Running costs</h2>\n\n<label class=\"govuk-caption-m\">Money used to regularly maintain the asset and keep it open to the community. This can include:</label>\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>utility bills</li>\n<li>gardening costs</li>\n<li>security measures</li>\n</ul> \n<p class=\"govuk-caption-m\"> You can use your business plan to provide information that supports your answers.</p>\n<h2 class=\"govuk-heading-m\">Your running costs</h2>\n"
+          "content": "<h2 class=\"govuk-heading-s\">Running costs</h2>\n\n<label class=\"govuk-caption-m\">Money used to regularly maintain the asset and keep it open to the community. This can include:</label>\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>utility bills</li>\n<li>gardening costs</li>\n<li>security measures</li>\n</ul> \n<p class=\"govuk-caption-m\"> You can use your business plan to provide information that supports your answers.</p>"
         },
         {
-            "name": "MultiInputField-2",
+            "name": "fbFeEx",
             "options": {
               "prefix": "£",
               "textFieldTitle": "Running cost",
