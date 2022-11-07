@@ -57,6 +57,7 @@
     "date_submitted": null,
     "started_at": "2022-05-20 14:47:12",
     "last_edited": null,
+    "language": "en",
     "forms": [
       {
         "name": "applicant-information",
@@ -171,7 +172,8 @@
       "project_name": null,
       "date_submitted": null,
       "started_at": "2022-05-20 14:47:12",
-      "last_edited": "2022-05-24 11:03:59"
+      "last_edited": "2022-05-24 11:03:59",
+      "language": "en"
     },
     {
       "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",
@@ -184,6 +186,7 @@
       "date_submitted": null,
       "started_at": "2022-05-24 10:42:41",
       "last_edited": null,
+      "language": "en",
       "Unknown": "DOES NOT MAKE ME FAIL"
     }
   ],
@@ -198,7 +201,8 @@
       "project_name": null,
       "date_submitted": null,
       "started_at": "2022-05-20 14:47:12",
-      "last_edited": "2022-05-24 11:03:59"
+      "last_edited": "2022-05-24 11:03:59",
+      "language": "en"
     }
   ],
   "http://application_store/test-application-id": {
@@ -213,6 +217,7 @@
     "round_name": "Round T Window T",
     "started_at": "2022-10-11T09:43:40.632095",
     "status": "IN_PROGRESS",
+    "language": "en",
     "forms": [
       {
         "name": "risk",
@@ -1136,6 +1141,7 @@
     "round_name": "Round T Window T",
     "started_at": "2022-10-11T09:43:40.632095",
     "status": "SUBMITTED",
+    "language": "en",
     "forms": []
   },
   "http://fund_store/testfundid": {
