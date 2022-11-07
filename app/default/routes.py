@@ -1,5 +1,6 @@
 from functools import wraps
 from http.client import METHOD_NOT_ALLOWED
+
 import requests
 from app.constants import ApplicationStatus
 from app.default.data import get_account
@@ -30,17 +31,20 @@ from fsd_utils.locale_selector.get_lang import get_lang
 default_bp = Blueprint("routes", __name__, template_folder="templates")
 
 
-# TODO Move the following method into utils. Utils will need a way of accessing application data.
+# TODO Move the following method into utils.
+# Utils will need a way of accessing application data.
+
 
 def verify_application_owner_local(f):
     """
-    This decorator determines whether the user trying to access an application is
-    the owner of that application. If they are, passes through to the decorated
-    method. If not, it returns a 401 response.
+    This decorator determines whether the user trying to access an application
+    is the owner of that application. If they are, passes through to the
+    decorated method. If not, it returns a 401 response.
 
-    It detects whether the call was a GET or a POST and reads the parameters 
+    It detects whether the call was a GET or a POST and reads the parameters
     accordingly.
     """
+
     @wraps(f)
     def decorator(*args, **kwargs):
         if request.method == "POST":
@@ -48,7 +52,10 @@ def verify_application_owner_local(f):
         elif request.method == "GET":
             application_id = kwargs["application_id"]
         else:
-            abort(METHOD_NOT_ALLOWED, f"Http method {request.method} is not supported")
+            abort(
+                METHOD_NOT_ALLOWED,
+                f"Http method {request.method} is not supported",
+            )
 
         application = get_application_data(application_id, as_dict=True)
         application_owner = application.account_id
@@ -56,8 +63,14 @@ def verify_application_owner_local(f):
         if current_user == application_owner:
             return f(*args, **kwargs)
         else:
-            abort(401, f"User {current_user} attempted to access application {application_id}, owned by {application_owner}")
+            abort(
+                401,
+                f"User {current_user} attempted to access application"
+                f" {application_id}, owned by {application_owner}",
+            )
+
     return decorator
+
 
 # End TODO
 
@@ -178,6 +191,7 @@ def new():
         )
     )
 
+
 @default_bp.route("/tasklist/<application_id>", methods=["GET"])
 @login_required
 @verify_application_owner_local
@@ -205,7 +219,7 @@ def tasklist(application_id):
     round_data = get_round_data(
         Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, True
     )
-    application.create_sections(application)
+    sections = application.get_sections(application)
 
     form = FlaskForm()
     application_meta_data = {
@@ -231,11 +245,13 @@ def tasklist(application_id):
     return render_template(
         "tasklist.html",
         application=application,
+        sections=sections,
         application_meta_data=application_meta_data,
         form=form,
         contact_us_email_address=round_data.contact_details["email_address"],
         submission_deadline=round_data.deadline,
     )
+
 
 @default_bp.route("/continue_application/<application_id>", methods=["GET"])
 @login_required
@@ -294,7 +310,6 @@ def continue_application(application_id):
 def submit_application():
     application_id = request.form.get("application_id")
     submitted = format_payload_and_submit_application(application_id)
-    
 
     application_id = submitted.get("id")
     application_reference = submitted.get("reference")
@@ -306,6 +321,7 @@ def submit_application():
         application_reference=application_reference,
         application_email=application_email,
     )
+
 
 def format_payload_and_submit_application(application_id):
     payload = {"application_id": application_id}
@@ -330,10 +346,11 @@ def format_payload_and_submit_application(application_id):
     return submitted
 
 
-
 @default_bp.errorhandler(404)
 def not_found(error):
-    current_app.logger.warning(f"Encountered 404 against url {request.path}: {error}")
+    current_app.logger.warning(
+        f"Encountered 404 against url {request.path}: {error}"
+    )
     round_data = get_round_data_fail_gracefully(
         Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID
     )
@@ -345,6 +362,7 @@ def not_found(error):
 def internal_server_error(error):
     current_app.logger.error(f"Encountered 500: {error}")
     return render_template("500.html"), 500
+
 
 @default_bp.errorhandler(401)
 def unauthorised_error(error):
@@ -362,6 +380,3 @@ def csrf_token_expiry(error):
         return redirect(g.logout_url)
     current_app.logger.error(f"Encountered 500: {error}")
     return render_template("500.html"), 500
-
-
-

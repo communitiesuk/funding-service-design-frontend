@@ -1,12 +1,10 @@
 import inspect
 from dataclasses import dataclass
-from dataclasses import field
 from datetime import datetime
 from typing import List
 
 from app.models.application_parts.form import Form
-from app.models.application_parts.sections import COF_R2_SECTION_DISPLAY_CONFIG
-from app.models.application_parts.sections import Sections
+from config import Config
 from flask import current_app
 
 
@@ -22,10 +20,8 @@ class Application:
     date_submitted: datetime
     started_at: datetime
     last_edited: datetime
+    language: str
     forms: List[Form]
-    sections: Sections = field(
-        default_factory=lambda: COF_R2_SECTION_DISPLAY_CONFIG
-    )
 
     @classmethod
     def get_form_data(cls, application_data, form_name):
@@ -44,25 +40,36 @@ class Application:
             }
         )
 
-    def create_sections(self, application):
+    @staticmethod
+    def create_blank_sections(fund_id, round_id, language):
+        sections = {}
+        FORMS_CONFIG_FOR_FUND_ROUND = Config.FORMS_CONFIG_FOR_FUND_ROUND
+        sections_config = FORMS_CONFIG_FOR_FUND_ROUND.get(
+            ":".join([fund_id, round_id])
+        )
+        for section_config in sections_config:
+            sections[section_config["section_title"][language]] = {}
+            for form in section_config["ordered_form_names_within_section"]:
+                sections[section_config["section_title"][language]][
+                    form[language]
+                ] = None
+        return sections
+
+    def get_sections(self, application):
         current_app.logger.info(
-            "filling application sections with form state associated with"
+            "get ordered forms associated with"
             f" application id:{application.id}."
         )
-        for form in self.forms:
-            form_name = form["name"]
-            for (
-                section,
-                section_config,
-            ) in self.sections.items():
-                if form_name in section_config["forms_within_section"]:
-                    section_config["forms_within_section"][form_name] = form
-            # TODO post mvp
-            # Update the section weighting using the FUND STORE weightings
-            # i.e query the fund store HERE and load weightings into sections
-            # get_round_data(fund_id=fund_id, round_id=round_id)
-            # current_app.logger.info(
-            #     f"Applying section weightings for
-            #       fund_id: {application.fund_id},
-            #       round_id: {application.round_id}"
-            # )
+
+        sections = self.create_blank_sections(
+            application.fund_id, application.round_id, application.language
+        )
+
+        # def fill_sections_with_form_state
+        for form_state in self.forms:
+            for section_title, section_forms in sections.items():
+                for section_form_name in section_forms:
+                    if section_form_name == form_state["name"]:
+                        section_forms[section_form_name] = form_state
+                        # add form state to ordered_forms dict
+        return sections
