@@ -29,7 +29,6 @@ class DefaultConfig:
     ENTER_APPLICATION_URL = AUTHENTICATOR_HOST + "/service/magic-links/new"
     SESSION_COOKIE_DOMAIN = environ.get("SESSION_COOKIE_DOMAIN")
     COOKIE_DOMAIN = None
-    DEFAULT_LANGUAGE = "en"
 
     # RSA 256 KEYS
     RSA256_PUBLIC_KEY_BASE64 = environ.get("RSA256_PUBLIC_KEY_BASE64")
