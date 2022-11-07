@@ -221,6 +221,8 @@ def tasklist(application_id):
     )
     sections = application.get_sections(application)
 
+    current_app.logger.error(sections.items())
+
     form = FlaskForm()
     application_meta_data = {
         "application_id": application_id,
