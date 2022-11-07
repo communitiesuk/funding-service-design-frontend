@@ -48,7 +48,10 @@
             },
             "customText": {
               "samePageTitle": "Eich ffynonellau incwm",
-              "columnOneTitle": "Ffynhonnell"
+              "columnOneTitle": "Ffynhonnell",
+              "columnTwoTitle": "Swm",
+              "columnThreeTitle": "Gweithredu"
+
             }
           },
       "components": [
@@ -98,7 +101,9 @@
           },
           "customText": {
             "samePageTitle": "Eich costau rhedeg",
-            "columnOneTitle": "Cost redeg"
+            "columnOneTitle": "Cost redeg",
+            "columnTwoTitle": "Swm",
+            "columnThreeTitle": "Gweithredu"
           }
         },
       "components": [
