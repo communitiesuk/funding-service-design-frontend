@@ -71,7 +71,7 @@ class Application:
         sections_config = self.create_blank_sections(
             application.fund_id, application.round_id, application.language
         )
-
+        
         # put form state into relevant section
         for form_state in self.forms:
             # find matching form in sections
