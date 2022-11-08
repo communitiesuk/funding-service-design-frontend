@@ -29,7 +29,7 @@
             <nav>
               <ul id="navigation" class="govuk-header__navigation app-navigation" aria-label="Navigation menu">
                     <li class="govuk-header__navigation-item">
-                        <a class="govuk-header__link" href="{{ g.logout_url }}">Sign out</a>
+                        <a class="govuk-header__link" href="{{ g.logout_url }}">{% trans %}Sign out{% endtrans %}</a>
                     </li>
               </ul>
             </nav>
@@ -38,9 +38,11 @@
     </div>
 </header>
 
-
 <div class="govuk-width-container">
-    {{ govukPhaseBanner({'tag': {'text': 'beta'}, 'html':
-    'This is a new service – your <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=EGg0v32c3kOociSi7zmVqN48ORk8WN5LlJITE3Swt-lURUNCR0dHMjgxWFZOMTMxQzlOTVIxVkQ0Sy4u" class="govuk-link">feedback</a> will help us to improve it.'
+    {{ govukPhaseBanner({
+        'tag': {
+            'text': gettext('beta')
+        }, 
+        'html': '{}<a href="https://forms.office.com/Pages/ResponsePage.aspx?id=EGg0v32c3kOociSi7zmVqN48ORk8WN5LlJITE3Swt-lURUNCR0dHMjgxWFZOMTMxQzlOTVIxVkQ0Sy4u" class="govuk-link">{}</a>{}'.format(gettext('This is a new service - your '), gettext('feedback'), gettext(' will help us to improve it.'))
     })}}
 </div>
