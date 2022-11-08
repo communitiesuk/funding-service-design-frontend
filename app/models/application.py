@@ -42,17 +42,24 @@ class Application:
 
     @staticmethod
     def create_blank_sections(fund_id, round_id, language):
-        sections = {}
+        sections = []
         FORMS_CONFIG_FOR_FUND_ROUND = Config.FORMS_CONFIG_FOR_FUND_ROUND
         sections_config = FORMS_CONFIG_FOR_FUND_ROUND.get(
             ":".join([fund_id, round_id])
         )
         for section_config in sections_config:
-            sections[section_config["section_title"][language]] = {}
+            section_to_add = {
+                "section_title": section_config["section_title"][language]
+            }
+            section_to_add["section_weighting"] = section_config[
+                "section_weighting"
+            ]
+            section_to_add["forms"] = []
             for form in section_config["ordered_form_names_within_section"]:
-                sections[section_config["section_title"][language]][
-                    form[language]
-                ] = None
+                section_to_add["forms"].append(
+                    {"form_name": form[language], "state": None}
+                )
+            sections.append(section_to_add)
         return sections
 
     def get_sections(self, application):
@@ -61,15 +68,16 @@ class Application:
             f" application id:{application.id}."
         )
 
-        sections = self.create_blank_sections(
+        sections_config = self.create_blank_sections(
             application.fund_id, application.round_id, application.language
         )
 
-        # def fill_sections_with_form_state
+        # put form state into relevant section
         for form_state in self.forms:
-            for section_title, section_forms in sections.items():
-                for section_form_name in section_forms:
-                    if section_form_name == form_state["name"]:
-                        section_forms[section_form_name] = form_state
-                        # add form state to ordered_forms dict
-        return sections
+            # find matching form in sections
+            for section_config in sections_config:
+                for form_in_config in section_config["forms"]:
+                    if form_in_config["form_name"] == form_state["name"]:
+                        form_in_config["state"] = form_state
+
+        return sections_config

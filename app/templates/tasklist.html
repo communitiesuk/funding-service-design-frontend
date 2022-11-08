@@ -121,9 +121,9 @@
                 </p>
             {% endif %}
             <ol class="app-task-list">
-                {% for section_name, section_data in sections.items() %}
-                    {{ tasklist_section(section_name, section_data, section_data["section_weighting"], application_meta_data,
-      loop.index) }}
+                {% for section in sections %}
+                        {{ tasklist_section(section["section_title"], section["forms"], section["section_weighting"], application_meta_data,
+        loop.index) }}
                 {% endfor %}
             </ol>
         </div>
