@@ -49,16 +49,17 @@ class Application:
                 ":".join([fund_id, round_id])
             ]
         except IndexError:
-            current_app.logger.error(f"FORM CONFIG for FUND:{fund_id} and ROUND:{round_id} does not exist")
+            current_app.logger.error(
+                f"FORM CONFIG for FUND:{fund_id} and ROUND:{round_id} does not"
+                " exist"
+            )
         sections = [
             {
                 "section_title": section["section_title"][language],
                 "section_weighting": section["section_weighting"],
                 "forms": [
                     {"form_name": form[language], "state": None}
-                    for form in section[
-                        "ordered_form_names_within_section"
-                    ]
+                    for form in section["ordered_form_names_within_section"]
                 ],
             }
             for section in sections_config
@@ -67,13 +68,14 @@ class Application:
 
     def get_sections(self, application):
         current_app.logger.info(
-            "get ordered forms associated with"
-            f" application id:{application.id}."
+            "Sorting forms into order using section config associated with"
+            f"fund: {application.fund_id}, round: {application.round_id}"
+            f", for application id:{application.id}."
         )
         sections_config = self.create_blank_sections(
             application.fund_id, application.round_id, application.language
         )
-        # put form state into relevant section
+        # fill the section/forms with form state from the application
         for form_state in self.forms:
             # find matching form in sections
             for section_config in sections_config:
