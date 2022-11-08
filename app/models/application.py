@@ -44,22 +44,25 @@ class Application:
     def create_blank_sections(fund_id, round_id, language):
         sections = []
         FORMS_CONFIG_FOR_FUND_ROUND = Config.FORMS_CONFIG_FOR_FUND_ROUND
-        sections_config = FORMS_CONFIG_FOR_FUND_ROUND.get(
-            ":".join([fund_id, round_id])
-        )
-        for section_config in sections_config:
-            section_to_add = {
-                "section_title": section_config["section_title"][language]
-            }
-            section_to_add["section_weighting"] = section_config[
-                "section_weighting"
+        try:
+            sections_config = FORMS_CONFIG_FOR_FUND_ROUND[
+                ":".join([fund_id, round_id])
             ]
-            section_to_add["forms"] = []
-            for form in section_config["ordered_form_names_within_section"]:
-                section_to_add["forms"].append(
+        except IndexError:
+            current_app.logger.error(f"FORM CONFIG for FUND:{fund_id} and ROUND:{round_id} does not exist")
+        sections = [
+            {
+                "section_title": section["section_title"][language],
+                "section_weighting": section["section_weighting"],
+                "forms": [
                     {"form_name": form[language], "state": None}
-                )
-            sections.append(section_to_add)
+                    for form in section[
+                        "ordered_form_names_within_section"
+                    ]
+                ],
+            }
+            for section in sections_config
+        ]
         return sections
 
     def get_sections(self, application):
@@ -67,11 +70,9 @@ class Application:
             "get ordered forms associated with"
             f" application id:{application.id}."
         )
-
         sections_config = self.create_blank_sections(
             application.fund_id, application.round_id, application.language
         )
-        
         # put form state into relevant section
         for form_state in self.forms:
             # find matching form in sections
