@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-03 13:33+0000\n"
-"PO-Revision-Date: 2022-11-01 09:48+0000\n"
+"POT-Creation-Date: 2022-10-26 13:26+0100\n"
+"PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
 "Language-Team: cy <LL@li.org>\n"
@@ -50,3 +50,38 @@ msgid "You cannot change the language of an existing application."
 msgstr ""
 "Ni fyddwch yn gallu newid iaith unwaith y byddwch chi wedi dechrau eich "
 "cais."
+#: app/templates/footer.html:10
+msgid "Privacy"
+msgstr "Preifatrwydd"
+
+#: app/templates/footer.html:15
+msgid "Cookies"
+msgstr "Cwcis"
+
+#: app/templates/footer.html:19
+msgid "Accessibility Statement"
+msgstr "Datganiad Hygyrchedd"
+
+#: app/templates/footer.html:23
+msgid "Contact us"
+msgstr "Cysylltwch â ni"
+
+#: app/templates/header.html:32
+msgid "Sign out"
+msgstr ""
+
+#: app/templates/header.html:44
+msgid "beta"
+msgstr "beta"
+
+#: app/templates/header.html:46
+msgid "This is a new service - your "
+msgstr "Mae hyn yn wasanaeth newydd - bydd eich "
+
+#: app/templates/header.html:46
+msgid "feedback"
+msgstr "adborth"
+
+#: app/templates/header.html:46
+msgid " will help us to improve it."
+msgstr " yn ein cefnogi i'w wella."
