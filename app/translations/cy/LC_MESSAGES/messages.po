@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-26 13:26+0100\n"
+"POT-Creation-Date: 2022-11-09 16:42+0000\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -23,15 +23,52 @@ msgstr ""
 msgid "Apply for funding to save an asset in your community"
 msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
 
+#: app/templates/dashboard.html:8
+msgid "Your applications"
+msgstr "Eich ceisiadau"
+
+#: app/templates/dashboard.html:10
+msgid "You have started"
+msgstr "Rydych wedi dechrau"
+
 #: app/templates/dashboard.html:10
 #, python-format
-msgid " %(count)s application "
-msgid_plural " %(count)s applications "
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
+msgid "%(count)s application"
+msgid_plural "%(count)s applications"
+msgstr[0] "%(count)s cais"
+msgstr[1] "%(count)s ceisiadau"
+
+#: app/templates/dashboard.html:10
+msgid "using this email address"
+msgstr "gan ddefnyddio'r cyfeiriad e-bost hwn"
+
+#: app/templates/dashboard.html:27
+msgid "Continue application"
+msgstr "Parhau gyda'r cais"
+
+#: app/templates/dashboard.html:33
+msgid "Untitled project"
+msgstr "Prosiect heb enw"
+
+#: app/templates/dashboard.html:58
+msgid "Project name"
+msgstr "Enw'r prosiect"
+
+#: app/templates/dashboard.html:61
+msgid "Status"
+msgstr "Statws"
+
+#: app/templates/dashboard.html:64
+msgid "Last edited"
+msgstr "Golygwyd diwethaf"
+
+#: app/templates/dashboard.html:67
+msgid "Application Reference"
+msgstr "Cyfeirnod y cais"
+
+#: app/templates/dashboard.html:70
+msgid "Action"
+msgstr "Gweithredu"
 
 #: app/templates/footer.html:10
 msgid "Privacy"
@@ -68,3 +105,8 @@ msgstr "adborth"
 #: app/templates/header.html:46
 msgid " will help us to improve it."
 msgstr " yn ein cefnogi i'w wella."
+
+#: app/templates/partials/start-application-button.html:11
+msgid "Start new application"
+msgstr "Dechrau cais newydd"
+

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-28 14:15+0100\n"
+"POT-Creation-Date: 2022-11-09 16:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,54 +17,94 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
+#: app/create_app.py:79
+msgid "Apply for funding to save an asset in your community"
+msgstr ""
+
 #: app/templates/dashboard.html:8
 msgid "Your applications"
-msgstr "welsh"
+msgstr ""
 
 #: app/templates/dashboard.html:10
 msgid "You have started"
-msgstr "welsh"
+msgstr ""
 
 #: app/templates/dashboard.html:10
 #, python-format
 msgid "%(count)s application"
 msgid_plural "%(count)s applications"
-msgstr[0] "%(count)s welsh"
-msgstr[1] "%(count)s welsh"
+msgstr[0] ""
+msgstr[1] ""
 
 #: app/templates/dashboard.html:10
 msgid "using this email address"
-msgstr "welsh"
+msgstr ""
 
 #: app/templates/dashboard.html:27
 msgid "Continue application"
-msgstr "welsh"
+msgstr ""
 
 #: app/templates/dashboard.html:33
 msgid "Untitled project"
-msgstr "welsh"
+msgstr ""
 
 #: app/templates/dashboard.html:58
 msgid "Project name"
-msgstr "welsh"
+msgstr ""
 
 #: app/templates/dashboard.html:61
 msgid "Status"
-msgstr "welsh"
+msgstr ""
 
 #: app/templates/dashboard.html:64
 msgid "Last edited"
-msgstr "welsh"
+msgstr ""
 
 #: app/templates/dashboard.html:67
 msgid "Application Reference"
-msgstr "welsh"
+msgstr ""
 
 #: app/templates/dashboard.html:70
 msgid "Action"
-msgstr "welsh"
+msgstr ""
+
+#: app/templates/footer.html:10
+msgid "Privacy"
+msgstr ""
+
+#: app/templates/footer.html:15
+msgid "Cookies"
+msgstr ""
+
+#: app/templates/footer.html:19
+msgid "Accessibility Statement"
+msgstr ""
+
+#: app/templates/footer.html:23
+msgid "Contact us"
+msgstr ""
+
+#: app/templates/header.html:32
+msgid "Sign out"
+msgstr ""
+
+#: app/templates/header.html:44
+msgid "beta"
+msgstr ""
+
+#: app/templates/header.html:46
+msgid "This is a new service - your "
+msgstr ""
+
+#: app/templates/header.html:46
+msgid "feedback"
+msgstr ""
+
+#: app/templates/header.html:46
+msgid " will help us to improve it."
+msgstr ""
 
 #: app/templates/partials/start-application-button.html:11
 msgid "Start new application"
-msgstr "welsh"
+msgstr ""
 
