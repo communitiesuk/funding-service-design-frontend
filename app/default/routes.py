@@ -1,6 +1,5 @@
 from functools import wraps
 from http.client import METHOD_NOT_ALLOWED
-
 import requests
 from app.constants import ApplicationStatus
 from app.default.data import get_account
