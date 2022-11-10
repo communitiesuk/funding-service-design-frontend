@@ -11,7 +11,7 @@
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <span class="govuk-caption-l">{{ application_meta_data["fund_name"]|kebab_case_to_human }} {{ application_meta_data["round_name"] }}</span>
+            <span class="govuk-caption-l">{{ application_meta_data["fund_name"]}} {{ application_meta_data["round_name"]|lower }}</span>
             <h1 class="govuk-heading-xl">Application for funding to save an asset in your community</h1>
             <details class="govuk-details" data-module="govuk-details">
                 <summary class="govuk-details__summary">
