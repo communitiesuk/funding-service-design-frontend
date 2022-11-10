@@ -116,3 +116,5 @@ jobs:
         run: python build.py
       - name: Install Chromium
         uses: browser-actions/setup-chrome@latest
+      - name: Run E2E Tests & Generate Test Report
+        uses: communitiesuk/funding-service-design-e2e-checks/.github/workflows/main.yml@main
