@@ -76,3 +76,7 @@ def test_tasklist_for_submit_application_route(
     assert b"Application complete" in response.data
     assert b"Return to your applications page" in response.data
     assert b"test@example.com" in response.data
+
+
+def test_get_blank_sections():
+    

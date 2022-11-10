@@ -218,7 +218,7 @@ def tasklist(application_id):
     round_data = get_round_data(
         Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, True
     )
-    sections = application.get_sections(application)
+    sections = application.get_sections()
     form = FlaskForm()
     application_meta_data = {
         "application_id": application_id,

@@ -40,41 +40,36 @@ class Application:
             }
         )
 
-    @staticmethod
-    def create_blank_sections(fund_id, round_id, language):
-        sections = []
+    def create_blank_sections(self):
         FORMS_CONFIG_FOR_FUND_ROUND = Config.FORMS_CONFIG_FOR_FUND_ROUND
         try:
             sections_config = FORMS_CONFIG_FOR_FUND_ROUND[
-                ":".join([fund_id, round_id])
+                ":".join([self.fund_id, self.round_id])
             ]
         except IndexError:
             current_app.logger.error(
-                f"FORM CONFIG for FUND:{fund_id} and ROUND:{round_id} does not"
+                f"FORM CONFIG for FUND:{self.fund_id} and ROUND:{self.round_id} does not"
                 " exist"
             )
-        sections = [
+        return [
             {
-                "section_title": section["section_title"][language],
+                "section_title": section["section_title"][self.language],
                 "section_weighting": section["section_weighting"],
                 "forms": [
-                    {"form_name": form[language], "state": None}
+                    {"form_name": form[self.language], "state": None}
                     for form in section["ordered_form_names_within_section"]
                 ],
             }
             for section in sections_config
         ]
-        return sections
 
-    def get_sections(self, application):
+    def get_sections(self):
         current_app.logger.info(
             "Sorting forms into order using section config associated with"
-            f"fund: {application.fund_id}, round: {application.round_id}"
-            f", for application id:{application.id}."
+            f"fund: {self.fund_id}, round: {self.round_id}"
+            f", for application id:{self.id}."
         )
-        sections_config = self.create_blank_sections(
-            application.fund_id, application.round_id, application.language
-        )
+        sections_config = self.create_blank_sections()
         # fill the section/forms with form state from the application
         for form_state in self.forms:
             # find matching form in sections
@@ -82,5 +77,4 @@ class Application:
                 for form_in_config in section_config["forms"]:
                     if form_in_config["form_name"] == form_state["name"]:
                         form_in_config["state"] = form_state
-
         return sections_config
