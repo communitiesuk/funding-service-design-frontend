@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-26 13:26+0100\n"
+"POT-Creation-Date: 2022-11-11 10:13+0000\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -19,9 +19,80 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: app/create_app.py:79
+#: app/create_app.py:80
 msgid "Apply for funding to save an asset in your community"
 msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
+
+#: app/templates/cookie_policy.html:10
+msgid ""
+"Cookies are small files saved on your phone, tablet or computer when you "
+"visit a website."
+msgstr ""Ffeiliau bach sydd wedi'u cadw ar eich ffôn, llechen neu gyfrifiadur pan fyddwch chi'n ymweld â gwefan yw cwcis.""
+
+#: app/templates/cookie_policy.html:12
+msgid "We use cookies to make the"
+msgstr "Rydym yn defnyddio cwcis i wneud i"
+
+#: app/templates/cookie_policy.html:12
+msgid "service work."
+msgstr ""
+
+#: app/templates/cookie_policy.html:15
+msgid "Essential cookies keep your information secure while you use the"
+msgstr "Mae cwcis hanfodol yn cadw'ch gwybodaeth yn ddiogel tra byddwch yn defnyddio"
+
+#: app/templates/cookie_policy.html:15
+msgid "service. We do not need to ask permission to use them."
+msgstr ". Nid oes angen i ni ofyn am ganiatâd i'w defnyddio."
+
+#: app/templates/cookie_policy.html:17
+msgid "Essential cookies"
+msgstr "Cwcis hanfodol"
+
+#: app/templates/cookie_policy.html:20
+msgid "Name"
+msgstr "Enw"
+
+#: app/templates/cookie_policy.html:21
+msgid "Purpose"
+msgstr "Diben"
+
+#: app/templates/cookie_policy.html:22
+msgid "Expires"
+msgstr "Dod i ben"
+
+#: app/templates/cookie_policy.html:31
+msgid "Used to keep you connected to your current session"
+msgstr "Yn cael ei ddefnyddio i'ch cadw wedi ei gysylltu i'ch sesiwn presenol"
+
+#: app/templates/cookie_policy.html:34 app/templates/cookie_policy.html:56
+#: app/templates/cookie_policy.html:67
+msgid "When you close your browser"
+msgstr "Pryd i gau eich porwr"
+
+#: app/templates/cookie_policy.html:42
+msgid "Used to keep you signed in"
+msgstr "Defnyddir i'ch cadw wedi mewngofnodi"
+
+#: app/templates/cookie_policy.html:45
+msgid "24 hours"
+msgstr "24 awr"
+
+#: app/templates/cookie_policy.html:53
+msgid "Set to remember information you’ve entered into a form"
+msgstr "Defnyddir i gadw gwybodaeth yr ydych wedi ei fewnbynu i'r ffurflen"
+
+#: app/templates/cookie_policy.html:64
+msgid "Helps us to prevent cross site scripting attacks"
+msgstr ""
+
+#: app/templates/cookie_policy.html:75
+msgid "Used to remember the language you've chosen to display page information"
+msgstr "Defnyddir i gofio'r iaith yr ydych wedi ei ddefnyddio i arddangos gwybodaeth ar y dudalen"
+
+#: app/templates/cookie_policy.html:78
+msgid "30 days"
+msgstr "30 diwrnod"
 
 #: app/templates/dashboard.html:10
 #, python-format
