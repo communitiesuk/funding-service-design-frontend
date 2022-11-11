@@ -57,6 +57,7 @@
     "date_submitted": null,
     "started_at": "2022-05-20 14:47:12",
     "last_edited": null,
+    "language": "en",
     "forms": [
       {
         "name": "applicant-information",
@@ -171,7 +172,8 @@
       "project_name": null,
       "date_submitted": null,
       "started_at": "2022-05-20 14:47:12",
-      "last_edited": "2022-05-24 11:03:59"
+      "last_edited": "2022-05-24 11:03:59",
+      "language": "en"
     },
     {
       "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",
@@ -184,6 +186,7 @@
       "date_submitted": null,
       "started_at": "2022-05-24 10:42:41",
       "last_edited": null,
+      "language": "en",
       "Unknown": "DOES NOT MAKE ME FAIL"
     }
   ],
@@ -198,21 +201,23 @@
       "project_name": null,
       "date_submitted": null,
       "started_at": "2022-05-20 14:47:12",
-      "last_edited": "2022-05-24 11:03:59"
+      "last_edited": "2022-05-24 11:03:59",
+      "language": "en"
     }
   ],
   "http://application_store/test-application-id": {
     "id": "test-application-id",
     "account_id": "test-user",
     "date_submitted": "2022-10-11T10:01:25.216743",
-    "fund_id": "testfundid",
+    "fund_id": "funding-service-design",
     "last_edited": "2022-10-11T09:49:00.542371",
     "project_name": "Project name",
     "reference": "TEST-REF",
-    "round_id": "testroundid",
+    "round_id": "summer",
     "round_name": "Round T Window T",
     "started_at": "2022-10-11T09:43:40.632095",
     "status": "IN_PROGRESS",
+    "language": "en",
     "forms": [
       {
         "name": "risk",
@@ -1128,23 +1133,24 @@
     "id": "test-application-id",
     "account_id": "test-user",
     "date_submitted": "2022-10-11T10:01:25.216743",
-    "fund_id": "testfundid",
+    "fund_id": "funding-service-design",
     "last_edited": "2022-10-11T09:49:00.542371",
     "project_name": "Project name",
     "reference": "TEST-REF",
-    "round_id": "testroundid",
+    "round_id": "summer",
     "round_name": "Round T Window T",
     "started_at": "2022-10-11T09:43:40.632095",
     "status": "SUBMITTED",
+    "language": "en",
     "forms": []
   },
-  "http://fund_store/testfundid": {
+  "http://fund_store/funding-service-design": {
     "description": "Test",
-    "id": "testfundid",
+    "id": "funding-service-design",
     "name": "Test Fund",
     "short_name": "TF"
   },
-  "http://fund_store/funds/testfundid/rounds/testroundid" : {
+  "http://fund_store/funds/funding-serivce-design/rounds/summer" : {
     "assessment_deadline": "2023-03-30 12:00:00",
     "contact_details": {
       "email_address": "example@levellingup.gov.uk",
@@ -1152,8 +1158,8 @@
       "text_phone": ""
     },
     "deadline": "2023-01-30 11:59:00",
-    "fund_id": "testfundid",
-    "id": "testroundid",
+    "fund_id": "funding-service-design",
+    "id": "summer",
     "opens": "2022-10-04 12:00:00",
     "short_name": "TT",
     "support_availability": {

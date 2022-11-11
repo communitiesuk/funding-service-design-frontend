@@ -5,7 +5,7 @@
 
 {% extends "base.html" %}
 {% block content %}
-    <h1 class="govuk-heading-xl">Your applications</h1>
+    <h1 class="govuk-heading-xl">{% trans %}Your applications{% endtrans %}</h1>
     <p class="govuk-body">
         You have started {% trans count=applications|length %} {{ count }} application {% pluralize %} {{ count }} applications {% endtrans %} using this email address.
     </p>
@@ -75,6 +75,17 @@
     'rows': ns.rows
     }) }}
 {% endif %}
+
+
+<p class="govuk-body">{% trans url=url_for('select_language', locale=('cy' if get_lang() == 'en' else 'en')) %} This service is also available <a href="{{ url }}" class="govuk-link">in Welsh (Cymraeg){% endtrans %}</a>.</p>
+
+<div class="govuk-warning-text">
+    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+    <strong class="govuk-warning-text__text">
+      <span class="govuk-warning-text__assistive">Warning</span>
+      {% trans %}You cannot change the language of an existing application.{% endtrans %}
+    </strong>
+  </div>
 
 {{startApplicationButton(form, url_for('routes.new'), applications=applications)}}
 

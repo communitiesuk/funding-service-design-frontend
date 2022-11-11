@@ -11,11 +11,11 @@ from flask_compress import Compress
 from flask_talisman import Talisman
 from flask_wtf.csrf import CSRFProtect
 from fsd_utils import init_sentry
-from fsd_utils.locale_selector.get_lang import get_lang
+from fsd_utils import LanguageSelector
 from fsd_utils.healthchecks.checkers import FlaskRunningChecker
 from fsd_utils.healthchecks.healthcheck import Healthcheck
+from fsd_utils.locale_selector.get_lang import get_lang
 from fsd_utils.logging import logging
-from fsd_utils import LanguageSelector
 from jinja2 import ChoiceLoader
 from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
@@ -44,6 +44,7 @@ def create_app() -> Flask:
     flask_app.jinja_env.trim_blocks = True
     flask_app.jinja_env.lstrip_blocks = True
     flask_app.jinja_env.add_extension("jinja2.ext.i18n")
+    flask_app.jinja_env.globals["get_lang"] = get_lang
 
     # Initialise logging
     logging.init_app(flask_app)
@@ -76,7 +77,7 @@ def create_app() -> Flask:
         return dict(
             stage="beta",
             service_title=(
-                gettext('Apply for funding to save an asset in your community')
+                gettext("Apply for funding to save an asset in your community")
             ),
             service_meta_description=(
                 "Apply for funding to save an asset in your community"
