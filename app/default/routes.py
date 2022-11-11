@@ -309,19 +309,21 @@ def continue_application(application_id):
 @login_required
 @verify_application_owner_local
 def submit_application():
+    
     application_id = request.form.get("application_id")
     submitted = format_payload_and_submit_application(application_id)
 
     application_id = submitted.get("id")
     application_reference = submitted.get("reference")
     application_email = submitted.get("email")
-
-    return render_template(
-        "application_submitted.html",
-        application_id=application_id,
-        application_reference=application_reference,
-        application_email=application_email,
-    )
+    application = get_application_data(application_id, as_dict=True)
+    with force_locale(application.language):
+        return render_template(
+            "application_submitted.html",
+            application_id=application_id,
+            application_reference=application_reference,
+            application_email=application_email,
+        )
 
 
 def format_payload_and_submit_application(application_id):
