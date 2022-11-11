@@ -25,6 +25,7 @@ from flask_wtf.csrf import CSRFError
 from fsd_utils.authentication.decorators import login_requested
 from fsd_utils.authentication.decorators import login_required
 from fsd_utils.locale_selector.get_lang import get_lang
+from flask_babel import force_locale
 
 
 default_bp = Blueprint("routes", __name__, template_folder="templates")
@@ -208,12 +209,13 @@ def tasklist(application_id):
 
     account = get_account(account_id=application.account_id)
     if application.status == ApplicationStatus.SUBMITTED.name:
-        return render_template(
-            "application_submitted.html",
-            application_id=application.id,
-            application_reference=application.reference,
-            application_email=account.email,
-        )
+        with force_locale(application.language):
+            return render_template(
+                "application_submitted.html",
+                application_id=application.id,
+                application_reference=application.reference,
+                application_email=account.email,
+            )
     fund = get_fund_data(application.fund_id, as_dict=True)
     round_data = get_round_data(
         Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, True
@@ -239,16 +241,17 @@ def tasklist(application_id):
             )
         ),
     }
-
-    return render_template(
-        "tasklist.html",
-        application=application,
-        sections=sections,
-        application_meta_data=application_meta_data,
-        form=form,
-        contact_us_email_address=round_data.contact_details["email_address"],
-        submission_deadline=round_data.deadline,
-    )
+    
+    with force_locale(application.language):
+        return render_template(
+            "tasklist.html",
+            application=application,
+            sections=sections,
+            application_meta_data=application_meta_data,
+            form=form,
+            contact_us_email_address=round_data.contact_details["email_address"],
+            submission_deadline=round_data.deadline,
+        )
 
 
 @default_bp.route("/continue_application/<application_id>", methods=["GET"])
@@ -306,19 +309,21 @@ def continue_application(application_id):
 @login_required
 @verify_application_owner_local
 def submit_application():
+    
     application_id = request.form.get("application_id")
     submitted = format_payload_and_submit_application(application_id)
 
     application_id = submitted.get("id")
     application_reference = submitted.get("reference")
     application_email = submitted.get("email")
-
-    return render_template(
-        "application_submitted.html",
-        application_id=application_id,
-        application_reference=application_reference,
-        application_email=application_email,
-    )
+    application = get_application_data(application_id, as_dict=True)
+    with force_locale(application.language):
+        return render_template(
+            "application_submitted.html",
+            application_id=application_id,
+            application_reference=application_reference,
+            application_email=application_email,
+        )
 
 
 def format_payload_and_submit_application(application_id):
