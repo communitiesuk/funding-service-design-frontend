@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-26 13:26+0100\n"
+"POT-Creation-Date: 2022-11-15 11:07+0000\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: app/create_app.py:82
+#: app/create_app.py:80
 msgid "Apply for funding to save an asset in your community"
 msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
 
@@ -42,7 +42,8 @@ msgstr[4] ""
 msgid ""
 " This service is also available <a href=\"%(url)s\" class=\"govuk-"
 "link\">in Welsh (Cymraeg)"
-msgstr "Mae'r gwasanaeth yma hefyd ar gael <a href=\"%(url)s\" class=\"govuk-"
+msgstr ""
+"Mae'r gwasanaeth yma hefyd ar gael <a href=\"%(url)s\" class=\"govuk-"
 "link\">yn Saesneg (English)"
 
 #: app/templates/dashboard.html:86
@@ -50,6 +51,7 @@ msgid "You cannot change the language of an existing application."
 msgstr ""
 "Ni fyddwch yn gallu newid iaith unwaith y byddwch chi wedi dechrau eich "
 "cais."
+
 #: app/templates/footer.html:10
 msgid "Privacy"
 msgstr "Preifatrwydd"
@@ -85,3 +87,60 @@ msgstr "adborth"
 #: app/templates/header.html:46
 msgid " will help us to improve it."
 msgstr " yn ein cefnogi i'w wella."
+
+#: app/templates/index.html:8
+msgid "Community Ownership Fund "
+msgstr "Cronfa Perchnogaeth Gymunedol"
+
+#: app/templates/index.html:10
+msgid "Community Ownership Fund"
+msgstr "Cronfa Perchnogaeth Gymunedol"
+
+#: app/templates/index.html:13
+msgid ""
+"Start or continue an application for funding to save an asset in your "
+"community"
+msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
+
+#: app/templates/index.html:16
+msgid ""
+"You must have received an invitation to apply. If we did not invite you, "
+"first "
+msgstr ""
+"Mae'n rhaid i chi fod wedi derbyn gwahoddiad i ymgeisio. Os na wnaethom "
+"eich gwahodd, "
+
+#: app/templates/index.html:18
+msgid "express your interest in the fund"
+msgstr "mynegwch eich diddordeb yn y gronfa yn gyntaf"
+
+#: app/templates/index.html:22
+msgid "Read the fund's prospectus"
+msgstr "Darllenwch brosbectws y gronfa"
+
+#: app/templates/index.html:22
+msgid "before you apply."
+msgstr "cyn i chi ymgeisio."
+
+#: app/templates/index.html:26
+msgid "Submission deadline: "
+msgstr "Dyddiad cau cyflwyno: "
+
+#: app/templates/index.html:30
+msgid "Enter your email address"
+msgstr "Nodwch eich cyfeirad e-bost"
+
+#: app/templates/index.html:32
+msgid "Get help "
+msgstr "Cael help"
+
+#: app/templates/index.html:34
+msgid "If you need help, email us at"
+msgstr "Os oes angen help arnoch chi, anfonwch e-bost atom y"
+
+#: app/templates/index.html:38
+msgid ""
+"Do not send any applications or attachments by email. We'll\n"
+"            only accept applications through this service."
+msgstr ""
+
