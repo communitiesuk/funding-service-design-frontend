@@ -10,9 +10,9 @@ data = json.loads(file.read())
 TEST_APPLICATION_STORE_DATA = data[
     "http://application_store/test-application-id"
 ]
-TEST_FUND_STORE = data["fund_store/funds/funding-service-design"]
+TEST_FUND_STORE = data["fund_store/funds/funding-service-design?language=en"]
 TEST_ROUND_STORE = data[
-    "fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd"
+    "fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd?language=en"
 ]
 
 
