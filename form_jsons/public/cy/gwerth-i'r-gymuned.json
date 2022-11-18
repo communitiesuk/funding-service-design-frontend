@@ -1,5 +1,5 @@
 {
-  "metadata": {},
+  "metadata": { "isWelsh": true },
   "startPage": "/gwerth-ychwanegol-ir-gymuned-EYuYMG",
   "backLinkText": "Go back to application overview",
   "pages": [
@@ -30,7 +30,7 @@
       "next": [{ "path": "/summary" }]
     },
     {
-      "title": "Check your answers",
+      "title": "Gwiriwch eich atebion",
       "path": "/summary",
       "controller": "./pages/summary.js",
       "components": [],
