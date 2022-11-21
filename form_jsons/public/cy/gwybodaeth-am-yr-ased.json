@@ -1,5 +1,5 @@
 {
-  "metadata": {},
+  "metadata": { "isWelsh": true },
   "startPage": "/yngln-ch-prosiect-RjBjaK",
   "backLinkText": "Go back to application overview",
   "pages": [
@@ -386,7 +386,7 @@
     },
     {
       "path": "/summary",
-      "title": "Check your answers",
+      "title": "Gwiriwch eich atebion",
       "components": [],
       "next": [],
       "controller": "./pages/summary.js"
