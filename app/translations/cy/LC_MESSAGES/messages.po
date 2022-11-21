@@ -91,7 +91,7 @@ msgstr "Cysylltwch â ni"
 
 #: app/templates/header.html:32
 msgid "Sign out"
-msgstr ""
+msgstr "Allgofnodi"
 
 #: app/templates/header.html:44
 msgid "beta"
