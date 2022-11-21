@@ -205,6 +205,8 @@ msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
 "applications through this service."
 msgstr ""
+"Peidwch ag anfon unrhyw geisadau neu atodiadau dros e-bost. Byddwn yn "
+"derbyn ceisiadau drwy'r gwasanaeth hon yn unig."
 
 #: app/templates/tasklist.html:78
 msgid "How we'll use your information"
