@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-26 13:26+0100\n"
+"POT-Creation-Date: 2022-11-16 14:30+0000\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: app/create_app.py:82
+#: app/create_app.py:80
 msgid "Apply for funding to save an asset in your community"
 msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
 
@@ -42,7 +42,8 @@ msgstr[4] ""
 msgid ""
 " This service is also available <a href=\"%(url)s\" class=\"govuk-"
 "link\">in Welsh (Cymraeg)"
-msgstr "Mae'r gwasanaeth yma hefyd ar gael <a href=\"%(url)s\" class=\"govuk-"
+msgstr ""
+"Mae'r gwasanaeth yma hefyd ar gael <a href=\"%(url)s\" class=\"govuk-"
 "link\">yn Saesneg (English)"
 
 #: app/templates/dashboard.html:86
@@ -50,6 +51,7 @@ msgid "You cannot change the language of an existing application."
 msgstr ""
 "Ni fyddwch yn gallu newid iaith unwaith y byddwch chi wedi dechrau eich "
 "cais."
+
 #: app/templates/footer.html:10
 msgid "Privacy"
 msgstr "Preifatrwydd"
@@ -85,3 +87,148 @@ msgstr "adborth"
 #: app/templates/header.html:46
 msgid " will help us to improve it."
 msgstr " yn ein cefnogi i'w wella."
+
+#: app/templates/tasklist.html:8
+msgid "Task List"
+msgstr ""
+
+#: app/templates/tasklist.html:15
+msgid "Application for funding to save an asset in your community"
+msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
+
+#: app/templates/tasklist.html:19
+msgid "Help with filling out your application"
+msgstr "Help i lenwi eich cais"
+
+#: app/templates/tasklist.html:23
+msgid "What we'll ask you for"
+msgstr "Beth fyddwn ni'n gofyn i chi amdano"
+
+#: app/templates/tasklist.html:25
+msgid "You can preview the"
+msgstr "Gallwch gael cip ymlaen llaw"
+
+#: app/templates/tasklist.html:25
+msgid "full list of application questions"
+msgstr "o restr lawn cwestiynau'r cais."
+
+#: app/templates/tasklist.html:28
+msgid ""
+"We'll also ask you to upload a business plan to support the answers "
+"you've given us in the management case section."
+msgstr ""
+"Byddwn hefyd yn gofyn i chi lanlwytho cynllun busnes i ategu'r atebion "
+"rydych wedi'u rhoi i ni yn yr adran achos rheoli."
+
+#: app/templates/tasklist.html:32
+msgid "Moving through the form"
+msgstr "Symud drwy'r ffurflen"
+
+#: app/templates/tasklist.html:35
+msgid "This form is split into sections based on how it will be assessed."
+msgstr ""
+"Mae'r ffurflen hon wedi'i rhannu'n adrannau ar sail y modd y caiff ei "
+"hasesu."
+
+#: app/templates/tasklist.html:38
+msgid "You do not have to complete it in order, or all at once."
+msgstr "Nid oes rhaid i chi ei llenwi mewn trefn, na'r cyfan ar unwaith."
+
+#: app/templates/tasklist.html:41
+msgid ""
+"When you have written something in every field in a section, the section "
+"will be marked as complete. You can still change your responses in "
+"sections that are marked as complete."
+msgstr ""
+"Pan fyddwch wedi ysgrifennu rhywbeth ym mhob maes mewn adran, cofnodir yr"
+" adran fel un gyflawn. Gallwch newid eich ymatebion o hyd mewn adrannau "
+"sydd wedi'u cofnodi fel rhai cyflawn."
+
+#: app/templates/tasklist.html:45
+msgid "Saving progress and making changes"
+msgstr "Cadw cynnydd a gwneud newidiadau"
+
+#: app/templates/tasklist.html:48
+msgid ""
+"Your work will not save automatically. To make sure you do not lose "
+"anything, select Save and continue regularly, and always before you go "
+"back or close your internet browser window."
+msgstr ""
+"Ni fydd eich gwaith yn cael ei gadw'n awtomatig. I wneud yn siŵr nad "
+"ydych chi'n colli unrhyw beth, dewiswch 'Cadw' a pharhau'n rheolaidd, a "
+"bob amser cyn i chi fynd yn ôl neu gau eich ffenestr porwr rhyngrwyd."
+
+#: app/templates/tasklist.html:51
+msgid "If you need to edit or revisit any sections, use the browser back button."
+msgstr ""
+"Os oes angen i chi olygu neu fynd yn ôl at unrhyw adrannau, defnyddiwch "
+"fotwm nôl y porwr."
+
+#: app/templates/tasklist.html:54
+msgid "You can edit your responses as many times as you like before you submit."
+msgstr ""
+"Gallwch olygu'ch ymatebion gymaint o weithiau a fynnwch cyn i chi eu "
+"cyflwyno."
+
+#: app/templates/tasklist.html:58
+msgid "Submitting your application"
+msgstr "Cyflwyno'ch cais"
+
+#: app/templates/tasklist.html:61
+msgid ""
+"When you have completed all sections, you'll be able to submit your "
+"application."
+msgstr ""
+"Pan fyddwch wedi llenwi'r holl adrannau, byddwch yn gallu cyflwyno'ch "
+"cais."
+
+#: app/templates/tasklist.html:64
+msgid ""
+"Once you have submitted your application, you'll not be able to edit, add"
+" or change any sections."
+msgstr ""
+"Wedi i chi gyflwyno'ch cais, ni fyddwch yn gallu golygu, ychwanegu na "
+"newid unrhyw adrannau."
+
+#: app/templates/tasklist.html:68
+msgid "Get help"
+msgstr "Cael help"
+
+#: app/templates/tasklist.html:71
+msgid "If you have any questions about the form or the fund, email us at"
+msgstr ""
+"Os oes unrhyw gwestiynau gennych ynglŷn â'r ffurflen neu'r gronfa, "
+"anfonwch e-bost i"
+
+#: app/templates/tasklist.html:74
+msgid ""
+"Do not send any applications or attachments by email. We'll only accept "
+"applications through this service."
+msgstr ""
+"Peidwch ag anfon unrhyw geisadau neu atodiadau dros e-bost. Byddwn yn "
+"derbyn ceisiadau drwy'r gwasanaeth hon yn unig."
+
+#: app/templates/tasklist.html:78
+msgid "How we'll use your information"
+msgstr "Sut fyddwn ni'n defnyddio eich gwybodaeth"
+
+#: app/templates/tasklist.html:81
+msgid "Read how we'll use the information from your application in our"
+msgstr "Darllenwch sut fyddwn ni'n defnyddio'r wybodaeth o'ch cais yn ein"
+
+#: app/templates/tasklist.html:81
+msgid "privacy notice"
+msgstr "hysbysiad preifatrwydd"
+
+#: app/templates/tasklist.html:86
+msgid "Submission deadline:"
+msgstr ""
+
+#: app/templates/tasklist.html:88
+msgid "Reference:"
+msgstr ""
+
+#: app/templates/tasklist.html:94
+msgid "Status:"
+msgstr "Statws:"
+
