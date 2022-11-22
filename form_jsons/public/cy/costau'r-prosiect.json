@@ -82,7 +82,7 @@
               "numberFieldTitle": "Swm"
             },
             "type": "MultiInputField",
-            "title": "Sources of income",
+            "title": "Ffynonellau incwm",
             "hint": "The MultiInputField needed",
             "schema": {}
           }
