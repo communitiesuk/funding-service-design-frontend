@@ -262,11 +262,11 @@ msgstr "hysbysiad preifatrwydd"
 
 #: app/templates/tasklist.html:86
 msgid "Submission deadline:"
-msgstr ""
+msgstr "Dyddiad cau cyflwyno:"
 
 #: app/templates/tasklist.html:88
 msgid "Reference:"
-msgstr ""
+msgstr "Cyfeirnod"
 
 #: app/templates/tasklist.html:94
 msgid "Status:"
