@@ -1,5 +1,5 @@
 {
-  "metadata": {},
+  "metadata": { "isWelsh": true },
   "startPage": "/potensial-i-gyflawni-buddion-cymunedol-KGyXQE",
   "backLinkText": "Go back to application overview",
   "pages": [
@@ -44,7 +44,7 @@
       "next": [{ "path": "/summary" }]
     },
     {
-      "title": "Check your answers",
+      "title": "Gwiriwch eich atebion",
       "path": "/summary",
       "controller": "./pages/summary.js",
       "components": [],
