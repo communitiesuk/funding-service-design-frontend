@@ -124,6 +124,62 @@ msgstr "adborth"
 msgid " will help us to improve it."
 msgstr " yn ein cefnogi i'w wella."
 
+#: app/templates/index.html:8
+msgid "Community Ownership Fund "
+msgstr "Cronfa Perchnogaeth Gymunedol"
+
+#: app/templates/index.html:11
+msgid "Community Ownership Fund"
+msgstr "Cronfa Perchnogaeth Gymunedol"
+
+#: app/templates/index.html:14
+msgid ""
+"Start or continue an application for funding to save an asset in your "
+"community"
+msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
+
+#: app/templates/index.html:17
+msgid ""
+"You must have received an invitation to apply. If we did not invite you, "
+"first "
+msgstr ""
+"Mae'n rhaid i chi fod wedi derbyn gwahoddiad i ymgeisio. Os na wnaethom "
+"eich gwahodd, "
+
+#: app/templates/index.html:19
+msgid "express your interest in the fund"
+msgstr "mynegwch eich diddordeb yn y gronfa yn gyntaf"
+
+#: app/templates/index.html:23
+msgid "Read the fund's prospectus"
+msgstr "Darllenwch brosbectws y gronfa"
+
+#: app/templates/index.html:23
+msgid "before you apply."
+msgstr "cyn i chi ymgeisio."
+
+#: app/templates/index.html:27
+msgid "Submission deadline: "
+msgstr "Dyddiad cau cyflwyno: "
+
+#: app/templates/index.html:31
+msgid "Enter your email address"
+msgstr "Nodwch eich cyfeirad e-bost"
+
+#: app/templates/index.html:33
+msgid "Get help "
+msgstr "Cael help"
+
+#: app/templates/index.html:35
+msgid "If you need help, email us at"
+msgstr "Os oes angen help arnoch chi, anfonwch e-bost atom y"
+
+#: app/templates/index.html:39
+msgid ""
+"Do not send any applications or attachments by email. We'll\n"
+"            only accept applications through this service."
+msgstr ""
+
 #: app/templates/partials/start-application-button.html:11
 msgid "Start new application"
 msgstr "Dechrau cais newydd"
@@ -271,4 +327,3 @@ msgstr "Cyfeirnod"
 #: app/templates/tasklist.html:94
 msgid "Status:"
 msgstr "Statws:"
-
