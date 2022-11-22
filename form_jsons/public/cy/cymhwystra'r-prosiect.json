@@ -1,5 +1,5 @@
 {
-  "metadata": {},
+  "metadata": { "isWelsh": true },
   "startPage": "/rheoli-cymhorthdal-a-chymorth-gwladwriaethol-YQbRTs",
   "backLinkText": "Go back to application overview",
   "pages": [
@@ -64,7 +64,7 @@
       ]
     },
     {
-      "title": "Check your answers",
+      "title": "Gwiriwch eich atebion",
       "path": "/summary",
       "controller": "./pages/summary.js",
       "components": [],

@@ -11,16 +11,16 @@ TEST_APPLICATION_STORE_DATA = data[
     "http://application_store/test-application-id"
 ]
 TEST_FUND_STORE = data["fund_store/funds/funding-service-design"]
-TEST_ROUND_STORE = data["fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd"]
-   
+TEST_ROUND_STORE = data[
+    "fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd"
+]
+
 
 TEST_SUBMITTED_APPLICATION_STORE_DATA = data[
     "http://application_store/test-application-submit"
 ]
 
-TEST_ACCOUNT_STORE_DATA = data[
-    "account_store/accounts?account_id=test-user"
-]
+TEST_ACCOUNT_STORE_DATA = data["account_store/accounts?account_id=test-user"]
 
 
 def test_tasklist_route(flask_test_client, mocker, monkeypatch):

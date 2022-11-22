@@ -2,6 +2,7 @@
 {%- from "govuk_frontend_jinja/components/table/macro.html" import govukTable -%}
 {%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
 {% from "partials/start-application-button.html" import startApplicationButton %}
+{% from "partials/available_in_language.html" import available_in_language %}
 
 {% extends "base.html" %}
 {% block content %}
@@ -75,6 +76,33 @@
         }}
     {% endif %}
 
-    {{ startApplicationButton(form, url_for('routes.new'), applications=applications) }}
+{% if applications|length > 0 %}
+    {{ govukTable({
+    'head': [
+    {
+    'text': 'Project name'
+    },
+    {
+    'text': 'Status'
+    },
+    {
+    'text': 'Last edited'
+    },
+    {
+    'text': 'Application Reference'
+    },
+    {
+    'text': 'Action'
+    }
+    ],
+    'rows': ns.rows
+    }) }}
+{% endif %}
+
+
+{# TODO: restore this once Welsh translation is completed #}
+{# available_in_language(inset=False, warn=True) #}
+
+{{startApplicationButton(form, url_for('routes.new'), applications=applications)}}
 
 {% endblock %}

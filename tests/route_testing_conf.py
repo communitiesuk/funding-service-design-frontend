@@ -6,5 +6,7 @@ content.
 """
 routes_and_test_content = {
     "/": b"Apply for funding to save an asset in your community",
-    "/tasklist/test_id": b"Application for funding to save an asset in your community",
+    "/tasklist/test_id": (
+        b"Application for funding to save an asset in your community"
+    ),
 }

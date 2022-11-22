@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
 {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText -%}
-
 {%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
+{% from "partials/available_in_language.html" import available_in_language %}
 
 {% block content %}
     <div class="govuk-grid-row">
@@ -13,6 +13,8 @@
                 <span class="govuk-caption-l">Community Ownership Fund</span>
             {% endif %}
             <h1 class="govuk-heading-xl">Start or continue an application for funding to save an asset in your community</h1>
+            {# TODO: restore this once Welsh translation is completed #}
+            {# available_in_language(inset=True, warn=False) #}
             <p class="govuk-body">You must have received an invitation to apply. If we did not invite you, first <a
                     class="govuk-link"
                     href="https://www.gov.uk/guidance/community-ownership-fund-round-2-how-to-express-your-interest-in-applying">express

@@ -1,7 +1,7 @@
 """Flask Local Development Environment Configuration."""
 from config.envs.default import DefaultConfig
 from fsd_utils import configclass
-
+from fsd_utils import CommonConfig
 
 @configclass
 class UnitTestConfig(DefaultConfig):
@@ -22,3 +22,7 @@ class UnitTestConfig(DefaultConfig):
         RSA256_PUBLIC_KEY = public_key_file.read()
 
     WTF_CSRF_ENABLED = False
+
+    FORMS_CONFIG_FOR_FUND_ROUND = {
+        "funding-service-design:summer": CommonConfig.COF_R2_ORDERED_FORMS_CONFIG,
+    }

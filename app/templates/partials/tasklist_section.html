@@ -1,4 +1,4 @@
-{% macro tasklist_section(section_name, forms_within_section, weighting, application_meta_data, index) %}
+{% macro tasklist_section(section_name, section_data, weighting, application_meta_data, index) %}
 <li>
     <h2 class="app-task-list__section">
       <span class="app-task-list__section-number">{{index}}. </span> {{section_name|kebab_case_to_human}}
@@ -8,23 +8,23 @@
     {% endif %}
 
     <ul class="app-task-list__items">
-      {% for form_name, form_data in forms_within_section.items() %}
+      {% for form in section_data %}
       <li class="app-task-list__item task-list__new-design">
         <span class="app-task-list__task-name">
-          <a class="govuk-body govuk-link govuk-link--no-visited-state" href="{{url_for("routes.continue_application", application_id=application_meta_data["application_id"], form_name=form_name)}}">
-            {{form_name|kebab_case_to_human}}
+          <a class="govuk-body govuk-link govuk-link--no-visited-state" href="{{url_for("routes.continue_application", application_id=application_meta_data["application_id"], form_name=form["form_name"])}}">
+            {{form["form_name"]|kebab_case_to_human}}
           </a>
         </span>
 
         <span class="app-task-list__tag" id="read-declaration-status">
-        {% if form_data["status"] == application_meta_data["not_started_status"] %}
+        {% if form["state"]["status"] == application_meta_data["not_started_status"] %}
         <strong class="govuk-tag not-started-tag">
-        {% elif form_data["status"] == application_meta_data["in_progress_status"] %}
+        {% elif form["state"]["status"] == application_meta_data["in_progress_status"] %}
         <strong class="govuk-tag in-progress-tag-new">
-        {% elif form_data["status"] == application_meta_data["completed_status"] %}
+        {% elif form["state"]["status"] == application_meta_data["completed_status"] %}
         <strong class="govuk-tag complete-tag">
         {% endif %}
-        {{ form_data["status"]|snake_case_to_human|lower}}
+        {{ form["state"]["status"]|snake_case_to_human|lower}}
         </strong>
         </span>
       </li>
