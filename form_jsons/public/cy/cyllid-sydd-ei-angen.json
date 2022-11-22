@@ -6,6 +6,17 @@
     {
       "title": "Achos rheoli",
       "path": "/achos-rheoli-WeKyYU",
+      "controller": "RepeatingFieldPageController",
+      "options": {
+        "summaryDisplayMode": {
+          "samePage": true,
+          "separatePage": false,
+          "hideRowTitles": false
+        },
+        "customText": {
+          "samePageTitle": "Eich costau cyfalaf"
+        }
+      },
       "components": [
         {
           "name": "uKmWaC",
@@ -27,10 +38,16 @@
           "content": "<h2 class=\"govuk-heading-s\">Costau cyfalaf</h2>\n\n<p class=\"govuk-body\">Tell us about the total capital costs of your project.</p>\n\n<p class=\"govuk-caption-m\">These are used to purchase or lease the asset and pay for refurbishment costs. Remember, you can apply for up to 50% of your capital costs, up to a maximum of £250,000 (up to £1 million for sporting assets).</p>\n<p class=\"govuk-caption-m\">Gallwch ddefnyddio'ch cynllun busnes i ddarparu gwybodaeth sy'n ategu'ch atebion.</p>\n<p></p>"
         },
         {
-          "name": "BuFwSp",
-          "options": {},
-          "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Adams component goes here for Capital cost</h2>"
+          "name": "NdFwgy",
+          "options": {
+            "prefix": "£",
+            "textFieldTitle": "Disgrifiwch y gost",
+            "numberFieldTitle": "Swm"
+          },
+          "type": "MultiInputField",
+          "title": "Costau cyfalaf",
+          "hint": "The MultiInputField needed",
+          "schema": {}
         }
       ],
       "next": [{ "path": "/achos-rheoli-tbc-start" }]
@@ -38,6 +55,17 @@
     {
       "path": "/achos-rheoli-cQkHFc",
       "title": "Achos rheoli",
+      "controller": "RepeatingFieldPageController",
+      "options": {
+        "summaryDisplayMode": {
+          "samePage": true,
+          "separatePage": false,
+          "hideRowTitles": false
+        },
+        "customText": {
+          "samePageTitle": "Eich costau refeniw"
+        }
+      },
       "components": [
         {
           "name": "eJdudr",
@@ -59,10 +87,17 @@
           "content": "<h2 class=\"govuk-heading-s\">Costau refeniw (dewisol)</h2>\n<div class=\"govuk-caption-m\">\n\n<p class=\"govuk-body\">Tell us about the total revenue costs of your project.</p>\n\n<label class=\"govuk-caption-m\">These are the running costs of the project. This might include legal fees or general costs, including for:</label>\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>cyfleustodau</li>\n<li>staffio</li>\n<li>penodi ymgynghorwyr allanol</li>\n</ul>\n\n<p class=\"govuk-caption-m\">Remember, you can apply for up to £50,000 of your revenue costs (no more than 20% of your capital funding).</p>\n<label class=\"govuk-!-padding-top-3\">Gallwch ddefnyddio'ch cynllun busnes i:</label>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>ddweud wrthym pam mae angen cyllid refeniw arnoch</li>\n<li>darparu unrhyw wybodaeth sy'n ategu'ch atebion</li>\n</ul></div>"
         },
         {
-          "name": "YlwuDb",
-          "options": {},
-          "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Adams component goes here for Revenue cost</h2>"
+          "name": "NyudvF",
+          "options": {
+            "required": false,
+            "prefix": "£",
+            "textFieldTitle": "Disgrifiwch y gost",
+            "numberFieldTitle": "Swm"
+          },
+          "type": "MultiInputField",
+          "title": "Costau refeniw",
+          "hint": "The MultiInputField needed",
+          "schema": {}
         }
       ],
       "next": [{ "path": "/achos-rheoli-tbc-no" }]
@@ -70,6 +105,18 @@
     {
       "path": "/achos-rheoli-xaObmh",
       "title": "Achos rheoli",
+      "controller": "RepeatingFieldPageController",
+      "options": {
+        "summaryDisplayMode": {
+          "samePage": true,
+          "separatePage": false,
+          "hideRowTitles": false
+        },
+        "customText": {
+          "samePageTitle": "Yr arian cyfatebol rydych wedi'i sicrhau",
+          "columnOneTitle": "Ffynhonnell"
+        }
+      },
       "components": [
         {
           "name": "ZLsNnZ",
@@ -91,10 +138,16 @@
           "content": "<label class=\"govuk-heading-s\">Wedi sicrhau arian cyfatebol</label>\n\n\n<p class=\"govuk-caption-m\">Mae angen i chi godi ffynonellau eraill o gyllid ochr yn ochr â buddsoddiad o'r gronfa hon.</p>\n<p class=\"govuk-caption-m\">Gall cael ystod o gyllidwyr yn cyfrannu at eich prosiect ddangos ansawdd eich prosiect a'r gefnogaeth sydd iddo yn y gymuned.</p>\n<label class=\"govuk-caption-m\">Gall ffynonellau arian cyfatebol gynnwys:</label>\n\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>cyrff cyhoeddus</li>\n<li>gweinyddiaethau datganoledig</li>\n<li>ymddiriedolaethau elusennol</li>\n<li>cyllidwyr y loteri genedlaethol</li>\n<li>cyfranddaliadau cymunedol</li>\n<li>buddsoddwyr cymdeithasol</li>\n<li>benthycwyr eraill</li>\n</ul>\n\n<p class=\"govuk-caption-m\">Gallech ddefnyddio eich cynllun busnes i ddarparu tystiolaeth i gefnogi eich atebion.</p>"
         },
         {
-          "name": "jDZmqb",
-          "options": {},
-          "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Adams component goes here for Secured funding</h2>"
+          "name": "abkrwo",
+          "options": {
+            "prefix": "£",
+            "textFieldTitle": "Ffynhonnell cyllid wedi'i sicrhau",
+            "numberFieldTitle": "Swm"
+          },
+          "type": "MultiInputField",
+          "title": "Wedi sicrhau arian cyfatebol",
+          "hint": "The MultiInputField needed",
+          "schema": {}
         }
       ],
       "next": [{ "path": "/achos-rheoli-tQuiWE" }]
@@ -226,6 +279,18 @@
     {
       "path": "/achos-rheoli-QPiYOs",
       "title": "Achos rheoli",
+      "controller": "RepeatingFieldPageController",
+      "options": {
+        "summaryDisplayMode": {
+          "samePage": true,
+          "separatePage": false,
+          "hideRowTitles": false
+        },
+        "customText": {
+          "samePageTitle": "Eich arian cyfatebol heb ei sicrhau",
+          "columnOneTitle": "Ffynhonnell"
+        }
+      },
       "components": [
         {
           "name": "oHcGUy",
@@ -247,10 +312,16 @@
           "content": "<h2 class=\"govuk-heading-s\">Arian cyfatebol heb ei sicrhau</h2>\n\n<p class=\"govuk-caption-m\">Mae angen i chi godi ffynonellau eraill o gyllid ochr yn ochr â buddsoddiad o'r gronfa hon.</p>\n<p class=\"govuk-caption-m\">\nGall cael ystod o gyllidwyr yn cyfrannu at eich prosiect ddangos ansawdd eich prosiect a'r gefnogaeth sydd iddo yn y gymuned.</p>\n<label class=\"govuk-caption-m\">Gall ffynonellau arian cyfatebol gynnwys:</label>\n\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>cyrff cyhoeddus</li>\n<li>gweinyddiaethau datganoledig</li>\n<li>ymddiriedolaethau elusennol</li>\n<li>cyllidwyr y loteri genedlaethol</li>\n<li>cyfranddaliadau cymunedol</li>\n<li>buddsoddwyr cymdeithasol</li>\n<li>benthycwyr eraill</li>\n</ul>\n\n\n\n<label class=\"govuk-caption-m\">Gallech ddefnyddio eich cynllun busnes i: </label>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li> ddweud wrthym faint y maen'n debygol o'i gymryd i sicrhau ffynonellau arian cyfatebol</li>\n<li>ddarparu unrhyw wybodaeth i gefnogi eich atebion</li>\n</ul>"
         },
         {
-          "name": "tjdsVg",
-          "options": {},
-          "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Adams component goes here for Unsecured funding</h2>"
+          "name": "AOLYnV",
+          "options": {
+            "prefix": "£",
+            "textFieldTitle": "Ffynhonnell cyllid heb ei sicrhau",
+            "numberFieldTitle": "Swm"
+          },
+          "type": "MultiInputField",
+          "title": "Arian cyfatebol heb ei sicrhau",
+          "hint": "The MultiInputField needed",
+          "schema": {}
         }
       ],
       "next": [{ "path": "/achos-rheoli-RrfCoS" }]
