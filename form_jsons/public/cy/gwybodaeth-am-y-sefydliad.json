@@ -18,7 +18,7 @@
           "name": "orUXQc",
           "options": {},
           "type": "Para",
-          "content": "<label class=\"govuk-!-font-weight-bold\">Yn yr adran hon, byddwn yn holi ynghylch:\n</label>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>rhif traciwr unigryw</li>\n<li>enw'r sefydliad</li>\n<li>enwau amgen eich sefydliad (os yw'n gymwys)</li>\n<li>diben y sefydliad</li>\n<li>gweithgareddau'r sefydliad</li>\n<li>profiad blaenorol o brosiectau tebyg (os yw'n gymwys)</li>\n<li>math o sefydliad</li>\n<li>charity number (if applicable)</li>\n<li>rhif cofrestru'r sefydliad (os yw'n berthnasol)</li>\n<li>corff rheoleiddio’r sefydliad</li>\n<li>manylion y rhiant-gwmni (os yw'n gymwys)</li>\n<li>cyfeiriad a chyfryngau cymdeithasol y sefydliad</li>\n<li>sefydliad partner (os yw'n gymwys)</li>\n</ul>\n</div>",
+          "content": "<label class=\"govuk-!-font-weight-bold\">Yn yr adran hon, byddwn yn holi ynghylch:\n</label>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>rhif traciwr unigryw</li>\n<li>enw'r sefydliad</li>\n<li>enwau amgen eich sefydliad (os yw'n gymwys)</li>\n<li>diben y sefydliad</li>\n<li>gweithgareddau'r sefydliad</li>\n<li>profiad blaenorol o brosiectau tebyg (os yw'n gymwys)</li>\n<li>math o sefydliad</li>\n<li>rhif elusen (os yw'n gymwys)</li>\n<li>rhif cofrestru'r sefydliad (os yw'n berthnasol)</li>\n<li>corff rheoleiddio’r sefydliad</li>\n<li>manylion y rhiant-gwmni (os yw'n gymwys)</li>\n<li>cyfeiriad a chyfryngau cymdeithasol y sefydliad</li>\n<li>sefydliad partner (os yw'n gymwys)</li>\n</ul>\n</div>",
           "schema": {}
         }
       ],
