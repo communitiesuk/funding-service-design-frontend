@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-16 14:30+0000\n"
+"POT-Creation-Date: 2022-11-10 10:26+0000\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
 "Language-Team: cy <LL@li.org>\n"
 "Plural-Forms: nplurals=5; plural=(n==1 ? 1 : n==2 ? 2 : n==3 ? 3 : n==6 ?"
-" 4 : 0);\n"
+" 4 : 0)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.9.1\n"
 
 #: app/create_app.py:80
 msgid "Apply for funding to save an asset in your community"
@@ -28,14 +28,50 @@ msgid "Your applications"
 msgstr "Eich ceisiadau"
 
 #: app/templates/dashboard.html:10
+msgid "You have started"
+msgstr "Rydych wedi dechrau"
+
+#: app/templates/dashboard.html:10
 #, python-format
-msgid " %(count)s application "
-msgid_plural " %(count)s applications "
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
+msgid "%(count)s application"
+msgid_plural "%(count)s applications"
+msgstr[0] "%(count)s ceisiadau"
+msgstr[1] "%(count)s cais"
+msgstr[2] "%(count)s ceisiadau"
+msgstr[3] "%(count)s ceisiadau"
+msgstr[4] "%(count)s ceisiadau"
+
+#: app/templates/dashboard.html:10
+msgid "using this email address"
+msgstr "gan ddefnyddio'r cyfeiriad e-bost hwn"
+
+#: app/templates/dashboard.html:27
+msgid "Continue application"
+msgstr "Parhau gyda'r cais"
+
+#: app/templates/dashboard.html:33
+msgid "Untitled project"
+msgstr "Prosiect heb enw"
+
+#: app/templates/dashboard.html:58
+msgid "Project name"
+msgstr "Enw'r prosiect"
+
+#: app/templates/dashboard.html:61
+msgid "Status"
+msgstr "Statws"
+
+#: app/templates/dashboard.html:64
+msgid "Last edited"
+msgstr "Golygwyd diwethaf"
+
+#: app/templates/dashboard.html:67
+msgid "Application Reference"
+msgstr "Cyfeirnod y cais"
+
+#: app/templates/dashboard.html:70
+msgid "Action"
+msgstr "Gweithredu"
 
 #: app/templates/dashboard.html:80
 #, python-format
@@ -70,7 +106,7 @@ msgstr "Cysylltwch â ni"
 
 #: app/templates/header.html:32
 msgid "Sign out"
-msgstr ""
+msgstr "Allgofnodi"
 
 #: app/templates/header.html:44
 msgid "beta"
@@ -87,6 +123,10 @@ msgstr "adborth"
 #: app/templates/header.html:46
 msgid " will help us to improve it."
 msgstr " yn ein cefnogi i'w wella."
+
+#: app/templates/partials/start-application-button.html:11
+msgid "Start new application"
+msgstr "Dechrau cais newydd"
 
 #: app/templates/tasklist.html:8
 msgid "Task List"
@@ -222,11 +262,11 @@ msgstr "hysbysiad preifatrwydd"
 
 #: app/templates/tasklist.html:86
 msgid "Submission deadline:"
-msgstr ""
+msgstr "Dyddiad cau cyflwyno:"
 
 #: app/templates/tasklist.html:88
 msgid "Reference:"
-msgstr ""
+msgstr "Cyfeirnod"
 
 #: app/templates/tasklist.html:94
 msgid "Status:"

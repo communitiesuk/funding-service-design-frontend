@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-16 14:30+0000\n"
+"POT-Creation-Date: 2022-11-10 10:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,6 +26,46 @@ msgid "Your applications"
 msgstr ""
 
 #: app/templates/dashboard.html:10
+msgid "You have started"
+msgstr ""
+
+#: app/templates/dashboard.html:10
+#, python-format
+msgid "%(count)s application"
+msgid_plural "%(count)s applications"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/templates/dashboard.html:10
+msgid "using this email address"
+msgstr ""
+
+#: app/templates/dashboard.html:27
+msgid "Continue application"
+msgstr ""
+
+#: app/templates/dashboard.html:33
+msgid "Untitled project"
+msgstr ""
+
+#: app/templates/dashboard.html:58
+msgid "Project name"
+msgstr ""
+
+#: app/templates/dashboard.html:61
+msgid "Status"
+msgstr ""
+
+#: app/templates/dashboard.html:64
+msgid "Last edited"
+msgstr ""
+
+#: app/templates/dashboard.html:67
+msgid "Application Reference"
+msgstr ""
+
+#: app/templates/dashboard.html:70
+msgid "Action"
 #, python-format
 msgid " %(count)s application "
 msgid_plural " %(count)s applications "
@@ -79,6 +119,8 @@ msgstr ""
 msgid " will help us to improve it."
 msgstr ""
 
+#: app/templates/partials/start-application-button.html:11
+msgid "Start new application"
 #: app/templates/tasklist.html:8
 msgid "Task List"
 msgstr ""
