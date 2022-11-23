@@ -335,7 +335,6 @@ msgid "Email:"
 msgstr "Ebost:"
 
 #: app/templates/partials/contact_details.html:7
-#, fuzzy
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
 "applications\n"
