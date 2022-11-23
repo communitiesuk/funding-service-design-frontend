@@ -12,3 +12,4 @@ A repository for the Funding Service Design frontend application service.
 - ### [Run application](docs/run.md)
 - ### [Pipelines](docs/pipelines.md)
 - ### [Testing](docs/testing)
+- ### [Translations](docs/translations.md)

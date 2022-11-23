@@ -7,31 +7,35 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-10 10:26+0000\n"
+"POT-Creation-Date: 2022-11-23 12:15+0000\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
 "Language-Team: cy <LL@li.org>\n"
 "Plural-Forms: nplurals=5; plural=(n==1 ? 1 : n==2 ? 2 : n==3 ? 3 : n==6 ?"
-" 4 : 0)\n"
+" 4 : 0);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"Generated-By: Babel 2.10.3\n"
 
 #: app/create_app.py:80
 msgid "Apply for funding to save an asset in your community"
 msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
 
-#: app/templates/dashboard.html:8
+#: app/filters.py:12 app/filters.py:21
+msgid "at"
+msgstr "am"
+
+#: app/templates/dashboard.html:9
 msgid "Your applications"
 msgstr "Eich ceisiadau"
 
-#: app/templates/dashboard.html:10
+#: app/templates/dashboard.html:11
 msgid "You have started"
 msgstr "Rydych wedi dechrau"
 
-#: app/templates/dashboard.html:10
+#: app/templates/dashboard.html:11
 #, python-format
 msgid "%(count)s application"
 msgid_plural "%(count)s applications"
@@ -41,52 +45,37 @@ msgstr[2] "%(count)s ceisiadau"
 msgstr[3] "%(count)s ceisiadau"
 msgstr[4] "%(count)s ceisiadau"
 
-#: app/templates/dashboard.html:10
+#: app/templates/dashboard.html:11
 msgid "using this email address"
 msgstr "gan ddefnyddio'r cyfeiriad e-bost hwn"
 
-#: app/templates/dashboard.html:27
+#: app/templates/dashboard.html:28
 msgid "Continue application"
 msgstr "Parhau gyda'r cais"
 
-#: app/templates/dashboard.html:33
+#: app/templates/dashboard.html:34
 msgid "Untitled project"
 msgstr "Prosiect heb enw"
 
-#: app/templates/dashboard.html:58
+#: app/templates/dashboard.html:59
 msgid "Project name"
 msgstr "Enw'r prosiect"
 
-#: app/templates/dashboard.html:61
+#: app/templates/dashboard.html:62
 msgid "Status"
 msgstr "Statws"
 
-#: app/templates/dashboard.html:64
+#: app/templates/dashboard.html:65
 msgid "Last edited"
 msgstr "Golygwyd diwethaf"
 
-#: app/templates/dashboard.html:67
+#: app/templates/dashboard.html:68
 msgid "Application Reference"
 msgstr "Cyfeirnod y cais"
 
-#: app/templates/dashboard.html:70
+#: app/templates/dashboard.html:71
 msgid "Action"
 msgstr "Gweithredu"
-
-#: app/templates/dashboard.html:80
-#, python-format
-msgid ""
-" This service is also available <a href=\"%(url)s\" class=\"govuk-"
-"link\">in Welsh (Cymraeg)"
-msgstr ""
-"Mae'r gwasanaeth yma hefyd ar gael <a href=\"%(url)s\" class=\"govuk-"
-"link\">yn Saesneg (English)"
-
-#: app/templates/dashboard.html:86
-msgid "You cannot change the language of an existing application."
-msgstr ""
-"Ni fyddwch yn gallu newid iaith unwaith y byddwch chi wedi dechrau eich "
-"cais."
 
 #: app/templates/footer.html:10
 msgid "Privacy"
@@ -179,10 +168,8 @@ msgid ""
 "Do not send any applications or attachments by email. We'll\n"
 "            only accept applications through this service."
 msgstr ""
-
-#: app/templates/partials/start-application-button.html:11
-msgid "Start new application"
-msgstr "Dechrau cais newydd"
+"Peidwch ag anfon unrhyw geisadau neu atodiadau dros e-bost. Byddwyn "
+"derbyn ceisiadau drwy'r gwasanaeth hon yn unig."
 
 #: app/templates/tasklist.html:8
 msgid "Task List"
@@ -327,3 +314,51 @@ msgstr "Cyfeirnod"
 #: app/templates/tasklist.html:94
 msgid "Status:"
 msgstr "Statws:"
+
+#: app/templates/partials/available_in_language.html:2
+#, python-format
+msgid ""
+" This service is also available <a href=\"%(url)s\" class=\"govuk-"
+"link\">in Welsh (Cymraeg)"
+msgstr ""
+"Mae'r gwasanaeth yma hefyd ar gael <a href=\"%(url)s\" class=\"govuk-"
+"link\">yn Saesneg (English)"
+
+#: app/templates/partials/available_in_language.html:9
+msgid "You cannot change the language of an existing application."
+msgstr ""
+"Ni fyddwch yn gallu newid iaith unwaith y byddwch chi wedi dechrau eich "
+"cais."
+
+#: app/templates/partials/contact_details.html:3
+msgid "Email:"
+msgstr "Ebost:"
+
+#: app/templates/partials/contact_details.html:7
+msgid ""
+"Do not send any applications or attachments by email. We'll only accept "
+"applications\n"
+"            through this service."
+msgstr ""
+"Peidwch ag anfon unrhyw geisadau neu atodiadau dros e-bost. Byddwn yn "
+"derbyn ceisiadau drwy'r gwasanaeth hon yn unig."
+
+#: app/templates/partials/contact_details.html:11
+msgid "Telephone:"
+msgstr "Ffôn:"
+
+#: app/templates/partials/contact_details.html:14
+msgid "Textphone:"
+msgstr "Ffôn testun:"
+
+#: app/templates/partials/contact_details.html:19
+msgid "Opening times:"
+msgstr "Amserau agor:"
+
+#: app/templates/partials/contact_details.html:23
+msgid "Closed:"
+msgstr ""
+
+#: app/templates/partials/start-application-button.html:11
+msgid "Start new application"
+msgstr "Dechrau cais newydd"
