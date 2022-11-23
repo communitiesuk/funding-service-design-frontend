@@ -4,8 +4,8 @@ from flask_babel import format_datetime
 from flask_babel import gettext
 
 
-def date_format_short_month(value: datetime, format="%d %b %Y"):
-    return value.strftime(format)
+def date_format_short_month(value: datetime, format="dd MMM yyyy"):
+    return format_datetime(value, format)
 
 
 def datetime_format_short_month(value: datetime) -> str:

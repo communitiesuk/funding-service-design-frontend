@@ -7,7 +7,8 @@ from app import app
 
 def test_date_format_short_month():
     a_datetime = datetime.datetime(2020, 1, 1, 12, 0, 0)
-    assert filters.date_format_short_month(a_datetime) == "01 Jan 2020"
+    with app.test_request_context():
+        assert filters.date_format_short_month(a_datetime) == "01 Jan 2020"
 
 
 def test_datetime_format_short_month():
