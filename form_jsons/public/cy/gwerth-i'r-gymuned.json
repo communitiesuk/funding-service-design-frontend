@@ -1,7 +1,7 @@
 {
-  "metadata": {},
-  "startPage": "/gwerth-ychwanegol-ir-gymuned-EYuYMG",
-  "backLinkText": "Go back to application overview",
+  "metadata": { "isWelsh": true },
+  "startPage": "/gwerth-ychwanegol-ir-gymuned",
+  "backLinkText": "Yn ôl i'r trosolwg o'r cais",
   "pages": [
     {
       "title": "Gwerth ychwanegol i'r gymuned",
@@ -30,7 +30,7 @@
       "next": [{ "path": "/summary" }]
     },
     {
-      "title": "Check your answers",
+      "title": "Gwiriwch eich atebion",
       "path": "/summary",
       "controller": "./pages/summary.js",
       "components": [],

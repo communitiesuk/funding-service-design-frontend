@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-11-03 13:33+0000\n"
+"POT-Creation-Date: 2022-11-23 12:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +17,311 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: app/create_app.py:82
+#: app/create_app.py:80
 msgid "Apply for funding to save an asset in your community"
 msgstr ""
 
-#: app/templates/dashboard.html:8
+#: app/filters.py:12 app/filters.py:21
+msgid "at"
+msgstr ""
+
+#: app/templates/dashboard.html:9
 msgid "Your applications"
 msgstr ""
 
-#: app/templates/dashboard.html:10
+#: app/templates/dashboard.html:11
+msgid "You have started"
+msgstr ""
+
+#: app/templates/dashboard.html:11
 #, python-format
-msgid " %(count)s application "
-msgid_plural " %(count)s applications "
+msgid "%(count)s application"
+msgid_plural "%(count)s applications"
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/templates/dashboard.html:80
+#: app/templates/dashboard.html:11
+msgid "using this email address"
+msgstr ""
+
+#: app/templates/dashboard.html:28
+msgid "Continue application"
+msgstr ""
+
+#: app/templates/dashboard.html:34
+msgid "Untitled project"
+msgstr ""
+
+#: app/templates/dashboard.html:59
+msgid "Project name"
+msgstr ""
+
+#: app/templates/dashboard.html:62
+msgid "Status"
+msgstr ""
+
+#: app/templates/dashboard.html:65
+msgid "Last edited"
+msgstr ""
+
+#: app/templates/dashboard.html:68
+msgid "Application Reference"
+msgstr ""
+
+#: app/templates/dashboard.html:71
+msgid "Action"
+msgstr ""
+
+#: app/templates/footer.html:10
+msgid "Privacy"
+msgstr ""
+
+#: app/templates/footer.html:15
+msgid "Cookies"
+msgstr ""
+
+#: app/templates/footer.html:19
+msgid "Accessibility Statement"
+msgstr ""
+
+#: app/templates/footer.html:23
+msgid "Contact us"
+msgstr ""
+
+#: app/templates/header.html:32
+msgid "Sign out"
+msgstr ""
+
+#: app/templates/header.html:44
+msgid "beta"
+msgstr ""
+
+#: app/templates/header.html:46
+msgid "This is a new service - your "
+msgstr ""
+
+#: app/templates/header.html:46
+msgid "feedback"
+msgstr ""
+
+#: app/templates/header.html:46
+msgid " will help us to improve it."
+msgstr ""
+
+#: app/templates/index.html:8
+msgid "Community Ownership Fund "
+msgstr ""
+
+#: app/templates/index.html:11
+msgid "Community Ownership Fund"
+msgstr ""
+
+#: app/templates/index.html:14
+msgid ""
+"Start or continue an application for funding to save an asset in your "
+"community"
+msgstr ""
+
+#: app/templates/index.html:17
+msgid ""
+"You must have received an invitation to apply. If we did not invite you, "
+"first "
+msgstr ""
+
+#: app/templates/index.html:19
+msgid "express your interest in the fund"
+msgstr ""
+
+#: app/templates/index.html:23
+msgid "Read the fund's prospectus"
+msgstr ""
+
+#: app/templates/index.html:23
+msgid "before you apply."
+msgstr ""
+
+#: app/templates/index.html:27
+msgid "Submission deadline: "
+msgstr ""
+
+#: app/templates/index.html:31
+msgid "Enter your email address"
+msgstr ""
+
+#: app/templates/index.html:33
+msgid "Get help "
+msgstr ""
+
+#: app/templates/index.html:35
+msgid "If you need help, email us at"
+msgstr ""
+
+#: app/templates/index.html:39
+msgid ""
+"Do not send any applications or attachments by email. We'll\n"
+"            only accept applications through this service."
+msgstr ""
+
+#: app/templates/tasklist.html:8
+msgid "Task List"
+msgstr ""
+
+#: app/templates/tasklist.html:15
+msgid "Application for funding to save an asset in your community"
+msgstr ""
+
+#: app/templates/tasklist.html:19
+msgid "Help with filling out your application"
+msgstr ""
+
+#: app/templates/tasklist.html:23
+msgid "What we'll ask you for"
+msgstr ""
+
+#: app/templates/tasklist.html:25
+msgid "You can preview the"
+msgstr ""
+
+#: app/templates/tasklist.html:25
+msgid "full list of application questions"
+msgstr ""
+
+#: app/templates/tasklist.html:28
+msgid ""
+"We'll also ask you to upload a business plan to support the answers "
+"you've given us in the management case section."
+msgstr ""
+
+#: app/templates/tasklist.html:32
+msgid "Moving through the form"
+msgstr ""
+
+#: app/templates/tasklist.html:35
+msgid "This form is split into sections based on how it will be assessed."
+msgstr ""
+
+#: app/templates/tasklist.html:38
+msgid "You do not have to complete it in order, or all at once."
+msgstr ""
+
+#: app/templates/tasklist.html:41
+msgid ""
+"When you have written something in every field in a section, the section "
+"will be marked as complete. You can still change your responses in "
+"sections that are marked as complete."
+msgstr ""
+
+#: app/templates/tasklist.html:45
+msgid "Saving progress and making changes"
+msgstr ""
+
+#: app/templates/tasklist.html:48
+msgid ""
+"Your work will not save automatically. To make sure you do not lose "
+"anything, select Save and continue regularly, and always before you go "
+"back or close your internet browser window."
+msgstr ""
+
+#: app/templates/tasklist.html:51
+msgid "If you need to edit or revisit any sections, use the browser back button."
+msgstr ""
+
+#: app/templates/tasklist.html:54
+msgid "You can edit your responses as many times as you like before you submit."
+msgstr ""
+
+#: app/templates/tasklist.html:58
+msgid "Submitting your application"
+msgstr ""
+
+#: app/templates/tasklist.html:61
+msgid ""
+"When you have completed all sections, you'll be able to submit your "
+"application."
+msgstr ""
+
+#: app/templates/tasklist.html:64
+msgid ""
+"Once you have submitted your application, you'll not be able to edit, add"
+" or change any sections."
+msgstr ""
+
+#: app/templates/tasklist.html:68
+msgid "Get help"
+msgstr ""
+
+#: app/templates/tasklist.html:71
+msgid "If you have any questions about the form or the fund, email us at"
+msgstr ""
+
+#: app/templates/tasklist.html:74
+msgid ""
+"Do not send any applications or attachments by email. We'll only accept "
+"applications through this service."
+msgstr ""
+
+#: app/templates/tasklist.html:78
+msgid "How we'll use your information"
+msgstr ""
+
+#: app/templates/tasklist.html:81
+msgid "Read how we'll use the information from your application in our"
+msgstr ""
+
+#: app/templates/tasklist.html:81
+msgid "privacy notice"
+msgstr ""
+
+#: app/templates/tasklist.html:86
+msgid "Submission deadline:"
+msgstr ""
+
+#: app/templates/tasklist.html:88
+msgid "Reference:"
+msgstr ""
+
+#: app/templates/tasklist.html:94
+msgid "Status:"
+msgstr ""
+
+#: app/templates/partials/available_in_language.html:2
 #, python-format
 msgid ""
 " This service is also available <a href=\"%(url)s\" class=\"govuk-"
 "link\">in Welsh (Cymraeg)"
 msgstr ""
 
-#: app/templates/dashboard.html:86
+#: app/templates/partials/available_in_language.html:9
 msgid "You cannot change the language of an existing application."
+msgstr ""
+
+#: app/templates/partials/contact_details.html:3
+msgid "Email:"
+msgstr ""
+
+#: app/templates/partials/contact_details.html:7
+msgid ""
+"Do not send any applications or attachments by email. We'll only accept "
+"applications\n"
+"            through this service."
+msgstr ""
+
+#: app/templates/partials/contact_details.html:11
+msgid "Telephone:"
+msgstr ""
+
+#: app/templates/partials/contact_details.html:14
+msgid "Textphone:"
+msgstr ""
+
+#: app/templates/partials/contact_details.html:19
+msgid "Opening times:"
+msgstr ""
+
+#: app/templates/partials/contact_details.html:23
+msgid "Closed:"
+msgstr ""
+
+#: app/templates/partials/start-application-button.html:11
+msgid "Start new application"
 msgstr ""

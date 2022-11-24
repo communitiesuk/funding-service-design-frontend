@@ -1,7 +1,7 @@
 {
-  "metadata": {},
-  "startPage": "/yngln-ch-prosiect-RjBjaK",
-  "backLinkText": "Go back to application overview",
+  "metadata": { "isWelsh": true },
+  "startPage": "/yngln-ch-prosiect",
+  "backLinkText": "Yn ôl i'r trosolwg o'r cais",
   "pages": [
     {
       "title": "Ynglŷn â'ch prosiect",
@@ -386,7 +386,7 @@
     },
     {
       "path": "/summary",
-      "title": "Check your answers",
+      "title": "Gwiriwch eich atebion",
       "components": [],
       "next": [],
       "controller": "./pages/summary.js"
@@ -405,7 +405,7 @@
           "name": "NDqkBg",
           "options": {},
           "type": "Para",
-          "content": "<label class=\"govuk-!-font-weight-bold\">Yn yr adran hon, byddwn yn holi ynghylch:\n</label>\n\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>y math o ased</li>\n<li>beth rydych chi'n bwriadu ei wneud gyda'r ased</li>\n<li>manylion perchnogaeth yr ased (os yw'n gymwys)</li>\n<li>statws perchnogaeth yr ased</li>\n<li>sales process (if applicable)</li>\n<li>manylion perchnogaeth gyhoeddus (os yw'n gymwys)</li>\n<li>manylion am yr Ased o Werth Cymunedol (os yw'n gymwys)</li>\n<li>manylion Trosglwyddo Ased Cymunedol (os yw'n gymwys)</li>\n<li>y rheswm pam mae'r ased mewn perygl</li>\n</ul>\n"
+          "content": "<label class=\"govuk-!-font-weight-bold\">Yn yr adran hon, byddwn yn holi ynghylch:\n</label>\n\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>y math o ased</li>\n<li>beth rydych chi'n bwriadu ei wneud gyda'r ased</li>\n<li>manylion perchnogaeth yr ased (os yw'n gymwys)</li>\n<li>statws perchnogaeth yr ased</li>\n<li>proses werthu (os yw'n berthnasol)</li>\n<li>manylion perchnogaeth gyhoeddus (os yw'n gymwys)</li>\n<li>manylion am yr Ased o Werth Cymunedol (os yw'n gymwys)</li>\n<li>manylion Trosglwyddo Ased Cymunedol (os yw'n gymwys)</li>\n<li>y rheswm pam mae'r ased mewn perygl</li>\n</ul>\n"
         }
       ],
       "next": [{ "path": "/yngln-ch-prosiect-RjBjaK" }],

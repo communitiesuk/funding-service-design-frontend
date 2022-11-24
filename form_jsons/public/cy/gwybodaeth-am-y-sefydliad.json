@@ -1,7 +1,7 @@
 {
-  "metadata": {},
+  "metadata": { "isWelsh": true },
   "startPage": "/yngln-ch-sefydliad",
-  "backLinkText": "Go back to application overview",
+  "backLinkText": "Yn ôl i'r trosolwg o'r cais",
   "pages": [
     {
       "title": "Ynglŷn â'ch sefydliad",
@@ -18,7 +18,7 @@
           "name": "orUXQc",
           "options": {},
           "type": "Para",
-          "content": "<label class=\"govuk-!-font-weight-bold\">In this section, we'll ask about:\n</label>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>unique tracker number</li>\n<li>organisation name</li>\n<li>alternative names of your organisation (if applicable)</li>\n<li>organisation purpose</li>\n<li>organisation activities</li>\n<li>previous experience of similar projects (if applicable)</li>\n<li>organisation type</li>\n<li>charity number (if applicable)</li>\n<li>organisation registration number (if applicable)</li>\n<li>organisation regulatory body</li>\n<li>parent company details (if applicable)</li>\n<li>organisation address and social media</li>\n<li>partner organisation (if applicable)</li>\n</ul>\n</div>",
+          "content": "<label class=\"govuk-!-font-weight-bold\">Yn yr adran hon, byddwn yn holi ynghylch:\n</label>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>rhif traciwr unigryw</li>\n<li>enw'r sefydliad</li>\n<li>enwau amgen eich sefydliad (os yw'n gymwys)</li>\n<li>diben y sefydliad</li>\n<li>gweithgareddau'r sefydliad</li>\n<li>profiad blaenorol o brosiectau tebyg (os yw'n gymwys)</li>\n<li>math o sefydliad</li>\n<li>rhif elusen (os yw'n gymwys)</li>\n<li>rhif cofrestru'r sefydliad (os yw'n berthnasol)</li>\n<li>corff rheoleiddio’r sefydliad</li>\n<li>manylion y rhiant-gwmni (os yw'n gymwys)</li>\n<li>cyfeiriad a chyfryngau cymdeithasol y sefydliad</li>\n<li>sefydliad partner (os yw'n gymwys)</li>\n</ul>\n</div>",
           "schema": {}
         }
       ],
@@ -522,7 +522,7 @@
     },
     {
       "path": "/summary",
-      "title": "Check your answers",
+      "title": "Gwiriwch eich atebion",
       "components": [],
       "next": [],
       "controller": "./pages/summary.js"
@@ -602,7 +602,6 @@
   ],
   "sections": [],
   "conditions": [
-
     {
       "displayName": "A yw eich sefydliad yn defnyddio unrhyw enwau eraill-YES",
       "name": "EWmUak",
@@ -921,13 +920,13 @@
       "title": "Update form in application store",
       "type": "savePerPage",
       "outputConfiguration": {
-          "savePerPageUrl": "True"
+        "savePerPageUrl": "True"
       }
-  }
+    }
   ],
   "version": 2,
   "skipSummary": false,
-  "name": "Apply for funding to save an asset in your community",
+  "name": "Gwneud cais am gyllid i achub ased yn eich cymuned",
   "feedback": { "feedbackForm": false, "url": "" },
   "phaseBanner": { "phase": "beta" }
 }

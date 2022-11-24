@@ -1,5 +1,4 @@
-{% extends "base.html" %} {%- from
-    'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText
+{% extends "base.html" %} {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText
     -%} {%- from "govuk_frontend_jinja/components/button/macro.html" import
     govukButton -%} {% block content %}
     <div class="govuk-grid-row">
@@ -39,8 +38,7 @@
                 only accept applications through this service.{% endtrans %}
             </p>
             {% endif %}
-
-
-        </div>
+            
     </div>
+</div>
 {% endblock %}

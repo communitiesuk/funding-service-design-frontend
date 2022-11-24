@@ -1,7 +1,7 @@
 {
-  "metadata": {},
-  "startPage": "/yngln-ch-sefydliad-jkKfjv",
-  "backLinkText": "Go back to application overview",
+  "metadata": { "isWelsh": true },
+  "startPage": "/yngln-ch-sefydliad",
+  "backLinkText": "Yn ôl i'r trosolwg o'r cais",
   "pages": [
     {
       "title": "Ynglŷn â'ch sefydliad",
@@ -37,7 +37,7 @@
     },
     {
       "path": "/summary",
-      "title": "Check your answers",
+      "title": "Gwiriwch eich atebion",
       "components": [],
       "next": [],
       "controller": "./pages/summary.js"

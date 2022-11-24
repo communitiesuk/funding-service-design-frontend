@@ -1,11 +1,11 @@
 {
-  "metadata": {},
-  "startPage": "/achos-strategol--start",
-  "backLinkText": "Go back to application overview",
+  "metadata": { "isWelsh": true },
+  "startPage": "/achos-strategol",
+  "backLinkText": "Yn ôl i'r trosolwg o'r cais",
   "pages": [
     {
-      "title": "Achos strategol- START",
-      "path": "/achos-strategol--start",
+      "title": "Achos strategol",
+      "path": "/achos-strategol-GBWkCj",
       "components": [
         {
           "name": "tztfSa",
@@ -24,12 +24,12 @@
       ],
       "next": [
         { "path": "/summary" },
-        { "path": "/achos-strategol-yes", "condition": "wuqosn" }
+        { "path": "/achos-strategol-XrtLtp", "condition": "wuqosn" }
       ]
     },
     {
-      "path": "/achos-strategol-yes",
-      "title": "Achos strategol-YES",
+      "path": "/achos-strategol-XrtLtp",
+      "title": "Achos strategol",
       "components": [
         {
           "name": "abqMko",
@@ -55,7 +55,7 @@
       "next": [{ "path": "/summary" }]
     },
     {
-      "title": "Check your answers",
+      "title": "Gwiriwch eich atebion",
       "path": "/summary",
       "controller": "./pages/summary.js",
       "components": [],
@@ -78,7 +78,7 @@
           "content": "<h2 class=\"govuk-heading-s\">Yn yr adran hon, byddwn yn holi ynghylch:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>cefnogaeth leol i'ch prosiect</li>\n</ul>\n</div>"
         }
       ],
-      "next": [{ "path": "/achos-strategol--start" }],
+      "next": [{ "path": "/achos-strategol-GBWkCj" }],
       "controller": "./pages/start.js"
     }
   ],
@@ -107,11 +107,13 @@
   "fees": [],
   "outputs": [
     {
-        "name": "update-form",
-        "title": "Update form in application store",
-        "type": "savePerPage",
-        "outputConfiguration": { "savePerPageUrl": "True" }
+      "name": "update-form",
+      "title": "Update form in application store",
+      "type": "savePerPage",
+      "outputConfiguration": {
+        "savePerPageUrl": "True"
       }
+    }
   ],
   "version": 2,
   "skipSummary": false,

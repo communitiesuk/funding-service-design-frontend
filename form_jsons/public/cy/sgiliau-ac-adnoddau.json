@@ -1,7 +1,7 @@
 {
-  "metadata": {},
-  "startPage": "/achos-rheoli-ILTxEa",
-  "backLinkText": "Go back to application overview",
+  "metadata": { "isWelsh": true },
+  "startPage": "/achos-rheoli",
+  "backLinkText": "Yn ôl i'r trosolwg o'r cais",
   "pages": [
     {
       "title": "Achos rheoli",
@@ -64,7 +64,7 @@
       ]
     },
     {
-      "title": "Check your answers",
+      "title": "Gwiriwch eich atebion",
       "path": "/summary",
       "controller": "./pages/summary.js",
       "components": [],

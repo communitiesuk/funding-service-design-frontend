@@ -1,7 +1,7 @@
 {
-  "metadata": {},
-  "startPage": "/achos-rheoli-SDfpBs",
-  "backLinkText": "Go back to application overview",
+  "metadata": { "isWelsh": true },
+  "startPage": "/achos-rheoli",
+  "backLinkText": "Yn ôl i'r trosolwg o'r cais",
   "pages": [
     {
       "title": "Achos rheoli",
@@ -48,7 +48,10 @@
             },
             "customText": {
               "samePageTitle": "Eich ffynonellau incwm",
-              "columnOneTitle": "Ffynhonnell"
+              "columnOneTitle": "Ffynhonnell",
+              "columnTwoTitle": "Swm",
+              "columnThreeTitle": "Gweithredu"
+
             }
           },
       "components": [
@@ -79,7 +82,7 @@
               "numberFieldTitle": "Swm"
             },
             "type": "MultiInputField",
-            "title": "Sources of income",
+            "title": "Ffynonellau incwm",
             "hint": "The MultiInputField needed",
             "schema": {}
           }
@@ -98,7 +101,9 @@
           },
           "customText": {
             "samePageTitle": "Eich costau rhedeg",
-            "columnOneTitle": "Cost redeg"
+            "columnOneTitle": "Cost redeg",
+            "columnTwoTitle": "Swm",
+            "columnThreeTitle": "Gweithredu"
           }
         },
       "components": [
@@ -138,7 +143,7 @@
     },
     {
       "path": "/summary",
-      "title": "Check your answers",
+      "title": "Gwiriwch eich atebion",
       "components": [],
       "next": [],
       "controller": "./pages/summary.js"

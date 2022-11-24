@@ -2,12 +2,13 @@
 {%- from "govuk_frontend_jinja/components/table/macro.html" import govukTable -%}
 {%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
 {% from "partials/start-application-button.html" import startApplicationButton %}
+{% from "partials/available_in_language.html" import available_in_language %}
 
 {% extends "base.html" %}
 {% block content %}
     <h1 class="govuk-heading-xl">{% trans %}Your applications{% endtrans %}</h1>
     <p class="govuk-body">
-        You have started {% trans count=applications|length %} {{ count }} application {% pluralize %} {{ count }} applications {% endtrans %} using this email address.
+        {% trans %}You have started{% endtrans %}&nbsp;{% trans count=applications|length %}{{ count }} application{% pluralize %}{{ count }} applications{% endtrans %}&nbsp;{% trans %}using this email address{% endtrans %}.
     </p>
     {% set ns = namespace(rows = []) %}
     {% for application in applications %}
@@ -24,71 +25,59 @@
         {% endset %}
 
         {% if not application.status == 'SUBMITTED' %}
-            {% set application_link = '<a class="govuk-link" href="{}">Continue application</a>'.format(url_for('routes.tasklist', application_id=application.id)) %}
+            {% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('routes.tasklist', application_id=application.id), gettext('Continue application')) %}
         {% endif %}
 
+        {% set row = ns.rows.append(
+        [
+            {
+                'text': application.project_name if application.project_name else gettext('Untitled project')
+            },
+            {
+                'text':  govukTag({
+                    'text': application.status|snake_case_to_human ,
+                    'classes': status_class
+                })
+            },
+            {
+                'html': application.last_edited|datetime_format_short_month if application.last_edited
+            },
+            {
+                'html': application.reference
+            },
+            {
+                'html': application_link
+            }
+        ])%}
+    {% endfor %}
 
-    {% set row = ns.rows.append(
-    [
-    {
-    'text': application.project_name if application.project_name else 'Untitled project'
-    },
-    {
-    'text':  govukTag({
-    'text': application.status|snake_case_to_human ,
-    'classes': status_class
-    })
-    },
-    {
-    'html': application.last_edited|datetime_format_short_month if application.last_edited
-    },
-    {
-    'html': application.reference
-    },
-    {
-    'html': application_link
-    }
-    ]
-    )
-    %}
-{% endfor %}
-
-{% if applications|length > 0 %}
-    {{ govukTable({
-    'head': [
-    {
-    'text': 'Project name'
-    },
-    {
-    'text': 'Status'
-    },
-    {
-    'text': 'Last edited'
-    },
-    {
-    'text': 'Application Reference'
-    },
-    {
-    'text': 'Action'
-    }
-    ],
-    'rows': ns.rows
-    }) }}
-{% endif %}
-
+    {% if applications|length > 0 %}
+        {{
+            govukTable({
+            'head': [
+                {
+                    'text': gettext('Project name')
+                },
+                {
+                    'text': gettext('Status')
+                },
+                {
+                    'text': gettext('Last edited')
+                },
+                {
+                    'text': gettext('Application Reference')
+                },
+                {
+                    'text': gettext('Action')
+                }
+            ],
+            'rows': ns.rows
+            })
+        }}
+    {% endif %}
 
 {# TODO: restore this once Welsh translation is completed #}
-
-{#<p class="govuk-body">{% trans url=url_for('select_language', locale=('cy' if get_lang() == 'en' else 'en')) %} This service is also available <a href="{{ url }}" class="govuk-link">in Welsh (Cymraeg){% endtrans %}</a>.</p>#}
-{##}
-{#<div class="govuk-warning-text">#}
-{#    <span class="govuk-warning-text__icon" aria-hidden="true">!</span>#}
-{#    <strong class="govuk-warning-text__text">#}
-{#      <span class="govuk-warning-text__assistive">Warning</span>#}
-{#      {% trans %}You cannot change the language of an existing application.{% endtrans %}#}
-{#    </strong>#}
-{#  </div>#}
-
+{# available_in_language(inset=False, warn=True) #}
 
 {{startApplicationButton(form, url_for('routes.new'), applications=applications)}}
 
