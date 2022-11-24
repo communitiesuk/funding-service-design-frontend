@@ -14,7 +14,11 @@
           "hideRowTitles": false
         },
         "customText": {
-          "samePageTitle": "Eich costau cyfalaf"
+          "samePageTitle": "Eich costau cyfalaf",
+          "columnOneTitle": "Disgrifiad ",
+          "columnTwoTitle": "Swm",
+          "columnThreeTitle": "Gweithredu"
+          
         }
       },
       "components": [
@@ -63,7 +67,10 @@
           "hideRowTitles": false
         },
         "customText": {
-          "samePageTitle": "Eich costau refeniw"
+          "samePageTitle": "Eich costau refeniw",
+          "columnOneTitle": "Disgrifiad ",
+          "columnTwoTitle": "Swm",
+          "columnThreeTitle": "Gweithredu"
         }
       },
       "components": [
@@ -114,7 +121,9 @@
         },
         "customText": {
           "samePageTitle": "Yr arian cyfatebol rydych wedi'i sicrhau",
-          "columnOneTitle": "Ffynhonnell"
+          "columnOneTitle": "Ffynhonnell",
+          "columnTwoTitle": "Swm",
+          "columnThreeTitle": "Gweithredu"
         }
       },
       "components": [
@@ -288,7 +297,9 @@
         },
         "customText": {
           "samePageTitle": "Eich arian cyfatebol heb ei sicrhau",
-          "columnOneTitle": "Ffynhonnell"
+          "columnOneTitle": "Ffynhonnell",
+          "columnTwoTitle": "Swm",
+          "columnThreeTitle": "Gweithredu"
         }
       },
       "components": [
