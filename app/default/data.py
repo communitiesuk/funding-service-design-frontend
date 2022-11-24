@@ -10,7 +10,7 @@ from app.models.round import Round
 from config import Config
 from flask import abort
 from flask import current_app
-
+from fsd_utils.locale_selector.get_lang import get_lang
 
 def get_data(endpoint: str, params: dict = None):
     """
@@ -100,7 +100,8 @@ def get_applications_for_account(account_id, as_dict=False):
 
 def get_fund_data(fund_id, as_dict=False):
     fund_request_url = Config.GET_FUND_DATA_ENDPOINT.format(fund_id=fund_id)
-    fund_response = get_data(fund_request_url)
+    language = {"language": get_lang()}
+    fund_response = get_data(fund_request_url, language)
     if as_dict:
         return Fund.from_dict(fund_response)
     else:
@@ -111,7 +112,8 @@ def get_round_data(fund_id, round_id, as_dict=False):
     round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(
         fund_id=fund_id, round_id=round_id
     )
-    round_response = get_data(round_request_url)
+    language = {"language": get_lang()}
+    round_response = get_data(round_request_url, language)
     if as_dict:
         return Round.from_dict(round_response)
     else:

@@ -1,45 +1,44 @@
-{% extends "base.html" %} {%- from
-'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText
--%} {%- from "govuk_frontend_jinja/components/button/macro.html" import
-govukButton -%} {% block content %}
-<div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-        {% if round_title|length %}
-        <span class="govuk-caption-l">{% trans %}Community Ownership Fund {% endtrans %} 
-            {{ round_title }}</span>
-        {% else %} 
-        <span class="govuk-caption-l">{% trans %}Community Ownership Fund{% endtrans %}</span>
-        {% endif %}
-        <h1 class="govuk-heading-xl">
-            {% trans %}Start or continue an application for funding to save an asset in your community{% endtrans %}
-        </h1>
-        <p class="govuk-body">
-            {% trans %}You must have received an invitation to apply. If we did not invite you, first {% endtrans %}<a class="govuk-link"
-                href="https://www.gov.uk/guidance/community-ownership-fund-round-2-how-to-express-your-interest-in-applying">
-                {% trans %}express your interest in the fund{% endtrans %}</a>.
-        </p>
-        <p class="govuk-body">
-            <a class="govuk-link" href="https://www.gov.uk/government/publications/community-ownership-fund-prospectus">
-                {% trans %}Read the fund's prospectus{% endtrans %}</a> {% trans %}before you apply.{% endtrans %}
-        </p>
-        {% if submission_deadline|length %}
-        <p class="govuk-body">
-            <strong>{% trans %}Submission deadline: {% endtrans %}</strong> {{
-            submission_deadline|datetime_format }}
-        </p>
-        {% endif %} {{ govukButton({"isStartButton": True, "href" : service_url,
-        "text": gettext("Enter your email address")}) }} {% if
-        contact_us_email_address|length %}
-        <h2 class="govuk-heading-m">{% trans%}Get help {% endtrans %}</h2>
-        <p class="govuk-body">
-            {% trans %}If you need help, email us at{% endtrans %}
-            <a class="govuk-link" href="mailto:{{ contact_us_email_address }}">{{ contact_us_email_address }}</a>
-        </p>
-        <p class="govuk-body">
-            {% trans %}Do not send any applications or attachments by email. We'll
-            only accept applications through this service.{% endtrans %}
-        </p>
-        {% endif %}
+{% extends "base.html" %} {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText
+    -%} {%- from "govuk_frontend_jinja/components/button/macro.html" import
+    govukButton -%} {% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            {% if round_title|length %}
+            <span class="govuk-caption-l"> {{fund_name}} {{ round_title }}</span>
+            {% else %} 
+            <span class="govuk-caption-l">{{fund_name}}</span>
+            {% endif %}
+            <h1 class="govuk-heading-xl">
+                {% trans %}Start or continue an application for funding to save an asset in your community{% endtrans %}
+            </h1>
+            <p class="govuk-body">
+                {% trans %}You must have received an invitation to apply. If we did not invite you, first {% endtrans %}<a class="govuk-link"
+                    href="https://www.gov.uk/guidance/community-ownership-fund-round-2-how-to-express-your-interest-in-applying">
+                    {% trans %}express your interest in the fund{% endtrans %}</a>.
+            </p>
+            <p class="govuk-body">
+                <a class="govuk-link" href="https://www.gov.uk/government/publications/community-ownership-fund-prospectus">
+                    {% trans %}Read the fund's prospectus{% endtrans %}</a> {% trans %}before you apply.{% endtrans %}
+            </p>
+            {% if submission_deadline|length %}
+            <p class="govuk-body">
+                <strong>{% trans %}Submission deadline: {% endtrans %}</strong> {{
+                submission_deadline|datetime_format }}
+            </p>
+            {% endif %} {{ govukButton({"isStartButton": True, "href" : service_url,
+            "text": gettext("Enter your email address")}) }} {% if
+            contact_us_email_address|length %}
+            <h2 class="govuk-heading-m">{% trans%}Get help {% endtrans %}</h2>
+            <p class="govuk-body">
+                {% trans %}If you need help, email us at{% endtrans %}
+                <a class="govuk-link" href="mailto:{{ contact_us_email_address }}">{{ contact_us_email_address }}</a>
+            </p>
+            <p class="govuk-body">
+                {% trans %}Do not send any applications or attachments by email. We'll
+                only accept applications through this service.{% endtrans %}
+            </p>
+            {% endif %}
+            
     </div>
 </div>
 {% endblock %}
