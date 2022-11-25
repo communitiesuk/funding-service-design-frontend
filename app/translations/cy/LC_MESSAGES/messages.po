@@ -168,7 +168,7 @@ msgid ""
 "Do not send any applications or attachments by email. We'll\n"
 "            only accept applications through this service."
 msgstr ""
-"Peidwch ag anfon unrhyw geisadau neu atodiadau dros e-bost. Byddwyn "
+"Peidwch ag anfon unrhyw geisadau neu atodiadau dros e-bost. Byddw yn "
 "derbyn ceisiadau drwy'r gwasanaeth hon yn unig."
 
 #: app/templates/tasklist.html:8
