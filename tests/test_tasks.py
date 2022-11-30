@@ -42,8 +42,11 @@ def test_remove_whitespace_newlines_from_trans_tags_dir(tmpdir):
     c = MockContext(run=Result("Darwin\n"))
 
     f = tmpdir.join("f.html")
+    f2 = tmpdir.join("f.html")
     f.write("{% trans %}a\nb{% endtrans %}")
+    f2.write("{% trans %}a\nb{% endtrans %}")
 
     assert fix_trans_tags(c, str(tmpdir)) == 0
 
     assert f.read() == "{% trans %}a b{% endtrans %}"
+    assert f2.read() == "{% trans %}a b{% endtrans %}"

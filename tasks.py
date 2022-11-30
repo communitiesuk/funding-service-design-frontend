@@ -46,20 +46,22 @@ def _process_file(file: str):
 
 @task
 def fix_trans_tags(_, path="app/templates"):
+    ret = 0
+
     if os.name == "nt":
         path = path.replace("/", "\\")
 
     filepath = os.path.join(os.getcwd(), path)
     if os.path.isfile(filepath) and filepath.endswith(_VALID_JINJA_EXTENSIONS):
-        return _process_file(filepath)
+        ret |= _process_file(filepath)
 
     for _, _, files in os.walk(filepath):
         for file in files:
             full_filepath = os.path.join(filepath, file)
             if file.endswith(_VALID_JINJA_EXTENSIONS):
-                return _process_file(full_filepath)
+                ret |= _process_file(full_filepath)
 
-    return 1
+    return ret
 
 
 @task
