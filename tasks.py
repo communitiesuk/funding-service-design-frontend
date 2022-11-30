@@ -6,22 +6,33 @@ from invoke import task
 _VALID_JINJA_EXTENSIONS = (".html", ".jinja", ".jinja2", ".j2")
 
 
-def remove_whitespace_newlines_from_trans_tags(file):
+def _remove_whitespace_newlines_from_trans_tags(content: str):
+    matches = re.findall(
+        r"({%\s*trans\s*%}(.|[\S\s]*?){%\s*endtrans\s*%})", content
+    )
+
+    content_replaced = content
+    for outer, center in matches:
+        normalised_whitespace_trans = re.sub(r"\s+", " ", center).strip()
+
+        outer_replaced = outer.replace(center, normalised_whitespace_trans)
+
+        rwhitespace = center[len(center.rstrip()) :]  # noqa: E203
+        lwhitespace = center[: len(center) - len(center.lstrip())]
+
+        outer_replaced_whitespace = lwhitespace + outer_replaced + rwhitespace
+        content_replaced = content_replaced.replace(
+            outer, outer_replaced_whitespace
+        )
+
+    return content_replaced
+
+
+def _process_file(file: str):
     with open(file, "r") as f:
         content = f.read()
 
-    matches = re.findall(
-        r"({%\s*trans\s*%}(\s*)(.*|[\S\s]*)(\s*){%\s*endtrans\s*%})", content
-    )
-    for outer, lwhitespace, _, rwhitespace in matches:
-        no_newline_or_tabs_trans = outer.replace("\n", "").replace("\t", "")
-        normalised_whitespace_trans = re.sub(
-            r"\s+", " ", no_newline_or_tabs_trans
-        )
-        content_preserved_whitespace = (
-            f"{lwhitespace}{normalised_whitespace_trans}{rwhitespace}"
-        )
-        content_replaced = content.replace(outer, content_preserved_whitespace)
+    content_replaced = _remove_whitespace_newlines_from_trans_tags(content)
 
     if content != content_replaced:
         with open(file, "w") as f:
@@ -29,6 +40,8 @@ def remove_whitespace_newlines_from_trans_tags(file):
         print(f"Removed newlines/tabs from {file}")
     else:
         print(f"No newlines/tabs to remove from {file}")
+
+    return 0
 
 
 @task
@@ -38,13 +51,15 @@ def fix_trans_tags(_, path="app/templates"):
 
     filepath = os.path.join(os.getcwd(), path)
     if os.path.isfile(filepath) and filepath.endswith(_VALID_JINJA_EXTENSIONS):
-        remove_whitespace_newlines_from_trans_tags(filepath)
+        return _process_file(filepath)
 
     for _, _, files in os.walk(filepath):
         for file in files:
             full_filepath = os.path.join(filepath, file)
             if file.endswith(_VALID_JINJA_EXTENSIONS):
-                remove_whitespace_newlines_from_trans_tags(full_filepath)
+                return _process_file(full_filepath)
+
+    return 1
 
 
 @task
