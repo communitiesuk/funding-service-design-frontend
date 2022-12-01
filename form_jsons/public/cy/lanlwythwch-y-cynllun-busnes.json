@@ -48,7 +48,7 @@
         },
         {
           "name": "rFXeZo",
-          "options": {},
+          "options": {"required": false},
           "type": "FileUploadField",
           "title": "Lanlwythwch y cynllun busnes",
           "hint": ""
