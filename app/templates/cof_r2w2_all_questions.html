@@ -48,20 +48,20 @@
             <p class="govuk-body">{% trans %}This must match your registered legal organisation name{% endtrans %}</p>
             <h4 class="govuk-heading-s  ">1.1.3. {% trans %}Does your organisation use any other names?{% endtrans %}</h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>1.1.3.1.</strong>
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>1.1.3.1.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'No', go to{% endtrans %} <strong>1.1.4.</strong>
+                {{ pgettext("individual", "If 'No', go to") }} <strong>1.1.4.</strong>
             </p>
             <h4 class="govuk-heading-s  ">1.1.3.1. {% trans %}Alternative names of your organisation{% endtrans %}</h4>
             <h4 class="govuk-heading-s  ">1.1.4. {% trans %}What is your organisation's main purpose?{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}</h4>
             <h4 class="govuk-heading-s  ">1.1.5. {% trans %}Tell us about your organisation's main activities{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}</h4>
             <h4 class="govuk-heading-s  ">1.1.6. {% trans %}Have you delivered projects like this before?{% endtrans %}</h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>1.1.6.1.</strong> {% trans %}and{% endtrans %} <strong>1.1.6.2.</strong>
+                {{ pgettext("group", "If 'Yes', go to") }} <strong>1.1.6.1.</strong> {% trans %}and{% endtrans %} <strong>1.1.6.2.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'No', go to{% endtrans %} <strong>1.1.7.</strong>
+                {{ pgettext("group", "If 'No', go to") }} <strong>1.1.7.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
                 1.1.6.1. {% trans %}Describe your previous projects{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
@@ -128,10 +128,10 @@
                 1.1.9. {% trans %}Is your organisation a trading subsidiary of a parent company?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>1.1.9.1.</strong> {% trans %}and{% endtrans %} <strong>1.1.9.2.</strong>
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>1.1.9.1.</strong> {% trans %}and{% endtrans %} <strong>1.1.9.2.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'No', go to{% endtrans %} <strong>1.1.10.</strong>
+                {{ pgettext("individual", "If 'No', go to") }} <strong>1.1.10.</strong>
             </p>
             <h4 class="govuk-heading-s ">
                 1.1.9.1. {% trans %}Name of parent organisation{% endtrans %}
@@ -155,10 +155,10 @@
                 1.1.12. {% trans %}Is your correspondence address different to the organisation address?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>1.1.12.1.</strong>
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>1.1.12.1.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'No', go to{% endtrans %} <strong>1.1.13.</strong>
+                {{ pgettext("individual", "If 'No', go to") }} <strong>1.1.13.</strong>
             </p>
             <h4 class="govuk-heading-s ">
                 1.1.12.1. {% trans %}Correspondence address{% endtrans %}
@@ -167,7 +167,7 @@
                 1.1.13. {% trans %}Is your application a joint bid in partnership with other organisations?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>1.1.13.1.</strong>, <strong>1.1.13.2.</strong>
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>1.1.13.1.</strong>, <strong>1.1.13.2.</strong>
                 {% trans %}and{% endtrans %} <strong>1.1.13.3.</strong>
             </p>
             <h4 class="govuk-heading-s ">
@@ -211,10 +211,10 @@
                 2.1.1. {% trans %}Have you been given funding through the Community Ownership Fund before?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>2.1.1.1.</strong> {% trans %}and{% endtrans %} <strong>2.1.1.2.</strong>
+                {{ pgettext("group", "If 'Yes', go to") }} <strong>2.1.1.1.</strong> {% trans %}and{% endtrans %} <strong>2.1.1.2.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'No', go to{% endtrans %} <strong>2.1.2.</strong>
+                {{ pgettext("group", "If 'No', go to") }} <strong>2.1.2.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
                 2.1.1.1. {% trans %}Describe your previous project{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
@@ -334,10 +334,10 @@
                 2.2.3. {% trans %}Do you know who currently owns your asset?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>2.2.3.1.</strong>
+                {{ pgettext("group", "If 'Yes', go to") }} <strong>2.2.3.1.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'No', go to{% endtrans %} <strong>2.2.3.2.</strong>
+                {{ pgettext("group", "If 'No', go to") }} <strong>2.2.3.2.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
                 2.2.3.1. {% trans %}Name of current asset owner{% endtrans %}
@@ -349,10 +349,10 @@
                 2.2.4. {% trans %}Have you already completed the purchase or lease?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>2.2.4.1.</strong>
+                {{ pgettext("group", "If 'Yes', go to") }} <strong>2.2.4.1.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'No', go to{% endtrans %} <strong>2.2.4.2.</strong> {% trans %}and{% endtrans %} <strong>2.2.4.3.</strong>
+                {{ pgettext("group", "If 'No', go to") }} <strong>2.2.4.2.</strong> {% trans %}and{% endtrans %} <strong>2.2.4.3.</strong>
             </p>
             <h4 class="govuk-heading-s ">
                 2.2.4.1. {% trans %}Describe the sale process, e.g. an auction, or the terms of your lease if you have rented the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
@@ -367,10 +367,10 @@
                 2.2.5. {% trans %}Is your asset currently publicly owned?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>2.2.5.1.</strong>, <strong>2.2.5.2.</strong>, <strong>2.2.5.3.</strong> {% trans %}and{% endtrans %} <strong>2.2.5.4.</strong>
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>2.2.5.1.</strong>, <strong>2.2.5.2.</strong>, <strong>2.2.5.3.</strong> {% trans %}and{% endtrans %} <strong>2.2.5.4.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'No', go to{% endtrans %} <strong>2.2.6.</strong>
+                {{ pgettext("individual", "If 'No', go to") }} <strong>2.2.6.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
                 2.2.5.1. {% trans %}Tell us about the person you have spoken to at the relevant public about the asset{% endtrans %}
@@ -412,10 +412,10 @@
                 2.2.6. {% trans %}Is this a registered Asset of Community Value (ACV)?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>2.2.6.1.</strong>
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>2.2.6.1.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'No', go to{% endtrans %} <strong>2.2.7.</strong>
+                {{ pgettext("individual", "If 'No', go to") }} <strong>2.2.7.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
                 2.2.6.1. {% trans %}Will you purchase the asset within the appropriate time frame?{% endtrans %}
@@ -424,10 +424,10 @@
                 2.2.7. {% trans %}Is the asset listed for disposal, or part of a Community Asset Transfer?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>2.2.7.1.</strong>, <strong>2.2.7.2.</strong>{% trans %}, and{% endtrans %} <strong>2.2.7.3.</strong>
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>2.2.7.1.</strong>, <strong>2.2.7.2.</strong>{% trans %}, and{% endtrans %} <strong>2.2.7.3.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'No', go to{% endtrans %} <strong>2.2.8.</strong>
+                {{ pgettext("individual", "If 'No', go to") }} <strong>2.2.8.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
                 2.2.7.1. {% trans %}When was the asset listed?{% endtrans %}
@@ -513,10 +513,10 @@
                 3.2.2. {% trans %}Have you done any fundraising in the community?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>3.2.2.1.</strong>
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>3.2.2.1.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'No', go to{% endtrans %} <strong>3.2.3.</strong>
+                {{ pgettext("individual", "If 'No', go to") }} <strong>3.2.3.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
                 3.2.2.1. {% trans %}Describe your fundraising activities{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
@@ -545,7 +545,7 @@
                 </li>
             </ul>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>3.3.1.1.</strong> {% trans %}and{% endtrans %} <strong>3.3.1.2.</strong>
+                {{ pgettext("group", "If 'Yes', go to") }} <strong>3.3.1.1.</strong> {% trans %}and{% endtrans %} <strong>3.3.1.2.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
                 3.3.1.1. {% trans %}Tell us more about the local support for your project{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
@@ -669,10 +669,10 @@
                 {% trans %}It should be no more than £50,000, and no more than 20% of your capital funding.{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>4.1.3.1.</strong>
+                {{ pgettext("indefinite", "If 'Yes', go to") }} <strong>4.1.3.1.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'No', go to{% endtrans %} <strong>4.1.4.</strong>
+                {{ pgettext("indefinite", "If 'No', go to") }} <strong>4.1.4.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
                 4.1.3.1. {% trans %}Revenue costs (optional){% endtrans %}
@@ -709,10 +709,10 @@
                 4.1.4. {% trans %}Have you secured any match funding yet?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>4.1.4.1.</strong>
+                {{ pgettext("group", "If 'Yes', go to") }} <strong>4.1.4.1.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'No', go to{% endtrans %} <strong>4.1.5.</strong>
+                {{ pgettext("group", "If 'No', go to") }} <strong>4.1.5.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
                 4.1.4.1. {% trans %}Secured match funding{% endtrans %}
@@ -756,10 +756,10 @@
                 4.1.5. {% trans %}Do you have any match funding identified but not yet secured?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>4.1.5.1.</strong>
+                {{ pgettext("indefinite", "If 'Yes', go to") }} <strong>4.1.5.1.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'No', go to{% endtrans %} <strong>4.1.6.</strong>
+                {{ pgettext("indefinite", "If 'No', go to") }} <strong>4.1.6.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
                 4.1.5.1. {% trans %}Unsecured match funding{% endtrans %}
@@ -985,10 +985,10 @@
                 4.5.1. {% trans %}Do you have experience of managing a community asset?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>4.5.1.1.</strong>
+                {{ pgettext("indefinite", "If 'Yes', go to") }} <strong>4.5.1.1.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'No', go to{% endtrans %} <strong>4.5.2.</strong>
+                {{ pgettext("indefinite", "If 'No', go to") }} <strong>4.5.2.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
                 4.5.1.1. {% trans %}Describe any experience you have with community assets similar to this{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
@@ -997,7 +997,7 @@
                 4.5.2. {% trans %}Do you have any plans to recruit people to help you manage the asset?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>4.5.2.1.</strong>
+                {{ pgettext("indefinite", "If 'Yes', go to") }} <strong>4.5.2.1.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
                 4.5.2.1. {% trans %}Tells us about the roles you'll recruit{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
@@ -1280,7 +1280,7 @@
                 {% trans %}For projects in England, Northern Ireland, Scotland and Wales, this definition is laid out in Paragraph 2 of the Subsidy Control Act (2022){% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>7.1.1.1.</strong> {% trans %}and{% endtrans %} <strong>7.1.2.</strong>
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>7.1.1.1.</strong> {% trans %}and{% endtrans %} <strong>7.1.2.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
                 7.1.1.1. {% trans %}Explain how you think a grant from this fund can be provided in compliance with the Subsidy Control Act (2022){% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
@@ -1292,7 +1292,7 @@
                 7.1.2. {% trans %}Is your project based in Northern Ireland?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}If 'Yes', go to{% endtrans %} <strong>7.1.2.1.</strong>
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>7.1.2.1.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
                 7.1.2.1. {% trans %}Explain how your project will comply with state aid rules{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}

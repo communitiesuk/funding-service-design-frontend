@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-12-01 17:02+0000\n"
+"POT-Creation-Date: 2022-12-06 11:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,43 +107,27 @@ msgid "Does your organisation use any other names?"
 msgstr ""
 
 #: app/templates/cof_r2w2_all_questions.html:51
-#: app/templates/cof_r2w2_all_questions.html:61
 #: app/templates/cof_r2w2_all_questions.html:131
 #: app/templates/cof_r2w2_all_questions.html:158
 #: app/templates/cof_r2w2_all_questions.html:170
-#: app/templates/cof_r2w2_all_questions.html:214
-#: app/templates/cof_r2w2_all_questions.html:337
-#: app/templates/cof_r2w2_all_questions.html:352
 #: app/templates/cof_r2w2_all_questions.html:370
 #: app/templates/cof_r2w2_all_questions.html:415
 #: app/templates/cof_r2w2_all_questions.html:427
 #: app/templates/cof_r2w2_all_questions.html:516
-#: app/templates/cof_r2w2_all_questions.html:548
-#: app/templates/cof_r2w2_all_questions.html:672
-#: app/templates/cof_r2w2_all_questions.html:712
-#: app/templates/cof_r2w2_all_questions.html:759
-#: app/templates/cof_r2w2_all_questions.html:988
-#: app/templates/cof_r2w2_all_questions.html:1000
 #: app/templates/cof_r2w2_all_questions.html:1283
 #: app/templates/cof_r2w2_all_questions.html:1295
+msgctxt "individual"
 msgid "If 'Yes', go to"
 msgstr ""
 
 #: app/templates/cof_r2w2_all_questions.html:54
-#: app/templates/cof_r2w2_all_questions.html:64
 #: app/templates/cof_r2w2_all_questions.html:134
 #: app/templates/cof_r2w2_all_questions.html:161
-#: app/templates/cof_r2w2_all_questions.html:217
-#: app/templates/cof_r2w2_all_questions.html:340
-#: app/templates/cof_r2w2_all_questions.html:355
 #: app/templates/cof_r2w2_all_questions.html:373
 #: app/templates/cof_r2w2_all_questions.html:418
 #: app/templates/cof_r2w2_all_questions.html:430
 #: app/templates/cof_r2w2_all_questions.html:519
-#: app/templates/cof_r2w2_all_questions.html:675
-#: app/templates/cof_r2w2_all_questions.html:715
-#: app/templates/cof_r2w2_all_questions.html:762
-#: app/templates/cof_r2w2_all_questions.html:991
+msgctxt "individual"
 msgid "If 'No', go to"
 msgstr ""
 
@@ -204,6 +188,16 @@ msgid "Have you delivered projects like this before?"
 msgstr ""
 
 #: app/templates/cof_r2w2_all_questions.html:61
+#: app/templates/cof_r2w2_all_questions.html:214
+#: app/templates/cof_r2w2_all_questions.html:337
+#: app/templates/cof_r2w2_all_questions.html:352
+#: app/templates/cof_r2w2_all_questions.html:548
+#: app/templates/cof_r2w2_all_questions.html:712
+msgctxt "group"
+msgid "If 'Yes', go to"
+msgstr ""
+
+#: app/templates/cof_r2w2_all_questions.html:61
 #: app/templates/cof_r2w2_all_questions.html:131
 #: app/templates/cof_r2w2_all_questions.html:171
 #: app/templates/cof_r2w2_all_questions.html:214
@@ -212,6 +206,15 @@ msgstr ""
 #: app/templates/cof_r2w2_all_questions.html:548
 #: app/templates/cof_r2w2_all_questions.html:1283
 msgid "and"
+msgstr ""
+
+#: app/templates/cof_r2w2_all_questions.html:64
+#: app/templates/cof_r2w2_all_questions.html:217
+#: app/templates/cof_r2w2_all_questions.html:340
+#: app/templates/cof_r2w2_all_questions.html:355
+#: app/templates/cof_r2w2_all_questions.html:715
+msgctxt "group"
+msgid "If 'No', go to"
 msgstr ""
 
 #: app/templates/cof_r2w2_all_questions.html:67
@@ -953,6 +956,21 @@ msgstr ""
 msgid ""
 "It should be no more than £50,000, and no more than 20% of your capital "
 "funding."
+msgstr ""
+
+#: app/templates/cof_r2w2_all_questions.html:672
+#: app/templates/cof_r2w2_all_questions.html:759
+#: app/templates/cof_r2w2_all_questions.html:988
+#: app/templates/cof_r2w2_all_questions.html:1000
+msgctxt "indefinite"
+msgid "If 'Yes', go to"
+msgstr ""
+
+#: app/templates/cof_r2w2_all_questions.html:675
+#: app/templates/cof_r2w2_all_questions.html:762
+#: app/templates/cof_r2w2_all_questions.html:991
+msgctxt "indefinite"
+msgid "If 'No', go to"
 msgstr ""
 
 #: app/templates/cof_r2w2_all_questions.html:678
@@ -1982,4 +2000,4 @@ msgstr ""
 
 #: app/templates/partials/start-application-button.html:11
 msgid "Start new application"
-msgstr ""
+msgstr "Dechrau cais newydd"
