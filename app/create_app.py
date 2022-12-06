@@ -7,6 +7,7 @@ from config import Config
 from flask import Flask
 from flask_babel import Babel
 from flask_babel import gettext
+from flask_babel import pgettext
 from flask_compress import Compress
 from flask_talisman import Talisman
 from flask_wtf.csrf import CSRFProtect
@@ -45,6 +46,7 @@ def create_app() -> Flask:
     flask_app.jinja_env.lstrip_blocks = True
     flask_app.jinja_env.add_extension("jinja2.ext.i18n")
     flask_app.jinja_env.globals["get_lang"] = get_lang
+    flask_app.jinja_env.globals["pgettext"] = pgettext
 
     # Initialise logging
     logging.init_app(flask_app)

@@ -120,7 +120,6 @@ msgstr "A yw eich sefydliad yn defnyddio unrhyw enwau eraill?"
 #: app/templates/cof_r2w2_all_questions.html:516
 #: app/templates/cof_r2w2_all_questions.html:1283
 #: app/templates/cof_r2w2_all_questions.html:1295
-#, fuzzy
 msgctxt "individual"
 msgid "If 'Yes', go to"
 msgstr "Os 'Ydy', ewch i"
@@ -132,7 +131,6 @@ msgstr "Os 'Ydy', ewch i"
 #: app/templates/cof_r2w2_all_questions.html:418
 #: app/templates/cof_r2w2_all_questions.html:430
 #: app/templates/cof_r2w2_all_questions.html:519
-#, fuzzy
 msgctxt "individual"
 msgid "If 'No', go to"
 msgstr "Os 'Nac ydy', ewch i"
@@ -199,7 +197,6 @@ msgstr "A ydych chi wedi cyflawni prosiectau fel hwn o'r blaen?"
 #: app/templates/cof_r2w2_all_questions.html:352
 #: app/templates/cof_r2w2_all_questions.html:548
 #: app/templates/cof_r2w2_all_questions.html:712
-#, fuzzy
 msgctxt "group"
 msgid "If 'Yes', go to"
 msgstr "Os 'Ydyn', ewch i"
@@ -220,7 +217,6 @@ msgstr "a"
 #: app/templates/cof_r2w2_all_questions.html:340
 #: app/templates/cof_r2w2_all_questions.html:355
 #: app/templates/cof_r2w2_all_questions.html:715
-#, fuzzy
 msgctxt "group"
 msgid "If 'No', go to"
 msgstr "Os 'Nac ydyn', ewch i"
@@ -1047,7 +1043,6 @@ msgstr "Ni ddylai fod yn fwy na £50,000, a dim mwy nag 20% o'ch cyllid cyfalaf.
 #: app/templates/cof_r2w2_all_questions.html:759
 #: app/templates/cof_r2w2_all_questions.html:988
 #: app/templates/cof_r2w2_all_questions.html:1000
-#, fuzzy
 msgctxt "indefinite"
 msgid "If 'Yes', go to"
 msgstr "Os 'Oes', ewch i"
@@ -1055,7 +1050,6 @@ msgstr "Os 'Oes', ewch i"
 #: app/templates/cof_r2w2_all_questions.html:675
 #: app/templates/cof_r2w2_all_questions.html:762
 #: app/templates/cof_r2w2_all_questions.html:991
-#, fuzzy
 msgctxt "indefinite"
 msgid "If 'No', go to"
 msgstr "Os 'Nac oes', ewch i"
