@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-12-06 11:45+0000\n"
+"POT-Creation-Date: 2022-12-06 15:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
 
-#: app/create_app.py:80
+#: app/create_app.py:82
 msgid "Apply for funding to save an asset in your community"
 msgstr ""
 
@@ -39,7 +39,17 @@ msgstr ""
 
 #: app/templates/cof_r2w2_all_questions.html:16
 #: app/templates/cof_r2w2_all_questions.html:42
+msgid "about-organisation"
+msgstr ""
+
+#: app/templates/cof_r2w2_all_questions.html:16
+#: app/templates/cof_r2w2_all_questions.html:42
 msgid "About your organisation"
+msgstr ""
+
+#: app/templates/cof_r2w2_all_questions.html:19
+#: app/templates/cof_r2w2_all_questions.html:204
+msgid "about-project"
 msgstr ""
 
 #: app/templates/cof_r2w2_all_questions.html:19
@@ -48,8 +58,18 @@ msgid "About your project"
 msgstr ""
 
 #: app/templates/cof_r2w2_all_questions.html:22
+#: app/templates/cof_r2w2_all_questions.html:465
+msgid "strategic-case"
+msgstr ""
+
+#: app/templates/cof_r2w2_all_questions.html:22
 #: app/templates/cof_r2w2_all_questions.html:466
 msgid "Strategic case"
+msgstr ""
+
+#: app/templates/cof_r2w2_all_questions.html:25
+#: app/templates/cof_r2w2_all_questions.html:598
+msgid "management-case"
 msgstr ""
 
 #: app/templates/cof_r2w2_all_questions.html:25
@@ -58,8 +78,18 @@ msgid "Management case"
 msgstr ""
 
 #: app/templates/cof_r2w2_all_questions.html:28
+#: app/templates/cof_r2w2_all_questions.html:1203
+msgid "community-benefits"
+msgstr ""
+
+#: app/templates/cof_r2w2_all_questions.html:28
 #: app/templates/cof_r2w2_all_questions.html:1204
 msgid "Potential to deliver community benefits"
+msgstr ""
+
+#: app/templates/cof_r2w2_all_questions.html:31
+#: app/templates/cof_r2w2_all_questions.html:1248
+msgid "community-value"
 msgstr ""
 
 #: app/templates/cof_r2w2_all_questions.html:31
@@ -68,8 +98,18 @@ msgid "Added value to community"
 msgstr ""
 
 #: app/templates/cof_r2w2_all_questions.html:34
+#: app/templates/cof_r2w2_all_questions.html:1270
+msgid "subsidy-control"
+msgstr ""
+
+#: app/templates/cof_r2w2_all_questions.html:34
 #: app/templates/cof_r2w2_all_questions.html:1271
 msgid "Subsidy control and state aid"
+msgstr ""
+
+#: app/templates/cof_r2w2_all_questions.html:37
+#: app/templates/cof_r2w2_all_questions.html:1304
+msgid "declarations"
 msgstr ""
 
 #: app/templates/cof_r2w2_all_questions.html:37
@@ -2000,4 +2040,4 @@ msgstr ""
 
 #: app/templates/partials/start-application-button.html:11
 msgid "Start new application"
-msgstr "Dechrau cais newydd"
+msgstr ""

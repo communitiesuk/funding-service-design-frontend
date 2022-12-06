@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-12-06 11:45+0000\n"
+"POT-Creation-Date: 2022-12-06 15:04+0000\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.11.0\n"
 
-#: app/create_app.py:80
+#: app/create_app.py:82
 msgid "Apply for funding to save an asset in your community"
 msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
 
@@ -41,8 +41,18 @@ msgstr ""
 
 #: app/templates/cof_r2w2_all_questions.html:16
 #: app/templates/cof_r2w2_all_questions.html:42
+msgid "about-organisation"
+msgstr "cyflwynoch-cais"
+
+#: app/templates/cof_r2w2_all_questions.html:16
+#: app/templates/cof_r2w2_all_questions.html:42
 msgid "About your organisation"
 msgstr "Cyflwyno'ch cais"
+
+#: app/templates/cof_r2w2_all_questions.html:19
+#: app/templates/cof_r2w2_all_questions.html:204
+msgid "about-project"
+msgstr "ynglŷn-âch-prosiect"
 
 #: app/templates/cof_r2w2_all_questions.html:19
 #: app/templates/cof_r2w2_all_questions.html:205
@@ -50,9 +60,19 @@ msgid "About your project"
 msgstr "Ynglŷn â'ch prosiect"
 
 #: app/templates/cof_r2w2_all_questions.html:22
+#: app/templates/cof_r2w2_all_questions.html:465
+msgid "strategic-case"
+msgstr "achos-strategol"
+
+#: app/templates/cof_r2w2_all_questions.html:22
 #: app/templates/cof_r2w2_all_questions.html:466
 msgid "Strategic case"
 msgstr "Achos strategol"
+
+#: app/templates/cof_r2w2_all_questions.html:25
+#: app/templates/cof_r2w2_all_questions.html:598
+msgid "management-case"
+msgstr "achos-rheoli"
 
 #: app/templates/cof_r2w2_all_questions.html:25
 #: app/templates/cof_r2w2_all_questions.html:599
@@ -60,9 +80,19 @@ msgid "Management case"
 msgstr "Achos rheoli"
 
 #: app/templates/cof_r2w2_all_questions.html:28
+#: app/templates/cof_r2w2_all_questions.html:1203
+msgid "community-benefits"
+msgstr "buddion-cymunedol"
+
+#: app/templates/cof_r2w2_all_questions.html:28
 #: app/templates/cof_r2w2_all_questions.html:1204
 msgid "Potential to deliver community benefits"
 msgstr "Potensial i gyflawni buddion cymunedol"
+
+#: app/templates/cof_r2w2_all_questions.html:31
+#: app/templates/cof_r2w2_all_questions.html:1248
+msgid "community-value"
+msgstr "defnydd-cymunedol"
 
 #: app/templates/cof_r2w2_all_questions.html:31
 #: app/templates/cof_r2w2_all_questions.html:1249
@@ -70,9 +100,19 @@ msgid "Added value to community"
 msgstr "Gwerth ychwanegol i'r gymuned"
 
 #: app/templates/cof_r2w2_all_questions.html:34
+#: app/templates/cof_r2w2_all_questions.html:1270
+msgid "subsidy-control"
+msgstr "rheoli-cymhorthdal"
+
+#: app/templates/cof_r2w2_all_questions.html:34
 #: app/templates/cof_r2w2_all_questions.html:1271
 msgid "Subsidy control and state aid"
 msgstr "Rheoli cymorthdaliadau a chymorth gwladwriaethol"
+
+#: app/templates/cof_r2w2_all_questions.html:37
+#: app/templates/cof_r2w2_all_questions.html:1304
+msgid "declarations"
+msgstr "datganiadau"
 
 #: app/templates/cof_r2w2_all_questions.html:37
 msgid "Declarations"
@@ -181,7 +221,7 @@ msgstr "Beth yw prif ddiben eich sefydliad?"
 #: app/templates/cof_r2w2_all_questions.html:1286
 #: app/templates/cof_r2w2_all_questions.html:1298
 msgid "(maximum 500 words)"
-msgstr ""
+msgstr "(uchafswm o 500 o eiriau)"
 
 #: app/templates/cof_r2w2_all_questions.html:58
 msgid "Tell us about your organisation's main activities"
