@@ -4,7 +4,7 @@
       <span class="app-task-list__section-number">{{index}}. </span> {{section_name|kebab_case_to_human}}
     </h2>
     {% if weighting %}
-    <p class="govuk-body">This section is worth <b>{{weighting}}</b>% of the assessment criteria.</p>
+    <p class="govuk-body">{% trans %}This section is worth{% endtrans %} <b>{{weighting}}</b>% {% trans %}of the assessment criteria{% endtrans %}.</p>
     {% endif %}
 
     <ul class="app-task-list__items">

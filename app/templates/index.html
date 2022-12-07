@@ -1,6 +1,6 @@
 {% extends "base.html" %} {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText
     -%} {%- from "govuk_frontend_jinja/components/button/macro.html" import
-    govukButton -%} {% block content %}
+    govukButton -%} {% from "partials/available_in_language.html" import available_in_language %} {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             {% if round_title|length %}
@@ -11,6 +11,7 @@
             <h1 class="govuk-heading-xl">
                 {% trans %}Start or continue an application for funding to save an asset in your community{% endtrans %}
             </h1>
+            {{available_in_language(inset=True, warn=False)}}
             <p class="govuk-body">
                 {% trans %}You must have received an invitation to apply. If we did not invite you, first {% endtrans %}<a class="govuk-link"
                     href="https://www.gov.uk/guidance/community-ownership-fund-round-2-how-to-express-your-interest-in-applying">

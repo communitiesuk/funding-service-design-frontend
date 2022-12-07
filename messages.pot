@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-12-06 15:04+0000\n"
+"POT-Creation-Date: 2022-12-07 09:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -731,6 +731,7 @@ msgstr ""
 #: app/templates/cof_r2w2_all_questions.html:602
 #: app/templates/cof_r2w2_all_questions.html:1207
 #: app/templates/cof_r2w2_all_questions.html:1252
+#: app/templates/partials/tasklist_section.html:7
 msgid "This section is worth"
 msgstr ""
 
@@ -1844,41 +1845,41 @@ msgid ""
 "community"
 msgstr ""
 
-#: app/templates/index.html:15
+#: app/templates/index.html:16
 msgid ""
 "You must have received an invitation to apply. If we did not invite you, "
 "first "
 msgstr ""
 
-#: app/templates/index.html:17
+#: app/templates/index.html:18
 msgid "express your interest in the fund"
 msgstr ""
 
-#: app/templates/index.html:21
+#: app/templates/index.html:22
 msgid "Read the fund's prospectus"
 msgstr ""
 
-#: app/templates/index.html:21
+#: app/templates/index.html:22
 msgid "before you apply."
 msgstr ""
 
-#: app/templates/index.html:25
+#: app/templates/index.html:26
 msgid "Submission deadline: "
 msgstr ""
 
-#: app/templates/index.html:29
+#: app/templates/index.html:30
 msgid "Enter your email address"
 msgstr ""
 
-#: app/templates/index.html:31
+#: app/templates/index.html:32
 msgid "Get help "
 msgstr ""
 
-#: app/templates/index.html:33
+#: app/templates/index.html:34
 msgid "If you need help, email us at"
 msgstr ""
 
-#: app/templates/index.html:37 app/templates/tasklist.html:74
+#: app/templates/index.html:38 app/templates/tasklist.html:74
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
 "applications through this service."
@@ -2000,6 +2001,10 @@ msgstr ""
 msgid "Status:"
 msgstr ""
 
+#: app/templates/tasklist.html:110
+msgid "None of the sections have been completed."
+msgstr ""
+
 #: app/templates/partials/available_in_language.html:2
 #, python-format
 msgid ""
@@ -2040,4 +2045,8 @@ msgstr ""
 
 #: app/templates/partials/start-application-button.html:11
 msgid "Start new application"
+msgstr ""
+
+#: app/templates/partials/tasklist_section.html:7
+msgid "of the assessment criteria"
 msgstr ""
