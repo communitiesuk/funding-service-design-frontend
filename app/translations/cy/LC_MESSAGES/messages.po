@@ -29,7 +29,7 @@ msgstr "am"
 
 #: app/templates/cof_r2w2_all_questions.html:10
 msgid "Community Ownership Fund Round 2 Window 2"
-msgstr ""
+msgstr "Y Cronfa Perchnogaeth Gymunedol Rownd 2 Cyfnod Cynnig 2"
 
 #: app/templates/cof_r2w2_all_questions.html:11
 msgid "Full list of application questions"
