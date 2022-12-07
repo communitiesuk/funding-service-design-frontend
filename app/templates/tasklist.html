@@ -107,7 +107,7 @@
                 </h2>
                 <p class="govuk-body govuk-!-margin-bottom-7">
                     {% if application_meta_data["number_of_completed_forms"] == 0 %}
-                    None of the sections have been completed.
+                    {% trans %}None of the sections have been completed.{% endtrans %}
                     {% else %}
                     You have completed
                         {{ application_meta_data["number_of_completed_forms"] }} of
