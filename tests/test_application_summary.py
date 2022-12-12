@@ -1,6 +1,7 @@
 import json
 
 from app.models.application_summary import ApplicationSummary
+from app.models.round import Round
 
 file = open("tests/api_data/endpoint_data.json")
 data = json.loads(file.read())
@@ -10,6 +11,7 @@ TEST_APPLICATION_STORE_DATA = data[
 TEST_SUBMITTED_APPLICATION_STORE_DATA = data[
     "http://application_store/applications?account_id=test-user-2"
 ]
+TEST_ROUND_STORE_DATA = data["http://fund_store/funds/funding-serivce-design/rounds/summer"]
 
 
 def test_serialise_application_summary():
@@ -34,6 +36,10 @@ def test_dashboard_route(flask_test_client, mocker, monkeypatch):
         "app.default.routes.get_applications_for_account",
         return_value=TEST_APPLICATION_STORE_DATA,
     )
+    mocker.patch(
+        "app.default.routes.get_round_data_fail_gracefully",
+        return_value=Round.from_dict(TEST_ROUND_STORE_DATA),
+    )
     response = flask_test_client.get("/account", follow_redirects=True)
     assert response.status_code == 200
     assert b"In Progress" in response.data
@@ -50,6 +56,10 @@ def test_submitted_dashboard_route_shows_no_application_link(
     mocker.patch(
         "app.default.routes.get_applications_for_account",
         return_value=TEST_SUBMITTED_APPLICATION_STORE_DATA,
+    )
+    mocker.patch(
+        "app.default.routes.get_round_data_fail_gracefully",
+        return_value=Round.from_dict(TEST_ROUND_STORE_DATA),
     )
     response = flask_test_client.get("/account", follow_redirects=True)
     assert response.status_code == 200
@@ -69,6 +79,10 @@ def test_dashboard_route_no_applications(
     mocker.patch(
         "app.default.routes.get_applications_for_account",
         return_value=TEST_SUBMITTED_APPLICATION_STORE_DATA,
+    )
+    mocker.patch(
+        "app.default.routes.get_round_data_fail_gracefully",
+        return_value=Round.from_dict(TEST_ROUND_STORE_DATA),
     )
     response = flask_test_client.get("/account", follow_redirects=True)
     assert response.status_code == 200
