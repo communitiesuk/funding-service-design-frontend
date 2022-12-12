@@ -7,24 +7,50 @@
 {% extends "base.html" %}
 {% block content %}
     <h1 class="govuk-heading-xl">{% trans %}Your applications{% endtrans %}</h1>
+{% if submission_deadline|current_datetime_after_given %}
+        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <h2 class="govuk-notification-banner__heading">
+            Round closed - {{fund_name}} {{ round_title }}
+          </h2>
+          <p class="govuk-body">(Closed: {{ submission_deadline|datetime_format }})</p>
+          <p class="govuk-body">You can no longer submit applications in this window. Any you had in progress will be emailed to you.</p>
+          <p class="govuk-body">We'll announce the next application window dates shortly.</p>
+        </div>
+      </div>
+        {% endif %}
     <p class="govuk-body">
         {% trans %}You have started{% endtrans %}&nbsp;{% trans count=applications|length %}{{ count }} application{% pluralize %}{{ count }} applications{% endtrans %}&nbsp;{% trans %}using this email address{% endtrans %}.
     </p>
     {% set ns = namespace(rows = []) %}
     {% for application in applications %}
         {% set status_class %}
-            {%  if application.status == 'SUBMITTED' %}
-                complete-tag
-            {%  elif application.status == 'NOT_STARTED' %}
-                not-started-tag
-            {%  elif application.status == 'IN_PROGRESS' %}
-                in-progress-tag-new
-            {%  elif application.status == 'READY_TO_SUBMIT' %}
-                in-progress-tag-new
+            {% if submission_deadline|current_datetime_after_given  %}
+                {%  if application.status == 'SUBMITTED'%}
+                    complete-tag
+                {%  elif application.status == 'WINDOW_CLOSED' %}
+                    complete-tag
+                {% endif %}
+            {% endif %}
+            {% if submission_deadline|current_datetime_before_given  %}
+                {%  if application.status == 'SUBMITTED'%}
+                    complete-tag
+                {%  elif application.status == 'NOT_STARTED' %}
+                    not-started-tag
+                {%  elif application.status == 'IN_PROGRESS' %}
+                    in-progress-tag-new
+                {%  elif application.status == 'READY_TO_SUBMIT' %}
+                    in-progress-tag-new
+                {% endif %}
             {% endif %}
         {% endset %}
 
-        {% if not application.status == 'SUBMITTED' %}
+        {% if not application.status == 'SUBMITTED' and submission_deadline|current_datetime_before_given %}
             {% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('routes.tasklist', application_id=application.id), gettext('Continue application')) %}
         {% endif %}
 
@@ -51,7 +77,7 @@
         ])%}
     {% endfor %}
 
-    {% if applications|length > 0 %}
+    {% if applications|length > 0 and submission_deadline|current_datetime_before_given %}
         {{
             govukTable({
             'head': [
@@ -76,8 +102,31 @@
         }}
     {% endif %}
 
+
+    {% if applications|length > 0 and submission_deadline|current_datetime_after_given %}
+        {{
+            govukTable({
+            'head': [
+                {
+                    'text': gettext('Project name')
+                },
+                {
+                    'text': gettext('Status')
+                },
+                {
+                    'text': gettext('Last edited')
+                },
+                {
+                    'text': gettext('Application Reference')
+                }
+            ],
+            'rows': ns.rows
+            })
+        }}
+    {% endif %}
+
 {{available_in_language(inset=False, warn=True)}}
-
-{{startApplicationButton(form, url_for('routes.new'), applications=applications)}}
-
+{% if submission_deadline|current_datetime_before_given %}
+    {{startApplicationButton(form, url_for('routes.new'), applications=applications)}}
+{% endif %}
 {% endblock %}

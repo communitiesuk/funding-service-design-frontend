@@ -8,6 +8,7 @@ from app.default.data import get_applications_for_account
 from app.default.data import get_fund_data
 from app.default.data import get_round_data
 from app.default.data import get_round_data_fail_gracefully
+from app.filters import current_datetime_after_given, current_datetime_before_given
 from app.helpers import format_rehydrate_payload
 from app.helpers import get_token_to_return_to_application
 from app.models.application_summary import ApplicationSummary
@@ -148,14 +149,23 @@ def dashboard():
         round_id = Config.DEFAULT_ROUND_ID
         fund_id = Config.DEFAULT_FUND_ID
 
+    round_data = get_round_data_fail_gracefully(
+    Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID)
+
     current_app.logger.info(
         f"Setting up applicant dashboard for :'{account_id}' to apply for fund"
         f" {fund_id} on round {round_id}"
     )
 
-    for application in applications:
-        if application.status == "COMPLETED":
-            application.status = "READY_TO_SUBMIT"
+    if current_datetime_before_given(round_data.deadline):
+        for application in applications:
+            if application.status == "COMPLETED":
+                application.status = "READY_TO_SUBMIT"
+
+    if current_datetime_after_given(round_data.deadline):
+        for application in applications:
+            if application.status != "SUBMITTED":
+                application.status = "WINDOW_CLOSED"
 
     return render_template(
         "dashboard.html",
@@ -163,6 +173,9 @@ def dashboard():
         applications=applications,
         round_id=round_id,
         fund_id=fund_id,
+        submission_deadline=round_data.deadline,
+        round_title=round_data.title,
+        fund_name="Community Ownership Fund"
     )
 
 
