@@ -1,4 +1,4 @@
-from app.filters import date_format_short_month, current_datetime_after_given, current_datetime_before_given
+from app.filters import date_format_short_month
 from app.filters import datetime_format
 from app.filters import datetime_format_short_month
 from app.filters import kebab_case_to_human
@@ -73,8 +73,6 @@ def create_app() -> Flask:
     flask_app.jinja_env.filters["datetime_format"] = datetime_format
     flask_app.jinja_env.filters["snake_case_to_human"] = snake_case_to_human
     flask_app.jinja_env.filters["kebab_case_to_human"] = kebab_case_to_human
-    flask_app.jinja_env.filters["current_datetime_after_given"] = current_datetime_after_given
-    flask_app.jinja_env.filters["current_datetime_before_given"] = current_datetime_before_given
 
     @flask_app.context_processor
     def inject_global_constants():

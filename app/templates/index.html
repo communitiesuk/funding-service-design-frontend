@@ -1,6 +1,9 @@
 {% extends "base.html" %} {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText
     -%} {%- from "govuk_frontend_jinja/components/button/macro.html" import
-    govukButton -%} {% from "partials/available_in_language.html" import available_in_language %} {% block content %}
+    govukButton -%} {% from "partials/available_in_language.html" import available_in_language %}
+{% from "partials/round_closed_warning.html" import round_closed_warning %}
+
+{% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             {% if round_title|length %}
@@ -11,22 +14,8 @@
             <h1 class="govuk-heading-xl">
                 {% trans %}Start or continue an application for funding to save an asset in your community{% endtrans %}
             </h1>
-        {% if submission_deadline|current_datetime_after_given %}
-        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            Important
-          </h2>
-        </div>
-        <div class="govuk-notification-banner__content">
-          <h2 class="govuk-notification-banner__heading">
-            Round closed - {{fund_name}} {{ round_title }}
-          </h2>
-          <p class="govuk-body">(Closed: {{ submission_deadline|datetime_format }})</p>
-          <p class="govuk-body">You can no longer submit applications in this window. Any you had in progress will be emailed to you.</p>
-          <p class="govuk-body">We'll announce the next application window dates shortly.</p>
-        </div>
-      </div>
+        {% if is_past_submission_deadline %}
+            {{ round_closed_warning(fund_name, round_title, submission_deadline) }}
         {% endif %}
             {{available_in_language(inset=True, warn=False)}}
             <p class="govuk-body">

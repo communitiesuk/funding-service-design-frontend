@@ -25,17 +25,6 @@ def datetime_format(value: str) -> str:
     return formatted_date
 
 
-def current_datetime_after_given(value: str) -> bool:
-    today = datetime.today().now()
-    parsed = datetime.strptime(value, "%Y-%m-%d %H:%M:%S")
-    return today > parsed
-
-def current_datetime_before_given(value: str) -> bool:
-    today = datetime.today().now()
-    parsed = datetime.strptime(value, "%Y-%m-%d %H:%M:%S")
-    return today < parsed
-
-
 def snake_case_to_human(word: str) -> str | None:
     if word:
         return word.replace("_", " ").strip().title()

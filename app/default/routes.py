@@ -1,3 +1,4 @@
+from datetime import datetime
 from functools import wraps
 from http.client import METHOD_NOT_ALLOWED
 import requests
@@ -8,7 +9,6 @@ from app.default.data import get_applications_for_account
 from app.default.data import get_fund_data
 from app.default.data import get_round_data
 from app.default.data import get_round_data_fail_gracefully
-from app.filters import current_datetime_after_given, current_datetime_before_given
 from app.helpers import format_rehydrate_payload
 from app.helpers import get_token_to_return_to_application
 from app.models.application_summary import ApplicationSummary
@@ -33,7 +33,16 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 
 
 # TODO Move the following method into utils.
-# Utils will need a way of accessing application data.
+def current_datetime_after_given(value: str) -> bool:
+    today = datetime.today().now()
+    parsed = datetime.fromisoformat(value)
+    return today > parsed
+
+
+def current_datetime_before_given(value: str) -> bool:
+    today = datetime.today().now()
+    parsed = datetime.fromisoformat(value)
+    return today < parsed
 
 
 def verify_application_owner_local(f):
@@ -100,6 +109,7 @@ def index():
         fund_name = fund_name,
         round_title=round_title,
         submission_deadline=submission_deadline,
+        is_past_submission_deadline=current_datetime_after_given(submission_deadline),
         contact_us_email_address=contact_us_email_address,
     )
 
@@ -174,8 +184,9 @@ def dashboard():
         round_id=round_id,
         fund_id=fund_id,
         submission_deadline=round_data.deadline,
+        is_past_submission_deadline=current_datetime_after_given(round_data.deadline),
         round_title=round_data.title,
-        fund_name="Community Ownership Fund"
+        fund_name="Community Ownership Fund",
     )
 
 
@@ -268,6 +279,7 @@ def tasklist(application_id):
             form=form,
             contact_us_email_address=round_data.contact_details["email_address"],
             submission_deadline=round_data.deadline,
+            is_past_submission_deadline=current_datetime_after_given(round_data.deadline),
         )
 
 
@@ -326,20 +338,26 @@ def continue_application(application_id):
 @login_required
 @verify_application_owner_local
 def submit_application():
-    application_id = request.form.get("application_id")
-    submitted = format_payload_and_submit_application(application_id)
+    round_data = get_round_data_fail_gracefully(
+        Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID)
 
-    application_id = submitted.get("id")
-    application_reference = submitted.get("reference")
-    application_email = submitted.get("email")
-    application = get_application_data(application_id, as_dict=True)
-    with force_locale(application.language):
-        return render_template(
-            "application_submitted.html",
-            application_id=application_id,
-            application_reference=application_reference,
-            application_email=application_email,
-        )
+    if current_datetime_before_given(round_data.deadline):
+        application_id = request.form.get("application_id")
+        submitted = format_payload_and_submit_application(application_id)
+
+        application_id = submitted.get("id")
+        application_reference = submitted.get("reference")
+        application_email = submitted.get("email")
+        application = get_application_data(application_id, as_dict=True)
+        with force_locale(application.language):
+            return render_template(
+                "application_submitted.html",
+                application_id=application_id,
+                application_reference=application_reference,
+                application_email=application_email,
+            )
+    else:
+        return redirect(url_for("routes.dashboard"))
 
 
 def format_payload_and_submit_application(application_id):
