@@ -1,3 +1,4 @@
+from datetime import datetime
 from functools import wraps
 from http.client import METHOD_NOT_ALLOWED
 import requests
@@ -32,7 +33,16 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 
 
 # TODO Move the following method into utils.
-# Utils will need a way of accessing application data.
+def current_datetime_after_given(value: str) -> bool:
+    today = datetime.today().now()
+    parsed = datetime.fromisoformat(value)
+    return today > parsed
+
+
+def current_datetime_before_given(value: str) -> bool:
+    today = datetime.today().now()
+    parsed = datetime.fromisoformat(value)
+    return today < parsed
 
 
 def verify_application_owner_local(f):
@@ -99,6 +109,7 @@ def index():
         fund_name = fund_name,
         round_title=round_title,
         submission_deadline=submission_deadline,
+        is_past_submission_deadline=current_datetime_after_given(submission_deadline),
         contact_us_email_address=contact_us_email_address,
     )
 
@@ -148,14 +159,23 @@ def dashboard():
         round_id = Config.DEFAULT_ROUND_ID
         fund_id = Config.DEFAULT_FUND_ID
 
+    round_data = get_round_data_fail_gracefully(
+    Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID)
+
     current_app.logger.info(
         f"Setting up applicant dashboard for :'{account_id}' to apply for fund"
         f" {fund_id} on round {round_id}"
     )
 
-    for application in applications:
-        if application.status == "COMPLETED":
-            application.status = "READY_TO_SUBMIT"
+    if current_datetime_before_given(round_data.deadline):
+        for application in applications:
+            if application.status == "COMPLETED":
+                application.status = "READY_TO_SUBMIT"
+
+    if current_datetime_after_given(round_data.deadline):
+        for application in applications:
+            if application.status != "SUBMITTED":
+                application.status = "NOT_SUBMITTED"
 
     return render_template(
         "dashboard.html",
@@ -163,6 +183,10 @@ def dashboard():
         applications=applications,
         round_id=round_id,
         fund_id=fund_id,
+        submission_deadline=round_data.deadline,
+        is_past_submission_deadline=current_datetime_after_given(round_data.deadline),
+        round_title=round_data.title,
+        fund_name="Community Ownership Fund",
     )
 
 
@@ -209,53 +233,57 @@ def tasklist(application_id):
     Returns:
         function: a function which renders the tasklist template.
     """
-    application = get_application_data(application_id, as_dict=True)
-
-    account = get_account(account_id=application.account_id)
-    if application.status == ApplicationStatus.SUBMITTED.name:
-        with force_locale(application.language):
-            return render_template(
-                "application_submitted.html",
-                application_id=application.id,
-                application_reference=application.reference,
-                application_email=account.email,
-            )
-    fund = get_fund_data(application.fund_id, as_dict=True)
     round_data = get_round_data(
         Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, True
     )
-    sections = application.get_sections()
-    form = FlaskForm()
-    application_meta_data = {
-        "application_id": application_id,
-        "fund_name": fund.name,
-        "round_name": round_data.title,
-        "not_started_status": ApplicationStatus.NOT_STARTED.name,
-        "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
-        "completed_status": ApplicationStatus.COMPLETED.name,
-        "submitted_status": ApplicationStatus.SUBMITTED.name,
-        "number_of_forms": len(application.forms),
-        "number_of_completed_forms": len(
-            list(
-                filter(
-                    lambda form: form["status"]
-                    == ApplicationStatus.COMPLETED.name,
-                    application.forms,
+
+    if current_datetime_before_given(round_data.deadline):
+        application = get_application_data(application_id, as_dict=True)
+
+        account = get_account(account_id=application.account_id)
+        if application.status == ApplicationStatus.SUBMITTED.name:
+            with force_locale(application.language):
+                return render_template(
+                    "application_submitted.html",
+                    application_id=application.id,
+                    application_reference=application.reference,
+                    application_email=account.email,
                 )
+        fund = get_fund_data(application.fund_id, as_dict=True)
+        sections = application.get_sections()
+        form = FlaskForm()
+        application_meta_data = {
+            "application_id": application_id,
+            "fund_name": fund.name,
+            "round_name": round_data.title,
+            "not_started_status": ApplicationStatus.NOT_STARTED.name,
+            "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
+            "completed_status": ApplicationStatus.COMPLETED.name,
+            "submitted_status": ApplicationStatus.SUBMITTED.name,
+            "number_of_forms": len(application.forms),
+            "number_of_completed_forms": len(
+                list(
+                    filter(
+                        lambda form: form["status"]
+                        == ApplicationStatus.COMPLETED.name,
+                        application.forms,
+                    )
+                )
+            ),
+        }
+
+        with force_locale(application.language):
+            return render_template(
+                "tasklist.html",
+                application=application,
+                sections=sections,
+                application_meta_data=application_meta_data,
+                form=form,
+                contact_us_email_address=round_data.contact_details["email_address"],
+                submission_deadline=round_data.deadline,
+                is_past_submission_deadline=current_datetime_after_given(round_data.deadline),
             )
-        ),
-    }
-    
-    with force_locale(application.language):
-        return render_template(
-            "tasklist.html",
-            application=application,
-            sections=sections,
-            application_meta_data=application_meta_data,
-            form=form,
-            contact_us_email_address=round_data.contact_details["email_address"],
-            submission_deadline=round_data.deadline,
-        )
+    return redirect(url_for("routes.dashboard"))
 
 
 @default_bp.route("/continue_application/<application_id>", methods=["GET"])
@@ -313,21 +341,26 @@ def continue_application(application_id):
 @login_required
 @verify_application_owner_local
 def submit_application():
-    
-    application_id = request.form.get("application_id")
-    submitted = format_payload_and_submit_application(application_id)
+    round_data = get_round_data_fail_gracefully(
+        Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID)
 
-    application_id = submitted.get("id")
-    application_reference = submitted.get("reference")
-    application_email = submitted.get("email")
-    application = get_application_data(application_id, as_dict=True)
-    with force_locale(application.language):
-        return render_template(
-            "application_submitted.html",
-            application_id=application_id,
-            application_reference=application_reference,
-            application_email=application_email,
-        )
+    if current_datetime_before_given(round_data.deadline):
+        application_id = request.form.get("application_id")
+        submitted = format_payload_and_submit_application(application_id)
+
+        application_id = submitted.get("id")
+        application_reference = submitted.get("reference")
+        application_email = submitted.get("email")
+        application = get_application_data(application_id, as_dict=True)
+        with force_locale(application.language):
+            return render_template(
+                "application_submitted.html",
+                application_id=application_id,
+                application_reference=application_reference,
+                application_email=application_email,
+            )
+    else:
+        return redirect(url_for("routes.dashboard"))
 
 
 def format_payload_and_submit_application(application_id):
