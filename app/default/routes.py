@@ -326,7 +326,6 @@ def continue_application(application_id):
 @login_required
 @verify_application_owner_local
 def submit_application():
-    
     application_id = request.form.get("application_id")
     submitted = format_payload_and_submit_application(application_id)
 

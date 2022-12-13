@@ -27,6 +27,7 @@
     <p class="govuk-body">
         {% trans %}You have started{% endtrans %}&nbsp;{% trans count=applications|length %}{{ count }} application{% pluralize %}{{ count }} applications{% endtrans %}&nbsp;{% trans %}using this email address{% endtrans %}.
     </p>
+{{available_in_language(inset=False, warn=True)}}
     {% set ns = namespace(rows = []) %}
     {% for application in applications %}
         {% set status_class %}
@@ -124,8 +125,6 @@
             })
         }}
     {% endif %}
-
-{{available_in_language(inset=False, warn=True)}}
 {% if submission_deadline|current_datetime_before_given %}
     {{startApplicationButton(form, url_for('routes.new'), applications=applications)}}
 {% endif %}

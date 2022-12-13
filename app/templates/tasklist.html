@@ -83,11 +83,28 @@
 
                 </div>
             </details>
+        {% if submission_deadline|current_datetime_after_given %}
+        <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Important
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <h2 class="govuk-notification-banner__heading">
+            Round closed - {{fund_name}} {{ round_title }}
+          </h2>
+          <p class="govuk-body">(Closed: {{ submission_deadline|datetime_format }})</p>
+          <p class="govuk-body">You can no longer submit applications in this window. Any you had in progress will be emailed to you.</p>
+          <p class="govuk-body">We'll announce the next application window dates shortly.</p>
+        </div>
+      </div>
+        {% endif %}
             <h2 class="govuk-heading-s govuk-!-margin-bottom-2">{% trans %}Submission deadline:{% endtrans %} <span
                     class="govuk-body"> {{ submission_deadline|datetime_format }}</span></h2>
             <h2 class="govuk-heading-s govuk-!-margin-bottom-2">{% trans %}Reference:{% endtrans %} <span
                     class="govuk-body"> {{ application["reference"] }}</span></h2>
-            {% if application["status"] == application_meta_data["completed_status"] %}
+            {% if application["status"] == application_meta_data["completed_status"] and submission_deadline|current_datetime_before_given %}
                 {{ tasklist_submit(application_id, application_meta_data, form, url_for('routes.submit_application')) }}
             {% elif not application["status"] == application_meta_data["submitted_status"] %}
                 <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
