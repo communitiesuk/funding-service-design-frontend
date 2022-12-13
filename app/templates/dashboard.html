@@ -7,43 +7,42 @@
 
 {% extends "base.html" %}
 {% block content %}
-<h1 class="govuk-heading-xl">{% trans %}Your applications{% endtrans %}</h1>
+    <h1 class="govuk-heading-xl">{% trans %}Your applications{% endtrans %}</h1>
 {% if is_past_submission_deadline %}
     {{ round_closed_warning(fund_name, round_title, submission_deadline) }}
 {% endif %}
-<p class="govuk-body">
-    {% trans %}You have started{% endtrans %}&nbsp;{% trans count=applications|length %}{{ count }} application
-    {% pluralize %}{{ count }} applications{% endtrans %}&nbsp;{% trans %}using this email address{% endtrans %}.
-</p>
-{{ available_in_language(inset=False, warn=True) }}
-{% set ns = namespace(rows = []) %}
-{% for application in applications %}
-{% set status_class %}
-{% if is_past_submission_deadline %}
-    {% if application.status == 'SUBMITTED' %}
-        complete-tag
-    {% elif application.status == 'NOT_SUBMITTED' %}
-        complete-tag
-    {% endif %}
-{% endif %}
-{% if not is_past_submission_deadline %}
-{% if application.status == 'SUBMITTED' %}
-    complete-tag
-{% elif application.status == 'NOT_STARTED' %}
-    not-started-tag
-{% elif application.status == 'IN_PROGRESS' %}
-    in-progress-tag-new
-{% elif application.status == 'READY_TO_SUBMIT' %}
-    in-progress-tag-new
-{% endif %}
-{% endif %}
-{% endset %}
+    <p class="govuk-body">
+        {% trans %}You have started{% endtrans %}&nbsp;{% trans count=applications|length %}{{ count }} application{% pluralize %}{{ count }} applications{% endtrans %}&nbsp;{% trans %}using this email address{% endtrans %}.
+    </p>
+{{available_in_language(inset=False, warn=True)}}
+    {% set ns = namespace(rows = []) %}
+    {% for application in applications %}
+        {% set status_class %}
+            {% if is_past_submission_deadline %}
+                {% if application.status == 'SUBMITTED' %}
+                    complete-tag
+                {% elif application.status == 'NOT_SUBMITTED' %}
+                    complete-tag
+                {% endif %}
+            {% endif %}
+            {% if not is_past_submission_deadline %}
+                {%  if application.status == 'SUBMITTED' %}
+                    complete-tag
+                {%  elif application.status == 'NOT_STARTED' %}
+                    not-started-tag
+                {%  elif application.status == 'IN_PROGRESS' %}
+                    in-progress-tag-new
+                {%  elif application.status == 'READY_TO_SUBMIT' %}
+                    in-progress-tag-new
+                {% endif %}
+            {% endif %}
+        {% endset %}
 
-{% if not application.status == 'SUBMITTED' and not is_past_submission_deadline %}
-    {% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('routes.tasklist', application_id=application.id), gettext('Continue application')) %}
-{% endif %}
+        {% if not application.status == 'SUBMITTED' and not is_past_submission_deadline %}
+            {% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('routes.tasklist', application_id=application.id), gettext('Continue application')) %}
+        {% endif %}
 
-{% set row = ns.rows.append(
+        {% set row = ns.rows.append(
         [
             {
                 'text': application.project_name if application.project_name else gettext('Untitled project')
@@ -63,11 +62,12 @@
             {
                 'html': application_link
             }
-        ]) %}
-{% endfor %}
+        ])%}
+    {% endfor %}
 
-{% if applications|length > 0 and not is_past_submission_deadline %}
-    {{ govukTable({
+    {% if applications|length > 0 and not is_past_submission_deadline %}
+        {{
+            govukTable({
             'head': [
                 {
                     'text': gettext('Project name')
@@ -86,29 +86,29 @@
                 }
             ],
             'rows': ns.rows
-            }) }}
-{% endif %}
+            })
+        }}
+    {% endif %}
+    {% if applications|length > 0 and is_past_submission_deadline %}
+        {{ govukTable({
+                'head': [
+                    {
+                        'text': gettext('Project name')
+                    },
+                    {
+                        'text': gettext('Status')
+                    },
+                    {
+                        'text': gettext('Last edited')
+                    },
+                    {
+                        'text': gettext('Application Reference')
+                    }
+                ],
+                'rows': ns.rows
+                }) }}
+    {% endif %}
 
-
-{% if applications|length > 0 and is_past_submission_deadline %}
-    {{ govukTable({
-            'head': [
-                {
-                    'text': gettext('Project name')
-                },
-                {
-                    'text': gettext('Status')
-                },
-                {
-                    'text': gettext('Last edited')
-                },
-                {
-                    'text': gettext('Application Reference')
-                }
-            ],
-            'rows': ns.rows
-            }) }}
-{% endif %}
 {% if not is_past_submission_deadline %}
     {{ startApplicationButton(form, url_for('routes.new'), applications=applications) }}
 {% endif %}
