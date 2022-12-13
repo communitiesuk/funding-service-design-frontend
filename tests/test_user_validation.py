@@ -18,6 +18,7 @@ class TestUserValidation:
     TEST_ROUND_DATA = data[
         "fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd?language=en"
     ]
+    TEST_ROUND_STORE_DATA = data["http://fund_store/funds/funding-serivce-design/rounds/summer"]
     REHYDRATION_TOKEN = "test_token"
 
     def test_continue_application_correct_user(
@@ -137,6 +138,10 @@ class TestUserValidation:
             return_value=Application.from_dict(
                 self.TEST_APPLICATION_STORE_DATA
             ),
+        )
+        mocker.patch(
+            "app.default.routes.get_round_data_fail_gracefully",
+            return_value=Round.from_dict(self.TEST_ROUND_STORE_DATA),
         )
         monkeypatch.setattr(
             "fsd_utils.authentication.decorators._check_access_token",
