@@ -22,7 +22,7 @@
 {% if is_past_submission_deadline %}
     {% if application.status == 'SUBMITTED' %}
         complete-tag
-    {% elif application.status == 'WINDOW_CLOSED' %}
+    {% elif application.status == 'NOT_SUBMITTED' %}
         complete-tag
     {% endif %}
 {% endif %}

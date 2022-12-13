@@ -175,7 +175,7 @@ def dashboard():
     if current_datetime_after_given(round_data.deadline):
         for application in applications:
             if application.status != "SUBMITTED":
-                application.status = "WINDOW_CLOSED"
+                application.status = "NOT_SUBMITTED"
 
     return render_template(
         "dashboard.html",
@@ -233,54 +233,57 @@ def tasklist(application_id):
     Returns:
         function: a function which renders the tasklist template.
     """
-    application = get_application_data(application_id, as_dict=True)
-
-    account = get_account(account_id=application.account_id)
-    if application.status == ApplicationStatus.SUBMITTED.name:
-        with force_locale(application.language):
-            return render_template(
-                "application_submitted.html",
-                application_id=application.id,
-                application_reference=application.reference,
-                application_email=account.email,
-            )
-    fund = get_fund_data(application.fund_id, as_dict=True)
     round_data = get_round_data(
         Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, True
     )
-    sections = application.get_sections()
-    form = FlaskForm()
-    application_meta_data = {
-        "application_id": application_id,
-        "fund_name": fund.name,
-        "round_name": round_data.title,
-        "not_started_status": ApplicationStatus.NOT_STARTED.name,
-        "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
-        "completed_status": ApplicationStatus.COMPLETED.name,
-        "submitted_status": ApplicationStatus.SUBMITTED.name,
-        "number_of_forms": len(application.forms),
-        "number_of_completed_forms": len(
-            list(
-                filter(
-                    lambda form: form["status"]
-                    == ApplicationStatus.COMPLETED.name,
-                    application.forms,
+
+    if current_datetime_before_given(round_data.deadline):
+        application = get_application_data(application_id, as_dict=True)
+
+        account = get_account(account_id=application.account_id)
+        if application.status == ApplicationStatus.SUBMITTED.name:
+            with force_locale(application.language):
+                return render_template(
+                    "application_submitted.html",
+                    application_id=application.id,
+                    application_reference=application.reference,
+                    application_email=account.email,
                 )
+        fund = get_fund_data(application.fund_id, as_dict=True)
+        sections = application.get_sections()
+        form = FlaskForm()
+        application_meta_data = {
+            "application_id": application_id,
+            "fund_name": fund.name,
+            "round_name": round_data.title,
+            "not_started_status": ApplicationStatus.NOT_STARTED.name,
+            "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
+            "completed_status": ApplicationStatus.COMPLETED.name,
+            "submitted_status": ApplicationStatus.SUBMITTED.name,
+            "number_of_forms": len(application.forms),
+            "number_of_completed_forms": len(
+                list(
+                    filter(
+                        lambda form: form["status"]
+                        == ApplicationStatus.COMPLETED.name,
+                        application.forms,
+                    )
+                )
+            ),
+        }
+
+        with force_locale(application.language):
+            return render_template(
+                "tasklist.html",
+                application=application,
+                sections=sections,
+                application_meta_data=application_meta_data,
+                form=form,
+                contact_us_email_address=round_data.contact_details["email_address"],
+                submission_deadline=round_data.deadline,
+                is_past_submission_deadline=current_datetime_after_given(round_data.deadline),
             )
-        ),
-    }
-    
-    with force_locale(application.language):
-        return render_template(
-            "tasklist.html",
-            application=application,
-            sections=sections,
-            application_meta_data=application_meta_data,
-            form=form,
-            contact_us_email_address=round_data.contact_details["email_address"],
-            submission_deadline=round_data.deadline,
-            is_past_submission_deadline=current_datetime_after_given(round_data.deadline),
-        )
+    return redirect(url_for("routes.dashboard"))
 
 
 @default_bp.route("/continue_application/<application_id>", methods=["GET"])
