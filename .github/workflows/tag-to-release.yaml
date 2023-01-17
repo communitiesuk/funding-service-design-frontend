@@ -12,4 +12,4 @@ jobs:
   tag-to-release:
     if: ${{ github.actor != 'dependabot[bot]' }}
     # TODO: change this to use main branch once tested
-    uses: communitiesuk/funding-design-service-workflows/.github/workflows/tag-to-release.yml@fs-2172-tag-to-zip
+    uses: communitiesuk/funding-design-service-workflows/.github/workflows/tag-to-release.yml@main
