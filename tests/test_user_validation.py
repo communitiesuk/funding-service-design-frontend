@@ -18,6 +18,7 @@ class TestUserValidation:
     TEST_ROUND_DATA = data[
         "fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd?language=en"
     ]
+    TEST_ROUND_STORE_DATA = data["http://fund_store/funds/funding-serivce-design/rounds/summer"]
     REHYDRATION_TOKEN = "test_token"
 
     def test_continue_application_correct_user(
@@ -28,17 +29,17 @@ class TestUserValidation:
             lambda: {"accountId": self.TEST_USER},
         )
         mocker.patch(
-            "app.default.routes.get_application_data",
+            "app.default.application_routes.get_application_data",
             return_value=Application.from_dict(
                 self.TEST_APPLICATION_STORE_DATA
             ),
         )
         mocker.patch(
-            "app.default.routes.format_rehydrate_payload",
+            "app.default.application_routes.format_rehydrate_payload",
             return_value="rehydrate_payload",
         )
         mocker.patch(
-            "app.default.routes.get_token_to_return_to_application",
+            "app.default.application_routes.get_token_to_return_to_application",
             return_value=self.REHYDRATION_TOKEN,
         )
         expected_redirect_url = DefaultConfig.FORM_REHYDRATION_URL.format(
@@ -60,7 +61,7 @@ class TestUserValidation:
             lambda: {"accountId": "different-user"},
         )
         mocker.patch(
-            "app.default.routes.get_application_data",
+            "app.default.application_routes.get_application_data",
             return_value=Application.from_dict(
                 self.TEST_APPLICATION_STORE_DATA
             ),
@@ -83,7 +84,7 @@ class TestUserValidation:
             lambda: {"accountId": self.TEST_USER},
         )
         mocker.patch(
-            "app.default.routes.get_account",
+            "app.default.application_routes.get_account",
             return_value=Account.from_json(
                 {
                     "account_id": self.TEST_USER,
@@ -92,17 +93,17 @@ class TestUserValidation:
             ),
         )
         mocker.patch(
-            "app.default.routes.get_application_data",
+            "app.default.application_routes.get_application_data",
             return_value=Application.from_dict(
                 self.TEST_APPLICATION_STORE_DATA
             ),
         )
         mocker.patch(
-            "app.default.routes.get_fund_data",
+            "app.default.application_routes.get_fund_data",
             return_value=Fund.from_dict(self.TEST_FUND_DATA),
         )
         mocker.patch(
-            "app.default.routes.get_round_data",
+            "app.default.application_routes.get_round_data",
             return_value=Round.from_dict(self.TEST_ROUND_DATA),
         )
 
@@ -119,7 +120,7 @@ class TestUserValidation:
             lambda: {"accountId": "different-user"},
         )
         mocker.patch(
-            "app.default.routes.get_application_data",
+            "app.default.application_routes.get_application_data",
             return_value=Application.from_dict(
                 self.TEST_APPLICATION_STORE_DATA
             ),
@@ -133,17 +134,21 @@ class TestUserValidation:
     def test_submit_correct_user(self, flask_test_client, mocker, monkeypatch):
 
         mocker.patch(
-            "app.default.routes.get_application_data",
+            "app.default.application_routes.get_application_data",
             return_value=Application.from_dict(
                 self.TEST_APPLICATION_STORE_DATA
             ),
+        )
+        mocker.patch(
+            "app.default.application_routes.get_round_data_fail_gracefully",
+            return_value=Round.from_dict(self.TEST_ROUND_STORE_DATA),
         )
         monkeypatch.setattr(
             "fsd_utils.authentication.decorators._check_access_token",
             lambda: {"accountId": self.TEST_USER},
         )
         mocker.patch(
-            "app.default.routes.format_payload_and_submit_application",
+            "app.default.application_routes.format_payload_and_submit_application",
             return_value={
                 "id": self.TEST_ID,
                 "email": "test@test.com",
@@ -169,7 +174,7 @@ class TestUserValidation:
             lambda: {"accountId": "different-user"},
         )
         mocker.patch(
-            "app.default.routes.get_application_data",
+            "app.default.application_routes.get_application_data",
             return_value=Application.from_dict(
                 self.TEST_APPLICATION_STORE_DATA
             ),

@@ -2,8 +2,9 @@
 {% from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
 {% from "partials/tasklist_section.html" import tasklist_section %}
 {% from "partials/tasklist_submit.html" import tasklist_submit %}
+{% from "partials/round_closed_warning.html" import round_closed_warning %}
 {% block beforeContent %}
-    <a href="{{ url_for('routes.dashboard') }}" class="govuk-back-link">Back to your applications</a>
+    <a href="{{ url_for('account_routes.dashboard') }}" class="govuk-back-link">Back to your applications</a>
 {% endblock %}
 {% block pageTitle %}{% trans %}Task List{% endtrans %} - {{ service_title }}{% endblock %}
 
@@ -83,6 +84,9 @@
 
                 </div>
             </details>
+            {% if is_past_submission_deadline %}
+                {{ round_closed_warning(fund_name, round_title, submission_deadline) }}
+            {% endif %}
             <dl>
                 <dt class="govuk-heading-s dl-inline">{% trans %}Submission deadline:{% endtrans %}</dt>
                 <dd class="govuk-body govuk-!-margin-bottom-2"> {{ submission_deadline|datetime_format }}</dd>
@@ -111,7 +115,7 @@
                 </dl>
                 <p class="govuk-body govuk-!-margin-bottom-7">
                     {% if application_meta_data["number_of_completed_forms"] == 0 %}
-                    None of the sections have been completed.
+                    {% trans %}None of the sections have been completed.{% endtrans %}
                     {% else %}
                     You have completed
                         {{ application_meta_data["number_of_completed_forms"] }} of

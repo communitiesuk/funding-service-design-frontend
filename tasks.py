@@ -1,3 +1,4 @@
+import glob
 import os
 import re
 
@@ -6,7 +7,7 @@ from invoke import task
 _VALID_JINJA_EXTENSIONS = (".html", ".jinja", ".jinja2", ".j2")
 
 
-def _remove_whitespace_newlines_from_trans_tags(content: str):
+def _remove_whitespace_newlines_from_trans_tags(file, content: str):
     matches = re.findall(
         r"({%\s*trans\s*%}(.|[\S\s]*?){%\s*endtrans\s*%})", content
     )
@@ -25,15 +26,6 @@ def _remove_whitespace_newlines_from_trans_tags(content: str):
             outer, outer_replaced_whitespace
         )
 
-    return content_replaced
-
-
-def _process_file(file: str):
-    with open(file, "r") as f:
-        content = f.read()
-
-    content_replaced = _remove_whitespace_newlines_from_trans_tags(content)
-
     if content != content_replaced:
         with open(file, "w") as f:
             f.write(content_replaced)
@@ -44,24 +36,67 @@ def _process_file(file: str):
     return 0
 
 
-@task
-def fix_trans_tags(_, path="app/templates"):
+def _find_missing_translations(file, content: str):
+    matches = list(
+        re.findall(
+            r"(msgid (?:\".*\"\n)+)(?=msgstr"
+            r" \"\"(?!\n\")\n*(?=\n|msgid|\"\"))",
+            content,
+        )
+    )
+
+    missing_translations = []
+    for match in matches:
+        original = "".join(re.findall(r"\"(.*)\"", match))
+        missing_translations.append(original)
+
+    # echo missing translations to stdout with a newline between each
+    if missing_translations:
+        print(f"Missing translations in {file}:")
+        for translation in missing_translations:
+            print(translation)
+        print()
+    else:
+        print(f"No missing translations in {file}")
+
+    return 0
+
+
+def _process_file(file: str, function: callable):
+    with open(file, "r") as f:
+        content = f.read()
+    return function(file, content)
+
+
+def _traverse_files(path: str, function: callable, extensions: tuple[str]):
     ret = 0
 
     if os.name == "nt":
         path = path.replace("/", "\\")
 
     filepath = os.path.join(os.getcwd(), path)
-    if os.path.isfile(filepath) and filepath.endswith(_VALID_JINJA_EXTENSIONS):
-        ret |= _process_file(filepath)
+    if os.path.isfile(filepath) and filepath.endswith(extensions):
+        ret |= _process_file(filepath, function)
 
-    for _, _, files in os.walk(filepath):
-        for file in files:
-            full_filepath = os.path.join(filepath, file)
-            if file.endswith(_VALID_JINJA_EXTENSIONS):
-                ret |= _process_file(full_filepath)
+    for full_filepath in glob.glob(filepath + "/**", recursive=True):
+        if full_filepath.endswith(extensions):
+            ret |= _process_file(full_filepath, function)
 
     return ret
+
+
+@task
+def fix_trans_tags(_, path="app/templates"):
+    return _traverse_files(
+        path,
+        _remove_whitespace_newlines_from_trans_tags,
+        _VALID_JINJA_EXTENSIONS,
+    )
+
+
+@task
+def find_missing_trans(_, path="app/translations/cy/LC_MESSAGES/messages.po"):
+    return _traverse_files(path, _find_missing_translations, (".po",))
 
 
 @task

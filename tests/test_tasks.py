@@ -1,6 +1,7 @@
 import pytest
 from invoke import MockContext
 from invoke import Result
+from tasks import find_missing_trans
 from tasks import fix_trans_tags
 
 
@@ -50,3 +51,53 @@ def test_remove_whitespace_newlines_from_trans_tags_dir(tmpdir):
 
     assert f.read() == "{% trans %}a b{% endtrans %}"
     assert f2.read() == "{% trans %}a b{% endtrans %}"
+
+
+def test_find_missing_trans(tmpdir, capsys):
+    c = MockContext(run=Result("Darwin\n"))
+
+    f = tmpdir.join("f.po")
+    f.write(
+        "# Welsh translations for PROJECT.\n"
+        "# Copyright (C) 2022 ORGANIZATION\n"
+        "\n"
+        "#: example/file.html:1\n"
+        'msgid "A missing translation"\n'
+        'msgstr ""\n'
+        "\n"
+        'msgid "A non-missing translation"\n'
+        'msgstr "A non-missing translation"\n'
+        "\n"
+        'msgid "Another missing translation"\n'
+        'msgstr ""\n'
+        "\n"
+        "#: example/file.html:1\n"
+        'msgid ""\n'
+        '"A third missing translation, that spans multiple"\n'
+        '" lines.  We want to capture all of its content."\n'
+        'msgstr ""\n'
+        "\n"
+        'msgid ""\n'
+        '"A fourth missing translation, that spans multiple"\n'
+        '" lines.  We want to capture all of its content."\n'
+        'msgstr ""\n'
+        "\n"
+        'msgid ""\n'
+        '"Not missing multi line translation."\n'
+        '"Second line"\n'
+        'msgstr "Translated."\n'
+    )
+
+    assert find_missing_trans(c, f.strpath) == 0
+
+    stdoutput = capsys.readouterr().out
+    assert (
+        stdoutput
+        == f"Missing translations in {f.strpath}:\n"
+        "A missing translation\n"
+        "Another missing translation\n"
+        "A third missing translation, that spans multiple lines.  We want to "
+        "capture all of its content.\n"
+        "A fourth missing translation, that spans multiple lines.  We want to "
+        "capture all of its content.\n\n"
+    )

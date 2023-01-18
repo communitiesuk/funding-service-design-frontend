@@ -29,19 +29,19 @@ def test_tasklist_route(flask_test_client, mocker, monkeypatch):
         lambda: {"accountId": "test-user"},
     )
     mocker.patch(
-        "app.default.routes.get_application_data",
+        "app.default.application_routes.get_application_data",
         return_value=Application.from_dict(TEST_APPLICATION_STORE_DATA),
     )
     mocker.patch(
-        "app.default.routes.get_fund_data",
+        "app.default.application_routes.get_fund_data",
         return_value=Fund.from_dict(TEST_FUND_STORE),
     )
     mocker.patch(
-        "app.default.routes.get_round_data",
+        "app.default.application_routes.get_round_data",
         return_value=Round.from_dict(TEST_ROUND_STORE),
     )
     mocker.patch(
-        "app.default.routes.get_account",
+        "app.default.application_routes.get_account",
         return_value=Account.from_json(TEST_ACCOUNT_STORE_DATA),
     )
     response = flask_test_client.get(
@@ -60,13 +60,13 @@ def test_tasklist_for_submit_application_route(
         lambda: {"accountId": "test-user"},
     )
     mocker.patch(
-        "app.default.routes.get_application_data",
+        "app.default.application_routes.get_application_data",
         return_value=Application.from_dict(
             TEST_SUBMITTED_APPLICATION_STORE_DATA
         ),
     )
     mocker.patch(
-        "app.default.routes.get_account",
+        "app.default.application_routes.get_account",
         return_value=Account.from_json(TEST_ACCOUNT_STORE_DATA),
     )
     response = flask_test_client.get(

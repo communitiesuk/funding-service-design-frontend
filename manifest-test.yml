@@ -17,6 +17,7 @@ applications:
     FORMS_SERVICE_PRIVATE_HOST: ((FORMS_SERVICE_PRIVATE_HOST))
     SENTRY_DSN: ((SENTRY_DSN))
     FLASK_ENV: test
+    COOKIE_DOMAIN: .test.gids.dev
     GITHUB_SHA: ((GITHUB_SHA))
   routes:
     - route: frontend.test.fundingservice.co.uk
