@@ -33,11 +33,11 @@ def test_dashboard_route(flask_test_client, mocker, monkeypatch):
         lambda: {"accountId": "test-user"},
     )
     mocker.patch(
-        "app.default.routes.get_applications_for_account",
+        "app.default.account_routes.get_applications_for_account",
         return_value=TEST_APPLICATION_STORE_DATA,
     )
     mocker.patch(
-        "app.default.routes.get_round_data_fail_gracefully",
+        "app.default.account_routes.get_round_data_fail_gracefully",
         return_value=Round.from_dict(TEST_ROUND_STORE_DATA),
     )
     response = flask_test_client.get("/account", follow_redirects=True)
@@ -54,11 +54,11 @@ def test_submitted_dashboard_route_shows_no_application_link(
         lambda: {"accountId": "test-user"},
     )
     mocker.patch(
-        "app.default.routes.get_applications_for_account",
+        "app.default.account_routes.get_applications_for_account",
         return_value=TEST_SUBMITTED_APPLICATION_STORE_DATA,
     )
     mocker.patch(
-        "app.default.routes.get_round_data_fail_gracefully",
+        "app.default.account_routes.get_round_data_fail_gracefully",
         return_value=Round.from_dict(TEST_ROUND_STORE_DATA),
     )
     response = flask_test_client.get("/account", follow_redirects=True)
@@ -77,11 +77,11 @@ def test_dashboard_route_no_applications(
     )
 
     mocker.patch(
-        "app.default.routes.get_applications_for_account",
+        "app.default.account_routes.get_applications_for_account",
         return_value=TEST_SUBMITTED_APPLICATION_STORE_DATA,
     )
     mocker.patch(
-        "app.default.routes.get_round_data_fail_gracefully",
+        "app.default.account_routes.get_round_data_fail_gracefully",
         return_value=Round.from_dict(TEST_ROUND_STORE_DATA),
     )
     response = flask_test_client.get("/account", follow_redirects=True)

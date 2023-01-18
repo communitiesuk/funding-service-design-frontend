@@ -59,11 +59,18 @@ def create_app() -> Flask:
 
     Compress(flask_app)
 
-    from app.default.routes import default_bp, not_found, internal_server_error
+    from app.default.routes import default_bp
+    from app.default.application_routes import application_bp
+    from app.default.content_routes import content_bp
+    from app.default.account_routes import account_bp
+    from app.default.error_routes import not_found, internal_server_error
 
     flask_app.register_error_handler(404, not_found)
     flask_app.register_error_handler(500, internal_server_error)
     flask_app.register_blueprint(default_bp)
+    flask_app.register_blueprint(application_bp)
+    flask_app.register_blueprint(content_bp)
+    flask_app.register_blueprint(account_bp)
     flask_app.jinja_env.filters[
         "datetime_format_short_month"
     ] = datetime_format_short_month

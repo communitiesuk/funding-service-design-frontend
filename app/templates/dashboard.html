@@ -39,7 +39,7 @@
         {% endset %}
 
         {% if not application.status == 'SUBMITTED' and not is_past_submission_deadline %}
-            {% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('routes.tasklist', application_id=application.id), gettext('Continue application')) %}
+            {% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('application_routes.tasklist', application_id=application.id), gettext('Continue application')) %}
         {% endif %}
 
         {% set row = ns.rows.append(
@@ -110,6 +110,6 @@
     {% endif %}
 
 {% if not is_past_submission_deadline %}
-    {{ startApplicationButton(form, url_for('routes.new'), applications=applications) }}
+    {{ startApplicationButton(form, url_for('account_routes.new'), applications=applications) }}
 {% endif %}
 {% endblock %}

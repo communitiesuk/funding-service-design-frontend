@@ -20,7 +20,7 @@ def test_routes_status_code(flask_test_client, monkeypatch, mocker):
     )
     for route, _ in routes_and_test_content.items():
         response = flask_test_client.get(route, follow_redirects=True)
-        assert 200 == response.status_code, "Incorrect status code returned"
+        assert 200 == response.status_code, f"Incorrect status code returned for route {route}"
 
 
 def test_routes_content(flask_test_client, monkeypatch):
@@ -40,7 +40,7 @@ def test_routes_content(flask_test_client, monkeypatch):
     )
     for route, should_contain_this in routes_and_test_content.items():
         response = flask_test_client.get(route, follow_redirects=True)
-        assert should_contain_this in response.data
+        assert should_contain_this in response.data, f"Error in route {route}"
 
 
 def test_dodgy_url_returns_404(flask_test_client):
