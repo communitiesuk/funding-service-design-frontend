@@ -4,7 +4,7 @@
 {% from "partials/tasklist_submit.html" import tasklist_submit %}
 {% from "partials/round_closed_warning.html" import round_closed_warning %}
 {% block beforeContent %}
-    <a href="{{ url_for('routes.dashboard') }}" class="govuk-back-link">Back to your applications</a>
+    <a href="{{ url_for('account_routes.dashboard') }}" class="govuk-back-link">Back to your applications</a>
 {% endblock %}
 {% block pageTitle %}{% trans %}Task List{% endtrans %} - {{ service_title }}{% endblock %}
 
@@ -92,7 +92,7 @@
             <h2 class="govuk-heading-s govuk-!-margin-bottom-2">{% trans %}Reference:{% endtrans %} <span
                     class="govuk-body"> {{ application["reference"] }}</span></h2>
             {% if application["status"] == application_meta_data["completed_status"] %}
-                {{ tasklist_submit(application_id, application_meta_data, form, url_for('routes.submit_application')) }}
+                {{ tasklist_submit(application_id, application_meta_data, form, url_for('application_routes.submit_application')) }}
             {% elif not application["status"] == application_meta_data["submitted_status"] %}
                 <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
                     {% trans %}Status:{% endtrans %}

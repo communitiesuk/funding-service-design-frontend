@@ -52,16 +52,16 @@ def dashboard():
                 application.status = "NOT_SUBMITTED"
 
     return render_template(
-        "dashboard.html",
-        account_id=account_id,
-        applications=applications,
-        round_id=round_id,
-        fund_id=fund_id,
-        submission_deadline=round_data.deadline,
-        is_past_submission_deadline=current_datetime_after_given(round_data.deadline),
-        round_title=round_data.title,
-        fund_name="Community Ownership Fund",
-    )
+            "dashboard.html",
+            account_id=account_id,
+            applications=applications,
+            round_id=round_id,
+            fund_id=fund_id,
+            submission_deadline=round_data.deadline,
+            is_past_submission_deadline=current_datetime_after_given(round_data.deadline),
+            round_title=round_data.title,
+            fund_name="Community Ownership Fund",
+        )
 
 
 @account_bp.route("/account/new", methods=["POST"])
@@ -89,6 +89,6 @@ def new():
         )
     return redirect(
         url_for(
-            "routes.tasklist", application_id=new_application.json().get("id")
+            "application_routes.tasklist", application_id=new_application.json().get("id")
         )
     )

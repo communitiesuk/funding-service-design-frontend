@@ -25,7 +25,7 @@ from fsd_utils.authentication.decorators import login_required
 from flask_babel import force_locale
 from app.default.routes import current_datetime_after_given, current_datetime_before_given
 
-application_bp = Blueprint("submission_routes", __name__, template_folder="templates")
+application_bp = Blueprint("application_routes", __name__, template_folder="templates")
 
 def verify_application_owner_local(f):
     """
@@ -129,7 +129,7 @@ def tasklist(application_id):
                 submission_deadline=round_data.deadline,
                 is_past_submission_deadline=current_datetime_after_given(round_data.deadline),
             )
-    return redirect(url_for("routes.dashboard"))
+    return redirect(url_for("account_routes.dashboard"))
 
 
 @application_bp.route("/continue_application/<application_id>", methods=["GET"])
@@ -154,7 +154,7 @@ def continue_application(application_id):
     form_name = args.get("form_name")
     return_url = (
         request.host_url
-        + url_for("routes.tasklist", application_id=application_id)[1:]
+        + url_for("application_routes.tasklist", application_id=application_id)[1:]
     )
     current_app.logger.info(
         f"Url the form runner should return to '{return_url}'."

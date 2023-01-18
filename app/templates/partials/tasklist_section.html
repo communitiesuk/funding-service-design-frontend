@@ -11,7 +11,7 @@
       {% for form in section_data %}
       <li class="app-task-list__item task-list__new-design">
         <span class="app-task-list__task-name">
-          <a class="govuk-body govuk-link govuk-link--no-visited-state" href="{{url_for("routes.continue_application", application_id=application_meta_data["application_id"], form_name=form["form_name"])}}">
+          <a class="govuk-body govuk-link govuk-link--no-visited-state" href="{{url_for("application_routes.continue_application", application_id=application_meta_data["application_id"], form_name=form["form_name"])}}">
             {{form["form_name"]|kebab_case_to_human}}
           </a>
         </span>
