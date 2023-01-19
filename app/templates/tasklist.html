@@ -95,7 +95,7 @@
 
             {% if application["status"] == application_meta_data["completed_status"] %}
             </dl>
-                {{ tasklist_submit(application_id, application_meta_data, form, url_for('routes.submit_application')) }}
+                {{ tasklist_submit(application_id, application_meta_data, form, url_for('application_routes.submit_application')) }}
             {% elif not application["status"] == application_meta_data["submitted_status"] %}
                 <dt class="govuk-heading-s dl-inline">
                     {% trans %}Status:{% endtrans %}
