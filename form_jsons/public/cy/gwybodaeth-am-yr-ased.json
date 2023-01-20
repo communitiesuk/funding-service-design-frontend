@@ -231,14 +231,14 @@
           "options": { "hideTitle": true, "classes": "govuk-!-width-full" },
           "type": "TextField",
           "title": "Teitl swydd y cyswllt",
-          "hint": "<label class=\"govuk-body\">Teitl swydd y cyswllt</label>"
+          "hint": "Teitl swydd y cyswllt"
         },
         {
           "name": "ZHPwln",
           "options": { "hideTitle": true, "classes": "govuk-!-width-full" },
           "type": "TextField",
           "title": "Enw'r sefydliad",
-          "hint": "<label class=\"govuk-body\">Enw'r sefydliad</label>"
+          "hint": "Enw'r sefydliad"
         },
         {
           "name": "nkPfyn",

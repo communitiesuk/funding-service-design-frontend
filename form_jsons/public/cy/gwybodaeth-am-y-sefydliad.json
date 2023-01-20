@@ -94,7 +94,7 @@
           },
           "type": "TextField",
           "title": "Enwau amgen eich sefydliad - Enw amgen 2 ",
-          "hint": "<span class=\"govuk-body\">Enw amgen 2 (dewisol)</span>",
+          "hint": "Enw amgen 2 (dewisol)",
           "schema": {}
         },
         {
@@ -106,7 +106,7 @@
           },
           "type": "TextField",
           "title": " Enwau amgen eich sefydliad - Enw amgen 3 ",
-          "hint": "<span class=\"govuk-body\">Enw amgen 3 (dewisol)</span>",
+          "hint": "Enw amgen 3 (dewisol)",
           "schema": {}
         }
       ],
@@ -148,7 +148,7 @@
           },
           "type": "MultilineTextField",
           "title": "Dywedwch wrthym am brif weithgareddau eich sefydliad - Gweithgarwch 2",
-          "hint": "<span class=\"govuk-body\">Gweithgarwch 2 (dewisol)</span>",
+          "hint": "Gweithgarwch 2 (dewisol)",
           "schema": {}
         },
         {
@@ -160,7 +160,7 @@
           },
           "type": "MultilineTextField",
           "title": "Dywedwch wrthym am brif weithgareddau eich sefydliad - Gweithgarwch 3",
-          "hint": "<span class=\"govuk-body\">Gweithgarwch 3 (dewisol)</span>",
+          "hint": "Gweithgarwch 3 (dewisol)",
           "schema": {}
         },
         {
@@ -205,7 +205,7 @@
           },
           "type": "MultilineTextField",
           "title": "Disgrifiwch eich prosiectau blaenorol - Prosiect 2",
-          "hint": "<span class=\"govuk-body\">Prosiect 2 (dewisol)</span>",
+          "hint": "Prosiect 2 (dewisol)",
           "schema": {}
         },
         {
@@ -217,7 +217,7 @@
           },
           "type": "MultilineTextField",
           "title": "Disgrifiwch eich prosiectau blaenorol - Prosiect 3",
-          "hint": "<span class=\"govuk-body\">Prosiect 3 (dewisol)</span>",
+          "hint": "Prosiect 3 (dewisol)",
           "schema": {}
         }
       ],
@@ -417,7 +417,7 @@
           },
           "type": "WebsiteField",
           "title": "Gwefan a chyfryngau cymdeithasol - Dolen 2",
-          "hint": "<span class=\"govuk-body\">Dolen 2 (dewisol)</span>",
+          "hint": "Dolen 2 (dewisol)",
           "schema": {}
         },
         {
@@ -429,7 +429,7 @@
           },
           "type": "WebsiteField",
           "title": "Gwefan a chyfryngau cymdeithasol - Dolen 3",
-          "hint": "<span class=\"govuk-body\">Dolen 3 (dewisol)</span>",
+          "hint": "Dolen 3 (dewisol)",
           "schema": {}
         }
       ],
