@@ -1,0 +1,12 @@
+name: Bump version
+on:
+  push:
+    branches:
+      - fs-2172-auto-increment-tag
+    paths-ignore:
+      - '**/README.md'
+
+jobs:
+  bump-version:
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    uses: communitiesuk/funding-design-service-workflows/.github/workflows/bump-tag.yml@fs-2172-increment-tag
