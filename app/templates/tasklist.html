@@ -84,41 +84,48 @@
 
                 </div>
             </details>
-{% if is_past_submission_deadline %}
-    {{ round_closed_warning(fund_name, round_title, submission_deadline) }}
-{% endif %}
-            <h2 class="govuk-heading-s govuk-!-margin-bottom-2">{% trans %}Submission deadline:{% endtrans %} <span
-                    class="govuk-body"> {{ submission_deadline|datetime_format }}</span></h2>
-            <h2 class="govuk-heading-s govuk-!-margin-bottom-2">{% trans %}Reference:{% endtrans %} <span
-                    class="govuk-body"> {{ application["reference"] }}</span></h2>
+            {% if is_past_submission_deadline %}
+                {{ round_closed_warning(fund_name, round_title, submission_deadline) }}
+            {% endif %}
+            <dl>
+                <dt class="govuk-heading-s dl-inline">{% trans %}Submission deadline:{% endtrans %}</dt>
+                <dd class="govuk-body govuk-!-margin-bottom-2"> {{ submission_deadline|datetime_format }}</dd>
+                <dt class="govuk-heading-s dl-inline">{% trans %}Reference:{% endtrans %}</dt>
+                <dd class="govuk-body govuk-!-margin-bottom-2"> {{ application["reference"] }}</dd>
+
             {% if application["status"] == application_meta_data["completed_status"] %}
+            </dl>
                 {{ tasklist_submit(application_id, application_meta_data, form, url_for('application_routes.submit_application')) }}
             {% elif not application["status"] == application_meta_data["submitted_status"] %}
-                <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
+                <dt class="govuk-heading-s dl-inline">
                     {% trans %}Status:{% endtrans %}
-                    {% set completed_count = application_meta_data["number_of_completed_forms"] %}
-                    {% set in_progress_count = application_meta_data["number_of_in_progress_forms"] %}
-                    {% set form_count = application_meta_data["number_of_forms"] %}
-                    {% if application["status"] == application_meta_data["not_started_status"] %}
-                        <strong class="govuk-tag not-started-tag">
-                    {% elif application["status"] == application_meta_data["in_progress_status"] %}
-                        <strong class="govuk-tag in-progress-tag-new">
-                    {% elif application["status"] == application_meta_data["completed_status"] %}
-                        <strong class="govuk-tag complete-tag">
-                    {% endif %}
-                    {{ application.status|snake_case_to_human }}
-                    </strong>
-                </h2>
-                <p class="govuk-body govuk-!-margin-bottom-7">
-                    {% if application_meta_data["number_of_completed_forms"] == 0 %}
-                    {% trans %}None of the sections have been completed.{% endtrans %}
-                    {% else %}
-                    You have completed
-                        {{ application_meta_data["number_of_completed_forms"] }} of
-                        {{ application_meta_data["number_of_forms"] }} sections.
-                    {% endif %}
-                </p>
+                </dt>
+                {% set completed_count = application_meta_data["number_of_completed_forms"] %}
+                {% set in_progress_count = application_meta_data["number_of_in_progress_forms"] %}
+                {% set form_count = application_meta_data["number_of_forms"] %}
+                {% if application["status"] == application_meta_data["not_started_status"] %}
+                <dd class="govuk-tag not-started-tag govuk-!-margin-bottom-2">
+                {% elif application["status"] == application_meta_data["in_progress_status"] %}
+                <dd class="govuk-tag in-progress-tag-new govuk-!-margin-bottom-2">
+                {% elif application["status"] == application_meta_data["completed_status"] %}
+                <dd class="govuk-tag complete-tag govuk-!-margin-bottom-2">
+                {% endif %}
+                {{ application.status|snake_case_to_human }}
+                </dd>
+            </dl>
+            <p class="govuk-body govuk-!-margin-bottom-7">
+                {% if application_meta_data["number_of_completed_forms"] == 0 %}
+                {% trans %}None of the sections have been completed.{% endtrans %}
+                {% else %}
+                You have completed
+                    {{ application_meta_data["number_of_completed_forms"] }} of
+                    {{ application_meta_data["number_of_forms"] }} sections.
+                {% endif %}
+            </p>
+            {% else %}
+            </dl>
             {% endif %}
+
             <ol class="app-task-list">
                 {% for section in sections %}
                         {{ tasklist_section(section["section_title"], section["forms"], section["section_weighting"], application_meta_data,

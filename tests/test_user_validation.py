@@ -1,4 +1,5 @@
 import json
+
 from app.models.account import Account
 from app.models.application import Application
 from app.models.fund import Fund
@@ -14,11 +15,16 @@ class TestUserValidation:
     TEST_APPLICATION_STORE_DATA = data[
         f"application_store/applications/{TEST_ID}"
     ]
-    TEST_FUND_DATA = data["fund_store/funds/funding-service-design?language=en"]
-    TEST_ROUND_DATA = data[
-        "fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd?language=en"
+    TEST_FUND_DATA = data[
+        "fund_store/funds/funding-service-design?language=en"
     ]
-    TEST_ROUND_STORE_DATA = data["http://fund_store/funds/funding-serivce-design/rounds/summer"]
+    TEST_ROUND_DATA = data[
+        "fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/"
+        "rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd?language=en"
+    ]
+    TEST_ROUND_STORE_DATA = data[
+        "http://fund_store/funds/funding-serivce-design/rounds/summer"
+    ]
     REHYDRATION_TOKEN = "test_token"
 
     def test_continue_application_correct_user(
@@ -39,7 +45,8 @@ class TestUserValidation:
             return_value="rehydrate_payload",
         )
         mocker.patch(
-            "app.default.application_routes.get_token_to_return_to_application",
+            "app.default.application_routes."
+            "get_token_to_return_to_application",
             return_value=self.REHYDRATION_TOKEN,
         )
         expected_redirect_url = DefaultConfig.FORM_REHYDRATION_URL.format(
@@ -112,7 +119,7 @@ class TestUserValidation:
         )
         assert 200 == response.status_code, "Incorrect status code"
         assert b"<title>Task List" in response.data
-        assert b"TEST-REF-A</span>" in response.data
+        assert b"TEST-REF-A</dd>" in response.data
 
     def test_tasklist_bad_user(self, flask_test_client, mocker, monkeypatch):
         monkeypatch.setattr(
@@ -148,7 +155,7 @@ class TestUserValidation:
             lambda: {"accountId": self.TEST_USER},
         )
         mocker.patch(
-            "app.default.application_routes.format_payload_and_submit_application",
+            "app.default.application_routes.format_payload_and_submit_application",  # noqa
             return_value={
                 "id": self.TEST_ID,
                 "email": "test@test.com",
@@ -157,7 +164,7 @@ class TestUserValidation:
         )
 
         response = flask_test_client.post(
-            f"/submit_application",
+            "/submit_application",
             data={"application_id": self.TEST_ID},
             follow_redirects=False,
         )
@@ -185,7 +192,7 @@ class TestUserValidation:
         )
 
         response = flask_test_client.post(
-            f"/submit_application",
+            "/submit_application",
             data={"application_id": self.TEST_ID},
             follow_redirects=False,
         )
