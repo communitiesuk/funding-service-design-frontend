@@ -1,5 +1,7 @@
-{% set pageHeading = 'Start or continue an application for funding to save an asset in your community' %}
 {% extends "base.html" %}
+{% set pageHeading %}
+{% trans %}Start or continue an application for funding to save an asset in your community{% endtrans %}
+{% endset %}
 {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText
     -%} {%- from "govuk_frontend_jinja/components/button/macro.html" import
     govukButton -%} {% from "partials/available_in_language.html" import available_in_language %} {% from "partials/round_closed_warning.html" import round_closed_warning %}
