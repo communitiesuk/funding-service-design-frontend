@@ -6,7 +6,7 @@
 {% block beforeContent %}
     <a href="{{ url_for('account_routes.dashboard') }}" class="govuk-back-link">Back to your applications</a>
 {% endblock %}
-{% block pageTitle %}{% trans %}Task List{% endtrans %} - {{ service_title }}{% endblock %}
+{% set pageHeading %}{% trans %}Task List{% endtrans %}{% endset %}
 
 {% block content %}
 

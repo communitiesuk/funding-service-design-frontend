@@ -6,8 +6,11 @@
 {% from "partials/round_closed_warning.html" import round_closed_warning %}
 
 {% extends "base.html" %}
+{% set pageHeading %}
+{% trans %}Your applications{% endtrans %}
+{% endset %}
 {% block content %}
-    <h1 class="govuk-heading-xl">{% trans %}Your applications{% endtrans %}</h1>
+    <h1 class="govuk-heading-xl">{{ pageHeading }}</h1>
 {% if is_past_submission_deadline %}
     {{ round_closed_warning(fund_name, round_title, submission_deadline) }}
 {% endif %}

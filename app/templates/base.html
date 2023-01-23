@@ -4,7 +4,7 @@
 
 
 
-{% block pageTitle %} {{ [pageHeading, service_title]|join(' - ') if pageHeading else service_title }} {% endblock %}
+{% block pageTitle %}{{[pageHeading, service_title]|join(' - ') if pageHeading else service_title}}{% endblock %}
 
 {% block head %}
   {% include 'head.html' %}
