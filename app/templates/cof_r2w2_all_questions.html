@@ -3,12 +3,12 @@
 {%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
 
 {% from "partials/file-formats.html" import file_formats %}
-
+{% set pageHeading %}{% trans %}Full list of application questions{% endtrans %}{% endset %}
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <span class="govuk-caption-l">{% trans %}Community Ownership Fund Round 2 Window 2{% endtrans %}</span>
-            <h1 class="govuk-heading-xl">{% trans %}Full list of application questions{% endtrans %}</h1>
+            <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
             <div class="govuk-!-margin-bottom-8">
                 <h2 class="govuk-heading-m ">{% trans %}Table of contents{% endtrans %}</h2>
                 <ol class="govuk-list govuk-list--number">

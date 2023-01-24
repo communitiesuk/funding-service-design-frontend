@@ -21,6 +21,8 @@ babel==2.10.3
     #   flask-babel
 bandit==1.7.4
     # via -r requirements-dev.in
+beautifulsoup4==4.11.1
+    # via -r requirements-dev.in
 black==22.6.0
     # via -r requirements-dev.in
 blinker==1.5
@@ -288,6 +290,8 @@ sniffio==1.2.0
     # via trio
 sortedcontainers==2.4.0
     # via trio
+soupsieve==2.3.2.post1
+    # via beautifulsoup4
 stevedore==3.5.0
     # via bandit
 tenacity==6.3.1
