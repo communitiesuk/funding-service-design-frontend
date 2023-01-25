@@ -46,7 +46,7 @@
             "options": {
               "prefix": "£",
               "textFieldTitle": "Disgrifiwch y gost",
-              "numberFieldTitle": "Swm"
+              "numberFieldTitle": "Cyfanswm mewn punnoedd"
             },
             "type": "MultiInputField",
             "title": "Costau cyfalaf",
@@ -99,7 +99,7 @@
               "required": false,
               "prefix": "£",
               "textFieldTitle": "Disgrifiwch y gost",
-              "numberFieldTitle": "Swm"
+              "numberFieldTitle": "Cyfanswm mewn punnoedd"
             },
             "type": "MultiInputField",
             "title": "Costau refeniw",
@@ -151,7 +151,7 @@
             "options": {
               "prefix": "£",
               "textFieldTitle": "Ffynhonnell cyllid wedi'i sicrhau",
-              "numberFieldTitle": "Swm"
+              "numberFieldTitle": "Cyfanswm mewn punnoedd"
             },
             "type": "MultiInputField",
             "title": "Wedi sicrhau arian cyfatebol",
@@ -327,7 +327,7 @@
             "options": {
               "prefix": "£",
               "textFieldTitle": "Ffynhonnell cyllid heb ei sicrhau",
-              "numberFieldTitle": "Swm"
+              "numberFieldTitle": "Cyfanswm mewn punnoedd"
             },
             "type": "MultiInputField",
             "title": "Arian cyfatebol heb ei sicrhau",

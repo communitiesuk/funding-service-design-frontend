@@ -75,7 +75,7 @@
             "options": {
               "prefix": "£",
               "textFieldTitle": "Source",
-              "numberFieldTitle": "Amount"
+              "numberFieldTitle": "Amount in pounds"
             },
             "type": "MultiInputField",
             "title": "Sources of income",
@@ -125,7 +125,7 @@
             "options": {
               "prefix": "£",
               "textFieldTitle": "Running cost",
-              "numberFieldTitle": "Amount"
+              "numberFieldTitle": "Amount in pounds"
             },
             "type": "MultiInputField",
             "title": "Running costs",
