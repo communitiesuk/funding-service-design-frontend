@@ -150,7 +150,7 @@ class DefaultConfig:
 
     USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "False"))
 
-    DEFAULT_FUND_ID = CommonConfig.COF_FUND_ID
-    DEFAULT_ROUND_ID = CommonConfig.COF_ROUND_2_W3_ID
+    DEFAULT_FUND_ID = CommonConfig.DEFAULT_FUND_ID
+    DEFAULT_ROUND_ID = CommonConfig.get_default_round_id()
 
     FORMS_CONFIG_FOR_FUND_ROUND = CommonConfig.FORMS_CONFIG_FOR_FUND_ROUND
