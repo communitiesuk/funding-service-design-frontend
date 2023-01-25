@@ -103,7 +103,7 @@ flask-talisman==0.8.1
     # via -r requirements.txt
 flask-wtf==1.0.0
     # via -r requirements.txt
-funding-service-design-utils @ git+https://github.com/communitiesuk/funding-service-design-utils.git@fs-2180-cof-r2w3
+funding-service-design-utils @ git+https://github.com/communitiesuk/funding-service-design-utils.git@fs-2181-default-ids
     # via -r requirements.txt
 gitdb==4.0.9
     # via gitpython
@@ -255,6 +255,7 @@ pyyaml==6.0
 requests==2.28.1
     # via
     #   -r requirements.txt
+    #   funding-service-design-utils
     #   pytest-base-url
     #   pytest-selenium
     #   requests-mock
