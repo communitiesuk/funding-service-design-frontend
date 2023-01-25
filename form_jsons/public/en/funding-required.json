@@ -42,7 +42,7 @@
           "options": {
             "prefix": "£",
             "textFieldTitle": "Describe the cost",
-            "numberFieldTitle": "Amount in Pounds"
+            "numberFieldTitle": "Amount in pounds"
           },
           "type": "MultiInputField",
           "title": "Capital costs",
@@ -94,7 +94,7 @@
             "required": false,
             "prefix": "£",
             "textFieldTitle": "Describe the cost",
-            "numberFieldTitle": "Amount in Pounds"
+            "numberFieldTitle": "Amount in pounds"
           },
           "type": "MultiInputField",
           "title": "Revenue costs",
@@ -144,7 +144,7 @@
           "options": {
             "prefix": "£",
             "textFieldTitle": "Source of secured funding",
-            "numberFieldTitle": "Amount in Pounds"
+            "numberFieldTitle": "Amount in pounds"
           },
           "type": "MultiInputField",
           "title": "Secured match funding",
@@ -317,7 +317,7 @@
           "options": {
             "prefix": "£",
             "textFieldTitle": "Source of unsecured match funding",
-            "numberFieldTitle": "Amount in Pounds"
+            "numberFieldTitle": "Amount in pounds"
           },
           "type": "MultiInputField",
           "title": "Unsecured match funding",
