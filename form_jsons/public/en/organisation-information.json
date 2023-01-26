@@ -154,11 +154,12 @@
         {
           "name": "btTtIb",
           "options": {
-            "maxWords": "500"
+            "maxWords": "500",
+            "hideTitle": true
           },
           "type": "MultilineTextField",
           "title": "Tell us about your organisation's main activities",
-          "hint": "<span class=\"govuk-body\">Activity 1</span>",
+          "hint": "<span class=\"govuk-label govuk-label--s\">Tell us about your organisation's main activities</span><span class=\"govuk-body\">Activity 1</span>",
           "schema": {}
         },
         {
@@ -219,11 +220,12 @@
         {
           "name": "wxCszQ",
           "options": {
-            "maxWords": "500"
+            "maxWords": "500",
+            "hideTitle": true
           },
           "type": "MultilineTextField",
           "title": "Describe your previous projects",
-          "hint": "<span class=\"govuk-body\">Project 1</span>",
+          "hint": "<span class=\"govuk-label govuk-label--s\">Describe your previous projects</span><span class=\"govuk-body\">Project 1</span>",
           "schema": {}
         },
         {
