@@ -42,9 +42,13 @@ jobs:
       - name: create python env
         run: python -m venv .venv
       - name: install dependencies
-        run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements.txt
+        run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements-dev.txt
       - name: build static assets
         run: python build.py
+      - name: run unit tests
+        run: |
+          source .venv/bin/activate
+          pytest -k "not accessibility"
       - name: Deploy to Gov PaaS
         uses: citizen-of-planet-earth/cf-cli-action@v2
         with:
@@ -55,11 +59,11 @@ jobs:
           cf_password: ${{secrets.CF_PASSWORD}}
           # env vars required in the manifest must be declared here
           command: push -f manifest-dev.yml funding-service-design-frontend-dev --var SENTRY_DSN="${{secrets.SENTRY_DSN}}" --var FORMS_SERVICE_PRIVATE_HOST="${{secrets.FORMS_SERVICE_PRIVATE_HOST}}" --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}" --var GITHUB_SHA="${{ github.sha }}"
-      - name: Run tests
+      - name: Run accessibility tests
         run: |
           python -m venv .venv
           source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements-dev.txt
-          pytest
+          pytest -k "accessibility"
       - name: "Upload Accessibility Testing reports"
         uses: actions/upload-artifact@v2
         with:
