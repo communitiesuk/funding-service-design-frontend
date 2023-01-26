@@ -3,7 +3,7 @@
     "isWelsh": true
   },
   "startPage": "/achos-rheoli",
-  "backLinkText": "Yn \u00f4l i'r trosolwg o'r cais",
+  "backLinkText": "Yn ôl i'r trosolwg o'r cais",
   "pages": [
     {
       "title": "Achos rheoli",
@@ -22,7 +22,7 @@
             "hideTitle": true
           },
           "type": "MultilineTextField",
-          "hint": "<span class=\"govuk-label govuk-label--s\">Rhestrwch aelodau eich bwrdd</span>Cynhwyswch eu:\n<br> \n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>r\u00f4l</li>\n<li>prif gyfrifoldebau</li>\n</ul>\n<p>Gallwch ddefnyddio'ch cynllun busnes i ddarparu tystiolaeth i ategu'ch atebion.</p>\n\n",
+          "hint": "Cynhwyswch eu:\n<br> \n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>rôl</li>\n<li>prif gyfrifoldebau</li>\n</ul>\n<p>Gallwch ddefnyddio'ch cynllun busnes i ddarparu tystiolaeth i ategu'ch atebion.</p>\n\n",
           "title": "Rhestrwch aelodau eich bwrdd"
         },
         {

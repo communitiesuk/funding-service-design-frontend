@@ -3,7 +3,7 @@
     "isWelsh": true
   },
   "startPage": "/achos-strategol",
-  "backLinkText": "Yn \u00f4l i'r trosolwg o'r cais",
+  "backLinkText": "Yn ôl i'r trosolwg o'r cais",
   "pages": [
     {
       "title": "Achos strategol",
@@ -23,7 +23,7 @@
           },
           "type": "MultilineTextField",
           "title": "Dywedwch wrthym sut rydych wedi ystyried cynaliadwyedd amgylcheddol eich prosiect",
-          "hint": "<span class=\"govuk-label govuk-label--s\">Dywedwch wrthym sut rydych wedi ystyried cynaliadwyedd amgylcheddol eich prosiect</span>Gall hyn gynnwys:\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>unrhyw ddulliau carbon isel neu ddi-garbon y byddwch yn eu defnyddio yn ystod adeiladu</li>\n<li>sut bydd yr ased yn cyd-fynd \u00e2 mentrau Sero Net yn y dyfodol</li>\n<li>sut byddwch chi'n mesur ac yn lleihau effaith amgylcheddol yr ased</li>\n</ul>\n"
+          "hint": "Gall hyn gynnwys:\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>unrhyw ddulliau carbon isel neu ddi-garbon y byddwch yn eu defnyddio yn ystod adeiladu</li>\n<li>sut bydd yr ased yn cyd-fynd â mentrau Sero Net yn y dyfodol</li>\n<li>sut byddwch chi'n mesur ac yn lleihau effaith amgylcheddol yr ased</li>\n</ul>\n"
         }
       ],
       "next": [

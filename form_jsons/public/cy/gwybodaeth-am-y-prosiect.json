@@ -3,10 +3,10 @@
     "isWelsh": true
   },
   "startPage": "/yngln-ch-prosiect",
-  "backLinkText": "Yn \u00f4l i'r trosolwg o'r cais",
+  "backLinkText": "Yn ôl i'r trosolwg o'r cais",
   "pages": [
     {
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "path": "/yngln-ch-prosiect",
       "components": [
         {
@@ -31,7 +31,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-PFJXvG",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "aVhByI",
@@ -61,7 +61,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-uEsEyH",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "tmVEPV",
@@ -81,10 +81,7 @@
         },
         {
           "name": "TFdnGq",
-          "options": {
-            "prefix": "\u00a3",
-            "classes": "govuk-!-width-one-third"
-          },
+          "options": { "prefix": "£", "classes": "govuk-!-width-one-third" },
           "type": "NumberField",
           "title": "Swm y cyllid a dderbyniwyd"
         }
@@ -97,7 +94,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-qBrufr",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "umDxBP",
@@ -147,7 +144,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-HqDfXH",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "tpQVaN",

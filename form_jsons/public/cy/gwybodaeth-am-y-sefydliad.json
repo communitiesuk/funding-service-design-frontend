@@ -3,10 +3,10 @@
     "isWelsh": true
   },
   "startPage": "/yngln-ch-sefydliad",
-  "backLinkText": "Yn \u00f4l i'r trosolwg o'r cais",
+  "backLinkText": "Yn ôl i'r trosolwg o'r cais",
   "pages": [
     {
-      "title": "Yngl\u0177n \u00e2'ch sefydliad",
+      "title": "Ynglŷn â'ch sefydliad",
       "path": "/yngln-ch-sefydliad",
       "components": [
         {
@@ -20,7 +20,7 @@
           "name": "orUXQc",
           "options": {},
           "type": "Para",
-          "content": "<label class=\"govuk-!-font-weight-bold\">Yn yr adran hon, byddwn yn holi ynghylch:\n</label>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>rhif traciwr unigryw</li>\n<li>enw'r sefydliad</li>\n<li>enwau amgen eich sefydliad (os yw'n gymwys)</li>\n<li>diben y sefydliad</li>\n<li>gweithgareddau'r sefydliad</li>\n<li>profiad blaenorol o brosiectau tebyg (os yw'n gymwys)</li>\n<li>math o sefydliad</li>\n<li>rhif elusen (os yw'n gymwys)</li>\n<li>rhif cofrestru'r sefydliad (os yw'n berthnasol)</li>\n<li>corff rheoleiddio\u2019r sefydliad</li>\n<li>manylion y rhiant-gwmni (os yw'n gymwys)</li>\n<li>cyfeiriad a chyfryngau cymdeithasol y sefydliad</li>\n<li>sefydliad partner (os yw'n gymwys)</li>\n</ul>\n</div>",
+          "content": "<label class=\"govuk-!-font-weight-bold\">Yn yr adran hon, byddwn yn holi ynghylch:\n</label>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>rhif traciwr unigryw</li>\n<li>enw'r sefydliad</li>\n<li>enwau amgen eich sefydliad (os yw'n gymwys)</li>\n<li>diben y sefydliad</li>\n<li>gweithgareddau'r sefydliad</li>\n<li>profiad blaenorol o brosiectau tebyg (os yw'n gymwys)</li>\n<li>math o sefydliad</li>\n<li>rhif elusen (os yw'n gymwys)</li>\n<li>rhif cofrestru'r sefydliad (os yw'n berthnasol)</li>\n<li>corff rheoleiddio’r sefydliad</li>\n<li>manylion y rhiant-gwmni (os yw'n gymwys)</li>\n<li>cyfeiriad a chyfryngau cymdeithasol y sefydliad</li>\n<li>sefydliad partner (os yw'n gymwys)</li>\n</ul>\n</div>",
           "schema": {}
         }
       ],
@@ -33,7 +33,7 @@
     },
     {
       "path": "/yngln-ch-sefydliad-CUReTW",
-      "title": "Yngl\u0177n \u00e2'ch sefydliad",
+      "title": "Ynglŷn â'ch sefydliad",
       "components": [
         {
           "name": "uNgkim",
@@ -49,7 +49,7 @@
           },
           "type": "TextField",
           "title": "Eich rhif traciwr unigryw",
-          "hint": "Roedd hwn wedi'i gynnwys yn y llythyr yr anfonom i gadarnhau eich datganiad o ddiddordeb llwyddiannus.\n\n<p>Er enghraifft, \u2018ANON-###-###-###\u2019</p>",
+          "hint": "Roedd hwn wedi'i gynnwys yn y llythyr yr anfonom i gadarnhau eich datganiad o ddiddordeb llwyddiannus.\n\n<p>Er enghraifft, ‘ANON-###-###-###’</p>",
           "schema": {}
         },
         {
@@ -86,7 +86,7 @@
     },
     {
       "path": "/yngln-ch-sefydliad-VbNWHZ",
-      "title": "Yngl\u0177n \u00e2'ch sefydliad ",
+      "title": "Ynglŷn â'ch sefydliad ",
       "components": [
         {
           "name": "wnoFHW",
@@ -138,7 +138,7 @@
     },
     {
       "path": "/yngln-ch-sefydliad-tGYvxj",
-      "title": "Yngl\u0177n \u00e2'ch sefydliad",
+      "title": "Ynglŷn â'ch sefydliad",
       "components": [
         {
           "name": "KYKyud",
@@ -216,7 +216,7 @@
     },
     {
       "path": "/yngln-ch-sefydliad-XySFLO",
-      "title": "Yngl\u0177n \u00e2'ch sefydliad",
+      "title": "Ynglŷn â'ch sefydliad",
       "components": [
         {
           "name": "QuTAqW",
@@ -269,7 +269,7 @@
     },
     {
       "path": "/yngln-ch-sefydliad-xrZipi",
-      "title": "Yngl\u0177n \u00e2'ch sefydliad",
+      "title": "Ynglŷn â'ch sefydliad",
       "components": [
         {
           "name": "pTuytP",
@@ -308,7 +308,7 @@
     },
     {
       "path": "/yngln-ch-sefydliad-nihhiY",
-      "title": "Yngl\u0177n \u00e2'ch sefydliad",
+      "title": "Ynglŷn â'ch sefydliad",
       "components": [
         {
           "name": "QzkrIE",
@@ -335,7 +335,7 @@
     },
     {
       "path": "/yngln-ch-sefydliad-gpYXgm",
-      "title": "Yngl\u0177n \u00e2'ch sefydliad",
+      "title": "Ynglŷn â'ch sefydliad",
       "components": [
         {
           "name": "toyZsH",
@@ -369,7 +369,7 @@
     },
     {
       "path": "/yngln-ch-sefydliad-bGTaVh",
-      "title": "Yngl\u0177n \u00e2'ch sefydliad ",
+      "title": "Ynglŷn â'ch sefydliad ",
       "components": [
         {
           "name": "rHMVcR",
@@ -396,7 +396,7 @@
     },
     {
       "path": "/yngln-ch-sefydliad-tWJRuM",
-      "title": "Yngl\u0177n \u00e2'ch sefydliad ",
+      "title": "Ynglŷn â'ch sefydliad ",
       "components": [
         {
           "name": "MgmuIz",
@@ -429,7 +429,7 @@
     },
     {
       "path": "/yngln-ch-sefydliad-xysXMQ",
-      "title": "Yngl\u0177n \u00e2'ch sefydliad",
+      "title": "Ynglŷn â'ch sefydliad",
       "components": [
         {
           "name": "UNQlIu",
@@ -464,7 +464,7 @@
     },
     {
       "path": "/yngln-ch-sefydliad-kbIkgE",
-      "title": "Yngl\u0177n \u00e2'ch sefydliad ",
+      "title": "Ynglŷn â'ch sefydliad ",
       "components": [
         {
           "name": "vRPbaz",
@@ -538,7 +538,7 @@
     },
     {
       "path": "/yngln-ch-sefydliad-kfDBjd",
-      "title": "Yngl\u0177n \u00e2'ch sefydliad",
+      "title": "Ynglŷn â'ch sefydliad",
       "components": [
         {
           "name": "WYZWDE",
@@ -563,7 +563,7 @@
     },
     {
       "path": "/yngln-ch-sefydliad-qpZfwq",
-      "title": "Yngl\u0177n \u00e2'ch sefydliad ",
+      "title": "Ynglŷn â'ch sefydliad ",
       "components": [
         {
           "name": "OKCdpZ",
@@ -576,7 +576,7 @@
           "name": "hnLurH",
           "options": {},
           "type": "YesNoField",
-          "title": "A yw eich cais yn gynnig ar y cyd mewn partneriaeth \u00e2 sefydliadau eraill?",
+          "title": "A yw eich cais yn gynnig ar y cyd mewn partneriaeth â sefydliadau eraill?",
           "schema": {},
           "values": {
             "type": "listRef"
@@ -596,7 +596,7 @@
     },
     {
       "path": "/yngln-ch-sefydliad-yRbguq",
-      "title": "Yngl\u0177n \u00e2'ch sefydliad",
+      "title": "Ynglŷn â'ch sefydliad",
       "components": [
         {
           "name": "YnSQGx",
@@ -630,7 +630,7 @@
           "type": "MultilineTextField",
           "title": "Dywedwch wrthym am eich partneriaeth a sut rydych chi'n bwriadu gweithio gyda'ch gilydd",
           "schema": {},
-          "hint": "<span class=\"govuk-label govuk-label--s\">Dywedwch wrthym am eich partneriaeth a sut rydych chi'n bwriadu gweithio gyda'ch gilydd</span>Os ydych chi'n gweithio mewn partneriaeth \u00e2 mwy nag un sefydliad, rhowch eu manylion yma"
+          "hint": "Os ydych chi'n gweithio mewn partneriaeth â mwy nag un sefydliad, rhowch eu manylion yma"
         }
       ],
       "next": [
@@ -648,7 +648,7 @@
     },
     {
       "path": "/yngln-ch-sefydliad-pYqiWD",
-      "title": "Yngl\u0177n \u00e2'ch sefydliad ",
+      "title": "Ynglŷn â'ch sefydliad ",
       "components": [
         {
           "name": "TUqPvI",
@@ -675,7 +675,7 @@
     },
     {
       "path": "/yngln-ch-sefydliad-xcoucL",
-      "title": "Yngl\u0177n \u00e2'ch sefydliad ",
+      "title": "Ynglŷn â'ch sefydliad ",
       "components": [
         {
           "name": "nITyAP",
@@ -738,14 +738,8 @@
       "name": "jcNxEX",
       "type": "string",
       "items": [
-        {
-          "text": "T\u0177'r Cwmn\u00efau",
-          "value": "House"
-        },
-        {
-          "text": "Arall",
-          "value": "Other"
-        }
+        { "text": "Tŷ'r Cwmnïau", "value": "House" },
+        { "text": "Arall", "value": "Other" }
       ]
     }
   ],
@@ -1094,16 +1088,16 @@
       }
     },
     {
-      "displayName": "A yw eich cais yn gynnig ar y cyd mewn partneriaeth \u00e2 sefydliadau eraill-YES",
+      "displayName": "A yw eich cais yn gynnig ar y cyd mewn partneriaeth â sefydliadau eraill-YES",
       "name": "RhuohT",
       "value": {
-        "name": "A yw eich cais yn gynnig ar y cyd mewn partneriaeth \u00e2 sefydliadau eraill-YES",
+        "name": "A yw eich cais yn gynnig ar y cyd mewn partneriaeth â sefydliadau eraill-YES",
         "conditions": [
           {
             "field": {
               "name": "hnLurH",
               "type": "YesNoField",
-              "display": "A yw eich cais yn gynnig ar y cyd mewn partneriaeth \u00e2 sefydliadau eraill?"
+              "display": "A yw eich cais yn gynnig ar y cyd mewn partneriaeth â sefydliadau eraill?"
             },
             "operator": "is",
             "value": {
@@ -1116,16 +1110,16 @@
       }
     },
     {
-      "displayName": "A yw eich cais yn gynnig ar y cyd mewn partneriaeth \u00e2 sefydliadau eraill-NO",
+      "displayName": "A yw eich cais yn gynnig ar y cyd mewn partneriaeth â sefydliadau eraill-NO",
       "name": "yeyasz",
       "value": {
-        "name": "A yw eich cais yn gynnig ar y cyd mewn partneriaeth \u00e2 sefydliadau eraill-NO",
+        "name": "A yw eich cais yn gynnig ar y cyd mewn partneriaeth â sefydliadau eraill-NO",
         "conditions": [
           {
             "field": {
               "name": "hnLurH",
               "type": "YesNoField",
-              "display": "A yw eich cais yn gynnig ar y cyd mewn partneriaeth \u00e2 sefydliadau eraill?"
+              "display": "A yw eich cais yn gynnig ar y cyd mewn partneriaeth â sefydliadau eraill?"
             },
             "operator": "is",
             "value": {

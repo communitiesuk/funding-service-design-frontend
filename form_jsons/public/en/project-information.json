@@ -76,10 +76,7 @@
         },
         {
           "name": "TFdnGq",
-          "options": {
-            "prefix": "\u00a3",
-            "classes": "govuk-!-width-one-third"
-          },
+          "options": { "prefix": "£", "classes": "govuk-!-width-one-third" },
           "type": "NumberField",
           "title": "Amount of funding received"
         }
