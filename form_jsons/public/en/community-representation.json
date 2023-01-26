@@ -15,26 +15,38 @@
         },
         {
           "name": "JnvsPq",
-          "options": { "maxWords": "500" },
+          "options": {
+            "maxWords": "500",
+            "hideTitle": true
+          },
           "type": "MultilineTextField",
-          "hint": "Please include their:\n<br> \n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>role</li>\n<li>main responsibilities</li>\n</ul>\n<p>You can use your business plan to provide information that supports your answers.</p>\n\n",
+          "hint": "<span class=\"govuk-label govuk-label--s\">List the members of your board</span>Please include their:\n<br> \n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>role</li>\n<li>main responsibilities</li>\n</ul>\n<p>You can use your business plan to provide information that supports your answers.</p>\n\n",
           "title": "List the members of your board"
         },
         {
           "name": "yMCivI",
-          "options": { "maxWords": "500" },
+          "options": {
+            "maxWords": "500"
+          },
           "type": "MultilineTextField",
           "title": "Tell us about your governance and membership structures"
         },
         {
           "name": "NUZOvS",
-          "options": { "maxWords": "500" },
+          "options": {
+            "maxWords": "500",
+            "hideTitle": true
+          },
           "type": "MultilineTextField",
           "title": "Explain how you'll consider the views of the community in the running of the asset",
-          "hint": "Include how they'll be involved in decision making, and how you'll measure public support for your decisions"
+          "hint": "<span class=\"govuk-label govuk-label--s\">Explain how you'll consider the views of the community in the running of the asset</span>Include how they'll be involved in decision making, and how you'll measure public support for your decisions"
         }
       ],
-      "next": [{ "path": "/summary" }]
+      "next": [
+        {
+          "path": "/summary"
+        }
+      ]
     },
     {
       "title": "Check your answers",
@@ -60,7 +72,11 @@
           "content": "<label class=\"govuk-!-font-weight-bold\">In this section, we'll ask about:\n</label>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>members of your board</li>\n<li>governance and membership structures</li>\n<li>how you'll consider the community's views</li>\n</ul>\n</div>"
         }
       ],
-      "next": [{ "path": "/management-case" }],
+      "next": [
+        {
+          "path": "/management-case"
+        }
+      ],
       "controller": "./pages/start.js"
     }
   ],
@@ -70,15 +86,22 @@
   "fees": [],
   "outputs": [
     {
-        "name": "update-form",
-        "title": "Update form in application store",
-        "type": "savePerPage",
-        "outputConfiguration": { "savePerPageUrl": "True" }
+      "name": "update-form",
+      "title": "Update form in application store",
+      "type": "savePerPage",
+      "outputConfiguration": {
+        "savePerPageUrl": "True"
       }
+    }
   ],
   "version": 2,
   "skipSummary": false,
   "name": "Apply for funding to save an asset in your community",
-  "feedback": { "feedbackForm": false, "url": "" },
-  "phaseBanner": { "phase": "beta" }
+  "feedback": {
+    "feedbackForm": false,
+    "url": ""
+  },
+  "phaseBanner": {
+    "phase": "beta"
+  }
 }

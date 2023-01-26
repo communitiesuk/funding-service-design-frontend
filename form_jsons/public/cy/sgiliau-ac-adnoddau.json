@@ -1,7 +1,9 @@
 {
-  "metadata": { "isWelsh": true },
+  "metadata": {
+    "isWelsh": true
+  },
   "startPage": "/achos-rheoli",
-  "backLinkText": "Yn ôl i'r trosolwg o'r cais",
+  "backLinkText": "Yn \u00f4l i'r trosolwg o'r cais",
   "pages": [
     {
       "title": "Achos rheoli",
@@ -18,19 +20,26 @@
           "options": {},
           "type": "Details",
           "title": "Help gyda sgiliau ac adnoddau",
-          "content": "<p>Byddwn yn asesu sut rydych wedi ystyried gofynion rheoli eich prosiect.</p>\n<p>Mae hyn yn cynnwys y camau rydych yn eu cymryd i wneud yn siŵr bod y capasiti a'r adnoddau iawn gan eich sefydliad i gynnal yr ased yn gynaliadwy.</p>\n<p>Mae angen i chi ddangos eich bod wedi ystyried cynllunio ar gyfer olyniaeth staff ac ymddiriedolwyr eich sefydliad.</p>\n<p>Os ydych chi'n bwriadu recriwtio staff i reoli a chynnal yr ased a'i wasanaethau, darparwch drosolwg o'r cynlluniau hyn.</p>\n\n<p>Gallwch ddefnyddio'ch cynllun busnes i ddarparu gwybodaeth sy'n ategu'ch atebion.</p>"
+          "content": "<p>Byddwn yn asesu sut rydych wedi ystyried gofynion rheoli eich prosiect.</p>\n<p>Mae hyn yn cynnwys y camau rydych yn eu cymryd i wneud yn si\u0175r bod y capasiti a'r adnoddau iawn gan eich sefydliad i gynnal yr ased yn gynaliadwy.</p>\n<p>Mae angen i chi ddangos eich bod wedi ystyried cynllunio ar gyfer olyniaeth staff ac ymddiriedolwyr eich sefydliad.</p>\n<p>Os ydych chi'n bwriadu recriwtio staff i reoli a chynnal yr ased a'i wasanaethau, darparwch drosolwg o'r cynlluniau hyn.</p>\n\n<p>Gallwch ddefnyddio'ch cynllun busnes i ddarparu gwybodaeth sy'n ategu'ch atebion.</p>"
         },
         {
           "name": "CBIWnt",
           "options": {},
           "type": "YesNoField",
           "title": "A oes gennych brofiad o reoli ased cymunedol?",
-          "values": { "type": "listRef" }
+          "values": {
+            "type": "listRef"
+          }
         }
       ],
       "next": [
-        { "path": "/achos-rheoli-SNMpGL" },
-        { "path": "/achos-rheoli-MjTHYI", "condition": "gHanKv" }
+        {
+          "path": "/achos-rheoli-SNMpGL"
+        },
+        {
+          "path": "/achos-rheoli-MjTHYI",
+          "condition": "gHanKv"
+        }
       ]
     },
     {
@@ -47,7 +56,7 @@
           "name": "uMhZAI",
           "options": {},
           "type": "Details",
-          "content": "<p>Byddwn yn asesu sut rydych wedi ystyried gofynion rheoli eich prosiect.</p>\n<p>Mae hyn yn cynnwys y camau rydych yn eu cymryd i wneud yn siŵr bod y capasiti a'r adnoddau iawn gan eich sefydliad i gynnal yr ased yn gynaliadwy.</p>\n<p>Mae angen i chi ddangos eich bod wedi ystyried cynllunio ar gyfer olyniaeth staff ac ymddiriedolwyr eich sefydliad.</p>\n<p>Os ydych chi'n bwriadu recriwtio staff i reoli a chynnal yr ased a'i wasanaethau, darparwch drosolwg o'r cynlluniau hyn.</p>\n\n<p>Gallwch ddefnyddio'ch cynllun busnes i ddarparu gwybodaeth sy'n ategu'ch atebion.</p>",
+          "content": "<p>Byddwn yn asesu sut rydych wedi ystyried gofynion rheoli eich prosiect.</p>\n<p>Mae hyn yn cynnwys y camau rydych yn eu cymryd i wneud yn si\u0175r bod y capasiti a'r adnoddau iawn gan eich sefydliad i gynnal yr ased yn gynaliadwy.</p>\n<p>Mae angen i chi ddangos eich bod wedi ystyried cynllunio ar gyfer olyniaeth staff ac ymddiriedolwyr eich sefydliad.</p>\n<p>Os ydych chi'n bwriadu recriwtio staff i reoli a chynnal yr ased a'i wasanaethau, darparwch drosolwg o'r cynlluniau hyn.</p>\n\n<p>Gallwch ddefnyddio'ch cynllun busnes i ddarparu gwybodaeth sy'n ategu'ch atebion.</p>",
           "title": "Help gyda sgiliau ac adnoddau"
         },
         {
@@ -55,12 +64,19 @@
           "options": {},
           "type": "YesNoField",
           "title": "A oes cynlluniau gennych i recriwtio pobl i'ch helpu i reoli'r ased? ",
-          "values": { "type": "listRef" }
+          "values": {
+            "type": "listRef"
+          }
         }
       ],
       "next": [
-        { "path": "/summary" },
-        { "path": "/achos-rheoli-GjacLw", "condition": "uOZOuh" }
+        {
+          "path": "/summary"
+        },
+        {
+          "path": "/achos-rheoli-GjacLw",
+          "condition": "uOZOuh"
+        }
       ]
     },
     {
@@ -85,16 +101,22 @@
           "options": {},
           "type": "Details",
           "title": "Help gyda sgiliau ac adnoddau",
-          "content": "<p>Byddwn yn asesu sut rydych wedi ystyried gofynion rheoli eich prosiect.</p>\n<p>Mae hyn yn cynnwys y camau rydych yn eu cymryd i wneud yn siŵr bod y capasiti a'r adnoddau iawn gan eich sefydliad i gynnal yr ased yn gynaliadwy.</p>\n<p>Mae angen i chi ddangos eich bod wedi ystyried cynllunio ar gyfer olyniaeth staff ac ymddiriedolwyr eich sefydliad.</p>\n<p>Os ydych chi'n bwriadu recriwtio staff i reoli a chynnal yr ased a'i wasanaethau, darparwch drosolwg o'r cynlluniau hyn.</p>\n\n<p>Gallwch ddefnyddio'ch cynllun busnes i ddarparu gwybodaeth sy'n ategu'ch atebion.</p>"
+          "content": "<p>Byddwn yn asesu sut rydych wedi ystyried gofynion rheoli eich prosiect.</p>\n<p>Mae hyn yn cynnwys y camau rydych yn eu cymryd i wneud yn si\u0175r bod y capasiti a'r adnoddau iawn gan eich sefydliad i gynnal yr ased yn gynaliadwy.</p>\n<p>Mae angen i chi ddangos eich bod wedi ystyried cynllunio ar gyfer olyniaeth staff ac ymddiriedolwyr eich sefydliad.</p>\n<p>Os ydych chi'n bwriadu recriwtio staff i reoli a chynnal yr ased a'i wasanaethau, darparwch drosolwg o'r cynlluniau hyn.</p>\n\n<p>Gallwch ddefnyddio'ch cynllun busnes i ddarparu gwybodaeth sy'n ategu'ch atebion.</p>"
         },
         {
           "name": "QWveYc",
-          "options": { "maxWords": "500" },
+          "options": {
+            "maxWords": "500"
+          },
           "type": "MultilineTextField",
           "title": "Disgrifiwch unrhyw brofiad sydd gennych gydag asedau cymunedol tebyg i'r un hwn"
         }
       ],
-      "next": [{ "path": "/achos-rheoli-SNMpGL" }]
+      "next": [
+        {
+          "path": "/achos-rheoli-SNMpGL"
+        }
+      ]
     },
     {
       "path": "/achos-rheoli-GjacLw",
@@ -110,18 +132,25 @@
           "name": "mxgewf",
           "options": {},
           "type": "Details",
-          "content": "<p>Byddwn yn asesu sut rydych wedi ystyried gofynion rheoli eich prosiect.</p>\n<p>Mae hyn yn cynnwys y camau rydych yn eu cymryd i wneud yn siŵr bod y capasiti a'r adnoddau iawn gan eich sefydliad i gynnal yr ased yn gynaliadwy.</p>\n<p>Mae angen i chi ddangos eich bod wedi ystyried cynllunio ar gyfer olyniaeth staff ac ymddiriedolwyr eich sefydliad.</p>\n<p>Os ydych chi'n bwriadu recriwtio staff i reoli a chynnal yr ased a'i wasanaethau, darparwch drosolwg o'r cynlluniau hyn.</p>\n\n<p>Gallwch ddefnyddio'ch cynllun busnes i ddarparu gwybodaeth sy'n ategu'ch atebion.</p>",
+          "content": "<p>Byddwn yn asesu sut rydych wedi ystyried gofynion rheoli eich prosiect.</p>\n<p>Mae hyn yn cynnwys y camau rydych yn eu cymryd i wneud yn si\u0175r bod y capasiti a'r adnoddau iawn gan eich sefydliad i gynnal yr ased yn gynaliadwy.</p>\n<p>Mae angen i chi ddangos eich bod wedi ystyried cynllunio ar gyfer olyniaeth staff ac ymddiriedolwyr eich sefydliad.</p>\n<p>Os ydych chi'n bwriadu recriwtio staff i reoli a chynnal yr ased a'i wasanaethau, darparwch drosolwg o'r cynlluniau hyn.</p>\n\n<p>Gallwch ddefnyddio'ch cynllun busnes i ddarparu gwybodaeth sy'n ategu'ch atebion.</p>",
           "title": "Help gyda sgiliau ac adnoddau"
         },
         {
           "name": "VNjRgZ",
-          "options": { "maxWords": "500" },
+          "options": {
+            "maxWords": "500",
+            "hideTitle": true
+          },
           "type": "MultilineTextField",
-          "hint": "<div>Dylai'r rhain fod yn swyddi a fydd yn eich helpu i reoli'r ased yn effeithiol yn ystod perchnogaeth gymunedol.</div>\n\n<div class=\"govuk-!-padding-top-3\">Cynhwyswch:</div>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>y rôl</li>\n<li>y prif gyfrifoldebau</li>\n</ul>\n\n<p>Gallwch ddefnyddio'ch cynllun busnes i ddarparu tystiolaeth i ategu'ch atebion.</p>",
+          "hint": "<span class=\"govuk-label govuk-label--s\">Dywedwch wrthym am y rolau y byddwch yn eu recriwtio</span><div>Dylai'r rhain fod yn swyddi a fydd yn eich helpu i reoli'r ased yn effeithiol yn ystod perchnogaeth gymunedol.</div>\n\n<div class=\"govuk-!-padding-top-3\">Cynhwyswch:</div>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>y r\u00f4l</li>\n<li>y prif gyfrifoldebau</li>\n</ul>\n\n<p>Gallwch ddefnyddio'ch cynllun busnes i ddarparu tystiolaeth i ategu'ch atebion.</p>",
           "title": "Dywedwch wrthym am y rolau y byddwch yn eu recriwtio"
         }
       ],
-      "next": [{ "path": "/summary" }]
+      "next": [
+        {
+          "path": "/summary"
+        }
+      ]
     },
     {
       "path": "/achos-rheoli",
@@ -140,7 +169,11 @@
           "content": "<label class=\"govuk-!-font-weight-bold\">Yn yr adran hon, byddwn yn holi ynghylch:\n</label>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>profiad o reoli ased cymunedol (os yw'n gymwys)</li>\n<li>rolau y byddwch yn eu recriwtio yn y dyfodol (os yw'n gymwys)</li>\n</ul>\n</div>"
         }
       ],
-      "next": [{ "path": "/achos-rheoli-ILTxEa" }],
+      "next": [
+        {
+          "path": "/achos-rheoli-ILTxEa"
+        }
+      ],
       "controller": "./pages/start.js"
     }
   ],
@@ -160,7 +193,11 @@
               "display": "A oes gennych brofiad o reoli ased cymunedol?"
             },
             "operator": "is",
-            "value": { "type": "Value", "value": "true", "display": "true" }
+            "value": {
+              "type": "Value",
+              "value": "true",
+              "display": "true"
+            }
           }
         ]
       }
@@ -178,7 +215,11 @@
               "display": "A oes cynlluniau gennych i recriwtio pobl i'ch helpu i reoli'r ased? "
             },
             "operator": "is",
-            "value": { "type": "Value", "value": "true", "display": "true" }
+            "value": {
+              "type": "Value",
+              "value": "true",
+              "display": "true"
+            }
           }
         ]
       }
@@ -190,12 +231,19 @@
       "name": "update-form",
       "title": "Update form in application store",
       "type": "savePerPage",
-      "outputConfiguration": { "savePerPageUrl": "True" }
+      "outputConfiguration": {
+        "savePerPageUrl": "True"
+      }
     }
   ],
   "version": 2,
   "skipSummary": false,
   "name": "Gwneud cais am gyllid i achub ased yn eich cymuned",
-  "feedback": { "feedbackForm": false, "url": "" },
-  "phaseBanner": { "phase": "beta" }
+  "feedback": {
+    "feedbackForm": false,
+    "url": ""
+  },
+  "phaseBanner": {
+    "phase": "beta"
+  }
 }

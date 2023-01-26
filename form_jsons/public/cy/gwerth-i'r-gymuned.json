@@ -1,7 +1,9 @@
 {
-  "metadata": { "isWelsh": true },
+  "metadata": {
+    "isWelsh": true
+  },
   "startPage": "/gwerth-ychwanegol-ir-gymuned",
-  "backLinkText": "Yn ôl i'r trosolwg o'r cais",
+  "backLinkText": "Yn \u00f4l i'r trosolwg o'r cais",
   "pages": [
     {
       "title": "Gwerth ychwanegol i'r gymuned",
@@ -15,19 +17,28 @@
         },
         {
           "name": "oOPUXI",
-          "options": { "maxWords": "500" },
+          "options": {
+            "maxWords": "500",
+            "hideTitle": true
+          },
           "type": "MultilineTextField",
           "title": "Dywedwch wrthym am eich cymuned leol yn gyffredinol",
-          "hint": "Mae hyn yn cynnwys manylion unrhyw anghenion sydd ganddi, a sut \nbydd eich prosiect yn mynd ati i gefnogi'r rhain.\n<p>Lle bo modd, cyfeiriwch at unrhyw ddata sydd gennych ar nodweddion \ngwarchodedig ac effeithiau ar gydraddoldeb.</p>"
+          "hint": "<span class=\"govuk-label govuk-label--s\">Dywedwch wrthym am eich cymuned leol yn gyffredinol</span>Mae hyn yn cynnwys manylion unrhyw anghenion sydd ganddi, a sut \nbydd eich prosiect yn mynd ati i gefnogi'r rhain.\n<p>Lle bo modd, cyfeiriwch at unrhyw ddata sydd gennych ar nodweddion \ngwarchodedig ac effeithiau ar gydraddoldeb.</p>"
         },
         {
           "name": "NKOmNL",
-          "options": { "maxWords": "500" },
+          "options": {
+            "maxWords": "500"
+          },
           "type": "MultilineTextField",
-          "title": "Disgrifiwch unrhyw heriau penodol mae eich cymuned yn eu hwynebu,  a sut bydd yr ased yn mynd i'r afael â'r rhain"
+          "title": "Disgrifiwch unrhyw heriau penodol mae eich cymuned yn eu hwynebu,  a sut bydd yr ased yn mynd i'r afael \u00e2'r rhain"
         }
       ],
-      "next": [{ "path": "/summary" }]
+      "next": [
+        {
+          "path": "/summary"
+        }
+      ]
     },
     {
       "title": "Gwiriwch eich atebion",
@@ -53,7 +64,11 @@
           "content": "<label class=\"govuk-!-font-weight-bold\">Yn yr adran hon, byddwn yn holi ynghylch:\n</label>\n\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>trosolwg o'r gymuned leol</li>\n<li>heriau y mae'r gymuned yn eu hwynebu</li>\n</ul>\n</div>"
         }
       ],
-      "next": [{ "path": "/gwerth-ychwanegol-ir-gymuned-EYuYMG" }],
+      "next": [
+        {
+          "path": "/gwerth-ychwanegol-ir-gymuned-EYuYMG"
+        }
+      ],
       "controller": "./pages/start.js"
     }
   ],
@@ -74,6 +89,11 @@
   "version": 2,
   "skipSummary": false,
   "name": "Gwneud cais am gyllid i achub ased yn eich cymuned",
-  "feedback": { "feedbackForm": false, "url": "" },
-  "phaseBanner": { "phase": "beta" }
+  "feedback": {
+    "feedbackForm": false,
+    "url": ""
+  },
+  "phaseBanner": {
+    "phase": "beta"
+  }
 }
