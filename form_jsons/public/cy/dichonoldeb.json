@@ -3,7 +3,7 @@
     "isWelsh": true
   },
   "startPage": "/achos-rheoli",
-  "backLinkText": "Yn \u00f4l i'r trosolwg o'r cais",
+  "backLinkText": "Yn ôl i'r trosolwg o'r cais",
   "pages": [
     {
       "title": "Achos rheoli",
@@ -36,7 +36,7 @@
           "name": "aAeszH",
           "options": {},
           "type": "YesNoField",
-          "title": "A oes angen i chi ymgymryd ag unrhyw waith pellach yn ymwneud \u00e2 dichonoldeb?",
+          "title": "A oes angen i chi ymgymryd ag unrhyw waith pellach yn ymwneud â dichonoldeb?",
           "values": {
             "type": "listRef"
           }

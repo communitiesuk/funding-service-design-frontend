@@ -631,7 +631,7 @@
           "type": "MultilineTextField",
           "title": "Dywedwch wrthym am eich partneriaeth a sut rydych chi'n bwriadu gweithio gyda'ch gilydd",
           "schema": {},
-          "hint": "Os ydych chi'n gweithio mewn partneriaeth â mwy nag un sefydliad, rhowch eu manylion yma"
+          "hint": "<span class=\"govuk-label govuk-label--s\">Dywedwch wrthym am eich partneriaeth a sut rydych chi'n bwriadu gweithio gyda'ch gilydd</span>Os ydych chi'n gweithio mewn partneriaeth â mwy nag un sefydliad, rhowch eu manylion yma"
         }
       ],
       "next": [
@@ -739,8 +739,14 @@
       "name": "jcNxEX",
       "type": "string",
       "items": [
-        { "text": "Tŷ'r Cwmnïau", "value": "House" },
-        { "text": "Arall", "value": "Other" }
+        {
+          "text": "Tŷ'r Cwmnïau",
+          "value": "House"
+        },
+        {
+          "text": "Arall",
+          "value": "Other"
+        }
       ]
     }
   ],

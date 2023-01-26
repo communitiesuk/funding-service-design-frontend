@@ -22,7 +22,7 @@
             "hideTitle": true
           },
           "type": "MultilineTextField",
-          "hint": "Cynhwyswch eu:\n<br> \n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>rôl</li>\n<li>prif gyfrifoldebau</li>\n</ul>\n<p>Gallwch ddefnyddio'ch cynllun busnes i ddarparu tystiolaeth i ategu'ch atebion.</p>\n\n",
+          "hint": "<span class=\"govuk-label govuk-label--s\">Rhestrwch aelodau eich bwrdd</span>Cynhwyswch eu:\n<br> \n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>rôl</li>\n<li>prif gyfrifoldebau</li>\n</ul>\n<p>Gallwch ddefnyddio'ch cynllun busnes i ddarparu tystiolaeth i ategu'ch atebion.</p>\n\n",
           "title": "Rhestrwch aelodau eich bwrdd"
         },
         {

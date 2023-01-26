@@ -3,7 +3,7 @@
     "isWelsh": true
   },
   "startPage": "/gwerth-ychwanegol-ir-gymuned",
-  "backLinkText": "Yn \u00f4l i'r trosolwg o'r cais",
+  "backLinkText": "Yn ôl i'r trosolwg o'r cais",
   "pages": [
     {
       "title": "Gwerth ychwanegol i'r gymuned",
@@ -31,7 +31,7 @@
             "maxWords": "500"
           },
           "type": "MultilineTextField",
-          "title": "Disgrifiwch unrhyw heriau penodol mae eich cymuned yn eu hwynebu,  a sut bydd yr ased yn mynd i'r afael \u00e2'r rhain"
+          "title": "Disgrifiwch unrhyw heriau penodol mae eich cymuned yn eu hwynebu,  a sut bydd yr ased yn mynd i'r afael â'r rhain"
         }
       ],
       "next": [

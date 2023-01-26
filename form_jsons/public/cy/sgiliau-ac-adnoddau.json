@@ -142,7 +142,7 @@
             "hideTitle": true
           },
           "type": "MultilineTextField",
-          "hint": "<div>Dylai'r rhain fod yn swyddi a fydd yn eich helpu i reoli'r ased yn effeithiol yn ystod perchnogaeth gymunedol.</div>\n\n<div class=\"govuk-!-padding-top-3\">Cynhwyswch:</div>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>y rôl</li>\n<li>y prif gyfrifoldebau</li>\n</ul>\n\n<p>Gallwch ddefnyddio'ch cynllun busnes i ddarparu tystiolaeth i ategu'ch atebion.</p>",
+          "hint": "<span class=\"govuk-label govuk-label--s\">Dywedwch wrthym am y rolau y byddwch yn eu recriwtio</span><div>Dylai'r rhain fod yn swyddi a fydd yn eich helpu i reoli'r ased yn effeithiol yn ystod perchnogaeth gymunedol.</div>\n\n<div class=\"govuk-!-padding-top-3\">Cynhwyswch:</div>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>y rôl</li>\n<li>y prif gyfrifoldebau</li>\n</ul>\n\n<p>Gallwch ddefnyddio'ch cynllun busnes i ddarparu tystiolaeth i ategu'ch atebion.</p>",
           "title": "Dywedwch wrthym am y rolau y byddwch yn eu recriwtio"
         }
       ],

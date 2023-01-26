@@ -3,10 +3,10 @@
     "isWelsh": true
   },
   "startPage": "/yngln-ch-prosiect",
-  "backLinkText": "Yn \u00f4l i'r trosolwg o'r cais",
+  "backLinkText": "Yn ôl i'r trosolwg o'r cais",
   "pages": [
     {
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "path": "/yngln-ch-prosiect-RjBjaK",
       "components": [
         {
@@ -20,7 +20,7 @@
           "options": {},
           "type": "RadiosField",
           "title": "Math o ased",
-          "hint": "Dewiswch sut mae'r ased yn cael ei ddefnyddio'n bennaf. Er enghraifft,\nos yw'n theatr sydd \u00e2 chaffi hefyd, dewiswch 'Theatr'",
+          "hint": "Dewiswch sut mae'r ased yn cael ei ddefnyddio'n bennaf. Er enghraifft,\nos yw'n theatr sydd â chaffi hefyd, dewiswch 'Theatr'",
           "list": "AwCSoL",
           "values": {
             "type": "listRef"
@@ -39,7 +39,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-lEOTVw",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "LjSaeq",
@@ -62,7 +62,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-PVPCpu",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "nouxzF",
@@ -103,7 +103,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-zRheCl",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "Fmluly",
@@ -128,7 +128,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-FyQPEL",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "bLCDBI",
@@ -159,7 +159,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-IzLOLm",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "fJVdgL",
@@ -184,7 +184,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-IvofVb",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "lusfLU",
@@ -210,7 +210,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-tXQRck",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "MRrIQO",
@@ -243,7 +243,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-FwZiQZ",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "gaXSIn",
@@ -273,7 +273,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-ThSwEm",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "PoZmwV",
@@ -287,7 +287,7 @@
             "classes": "govuk-!-width-full"
           },
           "type": "TextField",
-          "title": "Dywedwch wrthym am yr unigolyn y siaradoch ag ef yn y corff cyhoeddus perthnasol yngl\u0177n \u00e2'r ased",
+          "title": "Dywedwch wrthym am yr unigolyn y siaradoch ag ef yn y corff cyhoeddus perthnasol ynglŷn â'r ased",
           "hint": "<span class=\"govuk-body\">Enw'r cyswllt</span>"
         },
         {
@@ -314,7 +314,7 @@
           "name": "nkPfyn",
           "options": {},
           "type": "CheckboxesField",
-          "title": "Pan fyddwch chi'n prynu neu'n prydlesu ased sydd ym mherchnogaeth y cyhoedd, ni all yr awdurdod cyhoeddus drosglwyddo gwasanaethau na dyletswyddau statudol i'r gr\u0175p cymunedol.",
+          "title": "Pan fyddwch chi'n prynu neu'n prydlesu ased sydd ym mherchnogaeth y cyhoedd, ni all yr awdurdod cyhoeddus drosglwyddo gwasanaethau na dyletswyddau statudol i'r grŵp cymunedol.",
           "hint": "Mae hyn yn cynnwys pethau fel gofal cymdeithasol, casglu gwastraff a gwasanaethau cynllunio.\n<p>Nid ydym yn diffinio llyfrgelloedd unigol fel gwasanaethau statudol at y diben hwn.</p>\n",
           "list": "YlLedV"
         },
@@ -331,7 +331,7 @@
             "required": true
           },
           "type": "FileUploadField",
-          "hint": "<label>Lanlwythwch dystiolaeth ategol i grynhoi:</label>\n<p>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m\">\n<li>y risg y mae'r ased yn ei hwynebu</li>\n<li>na fydd unrhyw wasanaethau statudol yn cael eu trosglwyddo o'r awdurdod cyhoeddus</li>\n<li>y bydd yr ased yn gynaliadwy ar \u00f4l iddo gael ei drosglwyddo</li>\n</ul>\n\n<label class=\"govuk-caption-m\">Er enghraifft, gall y dystiolaeth hon gynnwys cadarnhad gan y perchennog cyhoeddus neu lythyr gan yr awdurdod lleol</label>\n<p>Dylai fod yn ffeil unigol nad yw'n fwy na 5MB ar unrhyw un o'r fformatau canlynol:</p>\n\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m\">\n<li>jpg</li>\n<li>jpeg</li>\n<li>png</li>\n<li>pdf</li>\n<li>txt</li>\n<li>doc</li>\n<li>docx</li>\n<li>odt</li>\n<li>csv</li>\n<li>xls</li>\n<li>xlsx</li>\n<li>ods</li>\n</ul>\n</p>",
+          "hint": "<label>Lanlwythwch dystiolaeth ategol i grynhoi:</label>\n<p>\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m\">\n<li>y risg y mae'r ased yn ei hwynebu</li>\n<li>na fydd unrhyw wasanaethau statudol yn cael eu trosglwyddo o'r awdurdod cyhoeddus</li>\n<li>y bydd yr ased yn gynaliadwy ar ôl iddo gael ei drosglwyddo</li>\n</ul>\n\n<label class=\"govuk-caption-m\">Er enghraifft, gall y dystiolaeth hon gynnwys cadarnhad gan y perchennog cyhoeddus neu lythyr gan yr awdurdod lleol</label>\n<p>Dylai fod yn ffeil unigol nad yw'n fwy na 5MB ar unrhyw un o'r fformatau canlynol:</p>\n\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m\">\n<li>jpg</li>\n<li>jpeg</li>\n<li>png</li>\n<li>pdf</li>\n<li>txt</li>\n<li>doc</li>\n<li>docx</li>\n<li>odt</li>\n<li>csv</li>\n<li>xls</li>\n<li>xlsx</li>\n<li>ods</li>\n</ul>\n</p>",
           "title": "Lanlwythwch dystiolaeth ategol"
         }
       ],
@@ -343,7 +343,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-fopmMu",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "ZyEFDq",
@@ -373,7 +373,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-wHJEcK",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "cQpClK",
@@ -385,7 +385,7 @@
           "name": "MLwpjP",
           "options": {},
           "type": "YesNoField",
-          "title": "A fyddwch chi'n prynu'r ased o fewn y ffr\u00e2m amser priodol?",
+          "title": "A fyddwch chi'n prynu'r ased o fewn y ffrâm amser priodol?",
           "values": {
             "type": "listRef"
           }
@@ -399,7 +399,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-xRRHXQ",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "iZzvMF",
@@ -429,7 +429,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-flkVUA",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "LfCMtg",
@@ -469,7 +469,7 @@
     },
     {
       "path": "/yngln-ch-prosiect-clQNOH",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "ZCNFUF",
@@ -501,7 +501,7 @@
     },
     {
       "path": "/yngln-ch-prosiect",
-      "title": "Yngl\u0177n \u00e2'ch prosiect",
+      "title": "Ynglŷn â'ch prosiect",
       "components": [
         {
           "name": "PxYgqa",

@@ -81,7 +81,10 @@
         },
         {
           "name": "TFdnGq",
-          "options": { "prefix": "£", "classes": "govuk-!-width-one-third" },
+          "options": {
+            "prefix": "£",
+            "classes": "govuk-!-width-one-third"
+          },
           "type": "NumberField",
           "title": "Swm y cyllid a dderbyniwyd"
         }

@@ -47,7 +47,7 @@
           },
           "type": "MultilineTextField",
           "title": "Dywedwch wrthym sut byddwch chi'n gwneud yn siŵr bod y gymuned gyfan yn  elwa o'r ased",
-          "hint": "Er enghraifft, pobl nad ydynt wedi defnyddio'r ased yn y gorffennol"
+          "hint": "<span class=\"govuk-label govuk-label--s\">Dywedwch wrthym sut byddwch chi'n gwneud yn siŵr bod y gymuned gyfan yn  elwa o'r ased</span>Er enghraifft, pobl nad ydynt wedi defnyddio'r ased yn y gorffennol"
         }
       ],
       "next": [
