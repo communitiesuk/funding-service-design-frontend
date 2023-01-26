@@ -42,11 +42,11 @@ jobs:
       - name: create python env
         run: python -m venv .venv
       - name: install dependencies
-        run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements.txt
+        run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements-dev.txt
       - name: build static assets
         run: python build.py
       - name: run unit tests
-        run: pip install pytest && pytest -k "not accessibility"
+        run: pytest -k "not accessibility"
       - name: Deploy to Gov PaaS
         uses: citizen-of-planet-earth/cf-cli-action@v2
         with:
