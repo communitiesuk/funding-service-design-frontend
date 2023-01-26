@@ -9,11 +9,16 @@ def date_format_short_month(value: datetime, format="dd MMM yyyy"):
 
 
 def datetime_format_short_month(value: datetime) -> str:
-    formatted_date = format_datetime(value, format="dd MMM yyyy ")
-    formatted_date += gettext("at")
-    formatted_date += format_datetime(value, format=" HH:mm")
-    formatted_date += format_datetime(value, "a").lower()
-    return formatted_date
+    print("value " + value)
+    if value:
+        formatted_date = format_datetime(value, format="dd MMM yyyy ")
+        print("Formatted date:" + formatted_date)
+        formatted_date += gettext("at")
+        formatted_date += format_datetime(value, format=" HH:mm")
+        formatted_date += format_datetime(value, "a").lower()
+        return formatted_date
+    else:
+        return ""
 
 
 def datetime_format(value: str) -> str:
