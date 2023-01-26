@@ -46,7 +46,9 @@ jobs:
       - name: build static assets
         run: python build.py
       - name: run unit tests
-        run: pytest -k "not accessibility"
+        run: |
+          source .venv/bin/activate
+          pytest -k "not accessibility"
       - name: Deploy to Gov PaaS
         uses: citizen-of-planet-earth/cf-cli-action@v2
         with:
