@@ -493,11 +493,12 @@
         {
           "name": "FhbaEy",
           "options": {
-            "classes": "govuk-!-width-full"
+            "classes": "govuk-!-width-full",
+            "hideTitle": true
           },
           "type": "WebsiteField",
           "title": "Gwefan a chyfryngau cymdeithasol",
-          "hint": "Er enghraifft, cyfrifon Facebook, Instagram neu Twitter eich cwmni (os yw'n gymwys)\n<br> <br>\n<label class=\"govuk-body\">Dolen 1</label>\n",
+          "hint": "<span class=\"govuk-label govuk-label--s\">Website and social media</span><span class=\"govuk-body\">Er enghraifft, cyfrifon Facebook, Instagram neu Twitter eich cwmni (os yw'n gymwys)</span><br><br><span class=\"govuk-body\">Dolen 1</span>\n",
           "schema": {}
         },
         {
