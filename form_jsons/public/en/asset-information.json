@@ -227,14 +227,14 @@
           "options": { "hideTitle": true, "classes": "govuk-!-width-full" },
           "type": "TextField",
           "title": "Job title of contact",
-          "hint": "Job title of contact"
+          "hint": "<label class=\"govuk-body\">Job title of contact</label>"
         },
         {
           "name": "ZHPwln",
           "options": { "hideTitle": true, "classes": "govuk-!-width-full" },
           "type": "TextField",
           "title": "Organisation name",
-          "hint": "Organisation name"
+          "hint": "<label class=\"govuk-body\">Organisation name</label>"
         },
         {
           "name": "nkPfyn",

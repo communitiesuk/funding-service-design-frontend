@@ -93,7 +93,7 @@
             },
             "type": "TextField",
             "title": "Alternative names of your organisation - Alternative name 2 ",
-            "hint": "Alternative name 2 (optional)",
+            "hint": "<span class=\"govuk-body\">Alternative name 2 (optional)</span>",
             "schema": {}
           },
           {
@@ -105,7 +105,7 @@
             },
             "type": "TextField",
             "title": "Alternative names of your organisation - Alternative name 3 ",
-            "hint": "Alternative name 3 (optional)",
+            "hint": "<span class=\"govuk-body\">Alternative name 3 (optional)</span>",
             "schema": {}
           }
         ],
@@ -147,7 +147,7 @@
             },
             "type": "MultilineTextField",
             "title": "Tell us about your organisation's main activities - Activity 2 ",
-            "hint": "Activity 2 (optional)",
+            "hint": "<span class=\"govuk-body\">Activity 2 (optional)</span>",
             "schema": {}
           },
           {
@@ -159,7 +159,7 @@
             },
             "type": "MultilineTextField",
             "title": "Tell us about your organisation's main activities - Activity 3 ",
-            "hint": "Activity 3 (optional)",
+            "hint": "<span class=\"govuk-body\">Activity 3 (optional)</span>",
             "schema": {}
           },
           {
@@ -203,7 +203,7 @@
             },
             "type": "MultilineTextField",
             "title": "Describe your previous projects - Project 2 ",
-            "hint": "Project 2 (optional)",
+            "hint": "<span class=\"govuk-body\">Project 2 (optional)</span>",
             "schema": {}
           },
           {
@@ -215,7 +215,7 @@
             },
             "type": "MultilineTextField",
             "title": "Describe your previous projects - Project 3 ",
-            "hint": "Project 3 (optional)",
+            "hint": "<span class=\"govuk-body\">Project 3 (optional)</span>",
             "schema": {}
           }
         ],
@@ -413,7 +413,7 @@
             },
             "type": "WebsiteField",
             "title": "Website and social media - Link or username 2",
-            "hint": "Link 2 (optional)",
+            "hint": "<span class=\"govuk-body\">Link 2 (optional)</span>",
             "schema": {}
           },
           {
@@ -425,7 +425,7 @@
             },
             "type": "WebsiteField",
             "title": "Website and social media - Link or username 3",
-            "hint": "Link 3 (optional)",
+            "hint": "<span class=\"govuk-body\">Link 3 (optional)</span>",
             "schema": {}
           }
         ],
