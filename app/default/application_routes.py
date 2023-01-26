@@ -1,6 +1,6 @@
-from datetime import datetime
 from functools import wraps
 from http.client import METHOD_NOT_ALLOWED
+
 import requests
 from app.constants import ApplicationStatus
 from app.default.data import get_account
@@ -10,7 +10,6 @@ from app.default.data import get_round_data
 from app.default.data import get_round_data_fail_gracefully
 from app.helpers import format_rehydrate_payload
 from app.helpers import get_token_to_return_to_application
-from app.models.application_summary import ApplicationSummary
 from config import Config
 from flask import abort
 from flask import Blueprint
@@ -20,12 +19,20 @@ from flask import redirect
 from flask import render_template
 from flask import request
 from flask import url_for
+from flask_babel import force_locale
 from flask_wtf import FlaskForm
 from fsd_utils.authentication.decorators import login_required
-from flask_babel import force_locale
-from app.default.routes import current_datetime_after_given, current_datetime_before_given
+from fsd_utils.simple_utils.date_utils import (
+    current_datetime_after_given_iso_string,
+)
+from fsd_utils.simple_utils.date_utils import (
+    current_datetime_before_given_iso_string,
+)
 
-application_bp = Blueprint("application_routes", __name__, template_folder="templates")
+application_bp = Blueprint(
+    "application_routes", __name__, template_folder="templates"
+)
+
 
 # TODO Move the following method into utils, but will need access to DB
 def verify_application_owner_local(f):
@@ -67,6 +74,7 @@ def verify_application_owner_local(f):
 
 # End TODO
 
+
 @application_bp.route("/tasklist/<application_id>", methods=["GET"])
 @login_required
 @verify_application_owner_local
@@ -80,12 +88,12 @@ def tasklist(application_id):
     Returns:
         function: a function which renders the tasklist template.
     """
-    round_data = get_round_data(
-        Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, True
-    )
 
-    if current_datetime_before_given(round_data.deadline):
-        application = get_application_data(application_id, as_dict=True)
+    application = get_application_data(application_id, as_dict=True)
+    round_data = get_round_data(
+        application.fund_id, application.round_id, True
+    )
+    if current_datetime_before_given_iso_string(round_data.deadline):
 
         account = get_account(account_id=application.account_id)
         if application.status == ApplicationStatus.SUBMITTED.name:
@@ -126,14 +134,20 @@ def tasklist(application_id):
                 sections=sections,
                 application_meta_data=application_meta_data,
                 form=form,
-                contact_us_email_address=round_data.contact_details["email_address"],
+                contact_us_email_address=round_data.contact_details[
+                    "email_address"
+                ],
                 submission_deadline=round_data.deadline,
-                is_past_submission_deadline=current_datetime_after_given(round_data.deadline),
+                is_past_submission_deadline=current_datetime_after_given_iso_string(  # noqa:E501
+                    round_data.deadline
+                ),
             )
     return redirect(url_for("account_routes.dashboard"))
 
 
-@application_bp.route("/continue_application/<application_id>", methods=["GET"])
+@application_bp.route(
+    "/continue_application/<application_id>", methods=["GET"]
+)
 @login_required
 @verify_application_owner_local
 def continue_application(application_id):
@@ -155,7 +169,9 @@ def continue_application(application_id):
     form_name = args.get("form_name")
     return_url = (
         request.host_url
-        + url_for("application_routes.tasklist", application_id=application_id)[1:]
+        + url_for(
+            "application_routes.tasklist", application_id=application_id
+        )[1:]
     )
     current_app.logger.info(
         f"Url the form runner should return to '{return_url}'."
@@ -188,17 +204,18 @@ def continue_application(application_id):
 @login_required
 @verify_application_owner_local
 def submit_application():
+    application_id = request.form.get("application_id")
+    application = get_application_data(application_id, as_dict=True)
     round_data = get_round_data_fail_gracefully(
-        Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID)
+        application.fund_id, application.round_id
+    )
 
-    if current_datetime_before_given(round_data.deadline):
-        application_id = request.form.get("application_id")
+    if current_datetime_before_given_iso_string(round_data.deadline):
         submitted = format_payload_and_submit_application(application_id)
 
         application_id = submitted.get("id")
         application_reference = submitted.get("reference")
         application_email = submitted.get("email")
-        application = get_application_data(application_id, as_dict=True)
         with force_locale(application.language):
             return render_template(
                 "application_submitted.html",

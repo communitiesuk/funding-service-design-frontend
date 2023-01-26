@@ -1,8 +1,8 @@
 import json
 
+from app.default.account_routes import build_application_data_for_display
 from app.models.application_summary import ApplicationSummary
 from app.models.round import Round
-from app.default.account_routes import build_application_data_for_display
 
 file = open("tests/api_data/endpoint_data.json")
 data = json.loads(file.read())
@@ -12,10 +12,103 @@ TEST_APPLICATION_STORE_DATA = data[
 TEST_SUBMITTED_APPLICATION_STORE_DATA = data[
     "http://application_store/applications?account_id=test-user-2"
 ]
-TEST_ROUND_STORE_DATA = data["http://fund_store/funds/funding-serivce-design/rounds/summer"]
+TEST_ROUND_STORE_DATA = data[
+    "http://fund_store/funds/funding-serivce-design/rounds/summer"
+]
 
 TEST_FUNDS_DATA = data["fund_store/funds?language=en"]
-TEST_ROUNDS_DATA = data["fund_store/funds/funding-service-design/rounds?language=en"]
+TEST_ROUNDS_DATA = data[
+    "fund_store/funds/funding-service-design/rounds?language=en"
+]
+
+TEST_DISPLAY_DATA = {
+    "funding-service-design": {
+        "fund_data": {
+            "id": "funding-service-design",
+            "name": "Test Fund",
+            "description": "test test",
+            "short_name": "FSD",
+        },
+        "rounds": [
+            {
+                "is_past_submission_deadline": True,
+                "is_not_yet_open": False,
+                "round_details": {
+                    "opens": "2022-09-01 00:00:01",
+                    "deadline": "2030-01-30 00:00:01",
+                    "assessment_deadline": "2030-03-20 00:00:01",
+                    "id": "cof-r2w2",
+                    "title": "Round 2 Window 2",
+                    "fund_id": "fund-service-design",
+                    "short_name": "R2W2",
+                    "assessment_criteria_weighting": [],
+                    "contact_details": {},
+                    "support_availability": {},
+                },
+                "applications": [
+                    {
+                        "id": "uuidv4",
+                        "reference": "TEST-REF-B",
+                        "status": "NOT_SUBMITTED",
+                        "round_id": "summer",
+                        "fund_id": "funding-service-design",
+                        "started_at": "2020-01-01 12:03:00",
+                        "project_name": None,
+                        "last_edited": "2020-01-01 12:03:00",
+                    },
+                    {
+                        "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",
+                        "reference": "TEST-REF-C",
+                        "status": "SUBMITTED",
+                        "round_id": "summer",
+                        "fund_id": "funding-service-design",
+                        "started_at": "2023-01-01 12:01:00",
+                        "project_name": "",
+                        "last_edited": None,
+                    },
+                ],
+            },
+            {
+                "is_past_submission_deadline": False,
+                "is_not_yet_open": False,
+                "round_details": {
+                    "opens": "2022-09-01 00:00:01",
+                    "deadline": "2030-01-30 00:00:01",
+                    "assessment_deadline": "2030-03-20 00:00:01",
+                    "id": "summer",
+                    "title": "Summer round",
+                    "fund_id": "fund-service-design",
+                    "short_name": "R2W3",
+                    "assessment_criteria_weighting": [],
+                    "contact_details": {},
+                    "support_availability": {},
+                },
+                "applications": [
+                    {
+                        "id": "uuidv4",
+                        "reference": "TEST-REF-B",
+                        "status": "IN_PROGRESS",
+                        "round_id": "summer",
+                        "fund_id": "funding-service-design",
+                        "started_at": "2020-01-01 12:03:00",
+                        "project_name": None,
+                        "last_edited": "2020-01-01 12:03:00",
+                    },
+                    {
+                        "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",
+                        "reference": "TEST-REF-C",
+                        "status": "READY_TO_SUBMIT",
+                        "round_id": "summer",
+                        "fund_id": "funding-service-design",
+                        "started_at": "2023-01-01 12:01:00",
+                        "project_name": "",
+                        "last_edited": None,
+                    },
+                ],
+            },
+        ],
+    }
+}
 
 
 def test_serialise_application_summary():
@@ -51,7 +144,7 @@ def test_dashboard_route(flask_test_client, mocker, monkeypatch):
 
 
 def test_submitted_dashboard_route_shows_no_application_link(
-        flask_test_client, mocker, monkeypatch
+    flask_test_client, mocker, monkeypatch
 ):
     monkeypatch.setattr(
         "fsd_utils.authentication.decorators._check_access_token",
@@ -73,7 +166,7 @@ def test_submitted_dashboard_route_shows_no_application_link(
 
 
 def test_dashboard_route_no_applications(
-        flask_test_client, mocker, monkeypatch
+    flask_test_client, mocker, monkeypatch
 ):
     monkeypatch.setattr(
         "fsd_utils.authentication.decorators._check_access_token",
@@ -94,21 +187,37 @@ def test_dashboard_route_no_applications(
 
 
 def test_build_application_data_for_display(mocker, monkeypatch):
-    # mocker.patch("app.default.data.get_lang",
-    # return_value = "en")
+    mocker.patch(
+        "app.default.account_routes.get_all_funds",
+        return_value=TEST_FUNDS_DATA,
+    )
+    mocker.patch(
+        "app.default.account_routes.get_all_rounds_for_fund",
+        return_value=TEST_ROUNDS_DATA,
+    )
 
-    # mocker.patch("app.default.data.current_app")
-
-    mocker.patch("app.default.account_routes.get_all_funds", return_value=TEST_FUNDS_DATA)
-    mocker.patch("app.default.account_routes.get_all_rounds_for_fund", return_value=TEST_ROUNDS_DATA)
-
-    result = build_application_data_for_display([ApplicationSummary.from_dict(app) for app in TEST_APPLICATION_STORE_DATA])
+    result = build_application_data_for_display(
+        [
+            ApplicationSummary.from_dict(app)
+            for app in TEST_APPLICATION_STORE_DATA
+        ]
+    )
     fsd_fund = result["funding-service-design"]
     assert fsd_fund, "Fund not returned"
     assert "Test Fund" == fsd_fund["fund_data"]["name"]
 
     assert 2 == len(fsd_fund["rounds"]), "wrong number of rounds returned"
-    assert "cof-r2w2" == fsd_fund["rounds"][0]["round_details"]["id"], "cof_r2w2 not present in rounds"
-    assert 0 == len(fsd_fund["rounds"][0]["applications"])
-    assert "summer" == fsd_fund["rounds"][1]["round_details"]["id"], "summer not present in rounds"
+    assert (
+        "cof-r2w2" == fsd_fund["rounds"][0]["round_details"]["id"]
+    ), "cof_r2w2 not present in rounds"
+    assert fsd_fund["rounds"][0]["is_past_submission_deadline"] is True
+    assert 1 == len(fsd_fund["rounds"][0]["applications"])
+    assert "NOT_SUBMITTED" == fsd_fund["rounds"][0]["applications"][0].status
+
+    assert (
+        "summer" == fsd_fund["rounds"][1]["round_details"]["id"]
+    ), "summer not present in rounds"
+    assert fsd_fund["rounds"][1]["is_past_submission_deadline"] is False
     assert 2 == len(fsd_fund["rounds"][1]["applications"])
+    assert "IN_PROGRESS" == fsd_fund["rounds"][1]["applications"][0].status
+    assert "READY_TO_SUBMIT" == fsd_fund["rounds"][1]["applications"][1].status
