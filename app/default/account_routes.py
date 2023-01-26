@@ -1,6 +1,7 @@
 import requests
 from app.default.data import get_all_funds
 from app.default.data import get_all_rounds_for_fund
+from app.default.data import get_applications_for_account
 from app.models.application_summary import ApplicationSummary
 from config import Config
 from flask import Blueprint
@@ -30,7 +31,7 @@ def build_application_data_for_display(applications: list[ApplicationSummary]):
     all_funds = get_all_funds()
     for fund in all_funds:
         fund_id = fund["id"]
-        all_rounds_in_fund = get_all_rounds_for_fund()
+        all_rounds_in_fund = get_all_rounds_for_fund(fund_id)
         application_data_for_display[fund_id] = {
             "fund_data": fund,
             "rounds": [],
@@ -70,193 +71,169 @@ def build_application_data_for_display(applications: list[ApplicationSummary]):
 @account_bp.route("/account")
 # @login_required
 def dashboard():
-    account_id = "test-user-id"  # g.account_id
-    # application_store_response = get_applications_for_account(
-    #     account_id=account_id, as_dict=False
-    # )
+    account_id = "test-user"  # g.account_id
+    application_store_response = get_applications_for_account(
+        account_id=account_id, as_dict=False
+    )
 
-    application_store_response = [
-        {
-            "id": "uuidv4",
-            "status": "IN_PROGRESS",
-            "account_id": "test-user",
-            "fund_id": "funding-service-design",
-            "round_id": "summer",
-            "reference": "TEST-REF-B",
-            "project_name": None,
-            "date_submitted": None,
-            "started_at": "2022-05-20 14:47:12",
-            "last_edited": "2022-05-24 11:03:59",
-            "language": "en",
-        },
-        {
-            "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",
-            "status": "COMPLETED",
-            "account_id": "test-user",
-            "fund_id": "funding-service-design",
-            "round_id": "summer",
-            "reference": "TEST-REF-C",
-            "project_name": "",
-            "date_submitted": None,
-            "started_at": "2022-05-24 10:42:41",
-            "last_edited": None,
-            "language": "en",
-            "Unknown": "DOES NOT MAKE ME FAIL",
-        },
-        {
-            "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",
-            "status": "IN_PROGRESS",
-            "account_id": "test-user",
-            "fund_id": "funding-service-design",
-            "round_id": "cof-r2w2",
-            "reference": "TEST-REF-C",
-            "project_name": "cool project from w2",
-            "date_submitted": None,
-            "started_at": "2022-05-24 10:42:41",
-            "last_edited": None,
-            "language": "en",
-            "Unknown": "DOES NOT MAKE ME FAIL",
-        },
-    ]
+    # application_store_response = [
+    #     {
+    #         "id": "uuidv4",
+    #         "status": "IN_PROGRESS",
+    #         "account_id": "test-user",
+    #         "fund_id": "funding-service-design",
+    #         "round_id": "summer",
+    #         "reference": "TEST-REF-B",
+    #         "project_name": None,
+    #         "date_submitted": None,
+    #         "started_at": "2022-05-20 14:47:12",
+    #         "last_edited": "2022-05-24 11:03:59",
+    #         "language": "en",
+    #     },
+    #     {
+    #         "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",
+    #         "status": "COMPLETED",
+    #         "account_id": "test-user",
+    #         "fund_id": "funding-service-design",
+    #         "round_id": "summer",
+    #         "reference": "TEST-REF-C",
+    #         "project_name": "",
+    #         "date_submitted": None,
+    #         "started_at": "2022-05-24 10:42:41",
+    #         "last_edited": None,
+    #         "language": "en",
+    #         "Unknown": "DOES NOT MAKE ME FAIL",
+    #     },
+    #     {
+    #         "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",
+    #         "status": "IN_PROGRESS",
+    #         "account_id": "test-user",
+    #         "fund_id": "funding-service-design",
+    #         "round_id": "cof-r2w2",
+    #         "reference": "TEST-REF-C",
+    #         "project_name": "cool project from w2",
+    #         "date_submitted": None,
+    #         "started_at": "2022-05-24 10:42:41",
+    #         "last_edited": None,
+    #         "language": "en",
+    #         "Unknown": "DOES NOT MAKE ME FAIL",
+    #     },
+    # ]
 
     applications: list[ApplicationSummary] = [
         ApplicationSummary.from_dict(application)
         for application in application_store_response
     ]
-    # # rounds_with_applications = [app['round_id'] for app in applications]
 
-    # display_data = build_application_data_for_display(applications)
-
-    # # build data for each round we need
-    # if len(rounds_with_applications) > 0:
-    #     for round in rounds_with_applications
-    # else:
-    #     round_data_for_display[Config.DEFAULT_ROUND_ID]:
-    #     build_round_data_for_display(Config.DEFAULT_FUND_ID,
-    #     Config.DEFAULT_ROUND_ID)
-
-    # if len(applications) > 0:
-    #     round_id = applications[0].round_id
-    #     fund_id = applications[0].fund_id
-    # else:
-    #     round_id = Config.DEFAULT_ROUND_ID
-    #     fund_id = Config.DEFAULT_FUND_ID
-
-    # round_data = get_round_data_fail_gracefully(
-    # Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID)
-
-    # current_app.logger.info(
-    #     f"Setting up applicant dashboard for :'{account_id}'
-    #     to apply for fund"
-    #     f" {fund_id} on round {round_id}"
-    # )
-
-    display_data = {
-        "funding-service-design": {
-            "fund_data": {
-                "id": "funding-service-design",
-                "name": "Test Fund",
-                "description": "test test",
-                "short_name": "FSD",
-            },
-            "rounds": [
-                {
-                    "is_past_submission_deadline": True,
-                    "is_not_yet_open": False,
-                    "round_details": {
-                        "opens": "2022-09-01 00:00:01",
-                        "deadline": "2030-01-30 00:00:01",
-                        "assessment_deadline": "2030-03-20 00:00:01",
-                        "id": "cof-r2w2",
-                        "title": "Round 2 Window 2",
-                        "fund_id": "fund-service-design",
-                        "short_name": "R2W2",
-                        "assessment_criteria_weighting": [],
-                        "contact_details": {},
-                        "support_availability": {},
-                    },
-                    "applications": [
-                        {
-                            "id": "uuidv4",
-                            "reference": "TEST-REF-B",
-                            "status": "NOT_SUBMITTED",
-                            "round_id": "summer",
-                            "fund_id": "funding-service-design",
-                            "started_at": "2020-01-01 12:03:00",
-                            "project_name": None,
-                            "last_edited": "2020-01-01 12:03:00",
-                        },
-                        {
-                            "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",
-                            "reference": "TEST-REF-C",
-                            "status": "SUBMITTED",
-                            "round_id": "summer",
-                            "fund_id": "funding-service-design",
-                            "started_at": "2023-01-01 12:01:00",
-                            "project_name": "",
-                            "last_edited": None,
-                        },
-                    ],
-                },
-                {
-                    "is_past_submission_deadline": False,
-                    "is_not_yet_open": False,
-                    "round_details": {
-                        "opens": "2022-09-01 00:00:01",
-                        "deadline": "2030-01-30 00:00:01",
-                        "assessment_deadline": "2030-03-20 00:00:01",
-                        "id": "summer",
-                        "title": "Summer round",
-                        "fund_id": "fund-service-design",
-                        "short_name": "R2W3",
-                        "assessment_criteria_weighting": [],
-                        "contact_details": {},
-                        "support_availability": {},
-                    },
-                    "applications": [
-                        {
-                            "id": "uuidv4",
-                            "reference": "TEST-REF-B",
-                            "status": "IN_PROGRESS",
-                            "round_id": "summer",
-                            "fund_id": "funding-service-design",
-                            "started_at": "2020-01-01 12:03:00",
-                            "project_name": None,
-                            "last_edited": "2020-01-01 12:03:00",
-                        },
-                        {
-                            "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",
-                            "reference": "TEST-REF-C",
-                            "status": "READY_TO_SUBMIT",
-                            "round_id": "summer",
-                            "fund_id": "funding-service-design",
-                            "started_at": "2023-01-01 12:01:00",
-                            "project_name": "",
-                            "last_edited": None,
-                        },
-                    ],
-                },
-                {
-                    "is_past_submission_deadline": False,
-                    "is_not_yet_open": True,
-                    "round_details": {
-                        "opens": "2022-09-01 00:00:01",
-                        "deadline": "2030-01-30 00:00:01",
-                        "assessment_deadline": "2030-03-20 00:00:01",
-                        "id": "future",
-                        "title": "Future round",
-                        "fund_id": "fund-service-design",
-                        "short_name": "R2W222",
-                        "assessment_criteria_weighting": [],
-                        "contact_details": {},
-                        "support_availability": {},
-                    },
-                    "applications": [],
-                },
-            ],
-        }
-    }
-
+    # display_data = {
+    #     "funding-service-design": {
+    #         "fund_data": {
+    #             "id": "funding-service-design",
+    #             "name": "Test Fund",
+    #             "description": "test test",
+    #             "short_name": "FSD",
+    #         },
+    #         "rounds": [
+    #             {
+    #                 "is_past_submission_deadline": True,
+    #                 "is_not_yet_open": False,
+    #                 "round_details": {
+    #                     "opens": "2022-09-01 00:00:01",
+    #                     "deadline": "2030-01-30 00:00:01",
+    #                     "assessment_deadline": "2030-03-20 00:00:01",
+    #                     "id": "cof-r2w2",
+    #                     "title": "Round 2 Window 2",
+    #                     "fund_id": "fund-service-design",
+    #                     "short_name": "R2W2",
+    #                     "assessment_criteria_weighting": [],
+    #                     "contact_details": {},
+    #                     "support_availability": {},
+    #                 },
+    #                 "applications": [
+    #                     {
+    #                         "id": "uuidv4",
+    #                         "reference": "TEST-REF-B",
+    #                         "status": "NOT_SUBMITTED",
+    #                         "round_id": "summer",
+    #                         "fund_id": "funding-service-design",
+    #                         "started_at": "2020-01-01 12:03:00",
+    #                         "project_name": None,
+    #                         "last_edited": "2020-01-01 12:03:00",
+    #                     },
+    #                     {
+    #                         "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",
+    #                         "reference": "TEST-REF-C",
+    #                         "status": "SUBMITTED",
+    #                         "round_id": "summer",
+    #                         "fund_id": "funding-service-design",
+    #                         "started_at": "2023-01-01 12:01:00",
+    #                         "project_name": "",
+    #                         "last_edited": None,
+    #                     },
+    #                 ],
+    #             },
+    #             {
+    #                 "is_past_submission_deadline": False,
+    #                 "is_not_yet_open": False,
+    #                 "round_details": {
+    #                     "opens": "2022-09-01 00:00:01",
+    #                     "deadline": "2030-01-30 00:00:01",
+    #                     "assessment_deadline": "2030-03-20 00:00:01",
+    #                     "id": "summer",
+    #                     "title": "Summer round",
+    #                     "fund_id": "fund-service-design",
+    #                     "short_name": "R2W3",
+    #                     "assessment_criteria_weighting": [],
+    #                     "contact_details": {},
+    #                     "support_availability": {},
+    #                 },
+    #                 "applications": [
+    #                     {
+    #                         "id": "uuidv4",
+    #                         "reference": "TEST-REF-B",
+    #                         "status": "IN_PROGRESS",
+    #                         "round_id": "summer",
+    #                         "fund_id": "funding-service-design",
+    #                         "started_at": "2020-01-01 12:03:00",
+    #                         "project_name": None,
+    #                         "last_edited": "2020-01-01 12:03:00",
+    #                     },
+    #                     {
+    #                         "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",
+    #                         "reference": "TEST-REF-C",
+    #                         "status": "READY_TO_SUBMIT",
+    #                         "round_id": "summer",
+    #                         "fund_id": "funding-service-design",
+    #                         "started_at": "2023-01-01 12:01:00",
+    #                         "project_name": "",
+    #                         "last_edited": None,
+    #                     },
+    #                 ],
+    #             },
+    #             {
+    #                 "is_past_submission_deadline": False,
+    #                 "is_not_yet_open": True,
+    #                 "round_details": {
+    #                     "opens": "2022-09-01 00:00:01",
+    #                     "deadline": "2030-01-30 00:00:01",
+    #                     "assessment_deadline": "2030-03-20 00:00:01",
+    #                     "id": "future",
+    #                     "title": "Future round",
+    #                     "fund_id": "fund-service-design",
+    #                     "short_name": "R2W222",
+    #                     "assessment_criteria_weighting": [],
+    #                     "contact_details": {},
+    #                     "support_availability": {},
+    #                 },
+    #                 "applications": [],
+    #             },
+    #         ],
+    #     }
+    # }
+    display_data = build_application_data_for_display(applications)
+    current_app.logger.info(
+        f"Setting up applicant dashboard for :'{account_id}'"
+    )
     return render_template(
         "dashboard.html",
         account_id=account_id,

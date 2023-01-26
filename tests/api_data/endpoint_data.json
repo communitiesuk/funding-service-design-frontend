@@ -243,7 +243,7 @@
       }
     ]
   },
-  "http://application_store/applications?account_id=test-user": [
+  "application_store/applications?account_id=test-user&order_by=last_edited&order_rev=1": [
     {
       "id": "uuidv4",
       "status": "IN_PROGRESS",
