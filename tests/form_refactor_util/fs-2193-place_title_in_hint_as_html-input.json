@@ -222,7 +222,7 @@
             "maxWords": "500"
           },
           "type": "MultilineTextField",
-          "title": "Describe your previous projects",
+          "title": "Describe your previous projects ô",
           "hint": "<span class=\"govuk-body\">Project 1</span>",
           "schema": {}
         },

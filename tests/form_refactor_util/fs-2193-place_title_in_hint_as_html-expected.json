@@ -47,7 +47,7 @@
           },
           "type": "TextField",
           "title": "Your unique tracker number",
-          "hint": "This was included in the letter we sent to confirm your successful expression of interest.\n<p>For example, \u2018ANON-###-###-###\u2019</p>",
+          "hint": "This was included in the letter we sent to confirm your successful expression of interest.\n<p>For example, ‘ANON-###-###-###’</p>",
           "schema": {}
         },
         {
@@ -224,8 +224,8 @@
             "hideTitle": true
           },
           "type": "MultilineTextField",
-          "title": "Describe your previous projects",
-          "hint": "<span class=\"govuk-label govuk-label--s\">Describe your previous projects</span><span class=\"govuk-body\">Project 1</span>",
+          "title": "Describe your previous projects ô",
+          "hint": "<span class=\"govuk-label govuk-label--s\">Describe your previous projects ô</span><span class=\"govuk-body\">Project 1</span>",
           "schema": {}
         },
         {

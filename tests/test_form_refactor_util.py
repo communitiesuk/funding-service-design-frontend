@@ -7,18 +7,14 @@ from scripts import form_refactor_util
 )
 def test_mutation_function(mutation_key, tmpdir):
     input_json = open(
-        f"tests/form_refactor_util/{mutation_key}-input.json",
-        "r",
-        encoding="utf-8",
+        f"tests/form_refactor_util/{mutation_key}-input.json", "r"
     ).read()
     expected_json = open(
-        f"tests/form_refactor_util/{mutation_key}-expected.json",
-        "r",
-        encoding="utf-8",
+        f"tests/form_refactor_util/{mutation_key}-expected.json", "r"
     ).read()
 
     test_file = tmpdir.join(f"test-{mutation_key}.json")
-    with open(test_file, "w", encoding="utf-8") as f:
+    with open(test_file, "w") as f:
         f.write(input_json)
 
     retv = form_refactor_util.main(
@@ -30,4 +26,4 @@ def test_mutation_function(mutation_key, tmpdir):
     )
 
     assert retv == 0
-    assert test_file.read() == expected_json
+    assert test_file.read() + "\n" == expected_json

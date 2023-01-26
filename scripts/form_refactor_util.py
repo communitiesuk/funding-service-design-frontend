@@ -79,7 +79,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                 continue
 
             file_path = os.path.join(subdir, file)
-            text_content = open(file_path, "r", encoding="utf-8").read()
+            text_content = open(file_path, "r").read()
 
             content_json = json.loads(text_content)
             original = str(content_json)
@@ -88,8 +88,10 @@ def main(argv: Sequence[str] | None = None) -> int:
             mutated = str(migrated_json)
 
             if original != mutated:
-                with open(file_path, "w", encoding="utf-8") as json_file:
-                    json.dump(migrated_json, json_file, indent=2)
+                with open(file_path, "w") as json_file:
+                    json.dump(
+                        migrated_json, json_file, indent=2, ensure_ascii=False
+                    )
                     print(f"Updated {file_path}")
 
     return 0
