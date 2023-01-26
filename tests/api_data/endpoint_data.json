@@ -1246,7 +1246,7 @@
     "name": "Test Fund",
     "short_name": "TF"
   },
-  "http://fund_store/funds/funding-serivce-design/rounds/summer" : {
+  "fund_store/funds/funding-serivce-design/rounds/summer" : {
     "assessment_deadline": "2030-03-30 12:00:00",
     "contact_details": {
       "email_address": "example@levellingup.gov.uk",
