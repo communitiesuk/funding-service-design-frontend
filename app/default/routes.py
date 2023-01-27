@@ -10,7 +10,6 @@ from flask import render_template
 default_bp = Blueprint("routes", __name__, template_folder="templates")
 
 
-# TODO Move the following method into utils.
 def current_datetime_after_given(value: str) -> bool:
     today = datetime.today().now()
     parsed = datetime.fromisoformat(value)

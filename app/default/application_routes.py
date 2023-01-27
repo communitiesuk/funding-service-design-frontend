@@ -27,6 +27,7 @@ from app.default.routes import current_datetime_after_given, current_datetime_be
 
 application_bp = Blueprint("application_routes", __name__, template_folder="templates")
 
+# TODO Move the following method into utils, but will need access to DB
 def verify_application_owner_local(f):
     """
     This decorator determines whether the user trying to access an application

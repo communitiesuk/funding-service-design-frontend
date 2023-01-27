@@ -79,7 +79,7 @@
             "options": {
               "prefix": "£",
               "textFieldTitle": "Ffynhonnell",
-              "numberFieldTitle": "Swm"
+              "numberFieldTitle": "Cyfanswm mewn punnoedd"
             },
             "type": "MultiInputField",
             "title": "Ffynonellau incwm",
@@ -131,7 +131,7 @@
             "options": {
               "prefix": "£",
               "textFieldTitle": "Cost redeg",
-              "numberFieldTitle": "Swm"
+              "numberFieldTitle": "Cyfanswm mewn punnoedd"
             },
             "type": "MultiInputField",
             "title": "Costau rhedeg",
