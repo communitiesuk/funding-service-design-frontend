@@ -68,6 +68,11 @@ def build_application_data_for_display(applications: list[ApplicationSummary]):
                     count_of_applications_for_visible_rounds += len(
                         apps_in_this_round
                     )
+            fund_data_for_display["rounds"] = sorted(
+                fund_data_for_display["rounds"],
+                key=lambda r: r["round_details"]["opens"],
+                reverse=True,
+            )
 
             application_data_for_display["funds"].append(fund_data_for_display)
 
