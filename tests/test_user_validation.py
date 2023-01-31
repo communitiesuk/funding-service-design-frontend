@@ -146,10 +146,6 @@ class TestUserValidation:
                 self.TEST_APPLICATION_STORE_DATA
             ),
         )
-        mocker.patch(
-            "app.default.application_routes.get_round_data_fail_gracefully",
-            return_value=Round.from_dict(self.TEST_ROUND_STORE_DATA),
-        )
         monkeypatch.setattr(
             "fsd_utils.authentication.decorators._check_access_token",
             lambda: {"accountId": self.TEST_USER},
@@ -195,10 +191,6 @@ class TestUserValidation:
             return_value=Application.from_dict(
                 self.TEST_APPLICATION_STORE_DATA
             ),
-        )
-        mocker.patch(
-            "app.default.application_routes.get_round_data_fail_gracefully",
-            return_value=Round.from_dict(self.TEST_ROUND_STORE_DATA),
         )
         monkeypatch.setattr(
             "fsd_utils.authentication.decorators._check_access_token",
