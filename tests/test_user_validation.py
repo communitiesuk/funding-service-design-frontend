@@ -23,7 +23,7 @@ class TestUserValidation:
         "rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd?language=en"
     ]
     TEST_ROUND_STORE_DATA = data[
-        "http://fund_store/funds/funding-serivce-design/rounds/summer"
+        "fund_store/funds/funding-service-design/rounds/summer?language=en"
     ]
     REHYDRATION_TOKEN = "test_token"
 

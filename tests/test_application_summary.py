@@ -13,7 +13,7 @@ TEST_SUBMITTED_APPLICATION_STORE_DATA = data[
     "http://application_store/applications?account_id=test-user-2"
 ]
 TEST_ROUND_STORE_DATA = data[
-    "http://fund_store/funds/funding-serivce-design/rounds/summer"
+    "fund_store/funds/funding-service-design/rounds/summer?language=en"
 ]
 
 TEST_FUNDS_DATA = data["fund_store/funds?language=en"]
