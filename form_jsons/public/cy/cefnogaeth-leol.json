@@ -1,5 +1,7 @@
 {
-  "metadata": { "isWelsh": true },
+  "metadata": {
+    "isWelsh": true
+  },
   "startPage": "/achos-strategol",
   "backLinkText": "Yn ôl i'r trosolwg o'r cais",
   "pages": [
@@ -19,12 +21,19 @@
           "type": "YesNoField",
           "hint": "Gall y gefnogaeth hon ddod gan:\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>grwpiau cymunedol</li>\n<li>busnesau lleol</li>\n<li>partneriaid sector cyhoeddus</li>\n</ul>\n\n\n",
           "title": "A ydych chi'n hyderus bod cefnogaeth leol i'ch prosiect?",
-          "values": { "type": "listRef" }
+          "values": {
+            "type": "listRef"
+          }
         }
       ],
       "next": [
-        { "path": "/summary" },
-        { "path": "/achos-strategol-XrtLtp", "condition": "wuqosn" }
+        {
+          "path": "/summary"
+        },
+        {
+          "path": "/achos-strategol-XrtLtp",
+          "condition": "wuqosn"
+        }
       ]
     },
     {
@@ -39,20 +48,29 @@
         },
         {
           "name": "BFbzux",
-          "options": { "maxWords": "500" },
+          "options": {
+            "maxWords": "500",
+            "hideTitle": true
+          },
           "type": "MultilineTextField",
           "title": "Dywedwch fwy wrthym am y gefnogaeth leol i'ch prosiect",
-          "hint": "Gall hyn gynnwys:\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>arolygon o'r gymuned</li>\n<li>cyfarfodydd neuadd tref rydych wedi'u cynnal</li>\n<li>nifer y gwirfoddolwyr amcangyfrifedig sydd gennych ar gyfer eich prosiect</li>\n<li>llythyr gan eich AS lleol</li>\n</ul>\n"
+          "hint": "<span class=\"govuk-label govuk-label--s\">Dywedwch fwy wrthym am y gefnogaeth leol i'ch prosiect</span>Gall hyn gynnwys:\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-2\">\n<li>arolygon o'r gymuned</li>\n<li>cyfarfodydd neuadd tref rydych wedi'u cynnal</li>\n<li>nifer y gwirfoddolwyr amcangyfrifedig sydd gennych ar gyfer eich prosiect</li>\n<li>llythyr gan eich AS lleol</li>\n</ul>\n"
         },
         {
           "name": "EEBFao",
-          "options": { "required": false },
+          "options": {
+            "required": false
+          },
           "type": "FileUploadField",
           "title": "Lanlwythwch dystiolaeth ategol ",
           "hint": "Dylai fod yn ffeil unigol nad yw'n fwy na 5MB ar unrhyw un o'r fformatau canlynol:\n\n\n<ul class=\"govuk-list govuk-list--bullet govuk-caption-m govuk-!-padding-top-3\">\n<li>jpg</li>\n<li>jpeg</li>\n<li>png</li>\n<li>pdf</li>\n<li>txt</li>\n<li>doc</li>\n<li>docx</li>\n<li>odt</li>\n<li>csv</li>\n<li>xls</li>\n<li>xlsx</li>\n<li>ods</li>\n</ul>\n"
         }
       ],
-      "next": [{ "path": "/summary" }]
+      "next": [
+        {
+          "path": "/summary"
+        }
+      ]
     },
     {
       "title": "Gwiriwch eich atebion",
@@ -78,7 +96,11 @@
           "content": "<h2 class=\"govuk-heading-s\">Yn yr adran hon, byddwn yn holi ynghylch:</h2>\n\n<div class=\"govuk-body\">\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>cefnogaeth leol i'ch prosiect</li>\n</ul>\n</div>"
         }
       ],
-      "next": [{ "path": "/achos-strategol-GBWkCj" }],
+      "next": [
+        {
+          "path": "/achos-strategol-GBWkCj"
+        }
+      ],
       "controller": "./pages/start.js"
     }
   ],
@@ -98,7 +120,11 @@
               "display": "A ydych chi'n hyderus bod cefnogaeth leol i'ch prosiect?"
             },
             "operator": "is",
-            "value": { "type": "Value", "value": "true", "display": "true" }
+            "value": {
+              "type": "Value",
+              "value": "true",
+              "display": "true"
+            }
           }
         ]
       }
@@ -118,6 +144,11 @@
   "version": 2,
   "skipSummary": false,
   "name": "Gwneud cais am gyllid i achub ased yn eich cymuned",
-  "feedback": { "feedbackForm": false, "url": "" },
-  "phaseBanner": { "phase": "beta" }
+  "feedback": {
+    "feedbackForm": false,
+    "url": ""
+  },
+  "phaseBanner": {
+    "phase": "beta"
+  }
 }

@@ -1,5 +1,7 @@
 {
-  "metadata": { "isWelsh": true },
+  "metadata": {
+    "isWelsh": true
+  },
   "startPage": "/achos-rheoli",
   "backLinkText": "Yn ôl i'r trosolwg o'r cais",
   "pages": [
@@ -22,9 +24,12 @@
         },
         {
           "name": "ieRCkI",
-          "options": { "maxWords": "500" },
+          "options": {
+            "maxWords": "500",
+            "hideTitle": true
+          },
           "type": "MultilineTextField",
-          "hint": "",
+          "hint": "<span class=\"govuk-label govuk-label--s\">Dywedwch wrthym am yr astudiaethau dichonoldeb rydych wedi'u cynnal ar gyfer eich prosiect</span>",
           "title": "Dywedwch wrthym am yr astudiaethau dichonoldeb rydych wedi'u cynnal ar gyfer eich prosiect"
         },
         {
@@ -32,10 +37,16 @@
           "options": {},
           "type": "YesNoField",
           "title": "A oes angen i chi ymgymryd ag unrhyw waith pellach yn ymwneud â dichonoldeb?",
-          "values": { "type": "listRef" }
+          "values": {
+            "type": "listRef"
+          }
         }
       ],
-      "next": [{ "path": "/summary" }]
+      "next": [
+        {
+          "path": "/summary"
+        }
+      ]
     },
     {
       "title": "Gwiriwch eich atebion",
@@ -61,7 +72,11 @@
           "content": "<label class=\"govuk-!-font-weight-bold\">Yn yr adran hon, byddwn yn holi ynghylch:</label>\n\n<ul class=\"govuk-list govuk-list--bullet\">\n<li>astudiaethau dichonoldeb a gynhaliwyd</li>\n</ul>\n"
         }
       ],
-      "next": [{ "path": "/achos-rheoli-nYbkox" }],
+      "next": [
+        {
+          "path": "/achos-rheoli-nYbkox"
+        }
+      ],
       "controller": "./pages/start.js"
     }
   ],
@@ -82,6 +97,11 @@
   "version": 2,
   "skipSummary": false,
   "name": "Gwneud cais am gyllid i achub ased yn eich cymuned",
-  "feedback": { "feedbackForm": false, "url": "" },
-  "phaseBanner": { "phase": "beta" }
+  "feedback": {
+    "feedbackForm": false,
+    "url": ""
+  },
+  "phaseBanner": {
+    "phase": "beta"
+  }
 }

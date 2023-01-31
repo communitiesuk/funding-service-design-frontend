@@ -109,7 +109,7 @@
           },
           "type": "TextField",
           "title": "Alternative names of your organisation - Alternative name 2 ",
-          "hint": "<span class=\"govuk-body\">Alternative name 2 (optional)</span>",
+          "hint": "Alternative name 2 (optional)",
           "schema": {}
         },
         {
@@ -121,7 +121,7 @@
           },
           "type": "TextField",
           "title": "Alternative names of your organisation - Alternative name 3 ",
-          "hint": "<span class=\"govuk-body\">Alternative name 3 (optional)</span>",
+          "hint": "Alternative name 3 (optional)",
           "schema": {}
         }
       ],
@@ -154,12 +154,11 @@
         {
           "name": "btTtIb",
           "options": {
-            "maxWords": "500",
-            "hideTitle": true
+            "maxWords": "500"
           },
           "type": "MultilineTextField",
           "title": "Tell us about your organisation's main activities",
-          "hint": "<span class=\"govuk-label govuk-label--s\">Tell us about your organisation's main activities</span><span class=\"govuk-body\">Activity 1</span>",
+          "hint": "<span class=\"govuk-body\">Activity 1</span>",
           "schema": {}
         },
         {
@@ -172,7 +171,7 @@
           },
           "type": "MultilineTextField",
           "title": "Tell us about your organisation's main activities - Activity 2 ",
-          "hint": "<span class=\"govuk-body\">Activity 2 (optional)</span>",
+          "hint": "Activity 2 (optional)",
           "schema": {}
         },
         {
@@ -184,7 +183,7 @@
           },
           "type": "MultilineTextField",
           "title": "Tell us about your organisation's main activities - Activity 3 ",
-          "hint": "<span class=\"govuk-body\">Activity 3 (optional)</span>",
+          "hint": "Activity 3 (optional)",
           "schema": {}
         },
         {
@@ -220,12 +219,11 @@
         {
           "name": "wxCszQ",
           "options": {
-            "maxWords": "500",
-            "hideTitle": true
+            "maxWords": "500"
           },
           "type": "MultilineTextField",
-          "title": "Describe your previous projects",
-          "hint": "<span class=\"govuk-label govuk-label--s\">Describe your previous projects</span><span class=\"govuk-body\">Project 1</span>",
+          "title": "Describe your previous projects ô",
+          "hint": "<span class=\"govuk-body\">Project 1</span>",
           "schema": {}
         },
         {
@@ -237,7 +235,7 @@
           },
           "type": "MultilineTextField",
           "title": "Describe your previous projects - Project 2 ",
-          "hint": "<span class=\"govuk-body\">Project 2 (optional)</span>",
+          "hint": "Project 2 (optional)",
           "schema": {}
         },
         {
@@ -249,7 +247,7 @@
           },
           "type": "MultilineTextField",
           "title": "Describe your previous projects - Project 3 ",
-          "hint": "<span class=\"govuk-body\">Project 3 (optional)</span>",
+          "hint": "Project 3 (optional)",
           "schema": {}
         }
       ],
@@ -479,12 +477,11 @@
         {
           "name": "FhbaEy",
           "options": {
-            "classes": "govuk-!-width-full",
-            "hideTitle": true
+            "classes": "govuk-!-width-full"
           },
           "type": "WebsiteField",
-          "title": "Website and social media",
-          "hint": "<span class=\"govuk-label govuk-label--s\">Website and social media</span><span class=\"govuk-body\">For example, your company's Facebook, Instagram or Twitter accounts (if applicable)</span><br><br><span class=\"govuk-body\">Link 1</span>\n",
+          "title": "Website and social media ",
+          "hint": "For example, your company's Facebook, Instagram or Twitter accounts (if applicable)\n<br> <br>\n<label class=\"govuk-body\">Link 1</label>\n",
           "schema": {}
         },
         {
@@ -496,7 +493,7 @@
           },
           "type": "WebsiteField",
           "title": "Website and social media - Link or username 2",
-          "hint": "<span class=\"govuk-body\">Link 2 (optional)</span>",
+          "hint": "Link 2 (optional)",
           "schema": {}
         },
         {
@@ -508,7 +505,7 @@
           },
           "type": "WebsiteField",
           "title": "Website and social media - Link or username 3",
-          "hint": "<span class=\"govuk-body\">Link 3 (optional)</span>",
+          "hint": "Link 3 (optional)",
           "schema": {}
         }
       ],
@@ -611,13 +608,12 @@
         {
           "name": "IkmvEt",
           "options": {
-            "maxWords": "500",
-            "hideTitle": true
+            "maxWords": "500"
           },
           "type": "MultilineTextField",
           "title": "Tell us about your partnership and how you plan to work together",
           "schema": {},
-          "hint": "<span class=\"govuk-label govuk-label--s\">Tell us about your partnership and how you plan to work together</span>If you are working in partnership with more than one organisation, include their details here"
+          "hint": "If you are working in partnership with more than one organisation, include their details here"
         }
       ],
       "next": [
