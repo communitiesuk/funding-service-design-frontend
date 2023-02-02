@@ -26,55 +26,59 @@ account_bp = Blueprint("account_routes", __name__, template_folder="templates")
 
 def build_application_data_for_display(applications: list[ApplicationSummary]):
 
-    application_data_for_display = {"funds": []}
+    application_data_for_display = {
+        "funds": [],
+        "total_applications_to_display": 0,
+    }
 
-    count_of_applications_for_visible_rounds = 0
     all_funds = get_all_funds()
-    if all_funds:
-        for fund in all_funds:
-            fund_id = fund["id"]
-            all_rounds_in_fund = get_all_rounds_for_fund(fund_id)
-            fund_data_for_display = {
-                "fund_data": fund,
-                "rounds": [],
-            }
-            for round in all_rounds_in_fund:
-                round_id = round["id"]
-                past_submission_deadline = (
-                    current_datetime_after_given_iso_string(round["deadline"])
-                )
-                not_yet_open = current_datetime_before_given_iso_string(
-                    round["opens"]
-                )
-                apps_in_this_round = [
-                    app for app in applications if app.round_id == round_id
-                ]
-                if not not_yet_open:
-                    for application in apps_in_this_round:
-                        if past_submission_deadline:
-                            if application.status != "SUBMITTED":
-                                application.status = "NOT_SUBMITTED"
-                        else:
-                            if application.status == "COMPLETED":
-                                application.status = "READY_TO_SUBMIT"
-                    fund_data_for_display["rounds"].append(
-                        {
-                            "is_past_submission_deadline": past_submission_deadline,  # noqa:E501
-                            "is_not_yet_open": not_yet_open,
-                            "round_details": round,
-                            "applications": apps_in_this_round,
-                        }
-                    )
-                    count_of_applications_for_visible_rounds += len(
-                        apps_in_this_round
-                    )
-            fund_data_for_display["rounds"] = sorted(
-                fund_data_for_display["rounds"],
-                key=lambda r: r["round_details"]["opens"],
-                reverse=True,
-            )
+    if not all_funds:
+        return application_data_for_display
+    count_of_applications_for_visible_rounds = 0
 
-            application_data_for_display["funds"].append(fund_data_for_display)
+    for fund in all_funds:
+        fund_id = fund["id"]
+        all_rounds_in_fund = get_all_rounds_for_fund(fund_id)
+        fund_data_for_display = {
+            "fund_data": fund,
+            "rounds": [],
+        }
+        for round in all_rounds_in_fund:
+            round_id = round["id"]
+            past_submission_deadline = current_datetime_after_given_iso_string(
+                round["deadline"]
+            )
+            not_yet_open = current_datetime_before_given_iso_string(
+                round["opens"]
+            )
+            apps_in_this_round = [
+                app for app in applications if app.round_id == round_id
+            ]
+            if not_yet_open:
+                continue
+            for application in apps_in_this_round:
+                if past_submission_deadline:
+                    if application.status != "SUBMITTED":
+                        application.status = "NOT_SUBMITTED"
+                else:
+                    if application.status == "COMPLETED":
+                        application.status = "READY_TO_SUBMIT"
+            fund_data_for_display["rounds"].append(
+                {
+                    "is_past_submission_deadline": past_submission_deadline,
+                    "is_not_yet_open": not_yet_open,
+                    "round_details": round,
+                    "applications": apps_in_this_round,
+                }
+            )
+            count_of_applications_for_visible_rounds += len(apps_in_this_round)
+        fund_data_for_display["rounds"] = sorted(
+            fund_data_for_display["rounds"],
+            key=lambda r: r["round_details"]["opens"],
+            reverse=True,
+        )
+
+        application_data_for_display["funds"].append(fund_data_for_display)
 
     application_data_for_display[
         "total_applications_to_display"

@@ -133,7 +133,6 @@ def tasklist(application_id):
     round_data = get_round_data(
         application.fund_id, application.round_id, True
     )
-    # if current_datetime_before_given_iso_string(round_data.deadline):
 
     account = get_account(account_id=application.account_id)
     if application.status == ApplicationStatus.SUBMITTED.name:
@@ -182,7 +181,6 @@ def tasklist(application_id):
                 round_data.deadline
             ),
         )
-    # return redirect(url_for("account_routes.dashboard"))
 
 
 @application_bp.route(
