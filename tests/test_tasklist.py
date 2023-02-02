@@ -12,7 +12,8 @@ TEST_APPLICATION_STORE_DATA = data[
 ]
 TEST_FUND_STORE = data["fund_store/funds/funding-service-design?language=en"]
 TEST_ROUND_STORE = data[
-    "fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd?language=en"
+    "fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds"
+    + "/c603d114-5364-4474-a0c4-c41cbf4d3bbd?language=en"
 ]
 
 
@@ -41,6 +42,16 @@ def test_tasklist_route(flask_test_client, mocker, monkeypatch):
         return_value=Round.from_dict(TEST_ROUND_STORE),
     )
     mocker.patch(
+        "app.default.application_routes."
+        + "current_datetime_before_given_iso_string",
+        return_value=True,
+    )
+    mocker.patch(
+        "app.default.application_routes."
+        + "current_datetime_after_given_iso_string",
+        return_value=True,
+    )
+    mocker.patch(
         "app.default.application_routes.get_account",
         return_value=Account.from_json(TEST_ACCOUNT_STORE_DATA),
     )
@@ -50,6 +61,36 @@ def test_tasklist_route(flask_test_client, mocker, monkeypatch):
     assert response.status_code == 200
     assert b"Help with filling out your application" in response.data
     assert b"About your organisation" in response.data
+
+
+def test_tasklist_route_after_deadline(flask_test_client, mocker, monkeypatch):
+    monkeypatch.setattr(
+        "fsd_utils.authentication.decorators._check_access_token",
+        lambda: {"accountId": "test-user"},
+    )
+    mocker.patch(
+        "app.default.application_routes.get_application_data",
+        return_value=Application.from_dict(TEST_APPLICATION_STORE_DATA),
+    )
+    mocker.patch(
+        "app.default.application_routes.get_round_data",
+        return_value=Round.from_dict(TEST_ROUND_STORE),
+    )
+    mocker.patch(
+        "app.default.application_routes."
+        + "current_datetime_before_given_iso_string",
+        return_value=False,
+    )
+    mocker.patch(
+        "app.default.application_routes."
+        + "current_datetime_after_given_iso_string",
+        return_value=False,
+    )
+    response = flask_test_client.get(
+        "tasklist/test-application-id", follow_redirects=False
+    )
+    assert response.status_code == 302
+    assert "/account" == response.location
 
 
 def test_tasklist_for_submit_application_route(

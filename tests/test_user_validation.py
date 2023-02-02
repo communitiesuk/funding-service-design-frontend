@@ -23,7 +23,7 @@ class TestUserValidation:
         "rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd?language=en"
     ]
     TEST_ROUND_STORE_DATA = data[
-        "http://fund_store/funds/funding-serivce-design/rounds/summer"
+        "fund_store/funds/funding-service-design/rounds/summer?language=en"
     ]
     REHYDRATION_TOKEN = "test_token"
 
@@ -146,16 +146,23 @@ class TestUserValidation:
                 self.TEST_APPLICATION_STORE_DATA
             ),
         )
-        mocker.patch(
-            "app.default.application_routes.get_round_data_fail_gracefully",
-            return_value=Round.from_dict(self.TEST_ROUND_STORE_DATA),
-        )
         monkeypatch.setattr(
             "fsd_utils.authentication.decorators._check_access_token",
             lambda: {"accountId": self.TEST_USER},
         )
         mocker.patch(
-            "app.default.application_routes.format_payload_and_submit_application",  # noqa
+            "app.default.application_routes."
+            + "current_datetime_before_given_iso_string",
+            return_value=True,
+        )
+        mocker.patch(
+            "app.default.application_routes."
+            + "current_datetime_after_given_iso_string",
+            return_value=True,
+        )
+        mocker.patch(
+            "app.default.application_routes."
+            + "format_payload_and_submit_application",
             return_value={
                 "id": self.TEST_ID,
                 "email": "test@test.com",
@@ -174,6 +181,48 @@ class TestUserValidation:
             b"Your reference number<br><strong>ABC-123</strong>"
             in response.data
         )
+
+    def test_submit_correct_user_bad_dates(
+        self, flask_test_client, mocker, monkeypatch
+    ):
+
+        mocker.patch(
+            "app.default.application_routes.get_application_data",
+            return_value=Application.from_dict(
+                self.TEST_APPLICATION_STORE_DATA
+            ),
+        )
+        monkeypatch.setattr(
+            "fsd_utils.authentication.decorators._check_access_token",
+            lambda: {"accountId": self.TEST_USER},
+        )
+        mocker.patch(
+            "app.default.application_routes."
+            + "current_datetime_before_given_iso_string",
+            return_value=False,
+        )
+        mocker.patch(
+            "app.default.application_routes."
+            + "current_datetime_after_given_iso_string",
+            return_value=False,
+        )
+        mocker.patch(
+            "app.default.application_routes."
+            + "format_payload_and_submit_application",
+            return_value={
+                "id": self.TEST_ID,
+                "email": "test@test.com",
+                "reference": "ABC-123",
+            },
+        )
+
+        response = flask_test_client.post(
+            "/submit_application",
+            data={"application_id": self.TEST_ID},
+            follow_redirects=False,
+        )
+        assert response.status_code == 302
+        assert "/account" == response.location
 
     def test_submit_bad_user(self, flask_test_client, mocker, monkeypatch):
         monkeypatch.setattr(

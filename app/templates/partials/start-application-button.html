@@ -1,6 +1,6 @@
 {%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
 
-{% macro startApplicationButton(form, url, applications) %}
+{% macro startApplicationButton(form, url, fund_id, round_id, existing_applications_count) %}
     <form method="POST" action={{url}} >
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="hidden" name="account_id" value="{{ account_id }}">
@@ -9,7 +9,7 @@
 
         {{ govukButton({
             'text': gettext('Start new application'),
-            'classes': 'govuk-button--secondary' if applications|length>0
+            'classes': 'govuk-button--secondary' if existing_applications_count>0
         }) }}
     </form>
 {% endmacro %}

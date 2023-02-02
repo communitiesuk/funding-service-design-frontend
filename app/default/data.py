@@ -12,6 +12,7 @@ from flask import abort
 from flask import current_app
 from fsd_utils.locale_selector.get_lang import get_lang
 
+
 def get_data(endpoint: str, params: dict = None):
     """
         Queries the api endpoint provided and returns a
@@ -122,10 +123,11 @@ def get_round_data(fund_id, round_id, as_dict=False):
 
 def get_round_data_fail_gracefully(fund_id, round_id):
     try:
+        language = {"language": get_lang()}
         round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(
             fund_id=fund_id, round_id=round_id
         )
-        round_response = get_data(round_request_url)
+        round_response = get_data(round_request_url, language)
         return Round.from_dict(round_response)
     except:  # noqa
         current_app.logger.error(
@@ -162,3 +164,18 @@ def get_account(email: str = None, account_id: str = None) -> Account | None:
 
     if response and "account_id" in response:
         return Account.from_json(response)
+
+
+def get_all_funds():
+    language = {"language": get_lang()}
+    fund_response = get_data(Config.GET_ALL_FUNDS_ENDPOINT, language)
+    return fund_response
+
+
+def get_all_rounds_for_fund(fund_id):
+    language = {"language": get_lang()}
+    rounds_response = get_data(
+        Config.GET_ALL_ROUNDS_FOR_FUND_ENDPOINT.format(fund_id=fund_id),
+        language,
+    )
+    return rounds_response
