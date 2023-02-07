@@ -523,7 +523,7 @@
           "name": "zyWOmY",
           "options": {},
           "type": "Html",
-          "content": "<fieldset class=\"govuk-fieldset\" id=\"zyWOmY\"><legend class=\"govuk-label govuk-label--s\">Website and social media<span class=\"govuk-body\">For example, your company's Facebook, Instagram or Twitter accounts (if applicable)</span></legend></br>",
+          "content": "<fieldset class=\"govuk-fieldset\" id=\"zyWOmY\"><legend class=\"govuk-label govuk-label--s\">Website and social media<span class=\"govuk-body\"></br>For example, your company's Facebook, Instagram or Twitter accounts (if applicable)</span></legend></br>",
           "schema": {}
         },
         {
