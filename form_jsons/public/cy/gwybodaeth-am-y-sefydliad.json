@@ -96,13 +96,21 @@
           "schema": {}
         },
         {
+          "name": "XFvKwZ",
+          "options": {},
+          "type": "Html",
+          "content": "<fieldset class=\"govuk-fieldset\" id=\"XFvKwZ\"><legend class=\"govuk-label govuk-label--s\">Enwau amgen eich sefydliad</legend>",
+          "schema": {}
+        },
+        {
           "name": "PHFkCs",
           "options": {
-            "classes": "govuk-!-width-full"
+            "classes": "govuk-!-width-full",
+            "hideTitle": true
           },
           "type": "TextField",
           "title": "Enwau amgen eich sefydliad",
-          "hint": "<span class=\"govuk-body\">Enw amgen 1</span>",
+          "hint": "<label for=\"PHFkCs\" class=\"govuk-body\">Enw amgen 1</label>",
           "schema": {}
         },
         {
@@ -114,7 +122,7 @@
           },
           "type": "TextField",
           "title": "Enwau amgen eich sefydliad - Enw amgen 2 ",
-          "hint": "<span class=\"govuk-body\">Enw amgen 2 (dewisol)</span>",
+          "hint": "<label for=\"QgNhXX\"  class=\"govuk-body\">Enw amgen 2 (dewisol)</label>",
           "schema": {}
         },
         {
@@ -126,7 +134,14 @@
           },
           "type": "TextField",
           "title": " Enwau amgen eich sefydliad - Enw amgen 3 ",
-          "hint": "<span class=\"govuk-body\">Enw amgen 3 (dewisol)</span>",
+          "hint": "<label for=\"XCcqae\" class=\"govuk-body\">Enw amgen 3 (dewisol)</label>",
+          "schema": {}
+        },
+        {
+          "name": "yiAMdU",
+          "options": {},
+          "type": "Html",
+          "content": "</fieldset>",
           "schema": {}
         }
       ],
@@ -157,6 +172,13 @@
           "schema": {}
         },
         {
+          "name": "tgnZof",
+          "options": {},
+          "type": "Html",
+          "content": "<fieldset class=\"govuk-fieldset\" id=\"tgnZof\"><legend class=\"govuk-label govuk-label--s\">Dywedwch wrthym am brif weithgareddau eich sefydliad</legend>",
+          "schema": {}
+        },
+        {
           "name": "btTtIb",
           "options": {
             "maxWords": "500",
@@ -164,7 +186,7 @@
           },
           "type": "MultilineTextField",
           "title": "Dywedwch wrthym am brif weithgareddau eich sefydliad",
-          "hint": "<span class=\"govuk-label govuk-label--s\">Dywedwch wrthym am brif weithgareddau eich sefydliad</span><span class=\"govuk-body\">Gweithgarwch 1</span>",
+          "hint": "<label for=\"btTtIb\" class=\"govuk-body\">Gweithgarwch 1</label>",
           "schema": {}
         },
         {
@@ -177,7 +199,7 @@
           },
           "type": "MultilineTextField",
           "title": "Dywedwch wrthym am brif weithgareddau eich sefydliad - Gweithgarwch 2",
-          "hint": "<span class=\"govuk-body\">Gweithgarwch 2 (dewisol)</span>",
+          "hint": "<label for=\"SkocDi\" class=\"govuk-body\">Gweithgarwch 2 (dewisol)</label>",
           "schema": {}
         },
         {
@@ -189,7 +211,14 @@
           },
           "type": "MultilineTextField",
           "title": "Dywedwch wrthym am brif weithgareddau eich sefydliad - Gweithgarwch 3",
-          "hint": "<span class=\"govuk-body\">Gweithgarwch 3 (dewisol)</span>",
+          "hint": "<label for=\"CNeeiC\" class=\"govuk-body\">Gweithgarwch 3 (dewisol)</label>",
+          "schema": {}
+        },
+        {
+          "name": "DhpcVW",
+          "options": {},
+          "type": "Html",
+          "content": "</fieldset>",
           "schema": {}
         },
         {
@@ -226,6 +255,13 @@
           "schema": {}
         },
         {
+          "name": "SXfYwl",
+          "options": {},
+          "type": "Html",
+          "content": "<fieldset class=\"govuk-fieldset\" id=\"SXfYwl\"><legend class=\"govuk-label govuk-label--s\">Disgrifiwch eich prosiectau blaenorol</legend>",
+          "schema": {}
+        },
+        {
           "name": "wxCszQ",
           "options": {
             "maxWords": "500",
@@ -233,7 +269,7 @@
           },
           "type": "MultilineTextField",
           "title": "Disgrifiwch eich prosiectau blaenorol",
-          "hint": "<span class=\"govuk-label govuk-label--s\">Disgrifiwch eich prosiectau blaenorol</span><span class=\"govuk-body\">Prosiect 1</span>",
+          "hint": "<label for=\"wxCszQ\" class=\"govuk-body\">Prosiect 1</label>",
           "schema": {}
         },
         {
@@ -245,7 +281,7 @@
           },
           "type": "MultilineTextField",
           "title": "Disgrifiwch eich prosiectau blaenorol - Prosiect 2",
-          "hint": "<span class=\"govuk-body\">Prosiect 2 (dewisol)</span>",
+          "hint": "<label for=\"QJFQgi\" class=\"govuk-body\">Prosiect 2 (dewisol)</label>",
           "schema": {}
         },
         {
@@ -257,7 +293,14 @@
           },
           "type": "MultilineTextField",
           "title": "Disgrifiwch eich prosiectau blaenorol - Prosiect 3",
-          "hint": "<span class=\"govuk-body\">Prosiect 3 (dewisol)</span>",
+          "hint": "<label for=\"DGNWqE\" class=\"govuk-body\">Prosiect 3 (dewisol)</label>",
+          "schema": {}
+        },
+        {
+          "name": "lsKMnV",
+          "options": {},
+          "type": "Html",
+          "content": "</fieldset>",
           "schema": {}
         }
       ],
@@ -491,6 +534,13 @@
           }
         },
         {
+          "name": "zyWOmY",
+          "options": {},
+          "type": "Html",
+          "content": "<fieldset class=\"govuk-fieldset\" id=\"zyWOmY\"><legend class=\"govuk-label govuk-label--s\">Gwefan a chyfryngau cymdeithasol<span class=\"govuk-body\">Er enghraifft, cyfrifon Facebook, Instagram neu Twitter eich cwmni (os yw'n gymwys)</span></legend></br>",
+          "schema": {}
+        },
+        {
           "name": "FhbaEy",
           "options": {
             "classes": "govuk-!-width-full",
@@ -498,7 +548,7 @@
           },
           "type": "WebsiteField",
           "title": "Gwefan a chyfryngau cymdeithasol",
-          "hint": "<span class=\"govuk-label govuk-label--s\">Website and social media</span><span class=\"govuk-body\">Er enghraifft, cyfrifon Facebook, Instagram neu Twitter eich cwmni (os yw'n gymwys)</span><br><br><span class=\"govuk-body\">Dolen 1</span>\n",
+          "hint": "<label for=\"FhbaEy\" class=\"govuk-body\">Dolen 1</label>\n",
           "schema": {}
         },
         {
@@ -510,7 +560,7 @@
           },
           "type": "WebsiteField",
           "title": "Gwefan a chyfryngau cymdeithasol - Dolen 2",
-          "hint": "<span class=\"govuk-body\">Dolen 2 (dewisol)</span>",
+          "hint": "<label for=\"FcdKlB\" class=\"govuk-body\">Dolen 2 (dewisol)</label>",
           "schema": {}
         },
         {
@@ -522,7 +572,14 @@
           },
           "type": "WebsiteField",
           "title": "Gwefan a chyfryngau cymdeithasol - Dolen 3",
-          "hint": "<span class=\"govuk-body\">Dolen 3 (dewisol)</span>",
+          "hint": "<label for=\"BzxgDA\" class=\"govuk-body\">Dolen 3 (dewisol)</label>",
+          "schema": {}
+        },
+        {
+          "name": "vuutkz",
+          "options": {},
+          "type": "Html",
+          "content": "</fieldset>",
           "schema": {}
         }
       ],
