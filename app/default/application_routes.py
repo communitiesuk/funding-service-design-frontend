@@ -182,8 +182,9 @@ def tasklist(application_id):
             ),
             all_questions_url=url_for(
                 "content_routes.all_questions",
-                fund_id=fund.id,
-                round_id=round_data.id,
+                fund_short_name=fund.short_name,
+                round_short_name=round_data.short_name,
+                lang=application.language,
             ),
         )
 
