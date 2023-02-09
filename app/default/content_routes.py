@@ -1,11 +1,11 @@
-
+from app.default.data import get_round_data_fail_gracefully
+from config import Config
 from flask import Blueprint
 from flask import current_app
-from config import Config
-from app.default.data import get_round_data_fail_gracefully
 from flask import render_template
 
 content_bp = Blueprint("content_routes", __name__, template_folder="templates")
+
 
 @content_bp.route("/accessibility_statement", methods=["GET"])
 def accessibility_statement():
@@ -13,10 +13,13 @@ def accessibility_statement():
     return render_template("accessibility_statement.html")
 
 
-@content_bp.route("/cof_r2w2_all_questions", methods=["GET"])
-def all_questions():
-    current_app.logger.info("All questions page loaded.")
-    return render_template("cof_r2w2_all_questions.html")
+@content_bp.route("/all_questions/<fund_id>/<round_id>", methods=["GET"])
+def all_questions(fund_id, round_id):
+    current_app.logger.info(f"All questions page loaded for round {round_id}.")
+    round = get_round_data_fail_gracefully(fund_id, round_id)
+    return render_template(
+        "cof_r2_all_questions.html", round_title=round.title
+    )
 
 
 @content_bp.route("/contact_us", methods=["GET"])
