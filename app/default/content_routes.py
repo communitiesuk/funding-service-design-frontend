@@ -4,6 +4,8 @@ from flask import current_app
 from config import Config
 from app.default.data import get_round_data_fail_gracefully
 from flask import render_template
+from flask_babel import force_locale
+from app.default.data import get_application_data
 
 content_bp = Blueprint("content_routes", __name__, template_folder="templates")
 
@@ -13,10 +15,12 @@ def accessibility_statement():
     return render_template("accessibility_statement.html")
 
 
-@content_bp.route("/cof_r2w2_all_questions", methods=["GET"])
-def all_questions():
-    current_app.logger.info("All questions page loaded.")
-    return render_template("cof_r2w2_all_questions.html")
+@content_bp.route("/all_questions/<application_id>", methods=["GET", "POST"])
+def all_questions(application_id):
+    application = get_application_data(application_id, as_dict=True)
+    with force_locale(application.language):
+        current_app.logger.info("All questions page loaded.")
+        return render_template("cof_r2w2_all_questions.html")
 
 
 @content_bp.route("/contact_us", methods=["GET"])
