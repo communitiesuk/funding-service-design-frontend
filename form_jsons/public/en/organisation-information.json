@@ -91,13 +91,21 @@
           "schema": {}
         },
         {
+          "name": "XFvKwZ",
+          "options": {},
+          "type": "Html",
+          "content": "<fieldset class=\"govuk-fieldset\" id=\"XFvKwZ\"><legend class=\"govuk-label govuk-label--s\">Alternative names of your organisation</legend>",
+          "schema": {}
+        },
+        {
           "name": "PHFkCs",
           "options": {
-            "classes": "govuk-!-width-full"
+            "classes": "govuk-!-width-full",
+            "hideTitle": true
           },
           "type": "TextField",
           "title": "Alternative names of your organisation",
-          "hint": "<span class=\"govuk-body\">Alternative name 1</span>",
+          "hint": "<label for=\"PHFkCs\" class=\"govuk-body\">Alternative name 1</label>",
           "schema": {}
         },
         {
@@ -109,7 +117,7 @@
           },
           "type": "TextField",
           "title": "Alternative names of your organisation - Alternative name 2 ",
-          "hint": "<span class=\"govuk-body\">Alternative name 2 (optional)</span>",
+          "hint": "<label for=\"QgNhXX\" class=\"govuk-body\">Alternative name 2 (optional)</label>",
           "schema": {}
         },
         {
@@ -121,7 +129,14 @@
           },
           "type": "TextField",
           "title": "Alternative names of your organisation - Alternative name 3 ",
-          "hint": "<span class=\"govuk-body\">Alternative name 3 (optional)</span>",
+          "hint": "<label for=\"XCcqae\" class=\"govuk-body\">Alternative name 3 (optional)</label>",
+          "schema": {}
+        },
+        {
+          "name": "yiAMdU",
+          "options": {},
+          "type": "Html",
+          "content": "</fieldset>",
           "schema": {}
         }
       ],
@@ -152,6 +167,13 @@
           "schema": {}
         },
         {
+          "name": "tgnZof",
+          "options": {},
+          "type": "Html",
+          "content": "<fieldset class=\"govuk-fieldset\" id=\"tgnZof\"><legend class=\"govuk-label govuk-label--s\">Tell us about your organisation's main activities</legend>",
+          "schema": {}
+        },
+        {
           "name": "btTtIb",
           "options": {
             "maxWords": "500",
@@ -159,7 +181,7 @@
           },
           "type": "MultilineTextField",
           "title": "Tell us about your organisation's main activities",
-          "hint": "<span class=\"govuk-label govuk-label--s\">Tell us about your organisation's main activities</span><span class=\"govuk-body\">Activity 1</span>",
+          "hint": "<label for=\"btTtIb\" class=\"govuk-body\">Activity 1</label>",
           "schema": {}
         },
         {
@@ -172,7 +194,7 @@
           },
           "type": "MultilineTextField",
           "title": "Tell us about your organisation's main activities - Activity 2 ",
-          "hint": "<span class=\"govuk-body\">Activity 2 (optional)</span>",
+          "hint": "<label for=\"SkocDi\" class=\"govuk-body\">Activity 2 (optional)</label>",
           "schema": {}
         },
         {
@@ -184,7 +206,14 @@
           },
           "type": "MultilineTextField",
           "title": "Tell us about your organisation's main activities - Activity 3 ",
-          "hint": "<span class=\"govuk-body\">Activity 3 (optional)</span>",
+          "hint": "<label for=\"CNeeiC\" class=\"govuk-body\">Activity 3 (optional)</label>",
+          "schema": {}
+        },
+        {
+          "name": "DhpcVW",
+          "options": {},
+          "type": "Html",
+          "content": "</fieldset>",
           "schema": {}
         },
         {
@@ -218,6 +247,13 @@
           "schema": {}
         },
         {
+          "name": "SXfYwl",
+          "options": {},
+          "type": "Html",
+          "content": "<fieldset class=\"govuk-fieldset\" id=\"SXfYwl\"><legend class=\"govuk-label govuk-label--s\">Describe your previous projects</legend>",
+          "schema": {}
+        },
+        {
           "name": "wxCszQ",
           "options": {
             "maxWords": "500",
@@ -225,7 +261,7 @@
           },
           "type": "MultilineTextField",
           "title": "Describe your previous projects",
-          "hint": "<span class=\"govuk-label govuk-label--s\">Describe your previous projects</span><span class=\"govuk-body\">Project 1</span>",
+          "hint": "<label for=\"wxCszQ\" class=\"govuk-body\">Project 1</label>",
           "schema": {}
         },
         {
@@ -237,7 +273,7 @@
           },
           "type": "MultilineTextField",
           "title": "Describe your previous projects - Project 2 ",
-          "hint": "<span class=\"govuk-body\">Project 2 (optional)</span>",
+          "hint": "<label for=\"QJFQgi\" class=\"govuk-body\">Project 2 (optional)</label>",
           "schema": {}
         },
         {
@@ -249,7 +285,14 @@
           },
           "type": "MultilineTextField",
           "title": "Describe your previous projects - Project 3 ",
-          "hint": "<span class=\"govuk-body\">Project 3 (optional)</span>",
+          "hint": "<label for=\"DGNWqE\" class=\"govuk-body\">Project 3 (optional)</label>",
+          "schema": {}
+        },
+        {
+          "name": "lsKMnV",
+          "options": {},
+          "type": "Html",
+          "content": "</fieldset>",
           "schema": {}
         }
       ],
@@ -477,6 +520,13 @@
           "schema": {}
         },
         {
+          "name": "zyWOmY",
+          "options": {},
+          "type": "Html",
+          "content": "<fieldset class=\"govuk-fieldset\" id=\"zyWOmY\"><legend class=\"govuk-label govuk-label--s\">Website and social media<span class=\"govuk-body\"></br>For example, your company's Facebook, Instagram or Twitter accounts (if applicable)</span></legend></br>",
+          "schema": {}
+        },
+        {
           "name": "FhbaEy",
           "options": {
             "classes": "govuk-!-width-full",
@@ -484,7 +534,7 @@
           },
           "type": "WebsiteField",
           "title": "Website and social media",
-          "hint": "<span class=\"govuk-label govuk-label--s\">Website and social media</span><span class=\"govuk-body\">For example, your company's Facebook, Instagram or Twitter accounts (if applicable)</span><br><br><span class=\"govuk-body\">Link 1</span>\n",
+          "hint": "<label for=\"FhbaEy\" class=\"govuk-body\">Link 1</label>\n",
           "schema": {}
         },
         {
@@ -496,7 +546,7 @@
           },
           "type": "WebsiteField",
           "title": "Website and social media - Link or username 2",
-          "hint": "<span class=\"govuk-body\">Link 2 (optional)</span>",
+          "hint": "<label for=\"FcdKlB\" class=\"govuk-body\">Link 2 (optional)</label>",
           "schema": {}
         },
         {
@@ -508,7 +558,14 @@
           },
           "type": "WebsiteField",
           "title": "Website and social media - Link or username 3",
-          "hint": "<span class=\"govuk-body\">Link 3 (optional)</span>",
+          "hint": "<label for=\"BzxgDA\" class=\"govuk-body\">Link 3 (optional)</label>",
+          "schema": {}
+        },
+        {
+          "name": "vuutkz",
+          "options": {},
+          "type": "Html",
+          "content": "</fieldset>",
           "schema": {}
         }
       ],
