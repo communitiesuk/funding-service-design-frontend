@@ -11,7 +11,7 @@
           "name": "pkTHJq",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">How the asset is used in the community</h2>"
         },
         {
           "name": "yaQoxU",
@@ -40,7 +40,7 @@
           "name": "LjSaeq",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">How the asset is used in the community</h2>"
         },
         {
           "name": "GjzaqR",
@@ -63,7 +63,7 @@
           "name": "nouxzF",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">How you’ll own or lease the asset</h2>"
         },
         {
           "name": "VWkLlk",
@@ -98,7 +98,7 @@
           "name": "Fmluly",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Who currently owns the asset</h2>"
         },
         {
           "name": "ymlmrX",
@@ -123,7 +123,7 @@
           "name": "bLCDBI",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">If you’ve already taken ownership</h2>"
         },
         {
           "name": "gkulUE",
@@ -154,7 +154,7 @@
           "name": "fJVdgL",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Current ownership status</h2>"
         },
         {
           "name": "FtDJfK",
@@ -179,7 +179,7 @@
           "name": "lusfLU",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Terms of your ownership or lease</h2>"
         },
         {
           "name": "uBXptf",
@@ -205,7 +205,7 @@
           "name": "MRrIQO",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Expected terms of your ownership or lease</h2>"
         },
         {
           "name": "nvMmGE",
@@ -238,7 +238,7 @@
           "name": "gaXSIn",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Public ownership</h2>"
         },
         {
           "name": "Wyesgy",
@@ -265,7 +265,7 @@
           "name": "PoZmwV",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Public ownership details and declarations</h2>"
         },
         {
           "name": "fHvilU",
@@ -335,7 +335,7 @@
           "name": "ZyEFDq",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Assets of Community Value</h2>"
         },
         {
           "name": "hvzzWB",
@@ -365,7 +365,7 @@
           "name": "cQpClK",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Purchasing within the timeframe</h2>"
         },
         {
           "name": "MLwpjP",
@@ -391,7 +391,7 @@
           "name": "iZzvMF",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Assets listed for disposal</h2>"
         },
         {
           "name": "VwxiGn",
@@ -418,7 +418,7 @@
           "name": "LfCMtg",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Asset listing details</h2>"
         },
         {
           "name": "bkbGIE",
@@ -458,7 +458,7 @@
           "name": "ZCNFUF",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Asset information</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Risk of closure</h2>"
         },
         {
           "name": "UDTxqC",

@@ -11,7 +11,7 @@
           "name": "jsBTOY",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Project qualification</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">If your project meets the definition</h2>"
         },
         {
           "name": "HvxXPI",
@@ -43,7 +43,7 @@
           "name": "IoCBIO",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Project qualification</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">How your project will comply with the regulations</h2>"
         },
         {
           "name": "RmMKzM",
@@ -88,7 +88,7 @@
           "name": "tYvkAL",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Project qualification</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">How your project will comply with state aid rules</h2>"
         },
         {
           "name": "xPkdRX",
