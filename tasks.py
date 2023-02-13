@@ -54,7 +54,7 @@ def _find_missing_translations(file, content: str):
     if missing_translations:
         print(f"Missing translations in {file}:")
         for translation in missing_translations:
-            print(translation)
+            print(f"  {translation}")
         print()
     else:
         print(f"No missing translations in {file}")

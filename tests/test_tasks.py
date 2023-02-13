@@ -93,11 +93,9 @@ def test_find_missing_trans(tmpdir, capsys):
     stdoutput = capsys.readouterr().out
     assert (
         stdoutput
-        == f"Missing translations in {f.strpath}:\n"
-        "A missing translation\n"
-        "Another missing translation\n"
-        "A third missing translation, that spans multiple lines.  We want to "
-        "capture all of its content.\n"
-        "A fourth missing translation, that spans multiple lines.  We want to "
-        "capture all of its content.\n\n"
+        == f"Missing translations in {f.strpath}:\n  A missing translation\n "
+        " Another missing translation\n  A third missing translation, that"
+        " spans multiple lines.  We want to capture all of its content.\n "
+        " A fourth missing translation, that spans multiple lines.  We"
+        " want to capture all of its content.\n\n"
     )
