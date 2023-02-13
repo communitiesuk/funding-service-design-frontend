@@ -170,3 +170,18 @@
   background-color: white;
   color: #0b0c0c;
 }
+
+dt.dl-inline {
+  display: inline;
+}
+
+dt.dl-inline:before {
+  content:"";
+  display:block;
+}
+
+dt.dl-inline + dd {
+  display: inline-block;
+  margin-left: 0em;
+  clear:right;
+}
