@@ -1290,6 +1290,90 @@
   "account_store/accounts?account_id=test-user": {
         "account_id": "test-user",
         "email_address": "test@example.com"
-    }
-
+    },
+  "fund_store/funds/COF/rounds?language=en&use_short_name=true":
+    [
+      {
+        "assessment_criteria_weighting": [
+          {
+            "id": "e2fd30d2-9207-421c-b8b3-c961bcee138b",
+            "name": "Strategic case",
+            "value": 0.3
+          },
+          {
+            "id": "e557773a-74c9-43ee-a52c-88ccae279d08",
+            "name": "Management case",
+            "value": 0.3
+          },
+          {
+            "id": "9e282cdb-6c42-4430-9563-dc4995b59bdd",
+            "name": "Potential to delivery community benefits",
+            "value": 0.3
+          },
+          {
+            "id": "6020db6c-df67-4932-a2f3-2e9dd1934164",
+            "name": "Added value to the community",
+            "value": 0.1
+          }
+        ],
+        "assessment_deadline": "2023-03-30 12:00:00",
+        "contact_details": {
+          "email_address": "COF@levellingup.gov.uk",
+          "phone": "",
+          "text_phone": ""
+        },
+        "deadline": "2022-12-14 11:59:00",
+        "fund_id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
+        "id": "c603d114-5364-4474-a0c4-c41cbf4d3bbd",
+        "opens": "2022-10-04 12:00:00",
+        "short_name": "R2W2",
+        "support_availability": {
+          "closed": "Easter Sunday, Christmas Day, Boxing Day and New Year’s Day",
+          "days": "Monday to Friday",
+          "time": "9am to 5pm"
+        },
+        "title": "Round 2 Window 2"
+      },
+      {
+        "assessment_criteria_weighting": [
+          {
+            "id": "e2fd30d2-9207-421c-b8b3-c961bcee138b",
+            "name": "Strategic case",
+            "value": 0.3
+          },
+          {
+            "id": "e557773a-74c9-43ee-a52c-88ccae279d08",
+            "name": "Management case",
+            "value": 0.3
+          },
+          {
+            "id": "9e282cdb-6c42-4430-9563-dc4995b59bdd",
+            "name": "Potential to delivery community benefits",
+            "value": 0.3
+          },
+          {
+            "id": "6020db6c-df67-4932-a2f3-2e9dd1934164",
+            "name": "Added value to the community",
+            "value": 0.1
+          }
+        ],
+        "assessment_deadline": "2023-05-05 12:00:00",
+        "contact_details": {
+          "email_address": "COF@levellingup.gov.uk",
+          "phone": "",
+          "text_phone": ""
+        },
+        "deadline": "2023-04-14 12:00:00",
+        "fund_id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
+        "id": "5cf439bf-ef6f-431e-92c5-a1d90a4dd32f",
+        "opens": "2023-02-15 12:00:00",
+        "short_name": "R2W3",
+        "support_availability": {
+          "closed": "Easter Sunday, Christmas Day, Boxing Day and New Year’s Day",
+          "days": "Monday to Friday",
+          "time": "9am to 5pm"
+        },
+        "title": "Round 2 Window 3"
+      }
+    ]
   }
