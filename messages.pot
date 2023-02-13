@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-13 10:15+0000\n"
+"POT-Creation-Date: 2023-02-13 10:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -112,7 +112,7 @@ msgid "If you’re not happy with how we respond to your complaint,"
 msgstr ""
 
 #: app/templates/accessibility_statement.html:28
-msgid "contact the Equality Advisory andSupport Service (EASS)"
+msgid "contact the Equality Advisory and Support Service (EASS)"
 msgstr ""
 
 #: app/templates/cof_r2w2_all_questions.html:6
