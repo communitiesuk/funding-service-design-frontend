@@ -11,7 +11,7 @@
           "name": "OdTNhg",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Project costs</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Cashflow to run the asset</h2>"
         },
         {
           "name": "URmfYy",
@@ -55,7 +55,7 @@
           "name": "FHZRAe",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Project costs</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Income to run the asset</h2>"
         },
         {
           "name": "fzAoYw",
@@ -105,7 +105,7 @@
           "name": "MSEqcL",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Project costs</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Running costs of the asset</h2>"
         },
         {
           "name": "lIusUr",

@@ -22,7 +22,7 @@
           "name": "uKmWaC",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Funding required</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Capital funding for your project</h2>"
         },
         {
           "name": "FhOGcz",
@@ -72,7 +72,7 @@
           "name": "eJdudr",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Funding required</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Revenue funding for your project</h2>"
         },
         {
           "name": "PZANlN",
@@ -124,7 +124,7 @@
           "name": "ZLsNnZ",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Funding required</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Secured match funding for your project</h2>"
         },
         {
           "name": "rgGQHh",
@@ -162,7 +162,7 @@
           "name": "PtVfWP",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Funding required</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">If you’ve secured match funding</h2>"
         },
         {
           "name": "DIZZOC",
@@ -184,7 +184,7 @@
           "name": "smwSHp",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Funding required</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Valuation of the asset</h2>"
         },
         {
           "name": "cGVEui",
@@ -238,7 +238,7 @@
           "name": "sXyxUW",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Funding required</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">If you’re requesting revenue funding</h2>"
         },
         {
           "name": "NWTKzQ",
@@ -262,7 +262,7 @@
           "name": "NcZEsI",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Funding required</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">If you’ve identified further match funding</h2>"
         },
         {
           "name": "RvbwSX",
@@ -297,7 +297,7 @@
           "name": "oHcGUy",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Funding required</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Identified match funding for your project</h2>"
         },
         {
           "name": "RafXFy",
@@ -335,7 +335,7 @@
           "name": "VfUORj",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Funding required</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Total funding request from the Community Ownership Fund</h2>"
         },
         {
           "name": "XcjQVp",

@@ -11,7 +11,7 @@
           "name": "Skuupp",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Community engagement</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">How you’ve engaged with the community about the asset</h2>"
         },
         {
           "name": "HJBgvw",
@@ -39,7 +39,7 @@
           "name": "mCOxVf",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Community engagement</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Your project and wider plans</h2>"
         },
         {
           "name": "NZKHOp",
@@ -65,7 +65,7 @@
           "name": "EjFSzg",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Community engagement</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Your fundraising activities</h2>"
         },
         {
           "name": "dpLyQh",

@@ -37,7 +37,7 @@
           "name": "uNgkim",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Organisation names</h2>",
           "schema": {}
         },
         {
@@ -87,7 +87,7 @@
           "name": "wnoFHW",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Organisation names</h2>",
           "schema": {}
         },
         {
@@ -154,7 +154,7 @@
           "name": "KYKyud",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Purpose and activities</h2>",
           "schema": {}
         },
         {
@@ -243,7 +243,7 @@
           "name": "QuTAqW",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Previous projects similar to this one </h2>",
           "schema": {}
         },
         {
@@ -310,7 +310,7 @@
           "name": "pTuytP",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">How your organisation is classified</h2>",
           "schema": {}
         },
         {
@@ -349,7 +349,7 @@
           "name": "QzkrIE",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">How your organisation is classified</h2>",
           "schema": {}
         },
         {
@@ -376,7 +376,7 @@
           "name": "toyZsH",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Registration details</h2>",
           "schema": {}
         },
         {
@@ -410,7 +410,7 @@
           "name": "rHMVcR",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Charity registration details</h2>",
           "schema": {}
         },
         {
@@ -437,7 +437,7 @@
           "name": "MgmuIz",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Trading subsidiaries</h2>",
           "schema": {}
         },
         {
@@ -467,7 +467,7 @@
           "name": "UNQlIu",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Parent organisation details</h2>",
           "schema": {}
         },
         {
@@ -502,7 +502,7 @@
           "name": "vRPbaz",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Address and social media accounts</h2>",
           "schema": {}
         },
         {
@@ -588,7 +588,7 @@
           "name": "WYZWDE",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Correspondence address</h2>",
           "schema": {}
         },
         {
@@ -613,7 +613,7 @@
           "name": "OKCdpZ",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Joint applications</h2>",
           "schema": {}
         },
         {
@@ -646,7 +646,7 @@
           "name": "YnSQGx",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Partner organisation details</h2>",
           "schema": {}
         },
         {
@@ -698,7 +698,7 @@
           "name": "TUqPvI",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Company registration details</h2>",
           "schema": {}
         },
         {
@@ -725,7 +725,7 @@
           "name": "nITyAP",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Organisation information</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Registration details</h2>",
           "schema": {}
         },
         {
