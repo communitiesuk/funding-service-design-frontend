@@ -68,3 +68,21 @@ def test_page_title_includes_heading(flask_test_client):
         " your community - Apply for funding to save an asset in your"
         " community"
     )
+
+
+def test_page_footer_includes_correct_title_and_link_text(flask_test_client):
+    response = flask_test_client.get("/", follow_redirects=True)
+    soup = BeautifulSoup(response.data, "html.parser")
+    assert all(
+        [
+            string in soup.footer.text
+            for string in [
+                "Support links",
+                "Privacy",
+                "Cookies",
+                "Accessibility",
+                "Statement",
+                "Contact us",
+            ]
+        ]
+    )
