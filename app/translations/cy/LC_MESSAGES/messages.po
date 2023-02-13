@@ -28,7 +28,6 @@ msgid "at"
 msgstr "am"
 
 #: app/templates/accessibility_statement.html:2
-#, fuzzy
 msgid "Accessibility statement"
 msgstr "Datganiad Hygyrchedd"
 
@@ -51,9 +50,8 @@ msgid ""
 msgstr ""
 
 #: app/templates/accessibility_statement.html:14
-#, fuzzy
 msgid "Community Ownership Fund online application"
-msgstr "Y Cronfa Perchnogaeth Gymunedol Rownd 2 Cyfnod Cynnig 2"
+msgstr ""
 
 #: app/templates/accessibility_statement.html:16
 msgid "Compliance status"
@@ -67,9 +65,8 @@ msgid ""
 msgstr ""
 
 #: app/templates/accessibility_statement.html:18
-#, fuzzy
 msgid "Preparation of this accessibility statement"
-msgstr "Datganiad Hygyrchedd"
+msgstr ""
 
 #: app/templates/accessibility_statement.html:19
 msgid ""
@@ -88,9 +85,8 @@ msgid ""
 msgstr ""
 
 #: app/templates/accessibility_statement.html:22
-#, fuzzy
 msgid "Feedback and contact information"
-msgstr "Gwybodaeth am yr ymgeisydd"
+msgstr ""
 
 #: app/templates/accessibility_statement.html:23
 msgid ""
@@ -99,9 +95,8 @@ msgid ""
 msgstr ""
 
 #: app/templates/accessibility_statement.html:24
-#, fuzzy
 msgid "contact us"
-msgstr "Cysylltwch â ni"
+msgstr ""
 
 #: app/templates/accessibility_statement.html:25
 msgid "Enforcement procedure"
@@ -2070,7 +2065,7 @@ msgid "You have started"
 msgstr "Rydych wedi dechrau"
 
 #: app/templates/dashboard.html:17
-#, fuzzy, python-format
+#, python-format
 msgid " %(application_count)s application"
 msgid_plural "%(application_count)s applications"
 msgstr[0] "%(application_count)s ceisiadau"
