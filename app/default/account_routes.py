@@ -54,7 +54,9 @@ def build_application_data_for_display(applications: list[ApplicationSummary]):
             apps_in_this_round = [
                 app for app in applications if app.round_id == round_id
             ]
-            if not_yet_open:
+            if not_yet_open or (
+                past_submission_deadline and len(apps_in_this_round) == 0
+            ):
                 continue
             for application in apps_in_this_round:
                 if past_submission_deadline:

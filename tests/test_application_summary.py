@@ -242,3 +242,39 @@ def test_build_application_data_for_display(mocker, monkeypatch):
     assert 2 == len(fsd_fund["rounds"][1]["applications"])
     assert "IN_PROGRESS" == fsd_fund["rounds"][1]["applications"][0].status
     assert "READY_TO_SUBMIT" == fsd_fund["rounds"][1]["applications"][1].status
+
+
+def test_build_application_data_for_display_exclude_round_with_no_apps(
+    mocker, monkeypatch
+):
+    mocker.patch(
+        "app.default.account_routes.get_all_funds",
+        return_value=TEST_FUNDS_DATA,
+    )
+    mocker.patch(
+        "app.default.account_routes.get_all_rounds_for_fund",
+        return_value=TEST_ROUNDS_DATA,
+    )
+
+    result = build_application_data_for_display(
+        [
+            ApplicationSummary.from_dict(app)
+            for app in TEST_APPLICATION_STORE_DATA
+            if app["round_id"] == "summer"
+        ]
+    )
+    assert 2 == result["total_applications_to_display"]
+    assert 1 == len(result["funds"])
+    fsd_fund = result["funds"][0]
+    assert fsd_fund, "Fund not returned"
+    assert "Test Fund" == fsd_fund["fund_data"]["name"]
+
+    assert 1 == len(fsd_fund["rounds"]), "wrong number of rounds returned"
+
+    assert (
+        "summer" == fsd_fund["rounds"][0]["round_details"]["id"]
+    ), "summer not present in rounds"
+    assert fsd_fund["rounds"][0]["is_past_submission_deadline"] is False
+    assert 2 == len(fsd_fund["rounds"][0]["applications"])
+    assert "IN_PROGRESS" == fsd_fund["rounds"][0]["applications"][0].status
+    assert "READY_TO_SUBMIT" == fsd_fund["rounds"][0]["applications"][1].status
