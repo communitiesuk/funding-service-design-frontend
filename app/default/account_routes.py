@@ -56,6 +56,8 @@ def build_application_data_for_display(applications: list[ApplicationSummary]):
             ]
             if not_yet_open:
                 continue
+            if past_submission_deadline and len(apps_in_this_round) == 0:
+                continue
             for application in apps_in_this_round:
                 if past_submission_deadline:
                     if application.status != "SUBMITTED":
