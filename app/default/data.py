@@ -132,7 +132,7 @@ def get_round_data_by_short_names(fund_short_name, round_short_name):
         (
             round
             for round in response
-            if str.upper(round["short_name"]) == str.upper(round_short_name)
+            if str.casefold(round["short_name"]) == str.casefold(round_short_name)
         ),
         None,
     )
