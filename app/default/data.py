@@ -121,6 +121,23 @@ def get_round_data(fund_id, round_id, as_dict=False):
         return round_response
 
 
+def get_round_data_by_short_names(fund_short_name, round_short_name):
+    request_url = Config.GET_ALL_ROUNDS_FOR_FUND_ENDPOINT.format(
+        fund_id=fund_short_name
+    )
+    response = get_data(
+        request_url, {"language": get_lang(), "use_short_name": "true"}
+    )
+    return next(
+        (
+            round
+            for round in response
+            if str.casefold(round["short_name"]) == str.casefold(round_short_name)
+        ),
+        None,
+    )
+
+
 def get_round_data_fail_gracefully(fund_id, round_id):
     try:
         language = {"language": get_lang()}

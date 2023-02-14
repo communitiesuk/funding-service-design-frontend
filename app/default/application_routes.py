@@ -180,6 +180,12 @@ def tasklist(application_id):
             is_past_submission_deadline=current_datetime_after_given_iso_string(  # noqa:E501
                 round_data.deadline
             ),
+            all_questions_url=url_for(
+                "content_routes.all_questions",
+                fund_short_name=fund.short_name,
+                round_short_name=round_data.short_name,
+                lang=application.language,
+            ),
         )
 
 
