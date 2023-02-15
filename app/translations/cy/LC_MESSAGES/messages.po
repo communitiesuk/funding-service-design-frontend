@@ -36,26 +36,32 @@ msgid ""
 "The Department for Levelling Up, Housing and Communities is committed to "
 "making our online services accessible to all users by meeting"
 msgstr ""
+"Mae'r Adran Ffyniant Bro, Tai a Chymunedau yn ymrwymo i wneud ein holl "
+"wasanaethau ar-lein yn hygyrch i bob defnyddiwr trwy fodloni"
 
 #: app/templates/accessibility_statement.html:11
 msgid ""
 "The Public Sector Bodies (Websites and Mobile Applications) (No. 2) "
 "Accessibility Regulations 2018"
 msgstr ""
+"Rheoliadau Hygyrchedd Cyrff Sector Cyhoeddus (Gwefannau ac Apiau "
+"Symudol) (Rhif 2) 2018"
 
 #: app/templates/accessibility_statement.html:12
 msgid ""
 "This accessibility statement applies to content on the access-"
 "funding.levellingup.gov.uk domain and the following services:"
 msgstr ""
+"Mae'r datganiad hygyrchedd hwn yn berthnasol i gynnwys ar barth "
+"access-funding.levellingup.gov.uk a'r gwasanaethau canlynol:"
 
 #: app/templates/accessibility_statement.html:14
 msgid "Community Ownership Fund online application"
-msgstr ""
+msgstr "Cais ar-lein y Gronfa Perchnogaeth Gymunedol"
 
 #: app/templates/accessibility_statement.html:16
 msgid "Compliance status"
-msgstr ""
+msgstr "Statws cydymffurfio"
 
 #: app/templates/accessibility_statement.html:17
 msgid ""
@@ -63,16 +69,22 @@ msgid ""
 "compliant with the Web Content Accessibility Guidelines version 2.1 AA "
 "standard."
 msgstr ""
+"Mae gwefan cais ar-lein y Gronfa Perchnogaeth Gymunedol yn "
+"cydymffurfio'n llawn â safon AA fersiwn 2.1 Canllawiau Hygyrchedd "
+"Cynnwys y We."
 
 #: app/templates/accessibility_statement.html:18
 msgid "Preparation of this accessibility statement"
-msgstr ""
+msgstr "Paratoi'r datganiad hygyrchedd hwn"
 
 #: app/templates/accessibility_statement.html:19
 msgid ""
 "This statement was prepared in November 2022 and was last updated on 7th "
 "February 2023 following an accessibility audit carried out by"
 msgstr ""
+"Paratowyd y datganiad hwn ym mis Tachwedd 2022 ac fe'i "
+"diweddarwyd ddiwethaf ar 7 Chwefror 2023 yn dilyn archwiliad hygyrchedd "
+"a gynhaliwyd gan"
 
 #: app/templates/accessibility_statement.html:20
 msgid "The Digital Accessibility Centre (DAC)"
@@ -83,24 +95,28 @@ msgid ""
 "additional manual testing and our responses to the findings of these "
 "activities."
 msgstr ""
+"profion ychwanegol a wnaed â llaw a'n hymatebion i ganfyddiadau'r "
+"gweithgareddau hyn."
 
 #: app/templates/accessibility_statement.html:22
 msgid "Feedback and contact information"
-msgstr ""
+msgstr "Adborth a gwybodaeth gyswllt"
 
 #: app/templates/accessibility_statement.html:23
 msgid ""
 "If you find any problems that are not listed on this page or you think "
 "we’re not meeting the accessibility requirements,"
 msgstr ""
+"Os cewch chi unrhyw broblemau sydd heb eu rhestru ar y dudalen hon neu "
+"os ydych o'r farn nad ydym yn bodloni'r gofynion hygyrchedd,"
 
 #: app/templates/accessibility_statement.html:24
 msgid "contact us"
-msgstr ""
+msgstr "cysylltwch â ni"
 
 #: app/templates/accessibility_statement.html:25
 msgid "Enforcement procedure"
-msgstr ""
+msgstr "Gweithdrefn orfodi"
 
 #: app/templates/accessibility_statement.html:26
 msgid ""
@@ -108,14 +124,17 @@ msgid ""
 "enforcing the Public Sector Bodies (Websites and Mobile Applications) "
 "(No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’)."
 msgstr ""
+"Mae'r Comisiwn Cydraddoldeb a Hawliau Dynol (EHRC) yn gyfrifol am "
+"orfodi Rheoliadau Hygyrchedd Cyrff Sector Cyhoeddus (Gwefannau "
+"ac Apiau Symudol) (Rhif 2) (y 'rheoliadau hygyrchedd')."
 
 #: app/templates/accessibility_statement.html:27
 msgid "If you’re not happy with how we respond to your complaint,"
-msgstr ""
+msgstr "Os na fyddwch yn hapus â'r ffordd rydym ni'n ymateb i'ch cwyn,"
 
 #: app/templates/accessibility_statement.html:28
 msgid "contact the Equality Advisory and Support Service (EASS)"
-msgstr ""
+msgstr "cysylltwch â'r Gwasanaeth Cynghori a Chymorth Cydraddoldeb (EASS)"
 
 #: app/templates/cof_r2w2_all_questions.html:6
 msgid "Full list of application questions"
