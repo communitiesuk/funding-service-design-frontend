@@ -1,8 +1,8 @@
 import inspect
-import langcodes
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
+from langcodes import Language
 
 from pytz import timezone
 
@@ -30,7 +30,7 @@ class ApplicationSummary:
             if self.last_edited
             else None
         )
-        self.language = langcodes.Language.make(self.language).language_name()
+        self.language = Language.make(self.language).language_name()
 
     @classmethod
     def from_dict(cls, d: dict):
