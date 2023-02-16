@@ -37,7 +37,7 @@
           "name": "aVhByI",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y prosiect</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Cyllid blaenorol gan y Gronfa Perchnogaeth Gymunedol</h2>"
         },
         {
           "name": "gScdbf",
@@ -67,7 +67,7 @@
           "name": "tmVEPV",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y prosiect</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Prosiectau a ariannwyd yn flaenorol gan y Gronfa Perchnogaeth Gymunedol</h2>"
         },
         {
           "name": "IrIYcA",
@@ -103,7 +103,7 @@
           "name": "umDxBP",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y prosiect</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Enw'r prosiect a chrynodeb ohono</h2>"
         },
         {
           "name": "KAgrBz",
@@ -153,7 +153,7 @@
           "name": "tpQVaN",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y prosiect</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Cyfeiriad yr ased</h2>"
         },
         {
           "name": "yEmHpp",

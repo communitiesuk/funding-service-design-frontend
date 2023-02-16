@@ -11,7 +11,7 @@
           "name": "Skuupp",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Ymgysylltu â'r gymuned</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Sut ydych chi wedi ymgysylltu â'r gymuned ynghylch yr ased</h2>"
         },
         {
           "name": "HJBgvw",
@@ -40,7 +40,7 @@
           "name": "mCOxVf",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Ymgysylltu â'r gymuned</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Eich prosiect a'ch cynlluniau ehangach</h2>"
         },
         {
           "name": "NZKHOp",
@@ -66,7 +66,7 @@
           "name": "EjFSzg",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Ymgysylltu â'r gymuned</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Eich gweithgareddau codi arian</h2>"
         },
         {
           "name": "dpLyQh",
