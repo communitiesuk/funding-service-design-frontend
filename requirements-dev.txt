@@ -147,6 +147,14 @@ jsmin==3.0.1
     # via -r requirements.txt
 json2html==1.3.0
     # via -r requirements-dev.in
+langcodes==3.3.0
+    # via
+    #   -r requirements-dev.in
+    #   -r requirements.txt
+language-data==1.1
+    # via -r requirements-dev.in
+marisa-trie==0.7.8
+    # via language-data
 markupsafe==2.1.1
     # via
     #   -r requirements.txt

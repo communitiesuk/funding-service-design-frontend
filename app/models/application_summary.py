@@ -1,4 +1,5 @@
 import inspect
+import langcodes
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
@@ -15,6 +16,7 @@ class ApplicationSummary:
     fund_id: str
     started_at: datetime
     project_name: str
+    language: str
     last_edited: Optional[datetime] = None
 
     def __post_init__(self):
@@ -28,6 +30,7 @@ class ApplicationSummary:
             if self.last_edited
             else None
         )
+        self.language = langcodes.Language.make(self.language).language_name()
 
     @classmethod
     def from_dict(cls, d: dict):
