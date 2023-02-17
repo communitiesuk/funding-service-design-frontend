@@ -1,5 +1,9 @@
 name: Build and deploy forms
-permissions: write-all
+permissions:
+  actions: read
+  id-token: read
+  packages: write
+  security-events: read
 on:
   workflow_dispatch:
   push:
