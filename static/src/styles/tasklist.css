@@ -171,6 +171,11 @@
   color: #0b0c0c;
 }
 
+.signout {
+  padding-left: 0px;
+  margin-top: 0px;
+}
+
 dt.dl-inline {
   display: inline;
 }
