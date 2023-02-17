@@ -101,15 +101,7 @@ def dashboard():
         for application in application_store_response
     ]
 
-    showLanguageColumn = False
-    languages = set()
-    for application in applications:
-        languages.add(application.language)
-        if len(languages) == 2:
-            showLanguageColumn = True
-    current_app.logger.info(
-        f"Sow language column'{showLanguageColumn}'"
-    )
+    showLanguageColumn = len({a.language for a in applications}) > 1
 
     display_data = build_application_data_for_display(applications)
     current_app.logger.info(
