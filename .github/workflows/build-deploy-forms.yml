@@ -1,4 +1,5 @@
 name: Build and deploy forms
+permissions: write-all
 on:
   workflow_dispatch:
   push:
