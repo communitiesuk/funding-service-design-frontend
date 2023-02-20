@@ -1,6 +1,5 @@
 name: Build and deploy forms
 permissions:
-  actions: read
   packages: write
 on:
   workflow_dispatch:
