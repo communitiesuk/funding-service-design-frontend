@@ -1,6 +1,4 @@
 name: Build and deploy forms
-permissions:
-  packages: write
 on:
   workflow_dispatch:
   push:
