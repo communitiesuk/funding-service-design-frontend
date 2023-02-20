@@ -13,7 +13,7 @@
           "name": "jsBTOY",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Cymhwystra'r prosiect</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Os yw eich prosiect yn bodloni'r diffiniad</h2>"
         },
         {
           "name": "HvxXPI",
@@ -45,7 +45,7 @@
           "name": "IoCBIO",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Cymhwystra'r prosiect</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Sut bydd eich prosiect yn cydymffurfio â'r rheoliadau</h2>"
         },
         {
           "name": "RmMKzM",
@@ -93,7 +93,7 @@
           "name": "tYvkAL",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Cymhwystra'r prosiect</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Sut bydd eich prosiect yn cydymffurfio â rheolau cymorth gwladol</h2>"
         },
         {
           "name": "xPkdRX",
