@@ -27,7 +27,7 @@
             {% if g.is_authenticated and g.logout_url %}
             <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide navigation menu" aria-expanded="true">Menu</button>
             <nav>
-              <ul id="navigation" class="govuk-header__navigation app-navigation" aria-label="Navigation menu">
+              <ul id="navigation" class="signout govuk-header__navigation app-navigation" aria-label="Navigation menu">
                     <li class="govuk-header__navigation-item">
                         <a class="govuk-header__link" href="{{ g.logout_url }}">{% trans %}Sign out{% endtrans %}</a>
                     </li>

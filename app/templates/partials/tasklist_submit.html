@@ -3,15 +3,13 @@
 <form method="POST" action={{action_url}}>
     {{ form.csrf_token }}
     <div class="govuk-grid-row .assessment-alert">
-      <div class="govuk-grid-column-two-thirds">
         <div class="assessment-alert govuk-!-margin-bottom-8">
             <h2 class="assessment-alert__heading govuk-heading-l govuk-!-margin-top-4">All sections complete</h2>
             <input type="hidden" id="application_id" name="application_id" value="{{application_meta_data["application_id"]}}">
             <p class="govuk-body">You can submit your application when you are ready.</p>
             <p class="govuk-body">Once your application has been submitted, you cannot change your answers.</p>
             <button class="govuk-button" data-module="govuk-button">Submit your application</button>
-          </div>
-      </div>
+          </div>      
     </div>
   </form>
 

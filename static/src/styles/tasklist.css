@@ -130,9 +130,9 @@
   }
 
   .assessment-alert {
-    border-left: 8px solid #2b8cc4;
+    border-left: 10px solid #2b8cc4;
     background-color: #dbeff9;
-    padding: 1px 10px;
+    padding: 1px 15px;
     font-family: "GDS Transport",arial,sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -169,6 +169,11 @@
 .govuk-tag.complete-tag {
   background-color: white;
   color: #0b0c0c;
+}
+
+.signout {
+  padding-left: 0px;
+  margin-top: 0px;
 }
 
 dt.dl-inline {

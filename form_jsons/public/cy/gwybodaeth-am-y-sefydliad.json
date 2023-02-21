@@ -39,7 +39,7 @@
           "name": "uNgkim",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y sefydliad</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Enwau'r sefydliad</h2>",
           "schema": {}
         },
         {
@@ -92,7 +92,7 @@
           "name": "wnoFHW",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y sefydliad</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Enwau'r sefydliad</h2>",
           "schema": {}
         },
         {
@@ -159,7 +159,7 @@
           "name": "KYKyud",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y sefydliad</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Diben a gweithgareddau</h2>",
           "schema": {}
         },
         {
@@ -251,7 +251,7 @@
           "name": "QuTAqW",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y sefydliad</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Prosiectau blaenorol sy'n debyg i'r prosiect hwn</h2>",
           "schema": {}
         },
         {
@@ -318,7 +318,7 @@
           "name": "pTuytP",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y sefydliad</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Sut mae eich sefydliad yn cael ei ddosbarthu</h2>",
           "schema": {}
         },
         {
@@ -357,7 +357,7 @@
           "name": "QzkrIE",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y sefydliad</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Sut mae eich sefydliad yn cael ei ddosbarthu</h2>",
           "schema": {}
         },
         {
@@ -384,7 +384,7 @@
           "name": "toyZsH",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y sefydliad</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Manylion cofrestru</h2>",
           "schema": {}
         },
         {
@@ -418,7 +418,7 @@
           "name": "rHMVcR",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y sefydliad</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Manylion cofrestru'r elusen</h2>",
           "schema": {}
         },
         {
@@ -445,7 +445,7 @@
           "name": "MgmuIz",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y sefydliad</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Is-gwmnïau masnachu</h2>",
           "schema": {}
         },
         {
@@ -478,7 +478,7 @@
           "name": "UNQlIu",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y sefydliad</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Manylion rhiant-sefydliad</h2>",
           "schema": {}
         },
         {
@@ -513,7 +513,7 @@
           "name": "vRPbaz",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y sefydliad</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Cyfeiriad a chyfrifon cyfryngau cymdeithasol</h2>",
           "schema": {}
         },
         {
@@ -602,7 +602,7 @@
           "name": "WYZWDE",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y sefydliad</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Cyfeiriad gohebu</h2>",
           "schema": {}
         },
         {
@@ -627,7 +627,7 @@
           "name": "OKCdpZ",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y sefydliad</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Ceisiadau ar y cyd</h2>",
           "schema": {}
         },
         {
@@ -660,7 +660,7 @@
           "name": "YnSQGx",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y sefydliad</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Manylion sefydliad partner</h2>",
           "schema": {}
         },
         {
@@ -712,7 +712,7 @@
           "name": "TUqPvI",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y sefydliad</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Manylion cofrestru'r cwmni</h2>",
           "schema": {}
         },
         {
@@ -739,7 +739,7 @@
           "name": "nITyAP",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am y sefydliad</h2>",
+          "content": "<h2 class=\"govuk-heading-m\">Manylion cofrestru</h2>",
           "schema": {}
         },
         {
