@@ -81,7 +81,6 @@
 	{% endfor %}
 
 	{% if applications|length > 0 and not is_past_submission_deadline %}
-    {{showLanguageColumn}}
 		{% if showLanguageColumn %}
 			{{
             govukTable({
