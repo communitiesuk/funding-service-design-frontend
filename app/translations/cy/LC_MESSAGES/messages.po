@@ -8,6 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-02-23 09:46+0000\n"
+"POT-Creation-Date: 2023-02-21 09:38+0000\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -580,6 +581,10 @@ msgstr "Swm y cyllid a dderbyniwyd"
 #: app/templates/cof_r2_all_questions.html:242
 #: app/templates/partials/applications_table.html:61
 #: app/templates/partials/applications_table.html:84
+#: app/templates/partials/applications_table.html:90
+#: app/templates/partials/applications_table.html:116
+#: app/templates/partials/applications_table.html:141
+#: app/templates/partials/applications_table.html:163
 msgid "Project name"
 msgstr "Enw'r prosiect"
 
@@ -2326,26 +2331,47 @@ msgstr "Nid yw'r un o'r adrannau wedi'u llenwi."
 msgid "Continue application"
 msgstr "Parhau gyda'r cais"
 
-#: app/templates/partials/applications_table.html:36
+#: app/templates/partials/applications_table.html:37
+#: app/templates/partials/applications_table.html:62
 msgid "Untitled project"
 msgstr "Prosiect heb enw"
 
-#: app/templates/partials/applications_table.html:64
-#: app/templates/partials/applications_table.html:87
+#: app/templates/partials/applications_table.html:52
+msgid "English"
+msgstr "Saesneg"
+
+#: app/templates/partials/applications_table.html:52
+msgid "Welsh"
+msgstr "Cymraeg"
+
+#: app/templates/partials/applications_table.html:93
+#: app/templates/partials/applications_table.html:119
+#: app/templates/partials/applications_table.html:144
+#: app/templates/partials/applications_table.html:166
 msgid "Status"
 msgstr "Statws"
 
-#: app/templates/partials/applications_table.html:67
-#: app/templates/partials/applications_table.html:90
+#: app/templates/partials/applications_table.html:96
+#: app/templates/partials/applications_table.html:122
+#: app/templates/partials/applications_table.html:147
+#: app/templates/partials/applications_table.html:169
 msgid "Last edited"
 msgstr "Golygwyd diwethaf"
 
-#: app/templates/partials/applications_table.html:70
-#: app/templates/partials/applications_table.html:93
+#: app/templates/partials/applications_table.html:99
+#: app/templates/partials/applications_table.html:125
+#: app/templates/partials/applications_table.html:150
+#: app/templates/partials/applications_table.html:172
 msgid "Application Reference"
 msgstr "Cyfeirnod y cais"
 
-#: app/templates/partials/applications_table.html:73
+#: app/templates/partials/applications_table.html:102
+#: app/templates/partials/applications_table.html:153
+msgid "Language"
+msgstr "Iaith"
+
+#: app/templates/partials/applications_table.html:105
+#: app/templates/partials/applications_table.html:128
 msgid "Action"
 msgstr "Gweithredu"
 
