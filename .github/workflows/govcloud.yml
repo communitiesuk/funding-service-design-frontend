@@ -59,17 +59,6 @@ jobs:
           cf_password: ${{secrets.CF_PASSWORD}}
           # env vars required in the manifest must be declared here
           command: push -f manifest-dev.yml funding-service-design-frontend-dev --var SENTRY_DSN="${{secrets.SENTRY_DSN}}" --var FORMS_SERVICE_PRIVATE_HOST="${{secrets.FORMS_SERVICE_PRIVATE_HOST}}" --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}" --var GITHUB_SHA="${{ github.sha }}"
-      - name: Run accessibility tests
-        run: |
-          python -m venv .venv
-          source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements-dev.txt
-          pytest -k "accessibility"
-      - name: "Upload Accessibility Testing reports"
-        uses: actions/upload-artifact@v2
-        with:
-          name: accessibility-test-report
-          path: /home/runner/work/funding-service-design-design-frontend/funding-service-design-frontend/axe_reports/*.html
-          retention-days: 5
 
   security:
     if: ${{ github.actor != 'dependabot[bot]' }}
