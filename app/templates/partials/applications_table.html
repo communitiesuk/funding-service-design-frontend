@@ -38,7 +38,7 @@
                     },
                     {
                         'text':  govukTag({
-                            'text': application.status|snake_case_to_human ,
+                            'text': application.status|status_translation ,
                             'classes': status_class
                         })
                     },
@@ -63,7 +63,7 @@
                     },
                     {
                         'text':  govukTag({
-                            'text': application.status|snake_case_to_human ,
+                            'text': application.status|status_translation ,
                             'classes': status_class
                         })
                     },

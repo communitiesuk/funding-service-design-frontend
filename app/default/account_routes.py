@@ -101,6 +101,10 @@ def dashboard():
         for application in application_store_response
     ]
 
+    current_app.logger.info(
+        f"Applications :'{applications}'"
+    )
+
     showLanguageColumn = len({a.language for a in applications}) > 1
 
     display_data = build_application_data_for_display(applications)
