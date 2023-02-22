@@ -13,7 +13,7 @@
           "name": "pkTHJq",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am yr ased</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Sut caiff yr ased ei ddefnyddio yn y gymuned</h2>"
         },
         {
           "name": "yaQoxU",
@@ -45,7 +45,7 @@
           "name": "LjSaeq",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am yr ased</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Sut caiff yr ased ei ddefnyddio yn y gymuned</h2>"
         },
         {
           "name": "GjzaqR",
@@ -68,7 +68,7 @@
           "name": "nouxzF",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am yr ased</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Sut byddwch yn berchen ar yr ased neu'n prydlesu'r ased</h2>"
         },
         {
           "name": "VWkLlk",
@@ -109,7 +109,7 @@
           "name": "Fmluly",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am yr ased</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Pwy sy'n berchen ar yr ased ar hyn o bryd</h2>"
         },
         {
           "name": "ymlmrX",
@@ -134,7 +134,7 @@
           "name": "bLCDBI",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am yr ased</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Os ydych eisoes yn berchen arno</h2>"
         },
         {
           "name": "gkulUE",
@@ -165,7 +165,7 @@
           "name": "fJVdgL",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am yr ased</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Statws perchnogaeth bresennol</h2>"
         },
         {
           "name": "FtDJfK",
@@ -190,7 +190,7 @@
           "name": "lusfLU",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am yr ased</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Telerau eich perchnogaeth neu'ch prydles</h2>"
         },
         {
           "name": "uBXptf",
@@ -216,7 +216,7 @@
           "name": "MRrIQO",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am yr ased</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Telerau disgwyliedig eich perchnogaeth neu'ch prydles</h2>"
         },
         {
           "name": "nvMmGE",
@@ -249,7 +249,7 @@
           "name": "gaXSIn",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am yr ased</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Perchnogaeth gyhoeddus</h2>"
         },
         {
           "name": "Wyesgy",
@@ -279,7 +279,7 @@
           "name": "PoZmwV",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am yr ased</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Manylion a datganiadau perchnogaeth gyhoeddus</h2>"
         },
         {
           "name": "fHvilU",
@@ -349,7 +349,7 @@
           "name": "ZyEFDq",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am yr ased</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Asedau o Werth Cymunedol</h2>"
         },
         {
           "name": "hvzzWB",
@@ -379,7 +379,7 @@
           "name": "cQpClK",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am yr ased</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Prynu o fewn yr amserlen</h2>"
         },
         {
           "name": "MLwpjP",
@@ -405,7 +405,7 @@
           "name": "iZzvMF",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am yr ased</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Asedau a restrwyd i'w gwaredu</h2>"
         },
         {
           "name": "VwxiGn",
@@ -435,7 +435,7 @@
           "name": "LfCMtg",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am yr ased</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Manylion rhestru'r ased</h2>"
         },
         {
           "name": "bkbGIE",
@@ -475,7 +475,7 @@
           "name": "ZCNFUF",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Gwybodaeth am yr ased</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Risg cau</h2>"
         },
         {
           "name": "UDTxqC",

@@ -18,7 +18,7 @@
           "columnOneTitle": "Disgrifiad ",
           "columnTwoTitle": "Swm",
           "columnThreeTitle": "Gweithredu"
-          
+
         }
       },
       "components": [
@@ -26,7 +26,7 @@
           "name": "uKmWaC",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Cyllid cyfalaf ar gyfer eich prosiect</h2>"
         },
         {
           "name": "FhOGcz",
@@ -78,7 +78,7 @@
           "name": "eJdudr",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Cyllid refeniw ar gyfer eich prosiect</h2>"
         },
         {
           "name": "PZANlN",
@@ -131,7 +131,7 @@
           "name": "ZLsNnZ",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Cyllid cyfatebol a sicrhawyd ar gyfer eich prosiect</h2>"
         },
         {
           "name": "rgGQHh",
@@ -169,7 +169,7 @@
           "name": "PtVfWP",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Os ydych chi wedi sicrhau cyllid cyfatebol</h2>"
         },
         {
           "name": "DIZZOC",
@@ -192,7 +192,7 @@
           "name": "smwSHp",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Prisiad yr ased</h2>"
         },
         {
           "name": "cGVEui",
@@ -246,7 +246,7 @@
           "name": "sXyxUW",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Os ydych chi'n gwneud cais am gyllid refeniw</h2>"
         },
         {
           "name": "NWTKzQ",
@@ -270,7 +270,7 @@
           "name": "NcZEsI",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Os ydych chi wedi nodi cyllid cyfatebol pellach</h2>"
         },
         {
           "name": "RvbwSX",
@@ -307,7 +307,7 @@
           "name": "oHcGUy",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Cyllid cyfatebol a nodwyd ar gyfer eich prosiect</h2>"
         },
         {
           "name": "RafXFy",
@@ -345,7 +345,7 @@
           "name": "VfUORj",
           "options": {},
           "type": "Html",
-          "content": "<h2 class=\"govuk-heading-m\">Cyllid sydd ei angen</h2>"
+          "content": "<h2 class=\"govuk-heading-m\">Cyfanswm y cais am gyllid gan y Gronfa Perchnogaeth Gymunedol</h2>"
         },
         {
           "name": "XcjQVp",
