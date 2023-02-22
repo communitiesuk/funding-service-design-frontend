@@ -165,8 +165,9 @@ def tasklist(application_id):
             )
         ),
     }
-
-    with force_locale(application.language):
+    
+    language = application.language
+    with force_locale(language):
         return render_template(
             "tasklist.html",
             application=application,
@@ -184,7 +185,7 @@ def tasklist(application_id):
                 "content_routes.all_questions",
                 fund_short_name=fund.short_name,
                 round_short_name=round_data.short_name,
-                lang=application.language,
+                lang=language,
             ),
         )
 
