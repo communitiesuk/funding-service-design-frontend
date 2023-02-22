@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-21 09:38+0000\n"
+"POT-Creation-Date: 2023-02-22 14:48+0000\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -19,13 +19,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: app/create_app.py:89
+#: app/create_app.py:91
 msgid "Apply for funding to save an asset in your community"
 msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
 
 #: app/filters.py:14 app/filters.py:25
 msgid "at"
 msgstr "am"
+
+#: app/models/statuses.py:5
+msgid "Not Started"
+msgstr "Rydych wedi dechrau"
+
+#: app/models/statuses.py:6
+msgid "In Progress"
+msgstr "In Progress Welsh"
+
+#: app/models/statuses.py:7
+msgid "Assessment complete"
+msgstr "o'r meini prawf asesu"
+
+#: app/models/statuses.py:8
+msgid "QA complete"
+msgstr ""
+
+#: app/models/statuses.py:9
+msgid "Flagged"
+msgstr ""
+
+#: app/models/statuses.py:10
+msgid "Stopped"
+msgstr ""
 
 #: app/templates/accessibility_statement.html:2
 msgid "Accessibility statement"
@@ -579,10 +603,10 @@ msgid "Amount of funding received"
 msgstr "Swm y cyllid a dderbyniwyd"
 
 #: app/templates/cof_r2_all_questions.html:242
-#: app/templates/partials/applications_table.html:90
-#: app/templates/partials/applications_table.html:116
-#: app/templates/partials/applications_table.html:141
-#: app/templates/partials/applications_table.html:163
+#: app/templates/partials/applications_table.html:89
+#: app/templates/partials/applications_table.html:115
+#: app/templates/partials/applications_table.html:140
+#: app/templates/partials/applications_table.html:162
 msgid "Project name"
 msgstr "Enw'r prosiect"
 
@@ -2334,42 +2358,34 @@ msgstr "Parhau gyda'r cais"
 msgid "Untitled project"
 msgstr "Prosiect heb enw"
 
-#: app/templates/partials/applications_table.html:52
-msgid "English"
-msgstr "Saesneg"
-
-#: app/templates/partials/applications_table.html:52
-msgid "Welsh"
-msgstr "Cymraeg"
-
-#: app/templates/partials/applications_table.html:93
-#: app/templates/partials/applications_table.html:119
-#: app/templates/partials/applications_table.html:144
-#: app/templates/partials/applications_table.html:166
+#: app/templates/partials/applications_table.html:92
+#: app/templates/partials/applications_table.html:118
+#: app/templates/partials/applications_table.html:143
+#: app/templates/partials/applications_table.html:165
 msgid "Status"
 msgstr "Statws"
 
-#: app/templates/partials/applications_table.html:96
-#: app/templates/partials/applications_table.html:122
-#: app/templates/partials/applications_table.html:147
-#: app/templates/partials/applications_table.html:169
+#: app/templates/partials/applications_table.html:95
+#: app/templates/partials/applications_table.html:121
+#: app/templates/partials/applications_table.html:146
+#: app/templates/partials/applications_table.html:168
 msgid "Last edited"
 msgstr "Golygwyd diwethaf"
 
-#: app/templates/partials/applications_table.html:99
-#: app/templates/partials/applications_table.html:125
-#: app/templates/partials/applications_table.html:150
-#: app/templates/partials/applications_table.html:172
+#: app/templates/partials/applications_table.html:98
+#: app/templates/partials/applications_table.html:124
+#: app/templates/partials/applications_table.html:149
+#: app/templates/partials/applications_table.html:171
 msgid "Application Reference"
 msgstr "Cyfeirnod y cais"
 
-#: app/templates/partials/applications_table.html:102
-#: app/templates/partials/applications_table.html:153
+#: app/templates/partials/applications_table.html:101
+#: app/templates/partials/applications_table.html:152
 msgid "Language"
 msgstr "Iaith"
 
-#: app/templates/partials/applications_table.html:105
-#: app/templates/partials/applications_table.html:128
+#: app/templates/partials/applications_table.html:104
+#: app/templates/partials/applications_table.html:127
 msgid "Action"
 msgstr "Gweithredu"
 
@@ -2424,4 +2440,10 @@ msgstr "Dechrau cais newydd"
 #: app/templates/partials/tasklist_section.html:7
 msgid "of the assessment criteria"
 msgstr "o'r meini prawf asesu"
+
+#~ msgid "English"
+#~ msgstr "Saesneg"
+
+#~ msgid "Welsh"
+#~ msgstr "Cymraeg"
 
