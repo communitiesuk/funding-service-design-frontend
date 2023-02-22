@@ -16,7 +16,5 @@ axe-selenium-python==2.1.6
 json2html==1.3.0
 selenium==4.2.0
 invoke
-langcodes
-language_data
 #TODO replace with normal version once this issue is released: https://github.com/SergeyPirogov/webdriver_manager/issues/443
 git+https://github.com/SergeyPirogov/webdriver_manager@dc73f4a27e8f40cd81dc4718a3f26c22ede29586

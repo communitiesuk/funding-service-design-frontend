@@ -2,7 +2,6 @@ import inspect
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
-from langcodes import Language
 from app.models.language import get_text
 
 from pytz import timezone
@@ -31,7 +30,7 @@ class ApplicationSummary:
             if self.last_edited
             else None
         )
-        self.language = get_text(Language.make(self.language).language_name())
+        self.language = get_text(self.language)
 
     @classmethod
     def from_dict(cls, d: dict):
