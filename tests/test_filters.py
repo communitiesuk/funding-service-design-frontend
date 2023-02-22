@@ -53,7 +53,5 @@ def test_snake_case_to_human(input_string, expected):
 def test_kebab_case_to_human(input_string, expected):
     assert filters.kebab_case_to_human(input_string) == expected
 
-def test_status_translation():  
-
-    with app.test_request_context():        
-        assert filters.status_translation("NOT_STARTED") == "Not Started Welsh"
+def test_status_translation():         
+    assert filters.status_translation("NOT_STARTED") == "Not Started"

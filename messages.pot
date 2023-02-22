@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-22 14:48+0000\n"
+"POT-Creation-Date: 2023-02-22 16:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,27 +25,35 @@ msgstr ""
 msgid "at"
 msgstr ""
 
-#: app/models/statuses.py:5
-msgid "Not Started"
+#: app/models/language.py:5
+msgid "English"
 msgstr ""
 
-#: app/models/statuses.py:6
-msgid "In Progress"
-msgstr ""
-
-#: app/models/statuses.py:7
-msgid "Assessment complete"
-msgstr ""
-
-#: app/models/statuses.py:8
-msgid "QA complete"
+#: app/models/language.py:6
+msgid "Welsh"
 msgstr ""
 
 #: app/models/statuses.py:9
-msgid "Flagged"
+msgid "Not Started"
 msgstr ""
 
 #: app/models/statuses.py:10
+msgid "In Progress"
+msgstr ""
+
+#: app/models/statuses.py:11
+msgid "Assessment complete"
+msgstr ""
+
+#: app/models/statuses.py:12
+msgid "QA complete"
+msgstr ""
+
+#: app/models/statuses.py:13
+msgid "Flagged"
+msgstr ""
+
+#: app/models/statuses.py:14
 msgid "Stopped"
 msgstr ""
 
