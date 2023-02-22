@@ -12,4 +12,4 @@ def get_translation(value: str):
     "FLAGGED": gettext("Flagged"),
     "STOPPED": gettext("Stopped"),
 }
-    return statuses.get(value, value)
+    return statuses.get(value, value.replace("_", " ").strip().title())
