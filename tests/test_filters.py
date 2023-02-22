@@ -4,6 +4,8 @@ import app.filters as filters
 import pytest
 from app import app
 
+def status_translation():
+    assert filters.status_translation("NOT_STARTED") == "Not Started welsh"
 
 def test_date_format_short_month():
     a_datetime = datetime.datetime(2020, 1, 1, 12, 0, 0)
