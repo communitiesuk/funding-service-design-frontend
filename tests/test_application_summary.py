@@ -209,7 +209,7 @@ def test_dashboard_route_no_applications(
     assert b"Start new application" in response.data
 
 
-def test_build_application_data_for_display(mocker):    
+def test_build_application_data_for_display(mocker):
     mocker.patch(
         "app.default.account_routes.get_all_funds",
         return_value=TEST_FUNDS_DATA,
@@ -250,7 +250,7 @@ def test_build_application_data_for_display(mocker):
 
 def test_build_application_data_for_display_exclude_round_with_no_apps(
     mocker
-):    
+):
     mocker.patch(
         "app.default.account_routes.get_all_funds",
         return_value=TEST_FUNDS_DATA,
