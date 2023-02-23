@@ -121,7 +121,7 @@ def test_serialise_application_summary():
             for application in application_list
         ]
         assert len(applications) == 3
-        assert applications[0].started_at.__class__.__name__ == "datetime"
+        assert isinstance(applications[0].started_at, datetime.datetime)
         assert str(applications[0].started_at.tzinfo) == "Europe/London"
         assert applications[1].last_edited is None
         assert applications[1].language == "English"
