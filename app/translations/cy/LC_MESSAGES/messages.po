@@ -37,11 +37,11 @@ msgstr "Cymraeg"
 
 #: app/models/statuses.py:9
 msgid "Not Started"
-msgstr "Rydych wedi dechrau"
+msgstr "Heb ddechrau"
 
 #: app/models/statuses.py:10
 msgid "In Progress"
-msgstr "In Progress Welsh"
+msgstr "Ar waith"
 
 #: app/models/statuses.py:11
 msgid "Assessment complete"
