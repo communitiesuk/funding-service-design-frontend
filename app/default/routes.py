@@ -4,8 +4,6 @@ from config import Config
 from flask import Blueprint
 from flask import current_app
 from flask import render_template
-from fsd_utils.locale_selector.get_lang import get_lang
-from flask_babel import force_locale
 from fsd_utils.simple_utils.date_utils import (
     current_datetime_after_given_iso_string,
 )
