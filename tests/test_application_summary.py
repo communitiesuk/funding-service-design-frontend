@@ -255,7 +255,6 @@ def test_build_application_data_for_display_exclude_round_with_no_apps(
         "app.default.account_routes.get_all_funds",
         return_value=TEST_FUNDS_DATA,
     )
-
     mocker.patch(
         "app.default.account_routes.get_all_rounds_for_fund",
         return_value=TEST_ROUNDS_DATA,
