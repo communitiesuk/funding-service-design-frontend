@@ -45,7 +45,7 @@ msgstr "Ar waith"
 
 #: app/models/statuses.py:11
 msgid "Assessment complete"
-msgstr "o'r meini prawf asesu"
+msgstr "O'r meini prawf asesu"
 
 #: app/models/statuses.py:12
 msgid "QA complete"
