@@ -105,7 +105,7 @@ def dashboard():
         f"Applications :'{applications}'"
     )
 
-    showLanguageColumn = len({a.language for a in applications}) > 1
+    show_language_column = len({a.language for a in applications}) > 1
 
     display_data = build_application_data_for_display(applications)
     current_app.logger.info(
@@ -115,7 +115,7 @@ def dashboard():
         "dashboard.html",
         account_id=account_id,
         display_data=display_data,
-        showLanguageColumn=showLanguageColumn
+        show_language_column=show_language_column
     )
 
 

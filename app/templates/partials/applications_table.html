@@ -2,7 +2,7 @@
 {%- from "govuk_frontend_jinja/components/tag/macro.html" import govukTag -%}
 {%- from "govuk_frontend_jinja/components/table/macro.html" import govukTable -%}
 
-{% macro applications_table(applications, is_past_submission_deadline, showLanguageColumn) %}
+{% macro applications_table(applications, is_past_submission_deadline, show_language_column) %}
 
 	{% set ns = namespace(rows = []) %}
 	{% for application in applications %}
@@ -30,7 +30,7 @@
 			{% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('application_routes.tasklist', application_id=application.id), gettext('Continue application')) %}
 		{% endif %}
 
-		{% if showLanguageColumn %}
+		{% if show_language_column %}
 			{% set row = ns.rows.append(
                 [
                     {
@@ -81,7 +81,7 @@
 	{% endfor %}
 
 	{% if applications|length > 0 and not is_past_submission_deadline %}
-		{% if showLanguageColumn %}
+		{% if show_language_column %}
 			{{
             govukTable({
             'head': [
@@ -133,7 +133,7 @@
 		{% endif %}
 	{% endif %}
 	{% if applications|length > 0 and is_past_submission_deadline %}
-		{% if showLanguageColumn %}
+		{% if show_language_column %}
 			{{ govukTable({
                 'head': [
                     {

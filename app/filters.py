@@ -2,7 +2,7 @@ from datetime import datetime
 
 from flask_babel import format_datetime
 from flask_babel import gettext
-from app.models.statuses import get_translation
+from app.models.statuses import get_text
 
 def date_format_short_month(value: datetime, format="dd MMM yyyy"):
     return format_datetime(value, format)
@@ -41,4 +41,4 @@ def kebab_case_to_human(word: str) -> str | None:
 
 def status_translation(value: str):
     if value:        
-        return get_translation(value)
+        return get_text(value)

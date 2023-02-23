@@ -1,8 +1,6 @@
-from enum import Enum
 from flask_babel import gettext
-from flask import current_app
 
-def get_translation(value: str):
+def get_text(value: str):
 
     statuses = {    
     "NOT_STARTED": gettext("Not Started"),
