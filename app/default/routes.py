@@ -17,15 +17,15 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 @default_bp.route("/")
 def index():
     current_app.logger.info("Service landing page loaded.")
-    language = {"language": get_lang()}
     try:
         round_data = get_round_data(
-            fund_id=Config.DEFAULT_FUND_ID, round_id=Config.DEFAULT_ROUND_ID,language=language,
+            fund_id=Config.DEFAULT_FUND_ID,
+            round_id=Config.DEFAULT_ROUND_ID,
             as_dict=True
         )
 
         fund_data = get_fund_data(
-            fund_id=Config.DEFAULT_FUND_ID, language=language,
+            fund_id=Config.DEFAULT_FUND_ID,
             as_dict=True)
         fund_name = fund_data.name
         submission_deadline = round_data.deadline
