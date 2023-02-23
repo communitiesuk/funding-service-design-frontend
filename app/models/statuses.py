@@ -1,6 +1,6 @@
 from flask_babel import gettext
 
-def get_text(value: str):
+def get_formatted(value: str):
 
     statuses = {    
     "NOT_STARTED": gettext("Not Started"),
