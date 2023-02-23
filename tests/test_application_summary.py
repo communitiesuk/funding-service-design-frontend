@@ -255,6 +255,7 @@ def test_build_application_data_for_display_exclude_round_with_no_apps(
         "app.default.account_routes.get_all_funds",
         return_value=TEST_FUNDS_DATA,
     )
+
     mocker.patch(
         "app.default.account_routes.get_all_rounds_for_fund",
         return_value=TEST_ROUNDS_DATA,
@@ -271,7 +272,9 @@ def test_build_application_data_for_display_exclude_round_with_no_apps(
     fsd_fund = result["funds"][0]
     assert fsd_fund, "Fund not returned"
     assert "Test Fund" == fsd_fund["fund_data"]["name"]
+
     assert 1 == len(fsd_fund["rounds"]), "wrong number of rounds returned"
+    
     assert (
         "summer" == fsd_fund["rounds"][0]["round_details"]["id"]
     ), "summer not present in rounds"
