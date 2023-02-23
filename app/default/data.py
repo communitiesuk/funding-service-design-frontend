@@ -100,6 +100,7 @@ def get_applications_for_account(account_id, as_dict=False):
 
 
 def get_fund_data(fund_id, language=None, as_dict=False):
+    language = language or {"language": get_lang()}
     fund_request_url = Config.GET_FUND_DATA_ENDPOINT.format(fund_id=fund_id)
     fund_response = get_data(fund_request_url, language)
     if as_dict:
@@ -107,8 +108,8 @@ def get_fund_data(fund_id, language=None, as_dict=False):
     else:
         return fund_response
 
-
 def get_round_data(fund_id, round_id, language=None, as_dict=False):
+    language = language or {"language": get_lang()}
     round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(
         fund_id=fund_id, round_id=round_id
     )
