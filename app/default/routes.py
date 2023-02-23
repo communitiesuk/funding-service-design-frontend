@@ -36,15 +36,15 @@ def index():
         round_title = ""
         submission_deadline = ""
         contact_us_email_address = ""
-    with force_locale(get_lang()):
-        return render_template(
-            "index.html",
-            service_url=Config.ENTER_APPLICATION_URL,
-            fund_name=fund_name,
-            round_title=round_title,
-            submission_deadline=submission_deadline,
-            is_past_submission_deadline=current_datetime_after_given_iso_string(
-                submission_deadline
-            ),
-            contact_us_email_address=contact_us_email_address,
-        )
+  
+    return render_template(
+        "index.html",
+        service_url=Config.ENTER_APPLICATION_URL,
+        fund_name=fund_name,
+        round_title=round_title,
+        submission_deadline=submission_deadline,
+        is_past_submission_deadline=current_datetime_after_given_iso_string(
+            submission_deadline
+        ),
+        contact_us_email_address=contact_us_email_address,
+    )
