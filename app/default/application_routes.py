@@ -142,23 +142,22 @@ def tasklist(application_id):
                 application_email=account.email,
             )
 
-    application_language = {"language": application.language}
-    fund = get_fund_data(
+    fund_data = get_fund_data(
         fund_id=application.fund_id,
-        language=application_language,
+        language=application.language,
         as_dict=True,
     )
     round_data = get_round_data(
         fund_id=application.fund_id,
         round_id=application.round_id,
-        language=application_language,
+        language=application.language,
         as_dict=True,
     )
     sections = application.get_sections()
     form = FlaskForm()
     application_meta_data = {
         "application_id": application_id,
-        "fund_name": fund.name,
+        "fund_name": fund_data.name,
         "round_name": round_data.title,
         "not_started_status": ApplicationStatus.NOT_STARTED.name,
         "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
@@ -192,7 +191,7 @@ def tasklist(application_id):
             ),
             all_questions_url=url_for(
                 "content_routes.all_questions",
-                fund_short_name=fund.short_name,
+                fund_short_name=fund_data.short_name,
                 round_short_name=round_data.short_name,
                 lang=application.language,
             ),
