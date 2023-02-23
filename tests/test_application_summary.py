@@ -260,6 +260,7 @@ def test_build_application_data_for_display_exclude_round_with_no_apps(
         "app.default.account_routes.get_all_rounds_for_fund",
         return_value=TEST_ROUNDS_DATA,
     )
+
     result = build_application_data_for_display(
         [
             ApplicationSummary.from_dict(app)
@@ -274,7 +275,7 @@ def test_build_application_data_for_display_exclude_round_with_no_apps(
     assert "Test Fund" == fsd_fund["fund_data"]["name"]
 
     assert 1 == len(fsd_fund["rounds"]), "wrong number of rounds returned"
-    
+
     assert (
         "summer" == fsd_fund["rounds"][0]["round_details"]["id"]
     ), "summer not present in rounds"
