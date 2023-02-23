@@ -99,11 +99,7 @@ def dashboard():
     applications: list[ApplicationSummary] = [
         ApplicationSummary.from_dict(application)
         for application in application_store_response
-    ]
-
-    current_app.logger.info(
-        f"Applications :'{applications}'"
-    )
+    ]    
 
     show_language_column = len({a.language for a in applications}) > 1
 
