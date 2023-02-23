@@ -113,20 +113,19 @@ TEST_DISPLAY_DATA = {
 }
 
 
-def test_serialise_application_summary():
-    with app.test_request_context():
-        application_list = TEST_APPLICATION_STORE_DATA
+def test_serialise_application_summary():   
+    application_list = TEST_APPLICATION_STORE_DATA
 
-        applications = [
-            ApplicationSummary.from_dict(application)
-            for application in application_list
-        ]
-        assert len(applications) == 3
-        assert isinstance(applications[0].started_at, datetime.datetime)
-        assert str(applications[0].started_at.tzinfo) == "Europe/London"
-        assert applications[1].last_edited is None
-        assert applications[1].language == "English"
-        assert applications[2].language == "Welsh"
+    applications = [
+        ApplicationSummary.from_dict(application)
+        for application in application_list
+    ]
+    assert len(applications) == 3
+    assert isinstance(applications[0].started_at, datetime.datetime)
+    assert str(applications[0].started_at.tzinfo) == "Europe/London"
+    assert applications[1].last_edited is None
+    assert applications[1].language == "English"
+    assert applications[2].language == "Welsh"
 
 
 def test_dashboard_route(flask_test_client, mocker, monkeypatch):
