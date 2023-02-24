@@ -1246,8 +1246,51 @@
     "name": "Test Fund",
     "short_name": "TF"
   },
+  "fund_store/funds/funding-service-design/rounds/summer" : {
+    "assessment_deadline": "2030-03-30 12:00:00",
+    "name":"Community Ownership Fund",
+    "contact_details": {
+      "email_address": "example@levellingup.gov.uk",
+      "phone": "",
+      "text_phone": ""
+    },
+    "deadline": "2030-01-30 11:59:00",
+    "fund_id": "funding-service-design",
+    "id": "summer",
+    "opens": "2022-10-04 12:00:00",
+    "short_name": "TT",
+    "support_availability": {
+      "closed": "Easter Sunday, Christmas Day, Boxing Day and New Year’s Day",
+      "days": "Monday to Friday",
+      "time": "9am to 5pm"
+    },
+    "title": "Round 2 Window 2",
+    "assessment_criteria_weighting": [
+      {
+        "id": "123",
+        "name": "one",
+        "value": 0.25
+      },
+      {
+        "id": "234",
+        "name": "two",
+        "value": 0.2
+      },
+      {
+        "id": "345",
+        "name": "three",
+        "value": 0.3
+      },
+      {
+        "id": "456",
+        "name": "four",
+        "value": 0.25
+      }
+    ]
+  },
   "fund_store/funds/funding-service-design/rounds/summer?language=en" : {
     "assessment_deadline": "2030-03-30 12:00:00",
+    "name":"Community Ownership Fund",
     "contact_details": {
       "email_address": "example@levellingup.gov.uk",
       "phone": "",
