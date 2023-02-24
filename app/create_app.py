@@ -3,6 +3,7 @@ from app.filters import datetime_format
 from app.filters import datetime_format_short_month
 from app.filters import kebab_case_to_human
 from app.filters import snake_case_to_human
+from app.filters import status_translation
 from config import Config
 from flask import Flask
 from flask_babel import Babel
@@ -80,6 +81,7 @@ def create_app() -> Flask:
     flask_app.jinja_env.filters["datetime_format"] = datetime_format
     flask_app.jinja_env.filters["snake_case_to_human"] = snake_case_to_human
     flask_app.jinja_env.filters["kebab_case_to_human"] = kebab_case_to_human
+    flask_app.jinja_env.filters["status_translation"] = status_translation
 
     @flask_app.context_processor
     def inject_global_constants():
