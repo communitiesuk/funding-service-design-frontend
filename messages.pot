@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-22 16:19+0000\n"
+"POT-Creation-Date: 2023-02-23 09:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -152,8 +152,7 @@ msgid "Full list of application questions"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:10
-#, python-format
-msgid "Community Ownership Fund %(round_title)s"
+msgid "Community Ownership Fund"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:13
@@ -575,6 +574,8 @@ msgid "Amount of funding received"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:242
+#: app/templates/partials/applications_table.html:61
+#: app/templates/partials/applications_table.html:84
 #: app/templates/partials/applications_table.html:89
 #: app/templates/partials/applications_table.html:115
 #: app/templates/partials/applications_table.html:140
@@ -2192,4 +2193,3 @@ msgstr ""
 #: app/templates/partials/tasklist_section.html:7
 msgid "of the assessment criteria"
 msgstr ""
-

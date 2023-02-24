@@ -98,7 +98,9 @@ def verify_round_open(f):
 
         application = get_application_data(application_id, as_dict=True)
         round_data = get_round_data(
-            application.fund_id, application.round_id, True
+            fund_id=application.fund_id,
+            round_id=application.round_id,
+            as_dict=True,
         )
         if current_datetime_after_given_iso_string(
             round_data.opens
@@ -130,10 +132,6 @@ def tasklist(application_id):
     """
 
     application = get_application_data(application_id, as_dict=True)
-    round_data = get_round_data(
-        application.fund_id, application.round_id, True
-    )
-
     account = get_account(account_id=application.account_id)
     if application.status == ApplicationStatus.SUBMITTED.name:
         with force_locale(application.language):
@@ -143,12 +141,23 @@ def tasklist(application_id):
                 application_reference=application.reference,
                 application_email=account.email,
             )
-    fund = get_fund_data(application.fund_id, as_dict=True)
+
+    fund_data = get_fund_data(
+        fund_id=application.fund_id,
+        language=application.language,
+        as_dict=True,
+    )
+    round_data = get_round_data(
+        fund_id=application.fund_id,
+        round_id=application.round_id,
+        language=application.language,
+        as_dict=True,
+    )
     sections = application.get_sections()
     form = FlaskForm()
     application_meta_data = {
         "application_id": application_id,
-        "fund_name": fund.name,
+        "fund_name": fund_data.name,
         "round_name": round_data.title,
         "not_started_status": ApplicationStatus.NOT_STARTED.name,
         "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
@@ -165,9 +174,8 @@ def tasklist(application_id):
             )
         ),
     }
-    
-    language = application.language
-    with force_locale(language):
+
+    with force_locale(application.language):
         return render_template(
             "tasklist.html",
             application=application,
@@ -183,9 +191,9 @@ def tasklist(application_id):
             ),
             all_questions_url=url_for(
                 "content_routes.all_questions",
-                fund_short_name=fund.short_name,
+                fund_short_name=fund_data.short_name,
                 round_short_name=round_data.short_name,
-                lang=language,
+                lang=application.language,
             ),
         )
 

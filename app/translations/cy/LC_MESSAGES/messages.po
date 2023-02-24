@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-22 16:19+0000\n"
+"POT-Creation-Date: 2023-02-23 09:46+0000\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -172,13 +172,12 @@ msgid "Full list of application questions"
 msgstr "O restr lawn cwestiynau'r cais"
 
 #: app/templates/cof_r2_all_questions.html:10
-#, fuzzy, python-format
-msgid "Community Ownership Fund %(round_title)s"
-msgstr "Y Cronfa Perchnogaeth Gymunedol Rownd 2 Cyfnod Cynnig 2"
+msgid "Community Ownership Fund"
+msgstr "Y Cronfa Perchnogaeth Gymunedol"
 
 #: app/templates/cof_r2_all_questions.html:13
 msgid "Table of contents"
-msgstr ""
+msgstr "Tabl cynnwys"
 
 #: app/templates/cof_r2_all_questions.html:16
 #: app/templates/cof_r2_all_questions.html:42
@@ -611,6 +610,8 @@ msgid "Amount of funding received"
 msgstr "Swm y cyllid a dderbyniwyd"
 
 #: app/templates/cof_r2_all_questions.html:242
+#: app/templates/partials/applications_table.html:61
+#: app/templates/partials/applications_table.html:84
 #: app/templates/partials/applications_table.html:89
 #: app/templates/partials/applications_table.html:115
 #: app/templates/partials/applications_table.html:140
@@ -2448,10 +2449,3 @@ msgstr "Dechrau cais newydd"
 #: app/templates/partials/tasklist_section.html:7
 msgid "of the assessment criteria"
 msgstr "o'r meini prawf asesu"
-
-#~ msgid "English"
-#~ msgstr "Saesneg"
-
-#~ msgid "Welsh"
-#~ msgstr "Cymraeg"
-
