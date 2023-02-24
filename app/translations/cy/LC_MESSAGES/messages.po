@@ -177,7 +177,7 @@ msgstr "Y Cronfa Perchnogaeth Gymunedol"
 
 #: app/templates/cof_r2_all_questions.html:13
 msgid "Table of contents"
-msgstr ""
+msgstr "Tabl cynnwys"
 
 #: app/templates/cof_r2_all_questions.html:16
 #: app/templates/cof_r2_all_questions.html:42
