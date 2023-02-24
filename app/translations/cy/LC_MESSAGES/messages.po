@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-22 16:19+0000\n"
+"POT-Creation-Date: 2023-02-24 14:00+0000\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -27,37 +27,37 @@ msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
 msgid "at"
 msgstr "am"
 
-#: app/models/language.py:5
+#: app/models/language.py:6
 msgid "English"
 msgstr "Saesneg"
 
-#: app/models/language.py:6
+#: app/models/language.py:7
 msgid "Welsh"
 msgstr "Cymraeg"
 
-#: app/models/statuses.py:9
+#: app/models/statuses.py:6
 msgid "Not Started"
 msgstr "Heb ddechrau"
 
-#: app/models/statuses.py:10
+#: app/models/statuses.py:7
 msgid "In Progress"
 msgstr "Ar waith"
 
+#: app/models/statuses.py:8
+msgid "Completed"
+msgstr "Cwblhawyd"
+
+#: app/models/statuses.py:9
+msgid "Submitted"
+msgstr "Gyflwyno"
+
+#: app/models/statuses.py:10
+msgid "Not Submitted"
+msgstr "Heb Gyflwyno"
+
 #: app/models/statuses.py:11
-msgid "Assessment complete"
-msgstr "O'r meini prawf asesu"
-
-#: app/models/statuses.py:12
-msgid "QA complete"
-msgstr ""
-
-#: app/models/statuses.py:13
-msgid "Flagged"
-msgstr ""
-
-#: app/models/statuses.py:14
-msgid "Stopped"
-msgstr ""
+msgid "Ready to Submit"
+msgstr "Yn barod i'w gyflwyno "
 
 #: app/templates/accessibility_statement.html:2
 msgid "Accessibility statement"
@@ -611,10 +611,7 @@ msgid "Amount of funding received"
 msgstr "Swm y cyllid a dderbyniwyd"
 
 #: app/templates/cof_r2_all_questions.html:242
-#: app/templates/partials/applications_table.html:89
-#: app/templates/partials/applications_table.html:115
-#: app/templates/partials/applications_table.html:140
-#: app/templates/partials/applications_table.html:162
+#: app/templates/partials/applications_table.html:72
 msgid "Project name"
 msgstr "Enw'r prosiect"
 
@@ -2361,39 +2358,27 @@ msgstr "Nid yw'r un o'r adrannau wedi'u llenwi."
 msgid "Continue application"
 msgstr "Parhau gyda'r cais"
 
-#: app/templates/partials/applications_table.html:37
-#: app/templates/partials/applications_table.html:62
+#: app/templates/partials/applications_table.html:35
 msgid "Untitled project"
 msgstr "Prosiect heb enw"
 
-#: app/templates/partials/applications_table.html:92
-#: app/templates/partials/applications_table.html:118
-#: app/templates/partials/applications_table.html:143
-#: app/templates/partials/applications_table.html:165
+#: app/templates/partials/applications_table.html:75
 msgid "Status"
 msgstr "Statws"
 
-#: app/templates/partials/applications_table.html:95
-#: app/templates/partials/applications_table.html:121
-#: app/templates/partials/applications_table.html:146
-#: app/templates/partials/applications_table.html:168
+#: app/templates/partials/applications_table.html:78
 msgid "Last edited"
 msgstr "Golygwyd diwethaf"
 
-#: app/templates/partials/applications_table.html:98
-#: app/templates/partials/applications_table.html:124
-#: app/templates/partials/applications_table.html:149
-#: app/templates/partials/applications_table.html:171
+#: app/templates/partials/applications_table.html:81
 msgid "Application Reference"
 msgstr "Cyfeirnod y cais"
 
-#: app/templates/partials/applications_table.html:101
-#: app/templates/partials/applications_table.html:152
+#: app/templates/partials/applications_table.html:88
 msgid "Language"
 msgstr "Iaith"
 
-#: app/templates/partials/applications_table.html:104
-#: app/templates/partials/applications_table.html:127
+#: app/templates/partials/applications_table.html:96
 msgid "Action"
 msgstr "Gweithredu"
 
@@ -2454,4 +2439,16 @@ msgstr "o'r meini prawf asesu"
 
 #~ msgid "Welsh"
 #~ msgstr "Cymraeg"
+
+#~ msgid "Assessment complete"
+#~ msgstr "O'r meini prawf asesu"
+
+#~ msgid "QA complete"
+#~ msgstr ""
+
+#~ msgid "Flagged"
+#~ msgstr ""
+
+#~ msgid "Stopped"
+#~ msgstr ""
 
