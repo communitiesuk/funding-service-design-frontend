@@ -1,7 +1,9 @@
 import json
+import datetime
 
 from app.default.account_routes import build_application_data_for_display
 from app.models.application_summary import ApplicationSummary
+from app import app
 
 file = open("tests/api_data/endpoint_data.json")
 data = json.loads(file.read())
@@ -111,7 +113,7 @@ TEST_DISPLAY_DATA = {
 }
 
 
-def test_serialise_application_summary():
+def test_serialise_application_summary():   
     application_list = TEST_APPLICATION_STORE_DATA
 
     applications = [
@@ -119,9 +121,11 @@ def test_serialise_application_summary():
         for application in application_list
     ]
     assert len(applications) == 3
-    assert applications[0].started_at.__class__.__name__ == "datetime"
+    assert isinstance(applications[0].started_at, datetime.datetime)
     assert str(applications[0].started_at.tzinfo) == "Europe/London"
     assert applications[1].last_edited is None
+    assert applications[1].language == "English"
+    assert applications[2].language == "Welsh"
 
 
 def test_dashboard_route(flask_test_client, mocker, monkeypatch):
@@ -205,7 +209,7 @@ def test_dashboard_route_no_applications(
     assert b"Start new application" in response.data
 
 
-def test_build_application_data_for_display(mocker, monkeypatch):
+def test_build_application_data_for_display(mocker):
     mocker.patch(
         "app.default.account_routes.get_all_funds",
         return_value=TEST_FUNDS_DATA,
@@ -245,7 +249,7 @@ def test_build_application_data_for_display(mocker, monkeypatch):
 
 
 def test_build_application_data_for_display_exclude_round_with_no_apps(
-    mocker, monkeypatch
+    mocker
 ):
     mocker.patch(
         "app.default.account_routes.get_all_funds",
