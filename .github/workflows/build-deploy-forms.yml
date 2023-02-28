@@ -50,6 +50,7 @@ jobs:
 
   deploy-and-test-dev:
     needs: docker-build
+    concurrency: deploy-and-test-dev_${{github.repository}}
     runs-on: ubuntu-latest
     steps:
       - name: checkout code
@@ -91,6 +92,7 @@ jobs:
 
   run-shared-tests_dev:
     needs: deploy-and-test-dev
+    concurrency: deploy-and-test-dev_${{github.repository}}
     if: ${{ github.actor != 'dependabot[bot]'}}
     uses: communitiesuk/funding-design-service-workflows/.github/workflows/run-shared-tests.yml@main
     with:
@@ -108,6 +110,7 @@ jobs:
 
   deploy-to-test:
     needs: deploy-and-test-dev
+    concurrency: deploy-and-test-test_${{github.repository}}
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
@@ -138,6 +141,7 @@ jobs:
 
   run-shared-tests_test:
     needs: deploy-to-test
+    concurrency: deploy-and-test-test_${{github.repository}}
     if: ${{ github.actor != 'dependabot[bot]' }}
     uses: communitiesuk/funding-design-service-workflows/.github/workflows/run-shared-tests.yml@main
     with:
