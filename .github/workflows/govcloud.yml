@@ -85,10 +85,10 @@ jobs:
 
   run-shared-tests_dev:
     needs: deploy-and-test-dev
-    # Waits for deploy-and-test-dev to finish before running the tests
-    concurrency: run-shared-tests_dev
+    # Waits for run_e2e_tests job to finish before running the tests
+    concurrency: run_e2e_tests
     if: ${{ github.actor != 'dependabot[bot]'}}
-    uses: communitiesuk/funding-design-service-workflows/.github/workflows/run-shared-tests.yml@main
+    uses: communitiesuk/funding-design-service-workflows/.github/workflows/run-shared-tests.yml@FS-2385/add_concurrency_key_e2e_tests
     with:
       perf_test_target_url_application_store: https://funding-service-design-application-store-dev.london.cloudapps.digital
       perf_test_target_url_fund_store: https://funding-service-design-fund-store-dev.london.cloudapps.digital
