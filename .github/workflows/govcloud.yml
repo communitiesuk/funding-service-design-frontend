@@ -141,7 +141,7 @@ jobs:
           source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements-dev.txt
           pytest
       - name: "Upload Accessibility Testing reports"
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: accessibility-test-report
           path: /home/runner/work/funding-service-design-design-frontend/funding-service-design-frontend/axe_reports/*.html
