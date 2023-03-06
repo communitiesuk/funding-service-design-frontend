@@ -4,7 +4,7 @@
 {% from "partials/tasklist_submit.html" import tasklist_submit %}
 {% from "partials/round_closed_warning.html" import round_closed_warning %}
 {% block beforeContent %}
-    <a href="{{ url_for('account_routes.dashboard') }}" class="govuk-back-link">Back to your applications</a>
+    <a href="{{ url_for('account_routes.dashboard') }}" class="govuk-back-link"> {% trans %}Back to your applications{% endtrans %}</a>
 {% endblock %}
 {% set pageHeading %}{% trans %}Task List{% endtrans %}{% endset %}
 
@@ -105,12 +105,15 @@
                 {% set form_count = application_meta_data["number_of_forms"] %}
                 {% if application["status"] == application_meta_data["not_started_status"] %}
                 <dd class="govuk-tag not-started-tag govuk-!-margin-bottom-2">
+                    {{ application_status("NOT_STARTED") }}
                 {% elif application["status"] == application_meta_data["in_progress_status"] %}
                 <dd class="govuk-tag in-progress-tag-new govuk-!-margin-bottom-2">
+                    {{ application_status("IN_PROGRESS") }}
                 {% elif application["status"] == application_meta_data["completed_status"] %}
                 <dd class="govuk-tag complete-tag govuk-!-margin-bottom-2">
+                    {{ application_status("COMPLETED") }}
                 {% endif %}
-                {{ application.status|snake_case_to_human }}
+             
                 </dd>
             </dl>
             <p class="govuk-body govuk-!-margin-bottom-7">
@@ -128,7 +131,7 @@
 
             <ol class="app-task-list">
                 {% for section in sections %}
-                        {{ tasklist_section(section["section_title"], section["forms"], section["section_weighting"], application_meta_data,
+                        {{ tasklist_section(section["section_title"], section["forms"], section["section_weighting"], application_meta_data, application_status,
         loop.index) }}
                 {% endfor %}
             </ol>
