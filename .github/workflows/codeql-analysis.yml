@@ -14,20 +14,12 @@ name: "CodeQL"
 on:
   push:
     paths-ignore:
-      - "form_jsons/**"
-      - "Dockerfile"
-      - "manifest-form-runner.yml"
-      - "build-deploy-forms.yml"
       - "**/README.md"
     branches: [ main ]
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ main ]
     paths-ignore:
-      - "form_jsons/**"
-      - "Dockerfile"
-      - "manifest-form-runner.yml"
-      - "build-deploy-forms.yml"
       - "**/README.md"
 
   schedule:

@@ -13,10 +13,6 @@ on:
         default: Dev
   push:
     paths-ignore:
-      - "form_jsons/**"
-      - "Dockerfile"
-      - "manifest-form-runner.yml"
-      - "build-deploy-forms.yml"
       - "**/README.md"
       - "docs/**"
 
