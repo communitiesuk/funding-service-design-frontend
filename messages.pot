@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-24 15:28+0000\n"
+"POT-Creation-Date: 2023-03-02 12:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1983,6 +1983,10 @@ msgid ""
 "applications through this service."
 msgstr ""
 
+#: app/templates/tasklist.html:7
+msgid "Back to your applications"
+msgstr ""
+
 #: app/templates/tasklist.html:9
 msgid "Task List"
 msgstr ""
@@ -2099,7 +2103,7 @@ msgstr ""
 msgid "Status:"
 msgstr ""
 
-#: app/templates/tasklist.html:118
+#: app/templates/tasklist.html:121
 msgid "None of the sections have been completed."
 msgstr ""
 

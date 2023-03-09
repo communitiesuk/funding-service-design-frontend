@@ -7,6 +7,7 @@ from app.default.data import get_account
 from app.default.data import get_application_data
 from app.default.data import get_fund_data
 from app.default.data import get_round_data
+from app.models.statuses import get_formatted
 from app.helpers import format_rehydrate_payload
 from app.helpers import get_token_to_return_to_application
 from config import Config
@@ -174,12 +175,13 @@ def tasklist(application_id):
             )
         ),
     }
-
+    
     with force_locale(application.language):
         return render_template(
             "tasklist.html",
             application=application,
             sections=sections,
+            application_status = get_formatted,
             application_meta_data=application_meta_data,
             form=form,
             contact_us_email_address=round_data.contact_details[
