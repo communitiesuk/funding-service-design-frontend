@@ -33,7 +33,7 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v2
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: 3.10.x
       - name: create python env
@@ -66,7 +66,7 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v2
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: 3.10.x
       - name: install dependencies
@@ -107,7 +107,7 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v2
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: 3.10.x
       - name: create python env
