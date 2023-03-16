@@ -1,4 +1,4 @@
-from flask import request, redirect
+from flask import request, redirect, g
 from flask import current_app
 from config import Config
 from app.default.data import get_round_data_fail_gracefully
