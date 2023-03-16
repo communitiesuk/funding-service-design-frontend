@@ -4,6 +4,7 @@ import app.filters as filters
 import pytest
 from app import app
 
+
 def test_date_format_short_month():
     a_datetime = datetime.datetime(2020, 1, 1, 12, 0, 0)
     with app.test_request_context():
@@ -53,5 +54,6 @@ def test_snake_case_to_human(input_string, expected):
 def test_kebab_case_to_human(input_string, expected):
     assert filters.kebab_case_to_human(input_string) == expected
 
-def test_status_translation():         
+
+def test_status_translation():
     assert filters.status_translation("NOT_STARTED") == "Not Started"

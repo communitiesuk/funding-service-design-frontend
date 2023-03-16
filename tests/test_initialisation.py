@@ -10,7 +10,6 @@ import pytest
 from tests.route_testing_conf import routes_and_test_content
 
 
-
 def test_flask_initiates(flask_test_client):
     """
     GIVEN Our Flask Hello World Application
