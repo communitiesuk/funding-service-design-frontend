@@ -99,7 +99,7 @@ def dashboard():
     applications: list[ApplicationSummary] = [
         ApplicationSummary.from_dict(application)
         for application in application_store_response
-    ]    
+    ]
 
     show_language_column = len({a.language for a in applications}) > 1
 
@@ -111,7 +111,7 @@ def dashboard():
         "dashboard.html",
         account_id=account_id,
         display_data=display_data,
-        show_language_column=show_language_column
+        show_language_column=show_language_column,
     )
 
 
