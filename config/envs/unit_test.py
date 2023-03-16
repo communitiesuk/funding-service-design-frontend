@@ -25,5 +25,5 @@ class UnitTestConfig(DefaultConfig):
     WTF_CSRF_ENABLED = False
 
     FORMS_CONFIG_FOR_FUND_ROUND = {
-        "funding-service-design:summer": CommonConfig.COF_R2_ORDERED_FORMS_CONFIG,
+        "funding-service-design:summer": CommonConfig.COF_R2_ORDERED_FORMS_CONFIG,  # noqa
     }
