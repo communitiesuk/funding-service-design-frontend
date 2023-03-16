@@ -1,8 +1,9 @@
 from datetime import datetime
 
+from app.models.statuses import get_formatted
 from flask_babel import format_datetime
 from flask_babel import gettext
-from app.models.statuses import get_formatted
+
 
 def date_format_short_month(value: datetime, format="dd MMM yyyy"):
     return format_datetime(value, format)
@@ -39,6 +40,7 @@ def kebab_case_to_human(word: str) -> str | None:
     if word:
         return word.replace("-", " ").strip().capitalize()
 
+
 def status_translation(value: str):
-    if value:        
+    if value:
         return get_formatted(value)

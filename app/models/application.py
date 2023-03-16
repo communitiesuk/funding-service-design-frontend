@@ -48,8 +48,8 @@ class Application:
             ]
         except IndexError:
             current_app.logger.error(
-                f"FORM CONFIG for FUND:{self.fund_id} and ROUND:{self.round_id} does not"
-                " exist"
+                f"FORM CONFIG for FUND:{self.fund_id} and"
+                f" ROUND:{self.round_id} does not exist"
             )
         return [
             {
