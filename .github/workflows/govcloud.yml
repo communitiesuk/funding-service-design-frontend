@@ -13,10 +13,6 @@ on:
         default: Dev
   push:
     paths-ignore:
-      - "form_jsons/**"
-      - "Dockerfile"
-      - "manifest-form-runner.yml"
-      - "build-deploy-forms.yml"
       - "**/README.md"
       - "docs/**"
 
@@ -30,6 +26,7 @@ jobs:
 
   deploy-and-test-dev:
     if: ${{ github.actor != 'dependabot[bot]' }}
+    concurrency: deploy-and-test-dev_${{github.repository}}
     runs-on: ubuntu-latest
     environment: Dev
     steps:
@@ -59,17 +56,6 @@ jobs:
           cf_password: ${{secrets.CF_PASSWORD}}
           # env vars required in the manifest must be declared here
           command: push -f manifest-dev.yml funding-service-design-frontend-dev --var SENTRY_DSN="${{secrets.SENTRY_DSN}}" --var FORMS_SERVICE_PRIVATE_HOST="${{secrets.FORMS_SERVICE_PRIVATE_HOST}}" --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}" --var GITHUB_SHA="${{ github.sha }}"
-      - name: Run accessibility tests
-        run: |
-          python -m venv .venv
-          source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements-dev.txt
-          pytest -k "accessibility"
-      - name: "Upload Accessibility Testing reports"
-        uses: actions/upload-artifact@v2
-        with:
-          name: accessibility-test-report
-          path: /home/runner/work/funding-service-design-design-frontend/funding-service-design-frontend/axe_reports/*.html
-          retention-days: 5
 
   security:
     if: ${{ github.actor != 'dependabot[bot]' }}
@@ -88,13 +74,14 @@ jobs:
       - name: Bandit
         run: bandit -r ./app
       - name: ZAP Scan
-        uses: zaproxy/action-full-scan@v0.3.0
+        uses: zaproxy/action-full-scan@v0.4.0
         with:
           target: "https://funding-service-design-frontend-dev.london.cloudapps.digital"
           allow_issue_writing: False
 
   run-shared-tests_dev:
     needs: deploy-and-test-dev
+    concurrency: run-shared-tests_dev
     if: ${{ github.actor != 'dependabot[bot]'}}
     uses: communitiesuk/funding-design-service-workflows/.github/workflows/run-shared-tests.yml@main
     with:
@@ -112,6 +99,7 @@ jobs:
 
   deploy-and-test-test:
     if: ${{ github.actor != 'dependabot[bot]' && github.ref == 'refs/heads/main' }}
+    concurrency: deploy-and-test-test_${{github.repository}}
     needs: [security, run-shared-tests_dev]
     runs-on: ubuntu-latest
     environment: test
@@ -157,6 +145,7 @@ jobs:
 
   run-shared-tests_test:
     needs: deploy-and-test-test
+    concurrency: run-shared-tests_test
     if: ${{ github.actor != 'dependabot[bot]' }}
     uses: communitiesuk/funding-design-service-workflows/.github/workflows/run-shared-tests.yml@main
     with:

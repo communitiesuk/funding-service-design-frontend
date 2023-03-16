@@ -1,23 +1,10 @@
-ARG BASE_IMAGE_TAG="latest"
-FROM ghcr.io/communitiesuk/digital-form-builder-dluhc-runner:$BASE_IMAGE_TAG as base
-ARG FORMS_DIR="forms-v3"
-WORKDIR /usr/src/app
-RUN rm -r runner/dist/server/forms && rm -r runner/src && rm -r runner/test
-COPY ./form_jsons/public/en/* runner/dist/server/forms/
-COPY ./form_jsons/public/cy/* runner/dist/server/forms/
-COPY ./form_jsons/config/* runner/config/
-CMD [ "yarn", "runner", "build"]
+FROM python:3.10-bullseye
 
-FROM base as app
-WORKDIR /usr/src/app
-USER root
-RUN deluser --remove-home appuser && \
- addgroup -g 1001 appuser && \
- adduser -S -u 1001 -G appuser appuser
-USER appuser
+WORKDIR /app
+COPY requirements.txt requirements.txt
+RUN python3 -m pip install --upgrade pip && pip install -r requirements.txt
+COPY . .
 
-EXPOSE 3009
+EXPOSE 8080
 
-ENV NODE_ENV=production
-USER 1001
-CMD [ "yarn", "runner", "start"]
+CMD ["flask", "run", "--port", "8080", "--host", "0.0.0.0"]

@@ -1,4 +1,4 @@
-{% macro tasklist_section(section_name, section_data, weighting, application_meta_data, index) %}
+{% macro tasklist_section(section_name, section_data, weighting, application_meta_data, application_status, index) %}
 <li>
     <h2 class="app-task-list__section">
       <span class="app-task-list__section-number">{{index}}. </span> {{section_name|kebab_case_to_human}}
@@ -19,12 +19,15 @@
         <span class="app-task-list__tag" id="read-declaration-status">
         {% if form["state"]["status"] == application_meta_data["not_started_status"] %}
         <strong class="govuk-tag not-started-tag">
+          {{ application_status("NOT_STARTED") }}
         {% elif form["state"]["status"] == application_meta_data["in_progress_status"] %}
         <strong class="govuk-tag in-progress-tag-new">
+          {{ application_status("IN_PROGRESS") }}
         {% elif form["state"]["status"] == application_meta_data["completed_status"] %}
+        {{ application_status("COMPLETED") }}
         <strong class="govuk-tag complete-tag">
         {% endif %}
-        {{ form["state"]["status"]|snake_case_to_human|lower}}
+    
         </strong>
         </span>
       </li>

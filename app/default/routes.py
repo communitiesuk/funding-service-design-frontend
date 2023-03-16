@@ -17,10 +17,15 @@ def index():
     current_app.logger.info("Service landing page loaded.")
     try:
         round_data = get_round_data(
-            Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID, as_dict=True
+            fund_id=Config.DEFAULT_FUND_ID,
+            round_id=Config.DEFAULT_ROUND_ID,
+            as_dict=True
         )
-        fund_data = get_fund_data(Config.DEFAULT_FUND_ID)
-        fund_name = fund_data.get("name")
+
+        fund_data = get_fund_data(
+            fund_id=Config.DEFAULT_FUND_ID,
+            as_dict=True)
+        fund_name = fund_data.name
         submission_deadline = round_data.deadline
         contact_us_email_address = round_data.contact_details["email_address"]
         round_title = round_data.title
@@ -29,7 +34,7 @@ def index():
         round_title = ""
         submission_deadline = ""
         contact_us_email_address = ""
-
+  
     return render_template(
         "index.html",
         service_url=Config.ENTER_APPLICATION_URL,
