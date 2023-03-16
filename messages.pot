@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-16 10:45+0000\n"
+"POT-Creation-Date: 2023-03-16 16:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,39 +21,39 @@ msgstr ""
 msgid "Apply for funding to save an asset in your community"
 msgstr ""
 
-#: app/filters.py:14 app/filters.py:25
+#: app/filters.py:15 app/filters.py:26
 msgid "at"
 msgstr ""
 
-#: app/models/language.py:6
+#: app/models/language.py:5
 msgid "English"
 msgstr ""
 
-#: app/models/language.py:7
+#: app/models/language.py:5
 msgid "Welsh"
 msgstr ""
 
-#: app/models/statuses.py:6
+#: app/models/statuses.py:7
 msgid "Not Started"
 msgstr ""
 
-#: app/models/statuses.py:7
+#: app/models/statuses.py:8
 msgid "In Progress"
 msgstr ""
 
-#: app/models/statuses.py:8
+#: app/models/statuses.py:9
 msgid "Completed"
 msgstr ""
 
-#: app/models/statuses.py:9
+#: app/models/statuses.py:10
 msgid "Submitted"
 msgstr ""
 
-#: app/models/statuses.py:10
+#: app/models/statuses.py:11
 msgid "Not Submitted"
 msgstr ""
 
-#: app/models/statuses.py:11
+#: app/models/statuses.py:12
 msgid "Ready to Submit"
 msgstr ""
 
@@ -1044,11 +1044,9 @@ msgid ""
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:631
-msgid "This fund can offer up to 50"
-msgstr ""
-
-#: app/templates/cof_r2_all_questions.html:631
-msgid " of your capital costs to renovate and repair the asset."
+msgid ""
+"This fund can offer up to 50&percnt; of your capital costs to renovate "
+"and repair the asset."
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:634
@@ -1060,18 +1058,11 @@ msgid "This is the amount you are applying for from the Community Ownership Fund
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:640
-msgid "You can apply for up to 50"
-msgstr ""
-
-#: app/templates/cof_r2_all_questions.html:640
 msgid ""
-" of your capital costs, up to a maximum of £250,000 (up to £1 million for"
-" sporting assets). You can apply for up to £50,000 of your revenue costs "
-"(no more than 20"
-msgstr ""
-
-#: app/templates/cof_r2_all_questions.html:640
-msgid " of your capital funding)."
+"You can apply for up to 50&percnt; of your capital costs, up to a maximum"
+" of £250,000 (up to £1 million for sporting assets). You can apply for up"
+" to £50,000 of your revenue costs (no more than 20&percnt; of your "
+"capital funding)."
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:643
@@ -1123,12 +1114,9 @@ msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:669
 #: app/templates/cof_r2_all_questions.html:695
-msgid "It should be no more than £50,000, and no more than 20"
-msgstr ""
-
-#: app/templates/cof_r2_all_questions.html:669
-#: app/templates/cof_r2_all_questions.html:695
-msgid " of your capital funding."
+msgid ""
+"It should be no more than £50,000, and no more than 20&percnt; of your "
+"capital funding."
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:672
