@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-02 12:04+0000\n"
+"POT-Creation-Date: 2023-03-16 11:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2105,6 +2105,18 @@ msgstr ""
 
 #: app/templates/tasklist.html:121
 msgid "None of the sections have been completed."
+msgstr ""
+
+#: app/templates/tasklist.html:123
+msgid "You have completed"
+msgstr ""
+
+#: app/templates/tasklist.html:124
+msgid "of"
+msgstr ""
+
+#: app/templates/tasklist.html:125
+msgid "sections."
 msgstr ""
 
 #: app/templates/partials/applications_table.html:30
