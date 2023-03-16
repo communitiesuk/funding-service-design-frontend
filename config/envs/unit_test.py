@@ -1,7 +1,8 @@
 """Flask Local Development Environment Configuration."""
 from config.envs.default import DefaultConfig
-from fsd_utils import configclass
 from fsd_utils import CommonConfig
+from fsd_utils import configclass
+
 
 @configclass
 class UnitTestConfig(DefaultConfig):

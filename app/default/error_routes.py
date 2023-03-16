@@ -1,15 +1,16 @@
-from flask import request, redirect
-from flask import current_app
-from config import Config
+from app.default.account_routes import account_bp
+from app.default.application_routes import application_bp
+from app.default.content_routes import content_bp
 from app.default.data import get_round_data_fail_gracefully
+from app.default.routes import default_bp
+from config import Config
+from flask import current_app
+from flask import redirect
 from flask import render_template
+from flask import request
 from flask_wtf.csrf import CSRFError
 from fsd_utils.authentication.decorators import login_requested
 
-from app.default.routes import default_bp
-from app.default.application_routes import application_bp
-from app.default.content_routes import content_bp
-from app.default.account_routes import account_bp
 
 @application_bp.errorhandler(404)
 @content_bp.errorhandler(404)

@@ -108,6 +108,7 @@ def get_fund_data(fund_id, language=None, as_dict=False):
     else:
         return fund_response
 
+
 def get_round_data(fund_id, round_id, language=None, as_dict=False):
     language = {"language": language or get_lang()}
     round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(
@@ -131,7 +132,8 @@ def get_round_data_by_short_names(fund_short_name, round_short_name):
         (
             round
             for round in response
-            if str.casefold(round["short_name"]) == str.casefold(round_short_name)
+            if str.casefold(round["short_name"])
+            == str.casefold(round_short_name)
         ),
         None,
     )
