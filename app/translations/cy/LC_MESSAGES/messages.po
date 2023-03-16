@@ -2466,4 +2466,3 @@ msgstr "o'r meini prawf asesu"
 
 #~ msgid "Stopped"
 #~ msgstr ""
-

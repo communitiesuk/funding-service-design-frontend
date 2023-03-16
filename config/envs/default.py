@@ -156,6 +156,5 @@ class DefaultConfig:
 
     DEFAULT_FUND_ID = CommonConfig.COF_FUND_ID
     DEFAULT_ROUND_ID = CommonConfig.get_default_round_id()
-    
-    FORMS_CONFIG_FOR_FUND_ROUND = CommonConfig.FORMS_CONFIG_FOR_FUND_ROUND
 
+    FORMS_CONFIG_FOR_FUND_ROUND = CommonConfig.FORMS_CONFIG_FOR_FUND_ROUND
