@@ -5,6 +5,7 @@ from app.default.data import get_round_data_fail_gracefully
 from app.default.routes import default_bp
 from config import Config
 from flask import current_app
+from flask import g
 from flask import redirect
 from flask import render_template
 from flask import request
@@ -57,7 +58,7 @@ def unauthorised_error(error):
 @account_bp.errorhandler(CSRFError)
 @login_requested
 def csrf_token_expiry(error):
-    if not g.account_id:  # noqa
-        return redirect(g.logout_url)  # noqa
+    if not g.account_id:
+        return redirect(g.logout_url)
     current_app.logger.error(f"Encountered 500: {error}")
     return render_template("500.html"), 500
