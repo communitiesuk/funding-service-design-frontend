@@ -2359,7 +2359,7 @@ msgstr "Nid yw'r un o'r adrannau wedi'u llenwi."
 
 #: app/templates/tasklist.html:123
 msgid "You have completed"
-msgstr "Rydych wedi dechrau"
+msgstr "Rydych wedi cwblhau"
 
 #: app/templates/tasklist.html:124
 msgid "of"
