@@ -127,7 +127,6 @@ def new():
             "fund_id": request.form["fund_id"] or Config.DEFAULT_FUND_ID,
             "language": get_lang(),
         },
-        timeout=60,
     )
     new_application_json = new_application.json()
     current_app.logger.info(f"Creating new application:{new_application_json}")
