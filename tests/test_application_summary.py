@@ -1,9 +1,9 @@
-import json
 import datetime
+import json
 
+from app import app
 from app.default.account_routes import build_application_data_for_display
 from app.models.application_summary import ApplicationSummary
-from app import app
 
 file = open("tests/api_data/endpoint_data.json")
 data = json.loads(file.read())
@@ -113,7 +113,7 @@ TEST_DISPLAY_DATA = {
 }
 
 
-def test_serialise_application_summary():   
+def test_serialise_application_summary():
     application_list = TEST_APPLICATION_STORE_DATA
 
     applications = [
@@ -248,9 +248,7 @@ def test_build_application_data_for_display(mocker):
     assert "READY_TO_SUBMIT" == fsd_fund["rounds"][1]["applications"][1].status
 
 
-def test_build_application_data_for_display_exclude_round_with_no_apps(
-    mocker
-):
+def test_build_application_data_for_display_exclude_round_with_no_apps(mocker):
     mocker.patch(
         "app.default.account_routes.get_all_funds",
         return_value=TEST_FUNDS_DATA,
