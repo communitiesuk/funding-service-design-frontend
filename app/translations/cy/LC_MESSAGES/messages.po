@@ -2345,7 +2345,7 @@ msgstr "Dyddiad cau cyflwyno:"
 
 #: app/templates/tasklist.html:93
 msgid "Reference:"
-msgstr "Cyfeirnod"
+msgstr "Cyfeirnod:"
 
 #: app/templates/tasklist.html:101
 msgid "Status:"
@@ -2354,6 +2354,18 @@ msgstr "Statws:"
 #: app/templates/tasklist.html:121
 msgid "None of the sections have been completed."
 msgstr "Nid yw'r un o'r adrannau wedi'u llenwi."
+
+#: app/templates/tasklist.html:123
+msgid "You have completed"
+msgstr "Rydych wedi cwblhau"
+
+#: app/templates/tasklist.html:124
+msgid "of"
+msgstr "o"
+
+#: app/templates/tasklist.html:125
+msgid "sections."
+msgstr "datganiadau"
 
 #: app/templates/partials/applications_table.html:30
 msgid "Continue application"

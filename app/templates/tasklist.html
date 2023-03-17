@@ -120,9 +120,9 @@
                 {% if application_meta_data["number_of_completed_forms"] == 0 %}
                 {% trans %}None of the sections have been completed.{% endtrans %}
                 {% else %}
-                You have completed
-                    {{ application_meta_data["number_of_completed_forms"] }} of
-                    {{ application_meta_data["number_of_forms"] }} sections.
+                {% trans %}You have completed{% endtrans %}
+                {{ application_meta_data["number_of_completed_forms"] }} {% trans %}of{% endtrans %}
+                {{ application_meta_data["number_of_forms"] }} {% trans %}sections.{% endtrans %}
                 {% endif %}
             </p>
             {% else %}
