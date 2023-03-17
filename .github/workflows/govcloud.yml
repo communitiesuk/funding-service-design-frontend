@@ -15,7 +15,7 @@ jobs:
       api: false
       assets_required: true
       deploy_to_dev: true
-      include_rsa256_base64: true
+      include_rsa256_base64_public: true
       include_manifest: true
       include_sentry_dsn: true
       include_forms_service_private_host: true
