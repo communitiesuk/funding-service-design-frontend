@@ -628,7 +628,7 @@
                 {% trans %}We'll ask you to upload a business plan to support the answers you give us in this section.{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}This fund can offer up to 50% of your capital costs to renovate and repair the asset.{% endtrans %}
+                {% trans %}This fund can offer up to 50&percnt; of your capital costs to renovate and repair the asset.{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
                 4.1.1. {% trans %}Total funding request{% endtrans %}
@@ -637,7 +637,7 @@
                 {% trans %}This is the amount you are applying for from the Community Ownership Fund.{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}You can apply for up to 50% of your capital costs, up to a maximum of £250,000 (up to £1 million for sporting assets). You can apply for up to £50,000 of your revenue costs (no more than 20% of your capital funding).{% endtrans %}
+                {% trans %}You can apply for up to 50&percnt; of your capital costs, up to a maximum of £250,000 (up to £1 million for sporting assets). You can apply for up to £50,000 of your revenue costs (no more than 20&percnt; of your capital funding).{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
                 4.1.2. {% trans %}Capital costs{% endtrans %}
@@ -666,7 +666,7 @@
                 </li>
             </ul>
             <p class="govuk-body">
-                {% trans %}It should be no more than £50,000, and no more than 20% of your capital funding.{% endtrans %}
+                {% trans %}It should be no more than £50,000, and no more than 20&percnt; of your capital funding.{% endtrans %}
             </p>
             <p class="govuk-body">
                 {{ pgettext("indefinite", "If 'Yes', go to") }} <strong>4.1.3.1.</strong>
@@ -692,7 +692,7 @@
                 </li>
             </ul>
             <p class="govuk-body">
-                {% trans %}It should be no more than £50,000, and no more than 20% of your capital funding.{% endtrans %}
+                {% trans %}It should be no more than £50,000, and no more than 20&percnt; of your capital funding.{% endtrans %}
             </p>
             <p class="govuk-body">
                 {% trans %}You can use your business plan to:{% endtrans %}
@@ -1119,20 +1119,22 @@
                 <li>
                     {% trans %}financial forecasts, including:{% endtrans %}
                 </li>
-                <ul class=" govuk-body govuk-list--bullet govuk-list">
-                    <li>
-                        {% trans %}income sources{% endtrans %}
-                    </li>
-                    <li>
-                        {% trans %}costs with an evidenced set of assumptions{% endtrans %}
-                    </li>
-                    <li>
-                        {% trans %}why you’ll need revenue funding and how you’ll use it{% endtrans %}
-                    </li>
-                    <li>
-                        {% trans %}cashflow{% endtrans %}
-                    </li>
-                </ul>
+                <li class="no-bullet-point">
+                    <ul class=" govuk-body govuk-list--bullet govuk-list">
+                        <li>
+                            {% trans %}income sources{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}costs with an evidenced set of assumptions{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}why you’ll need revenue funding and how you’ll use it{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}cashflow{% endtrans %}
+                        </li>
+                    </ul>
+                </li>
                 <li>
                     {% trans %}your most recent audited accounts covering the last 3 years{% endtrans %}
                 </li>
@@ -1179,14 +1181,16 @@
                 <li>
                     {% trans %}members of your board, including their:{% endtrans %}
                 </li>
-                <ul class="govuk-body govuk-list--bullet govuk-list">
-                    <li>
-                        {% trans %}role{% endtrans %}
-                    </li>
-                    <li>
-                        {% trans %}main responsibilities{% endtrans %}
-                    </li>
-                </ul>
+                <li class="no-bullet-point">
+                    <ul class="govuk-body govuk-list--bullet govuk-list">
+                        <li>
+                            {% trans %}role{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}main responsibilities{% endtrans %}
+                        </li>
+                    </ul>
+                </li>
                 <li>
                     {% trans %}copies of your organisation’s memorandum and articles of association{% endtrans %}
                 </li>
