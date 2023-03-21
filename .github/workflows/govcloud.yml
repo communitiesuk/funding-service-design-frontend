@@ -2,161 +2,29 @@ name: Deploy to Gov PaaS
 
 on:
   workflow_dispatch:
-    inputs:
-      space:
-        description: The space to deploy to
-        required: true
-        default: sandbox
-      environment:
-        description: The environment to deploy with
-        required: true
-        default: Dev
   push:
     paths-ignore:
-      - "**/README.md"
-      - "docs/**"
+      - '**/README.md'
 
-env:
-  if: ${{ github.actor != 'dependabot[bot]' }}
-  # TODO: restore this to a custom domain once DNS is restored
-  FORMS_SERVICE_PREVIEW_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
-  FORMS_SERVICE_PUBLIC_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
-  FORMS_SERVICE_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.dev.gids.dev
 jobs:
-
-  deploy-and-test-dev:
+  test_and_deploy:
     if: ${{ github.actor != 'dependabot[bot]' }}
-    concurrency: deploy-and-test-dev_${{github.repository}}
-    runs-on: ubuntu-latest
-    environment: Dev
-    steps:
-      - name: checkout code
-        uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.10.x
-      - name: create python env
-        run: python -m venv .venv
-      - name: install dependencies
-        run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements-dev.txt
-      - name: build static assets
-        run: python build.py
-      - name: run unit tests
-        run: |
-          source .venv/bin/activate
-          pytest -k "not accessibility"
-      - name: Deploy to Gov PaaS
-        uses: citizen-of-planet-earth/cf-cli-action@v2
-        with:
-          cf_api: ${{secrets.CF_API}}
-          cf_org: ${{secrets.CF_ORG}}
-          cf_space: ${{secrets.CF_SPACE }}
-          cf_username: ${{secrets.CF_USERNAME}}
-          cf_password: ${{secrets.CF_PASSWORD}}
-          # env vars required in the manifest must be declared here
-          command: push -f manifest-dev.yml funding-service-design-frontend-dev --var SENTRY_DSN="${{secrets.SENTRY_DSN}}" --var FORMS_SERVICE_PRIVATE_HOST="${{secrets.FORMS_SERVICE_PRIVATE_HOST}}" --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}" --var GITHUB_SHA="${{ github.sha }}"
-
-  security:
-    if: ${{ github.actor != 'dependabot[bot]' }}
-    needs: deploy-and-test-dev
-    runs-on: ubuntu-latest
-    environment: Dev
-    steps:
-      - name: checkout code
-        uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.10.x
-      - name: install dependencies
-        run: python -m pip install --upgrade pip && python -m pip install -r requirements-dev.txt
-      - name: Bandit
-        run: bandit -r ./app
-      - name: ZAP Scan
-        uses: zaproxy/action-full-scan@v0.4.0
-        with:
-          target: "https://funding-service-design-frontend-dev.london.cloudapps.digital"
-          allow_issue_writing: False
-
-  run-shared-tests_dev:
-    needs: deploy-and-test-dev
-    concurrency: run-shared-tests_dev
-    if: ${{ github.actor != 'dependabot[bot]'}}
-    uses: communitiesuk/funding-design-service-workflows/.github/workflows/run-shared-tests.yml@main
+    uses: communitiesuk/funding-design-service-workflows/.github/workflows/deploy.yml@main
     with:
-      perf_test_target_url_application_store: https://funding-service-design-application-store-dev.london.cloudapps.digital
-      perf_test_target_url_fund_store: https://funding-service-design-fund-store-dev.london.cloudapps.digital
-      perf_test_target_url_assessment_store: https://funding-service-design-assessment-store-dev.london.cloudapps.digital
-      e2e_tests_target_url_frontend: https://fsd:fsd@frontend.dev.gids.dev
-      e2e_tests_target_url_authenticator: https://fsd:fsd@authenticator2.dev.gids.dev
-      e2e_tests_target_url_form_runner: https://fsd:fsd@forms.dev.gids.dev
-      e2e_tests_target_url_assessment: https://fsd:fsd@assessment.dev.gids.dev
-      run_performance_tests: true
-      run_e2e_tests: false
-    secrets:
-       E2E_PAT: ${{secrets.E2E_PAT}}
-
-  deploy-and-test-test:
-    if: ${{ github.actor != 'dependabot[bot]' && github.ref == 'refs/heads/main' }}
-    concurrency: deploy-and-test-test_${{github.repository}}
-    needs: [security, run-shared-tests_dev]
-    runs-on: ubuntu-latest
-    environment: test
-    steps:
-      - name: checkout code
-        uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.10.x
-      - name: create python env
-        run: python -m venv .venv
-      - name: install dependencies
-        run: source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements.txt
-      - name: build static assets
-        run: python build.py
-      - name: Deploy to Gov PaaS
-        uses: citizen-of-planet-earth/cf-cli-action@v2
-        with:
-          cf_api: ${{secrets.CF_API}}
-          cf_org: ${{secrets.CF_ORG}}
-          cf_space: ${{secrets.CF_SPACE }}
-          cf_username: ${{secrets.CF_USERNAME}}
-          cf_password: ${{secrets.CF_PASSWORD}}
-          # env vars required in the manifest must be declared here
-          command: push -f manifest-test.yml funding-service-design-frontend-test --var SENTRY_DSN="${{secrets.SENTRY_DSN}}" --var RSA256_PUBLIC_KEY_BASE64="${{secrets.RSA256_PUBLIC_KEY_BASE64}}" --var FORMS_SERVICE_PRIVATE_HOST="${{secrets.FORMS_SERVICE_PRIVATE_HOST}}" --var GITHUB_SHA="${{ github.sha }}"
-      - name: Run tests
-        env:
-          # TODO: restore this to a custom domain once DNS is restored
-          FORMS_SERVICE_PREVIEW_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.test.gids.dev
-          FORMS_SERVICE_PUBLIC_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.test.gids.dev
-          FORMS_SERVICE_HOST: https://${{secrets.BASIC_AUTH_USERNAME}}:${{secrets.BASIC_AUTH_PASSWORD}}@forms.test.gids.dev
-        run: |
-          python -m venv .venv
-          source .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements-dev.txt
-          pytest
-      - name: "Upload Accessibility Testing reports"
-        uses: actions/upload-artifact@v2
-        with:
-          name: accessibility-test-report
-          path: /home/runner/work/funding-service-design-design-frontend/funding-service-design-frontend/axe_reports/*.html
-          retention-days: 5
-
-  run-shared-tests_test:
-    needs: deploy-and-test-test
-    concurrency: run-shared-tests_test
-    if: ${{ github.actor != 'dependabot[bot]' }}
-    uses: communitiesuk/funding-design-service-workflows/.github/workflows/run-shared-tests.yml@main
-    with:
-      perf_test_target_url_application_store: https://funding-service-design-application-store-test.london.cloudapps.digital
-      perf_test_target_url_fund_store: https://funding-service-design-fund-store-test.london.cloudapps.digital
-      perf_test_target_url_assessment_store: https://funding-service-design-assessment-store-test.london.cloudapps.digital
-      e2e_tests_target_url_frontend: https://fsd:fsd@frontend.test.gids.dev
-      e2e_tests_target_url_authenticator: https://fsd:fsd@authenticator2.test.gids.dev
-      e2e_tests_target_url_form_runner: https://fsd:fsd@forms.test.gids.dev
-      e2e_tests_target_url_assessment: https://fsd:fsd@assessment.test.gids.dev
+      app_name: ${{ github.event.repository.name }}
+      api: false
+      assets_required: true
+      deploy_to_dev: true
+      include_manifest: true
       run_performance_tests: true
       run_e2e_tests: true
     secrets:
-       E2E_PAT: ${{secrets.E2E_PAT}}
+      CF_API: ${{secrets.CF_API}}
+      CF_ORG: ${{secrets.CF_ORG}}
+      CF_SPACE: ${{secrets.CF_SPACE}}
+      CF_USER: ${{secrets.CF_USERNAME}}
+      CF_PASSWORD: ${{secrets.CF_PASSWORD}}
+      E2E_PAT: ${{secrets.E2E_PAT}}
+      RSA256_PUBLIC_KEY_BASE64: ${{secrets.RSA256_PUBLIC_KEY_BASE64}}
+      SENTRY_DSN: ${{secrets.SENTRY_DSN}}
+      FORMS_SERVICE_PRIVATE_HOST: ${{secrets.FORMS_SERVICE_PRIVATE_HOST}}
