@@ -5,6 +5,7 @@ from app.default.data import get_round_data_fail_gracefully
 from app.default.routes import default_bp
 from config import Config
 from flask import current_app
+from flask import g
 from flask import redirect
 from flask import render_template
 from flask import request
