@@ -10,6 +10,7 @@ from app.models.round import Round
 from config import Config
 from flask import abort
 from flask import current_app
+from fsd_utils.locale_selector.get_lang import get_lang
 
 
 def get_data(endpoint: str, params: dict = None):
@@ -98,32 +99,53 @@ def get_applications_for_account(account_id, as_dict=False):
         return application_response
 
 
-def get_fund_data(fund_id, as_dict=False):
+def get_fund_data(fund_id, language=None, as_dict=False):
+    language = {"language": language or get_lang()}
     fund_request_url = Config.GET_FUND_DATA_ENDPOINT.format(fund_id=fund_id)
-    fund_response = get_data(fund_request_url)
+    fund_response = get_data(fund_request_url, language)
     if as_dict:
         return Fund.from_dict(fund_response)
     else:
         return fund_response
 
 
-def get_round_data(fund_id, round_id, as_dict=False):
+def get_round_data(fund_id, round_id, language=None, as_dict=False):
+    language = {"language": language or get_lang()}
     round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(
         fund_id=fund_id, round_id=round_id
     )
-    round_response = get_data(round_request_url)
+    round_response = get_data(round_request_url, language)
     if as_dict:
         return Round.from_dict(round_response)
     else:
         return round_response
 
 
+def get_round_data_by_short_names(fund_short_name, round_short_name):
+    request_url = Config.GET_ALL_ROUNDS_FOR_FUND_ENDPOINT.format(
+        fund_id=fund_short_name
+    )
+    response = get_data(
+        request_url, {"language": get_lang(), "use_short_name": "true"}
+    )
+    return next(
+        (
+            round
+            for round in response
+            if str.casefold(round["short_name"])
+            == str.casefold(round_short_name)
+        ),
+        None,
+    )
+
+
 def get_round_data_fail_gracefully(fund_id, round_id):
     try:
+        language = {"language": get_lang()}
         round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(
             fund_id=fund_id, round_id=round_id
         )
-        round_response = get_data(round_request_url)
+        round_response = get_data(round_request_url, language)
         return Round.from_dict(round_response)
     except:  # noqa
         current_app.logger.error(
@@ -160,3 +182,18 @@ def get_account(email: str = None, account_id: str = None) -> Account | None:
 
     if response and "account_id" in response:
         return Account.from_json(response)
+
+
+def get_all_funds():
+    language = {"language": get_lang()}
+    fund_response = get_data(Config.GET_ALL_FUNDS_ENDPOINT, language)
+    return fund_response
+
+
+def get_all_rounds_for_fund(fund_id):
+    language = {"language": get_lang()}
+    rounds_response = get_data(
+        Config.GET_ALL_ROUNDS_FOR_FUND_ENDPOINT.format(fund_id=fund_id),
+        language,
+    )
+    return rounds_response

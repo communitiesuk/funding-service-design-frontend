@@ -2,80 +2,40 @@
 {%- from "govuk_frontend_jinja/components/table/macro.html" import govukTable -%}
 {%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
 {% from "partials/start-application-button.html" import startApplicationButton %}
+{% from "partials/available_in_language.html" import available_in_language %}
+{% from "partials/round_closed_warning.html" import round_closed_warning %}
+{% from "partials/applications_table.html" import applications_table %}
 
 {% extends "base.html" %}
+{% set pageHeading %}
+{% trans %}Your applications{% endtrans %}
+{% endset %}
 {% block content %}
-    <h1 class="govuk-heading-xl">Your applications</h1>
+    <h1 class="govuk-heading-xl">{{ pageHeading }}</h1>
     <p class="govuk-body">
-        You have started {% trans count=applications|length %} {{ count }} application {% pluralize %} {{ count }} applications {% endtrans %} using this email address.
+        {% set application_count=display_data["total_applications_to_display"]%}
+        {% trans %}You have started{% endtrans %}&nbsp;{% trans count=application_count%} {{application_count}} application{% pluralize %}{{application_count}} applications{% endtrans %}&nbsp;{% trans %}using this email address{% endtrans %}.
     </p>
-    {% set ns = namespace(rows = []) %}
-    {% for application in applications %}
-        {% set status_class %}
-            {%  if application.status == 'SUBMITTED' %}
-                complete-tag
-            {%  elif application.status == 'NOT_STARTED' %}
-                not-started-tag
-            {%  elif application.status == 'IN_PROGRESS' %}
-                in-progress-tag-new
-            {%  elif application.status == 'READY_TO_SUBMIT' %}
-                in-progress-tag-new
+{{available_in_language(inset=False, warn=True)}}
+
+
+    {% for fund in display_data["funds"] %}
+        {% for round in fund["rounds"] %}
+            {% if not round["is_not_yet_open"] %}
+                <span class="govuk-caption-m">{{ fund["fund_data"]["name"] }}</span>
+                <h2 class="govuk-heading-l">
+                    {{ round["round_details"]["title"] }}
+                </h2>
+                {% if round["is_past_submission_deadline"] %}
+                    {{ round_closed_warning(fund["fund_data"]["name"], round["round_details"]["title"], round["round_details"]["deadline"]) }}
+                {% endif %}
+                    {{ applications_table(round["applications"], round["is_past_submission_deadline"], show_language_column) }}
+                {% if not round["is_past_submission_deadline"] %}
+                    {{ startApplicationButton(form, url_for('account_routes.new'), fund_id=fund["fund_id"], round_id=round["round_details"]["id"], existing_applications_count=round["applications"]|count) }}
+                {% endif %}
             {% endif %}
-        {% endset %}
+        {% endfor %}
 
-        {% if not application.status == 'SUBMITTED' %}
-            {% set application_link = '<a class="govuk-link" href="{}">Continue application</a>'.format(url_for('routes.tasklist', application_id=application.id)) %}
-        {% endif %}
-
-
-    {% set row = ns.rows.append(
-    [
-    {
-    'text': application.project_name if application.project_name else 'Untitled project'
-    },
-    {
-    'text':  govukTag({
-    'text': application.status|snake_case_to_human ,
-    'classes': status_class
-    })
-    },
-    {
-    'html': application.last_edited|datetime_format_short_month if application.last_edited
-    },
-    {
-    'html': application.reference
-    },
-    {
-    'html': application_link
-    }
-    ]
-    )
-    %}
-{% endfor %}
-
-{% if applications|length > 0 %}
-    {{ govukTable({
-    'head': [
-    {
-    'text': 'Project name'
-    },
-    {
-    'text': 'Status'
-    },
-    {
-    'text': 'Last edited'
-    },
-    {
-    'text': 'Application Reference'
-    },
-    {
-    'text': 'Action'
-    }
-    ],
-    'rows': ns.rows
-    }) }}
-{% endif %}
-
-{{startApplicationButton(form, url_for('routes.new'), applications=applications)}}
+    {% endfor %}
 
 {% endblock %}

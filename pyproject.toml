@@ -8,3 +8,13 @@ license = "MIT License"
 [tool.black]
 line-length = 79
 experimental-string-processing = 1
+
+[tool.djlint]
+# run with : `djlint path/to/file.html --reformat --format-css --format-js`
+#   this is deliberately commented out.  we don't want to format these tags as
+#   it will introduce new lines and tabs, making the translation matching brittle.
+# custom_blocks="trans,endtrans"
+max_line_length=1000        # high limit, we don't want line breaks for translations.
+max_attribute_length=1000   # ^^^
+exclude=".venv,venv"
+profile="jinja2"
