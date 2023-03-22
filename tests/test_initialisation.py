@@ -6,6 +6,7 @@ of the test_routes.py test. These tests are marked
 the other tests. This saves time.
 This is the most basic set of tests.
 """
+import pytest
 from tests.route_testing_conf import routes_and_test_content
 
 
@@ -36,6 +37,14 @@ def test_helloworld_homepage(flask_test_client):
 def test_healthcheck(flask_test_client):
     response = flask_test_client.get("/healthcheck")
 
-    expected_dict = {"checks": [{"check_flask_running": "OK"}]}
+    expected_dict = {
+        "checks": [{"check_flask_running": "OK"}],
+        "version": "abc123",
+    }
     assert response.status_code == 200, "Unexpected status code"
     assert response.json == expected_dict, "Unexpected json body"
+
+
+@pytest.mark.app(debug=False)
+def test_app(app):
+    assert not app.debug, "Ensure the app not in debug mode"

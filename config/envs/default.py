@@ -28,6 +28,7 @@ class DefaultConfig:
     AUTHENTICATOR_HOST = environ.get("AUTHENTICATOR_HOST", "authenticator")
     ENTER_APPLICATION_URL = AUTHENTICATOR_HOST + "/service/magic-links/new"
     SESSION_COOKIE_DOMAIN = environ.get("SESSION_COOKIE_DOMAIN")
+    COOKIE_DOMAIN = environ.get("COOKIE_DOMAIN", None)
 
     # RSA 256 KEYS
     RSA256_PUBLIC_KEY_BASE64 = environ.get("RSA256_PUBLIC_KEY_BASE64")
@@ -65,7 +66,11 @@ class DefaultConfig:
     FUND_STORE_API_HOST = environ.get(
         "FUND_STORE_API_HOST", TEST_FUND_STORE_API_HOST
     )
+    GET_ALL_FUNDS_ENDPOINT = FUND_STORE_API_HOST + "/funds"
     GET_FUND_DATA_ENDPOINT = FUND_STORE_API_HOST + "/funds/{fund_id}"
+    GET_ALL_ROUNDS_FOR_FUND_ENDPOINT = (
+        FUND_STORE_API_HOST + "/funds/{fund_id}/rounds"
+    )
     GET_ROUND_DATA_FOR_FUND_ENDPOINT = (
         FUND_STORE_API_HOST + "/funds/{fund_id}/rounds/{round_id}"
     )
@@ -149,7 +154,7 @@ class DefaultConfig:
 
     USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "False"))
 
-    COF_FUND_ID = "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4"
-    COF_ROUND2_ID = "c603d114-5364-4474-a0c4-c41cbf4d3bbd"
-    DEFAULT_FUND_ID = COF_FUND_ID
-    DEFAULT_ROUND_ID = COF_ROUND2_ID
+    DEFAULT_FUND_ID = CommonConfig.COF_FUND_ID
+    DEFAULT_ROUND_ID = CommonConfig.get_default_round_id()
+
+    FORMS_CONFIG_FOR_FUND_ROUND = CommonConfig.FORMS_CONFIG_FOR_FUND_ROUND

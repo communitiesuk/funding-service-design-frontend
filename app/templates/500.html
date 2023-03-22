@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{% block pageTitle %}Sorry, there is a problem with the service – {{ service_title }}{% endblock %}
+{% set pageHeading %}Sorry, there is a problem with the service{% endset %}
 
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-xl">Sorry, there is a problem with the service</h1>
+            <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
             <p class="govuk-body">Try again later.</p>
             <p class="govuk-body"><a class="govuk-link" href="/contact_us">Contact the Community Ownership Fund</a> if you have any questions.</p>
         </div>
