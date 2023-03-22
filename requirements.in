@@ -1,7 +1,7 @@
 #-----------------------------------
 #   FSD Utils
 #-----------------------------------
-funding-service-design-utils==1.0.1
+funding-service-design-utils>=1.0.23,<1.1.0
 
 requests
 
@@ -42,4 +42,3 @@ email-validator==1.2.1
 python-slugify==6.1.2
 
 #Jinja2
-#json2html

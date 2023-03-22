@@ -5,6 +5,7 @@ from os import getenv
 from pathlib import Path
 
 from distutils.util import strtobool
+from fsd_utils import CommonConfig
 from fsd_utils import configclass
 
 
@@ -15,6 +16,7 @@ class DefaultConfig:
     SECRET_KEY = environ.get("SECRET_KEY", "dev")
     SESSION_COOKIE_NAME = environ.get("SESSION_COOKIE_NAME", "session_cookie")
     SESSION_COOKIE_SECURE = True
+    WTF_CSRF_TIME_LIMIT = CommonConfig.WTF_CSRF_TIME_LIMIT
 
     STATIC_FOLDER = "static"
     TEMPLATES_FOLDER = "templates"
@@ -26,6 +28,7 @@ class DefaultConfig:
     AUTHENTICATOR_HOST = environ.get("AUTHENTICATOR_HOST", "authenticator")
     ENTER_APPLICATION_URL = AUTHENTICATOR_HOST + "/service/magic-links/new"
     SESSION_COOKIE_DOMAIN = environ.get("SESSION_COOKIE_DOMAIN")
+    COOKIE_DOMAIN = environ.get("COOKIE_DOMAIN", None)
 
     # RSA 256 KEYS
     RSA256_PUBLIC_KEY_BASE64 = environ.get("RSA256_PUBLIC_KEY_BASE64")
@@ -33,9 +36,16 @@ class DefaultConfig:
         RSA256_PUBLIC_KEY = base64.b64decode(RSA256_PUBLIC_KEY_BASE64).decode()
 
     # APIs Config
-    TEST_APPLICATION_STORE_API_HOST = "http://application_store"
-    TEST_FUND_STORE_API_HOST = "http://fund_store"
+    TEST_APPLICATION_STORE_API_HOST = (
+        CommonConfig.TEST_APPLICATION_STORE_API_HOST
+    )
+    TEST_FUND_STORE_API_HOST = CommonConfig.TEST_FUND_STORE_API_HOST
+    TEST_ACCOUNT_STORE_API_HOST = CommonConfig.TEST_ACCOUNT_STORE_API_HOST
 
+    ACCOUNT_STORE_API_HOST = environ.get(
+        "ACCOUNT_STORE_API_HOST", TEST_ACCOUNT_STORE_API_HOST
+    )
+    ACCOUNTS_ENDPOINT = "/accounts"
     APPLICATION_STORE_API_HOST = environ.get(
         "APPLICATION_STORE_API_HOST", TEST_APPLICATION_STORE_API_HOST
     )
@@ -43,7 +53,9 @@ class DefaultConfig:
         APPLICATION_STORE_API_HOST + "/applications/{application_id}"
     )
     GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT = (
-        APPLICATION_STORE_API_HOST + "/applications?account_id={account_id}&order_by=last_edited&order_rev=1"
+        APPLICATION_STORE_API_HOST
+        + "/applications?account_id={account_id}"
+        + "&order_by=last_edited&order_rev=1"
     )
     UPDATE_APPLICATION_FORM_ENDPOINT = (
         APPLICATION_STORE_API_HOST + "/applications/forms"
@@ -54,7 +66,11 @@ class DefaultConfig:
     FUND_STORE_API_HOST = environ.get(
         "FUND_STORE_API_HOST", TEST_FUND_STORE_API_HOST
     )
+    GET_ALL_FUNDS_ENDPOINT = FUND_STORE_API_HOST + "/funds"
     GET_FUND_DATA_ENDPOINT = FUND_STORE_API_HOST + "/funds/{fund_id}"
+    GET_ALL_ROUNDS_FOR_FUND_ENDPOINT = (
+        FUND_STORE_API_HOST + "/funds/{fund_id}/rounds"
+    )
     GET_ROUND_DATA_FOR_FUND_ENDPOINT = (
         FUND_STORE_API_HOST + "/funds/{fund_id}/rounds/{round_id}"
     )
@@ -138,7 +154,7 @@ class DefaultConfig:
 
     USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "False"))
 
-    COF_FUND_ID = "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4"
-    COF_ROUND2_ID = "c603d114-5364-4474-a0c4-c41cbf4d3bbd"
-    DEFAULT_FUND_ID = COF_FUND_ID
-    DEFAULT_ROUND_ID = COF_ROUND2_ID
+    DEFAULT_FUND_ID = CommonConfig.COF_FUND_ID
+    DEFAULT_ROUND_ID = CommonConfig.get_default_round_id()
+
+    FORMS_CONFIG_FOR_FUND_ROUND = CommonConfig.FORMS_CONFIG_FOR_FUND_ROUND
