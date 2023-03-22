@@ -1,7 +1,7 @@
 ---
 applications:
 - name: funding-service-design-frontend-test
-  memory: 64M
+  memory: 256M
   buildpacks:
   - https://github.com/cloudfoundry/python-buildpack.git
   command: gunicorn wsgi:app -c run/gunicorn/devtest.py
@@ -17,7 +17,11 @@ applications:
     FORMS_SERVICE_PRIVATE_HOST: ((FORMS_SERVICE_PRIVATE_HOST))
     SENTRY_DSN: ((SENTRY_DSN))
     FLASK_ENV: test
+    COOKIE_DOMAIN: .test.gids.dev
+    GITHUB_SHA: ((GITHUB_SHA))
   routes:
     - route: frontend.test.fundingservice.co.uk
   health-check-http-endpoint: /healthcheck
   health-check-type: http
+  services:
+    - logit-ssl-drain

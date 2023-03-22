@@ -4,11 +4,11 @@
 ![Funding Service Design Frontend Deploy](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/govcloud.yml/badge.svg)
 [![CodeQL](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/communitiesuk/funding-service-design-frontend/actions/workflows/codeql-analysis.yml)
 
-A repository for the Funding Service Fesign frontend application service.
+A repository for the Funding Service Design frontend application service.
 
-- ### [Prerequisites](docs/prereqs.md)
 - ### [Application setup](docs/setup.md)
 - ### [Linked services](docs/linked_services.md)
 - ### [Run application](docs/run.md)
 - ### [Pipelines](docs/pipelines.md)
 - ### [Testing](docs/testing)
+- ### [Translations](docs/translations.md)

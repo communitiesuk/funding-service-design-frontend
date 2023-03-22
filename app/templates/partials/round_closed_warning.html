@@ -1,0 +1,18 @@
+{% macro round_closed_warning(fund_name, round_title, submission_deadline) %}
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title"
+         data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                Important
+            </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+            <h2 class="govuk-notification-banner__heading">
+                Window closed - {{ fund_name }} {{ round_title }}
+            </h2>
+            <p class="govuk-body">(Closed: {{ submission_deadline|datetime_format }})</p>
+            <p class="govuk-body">You can no longer submit applications in this window. Any you had in progress will be
+                emailed to you.</p>
+        </div>
+    </div>
+{% endmacro %}
