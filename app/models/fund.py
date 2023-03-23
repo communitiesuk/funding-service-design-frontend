@@ -8,6 +8,7 @@ class Fund:
     name: str
     short_name: str
     description: str
+    title: str
 
     @classmethod
     def from_dict(cls, d: dict):

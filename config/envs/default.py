@@ -27,6 +27,11 @@ class DefaultConfig:
     FSD_USER_TOKEN_COOKIE_NAME = "fsd_user_token"
     AUTHENTICATOR_HOST = environ.get("AUTHENTICATOR_HOST", "authenticator")
     ENTER_APPLICATION_URL = AUTHENTICATOR_HOST + "/service/magic-links/new"
+    MAGIC_LINK_URL = (
+        AUTHENTICATOR_HOST
+        + "/service/magic-links/new?"
+        + "fund={fund_short_name}&round={round_short_name}"
+    )
     SESSION_COOKIE_DOMAIN = environ.get("SESSION_COOKIE_DOMAIN")
     COOKIE_DOMAIN = environ.get("COOKIE_DOMAIN", None)
 
@@ -73,6 +78,13 @@ class DefaultConfig:
     )
     GET_ROUND_DATA_FOR_FUND_ENDPOINT = (
         FUND_STORE_API_HOST + "/funds/{fund_id}/rounds/{round_id}"
+    )
+    GET_FUND_DATA_BY_SHORT_NAME_ENDPOINT = (
+        FUND_STORE_API_HOST + "/funds/{fund_short_name}"
+    )
+    GET_ROUND_DATA_BY_SHORT_NAME_ENDPOINT = (
+        FUND_STORE_API_HOST
+        + "/funds/{fund_short_name}/rounds/{round_short_name}"
     )
 
     FORMS_TEST_HOST = "http://localhost:3009"

@@ -109,6 +109,18 @@ def get_fund_data(fund_id, language=None, as_dict=False):
         return fund_response
 
 
+def get_fund_data_by_short_name(fund_short_name, as_dict=False):
+    fund_request_url = Config.GET_FUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
+        fund_short_name=fund_short_name
+    )
+    params = {"language": get_lang(), "use_short_name": True}
+    fund_response = get_data(fund_request_url, params)
+    if as_dict:
+        return Fund.from_dict(fund_response)
+    else:
+        return fund_response
+
+
 def get_round_data(fund_id, round_id, language=None, as_dict=False):
     language = {"language": language or get_lang()}
     round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(
@@ -122,12 +134,11 @@ def get_round_data(fund_id, round_id, language=None, as_dict=False):
 
 
 def get_round_data_by_short_names(fund_short_name, round_short_name):
+    params = {"language": get_lang(), "use_short_name": "true"}
     request_url = Config.GET_ALL_ROUNDS_FOR_FUND_ENDPOINT.format(
         fund_id=fund_short_name
     )
-    response = get_data(
-        request_url, {"language": get_lang(), "use_short_name": "true"}
-    )
+    response = get_data(request_url, params)
     return next(
         (
             round
@@ -137,6 +148,13 @@ def get_round_data_by_short_names(fund_short_name, round_short_name):
         ),
         None,
     )
+
+    # TODO change to this once fund-store updates available
+    request_url = Config.GET_ROUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
+        fund_short_name=fund_short_name, round_short_name=round_short_name
+    )
+    response = get_data(request_url, params)
+    return response
 
 
 def get_round_data_fail_gracefully(fund_id, round_id):
