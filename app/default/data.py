@@ -157,6 +157,13 @@ def get_round_data_by_short_names(
     else:
         return Round.from_dict(response)
 
+    # TODO change to this once fund-store updates available
+    request_url = Config.GET_ROUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
+        fund_short_name=fund_short_name, round_short_name=round_short_name
+    )
+    response = get_data(request_url, params)
+    return response
+
 
 def get_round_data_fail_gracefully(fund_id, round_id):
     try:

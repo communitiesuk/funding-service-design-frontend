@@ -4,6 +4,7 @@ from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data_by_short_names
 from config import Config
 from flask import abort
+from flask import abort
 from flask import Blueprint
 from flask import current_app
 from flask import redirect
@@ -12,6 +13,8 @@ from flask import render_template
 default_bp = Blueprint("routes", __name__, template_folder="templates")
 
 
+# TODO Do not change this until after COF R2 W3 closes as this
+# provides the current landing page!
 @default_bp.route("/")
 def index():
     """
