@@ -92,6 +92,12 @@ def build_application_data_for_display(applications: list[ApplicationSummary]):
 @login_required
 def dashboard():
     account_id = g.account_id
+
+    # fund_short_name = request.args.get("fund")
+    # round_short_name = request.args.get("round")
+
+    # TODO change this to search for applications for this account AND
+    # this fund if fund is supplied, else get all applications for this account
     application_store_response = get_applications_for_account(
         account_id=account_id, as_dict=False
     )
@@ -107,6 +113,8 @@ def dashboard():
     current_app.logger.info(
         f"Setting up applicant dashboard for :'{account_id}'"
     )
+    # TODO will need to tell the dashboard template whether it's for a
+    # particular fund or it's the generic dashboard.
     return render_template(
         "dashboard.html",
         account_id=account_id,

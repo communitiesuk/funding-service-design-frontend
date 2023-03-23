@@ -44,7 +44,8 @@
     "id": "funding-service-design",
     "name": "Test Fund",
     "description": "test test",
-    "short_name": "FSD"
+    "short_name": "FSD",
+    "title": "funding to save an asset in your community"
   },
   "fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd?language=en": {
     "id": "c603d114-5364-4474-a0c4-c41cbf4d3bbd",
@@ -1334,7 +1335,14 @@
         "account_id": "test-user",
         "email_address": "test@example.com"
     },
-  "fund_store/funds/COF/rounds?language=en&use_short_name=true":
+  "fund_store/funds/cof?language=en&use_short_name=True":{
+    "description": "The Community Ownership Fund is a £150 million fund over 4 years to support community groups across England, Wales, Scotland and Northern Ireland to take ownership of assets which are at risk of being lost to the community.",
+    "id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
+    "name": "Community Ownership Fund",
+    "short_name": "COF",
+    "title": "funding to save an asset in your community"
+  },
+  "fund_store/funds/cof/rounds?language=en&use_short_name=true":
     [
       {
         "assessment_criteria_weighting": [
@@ -1375,7 +1383,8 @@
           "days": "Monday to Friday",
           "time": "9am to 5pm"
         },
-        "title": "Round 2 Window 2"
+        "title": "Round 2 Window 2",
+        "prospectus_link": "http://google.com/search?q=r2w2"
       },
       {
         "assessment_criteria_weighting": [
@@ -1416,7 +1425,8 @@
           "days": "Monday to Friday",
           "time": "9am to 5pm"
         },
-        "title": "Round 2 Window 3"
+        "title": "Round 2 Window 3",
+        "prospectus_link": "http://google.com/search?q=r2w3"
       }
     ]
   }
