@@ -83,5 +83,5 @@ def index_fund_round(fund_short_name, round_short_name):
         contact_us_email_address=round_data["contact_details"][
             "email_address"
         ],
-        prospectus_link=round_data["prospectus_link"],
+        prospectus_link=round_data["prospectus"],
     )
