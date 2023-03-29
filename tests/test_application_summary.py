@@ -1,8 +1,10 @@
 import datetime
 import json
 
+import pytest
 from app.default.account_routes import build_application_data_for_display
 from app.models.application_summary import ApplicationSummary
+from app.models.round import Round
 
 file = open("tests/api_data/endpoint_data.json")
 data = json.loads(file.read())
@@ -112,6 +114,26 @@ TEST_DISPLAY_DATA = {
 }
 
 
+@pytest.fixture
+def mock_get_fund_round(mocker):
+    mocker.patch(
+        "app.default.account_routes.get_all_funds",
+        return_value=TEST_FUNDS_DATA,
+    )
+    mocker.patch(
+        "app.default.account_routes.get_all_rounds_for_fund",
+        return_value=[Round.from_dict(round) for round in TEST_ROUNDS_DATA],
+    )
+
+
+@pytest.fixture
+def mock_login(monkeypatch):
+    monkeypatch.setattr(
+        "fsd_utils.authentication.decorators._check_access_token",
+        lambda: {"accountId": "test-user"},
+    )
+
+
 def test_serialise_application_summary():
     application_list = TEST_APPLICATION_STORE_DATA
 
@@ -127,22 +149,11 @@ def test_serialise_application_summary():
     assert applications[2].language == "Welsh"
 
 
-def test_dashboard_route(flask_test_client, mocker, monkeypatch):
-    monkeypatch.setattr(
-        "fsd_utils.authentication.decorators._check_access_token",
-        lambda: {"accountId": "test-user"},
-    )
+def test_dashboard_route(flask_test_client, mocker, mock_login):
+
     mocker.patch(
         "app.default.account_routes.get_applications_for_account",
         return_value=TEST_APPLICATION_STORE_DATA,
-    )
-    mocker.patch(
-        "app.default.account_routes.get_all_funds",
-        return_value=TEST_FUNDS_DATA,
-    )
-    mocker.patch(
-        "app.default.account_routes.get_all_rounds_for_fund",
-        return_value=TEST_ROUNDS_DATA,
     )
     response = flask_test_client.get("/account", follow_redirects=True)
     assert response.status_code == 200
@@ -158,23 +169,11 @@ def test_dashboard_route(flask_test_client, mocker, monkeypatch):
 
 
 def test_submitted_dashboard_route_shows_no_application_link(
-    flask_test_client, mocker, monkeypatch
+    flask_test_client, mocker, mock_login, mock_get_fund_round
 ):
-    monkeypatch.setattr(
-        "fsd_utils.authentication.decorators._check_access_token",
-        lambda: {"accountId": "test-user"},
-    )
     mocker.patch(
         "app.default.account_routes.get_applications_for_account",
         return_value=TEST_SUBMITTED_APPLICATION_STORE_DATA,
-    )
-    mocker.patch(
-        "app.default.account_routes.get_all_funds",
-        return_value=TEST_FUNDS_DATA,
-    )
-    mocker.patch(
-        "app.default.account_routes.get_all_rounds_for_fund",
-        return_value=TEST_ROUNDS_DATA,
     )
     response = flask_test_client.get("/account", follow_redirects=True)
     assert response.status_code == 200
@@ -184,20 +183,8 @@ def test_submitted_dashboard_route_shows_no_application_link(
 
 
 def test_dashboard_route_no_applications(
-    flask_test_client, mocker, monkeypatch
+    flask_test_client, mocker, mock_login
 ):
-    monkeypatch.setattr(
-        "fsd_utils.authentication.decorators._check_access_token",
-        lambda: {"accountId": "test-user"},
-    )
-    mocker.patch(
-        "app.default.account_routes.get_all_funds",
-        return_value=TEST_FUNDS_DATA,
-    )
-    mocker.patch(
-        "app.default.account_routes.get_all_rounds_for_fund",
-        return_value=TEST_ROUNDS_DATA,
-    )
 
     mocker.patch(
         "app.default.account_routes.get_applications_for_account",
@@ -208,16 +195,7 @@ def test_dashboard_route_no_applications(
     assert b"Start new application" in response.data
 
 
-def test_build_application_data_for_display(mocker):
-    mocker.patch(
-        "app.default.account_routes.get_all_funds",
-        return_value=TEST_FUNDS_DATA,
-    )
-    mocker.patch(
-        "app.default.account_routes.get_all_rounds_for_fund",
-        return_value=TEST_ROUNDS_DATA,
-    )
-
+def test_build_application_data_for_display(mocker, mock_get_fund_round):
     result = build_application_data_for_display(
         [
             ApplicationSummary.from_dict(app)
@@ -232,14 +210,14 @@ def test_build_application_data_for_display(mocker):
 
     assert 2 == len(fsd_fund["rounds"]), "wrong number of rounds returned"
     assert (
-        "cof-r2w2" == fsd_fund["rounds"][0]["round_details"]["id"]
+        "cof-r2w2" == fsd_fund["rounds"][0]["round_details"].id
     ), "cof_r2w2 not present in rounds"
     assert fsd_fund["rounds"][0]["is_past_submission_deadline"] is True
     assert 1 == len(fsd_fund["rounds"][0]["applications"])
     assert "NOT_SUBMITTED" == fsd_fund["rounds"][0]["applications"][0].status
 
     assert (
-        "summer" == fsd_fund["rounds"][1]["round_details"]["id"]
+        "summer" == fsd_fund["rounds"][1]["round_details"].id
     ), "summer not present in rounds"
     assert fsd_fund["rounds"][1]["is_past_submission_deadline"] is False
     assert 2 == len(fsd_fund["rounds"][1]["applications"])
@@ -247,15 +225,9 @@ def test_build_application_data_for_display(mocker):
     assert "READY_TO_SUBMIT" == fsd_fund["rounds"][1]["applications"][1].status
 
 
-def test_build_application_data_for_display_exclude_round_with_no_apps(mocker):
-    mocker.patch(
-        "app.default.account_routes.get_all_funds",
-        return_value=TEST_FUNDS_DATA,
-    )
-    mocker.patch(
-        "app.default.account_routes.get_all_rounds_for_fund",
-        return_value=TEST_ROUNDS_DATA,
-    )
+def test_build_application_data_for_display_exclude_round_with_no_apps(
+    mocker, mock_get_fund_round
+):
 
     result = build_application_data_for_display(
         [
@@ -273,7 +245,7 @@ def test_build_application_data_for_display_exclude_round_with_no_apps(mocker):
     assert 1 == len(fsd_fund["rounds"]), "wrong number of rounds returned"
 
     assert (
-        "summer" == fsd_fund["rounds"][0]["round_details"]["id"]
+        "summer" == fsd_fund["rounds"][0]["round_details"].id
     ), "summer not present in rounds"
     assert fsd_fund["rounds"][0]["is_past_submission_deadline"] is False
     assert 2 == len(fsd_fund["rounds"][0]["applications"])

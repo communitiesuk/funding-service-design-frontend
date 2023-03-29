@@ -1,5 +1,6 @@
 import json
 
+from app.default.data import RoundStatus
 from app.models.account import Account
 from app.models.application import Application
 from app.models.fund import Fund
@@ -42,14 +43,8 @@ def test_tasklist_route(flask_test_client, mocker, monkeypatch):
         return_value=Round.from_dict(TEST_ROUND_STORE),
     )
     mocker.patch(
-        "app.default.application_routes."
-        + "current_datetime_before_given_iso_string",
-        return_value=True,
-    )
-    mocker.patch(
-        "app.default.application_routes."
-        + "current_datetime_after_given_iso_string",
-        return_value=True,
+        "app.default.application_routes.determine_round_status",
+        return_value=RoundStatus(False, False),
     )
     mocker.patch(
         "app.default.application_routes.get_account",
@@ -77,14 +72,8 @@ def test_tasklist_route_after_deadline(flask_test_client, mocker, monkeypatch):
         return_value=Round.from_dict(TEST_ROUND_STORE),
     )
     mocker.patch(
-        "app.default.application_routes."
-        + "current_datetime_before_given_iso_string",
-        return_value=False,
-    )
-    mocker.patch(
-        "app.default.application_routes."
-        + "current_datetime_after_given_iso_string",
-        return_value=False,
+        "app.default.application_routes.determine_round_status",
+        return_value=RoundStatus(True, False),
     )
     response = flask_test_client.get(
         "tasklist/test-application-id", follow_redirects=False
@@ -105,6 +94,10 @@ def test_tasklist_for_submit_application_route(
         return_value=Application.from_dict(
             TEST_SUBMITTED_APPLICATION_STORE_DATA
         ),
+    )
+    mocker.patch(
+        "app.default.application_routes.determine_round_status",
+        return_value=RoundStatus(False, False),
     )
     mocker.patch(
         "app.default.application_routes.get_account",
