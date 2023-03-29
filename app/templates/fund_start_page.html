@@ -20,11 +20,8 @@
                 {{ round_closed_warning(fund_name, round_title, submission_deadline) }}
             {% endif %}
             {{available_in_language(inset=True, warn=False)}}
-            <!-- TODO bring this in from round config-->
             <p class="govuk-body">
-                {% trans %}You must have received an invitation to apply. If we did not invite you, first {% endtrans %}<a class="govuk-link"
-                    href="https://www.gov.uk/guidance/community-ownership-fund-round-2-how-to-express-your-interest-in-applying">
-                    {% trans %}express your interest in the fund{% endtrans %}</a>.
+                {{instruction_text|safe}}
             </p>
             <p class="govuk-body">
                 <a class="govuk-link" href="{{prospectus_link}}">
