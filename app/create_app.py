@@ -1,7 +1,5 @@
 from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
-from app.default.data import get_fund_data
-from app.default.data import get_fund_data_by_short_name
 from app.filters import date_format_short_month
 from app.filters import datetime_format
 from app.filters import datetime_format_short_month
@@ -10,9 +8,7 @@ from app.filters import snake_case_to_human
 from app.filters import status_translation
 from config import Config
 from flask import current_app
-from flask import current_app
 from flask import Flask
-from flask import request
 from flask import request
 from flask_babel import Babel
 from flask_babel import gettext
