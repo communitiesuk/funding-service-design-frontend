@@ -1,6 +1,7 @@
 import json
 import os
 from collections import namedtuple
+from collections import namedtuple
 from urllib.parse import urlencode
 
 import requests
@@ -152,7 +153,10 @@ def get_round_data_by_short_names(
         fund_short_name=fund_short_name, round_short_name=round_short_name
     )
     response = get_data(request_url, params)
-    return response
+    if as_dict:
+        return response
+    else:
+        return Round.from_dict(response)
 
 
 def get_round_data_fail_gracefully(fund_id, round_id):

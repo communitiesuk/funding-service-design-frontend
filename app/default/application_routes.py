@@ -4,6 +4,7 @@ from http.client import METHOD_NOT_ALLOWED
 import requests
 from app.constants import ApplicationStatus
 from app.default.data import determine_round_status
+from app.default.data import determine_round_status
 from app.default.data import get_account
 from app.default.data import get_application_data
 from app.default.data import get_fund_data
