@@ -59,7 +59,7 @@ def index_fund_round(fund_short_name, round_short_name):
     current_app.logger.info(
         f"In fund-round start page {fund_short_name} {round_short_name}"
     )
-    fund_data = get_fund_data_by_short_name(fund_short_name)
+    fund_data = get_fund_data_by_short_name(fund_short_name, as_dict=False)
     if not fund_data:
         abort(404)
     round_data = get_round_data_by_short_names(
@@ -81,6 +81,6 @@ def index_fund_round(fund_short_name, round_short_name):
         round_title=round_data.title,
         submission_deadline=round_data.deadline,
         is_past_submission_deadline=round_status.past_submission_deadline,
-        contact_us_email_address=round_data.contact_details.email_address,
+        contact_us_email_address=round_data.contact_details["email_address"],
         prospectus_link=round_data.prospectus,
     )
