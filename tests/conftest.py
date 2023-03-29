@@ -4,6 +4,7 @@ import platform
 
 import pytest
 from app.create_app import create_app
+from flask import template_rendered
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -102,3 +103,17 @@ def mock_get_application(mocker):
         "app.default.routes.get_data",
         new=mock_get_data,
     )
+
+
+@pytest.fixture(scope="function")
+def templates_rendered(app):
+    recorded = []
+
+    def record(sender, template, context, **extra):
+        recorded.append((template, context))
+
+    template_rendered.connect(record, app)
+    try:
+        yield recorded
+    finally:
+        template_rendered.disconnect(record, app)
