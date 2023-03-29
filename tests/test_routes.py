@@ -2,7 +2,11 @@
 Tests the routes and their contents using the dict within
 "route_testing_conf.py".
 """
+from unittest import mock
+
+from app.default.data import get_round_data_fail_gracefully
 from bs4 import BeautifulSoup
+from requests import HTTPError
 from tests.route_testing_conf import routes_and_test_content
 
 
@@ -86,3 +90,13 @@ def test_page_footer_includes_correct_title_and_link_text(flask_test_client):
             ]
         ]
     )
+
+
+def test_get_round_data_fail_gracefully(app, mocker):
+    mocker.patch("app.default.data.get_lang", return_value="en")
+    with mock.patch(
+        "app.default.data.get_data"
+    ) as get_data_mock, app.app_context():
+        get_data_mock.side_effect = HTTPError()
+        round_data = get_round_data_fail_gracefully("cof", "r2w2")
+        assert round_data.id == ""
