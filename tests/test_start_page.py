@@ -1,7 +1,6 @@
 import pytest
 from app.default.data import RoundStatus
 from app.models.fund import Fund
-from app.models.round import ContactDetails
 from app.models.round import Round
 from app.models.round import SupportAvailability
 
@@ -30,7 +29,7 @@ def mock_get_round(mocker):
             "test round title",
             "",
             "",
-            ContactDetails("", "", ""),
+            {"email_address": "blah@google.com"},
             SupportAvailability("", "", ""),
         ),
     )

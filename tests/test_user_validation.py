@@ -152,14 +152,8 @@ class TestUserValidation:
             lambda: {"accountId": self.TEST_USER},
         )
         mocker.patch(
-            "app.default.application_routes."
-            + "current_datetime_before_given_iso_string",
-            return_value=True,
-        )
-        mocker.patch(
-            "app.default.application_routes."
-            + "current_datetime_after_given_iso_string",
-            return_value=True,
+            "app.default.application_routes.determine_round_status",
+            return_value=RoundStatus(False, False),
         )
         mocker.patch(
             "app.default.application_routes."

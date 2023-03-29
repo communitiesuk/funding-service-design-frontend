@@ -127,9 +127,9 @@ def get_fund_data_by_short_name(fund_short_name, as_dict=False):
     params = {"language": get_lang(), "use_short_name": True}
     fund_response = get_data(fund_request_url, params)
     if as_dict:
-        return Fund.from_dict(fund_response)
-    else:
         return fund_response
+    else:
+        return Fund.from_dict(fund_response)
 
 
 def get_round_data(fund_id, round_id, language=None, as_dict=False):
