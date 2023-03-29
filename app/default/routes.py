@@ -24,7 +24,7 @@ def index():
         round_data = get_round_data(
             fund_id=Config.DEFAULT_FUND_ID,
             round_id=Config.DEFAULT_ROUND_ID,
-            as_dict=True,
+            as_dict=False,
         )
 
         fund_data = get_fund_data(fund_id=Config.DEFAULT_FUND_ID, as_dict=True)
@@ -83,4 +83,5 @@ def index_fund_round(fund_short_name, round_short_name):
         is_past_submission_deadline=round_status.past_submission_deadline,
         contact_us_email_address=round_data.contact_details["email_address"],
         prospectus_link=round_data.prospectus,
+        instruction_text=round_data.instructions,
     )

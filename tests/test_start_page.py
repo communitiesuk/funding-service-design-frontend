@@ -29,6 +29,7 @@ def mock_get_round(mocker):
             "test round title",
             "",
             "",
+            "",
             {"email_address": "blah@google.com"},
             SupportAvailability("", "", ""),
         ),
