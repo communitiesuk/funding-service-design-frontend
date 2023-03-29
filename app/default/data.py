@@ -1,7 +1,6 @@
 import json
 import os
 from collections import namedtuple
-from collections import namedtuple
 from urllib.parse import urlencode
 
 import requests
@@ -149,6 +148,7 @@ def get_round_data_by_short_names(
     fund_short_name, round_short_name, as_dict=False
 ):
     params = {"language": get_lang(), "use_short_name": "true"}
+   
     request_url = Config.GET_ROUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
         fund_short_name=fund_short_name, round_short_name=round_short_name
     )
@@ -157,13 +157,6 @@ def get_round_data_by_short_names(
         return response
     else:
         return Round.from_dict(response)
-
-    # TODO change to this once fund-store updates available
-    request_url = Config.GET_ROUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
-        fund_short_name=fund_short_name, round_short_name=round_short_name
-    )
-    response = get_data(request_url, params)
-    return response
 
 
 def get_round_data_fail_gracefully(fund_id, round_id):

@@ -1,7 +1,6 @@
 import json
 
 from app.default.data import RoundStatus
-from app.default.data import RoundStatus
 from app.models.account import Account
 from app.models.application import Application
 from app.models.fund import Fund
