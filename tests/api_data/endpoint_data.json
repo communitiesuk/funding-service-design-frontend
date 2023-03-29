@@ -1404,7 +1404,8 @@
         "time": "9am to 5pm"
       },
       "title": "Round 2 Window 3",
-      "prospectus": "http://google.com/search?q=r2w3"
+      "prospectus": "http://google.com/search?q=r2w3",
+      "instructions": "Round specific instruction text"
     },
   "fund_store/funds/cof/rounds?language=en&use_short_name=true":
     [
