@@ -3,8 +3,11 @@ from app.default.data import determine_round_status
 from app.default.data import get_all_funds
 from app.default.data import get_all_rounds_for_fund
 from app.default.data import get_applications_for_account
+from app.default.data import get_round_data_by_short_names
+from app.default.data import search_applications
 from app.models.application_summary import ApplicationSummary
 from config import Config
+from flask import abort
 from flask import Blueprint
 from flask import current_app
 from flask import g
@@ -19,19 +22,31 @@ from fsd_utils.locale_selector.get_lang import get_lang
 account_bp = Blueprint("account_routes", __name__, template_folder="templates")
 
 
-def build_application_data_for_display(applications: list[ApplicationSummary]):
+def build_application_data_for_display(
+    applications: list[ApplicationSummary], visible_fund_short_name
+):
 
     application_data_for_display = {
         "funds": [],
         "total_applications_to_display": 0,
     }
 
-    all_funds = get_all_funds()
-    if not all_funds:
+    funds_to_show = get_all_funds()
+    if not funds_to_show:
         return application_data_for_display
     count_of_applications_for_visible_rounds = 0
 
-    for fund in all_funds:
+    if visible_fund_short_name:
+        try:
+            funds_to_show = [
+                fund
+                for fund in funds_to_show
+                if fund["short_name"].casefold()
+                == visible_fund_short_name.casefold()
+            ]
+        except StopIteration:
+            return abort(404)
+    for fund in funds_to_show:
         fund_id = fund["id"]
         all_rounds_in_fund = get_all_rounds_for_fund(fund_id, as_dict=False)
         fund_data_for_display = {
@@ -84,11 +99,30 @@ def build_application_data_for_display(applications: list[ApplicationSummary]):
 def dashboard():
     account_id = g.account_id
 
-    # TODO change this to search for applications for this account AND
-    # this fund if fund is supplied, else get all applications for this account
-    application_store_response = get_applications_for_account(
-        account_id=account_id, as_dict=False
-    )
+    fund_short_name = request.args.get("fund")
+    round_short_name = request.args.get("round")
+
+    if fund_short_name and round_short_name:
+        # search for applications for this account AND
+        # this fund if fund is supplied, else get all
+        # applications for this account
+        round_details = get_round_data_by_short_names(
+            fund_short_name,
+            round_short_name,
+        )
+        application_store_response = search_applications(
+            search_params={
+                "fund_id": round_details.fund_id,
+                "round_id": round_details.id,
+                "account_id": account_id,
+            },
+            as_dict=True,
+        )
+    else:
+        # Generic all applications dashboard
+        application_store_response = get_applications_for_account(
+            account_id=account_id, as_dict=True
+        )
 
     applications: list[ApplicationSummary] = [
         ApplicationSummary.from_dict(application)
@@ -97,7 +131,9 @@ def dashboard():
 
     show_language_column = len({a.language for a in applications}) > 1
 
-    display_data = build_application_data_for_display(applications)
+    display_data = build_application_data_for_display(
+        applications, fund_short_name
+    )
     current_app.logger.info(
         f"Setting up applicant dashboard for :'{account_id}'"
     )
