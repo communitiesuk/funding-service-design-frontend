@@ -57,6 +57,10 @@ class DefaultConfig:
     GET_APPLICATION_ENDPOINT = (
         APPLICATION_STORE_API_HOST + "/applications/{application_id}"
     )
+    SEARCH_APPLICATIONS_ENDPOINT = (
+        APPLICATION_STORE_API_HOST
+        + "/applications?order_by=last_edited&order_rev=1&{search_params}"
+    )
     GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT = (
         APPLICATION_STORE_API_HOST
         + "/applications?account_id={account_id}"
