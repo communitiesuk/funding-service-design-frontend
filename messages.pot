@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-16 11:24+0000\n"
+"POT-Creation-Date: 2023-03-30 08:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: app/create_app.py:91
-msgid "Apply for funding to save an asset in your community"
+#: app/create_app.py:129
+msgid "Apply for"
 msgstr ""
 
 #: app/filters.py:15 app/filters.py:26
@@ -1915,6 +1915,41 @@ msgstr ""
 msgid "Contact us"
 msgstr ""
 
+#: app/templates/fund_start_page.html:3
+msgid "Start or continue an application for"
+msgstr ""
+
+#: app/templates/fund_start_page.html:28 app/templates/index.html:30
+msgid "Read the fund's prospectus"
+msgstr ""
+
+#: app/templates/fund_start_page.html:28 app/templates/index.html:30
+msgid "before you apply."
+msgstr ""
+
+#: app/templates/fund_start_page.html:32 app/templates/index.html:34
+msgid "Submission deadline: "
+msgstr ""
+
+#: app/templates/fund_start_page.html:36 app/templates/index.html:38
+msgid "Enter your email address"
+msgstr ""
+
+#: app/templates/fund_start_page.html:38 app/templates/index.html:40
+msgid "Get help "
+msgstr ""
+
+#: app/templates/fund_start_page.html:40 app/templates/index.html:42
+msgid "If you need help, email us at"
+msgstr ""
+
+#: app/templates/fund_start_page.html:44 app/templates/index.html:46
+#: app/templates/tasklist.html:75
+msgid ""
+"Do not send any applications or attachments by email. We'll only accept "
+"applications through this service."
+msgstr ""
+
 #: app/templates/header.html:32
 msgid "Sign out"
 msgstr ""
@@ -1949,36 +1984,6 @@ msgstr ""
 
 #: app/templates/index.html:26
 msgid "express your interest in the fund"
-msgstr ""
-
-#: app/templates/index.html:30
-msgid "Read the fund's prospectus"
-msgstr ""
-
-#: app/templates/index.html:30
-msgid "before you apply."
-msgstr ""
-
-#: app/templates/index.html:34
-msgid "Submission deadline: "
-msgstr ""
-
-#: app/templates/index.html:38
-msgid "Enter your email address"
-msgstr ""
-
-#: app/templates/index.html:40
-msgid "Get help "
-msgstr ""
-
-#: app/templates/index.html:42
-msgid "If you need help, email us at"
-msgstr ""
-
-#: app/templates/index.html:46 app/templates/tasklist.html:75
-msgid ""
-"Do not send any applications or attachments by email. We'll only accept "
-"applications through this service."
 msgstr ""
 
 #: app/templates/tasklist.html:7

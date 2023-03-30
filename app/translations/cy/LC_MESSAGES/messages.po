@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-16 16:02+0000\n"
+"POT-Creation-Date: 2023-03-30 08:25+0100\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -19,9 +19,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: app/create_app.py:91
-msgid "Apply for funding to save an asset in your community"
-msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
+#: app/create_app.py:129
+msgid "Apply for"
+msgstr "Gwneud cais am"
 
 #: app/filters.py:15 app/filters.py:26
 msgid "at"
@@ -1131,7 +1131,8 @@ msgstr ""
 msgid ""
 "This fund can offer up to 50&percnt; of your capital costs to renovate "
 "and repair the asset."
-msgstr "Gall y gronfa hon gynnig hyd at 50&percnt; o'ch costau cyfalaf i "
+msgstr ""
+"Gall y gronfa hon gynnig hyd at 50&percnt; o'ch costau cyfalaf i "
 "adnewyddu ac atgyweirio'r ased."
 
 #: app/templates/cof_r2_all_questions.html:634
@@ -1151,10 +1152,10 @@ msgid ""
 " to £50,000 of your revenue costs (no more than 20&percnt; of your "
 "capital funding)."
 msgstr ""
-"Gallwch wneud cais am hyd at 50&percnt; o'ch costau cyfalaf, hyd at uchafswm o"
-"£250,000 (hyd at £1 miliwn ar gyfer asedau chwaraeon). Cofiwch, gallwch "
-"wneud cais am hyd at £50,000 o'ch costau refeniw (dim mwy nag 20percnt; "
-"o'ch cyllid cyfalaf)."
+"Gallwch wneud cais am hyd at 50&percnt; o'ch costau cyfalaf, hyd at "
+"uchafswm o£250,000 (hyd at £1 miliwn ar gyfer asedau chwaraeon). Cofiwch,"
+" gallwch wneud cais am hyd at £50,000 o'ch costau refeniw (dim mwy nag "
+"20percnt; o'ch cyllid cyfalaf)."
 
 #: app/templates/cof_r2_all_questions.html:643
 msgid "Capital costs"
@@ -1215,8 +1216,9 @@ msgstr "penodi ymgynghorwyr allanol"
 msgid ""
 "It should be no more than £50,000, and no more than 20&percnt; of your "
 "capital funding."
-msgstr "Ni ddylai fod yn fwy na £50,000, a dim mwy nag 20percnt; o'ch "
-"cyllid cyfalaf."
+msgstr ""
+"Ni ddylai fod yn fwy na £50,000, a dim mwy nag 20percnt; o'ch cyllid "
+"cyfalaf."
 
 #: app/templates/cof_r2_all_questions.html:672
 #: app/templates/cof_r2_all_questions.html:759
@@ -2141,6 +2143,43 @@ msgstr "Datganiad Hygyrchedd"
 msgid "Contact us"
 msgstr "Cysylltwch â ni"
 
+#: app/templates/fund_start_page.html:3
+msgid "Start or continue an application for"
+msgstr "Gwneud cais am"
+
+#: app/templates/fund_start_page.html:28 app/templates/index.html:30
+msgid "Read the fund's prospectus"
+msgstr "Darllenwch brosbectws y gronfa"
+
+#: app/templates/fund_start_page.html:28 app/templates/index.html:30
+msgid "before you apply."
+msgstr "cyn i chi ymgeisio."
+
+#: app/templates/fund_start_page.html:32 app/templates/index.html:34
+msgid "Submission deadline: "
+msgstr "Dyddiad cau cyflwyno: "
+
+#: app/templates/fund_start_page.html:36 app/templates/index.html:38
+msgid "Enter your email address"
+msgstr "Nodwch eich cyfeirad e-bost"
+
+#: app/templates/fund_start_page.html:38 app/templates/index.html:40
+msgid "Get help "
+msgstr "Cael help"
+
+#: app/templates/fund_start_page.html:40 app/templates/index.html:42
+msgid "If you need help, email us at"
+msgstr "Os oes angen help arnoch chi, anfonwch e-bost atom y"
+
+#: app/templates/fund_start_page.html:44 app/templates/index.html:46
+#: app/templates/tasklist.html:75
+msgid ""
+"Do not send any applications or attachments by email. We'll only accept "
+"applications through this service."
+msgstr ""
+"Peidwch ag anfon unrhyw geisadau neu atodiadau dros e-bost. Byddwn yn "
+"derbyn ceisiadau drwy'r gwasanaeth hon yn unig."
+
 #: app/templates/header.html:32
 msgid "Sign out"
 msgstr "Allgofnodi"
@@ -2178,38 +2217,6 @@ msgstr ""
 #: app/templates/index.html:26
 msgid "express your interest in the fund"
 msgstr "mynegwch eich diddordeb yn y gronfa yn gyntaf"
-
-#: app/templates/index.html:30
-msgid "Read the fund's prospectus"
-msgstr "Darllenwch brosbectws y gronfa"
-
-#: app/templates/index.html:30
-msgid "before you apply."
-msgstr "cyn i chi ymgeisio."
-
-#: app/templates/index.html:34
-msgid "Submission deadline: "
-msgstr "Dyddiad cau cyflwyno: "
-
-#: app/templates/index.html:38
-msgid "Enter your email address"
-msgstr "Nodwch eich cyfeirad e-bost"
-
-#: app/templates/index.html:40
-msgid "Get help "
-msgstr "Cael help"
-
-#: app/templates/index.html:42
-msgid "If you need help, email us at"
-msgstr "Os oes angen help arnoch chi, anfonwch e-bost atom y"
-
-#: app/templates/index.html:46 app/templates/tasklist.html:75
-msgid ""
-"Do not send any applications or attachments by email. We'll only accept "
-"applications through this service."
-msgstr ""
-"Peidwch ag anfon unrhyw geisadau neu atodiadau dros e-bost. Byddwn yn "
-"derbyn ceisiadau drwy'r gwasanaeth hon yn unig."
 
 #: app/templates/tasklist.html:7
 msgid "Back to your applications"
@@ -2464,3 +2471,6 @@ msgstr "o'r meini prawf asesu"
 
 #~ msgid "Stopped"
 #~ msgstr ""
+
+#~ msgid "Apply for funding to save an asset in your community"
+#~ msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
