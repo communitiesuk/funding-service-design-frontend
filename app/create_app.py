@@ -104,7 +104,7 @@ def create_app() -> Flask:
 
     @flask_app.context_processor
     def inject_service_name():
-        service_title = "Access Funding"
+        service_title = get_fund_data(Config.DEFAULT_FUND_ID)["title"]
         try:
             if request.view_args.get("fund_short_name"):
                 service_title = get_fund_data_by_short_name(
@@ -124,12 +124,8 @@ def create_app() -> Flask:
                 ).title
         except Exception as e:  # noqa
             current_app.log_exception(e)
-            service_title = "Access Funding"
-        return dict(
-            # TODO add translation for 'apply for'
-            service_title=gettext("Apply for ")
-            + service_title
-        )
+            service_title = get_fund_data(Config.DEFAULT_FUND_ID)["title"]
+        return dict(service_title=gettext("Apply for") + " " + service_title)
 
     health = Healthcheck(flask_app)
     health.add_check(FlaskRunningChecker())
