@@ -44,7 +44,7 @@ def test_tasklist_route(flask_test_client, mocker, monkeypatch):
     )
     mocker.patch(
         "app.default.application_routes.determine_round_status",
-        return_value=RoundStatus(False, False),
+        return_value=RoundStatus(False, False, True),
     )
     mocker.patch(
         "app.default.application_routes.get_account",
@@ -73,7 +73,7 @@ def test_tasklist_route_after_deadline(flask_test_client, mocker, monkeypatch):
     )
     mocker.patch(
         "app.default.application_routes.determine_round_status",
-        return_value=RoundStatus(True, False),
+        return_value=RoundStatus(True, False, False),
     )
     response = flask_test_client.get(
         "tasklist/test-application-id", follow_redirects=False
@@ -97,7 +97,7 @@ def test_tasklist_for_submit_application_route(
     )
     mocker.patch(
         "app.default.application_routes.determine_round_status",
-        return_value=RoundStatus(False, False),
+        return_value=RoundStatus(False, False, True),
     )
     mocker.patch(
         "app.default.application_routes.get_account",

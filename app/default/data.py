@@ -20,7 +20,7 @@ from fsd_utils.simple_utils.date_utils import (
 )
 
 RoundStatus = namedtuple(
-    "RoundStatus", "past_submission_deadline not_yet_open"
+    "RoundStatus", "past_submission_deadline not_yet_open is_open"
 )
 
 
@@ -209,11 +209,13 @@ def get_all_funds():
     return fund_response
 
 
-def get_all_rounds_for_fund(fund_id, as_dict=False):
-    language = {"language": get_lang()}
+def get_all_rounds_for_fund(fund_id, as_dict=False, use_short_name=False):
+    params = {"language": get_lang()}
+    if use_short_name:
+        params["use_short_name"] = "true"
     rounds_response = get_data(
         Config.GET_ALL_ROUNDS_FOR_FUND_ENDPOINT.format(fund_id=fund_id),
-        language,
+        params,
     )
     if as_dict:
         return rounds_response
@@ -227,5 +229,34 @@ def determine_round_status(round: Round):
             round.deadline
         ),
         not_yet_open=current_datetime_before_given_iso_string(round.opens),
+        is_open=current_datetime_after_given_iso_string(round.opens)
+        and current_datetime_before_given_iso_string(round.deadline),
     )
     return round_status
+
+
+def get_default_round_for_fund(fund_short_name: str) -> Round:
+    try:
+        rounds = get_all_rounds_for_fund(
+            fund_short_name, as_dict=False, use_short_name=True
+        )
+        if len(rounds) == 0:
+            return None
+        rounds_sorted_by_opens = sorted(
+            rounds,
+            key=lambda r: r.opens,
+            reverse=True,
+        )
+        status = determine_round_status(rounds_sorted_by_opens[0])
+        if status.is_open:
+            return rounds_sorted_by_opens[0]
+
+        rounds_sorted_by_closed = sorted(
+            rounds,
+            key=lambda r: r.deadline,
+            reverse=True,
+        )
+        return rounds_sorted_by_closed[0]
+    except Exception as e:
+        current_app.log_exception(e)
+        return None

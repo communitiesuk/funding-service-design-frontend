@@ -102,9 +102,7 @@ def verify_round_open(f):
             as_dict=False,
         )
         round_status = determine_round_status(round_data)
-        if (not round_status.not_yet_open) and (
-            not round_status.past_submission_deadline
-        ):
+        if round_status.is_open:
             return f(*args, **kwargs)
         else:
             current_app.logger.info(

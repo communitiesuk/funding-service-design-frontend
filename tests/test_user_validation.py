@@ -153,7 +153,7 @@ class TestUserValidation:
         )
         mocker.patch(
             "app.default.application_routes.determine_round_status",
-            return_value=RoundStatus(False, False),
+            return_value=RoundStatus(False, False, True),
         )
         mocker.patch(
             "app.default.application_routes."
@@ -193,7 +193,7 @@ class TestUserValidation:
         )
         mocker.patch(
             "app.default.application_routes.determine_round_status",
-            return_value=RoundStatus(True, True),
+            return_value=RoundStatus(True, True, False),
         )
 
         response = flask_test_client.post(

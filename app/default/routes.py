@@ -1,4 +1,5 @@
 from app.default.data import determine_round_status
+from app.default.data import get_default_round_for_fund
 from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data
@@ -7,6 +8,7 @@ from config import Config
 from flask import abort
 from flask import Blueprint
 from flask import current_app
+from flask import redirect
 from flask import render_template
 from fsd_utils.simple_utils.date_utils import (
     current_datetime_after_given_iso_string,
@@ -85,3 +87,18 @@ def index_fund_round(fund_short_name, round_short_name):
         prospectus_link=round_data.prospectus,
         instruction_text=round_data.instructions,
     )
+
+
+@default_bp.route("/<fund_short_name>")
+def index_fund_only(fund_short_name):
+    current_app.logger.info(
+        f"In fund-only start page route for {fund_short_name}"
+    )
+    default_round = get_default_round_for_fund(fund_short_name=fund_short_name)
+    if default_round:
+        return redirect(f"/{fund_short_name}/{default_round.short_name}")
+    else:
+        current_app.logger.warn(
+            f"Unable to retrieve default round for fund {fund_short_name}"
+        )
+        abort(404)
