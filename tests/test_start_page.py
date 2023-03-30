@@ -23,7 +23,7 @@ def mock_get_round(mocker):
             "",
             [],
             "",
-            "",
+            "2023-01-01 12:00:00",
             "",
             "",
             "test round title",
@@ -77,3 +77,21 @@ def test_start_page_open(
     assert rendered_template[0].name == "fund_start_page.html"
     assert rendered_template[1]["fund_title"] == "test some funding stuff"
     assert rendered_template[1]["round_title"] == "test round title"
+    assert rendered_template[1]["is_past_submission_deadline"] is False
+
+
+def test_start_page_closed(
+    client, mocker, mock_get_fund, mock_get_round, templates_rendered
+):
+    mocker.patch(
+        "app.default.routes.determine_round_status",
+        return_value=RoundStatus(True, False),
+    )
+    result = client.get("/cof/r2w3")
+    assert result.status_code == 200
+    assert 1 == len(templates_rendered)
+    rendered_template = templates_rendered[0]
+    assert rendered_template[0].name == "fund_start_page.html"
+    assert rendered_template[1]["fund_title"] == "test some funding stuff"
+    assert rendered_template[1]["round_title"] == "test round title"
+    assert rendered_template[1]["is_past_submission_deadline"] is True
