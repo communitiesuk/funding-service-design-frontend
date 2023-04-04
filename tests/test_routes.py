@@ -100,7 +100,7 @@ def test_inject_service_name(
     )
     request_mock.args.get = lambda key: args_value if key == key_name else None
     with app.app_context():
-        render_template("index.html")
+        render_template("fund_start_page.html")
     assert len(templates_rendered) == 1
     assert (
         templates_rendered[0][1]["service_title"]
