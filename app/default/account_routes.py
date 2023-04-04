@@ -84,9 +84,6 @@ def build_application_data_for_display(applications: list[ApplicationSummary]):
 def dashboard():
     account_id = g.account_id
 
-    # fund_short_name = request.args.get("fund")
-    # round_short_name = request.args.get("round")
-
     # TODO change this to search for applications for this account AND
     # this fund if fund is supplied, else get all applications for this account
     application_store_response = get_applications_for_account(
