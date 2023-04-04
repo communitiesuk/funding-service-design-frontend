@@ -8,6 +8,5 @@ from fsd_utils import configclass
 
 @configclass
 class DevConfig(DefaultConfig):
-
     FSD_LOGGING_LEVEL = logging.INFO
     SESSION_COOKIE_DOMAIN = getenv("SESSION_COOKIE_DOMAIN")

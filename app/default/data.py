@@ -46,7 +46,6 @@ def get_data(endpoint: str, params: dict = None):
 
 
 def get_remote_data(endpoint):
-
     response = requests.get(endpoint)
     if response.status_code == 200:
         data = response.json()
@@ -60,7 +59,6 @@ def get_remote_data(endpoint):
 
 
 def get_local_data(endpoint: str):
-
     api_data_json = os.path.join(
         Config.FLASK_ROOT, "tests", "api_data", "endpoint_data.json"
     )

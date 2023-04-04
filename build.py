@@ -5,9 +5,7 @@ import zipfile
 
 
 def build_assets():
-
     if os.path.exists("app/static"):
-
         print(
             "Assets already built."
             "If you require a rebuild manually run build.build_assets"
@@ -62,5 +60,4 @@ def build_assets():
 
 
 if __name__ == "__main__":
-
     build_assets()

@@ -65,8 +65,10 @@ def verify_application_owner_local(f):
         else:
             abort(
                 401,
-                f"User {current_user} attempted to access application"
-                f" {application_id}, owned by {application_owner}",
+                (
+                    f"User {current_user} attempted to access application"
+                    f" {application_id}, owned by {application_owner}"
+                ),
             )
 
     return decorator

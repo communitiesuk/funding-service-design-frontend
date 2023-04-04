@@ -32,14 +32,12 @@ def minimium_money_question_page(
     """
 
     class MinimiumMoneyForm(FlaskForm):
-
         money_field = IntegerField(
             label="project_money_amount",
             validators=[DataRequired(), NumberRange(max=max_amount)],
         )
 
     def min_money_page():
-
         form = MinimiumMoneyForm()
         # If the user has entered data and they are not valid...
         if request.method == "POST":

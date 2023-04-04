@@ -45,8 +45,10 @@ class TestUserValidation:
             return_value="rehydrate_payload",
         )
         mocker.patch(
-            "app.default.application_routes."
-            "get_token_to_return_to_application",
+            (
+                "app.default.application_routes."
+                "get_token_to_return_to_application"
+            ),
             return_value=self.REHYDRATION_TOKEN,
         )
         expected_redirect_url = DefaultConfig.FORM_REHYDRATION_URL.format(
@@ -139,7 +141,6 @@ class TestUserValidation:
         assert 401 == response.status_code, "Incorrect status code"
 
     def test_submit_correct_user(self, flask_test_client, mocker, monkeypatch):
-
         mocker.patch(
             "app.default.application_routes.get_application_data",
             return_value=Application.from_dict(
@@ -185,7 +186,6 @@ class TestUserValidation:
     def test_submit_correct_user_bad_dates(
         self, flask_test_client, mocker, monkeypatch
     ):
-
         mocker.patch(
             "app.default.application_routes.get_application_data",
             return_value=Application.from_dict(

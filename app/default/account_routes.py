@@ -25,7 +25,6 @@ account_bp = Blueprint("account_routes", __name__, template_folder="templates")
 
 
 def build_application_data_for_display(applications: list[ApplicationSummary]):
-
     application_data_for_display = {
         "funds": [],
         "total_applications_to_display": 0,
