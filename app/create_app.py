@@ -104,27 +104,26 @@ def create_app() -> Flask:
 
     @flask_app.context_processor
     def inject_service_name():
-        service_title = get_fund_data(Config.DEFAULT_FUND_ID)["title"]
+        fund = None
         try:
             if request.view_args.get("fund_short_name"):
-                service_title = get_fund_data_by_short_name(
+                fund = get_fund_data_by_short_name(
                     request.view_args.get("fund_short_name")
-                ).title
+                )
             elif request.view_args.get("fund_id"):
-                service_title = get_fund_data(
-                    request.view_args.get("fund_id"), True
-                ).title
+                fund = get_fund_data(request.view_args.get("fund_id"), True)
             elif request.args.get("fund_id"):
-                service_title = get_fund_data(
-                    request.args.get("fund_id"), True
-                ).title
+                fund = get_fund_data(request.args.get("fund_id"), True)
             elif request.args.get("fund"):
-                service_title = get_fund_data_by_short_name(
-                    request.args.get("fund")
-                ).title
+                fund = get_fund_data_by_short_name(request.args.get("fund"))
         except Exception as e:  # noqa
             current_app.log_exception(e)
-            service_title = get_fund_data(Config.DEFAULT_FUND_ID)["title"]
+        if fund:
+            service_title = fund.title
+        else:
+            service_title = get_fund_data(
+                Config.DEFAULT_FUND_ID, as_dict=True
+            ).title
         return dict(service_title=gettext("Apply for") + " " + service_title)
 
     health = Healthcheck(flask_app)
