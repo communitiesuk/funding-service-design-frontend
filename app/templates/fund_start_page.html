@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% set pageHeading %}
-{% trans %}Start or continue an application for funding to save an asset in your community{% endtrans %}
+{% trans %}Start or continue an application for{% endtrans %} {{fund_title}}
 {% endset %}
 {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText
     -%} {%- from "govuk_frontend_jinja/components/button/macro.html" import
@@ -21,12 +21,10 @@
             {% endif %}
             {{available_in_language(inset=True, warn=False)}}
             <p class="govuk-body">
-                {% trans %}You must have received an invitation to apply. If we did not invite you, first {% endtrans %}<a class="govuk-link"
-                    href="https://www.gov.uk/guidance/community-ownership-fund-round-2-how-to-express-your-interest-in-applying">
-                    {% trans %}express your interest in the fund{% endtrans %}</a>.
+                {{instruction_text|safe}}
             </p>
             <p class="govuk-body">
-                <a class="govuk-link" href="https://www.gov.uk/government/publications/community-ownership-fund-prospectus">
+                <a class="govuk-link" href="{{prospectus_link}}">
                     {% trans %}Read the fund's prospectus{% endtrans %}</a> {% trans %}before you apply.{% endtrans %}
             </p>
             {% if submission_deadline|length %}

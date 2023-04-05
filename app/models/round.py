@@ -50,6 +50,8 @@ class Round:
     opens: str
     title: str
     short_name: str
+    prospectus: str
+    instructions: str
     contact_details: ContactDetails
     support_availability: SupportAvailability
 

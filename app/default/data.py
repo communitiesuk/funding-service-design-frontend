@@ -1,5 +1,6 @@
 import json
 import os
+from collections import namedtuple
 from urllib.parse import urlencode
 
 import requests
@@ -11,6 +12,16 @@ from config import Config
 from flask import abort
 from flask import current_app
 from fsd_utils.locale_selector.get_lang import get_lang
+from fsd_utils.simple_utils.date_utils import (
+    current_datetime_after_given_iso_string,
+)
+from fsd_utils.simple_utils.date_utils import (
+    current_datetime_before_given_iso_string,
+)
+
+RoundStatus = namedtuple(
+    "RoundStatus", "past_submission_deadline not_yet_open is_open"
+)
 
 
 def get_data(endpoint: str, params: dict = None):
@@ -109,6 +120,18 @@ def get_fund_data(fund_id, language=None, as_dict=False):
         return fund_response
 
 
+def get_fund_data_by_short_name(fund_short_name, as_dict=False):
+    fund_request_url = Config.GET_FUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
+        fund_short_name=fund_short_name
+    )
+    params = {"language": get_lang(), "use_short_name": True}
+    fund_response = get_data(fund_request_url, params)
+    if as_dict:
+        return fund_response
+    else:
+        return Fund.from_dict(fund_response)
+
+
 def get_round_data(fund_id, round_id, language=None, as_dict=False):
     language = {"language": language or get_lang()}
     round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(
@@ -116,27 +139,23 @@ def get_round_data(fund_id, round_id, language=None, as_dict=False):
     )
     round_response = get_data(round_request_url, language)
     if as_dict:
-        return Round.from_dict(round_response)
-    else:
         return round_response
+    else:
+        return Round.from_dict(round_response)
 
 
-def get_round_data_by_short_names(fund_short_name, round_short_name):
-    request_url = Config.GET_ALL_ROUNDS_FOR_FUND_ENDPOINT.format(
-        fund_id=fund_short_name
+def get_round_data_by_short_names(
+    fund_short_name, round_short_name, as_dict=False
+):
+    params = {"language": get_lang(), "use_short_name": "true"}
+    request_url = Config.GET_ROUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
+        fund_short_name=fund_short_name, round_short_name=round_short_name
     )
-    response = get_data(
-        request_url, {"language": get_lang(), "use_short_name": "true"}
-    )
-    return next(
-        (
-            round
-            for round in response
-            if str.casefold(round["short_name"])
-            == str.casefold(round_short_name)
-        ),
-        None,
-    )
+    response = get_data(request_url, params)
+    if as_dict:
+        return response
+    else:
+        return Round.from_dict(response)
 
 
 def get_round_data_fail_gracefully(fund_id, round_id):
@@ -153,7 +172,7 @@ def get_round_data_fail_gracefully(fund_id, round_id):
         )
         # return valid Round object with no values so we know we've
         # failed and can handle in templates appropriately
-        return Round("", [], "", "", "", "", "", "", {}, {})
+        return Round("", [], "", "", "", "", "", "", "", "", {}, {})
 
 
 def get_account(email: str = None, account_id: str = None) -> Account | None:
@@ -190,10 +209,54 @@ def get_all_funds():
     return fund_response
 
 
-def get_all_rounds_for_fund(fund_id):
-    language = {"language": get_lang()}
+def get_all_rounds_for_fund(fund_id, as_dict=False, use_short_name=False):
+    params = {"language": get_lang()}
+    if use_short_name:
+        params["use_short_name"] = "true"
     rounds_response = get_data(
         Config.GET_ALL_ROUNDS_FOR_FUND_ENDPOINT.format(fund_id=fund_id),
-        language,
+        params,
     )
-    return rounds_response
+    if as_dict:
+        return rounds_response
+    else:
+        return [Round.from_dict(round) for round in rounds_response]
+
+
+def determine_round_status(round: Round):
+    round_status = RoundStatus(
+        past_submission_deadline=current_datetime_after_given_iso_string(
+            round.deadline
+        ),
+        not_yet_open=current_datetime_before_given_iso_string(round.opens),
+        is_open=current_datetime_after_given_iso_string(round.opens)
+        and current_datetime_before_given_iso_string(round.deadline),
+    )
+    return round_status
+
+
+def get_default_round_for_fund(fund_short_name: str) -> Round:
+    try:
+        rounds = get_all_rounds_for_fund(
+            fund_short_name, as_dict=False, use_short_name=True
+        )
+        if len(rounds) == 0:
+            return None
+        rounds_sorted_by_opens = sorted(
+            rounds,
+            key=lambda r: r.opens,
+            reverse=True,
+        )
+        status = determine_round_status(rounds_sorted_by_opens[0])
+        if status.is_open:
+            return rounds_sorted_by_opens[0]
+
+        rounds_sorted_by_closed = sorted(
+            rounds,
+            key=lambda r: r.deadline,
+            reverse=True,
+        )
+        return rounds_sorted_by_closed[0]
+    except Exception as e:
+        current_app.log_exception(e)
+        return None

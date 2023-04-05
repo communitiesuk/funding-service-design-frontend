@@ -3,6 +3,7 @@ from http.client import METHOD_NOT_ALLOWED
 
 import requests
 from app.constants import ApplicationStatus
+from app.default.data import determine_round_status
 from app.default.data import get_account
 from app.default.data import get_application_data
 from app.default.data import get_fund_data
@@ -24,9 +25,6 @@ from flask_wtf import FlaskForm
 from fsd_utils.authentication.decorators import login_required
 from fsd_utils.simple_utils.date_utils import (
     current_datetime_after_given_iso_string,
-)
-from fsd_utils.simple_utils.date_utils import (
-    current_datetime_before_given_iso_string,
 )
 
 application_bp = Blueprint(
@@ -101,11 +99,10 @@ def verify_round_open(f):
         round_data = get_round_data(
             fund_id=application.fund_id,
             round_id=application.round_id,
-            as_dict=True,
+            as_dict=False,
         )
-        if current_datetime_after_given_iso_string(
-            round_data.opens
-        ) and current_datetime_before_given_iso_string(round_data.deadline):
+        round_status = determine_round_status(round_data)
+        if round_status.is_open:
             return f(*args, **kwargs)
         else:
             current_app.logger.info(
@@ -152,7 +149,7 @@ def tasklist(application_id):
         fund_id=application.fund_id,
         round_id=application.round_id,
         language=application.language,
-        as_dict=True,
+        as_dict=False,
     )
     sections = application.get_sections()
     form = FlaskForm()

@@ -1,3 +1,5 @@
+from app.default.data import get_fund_data
+from app.default.data import get_fund_data_by_short_name
 from app.filters import date_format_short_month
 from app.filters import datetime_format
 from app.filters import datetime_format_short_month
@@ -5,7 +7,9 @@ from app.filters import kebab_case_to_human
 from app.filters import snake_case_to_human
 from app.filters import status_translation
 from config import Config
+from flask import current_app
 from flask import Flask
+from flask import request
 from flask_babel import Babel
 from flask_babel import gettext
 from flask_babel import pgettext
@@ -87,9 +91,6 @@ def create_app() -> Flask:
     def inject_global_constants():
         return dict(
             stage="beta",
-            service_title=(
-                gettext("Apply for funding to save an asset in your community")
-            ),
             service_meta_description=(
                 "Apply for funding to save an asset in your community"
             ),
@@ -100,6 +101,30 @@ def create_app() -> Flask:
                 "Department for Levelling up Housing and Communities"
             ),
         )
+
+    @flask_app.context_processor
+    def inject_service_name():
+        fund = None
+        try:
+            if request.view_args.get("fund_short_name"):
+                fund = get_fund_data_by_short_name(
+                    request.view_args.get("fund_short_name")
+                )
+            elif request.view_args.get("fund_id"):
+                fund = get_fund_data(request.view_args.get("fund_id"), True)
+            elif request.args.get("fund_id"):
+                fund = get_fund_data(request.args.get("fund_id"), True)
+            elif request.args.get("fund"):
+                fund = get_fund_data_by_short_name(request.args.get("fund"))
+        except Exception as e:  # noqa
+            current_app.log_exception(e)
+        if fund:
+            service_title = fund.title
+        else:
+            service_title = get_fund_data(
+                Config.DEFAULT_FUND_ID, as_dict=True
+            ).title
+        return dict(service_title=gettext("Apply for") + " " + service_title)
 
     health = Healthcheck(flask_app)
     health.add_check(FlaskRunningChecker())

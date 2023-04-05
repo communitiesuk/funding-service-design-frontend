@@ -1,4 +1,5 @@
 import requests
+from app.default.data import determine_round_status
 from app.default.data import get_all_funds
 from app.default.data import get_all_rounds_for_fund
 from app.default.data import get_applications_for_account
@@ -13,12 +14,6 @@ from flask import request
 from flask import url_for
 from fsd_utils.authentication.decorators import login_required
 from fsd_utils.locale_selector.get_lang import get_lang
-from fsd_utils.simple_utils.date_utils import (
-    current_datetime_after_given_iso_string,
-)
-from fsd_utils.simple_utils.date_utils import (
-    current_datetime_before_given_iso_string,
-)
 
 
 account_bp = Blueprint("account_routes", __name__, template_folder="templates")
@@ -38,28 +33,24 @@ def build_application_data_for_display(applications: list[ApplicationSummary]):
 
     for fund in all_funds:
         fund_id = fund["id"]
-        all_rounds_in_fund = get_all_rounds_for_fund(fund_id)
+        all_rounds_in_fund = get_all_rounds_for_fund(fund_id, as_dict=False)
         fund_data_for_display = {
             "fund_data": fund,
             "rounds": [],
         }
         for round in all_rounds_in_fund:
-            round_id = round["id"]
-            past_submission_deadline = current_datetime_after_given_iso_string(
-                round["deadline"]
-            )
-            not_yet_open = current_datetime_before_given_iso_string(
-                round["opens"]
-            )
+            round_id = round.id
+            round_status = determine_round_status(round)
             apps_in_this_round = [
                 app for app in applications if app.round_id == round_id
             ]
-            if not_yet_open or (
-                past_submission_deadline and len(apps_in_this_round) == 0
+            if round_status.not_yet_open or (
+                round_status.past_submission_deadline
+                and len(apps_in_this_round) == 0
             ):
                 continue
             for application in apps_in_this_round:
-                if past_submission_deadline:
+                if round_status.past_submission_deadline:
                     if application.status != "SUBMITTED":
                         application.status = "NOT_SUBMITTED"
                 else:
@@ -67,8 +58,8 @@ def build_application_data_for_display(applications: list[ApplicationSummary]):
                         application.status = "READY_TO_SUBMIT"
             fund_data_for_display["rounds"].append(
                 {
-                    "is_past_submission_deadline": past_submission_deadline,
-                    "is_not_yet_open": not_yet_open,
+                    "is_past_submission_deadline": round_status.past_submission_deadline,  # noqa
+                    "is_not_yet_open": round_status.not_yet_open,
                     "round_details": round,
                     "applications": apps_in_this_round,
                 }
@@ -76,7 +67,7 @@ def build_application_data_for_display(applications: list[ApplicationSummary]):
             count_of_applications_for_visible_rounds += len(apps_in_this_round)
         fund_data_for_display["rounds"] = sorted(
             fund_data_for_display["rounds"],
-            key=lambda r: r["round_details"]["opens"],
+            key=lambda r: r["round_details"].opens,
             reverse=True,
         )
 
@@ -92,6 +83,9 @@ def build_application_data_for_display(applications: list[ApplicationSummary]):
 @login_required
 def dashboard():
     account_id = g.account_id
+
+    # TODO change this to search for applications for this account AND
+    # this fund if fund is supplied, else get all applications for this account
     application_store_response = get_applications_for_account(
         account_id=account_id, as_dict=False
     )
@@ -107,6 +101,8 @@ def dashboard():
     current_app.logger.info(
         f"Setting up applicant dashboard for :'{account_id}'"
     )
+    # TODO will need to tell the dashboard template whether it's for a
+    # particular fund or it's the generic dashboard.
     return render_template(
         "dashboard.html",
         account_id=account_id,

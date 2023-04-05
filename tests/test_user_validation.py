@@ -1,5 +1,6 @@
 import json
 
+from app.default.data import RoundStatus
 from app.models.account import Account
 from app.models.application import Application
 from app.models.fund import Fund
@@ -151,14 +152,8 @@ class TestUserValidation:
             lambda: {"accountId": self.TEST_USER},
         )
         mocker.patch(
-            "app.default.application_routes."
-            + "current_datetime_before_given_iso_string",
-            return_value=True,
-        )
-        mocker.patch(
-            "app.default.application_routes."
-            + "current_datetime_after_given_iso_string",
-            return_value=True,
+            "app.default.application_routes.determine_round_status",
+            return_value=RoundStatus(False, False, True),
         )
         mocker.patch(
             "app.default.application_routes."
@@ -197,23 +192,8 @@ class TestUserValidation:
             lambda: {"accountId": self.TEST_USER},
         )
         mocker.patch(
-            "app.default.application_routes."
-            + "current_datetime_before_given_iso_string",
-            return_value=False,
-        )
-        mocker.patch(
-            "app.default.application_routes."
-            + "current_datetime_after_given_iso_string",
-            return_value=False,
-        )
-        mocker.patch(
-            "app.default.application_routes."
-            + "format_payload_and_submit_application",
-            return_value={
-                "id": self.TEST_ID,
-                "email": "test@test.com",
-                "reference": "ABC-123",
-            },
+            "app.default.application_routes.determine_round_status",
+            return_value=RoundStatus(True, True, False),
         )
 
         response = flask_test_client.post(
