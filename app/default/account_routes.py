@@ -2,12 +2,11 @@ import requests
 from app.default.data import determine_round_status
 from app.default.data import get_all_funds
 from app.default.data import get_all_rounds_for_fund
-from app.default.data import get_applications_for_account
 from app.default.data import get_round_data_by_short_names
+from app.default.data import RoundStatus
 from app.default.data import search_applications
 from app.models.application_summary import ApplicationSummary
 from config import Config
-from flask import abort
 from flask import Blueprint
 from flask import current_app
 from flask import g
@@ -22,30 +21,65 @@ from fsd_utils.locale_selector.get_lang import get_lang
 account_bp = Blueprint("account_routes", __name__, template_folder="templates")
 
 
+def get_visible_funds(visible_fund_short_name):
+    """
+    Returns a list of funds matching the supplied short name
+
+    :param visible_fund_short_name: short name to look for
+    """
+    all_funds = get_all_funds()
+
+    if visible_fund_short_name:
+        funds_to_show = [
+            fund
+            for fund in all_funds
+            if fund["short_name"].casefold()
+            == visible_fund_short_name.casefold()
+        ]
+    else:
+        funds_to_show = all_funds
+
+    if not funds_to_show or len(funds_to_show) == 0:
+        return []
+    else:
+        return funds_to_show
+
+
+def update_applications_statuses_for_display(
+    applications: list[ApplicationSummary], round_status: RoundStatus
+) -> list[ApplicationSummary]:
+    """
+    Updates the status value of each application in the supplied list
+    to work for display:
+    If the round is closed, all un-submitted applications get a status
+    of NOT_SUBMITTED.
+    If the round is open, any COMPLETED applications are updated to
+    READY_TO_SUBMIT
+
+    :param applications: List of applications to update statuses for
+    :param round_status: Round status object, used in determining the
+    display status
+    """
+    for application in applications:
+        if round_status.past_submission_deadline:
+            if application.status != "SUBMITTED":
+                application.status = "NOT_SUBMITTED"
+        else:
+            if application.status == "COMPLETED":
+                application.status = "READY_TO_SUBMIT"
+    return applications
+
+
 def build_application_data_for_display(
     applications: list[ApplicationSummary], visible_fund_short_name
 ):
-
     application_data_for_display = {
         "funds": [],
         "total_applications_to_display": 0,
     }
-
-    funds_to_show = get_all_funds()
-    if not funds_to_show:
-        return application_data_for_display
     count_of_applications_for_visible_rounds = 0
 
-    if visible_fund_short_name:
-        try:
-            funds_to_show = [
-                fund
-                for fund in funds_to_show
-                if fund["short_name"].casefold()
-                == visible_fund_short_name.casefold()
-            ]
-        except StopIteration:
-            return abort(404)
+    funds_to_show = get_visible_funds(visible_fund_short_name)
     for fund in funds_to_show:
         fund_id = fund["id"]
         all_rounds_in_fund = get_all_rounds_for_fund(fund_id, as_dict=False)
@@ -54,32 +88,29 @@ def build_application_data_for_display(
             "rounds": [],
         }
         for round in all_rounds_in_fund:
-            round_id = round.id
             round_status = determine_round_status(round)
             apps_in_this_round = [
-                app for app in applications if app.round_id == round_id
+                app for app in applications if app.round_id == round.id
             ]
             if round_status.not_yet_open or (
                 round_status.past_submission_deadline
                 and len(apps_in_this_round) == 0
             ):
                 continue
-            for application in apps_in_this_round:
-                if round_status.past_submission_deadline:
-                    if application.status != "SUBMITTED":
-                        application.status = "NOT_SUBMITTED"
-                else:
-                    if application.status == "COMPLETED":
-                        application.status = "READY_TO_SUBMIT"
+            apps_for_display = update_applications_statuses_for_display(
+                apps_in_this_round, round_status
+            )
             fund_data_for_display["rounds"].append(
                 {
                     "is_past_submission_deadline": round_status.past_submission_deadline,  # noqa
                     "is_not_yet_open": round_status.not_yet_open,
                     "round_details": round,
-                    "applications": apps_in_this_round,
+                    "applications": apps_for_display,
                 }
             )
-            count_of_applications_for_visible_rounds += len(apps_in_this_round)
+            count_of_applications_for_visible_rounds += len(apps_for_display)
+        if len(fund_data_for_display["rounds"]) == 0:
+            continue
         fund_data_for_display["rounds"] = sorted(
             fund_data_for_display["rounds"],
             key=lambda r: r["round_details"].opens,
@@ -92,6 +123,14 @@ def build_application_data_for_display(
         "total_applications_to_display"
     ] = count_of_applications_for_visible_rounds
     return application_data_for_display
+
+
+def determine_show_language_column(applications):
+    """
+    Determine whether the language column should be visible -
+    true if applications are in more than one language
+    """
+    return len({a.language for a in applications}) > 1
 
 
 @account_bp.route("/account")
@@ -110,26 +149,26 @@ def dashboard():
             fund_short_name,
             round_short_name,
         )
-        application_store_response = search_applications(
+        applications = search_applications(
             search_params={
                 "fund_id": round_details.fund_id,
                 "round_id": round_details.id,
                 "account_id": account_id,
             },
-            as_dict=True,
+            as_dict=False,
         )
     else:
         # Generic all applications dashboard
-        application_store_response = get_applications_for_account(
-            account_id=account_id, as_dict=True
+        applications = search_applications(
+            search_params={"account_id": account_id}, as_dict=False
         )
 
-    applications: list[ApplicationSummary] = [
-        ApplicationSummary.from_dict(application)
-        for application in application_store_response
-    ]
+    # applications: list[ApplicationSummary] = [
+    #     ApplicationSummary.from_dict(application)
+    #     for application in application_store_response
+    # ]
 
-    show_language_column = len({a.language for a in applications}) > 1
+    show_language_column = determine_show_language_column(applications)
 
     display_data = build_application_data_for_display(
         applications, fund_short_name
