@@ -8,7 +8,7 @@
 
 {% extends "base.html" %}
 {% set pageHeading %}
-{% trans %}Your applications{% endtrans %}
+{% trans %}Your applications for {% endtrans %} {{display_data["funds"][0]["fund_data"]["name"]}}
 {% endset %}
 {% block content %}
     <h1 class="govuk-heading-xl">{{ pageHeading }}</h1>

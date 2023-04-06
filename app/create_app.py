@@ -119,12 +119,10 @@ def create_app() -> Flask:
         except Exception as e:  # noqa
             current_app.log_exception(e)
         if fund:
-            service_title = fund.title
+            service_title = gettext("Apply for") + " " + fund.title
         else:
-            service_title = get_fund_data(
-                Config.DEFAULT_FUND_ID, as_dict=True
-            ).title
-        return dict(service_title=gettext("Apply for") + " " + service_title)
+            service_title = gettext("Access Funding")
+        return dict(service_title=service_title)
 
     health = Healthcheck(flask_app)
     health.add_check(FlaskRunningChecker())

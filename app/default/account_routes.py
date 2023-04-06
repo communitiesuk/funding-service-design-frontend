@@ -145,6 +145,7 @@ def dashboard():
         # search for applications for this account AND
         # this fund if fund is supplied, else get all
         # applications for this account
+        template_name = "dashboard_single_fund.html"
         round_details = get_round_data_by_short_names(
             fund_short_name,
             round_short_name,
@@ -156,16 +157,12 @@ def dashboard():
         }
     else:
         # Generic all applications dashboard
+        template_name = "dashboard_all.html"
         search_params = {"account_id": account_id}
 
     applications = search_applications(
         search_params=search_params, as_dict=False
     )
-
-    # applications: list[ApplicationSummary] = [
-    #     ApplicationSummary.from_dict(application)
-    #     for application in application_store_response
-    # ]
 
     show_language_column = determine_show_language_column(applications)
 
@@ -178,7 +175,7 @@ def dashboard():
     # TODO will need to tell the dashboard template whether it's for a
     # particular fund or it's the generic dashboard.
     return render_template(
-        "dashboard.html",
+        template_name,
         account_id=account_id,
         display_data=display_data,
         show_language_column=show_language_column,
