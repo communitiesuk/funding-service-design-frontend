@@ -6,9 +6,11 @@ from app.filters import datetime_format_short_month
 from app.filters import kebab_case_to_human
 from app.filters import snake_case_to_human
 from app.filters import status_translation
+from app.models.fund import FUND_SHORT_CODES
 from config import Config
 from flask import current_app
 from flask import Flask
+from flask import make_response
 from flask import request
 from flask_babel import Babel
 from flask_babel import gettext
@@ -106,10 +108,11 @@ def create_app() -> Flask:
     def inject_service_name():
         fund = None
         try:
-            if request.view_args.get("fund_short_name"):
-                fund = get_fund_data_by_short_name(
-                    request.view_args.get("fund_short_name")
-                )
+            fund_short_name = request.view_args.get("fund_short_name")
+            if fund_short_name and str.upper(fund_short_name) in [
+                member.value for member in FUND_SHORT_CODES
+            ]:
+                fund = get_fund_data_by_short_name(fund_short_name)
             elif request.view_args.get("fund_id"):
                 fund = get_fund_data(request.view_args.get("fund_id"), True)
             elif request.args.get("fund_id"):
@@ -125,6 +128,11 @@ def create_app() -> Flask:
                 Config.DEFAULT_FUND_ID, as_dict=True
             ).title
         return dict(service_title=gettext("Apply for") + " " + service_title)
+
+    @flask_app.before_request
+    def filter_favicon_requests():
+        if request.path == "/favicon.ico":
+            return make_response("404"), 404
 
     health = Healthcheck(flask_app)
     health.add_check(FlaskRunningChecker())

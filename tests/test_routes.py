@@ -64,7 +64,7 @@ default_fund = Fund(**fund_args, title="Default Fund")
 @pytest.mark.parametrize(
     "key_name, view_args_value, args_value, expected_title",
     [
-        ("fund_short_name", "TEST", None, short_name_fund.title),
+        ("fund_short_name", "COF", None, short_name_fund.title),
         ("fund_short_name", None, None, default_fund.title),
         ("fund_short_name", None, "TEST", default_fund.title),
         ("fund_id", "TEST", None, id_fund.title),

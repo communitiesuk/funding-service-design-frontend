@@ -208,3 +208,9 @@ def test_fund_only_start_page_bad_fund(client):
         mock_get_rounds.side_effect = Exception
         result = client.get("/asdf", follow_redirects=False)
         assert result.status_code == 404
+
+
+def test_favicon_filter(client):
+    result = client.get("/favicon.ico", follow_redirects=False)
+    assert result.status_code == 404
+    assert result.data == b"404"
