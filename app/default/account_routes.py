@@ -149,19 +149,18 @@ def dashboard():
             fund_short_name,
             round_short_name,
         )
-        applications = search_applications(
-            search_params={
-                "fund_id": round_details.fund_id,
-                "round_id": round_details.id,
-                "account_id": account_id,
-            },
-            as_dict=False,
-        )
+        search_params = {
+            "fund_id": round_details.fund_id,
+            "round_id": round_details.id,
+            "account_id": account_id,
+        }
     else:
         # Generic all applications dashboard
-        applications = search_applications(
-            search_params={"account_id": account_id}, as_dict=False
-        )
+        search_params = {"account_id": account_id}
+
+    applications = search_applications(
+        search_params=search_params, as_dict=False
+    )
 
     # applications: list[ApplicationSummary] = [
     #     ApplicationSummary.from_dict(application)

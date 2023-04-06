@@ -6,6 +6,7 @@ from urllib.parse import urlencode
 import requests
 from app.models.account import Account
 from app.models.application import Application
+from app.models.application_summary import ApplicationSummary
 from app.models.fund import Fund
 from app.models.round import Round
 from config import Config
@@ -110,7 +111,7 @@ def search_applications(search_params: dict, as_dict=False):
         return application_response
     else:
         return [
-            Application.from_dict(application)
+            ApplicationSummary.from_dict(application)
             for application in application_response
         ]
 
