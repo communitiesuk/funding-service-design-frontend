@@ -2,6 +2,8 @@ from app.default.data import determine_round_status
 from app.default.data import get_default_round_for_fund
 from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data_by_short_names
+from app.models.fund import FUND_SHORT_CODES
+from app.models.round import Round
 from config import Config
 from flask import abort
 from flask import Blueprint
@@ -56,14 +58,25 @@ def index_fund_round(fund_short_name, round_short_name):
 
 @default_bp.route("/<fund_short_name>")
 def index_fund_only(fund_short_name):
-    current_app.logger.info(
-        f"In fund-only start page route for {fund_short_name}"
-    )
-    default_round = get_default_round_for_fund(fund_short_name=fund_short_name)
-    if default_round:
-        return redirect(f"/{fund_short_name}/{default_round.short_name}")
-    else:
+    if str.upper(fund_short_name) in [
+        member.value for member in FUND_SHORT_CODES
+    ]:
+        current_app.logger.info(
+            f"In fund-only start page route for {fund_short_name}"
+        )
+        default_round = get_default_round_for_fund(
+            fund_short_name=fund_short_name
+        )
+        if default_round:
+            return redirect(f"/{fund_short_name}/{default_round.short_name}")
+
         current_app.logger.warn(
             f"Unable to retrieve default round for fund {fund_short_name}"
         )
-        abort(404)
+    return (
+        render_template(
+            "404.html",
+            round_data=Round("", [], "", "", "", "", "", "", "", "", {}, {}),
+        ),
+        404,
+    )
