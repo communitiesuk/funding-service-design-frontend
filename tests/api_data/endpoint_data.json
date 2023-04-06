@@ -6,16 +6,12 @@
       "description": "test test",
       "short_name": "FSD",
       "title": "fund for testing"
-      "short_name": "FSD",
-      "title": "fund for testing"
     }
   ],
   "fund_store/funds/funding-service-design?language=en": {
     "id": "funding-service-design",
     "name": "Test Fund",
     "description": "test test",
-    "short_name": "FSD",
-    "title": "fund for testing"
     "short_name": "FSD",
     "title": "fund for testing"
   },
