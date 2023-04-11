@@ -56,6 +56,39 @@ def get_data(endpoint: str, params: dict = None):
     return data
 
 
+def get_data_or_fail_gracefully(endpoint: str, params: dict = None):
+    """
+        Queries the api endpoint provided and returns a
+        data response in json format. Does not return a 
+        500 on failure but a 404.
+
+    Args:
+        endpoint (str): an API get data address
+
+    Returns:
+        data (json): data response in json format
+    """
+
+    query_string = ""
+    if params:
+        params = {k: v for k, v in params.items() if v is not None}
+        query_string = urlencode(params)
+        endpoint = endpoint + "?" + query_string
+
+    if Config.USE_LOCAL_DATA:
+        current_app.logger.info(f"Fetching local data from '{endpoint}'.")
+        data = get_local_data(endpoint)
+    else:
+        current_app.logger.info(f"Fetching data from '{endpoint}'.")
+        data = get_remote_data(endpoint)
+    if data is None:
+        current_app.logger.warn(
+            f"Data request failed, unable to recover: {endpoint}"
+        )
+        return abort(404)
+    return data
+
+
 def get_remote_data(endpoint):
 
     response = requests.get(endpoint)
@@ -125,7 +158,7 @@ def get_fund_data_by_short_name(fund_short_name, as_dict=False):
         fund_short_name=fund_short_name
     )
     params = {"language": get_lang(), "use_short_name": True}
-    fund_response = get_data(fund_request_url, params)
+    fund_response = get_data_or_fail_gracefully(fund_request_url, params)
     if as_dict:
         return fund_response
     else:
@@ -151,7 +184,7 @@ def get_round_data_by_short_names(
     request_url = Config.GET_ROUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
         fund_short_name=fund_short_name, round_short_name=round_short_name
     )
-    response = get_data(request_url, params)
+    response = get_data_or_fail_gracefully(request_url, params)
     if as_dict:
         return response
     else:

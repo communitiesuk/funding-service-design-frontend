@@ -20,22 +20,18 @@ def index():
     Redirects from the old landing page to the new one at /cof/r2w3
     """
     current_app.logger.info("Redirecting from index to /cof/r2w3")
-    return redirect("/cof/r2w3")
+    return redirect("funding-round/cof/r2w3")
 
 
-@default_bp.route("/<fund_short_name>/<round_short_name>")
+@default_bp.route("/funding-round/<fund_short_name>/<round_short_name>")
 def index_fund_round(fund_short_name, round_short_name):
     current_app.logger.info(
         f"In fund-round start page {fund_short_name} {round_short_name}"
     )
     fund_data = get_fund_data_by_short_name(fund_short_name, as_dict=False)
-    if not fund_data:
-        abort(404)
     round_data = get_round_data_by_short_names(
         fund_short_name, round_short_name
     )
-    if not round_data:
-        abort(404)
     round_status = determine_round_status(round_data)
     if round_status.not_yet_open:
         abort(404)
@@ -56,7 +52,7 @@ def index_fund_round(fund_short_name, round_short_name):
     )
 
 
-@default_bp.route("/<fund_short_name>")
+@default_bp.route("/funding-round/<fund_short_name>")
 def index_fund_only(fund_short_name):
     if str.upper(fund_short_name) in [
         member.value for member in FUND_SHORT_CODES
