@@ -64,7 +64,7 @@ def index_fund_only(fund_short_name):
             fund_short_name=fund_short_name
         )
         if default_round:
-            return redirect(f"/{fund_short_name}/{default_round.short_name}")
+            return redirect(f"/funding-round/{fund_short_name}/{default_round.short_name}")
 
         current_app.logger.warn(
             f"Unable to retrieve default round for fund {fund_short_name}"
