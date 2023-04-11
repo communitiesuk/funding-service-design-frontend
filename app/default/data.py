@@ -59,7 +59,7 @@ def get_data(endpoint: str, params: dict = None):
 def get_data_or_fail_gracefully(endpoint: str, params: dict = None):
     """
         Queries the api endpoint provided and returns a
-        data response in json format. Does not return a 
+        data response in json format. Does not return a
         500 on failure but a 404.
 
     Args:
