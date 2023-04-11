@@ -80,10 +80,16 @@ def get_data_or_fail_gracefully(endpoint: str, params: dict = None):
         data = get_local_data(endpoint)
     else:
         current_app.logger.info(f"Fetching data from '{endpoint}'.")
-        data = get_remote_data(endpoint)
-    if data is None:
+        response_status, data = get_remote_data_force_return(endpoint)
+    if (data is None) or (response_status in [404, 500]):
         current_app.logger.warn(
             f"Data request failed, unable to recover: {endpoint}"
+        )
+        current_app.logger.warn(
+            f"Data retrieved: {data}"
+        )
+        current_app.logger.warn(
+            f"Service response status code: {response_status}"
         )
         return abort(404)
     return data
@@ -101,6 +107,14 @@ def get_remote_data(endpoint):
             f" {response.status_code}."
         )
         return None
+    
+
+def get_remote_data_force_return(endpoint):
+    
+    response = requests.get(endpoint)
+    response_status = response.status_code
+    data = response.json()
+    return response_status, data
 
 
 def get_local_data(endpoint: str):
