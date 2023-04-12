@@ -86,9 +86,7 @@ def get_data_or_fail_gracefully(endpoint: str, params: dict = None):
         current_app.logger.warn(
             f"Data request failed, unable to recover: {endpoint}"
         )
-        current_app.logger.warn(
-            f"Data retrieved: {data}"
-        )
+        current_app.logger.warn(f"Data retrieved: {data}")
         current_app.logger.warn(
             f"Service response status code: {response_status}"
         )
@@ -108,10 +106,10 @@ def get_remote_data(endpoint):
             f" {response.status_code}."
         )
         return None
-    
+
 
 def get_remote_data_force_return(endpoint):
-    
+
     response = requests.get(endpoint)
     response_status = response.status_code
     data = response.json()
