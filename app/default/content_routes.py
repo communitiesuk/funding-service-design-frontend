@@ -1,7 +1,6 @@
 from app.default.data import get_round_data_by_short_names
 from app.default.data import get_round_data_fail_gracefully
 from config import Config
-from flask import abort
 from flask import Blueprint
 from flask import current_app
 from flask import redirect
@@ -26,8 +25,6 @@ def all_questions(fund_short_name, round_short_name):
         f" {round_short_name}."
     )
     round = get_round_data_by_short_names(fund_short_name, round_short_name)
-    if not round:
-        return abort(404)
     return render_template(
         "cof_r2_all_questions.html", round_title=round.title
     )
