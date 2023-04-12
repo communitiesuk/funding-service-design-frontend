@@ -1,7 +1,6 @@
 from app.default.data import get_round_data_by_short_names
 from app.default.data import get_round_data_fail_gracefully
 from config import Config
-from flask import abort
 from flask import Blueprint
 from flask import current_app
 from flask import redirect
