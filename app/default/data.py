@@ -78,6 +78,7 @@ def get_data_or_fail_gracefully(endpoint: str, params: dict = None):
     if Config.USE_LOCAL_DATA:
         current_app.logger.info(f"Fetching local data from '{endpoint}'.")
         data = get_local_data(endpoint)
+        response_status = 200 if data else 404
     else:
         current_app.logger.info(f"Fetching data from '{endpoint}'.")
         response_status, data = get_remote_data_force_return(endpoint)
