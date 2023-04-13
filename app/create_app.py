@@ -126,8 +126,8 @@ def create_app() -> Flask:
                     )
             except Exception as e:  # noqa
                 current_app.logger.warn(
-                    f"""Exception: {e}, occured when trying to 
-                    reach url: {request.url}, with view_args: 
+                    f"""Exception: {e}, occured when trying to
+                    reach url: {request.url}, with view_args:
                     {request.view_args}, and args: {request.args}"""
                 )
         if fund:
