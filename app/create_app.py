@@ -122,8 +122,9 @@ def create_app() -> Flask:
                     fund = get_fund_data_by_short_name(request.args.get("fund"))
             except Exception as e:  # noqa
                 current_app.logger.warn(
-                    f"""Exception: {e}, occured when trying to reach url: {request.url},
-                with view_args: {request.view_args}, and args: {request.args}"""
+                    f"""Exception: {e}, occured when trying to 
+                    reach url: {request.url}, with view_args: 
+                    {request.view_args}, and args: {request.args}"""
                 )
         if fund:
             service_title = fund.title
