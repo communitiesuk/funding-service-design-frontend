@@ -115,11 +115,15 @@ def create_app() -> Flask:
                 ]:
                     fund = get_fund_data_by_short_name(fund_short_name)
                 elif request.view_args.get("fund_id"):
-                    fund = get_fund_data(request.view_args.get("fund_id"), True)
+                    fund = get_fund_data(
+                        request.view_args.get("fund_id"), True
+                    )
                 elif request.args.get("fund_id"):
                     fund = get_fund_data(request.args.get("fund_id"), True)
                 elif request.args.get("fund"):
-                    fund = get_fund_data_by_short_name(request.args.get("fund"))
+                    fund = get_fund_data_by_short_name(
+                        request.args.get("fund")
+                    )
             except Exception as e:  # noqa
                 current_app.logger.warn(
                     f"""Exception: {e}, occured when trying to 
