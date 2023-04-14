@@ -16,7 +16,7 @@
             <h1 class="govuk-heading-xl">
                 {{pageHeading}}
             </h1>
-            {% if is_past_submission_deadline %}
+            {% if is_past_submission_deadline is false %}
                 {{ round_closed_warning(fund_name, round_title, submission_deadline) }}
             {% endif %}
             {{available_in_language(inset=True, warn=False)}}

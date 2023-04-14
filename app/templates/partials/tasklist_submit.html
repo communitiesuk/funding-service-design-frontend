@@ -1,5 +1,6 @@
-{% macro tasklist_submit(application_id, application_meta_data, form, action_url) %}
-
+{% macro tasklist_submit(application_id, application_meta_data, form, action_url, is_past_submission_deadline) %}
+{# TODO this logic is inverted - needs fixing #}
+    {% if is_past_submission_deadline %}
 <form method="POST" action={{action_url}}>
     {{ form.csrf_token }}
     <div class="govuk-grid-row .assessment-alert">
@@ -12,5 +13,5 @@
           </div>
     </div>
   </form>
-
+{% endif %}
   {% endmacro %}
