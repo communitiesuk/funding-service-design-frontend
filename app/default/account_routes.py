@@ -1,7 +1,8 @@
 import requests
-from app.default.data import determine_round_status, get_fund_data_by_short_name
+from app.default.data import determine_round_status
 from app.default.data import get_all_funds
 from app.default.data import get_all_rounds_for_fund
+from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data_by_short_names
 from app.default.data import RoundStatus
 from app.default.data import search_applications
