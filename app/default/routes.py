@@ -2,6 +2,8 @@ from app.default.data import determine_round_status
 from app.default.data import get_default_round_for_fund
 from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data_by_short_names
+from app.models.fund import FUND_SHORT_CODES
+from app.models.round import Round
 from config import Config
 from flask import abort
 from flask import Blueprint
@@ -18,22 +20,18 @@ def index():
     Redirects from the old landing page to the new one at /cof/r2w3
     """
     current_app.logger.info("Redirecting from index to /cof/r2w3")
-    return redirect("/cof/r2w3")
+    return redirect("funding-round/cof/r2w3")
 
 
-@default_bp.route("/<fund_short_name>/<round_short_name>")
+@default_bp.route("/funding-round/<fund_short_name>/<round_short_name>")
 def index_fund_round(fund_short_name, round_short_name):
     current_app.logger.info(
         f"In fund-round start page {fund_short_name} {round_short_name}"
     )
     fund_data = get_fund_data_by_short_name(fund_short_name, as_dict=False)
-    if not fund_data:
-        abort(404)
     round_data = get_round_data_by_short_names(
         fund_short_name, round_short_name
     )
-    if not round_data:
-        abort(404)
     round_status = determine_round_status(round_data)
     if round_status.not_yet_open:
         abort(404)
@@ -54,16 +52,29 @@ def index_fund_round(fund_short_name, round_short_name):
     )
 
 
-@default_bp.route("/<fund_short_name>")
+@default_bp.route("/funding-round/<fund_short_name>")
 def index_fund_only(fund_short_name):
-    current_app.logger.info(
-        f"In fund-only start page route for {fund_short_name}"
-    )
-    default_round = get_default_round_for_fund(fund_short_name=fund_short_name)
-    if default_round:
-        return redirect(f"/{fund_short_name}/{default_round.short_name}")
-    else:
+    if str.upper(fund_short_name) in [
+        member.value for member in FUND_SHORT_CODES
+    ]:
+        current_app.logger.info(
+            f"In fund-only start page route for {fund_short_name}"
+        )
+        default_round = get_default_round_for_fund(
+            fund_short_name=fund_short_name
+        )
+        if default_round:
+            return redirect(
+                f"/funding-round/{fund_short_name}/{default_round.short_name}"
+            )
+
         current_app.logger.warn(
             f"Unable to retrieve default round for fund {fund_short_name}"
         )
-        abort(404)
+    return (
+        render_template(
+            "404.html",
+            round_data=Round("", [], "", "", "", "", "", "", "", "", {}, {}),
+        ),
+        404,
+    )

@@ -47,14 +47,22 @@ def mock_get_round(mocker):
 def test_old_index_redirect(client):
     result = client.get("/", follow_redirects=False)
     assert result.status_code == 302
-    assert result.location == "/cof/r2w3"
+    assert result.location == "funding-round/cof/r2w3"
 
 
 def test_start_page_unknown_fund(client, mocker):
     mocker.patch(
         "app.default.routes.get_fund_data_by_short_name", return_value=None
     )
-    result = client.get("/bad_fund/r2w2")
+    result = client.get("funding-round/bad_fund/r2w2")
+    assert result.status_code == 404
+
+
+def test_start_page_without_namespace(client, mocker):
+    mocker.patch(
+        "app.default.routes.get_fund_data_by_short_name", return_value=None
+    )
+    result = client.get("cof/r2w2")
     assert result.status_code == 404
 
 
@@ -84,7 +92,7 @@ def test_start_page_open(
         "app.default.routes.determine_round_status",
         return_value=RoundStatus(False, False, True),
     )
-    result = client.get("/cof/r2w3")
+    result = client.get("funding-round/cof/r2w3")
     assert result.status_code == 200
     assert 1 == len(templates_rendered)
     rendered_template = templates_rendered[0]
@@ -101,7 +109,7 @@ def test_start_page_closed(
         "app.default.routes.determine_round_status",
         return_value=RoundStatus(True, False, False),
     )
-    result = client.get("/cof/r2w3")
+    result = client.get("funding-round/cof/r2w3")
     assert result.status_code == 200
     assert 1 == len(templates_rendered)
     rendered_template = templates_rendered[0]
@@ -188,9 +196,9 @@ def test_fund_only_start_page(client, mocker):
             id="111", deadline="", opens="", **default_round_fields
         ),
     )
-    result = client.get("/cof", follow_redirects=False)
+    result = client.get("funding-round/cof", follow_redirects=False)
     assert result.status_code == 302
-    assert result.location == "/cof/SHORT"
+    assert result.location == "/funding-round/cof/SHORT"
 
 
 def test_fund_only_start_page_no_rounds(client, mocker):
@@ -208,3 +216,9 @@ def test_fund_only_start_page_bad_fund(client):
         mock_get_rounds.side_effect = Exception
         result = client.get("/asdf", follow_redirects=False)
         assert result.status_code == 404
+
+
+def test_favicon_filter(client):
+    result = client.get("/favicon.ico", follow_redirects=False)
+    assert result.status_code == 404
+    assert result.data == b"404"

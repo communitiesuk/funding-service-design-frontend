@@ -1,5 +1,5 @@
 import requests
-from app.default.data import determine_round_status
+from app.default.data import determine_round_status, get_fund_data_by_short_name
 from app.default.data import get_all_funds
 from app.default.data import get_all_rounds_for_fund
 from app.default.data import get_round_data_by_short_names
@@ -153,6 +153,18 @@ def dashboard():
         search_params = {
             "fund_id": round_details.fund_id,
             "round_id": round_details.id,
+            "account_id": account_id,
+        }
+    elif fund_short_name:
+        # search for applications for this account AND
+        # this fund if fund is supplied, else get all
+        # applications for this account
+        template_name = "dashboard_single_fund.html"
+        fund_details = get_fund_data_by_short_name(
+            fund_short_name,
+        )
+        search_params = {
+            "fund_id": fund_details.fund_id,
             "account_id": account_id,
         }
     else:

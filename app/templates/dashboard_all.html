@@ -37,9 +37,7 @@
                             {{ round_closed_warning(fund["fund_data"]["name"], round["round_details"]["title"], round["round_details"]["deadline"]) }}
                         {% endif %}
                             {{ applications_table(round["applications"], round["is_past_submission_deadline"], show_language_column) }}
-                        {% if not round["is_past_submission_deadline"] %}
-                            {{ startApplicationButton(form, url_for('account_routes.new'), fund_id=fund["fund_data"]["id"], round_id=round["round_details"]["id"], existing_applications_count=round["applications"]|count) }}
-                        {% endif %}
+                            <p class="govuk-body"><a href="application-list" class="govuk-link govuk-link">View applications from all rounds/windows</a></p>
                     {% endif %}
                 {% endfor %}
             </div>
