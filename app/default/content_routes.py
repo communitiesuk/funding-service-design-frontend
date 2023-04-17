@@ -73,4 +73,6 @@ def privacy():
 
     except AttributeError:
         print("Error finding privacy notice for fund, redirecting")
-        return redirect('https://www.gov.uk/government/publications/community-ownership-fund-privacy-notice/community-ownership-fund-privacy-notice')
+        return redirect(
+            "https://www.gov.uk/government/publications/community-ownership-fund-privacy-notice/community-ownership-fund-privacy-notice"
+        )
