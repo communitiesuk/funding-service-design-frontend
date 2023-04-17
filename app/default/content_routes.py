@@ -1,6 +1,7 @@
 from app.default.data import get_round_data_by_short_names
 from app.default.data import get_round_data_fail_gracefully
 from config import Config
+from flask import abort
 from flask import Blueprint
 from flask import current_app
 from flask import redirect
@@ -25,8 +26,10 @@ def all_questions(fund_short_name, round_short_name):
         f" {round_short_name}."
     )
     round = get_round_data_by_short_names(fund_short_name, round_short_name)
+    if not round:
+        return abort(404)
     return render_template(
-        "cof_r2_all_questions.html", round_title=round.title
+        "cof_r2_all_questions.html", round_title=round["title"]
     )
 
 
@@ -54,3 +57,20 @@ def contact_us():
 def cookie_policy():
     current_app.logger.info("Cookie policy page loaded.")
     return render_template("cookie_policy.html")
+
+
+@content_bp.route("/privacy", methods=["GET"])
+def privacy():
+    current_app.logger.info("Privacy_notice page loaded.")
+    round_data = get_round_data_fail_gracefully(
+        Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID
+    )
+
+    privacy_notice_url = None
+    try:
+        privacy_notice_url = round_data.privacy_notice
+        return redirect(privacy_notice_url)
+
+    except AttributeError:
+        print("Error finding privacy notice for fund, redirecting")
+        return redirect('https://www.gov.uk/government/publications/community-ownership-fund-privacy-notice/community-ownership-fund-privacy-notice')
