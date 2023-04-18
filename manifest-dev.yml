@@ -25,6 +25,6 @@ applications:
     - route: frontend.dev.gids.dev
   health-check-http-endpoint: /healthcheck
   health-check-type: http
-  health-check-invocation-timeout: 10
+  health-check-invocation-timeout: 20
   services:
     - logit-ssl-drain
