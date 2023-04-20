@@ -143,9 +143,8 @@ def dashboard():
     round_short_name = request.args.get("round")
 
     if fund_short_name and round_short_name:
-        # search for applications for this account AND
-        # this fund if fund is supplied, else get all
-        # applications for this account
+        # find and display applications with this 
+        # fund and round else return 404
         template_name = "dashboard_single_fund.html"
         round_details = get_round_data_by_short_names(
             fund_short_name,
@@ -157,9 +156,8 @@ def dashboard():
             "account_id": account_id,
         }
     elif fund_short_name:
-        # search for applications for this account AND
-        # this fund if fund is supplied, else get all
-        # applications for this account
+        # find and display all applications across
+        # this fund else return 404
 
         template_name = "dashboard_single_fund.html"
         fund_details = get_fund_data_by_short_name(

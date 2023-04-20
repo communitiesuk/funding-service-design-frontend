@@ -174,10 +174,7 @@ class DefaultConfig:
     DEFAULT_FUND_ID = CommonConfig.COF_FUND_ID
     DEFAULT_ROUND_ID = CommonConfig.get_default_round_id()
 
-    FORMS_CONFIG_FOR_FUND_ROUND = {
-        "47aef2f5-3fcb-abab-acb5-f0152b5f03c4:c603d114-5364-2222-a0c4-c41cbf4d3bbd": CommonConfig.COF_R2_ORDERED_FORMS_CONFIG,  # noqa
-        **CommonConfig.FORMS_CONFIG_FOR_FUND_ROUND,
-    }
+    FORMS_CONFIG_FOR_FUND_ROUND = CommonConfig.FORMS_CONFIG_FOR_FUND_ROUND
 
     # GOV.UK PaaS
     if environ.get("VCAP_SERVICES"):
