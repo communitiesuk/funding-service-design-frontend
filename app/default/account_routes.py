@@ -143,7 +143,7 @@ def dashboard():
     round_short_name = request.args.get("round")
 
     if fund_short_name and round_short_name:
-        # find and display applications with this 
+        # find and display applications with this
         # fund and round else return 404
         template_name = "dashboard_single_fund.html"
         round_details = get_round_data_by_short_names(
