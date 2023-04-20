@@ -29,4 +29,4 @@ class UnitTestConfig(DefaultConfig):
     }
 
     # Redis Configuration for Feature Flags
-    REDIS_MLINKS_URL = "redis://localhost:6379/0"
+    TOGGLES_URL = "redis://localhost:6379/0"
