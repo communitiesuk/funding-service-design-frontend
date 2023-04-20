@@ -200,8 +200,8 @@ def test_dashboard_route_no_applications(
     assert response.status_code == 200
 
     assert b"""<h1 class="govuk-heading-xl">All applications</h1>""" in response.data
-    assert b"""<p class="govuk-body">\nYou have started&nbsp;0 applications&nbsp;using this email address.\n""" in response.data
-    assert b"""class="govuk-link govuk-link">View applications from all rounds/windows</a></p>""" in response.data
+    assert b"""<p class="govuk-body">\nYou have started&nbsp;0 applications&nbsp;using this email address.\n""" in response.data # noqa
+    assert b"""class="govuk-link govuk-link">View applications from all rounds/windows</a></p>""" in response.data # noqa
 
 
 
