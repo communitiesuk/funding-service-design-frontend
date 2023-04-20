@@ -1,4 +1,5 @@
 from os import getenv
+
 from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
 from app.filters import date_format_short_month
@@ -114,7 +115,9 @@ def create_app() -> Flask:
             toggle_dict={
                 feature.name: feature.is_enabled()
                 for feature in toggle_client.list()
-            } if toggle_client else {},
+            }
+            if toggle_client
+            else {},
         )
 
     @flask_app.context_processor
