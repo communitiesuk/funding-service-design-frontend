@@ -27,7 +27,7 @@
 		{% endset %}
 
 		{% if not application.status == 'SUBMITTED' and not is_past_submission_deadline %}
-			{% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('application_routes.tasklist', application_id=application.id), gettext('Continue application')) %}
+			{% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('application_routes.tasklist', application_id=application.id, fund=fund_short_name, round=round_short_name), gettext('Continue application')) %}
 		{% endif %}
 
 		{% set row = [

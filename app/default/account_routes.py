@@ -160,7 +160,7 @@ def dashboard():
         # search for applications for this account AND
         # this fund if fund is supplied, else get all
         # applications for this account
-        current_app.logger.error("hey")
+        
         template_name = "dashboard_single_fund.html"
         fund_details = get_fund_data_by_short_name(
             fund_short_name,
@@ -193,6 +193,8 @@ def dashboard():
         account_id=account_id,
         display_data=display_data,
         show_language_column=show_language_column,
+        fund_short_name=fund_short_name,
+        round_short_name=round_short_name,
     )
 
 

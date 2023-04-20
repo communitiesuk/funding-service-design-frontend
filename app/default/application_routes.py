@@ -194,6 +194,11 @@ def tasklist(application_id):
                 round_short_name=round_data.short_name,
                 lang=application.language,
             ),
+            dashboard_url=url_for(
+                "account_routes.dashboard",
+                fund=fund_data.short_name,
+                round=round_data.short_name,
+            )
         )
 
 

@@ -24,9 +24,13 @@ from fsd_utils.healthchecks.checkers import FlaskRunningChecker
 from fsd_utils.healthchecks.healthcheck import Healthcheck
 from fsd_utils.locale_selector.get_lang import get_lang
 from fsd_utils.logging import logging
-from jinja2 import ChoiceLoader
+from fsd_utils.toggles.toggles import initialise_toggles_redis_store
+from fsd_utils.toggles.toggles import create_toggles_client
+from fsd_utils.toggles.toggles import load_toggles
 from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
+from jinja2 import ChoiceLoader
+from flask import Flask
 
 
 def create_app() -> Flask:
@@ -35,6 +39,10 @@ def create_app() -> Flask:
     flask_app = Flask(__name__, static_url_path="/assets")
 
     flask_app.config.from_object("config.Config")
+
+    initialise_toggles_redis_store(flask_app)
+    toggle_client = create_toggles_client()
+    load_toggles(Config.FEATURE_CONFIG, toggle_client)
 
     babel = Babel(flask_app)
     babel.locale_selector_func = get_lang
@@ -102,6 +110,10 @@ def create_app() -> Flask:
             service_meta_author=(
                 "Department for Levelling up Housing and Communities"
             ),
+            toggle_dict={
+                feature.name: feature.is_enabled()
+                for feature in toggle_client.list()
+            }
         )
 
     @flask_app.context_processor

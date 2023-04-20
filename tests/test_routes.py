@@ -64,12 +64,11 @@ default_service_title = "Access Funding"
 @pytest.mark.parametrize(
     "key_name, view_args_value, args_value, expected_title",
     [
-<<<<<<< HEAD
         (
             "fund_short_name",
             "TEST",
             None,
-            "Apply for " + short_name_fund.title,
+            default_service_title,
         ),
         ("fund_short_name", None, None, default_service_title),
         ("fund_short_name", None, "TEST", default_service_title),
@@ -79,17 +78,6 @@ default_service_title = "Access Funding"
         ("fund", None, "TEST", "Apply for " + short_name_fund.title),
         ("fund", None, None, default_service_title),
         ("fund", "TEST", None, default_service_title),
-=======
-        ("fund_short_name", "COF", None, short_name_fund.title),
-        ("fund_short_name", None, None, default_fund.title),
-        ("fund_short_name", None, "TEST", default_fund.title),
-        ("fund_id", "TEST", None, id_fund.title),
-        ("fund_id", None, None, default_fund.title),
-        ("fund_id", None, "TEST", id_fund.title),
-        ("fund", None, "TEST", short_name_fund.title),
-        ("fund", None, None, default_fund.title),
-        ("fund", "TEST", None, default_fund.title),
->>>>>>> ca401fd43a627d67a70d49b2beeeb53a29c07360
     ],
 )
 def test_inject_service_name(

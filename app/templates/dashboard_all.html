@@ -31,7 +31,7 @@
             <div id="funds-content-{{fund['fund_data']['short_name']}}" class="govuk-accordion__section-content" aria-labelledby="funds-heading-{{fund['fund_data']['short_name']}}">
 
                 {% for round in fund["rounds"] %}
-                    {% if not round["is_not_yet_open"] %}
+                    {% if not round["is_not_yet_open"] and not round["is_past_submission_deadline"] %}
                         <span class="govuk-caption-m">{{ round["round_details"]["title"] }}</span>
                         {% if round["is_past_submission_deadline"] %}
                             {{ round_closed_warning(fund["fund_data"]["name"], round["round_details"]["title"], round["round_details"]["deadline"]) }}

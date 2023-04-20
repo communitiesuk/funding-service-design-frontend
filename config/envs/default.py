@@ -7,6 +7,7 @@ from pathlib import Path
 from distutils.util import strtobool
 from fsd_utils import CommonConfig
 from fsd_utils import configclass
+from config.utils import VcapServices
 
 
 @configclass
@@ -177,3 +178,15 @@ class DefaultConfig:
         "47aef2f5-3fcb-abab-acb5-f0152b5f03c4:c603d114-5364-2222-a0c4-c41cbf4d3bbd": CommonConfig.COF_R2_ORDERED_FORMS_CONFIG,
         **CommonConfig.FORMS_CONFIG_FOR_FUND_ROUND,
     }
+
+    # GOV.UK PaaS
+    if environ.get("VCAP_SERVICES"):
+        VCAP_SERVICES = VcapServices.from_env_json(
+            environ.get("VCAP_SERVICES")
+        )
+
+    # Redis Feature Toggle Configuration
+    REDIS_INSTANCE_NAME = "funding-service-toggles-dev"
+    REDIS_INSTANCE_URI = getenv("REDIS_INSTANCE_URI", "redis://localhost:6379")
+    TOGGLES_URL = REDIS_INSTANCE_URI + "/0"
+    FEATURE_CONFIG = CommonConfig.dev_feature_configuration

@@ -62,7 +62,14 @@ def test_serialise_application_summary():
                 "fund_id": "111",
             },
         ),
-        ("COF", None, {"account_id": "test-user"}),
+        (
+            "COF",
+            None,
+            {
+                "account_id": "test-user",
+                "fund_id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
+            },
+        ),
     ],
 )
 def test_dashboard_route_search_call(
@@ -191,26 +198,11 @@ def test_dashboard_route_no_applications(
     )
     response = flask_test_client.get("/account", follow_redirects=True)
     assert response.status_code == 200
-    soup = BeautifulSoup(response.data, "html.parser")
-    assert (
-        len(
-            soup.find_all(
-                "p",
-                string=lambda text: "0 applications" in text
-                if text
-                else False,
-            )
-        )
-        == 1
-    )
-    assert (
-        len(
-            soup.find_all(
-                "button", string=lambda text: "Start new application" in text
-            )
-        )
-        == 1
-    )
+    print(response.data)
+    assert b"""<h1 class="govuk-heading-xl">All applications</h1>""" in response.data
+    assert b"""<p class="govuk-body">\nYou have started&nbsp;0 applications&nbsp;using this email address.\n""" in response.data
+    assert b"""class="govuk-link govuk-link">View applications from all rounds/windows</a></p>""" in response.data
+
 
 
 @pytest.mark.parametrize(

@@ -28,6 +28,12 @@
             <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide navigation menu" aria-expanded="true">Menu</button>
             <nav>
               <ul id="navigation" class="signout govuk-header__navigation app-navigation" aria-label="Navigation menu">
+                
+                {% if toggle_dict.get("MULTIFUND_DASHBOARD") %}
+                <li class="govuk-header__navigation-item">
+                    <a class="govuk-header__link" href="{{url_for('account_routes.dashboard')}}">{% trans %}View all applications{% endtrans %}</a>
+                </li>
+                {% endif %}
                     <li class="govuk-header__navigation-item">
                         <a class="govuk-header__link" href="{{ g.logout_url }}">{% trans %}Sign out{% endtrans %}</a>
                     </li>
