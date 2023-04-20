@@ -198,7 +198,7 @@ def tasklist(application_id):
                 "account_routes.dashboard",
                 fund=fund_data.short_name,
                 round=round_data.short_name,
-            )
+            ),
         )
 
 
