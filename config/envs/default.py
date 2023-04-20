@@ -4,10 +4,10 @@ from os import environ
 from os import getenv
 from pathlib import Path
 
+from config.utils import VcapServices
 from distutils.util import strtobool
 from fsd_utils import CommonConfig
 from fsd_utils import configclass
-from config.utils import VcapServices
 
 
 @configclass
