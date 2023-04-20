@@ -27,3 +27,6 @@ class UnitTestConfig(DefaultConfig):
     FORMS_CONFIG_FOR_FUND_ROUND = {
         "funding-service-design:summer": CommonConfig.COF_R2_ORDERED_FORMS_CONFIG,  # noqa
     }
+
+    # Redis Configuration for Feature Flags
+    REDIS_MLINKS_URL = "redis://localhost:6379/0"
