@@ -1,3 +1,4 @@
+from os import getenv
 from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
 from app.filters import date_format_short_month
@@ -39,9 +40,10 @@ def create_app() -> Flask:
 
     flask_app.config.from_object("config.Config")
 
-    initialise_toggles_redis_store(flask_app)
-    toggle_client = create_toggles_client()
-    load_toggles(Config.FEATURE_CONFIG, toggle_client)
+    if getenv("FLASK_ENV") != "unit_test":
+        initialise_toggles_redis_store(flask_app)
+        toggle_client = create_toggles_client()
+        load_toggles(Config.FEATURE_CONFIG, toggle_client)
 
     babel = Babel(flask_app)
     babel.locale_selector_func = get_lang
@@ -112,7 +114,7 @@ def create_app() -> Flask:
             toggle_dict={
                 feature.name: feature.is_enabled()
                 for feature in toggle_client.list()
-            },
+            } if toggle_client else {},
         )
 
     @flask_app.context_processor

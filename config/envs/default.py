@@ -186,7 +186,6 @@ class DefaultConfig:
         )
 
     # Redis Feature Toggle Configuration
-    REDIS_INSTANCE_NAME = "funding-service-toggles-dev"
     REDIS_INSTANCE_URI = getenv("REDIS_INSTANCE_URI", "redis://localhost:6379")
     TOGGLES_URL = REDIS_INSTANCE_URI + "/0"
     FEATURE_CONFIG = CommonConfig.dev_feature_configuration
