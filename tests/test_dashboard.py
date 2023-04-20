@@ -204,11 +204,11 @@ def test_dashboard_route_no_applications(
         in response.data
     )
     assert (
-        b"""<p class="govuk-body">\nYou have started&nbsp;0 applications&nbsp;using this email address.\n""" # noqa
+        b"""<p class="govuk-body">\nYou have started&nbsp;0 applications&nbsp;using this email address.\n"""  # noqa
         in response.data
     )
     assert (
-        b"""class="govuk-link govuk-link">View applications from all rounds/windows</a></p>""" # noqa
+        b"""class="govuk-link govuk-link">View applications from all rounds/windows</a></p>"""  # noqa
         in response.data
     )
 
