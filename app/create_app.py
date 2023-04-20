@@ -41,6 +41,7 @@ def create_app() -> Flask:
 
     flask_app.config.from_object("config.Config")
 
+    toggle_client = None
     if getenv("FLASK_ENV") != "unit_test":
         initialise_toggles_redis_store(flask_app)
         toggle_client = create_toggles_client()
