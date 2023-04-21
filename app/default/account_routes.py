@@ -40,7 +40,7 @@ def get_visible_funds(visible_fund_short_name):
     else:
         funds_to_show = all_funds
 
-    if not funds_to_show or len(funds_to_show) == 0:
+    if not funds_to_show:
         return []
     else:
         return funds_to_show

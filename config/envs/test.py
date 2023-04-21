@@ -23,3 +23,4 @@ class TestConfig(DefaultConfig):
             "redis", REDIS_INSTANCE_NAME, "uri"
         )
     )
+    TOGGLES_URL = REDIS_INSTANCE_URI + "/0"
