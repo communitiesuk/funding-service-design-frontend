@@ -48,11 +48,9 @@ def get_data(endpoint: str, params: dict = None):
         data = get_local_data(endpoint)
     else:
         current_app.logger.info(f"Fetching data from '{endpoint}'.")
-        result = get_remote_data(endpoint)
-        if result[1] == 200:
-            data = result[0]
-        else:
-            return abort(result[1])
+       data, response_code = get_remote_data(endpoint)
+       if response_code != 200:
+           return abort(response_code)
     if data is None:
         current_app.logger.error(
             f"Data request failed, unable to recover: {endpoint}"
