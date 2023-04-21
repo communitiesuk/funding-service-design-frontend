@@ -4,6 +4,7 @@ from os import environ
 from os import getenv
 from pathlib import Path
 
+from config.utils import VcapServices
 from distutils.util import strtobool
 from fsd_utils import CommonConfig
 from fsd_utils import configclass
@@ -56,6 +57,10 @@ class DefaultConfig:
     )
     GET_APPLICATION_ENDPOINT = (
         APPLICATION_STORE_API_HOST + "/applications/{application_id}"
+    )
+    SEARCH_APPLICATIONS_ENDPOINT = (
+        APPLICATION_STORE_API_HOST
+        + "/applications?order_by=last_edited&order_rev=1&{search_params}"
     )
     GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT = (
         APPLICATION_STORE_API_HOST
@@ -170,3 +175,14 @@ class DefaultConfig:
     DEFAULT_ROUND_ID = CommonConfig.get_default_round_id()
 
     FORMS_CONFIG_FOR_FUND_ROUND = CommonConfig.FORMS_CONFIG_FOR_FUND_ROUND
+
+    # GOV.UK PaaS
+    if environ.get("VCAP_SERVICES"):
+        VCAP_SERVICES = VcapServices.from_env_json(
+            environ.get("VCAP_SERVICES")
+        )
+
+    # Redis Feature Toggle Configuration
+    REDIS_INSTANCE_URI = getenv("REDIS_INSTANCE_URI", "redis://localhost:6379")
+    TOGGLES_URL = REDIS_INSTANCE_URI + "/0"
+    FEATURE_CONFIG = CommonConfig.dev_feature_configuration

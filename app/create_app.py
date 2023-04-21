@@ -1,3 +1,5 @@
+from os import getenv
+
 from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
 from app.filters import date_format_short_month
@@ -24,6 +26,9 @@ from fsd_utils.healthchecks.checkers import FlaskRunningChecker
 from fsd_utils.healthchecks.healthcheck import Healthcheck
 from fsd_utils.locale_selector.get_lang import get_lang
 from fsd_utils.logging import logging
+from fsd_utils.toggles.toggles import create_toggles_client
+from fsd_utils.toggles.toggles import initialise_toggles_redis_store
+from fsd_utils.toggles.toggles import load_toggles
 from jinja2 import ChoiceLoader
 from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
@@ -35,6 +40,12 @@ def create_app() -> Flask:
     flask_app = Flask(__name__, static_url_path="/assets")
 
     flask_app.config.from_object("config.Config")
+
+    toggle_client = None
+    if getenv("FLASK_ENV") != "unit_test":
+        initialise_toggles_redis_store(flask_app)
+        toggle_client = create_toggles_client()
+        load_toggles(Config.FEATURE_CONFIG, toggle_client)
 
     babel = Babel(flask_app)
     babel.locale_selector_func = get_lang
@@ -102,6 +113,12 @@ def create_app() -> Flask:
             service_meta_author=(
                 "Department for Levelling up Housing and Communities"
             ),
+            toggle_dict={
+                feature.name: feature.is_enabled()
+                for feature in toggle_client.list()
+            }
+            if toggle_client
+            else {},
         )
 
     @flask_app.context_processor
@@ -131,12 +148,10 @@ def create_app() -> Flask:
                     {request.view_args}, and args: {request.args}"""
                 )
         if fund:
-            service_title = fund.title
+            service_title = gettext("Apply for") + " " + fund.title
         else:
-            service_title = get_fund_data(
-                Config.DEFAULT_FUND_ID, as_dict=True
-            ).title
-        return dict(service_title=gettext("Apply for") + " " + service_title)
+            service_title = gettext("Access Funding")
+        return dict(service_title=service_title)
 
     @flask_app.before_request
     def filter_favicon_requests():

@@ -4,7 +4,6 @@ import pytest
 from app.default.data import get_round_data_fail_gracefully
 from app.models.fund import Fund
 from bs4 import BeautifulSoup
-from config import Config
 from flask import render_template
 from requests import HTTPError
 
@@ -58,21 +57,27 @@ fund_args = {
 }
 short_name_fund = Fund(**fund_args, title="Test Fund by short name")
 id_fund = Fund(**fund_args, title="Test Fund by ID")
-default_fund = Fund(**fund_args, title="Default Fund")
+
+default_service_title = "Access Funding"
 
 
 @pytest.mark.parametrize(
     "key_name, view_args_value, args_value, expected_title",
     [
-        ("fund_short_name", "COF", None, short_name_fund.title),
-        ("fund_short_name", None, None, default_fund.title),
-        ("fund_short_name", None, "TEST", default_fund.title),
-        ("fund_id", "TEST", None, id_fund.title),
-        ("fund_id", None, None, default_fund.title),
-        ("fund_id", None, "TEST", id_fund.title),
-        ("fund", None, "TEST", short_name_fund.title),
-        ("fund", None, None, default_fund.title),
-        ("fund", "TEST", None, default_fund.title),
+        (
+            "fund_short_name",
+            "TEST",
+            None,
+            default_service_title,
+        ),
+        ("fund_short_name", None, None, default_service_title),
+        ("fund_short_name", None, "TEST", default_service_title),
+        ("fund_id", "TEST", None, "Apply for " + id_fund.title),
+        ("fund_id", None, None, default_service_title),
+        ("fund_id", None, "TEST", "Apply for " + id_fund.title),
+        ("fund", None, "TEST", "Apply for " + short_name_fund.title),
+        ("fund", None, None, default_service_title),
+        ("fund", "TEST", None, default_service_title),
     ],
 )
 def test_inject_service_name(
@@ -90,9 +95,7 @@ def test_inject_service_name(
     )
     mocker.patch(
         "app.create_app.get_fund_data",
-        new=lambda fund_id, as_dict: default_fund
-        if fund_id == Config.DEFAULT_FUND_ID
-        else id_fund,
+        return_value=id_fund,
     )
     request_mock = mocker.patch("app.create_app.request")
     request_mock.view_args.get = (
@@ -102,10 +105,7 @@ def test_inject_service_name(
     with app.app_context():
         render_template("fund_start_page.html")
     assert len(templates_rendered) == 1
-    assert (
-        templates_rendered[0][1]["service_title"]
-        == "Apply for " + expected_title
-    )
+    assert templates_rendered[0][1]["service_title"] == expected_title
 
 
 def test_healthcheck(flask_test_client):
