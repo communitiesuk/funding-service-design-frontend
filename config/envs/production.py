@@ -14,4 +14,5 @@ class ProductionConfig(DefaultConfig):
             "redis", REDIS_INSTANCE_NAME, "uri"
         )
     )
+    TOGGLES_URL = REDIS_INSTANCE_URI + "/0"
     FEATURE_CONFIG = CommonConfig.prod_feature_configuration
