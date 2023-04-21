@@ -48,8 +48,8 @@ def get_data(endpoint: str, params: dict = None):
         data = get_local_data(endpoint)
     else:
         current_app.logger.info(f"Fetching data from '{endpoint}'.")
-       data, response_code = get_remote_data(endpoint)
-       if response_code != 200:
+        data, response_code = get_remote_data(endpoint)
+        if response_code != 200:
            return abort(response_code)
     if data is None:
         current_app.logger.error(
