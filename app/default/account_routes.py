@@ -110,7 +110,7 @@ def build_application_data_for_display(
                 }
             )
             count_of_applications_for_visible_rounds += len(apps_for_display)
-        if len(fund_data_for_display["rounds"]) == 0:
+        if not fund_data_for_display["rounds"]:
             continue
         fund_data_for_display["rounds"] = sorted(
             fund_data_for_display["rounds"],
