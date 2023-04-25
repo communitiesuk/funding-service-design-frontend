@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-30 08:25+0100\n"
+"POT-Creation-Date: 2023-04-20 12:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: app/create_app.py:129
+#: app/create_app.py:139
 msgid "Apply for"
 msgstr ""
 
@@ -1919,32 +1919,31 @@ msgstr ""
 msgid "Start or continue an application for"
 msgstr ""
 
-#: app/templates/fund_start_page.html:28 app/templates/index.html:30
+#: app/templates/fund_start_page.html:28
 msgid "Read the fund's prospectus"
 msgstr ""
 
-#: app/templates/fund_start_page.html:28 app/templates/index.html:30
+#: app/templates/fund_start_page.html:28
 msgid "before you apply."
 msgstr ""
 
-#: app/templates/fund_start_page.html:32 app/templates/index.html:34
+#: app/templates/fund_start_page.html:32
 msgid "Submission deadline: "
 msgstr ""
 
-#: app/templates/fund_start_page.html:36 app/templates/index.html:38
+#: app/templates/fund_start_page.html:36
 msgid "Enter your email address"
 msgstr ""
 
-#: app/templates/fund_start_page.html:38 app/templates/index.html:40
+#: app/templates/fund_start_page.html:38
 msgid "Get help "
 msgstr ""
 
-#: app/templates/fund_start_page.html:40 app/templates/index.html:42
+#: app/templates/fund_start_page.html:40
 msgid "If you need help, email us at"
 msgstr ""
 
-#: app/templates/fund_start_page.html:44 app/templates/index.html:46
-#: app/templates/tasklist.html:75
+#: app/templates/fund_start_page.html:44 app/templates/tasklist.html:75
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
 "applications through this service."
@@ -1968,22 +1967,6 @@ msgstr ""
 
 #: app/templates/header.html:46
 msgid " will help us to improve it."
-msgstr ""
-
-#: app/templates/index.html:3
-msgid ""
-"Start or continue an application for funding to save an asset in your "
-"community"
-msgstr ""
-
-#: app/templates/index.html:24
-msgid ""
-"You must have received an invitation to apply. If we did not invite you, "
-"first "
-msgstr ""
-
-#: app/templates/index.html:26
-msgid "express your interest in the fund"
 msgstr ""
 
 #: app/templates/tasklist.html:7
@@ -2162,30 +2145,28 @@ msgid "You cannot change the language of an existing application."
 msgstr ""
 
 #: app/templates/partials/contact_details.html:3
-msgid "Email:"
+msgid "Email"
 msgstr ""
 
-#: app/templates/partials/contact_details.html:7
+#: app/templates/partials/contact_details.html:11
+#: app/templates/partials/contact_details.html:27
+#: app/templates/partials/contact_details.html:37
+msgid "except public holidays"
+msgstr ""
+
+#: app/templates/partials/contact_details.html:16
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
 "applications\n"
 "            through this service."
 msgstr ""
 
-#: app/templates/partials/contact_details.html:11
-msgid "Telephone:"
+#: app/templates/partials/contact_details.html:21
+msgid "Telephone"
 msgstr ""
 
-#: app/templates/partials/contact_details.html:14
-msgid "Textphone:"
-msgstr ""
-
-#: app/templates/partials/contact_details.html:19
-msgid "Opening times:"
-msgstr ""
-
-#: app/templates/partials/contact_details.html:23
-msgid "Closed:"
+#: app/templates/partials/contact_details.html:32
+msgid "Textphone"
 msgstr ""
 
 #: app/templates/partials/start-application-button.html:11

@@ -1,6 +1,7 @@
 -r requirements.txt
 bandit
 beautifulsoup4
+debugpy
 dparse>=0.5.2
 black
 deepdiff
