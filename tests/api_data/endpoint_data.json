@@ -28,6 +28,7 @@
       "contact_details": {},
       "support_availability": {},
       "prospectus": "/cof_r2w2_prospectus",
+      "privacy_notice": "",
       "instructions": "Round specific instruction text"
     },
     {
@@ -42,6 +43,7 @@
       "contact_details": {},
       "support_availability": {},
       "prospectus": "/fsd_r2w3_prospectus",
+      "privacy_notice": "",
       "instructions": "Round specific instruction text"
     }
 
@@ -58,6 +60,7 @@
     "title": "Round 2 Window 2",
     "fund_id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
     "prospectus": "our_prospectus.html",
+    "privacy_notice": "",
     "instructions": "Round specific instruction text",
     "short_name": "R2W2",
     "assessment_criteria_weighting": [
@@ -103,6 +106,7 @@
     "short_name": "R2W3",
     "instructions": "Round specific instruction text",
     "prospectus": "/prospectus_link",
+    "privacy_notice": "",
     "assessment_criteria_weighting": [
       {
         "id": "e2fd30d2-9207-421c-b8b3-c961bcee138b",
@@ -1272,6 +1276,7 @@
     "opens": "2022-10-04 12:00:00",
     "short_name": "TT",
     "prospectus": "/prospectus_link",
+    "privacy_notice": "",
     "instructions": "Round specific instruction text",
     "support_availability": {
       "closed": "Easter Sunday, Christmas Day, Boxing Day and New Year’s Day",
@@ -1305,6 +1310,7 @@
   "fund_store/funds/funding-service-design/rounds/summer?language=en" : {
     "assessment_deadline": "2030-03-30 12:00:00",
     "prospectus": "link",
+    "privacy_notice": "",
     "instructions": "Round specific instruction text",
     "name":"Community Ownership Fund",
     "contact_details": {
@@ -1399,6 +1405,7 @@
       },
       "title": "Round 2 Window 3",
       "prospectus": "http://google.com/search?q=r2w3",
+      "privacy_notice": "",
       "instructions": "Round specific instruction text"
     },
   "fund_store/funds/cof/rounds?language=en&use_short_name=true":
@@ -1444,6 +1451,7 @@
         },
         "title": "Round 2 Window 2",
         "prospectus": "http://google.com/search?q=r2w2",
+        "privacy_notice": "",
         "instructions": "Round specific instruction text for r2w2"
       },
       {
@@ -1487,6 +1495,7 @@
         },
         "title": "Round 2 Window 3",
         "prospectus_link": "http://google.com/search?q=r2w3",
+        "privacy_notice": "",
         "instructions": "Round specific instruction text for r2w3"
       }
     ]

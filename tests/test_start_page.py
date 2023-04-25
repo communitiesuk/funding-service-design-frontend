@@ -15,6 +15,7 @@ default_round_fields = {
     "title": "test round title",
     "short_name": "SHORT",
     "prospectus": "",
+    "privacy_notice": "",
     "instructions": "",
     "contact_details": {"email_address": "blah@google.com"},
     "support_availability": SupportAvailability("", "", ""),

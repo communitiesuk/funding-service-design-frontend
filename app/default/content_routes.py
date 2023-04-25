@@ -29,7 +29,7 @@ def all_questions(fund_short_name, round_short_name):
     if not round:
         return abort(404)
     return render_template(
-        "cof_r2_all_questions.html", round_title=round["title"]
+        "cof_r2_all_questions.html", round_title=round.title
     )
 
 
