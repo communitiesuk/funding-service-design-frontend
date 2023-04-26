@@ -2496,4 +2496,3 @@ msgstr "o'r meini prawf asesu"
 
 #~ msgid "Closed:"
 #~ msgstr ""
-
