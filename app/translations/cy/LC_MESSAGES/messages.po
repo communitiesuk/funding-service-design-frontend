@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-20 12:17+0100\n"
+"POT-Creation-Date: 2023-04-25 17:30+0100\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -19,9 +19,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: app/create_app.py:139
+#: app/create_app.py:151
 msgid "Apply for"
 msgstr "Gwneud cais am"
+
+#: app/create_app.py:153
+msgid "Access Funding"
+msgstr ""
 
 #: app/filters.py:15 app/filters.py:26
 msgid "at"
@@ -2105,15 +2109,25 @@ msgstr ""
 "Cadarnhewch eich bod wedi sefydlu cyfrif banc ac yn gysylltiedig â'r "
 "sefydliad yr ydych chi'n gwneud cais ar ei ran"
 
-#: app/templates/dashboard.html:11
-msgid "Your applications"
+#: app/templates/contact_us.html:6 app/templates/footer.html:23
+msgid "Contact us"
+msgstr "Cysylltwch â ni"
+
+#: app/templates/contact_us.html:11
+msgid "Contact the Community Ownership Fund if you have any questions."
+msgstr "Cysylltwch â y Gronfa Perchnogaeth Gymunedol os oes gennych unrhyw gwestiynau."
+
+#: app/templates/dashboard_all.html:11
+msgid "All applications"
 msgstr "Eich ceisiadau"
 
-#: app/templates/dashboard.html:17
+#: app/templates/dashboard_all.html:17
+#: app/templates/dashboard_single_fund.html:21
 msgid "You have started"
 msgstr "Rydych wedi dechrau"
 
-#: app/templates/dashboard.html:17
+#: app/templates/dashboard_all.html:17
+#: app/templates/dashboard_single_fund.html:21
 #, python-format
 msgid " %(application_count)s application"
 msgid_plural "%(application_count)s applications"
@@ -2123,9 +2137,14 @@ msgstr[2] "%(application_count)s ceisiadau"
 msgstr[3] "%(application_count)s ceisiadau"
 msgstr[4] "%(application_count)s ceisiadau"
 
-#: app/templates/dashboard.html:17
+#: app/templates/dashboard_all.html:17
+#: app/templates/dashboard_single_fund.html:21
 msgid "using this email address"
 msgstr "gan ddefnyddio'r cyfeiriad e-bost hwn"
+
+#: app/templates/dashboard_single_fund.html:12
+msgid "Your applications for "
+msgstr "Eich ceisiadau"
 
 #: app/templates/footer.html:10
 msgid "Privacy"
@@ -2138,10 +2157,6 @@ msgstr "Cwcis"
 #: app/templates/footer.html:19
 msgid "Accessibility Statement"
 msgstr "Datganiad Hygyrchedd"
-
-#: app/templates/footer.html:23
-msgid "Contact us"
-msgstr "Cysylltwch â ni"
 
 #: app/templates/fund_start_page.html:3
 msgid "Start or continue an application for"
@@ -2179,23 +2194,27 @@ msgstr ""
 "Peidwch ag anfon unrhyw geisadau neu atodiadau dros e-bost. Byddwn yn "
 "derbyn ceisiadau drwy'r gwasanaeth hon yn unig."
 
-#: app/templates/header.html:32
+#: app/templates/header.html:34
+msgid "View all applications"
+msgstr "Eich ceisiadau"
+
+#: app/templates/header.html:38
 msgid "Sign out"
 msgstr "Allgofnodi"
 
-#: app/templates/header.html:44
+#: app/templates/header.html:50
 msgid "beta"
 msgstr "beta"
 
-#: app/templates/header.html:46
+#: app/templates/header.html:52
 msgid "This is a new service - your "
 msgstr "Mae hyn yn wasanaeth newydd - bydd eich "
 
-#: app/templates/header.html:46
+#: app/templates/header.html:52
 msgid "feedback"
 msgstr "adborth"
 
-#: app/templates/header.html:46
+#: app/templates/header.html:52
 msgid " will help us to improve it."
 msgstr " yn ein cefnogi i'w wella."
 
@@ -2406,7 +2425,7 @@ msgstr "Ebost"
 #: app/templates/partials/contact_details.html:27
 #: app/templates/partials/contact_details.html:37
 msgid "except public holidays"
-msgstr ""
+msgstr "Ac eithrio gwyliau cyhoeddus"
 
 #: app/templates/partials/contact_details.html:16
 msgid ""
@@ -2477,3 +2496,4 @@ msgstr "o'r meini prawf asesu"
 
 #~ msgid "Closed:"
 #~ msgstr ""
+
