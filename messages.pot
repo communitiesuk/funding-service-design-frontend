@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-25 17:30+0100\n"
+"POT-Creation-Date: 2023-04-26 15:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1889,7 +1889,11 @@ msgid "Contact us"
 msgstr ""
 
 #: app/templates/contact_us.html:11
-msgid "Contact the Community Ownership Fund if you have any questions."
+msgid "Contact the"
+msgstr ""
+
+#: app/templates/contact_us.html:11
+msgid "if you have any questions."
 msgstr ""
 
 #: app/templates/dashboard_all.html:11

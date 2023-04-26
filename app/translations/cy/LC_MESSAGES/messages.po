@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-25 17:30+0100\n"
+"POT-Creation-Date: 2023-04-26 15:55+0100\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -2114,8 +2114,12 @@ msgid "Contact us"
 msgstr "Cysylltwch â ni"
 
 #: app/templates/contact_us.html:11
-msgid "Contact the Community Ownership Fund if you have any questions."
-msgstr "Cysylltwch â y Gronfa Perchnogaeth Gymunedol os oes gennych unrhyw gwestiynau."
+msgid "Contact the"
+msgstr "Cysylltwch â ni"
+
+#: app/templates/contact_us.html:11
+msgid "if you have any questions."
+msgstr "os oes gennych unrhyw gwestiynau."
 
 #: app/templates/dashboard_all.html:11
 msgid "All applications"
