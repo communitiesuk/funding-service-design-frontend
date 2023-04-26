@@ -8,7 +8,7 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
-            <p class="govuk-body">{% trans %}Contact the Community Ownership Fund if you have any questions.{% endtrans %}</p>
+            <p class="govuk-body">{% trans %}Contact the {{fund_name}} if you have any questions.{% endtrans %}</p>
             {% if round_data.contact_details["email_address"]|length %}
                 {{ contact_details(
                         round_data.contact_details["email_address"],

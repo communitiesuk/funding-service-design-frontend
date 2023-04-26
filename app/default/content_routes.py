@@ -6,7 +6,7 @@ from flask import current_app
 from flask import redirect
 from flask import render_template
 from flask import url_for
-
+from app.default.data import get_fund_data
 content_bp = Blueprint("content_routes", __name__, template_folder="templates")
 
 
@@ -47,7 +47,8 @@ def contact_us():
     round_data = get_round_data_fail_gracefully(
         Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID
     )
-    return render_template("contact_us.html", round_data=round_data)
+    fund_data = get_fund_data(Config.DEFAULT_FUND_ID)
+    return render_template("contact_us.html", round_data=round_data,fund_name = fund_data.get("name"))
 
 
 @content_bp.route("/cookie_policy", methods=["GET"])
