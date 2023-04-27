@@ -2115,7 +2115,7 @@ msgstr "Cysylltwch â ni"
 
 #: app/templates/contact_us.html:11
 msgid "Contact the"
-msgstr "Cysylltwch â ni"
+msgstr "Cysylltwch â"
 
 #: app/templates/contact_us.html:11
 msgid "if you have any questions."
