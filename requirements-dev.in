@@ -1,6 +1,7 @@
 -r requirements.txt
 bandit
 beautifulsoup4
+debugpy
 dparse>=0.5.2
 black
 deepdiff
@@ -11,7 +12,7 @@ pytest-flask
 pytest-mock
 pytest-selenium
 requests-mock
-pip-tools
+pip-tools>=6.13.0
 selenium==4.2.0
 invoke
 #TODO replace with normal version once this issue is released: https://github.com/SergeyPirogov/webdriver_manager/issues/443

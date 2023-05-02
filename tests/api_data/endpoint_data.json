@@ -1356,7 +1356,7 @@
         "account_id": "test-user",
         "email_address": "test@example.com"
     },
-  "fund_store/funds/cof?language=en&use_short_name=True":{
+  "fund_store/funds/COF?language=en&use_short_name=True":{
     "description": "The Community Ownership Fund is a £150 million fund over 4 years to support community groups across England, Wales, Scotland and Northern Ireland to take ownership of assets which are at risk of being lost to the community.",
     "id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
     "name": "Community Ownership Fund",

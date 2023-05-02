@@ -6,6 +6,7 @@ from urllib.parse import urlencode
 import requests
 from app.models.account import Account
 from app.models.application import Application
+from app.models.application_summary import ApplicationSummary
 from app.models.fund import Fund
 from app.models.round import Round
 from config import Config
@@ -47,7 +48,9 @@ def get_data(endpoint: str, params: dict = None):
         data = get_local_data(endpoint)
     else:
         current_app.logger.info(f"Fetching data from '{endpoint}'.")
-        data = get_remote_data(endpoint)
+        data, response_code = get_remote_data(endpoint)
+        if response_code != 200:
+            return abort(response_code)
     if data is None:
         current_app.logger.error(
             f"Data request failed, unable to recover: {endpoint}"
@@ -99,13 +102,13 @@ def get_remote_data(endpoint):
     response = requests.get(endpoint)
     if response.status_code == 200:
         data = response.json()
-        return data
+        return data, 200
     else:
         current_app.logger.warn(
             "GET remote data call was unsuccessful with status code:"
             f" {response.status_code}."
         )
-        return None
+        return None, response.status_code
 
 
 def get_remote_data_force_return(endpoint):
@@ -143,17 +146,24 @@ def get_application_data(application_id, as_dict=False):
         return application_response
 
 
-def get_applications_for_account(account_id, as_dict=False):
-    application_request_url = (
-        Config.GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT.format(
-            account_id=account_id
-        )
+def search_applications(search_params: dict, as_dict=False):
+    application_request_url = Config.SEARCH_APPLICATIONS_ENDPOINT.format(
+        search_params=urlencode(search_params)
     )
     application_response = get_data(application_request_url)
     if as_dict:
-        return Application.from_dict(application_response)
-    else:
         return application_response
+    else:
+        return [
+            ApplicationSummary.from_dict(application)
+            for application in application_response
+        ]
+
+
+def get_applications_for_account(account_id, as_dict=False):
+    return search_applications(
+        search_params={"account_id": account_id}, as_dict=as_dict
+    )
 
 
 def get_fund_data(fund_id, language=None, as_dict=False):
@@ -192,8 +202,9 @@ def get_round_data(fund_id, round_id, language=None, as_dict=False):
 
 def get_round_data_by_short_names(
     fund_short_name, round_short_name, as_dict=False
-):
+) -> Round | dict:
     params = {"language": get_lang(), "use_short_name": "true"}
+
     request_url = Config.GET_ROUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
         fund_short_name=fund_short_name, round_short_name=round_short_name
     )

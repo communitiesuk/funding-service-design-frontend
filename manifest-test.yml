@@ -25,4 +25,5 @@ applications:
   health-check-type: http
   health-check-invocation-timeout: 10
   services:
+    - funding-service-magic-links-test
     - logit-ssl-drain

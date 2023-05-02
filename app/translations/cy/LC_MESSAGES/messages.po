@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-03-30 08:25+0100\n"
+"POT-Creation-Date: 2023-04-20 12:17+0100\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: app/create_app.py:129
+#: app/create_app.py:139
 msgid "Apply for"
 msgstr "Gwneud cais am"
 
@@ -2147,32 +2147,31 @@ msgstr "Cysylltwch â ni"
 msgid "Start or continue an application for"
 msgstr "Gwneud cais am"
 
-#: app/templates/fund_start_page.html:28 app/templates/index.html:30
+#: app/templates/fund_start_page.html:28
 msgid "Read the fund's prospectus"
 msgstr "Darllenwch brosbectws y gronfa"
 
-#: app/templates/fund_start_page.html:28 app/templates/index.html:30
+#: app/templates/fund_start_page.html:28
 msgid "before you apply."
 msgstr "cyn i chi ymgeisio."
 
-#: app/templates/fund_start_page.html:32 app/templates/index.html:34
+#: app/templates/fund_start_page.html:32
 msgid "Submission deadline: "
 msgstr "Dyddiad cau cyflwyno: "
 
-#: app/templates/fund_start_page.html:36 app/templates/index.html:38
+#: app/templates/fund_start_page.html:36
 msgid "Enter your email address"
 msgstr "Nodwch eich cyfeirad e-bost"
 
-#: app/templates/fund_start_page.html:38 app/templates/index.html:40
+#: app/templates/fund_start_page.html:38
 msgid "Get help "
 msgstr "Cael help"
 
-#: app/templates/fund_start_page.html:40 app/templates/index.html:42
+#: app/templates/fund_start_page.html:40
 msgid "If you need help, email us at"
 msgstr "Os oes angen help arnoch chi, anfonwch e-bost atom y"
 
-#: app/templates/fund_start_page.html:44 app/templates/index.html:46
-#: app/templates/tasklist.html:75
+#: app/templates/fund_start_page.html:44 app/templates/tasklist.html:75
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
 "applications through this service."
@@ -2199,24 +2198,6 @@ msgstr "adborth"
 #: app/templates/header.html:46
 msgid " will help us to improve it."
 msgstr " yn ein cefnogi i'w wella."
-
-#: app/templates/index.html:3
-msgid ""
-"Start or continue an application for funding to save an asset in your "
-"community"
-msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
-
-#: app/templates/index.html:24
-msgid ""
-"You must have received an invitation to apply. If we did not invite you, "
-"first "
-msgstr ""
-"Mae'n rhaid i chi fod wedi derbyn gwahoddiad i ymgeisio. Os na wnaethom "
-"eich gwahodd, "
-
-#: app/templates/index.html:26
-msgid "express your interest in the fund"
-msgstr "mynegwch eich diddordeb yn y gronfa yn gyntaf"
 
 #: app/templates/tasklist.html:7
 msgid "Back to your applications"
@@ -2418,10 +2399,16 @@ msgstr ""
 "cais."
 
 #: app/templates/partials/contact_details.html:3
-msgid "Email:"
-msgstr "Ebost:"
+msgid "Email"
+msgstr "Ebost"
 
-#: app/templates/partials/contact_details.html:7
+#: app/templates/partials/contact_details.html:11
+#: app/templates/partials/contact_details.html:27
+#: app/templates/partials/contact_details.html:37
+msgid "except public holidays"
+msgstr ""
+
+#: app/templates/partials/contact_details.html:16
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
 "applications\n"
@@ -2430,21 +2417,13 @@ msgstr ""
 "Peidwch ag anfon unrhyw geisadau neu atodiadau dros e-bost. Byddwn yn "
 "derbyn ceisiadau drwy'r gwasanaeth hon yn unig."
 
-#: app/templates/partials/contact_details.html:11
-msgid "Telephone:"
-msgstr "Ffôn:"
+#: app/templates/partials/contact_details.html:21
+msgid "Telephone"
+msgstr "Ffôn"
 
-#: app/templates/partials/contact_details.html:14
-msgid "Textphone:"
-msgstr "Ffôn testun:"
-
-#: app/templates/partials/contact_details.html:19
-msgid "Opening times:"
-msgstr "Amserau agor:"
-
-#: app/templates/partials/contact_details.html:23
-msgid "Closed:"
-msgstr ""
+#: app/templates/partials/contact_details.html:32
+msgid "Textphone"
+msgstr "Ffôn testun"
 
 #: app/templates/partials/start-application-button.html:11
 msgid "Start new application"
@@ -2474,3 +2453,27 @@ msgstr "o'r meini prawf asesu"
 
 #~ msgid "Apply for funding to save an asset in your community"
 #~ msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
+
+#~ msgid ""
+#~ "Start or continue an application for "
+#~ "funding to save an asset in your"
+#~ " community"
+#~ msgstr "Gwneud cais am gyllid i achub ased yn eich cymuned"
+
+#~ msgid ""
+#~ "You must have received an invitation "
+#~ "to apply. If we did not invite "
+#~ "you, first "
+#~ msgstr ""
+#~ "Mae'n rhaid i chi fod wedi derbyn"
+#~ " gwahoddiad i ymgeisio. Os na "
+#~ "wnaethom eich gwahodd, "
+
+#~ msgid "express your interest in the fund"
+#~ msgstr "mynegwch eich diddordeb yn y gronfa yn gyntaf"
+
+#~ msgid "Opening times:"
+#~ msgstr "Amserau agor:"
+
+#~ msgid "Closed:"
+#~ msgstr ""

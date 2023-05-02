@@ -4,7 +4,7 @@
 {% from "partials/tasklist_submit.html" import tasklist_submit %}
 {% from "partials/round_closed_warning.html" import round_closed_warning %}
 {% block beforeContent %}
-    <a href="{{ url_for('account_routes.dashboard') }}" class="govuk-back-link"> {% trans %}Back to your applications{% endtrans %}</a>
+    <a href="{{dashboard_url}}" class="govuk-back-link"> {% trans %}Back to your applications{% endtrans %}</a>
 {% endblock %}
 {% set pageHeading %}{% trans %}Task List{% endtrans %}{% endset %}
 
