@@ -70,10 +70,10 @@ def privacy():
 
     if privacy_notice_url:
         return redirect(privacy_notice_url)
-    else:
-        current_app.logger.warning(
-            "No privacy notice configured for fund. Redirecting..."
-        )
-        return redirect(
-            "https://www.gov.uk/government/publications/community-ownership-fund-privacy-notice/community-ownership-fund-privacy-notice"
-        )
+    
+    current_app.logger.warning(
+        "No privacy notice configured for fund. Redirecting..."
+    )
+    return redirect(
+        "https://www.gov.uk/government/publications/community-ownership-fund-privacy-notice/community-ownership-fund-privacy-notice"
+    )
