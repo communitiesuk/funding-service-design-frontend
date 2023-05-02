@@ -66,11 +66,7 @@ def privacy():
         Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID
     )
 
-    privacy_notice_url = (
-        round_data.privacy_notice
-        if hasattr(round_data, "privacy_notice")
-        else None
-    )
+    privacy_notice_url = getattr(round_data, "privacy_notice", None)
 
     if privacy_notice_url:
         return redirect(privacy_notice_url)
