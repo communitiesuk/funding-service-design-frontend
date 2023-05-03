@@ -76,5 +76,5 @@ def privacy():
             "No privacy notice configured for fund. Redirecting..."
         )
         return redirect(
-            "https://www.gov.uk/government/publications/community-ownership-fund-privacy-notice/community-ownership-fund-privacy-notice"
+            "https://www.gov.uk/government/publications/community-ownership-fund-privacy-notice/community-ownership-fund-privacy-notice"    # noqa
         )
