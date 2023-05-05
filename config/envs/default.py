@@ -92,6 +92,11 @@ class DefaultConfig:
         + "/funds/{fund_short_name}/rounds/{round_short_name}"
     )
 
+    GET_APPLICATION_DISPLAY_FOR_FUND_ENDPOINT = (
+        FUND_STORE_API_HOST
+        + "/db/funds/{fund_id}/rounds/{round_id}/sections/application"
+    )
+
     FORMS_TEST_HOST = "http://localhost:3009"
     FORMS_SERVICE_NAME = environ.get(
         "FORMS_SERVICE_NAME", "xgov_forms_service"

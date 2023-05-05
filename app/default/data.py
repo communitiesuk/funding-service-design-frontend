@@ -6,6 +6,7 @@ from urllib.parse import urlencode
 import requests
 from app.models.account import Account
 from app.models.application import Application
+from app.models.application_display_mapping import ApplicationMapping
 from app.models.application_summary import ApplicationSummary
 from app.models.fund import Fund
 from app.models.round import Round
@@ -198,6 +199,25 @@ def get_round_data(fund_id, round_id, language=None, as_dict=False):
         return round_response
     else:
         return Round.from_dict(round_response)
+
+
+def get_application_display_config(fund_id, round_id, language=None):
+    language = {"language": language or get_lang()}
+    application_display_request_url = (
+        Config.GET_APPLICATION_DISPLAY_FOR_FUND_ENDPOINT.format(
+            fund_id=fund_id, round_id=round_id
+        )
+    )
+    application_display_response = get_data(application_display_request_url)
+    try:
+        return [
+            ApplicationMapping.from_dict(section)
+            for section in application_display_response
+        ]
+    except Exception as e:
+        raise ValueError(
+            f"Failed to create ApplicationMapping instance: {str(e)}"
+        )
 
 
 def get_round_data_by_short_names(
