@@ -51,6 +51,7 @@ class Round:
     title: str
     short_name: str
     prospectus: str
+    privacy_notice: str
     instructions: str
     contact_details: ContactDetails
     support_availability: SupportAvailability

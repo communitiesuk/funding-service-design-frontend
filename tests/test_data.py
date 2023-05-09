@@ -8,6 +8,7 @@ common_round_data = {
     "assessment_deadline": "2030-03-20 00:00:01",
     "assessment_criteria_weighting": [],
     "contact_details": {},
+    "privacy_notice": "",
     "support_availability": {},
     "prospectus": "/cof_r2w2_prospectus",
     "instructions": "Round specific instruction text",
