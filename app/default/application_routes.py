@@ -188,9 +188,7 @@ def tasklist(application_id):
             application_status=get_formatted,
             application_meta_data=application_meta_data,
             form=form,
-            contact_us_email_address=round_data.contact_details[
-                "email_address"
-            ],
+            contact_us_email_address=round_data.contact_email,
             submission_deadline=round_data.deadline,
             is_past_submission_deadline=current_datetime_after_given_iso_string(  # noqa:E501
                 round_data.deadline
