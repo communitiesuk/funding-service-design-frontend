@@ -6,6 +6,7 @@ from typing import List
 @dataclass
 class Form:
     title: str
+    form_name: str
 
     @staticmethod
     def from_dict(d: dict):

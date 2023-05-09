@@ -50,7 +50,7 @@ class Application:
                 "section_title": section.title,
                 "section_weighting": section.weighting,
                 "forms": [
-                    {"form_name": form.title, "state": None}
+                    {"form_name": form.form_name, "state": None}
                     for form in section.children
                 ],
             }
