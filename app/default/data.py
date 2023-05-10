@@ -229,7 +229,21 @@ def get_round_data_fail_gracefully(fund_id, round_id):
         )
         # return valid Round object with no values so we know we've
         # failed and can handle in templates appropriately
-        return Round("", [], "", "", "", "", "", "", "", "", {}, {})
+        return Round(
+            id="",
+            assessment_criteria_weighting=[],
+            assessment_deadline="",
+            deadline="",
+            fund_id="",
+            opens="",
+            title="",
+            short_name="",
+            prospectus="",
+            privacy_notice="",
+            instructions="",
+            contact_details={},
+            support_availability={},
+        )
 
 
 def get_account(email: str = None, account_id: str = None) -> Account | None:
