@@ -3,7 +3,6 @@ from app.default.application_routes import application_bp
 from app.default.content_routes import content_bp
 from app.default.data import get_round_data_fail_gracefully
 from app.default.routes import default_bp
-from config import Config
 from flask import current_app
 from flask import g
 from flask import redirect
@@ -21,8 +20,10 @@ def not_found(error):
     current_app.logger.warning(
         f"Encountered 404 against url {request.path}: {error}"
     )
+    fund_short_name = request.args.get("fund")
+    round_short_name = request.args.get("round")
     round_data = get_round_data_fail_gracefully(
-        Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID
+        fund_short_name, round_short_name, True
     )
     return render_template("404.html", round_data=round_data), 404
 
@@ -46,8 +47,10 @@ def internal_server_error(error):
 @account_bp.errorhandler(401)
 def unauthorised_error(error):
     current_app.logger.error(f"Encountered 401: {error}")
+    fund_short_name = request.args.get("fund")
+    round_short_name = request.args.get("round")
     round_data = get_round_data_fail_gracefully(
-        Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID
+        fund_short_name, round_short_name, True
     )
     return render_template("500.html", round_data=round_data), 401
 

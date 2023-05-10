@@ -5,24 +5,6 @@ from dataclasses import dataclass
 
 
 @dataclass
-class SupportAvailability:
-    time: str
-    days: str
-    closed: str
-
-    @classmethod
-    def from_dict(cls, d: dict):
-        # Filter unknown fields from JSON dictionary
-        return cls(
-            **{
-                k: v
-                for k, v in d.items()
-                if k in inspect.signature(cls).parameters
-            }
-        )
-
-
-@dataclass
 class Round:
     id: str
     assessment_deadline: str
