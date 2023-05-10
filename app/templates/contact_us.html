@@ -3,12 +3,12 @@
 {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText -%}
 {%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
 {% from "partials/contact_details.html" import contact_details %}
-{% set pageHeading %}Contact us{% endset %}
+{% set pageHeading %}{% trans %}Contact us{% endtrans %}{% endset %}
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
-            <p class="govuk-body">Contact the Community Ownership Fund if you have any questions. </p>
+            <p class="govuk-body">{% trans %}Contact the{% endtrans %} {{fund_name}} {% trans %}if you have any questions.{% endtrans %}</p>
             {% if round_data.contact_details["email_address"]|length %}
                 {{ contact_details(
                         round_data.contact_details["email_address"],

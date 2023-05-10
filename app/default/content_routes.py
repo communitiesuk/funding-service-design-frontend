@@ -1,3 +1,4 @@
+from app.default.data import get_fund_data
 from app.default.data import get_round_data_by_short_names
 from app.default.data import get_round_data_fail_gracefully
 from config import Config
@@ -50,7 +51,12 @@ def contact_us():
     round_data = get_round_data_fail_gracefully(
         Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID
     )
-    return render_template("contact_us.html", round_data=round_data)
+    fund_data = get_fund_data(Config.DEFAULT_FUND_ID)
+    return render_template(
+        "contact_us.html",
+        round_data=round_data,
+        fund_name=fund_data.get("name"),
+    )
 
 
 @content_bp.route("/cookie_policy", methods=["GET"])

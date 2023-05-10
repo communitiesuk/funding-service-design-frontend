@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-04-20 12:17+0100\n"
+"POT-Creation-Date: 2023-04-26 15:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: app/create_app.py:139
+#: app/create_app.py:151
 msgid "Apply for"
+msgstr ""
+
+#: app/create_app.py:153
+msgid "Access Funding"
 msgstr ""
 
 #: app/filters.py:15 app/filters.py:26
@@ -1880,23 +1884,42 @@ msgid ""
 "organisation you are applying on behalf of"
 msgstr ""
 
-#: app/templates/dashboard.html:11
-msgid "Your applications"
+#: app/templates/contact_us.html:6 app/templates/footer.html:23
+msgid "Contact us"
 msgstr ""
 
-#: app/templates/dashboard.html:17
+#: app/templates/contact_us.html:11
+msgid "Contact the"
+msgstr ""
+
+#: app/templates/contact_us.html:11
+msgid "if you have any questions."
+msgstr ""
+
+#: app/templates/dashboard_all.html:11
+msgid "All applications"
+msgstr ""
+
+#: app/templates/dashboard_all.html:17
+#: app/templates/dashboard_single_fund.html:21
 msgid "You have started"
 msgstr ""
 
-#: app/templates/dashboard.html:17
+#: app/templates/dashboard_all.html:17
+#: app/templates/dashboard_single_fund.html:21
 #, python-format
 msgid " %(application_count)s application"
 msgid_plural "%(application_count)s applications"
 msgstr[0] ""
 msgstr[1] ""
 
-#: app/templates/dashboard.html:17
+#: app/templates/dashboard_all.html:17
+#: app/templates/dashboard_single_fund.html:21
 msgid "using this email address"
+msgstr ""
+
+#: app/templates/dashboard_single_fund.html:12
+msgid "Your applications for "
 msgstr ""
 
 #: app/templates/footer.html:10
@@ -1909,10 +1932,6 @@ msgstr ""
 
 #: app/templates/footer.html:19
 msgid "Accessibility Statement"
-msgstr ""
-
-#: app/templates/footer.html:23
-msgid "Contact us"
 msgstr ""
 
 #: app/templates/fund_start_page.html:3
@@ -1949,23 +1968,27 @@ msgid ""
 "applications through this service."
 msgstr ""
 
-#: app/templates/header.html:32
+#: app/templates/header.html:34
+msgid "View all applications"
+msgstr ""
+
+#: app/templates/header.html:38
 msgid "Sign out"
 msgstr ""
 
-#: app/templates/header.html:44
+#: app/templates/header.html:50
 msgid "beta"
 msgstr ""
 
-#: app/templates/header.html:46
+#: app/templates/header.html:52
 msgid "This is a new service - your "
 msgstr ""
 
-#: app/templates/header.html:46
+#: app/templates/header.html:52
 msgid "feedback"
 msgstr ""
 
-#: app/templates/header.html:46
+#: app/templates/header.html:52
 msgid " will help us to improve it."
 msgstr ""
 
