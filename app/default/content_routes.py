@@ -1,10 +1,10 @@
 from app.default.data import get_round_data_by_short_names
 from app.default.data import get_round_data_fail_gracefully
-from config import Config
 from flask import Blueprint
 from flask import current_app
 from flask import redirect
 from flask import render_template
+from flask import request
 from flask import url_for
 
 content_bp = Blueprint("content_routes", __name__, template_folder="templates")
@@ -44,8 +44,10 @@ def cof_r2w2_all_questions_redirect():
 @content_bp.route("/contact_us", methods=["GET"])
 def contact_us():
     current_app.logger.info("Contact us page loaded.")
+    fund_short_name = request.args.get("fund")
+    round_short_name = request.args.get("round")
     round_data = get_round_data_fail_gracefully(
-        Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID
+        fund_short_name, round_short_name, True
     )
     return render_template("contact_us.html", round_data=round_data)
 

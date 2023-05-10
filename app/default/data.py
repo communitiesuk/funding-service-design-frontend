@@ -235,21 +235,24 @@ def get_round_data_by_short_names(
         return Round.from_dict(response)
 
 
-def get_round_data_fail_gracefully(fund_id, round_id):
+def get_round_data_fail_gracefully(fund_id, round_id, use_short_name=False):
     try:
-        language = {"language": get_lang()}
-        round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(
-            fund_id=fund_id, round_id=round_id
-        )
-        round_response = get_data(round_request_url, language)
-        return Round.from_dict(round_response)
+        if fund_id and round_id:
+            params = {}
+            round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(
+                fund_id=fund_id, round_id=round_id
+            )
+            if use_short_name:
+                params["use_short_name"] = True
+            round_response = get_data(round_request_url, params)
+            return Round.from_dict(round_response)
     except:  # noqa
         current_app.logger.error(
-            f"Call to Fund Store failed GET { round_request_url }"
+            f"Call to Fund Store failed GET {round_request_url}"
         )
-        # return valid Round object with no values so we know we've
-        # failed and can handle in templates appropriately
-        return Round("", [], "", "", "", "", "", "", "", "", {}, {})
+    # return valid Round object with no values so we
+    # know we've failed and can handle in templates appropriately
+    return Round("", "", "", "", "", "", "", "", "", "", "", "", "", "")
 
 
 def get_account(email: str = None, account_id: str = None) -> Account | None:

@@ -204,8 +204,8 @@ def new():
         url=f"{Config.APPLICATION_STORE_API_HOST}/applications",
         json={
             "account_id": account_id,
-            "round_id": request.form["round_id"] or Config.DEFAULT_ROUND_ID,
-            "fund_id": request.form["fund_id"] or Config.DEFAULT_FUND_ID,
+            "round_id": request.form["round_id"],
+            "fund_id": request.form["fund_id"],
             "language": get_lang(),
         },
     )
