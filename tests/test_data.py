@@ -4,22 +4,24 @@ from app.models.application_summary import ApplicationSummary
 from app.models.round import Round
 
 common_round_data = {
-    "opens": "2022-09-01 00:00:01",
-    "assessment_deadline": "2030-03-20 00:00:01",
-    "assessment_criteria_weighting": [],
-    "contact_details": {},
-    "privacy_notice": "",
-    "support_availability": {},
+    "opens": "2022-09-01T00:00:01",
+    "assessment_deadline": "2030-03-20T00:00:01",
+    "contact_email": "test@example.com",
+    "contact_phone": "123456789",
+    "contact_textphone": "123456789",
+    "support_times": "9-5",
+    "support_days": "Mon-Fri",
     "prospectus": "/cof_r2w2_prospectus",
     "instructions": "Round specific instruction text",
+    "privacy_notice": "",
 }
 common_application_data = {
     "account_id": "test-user",
     "reference": "TEST-REF-B",
     "project_name": "Test project",
     "date_submitted": None,
-    "started_at": "2022-05-20 14:47:12",
-    "last_edited": "2022-05-24 11:03:59",
+    "started_at": "2022-05-20T14:47:12",
+    "last_edited": "2022-05-24T11:03:59",
     "language": "en",
     "id": "xxxx",
     "status": "IN_PROGRESS",
@@ -89,7 +91,7 @@ TEST_ROUNDS_DATA = [
             "id": "fsd-r2w2",
             "short_name": "r2w2",
             "title": "closed_round",
-            "deadline": "2023-01-01 00:00:01",
+            "deadline": "2023-01-01T00:00:01",
         }
     ),
     Round.from_dict(
@@ -99,7 +101,7 @@ TEST_ROUNDS_DATA = [
             "id": "fsd-r2w3",
             "short_name": "r2w3",
             "title": "open_round",
-            "deadline": "2050-01-01 00:00:01",
+            "deadline": "2050-01-01T00:00:01",
         }
     ),
     Round.from_dict(
@@ -109,7 +111,7 @@ TEST_ROUNDS_DATA = [
             "id": "abc-r1",
             "short_name": "r1",
             "title": "closed_round",
-            "deadline": "2023-01-01 00:00:01",
+            "deadline": "2023-01-01T00:00:01",
         }
     ),
     Round.from_dict(
@@ -119,7 +121,7 @@ TEST_ROUNDS_DATA = [
             "id": "abc-r2",
             "short_name": "r2",
             "title": "open_round",
-            "deadline": "2050-01-01 00:00:01",
+            "deadline": "2050-01-01T00:00:01",
         }
     ),
 ]
@@ -139,17 +141,19 @@ TEST_DISPLAY_DATA = {
                     "is_past_submission_deadline": True,
                     "is_not_yet_open": False,
                     "round_details": {
-                        "opens": "2022-09-01 00:00:01",
-                        "deadline": "2030-01-30 00:00:01",
-                        "assessment_deadline": "2030-03-20 00:00:01",
+                        "opens": "2022-09-01T00:00:01",
+                        "deadline": "2030-01-30T00:00:01",
+                        "assessment_deadline": "2030-03-20T00:00:01",
                         "id": "cof-r2w2",
                         "title": "Round 2 Window 2",
                         "instructions": "r2w2 instructions",
                         "fund_id": "fund-service-design",
                         "short_name": "R2W2",
-                        "assessment_criteria_weighting": [],
-                        "contact_details": {},
-                        "support_availability": {},
+                        "contact_email": "test@example.com",
+                        "contact_phone": "123456789",
+                        "contact_textphone": "123456789",
+                        "support_times": "9-5",
+                        "support_days": "Mon-Fri",
                     },
                     "applications": [
                         {
@@ -158,10 +162,10 @@ TEST_DISPLAY_DATA = {
                             "status": "NOT_SUBMITTED",
                             "round_id": "summer",
                             "fund_id": "funding-service-design",
-                            "started_at": "2020-01-01 12:03:00",
+                            "started_at": "2020-01-01T12:03:00",
                             "project_name": None,
                             "last_edited": datetime.strptime(
-                                "2020-01-01 12:03:00", "%Y-%m-%d %H:%M:%S"
+                                "2020-01-01T12:03:00", "%Y-%m-%dT%H:%M:%S"
                             ),
                         },
                         {
@@ -170,7 +174,7 @@ TEST_DISPLAY_DATA = {
                             "status": "SUBMITTED",
                             "round_id": "summer",
                             "fund_id": "funding-service-design",
-                            "started_at": "2023-01-01 12:01:00",
+                            "started_at": "2023-01-01T12:01:00",
                             "project_name": "",
                             "last_edited": None,
                         },
@@ -180,17 +184,19 @@ TEST_DISPLAY_DATA = {
                     "is_past_submission_deadline": False,
                     "is_not_yet_open": False,
                     "round_details": {
-                        "opens": "2022-09-01 00:00:01",
-                        "deadline": "2030-01-30 00:00:01",
-                        "assessment_deadline": "2030-03-20 00:00:01",
+                        "opens": "2022-09-01T00:00:01",
+                        "deadline": "2030-01-30T00:00:01",
+                        "assessment_deadline": "2030-03-20T00:00:01",
                         "id": "summer",
                         "title": "Summer round",
                         "fund_id": "fund-service-design",
                         "short_name": "R2W3",
                         "instructions": "r2w3 instructions",
-                        "assessment_criteria_weighting": [],
-                        "contact_details": {},
-                        "support_availability": {},
+                        "contact_email": "test@example.com",
+                        "contact_phone": "123456789",
+                        "contact_textphone": "123456789",
+                        "support_times": "9-5",
+                        "support_days": "Mon-Fri",
                     },
                     "applications": [
                         {
@@ -199,10 +205,10 @@ TEST_DISPLAY_DATA = {
                             "status": "IN_PROGRESS",
                             "round_id": "summer",
                             "fund_id": "funding-service-design",
-                            "started_at": "2020-01-01 12:03:00",
+                            "started_at": "2020-01-01T12:03:00",
                             "project_name": None,
                             "last_edited": datetime.strptime(
-                                "2020-01-01 12:03:00", "%Y-%m-%d %H:%M:%S"
+                                "2020-01-01T12:03:00", "%Y-%m-%dT%H:%M:%S"
                             ),
                         },
                         {
@@ -211,7 +217,7 @@ TEST_DISPLAY_DATA = {
                             "status": "READY_TO_SUBMIT",
                             "round_id": "summer",
                             "fund_id": "funding-service-design",
-                            "started_at": "2023-01-01 12:01:00",
+                            "started_at": "2023-01-01T12:01:00",
                             "project_name": "",
                             "last_edited": None,
                         },
