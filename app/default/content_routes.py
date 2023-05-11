@@ -83,7 +83,8 @@ def privacy():
             return redirect(privacy_notice_url)
 
     current_app.logger.warning(
-        "No privacy notice configured for fund. Redirecting..."
+        f"No privacy notice configured for round ({fund_short_name} -"
+        f" {round_short_name}). Redirecting..."
     )
     return redirect(
         "https://www.gov.uk/government/publications/community-ownership-fund-privacy-notice/community-ownership-fund-privacy-notice"  # noqa

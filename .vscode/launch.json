@@ -5,12 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Remote Attach",
+            "name": "Docker Runner frontend",
             "type": "python",
             "request": "attach",
             "connect": {
                 "host": "localhost",
-                "port": 5687
+                "port": 5688
             },
             "pathMappings": [
                 {
