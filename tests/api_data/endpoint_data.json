@@ -1269,6 +1269,7 @@
       "title": "Round 2 Window 3",
       "prospectus": "http://google.com/search?q=r2w3",
       "instructions": "Round specific instruction text",
+      "privacy_notice": "",
       "contact_email": "test@example.com",
       "contact_phone": "123456789",
       "contact_textphone": "123456789",

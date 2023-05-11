@@ -2,7 +2,7 @@
 #   FSD Utils
 #-----------------------------------
 #funding-service-design-utils>=1.0.30,<1.1.0
-git+https://github.com/communitiesuk/funding-service-design-utils.git#fund-store-db
+git+https://github.com/communitiesuk/funding-service-design-utils.git@fund-store-db
 requests
 
 #-----------------------------------
