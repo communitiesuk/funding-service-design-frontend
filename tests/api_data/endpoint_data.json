@@ -1273,7 +1273,8 @@
       "contact_phone": "123456789",
       "contact_textphone": "123456789",
       "support_times": "9-5",
-      "support_days": "Mon-Fri"
+      "support_days": "Mon-Fri",
+      "privacy_notice": ""
     },
   "fund_store/funds/cof/rounds?language=en&use_short_name=true":
     [
