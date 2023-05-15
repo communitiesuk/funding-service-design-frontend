@@ -1,7 +1,7 @@
 {% macro tasklist_section(section_name, section_data, weighting, application_meta_data, application_status, index) %}
 <li>
     <h2 class="app-task-list__section">
-      <span class="app-task-list__section-number">{{index}}. </span> {{section_name|kebab_case_to_human}}
+      <span class="app-task-list__section-number">{{index}}. </span> {{section_name}}
     </h2>
     {% if weighting %}
     <p class="govuk-body">{% trans %}This section is worth{% endtrans %} <b>{{weighting}}</b>% {% trans %}of the assessment criteria{% endtrans %}.</p>
@@ -12,7 +12,7 @@
       <li class="app-task-list__item task-list__new-design">
         <span class="app-task-list__task-name">
           <a class="govuk-body govuk-link govuk-link--no-visited-state" href="{{url_for("application_routes.continue_application", application_id=application_meta_data["application_id"], form_name=form["form_name"])}}">
-            {{form["form_name"]|kebab_case_to_human}}
+            {{form["form_title"]}}
           </a>
         </span>
 

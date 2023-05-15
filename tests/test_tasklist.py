@@ -68,7 +68,7 @@ def test_tasklist_route(flask_test_client, mocker, monkeypatch):
     )
     assert response.status_code == 200
     assert b"Help with filling out your application" in response.data
-    assert b"Test section 1" in response.data
+    assert b"Test Section 1" in response.data
     assert b"Risk" in response.data
 
 
