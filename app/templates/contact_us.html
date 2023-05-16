@@ -9,14 +9,23 @@
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
             <p class="govuk-body">{% trans %}Contact the{% endtrans %} {{fund_name}} {% trans %}if you have any questions.{% endtrans %}</p>
-            {% if round_data.contact_details["email_address"]|length %}
+
+            {% if round_data.contact_email or round_data.contact_phone or round_data.support_days or round_data.support_times %}
                 {{ contact_details(
-                        round_data.contact_details["email_address"],
-                        round_data.contact_details["phone"],
-                        round_data.contact_details["text_phone"],
-                        round_data.support_availability["days"],
-                        round_data.support_availability["time"],
-                        round_data.support_availability["closed"]
+                            round_data.contact_email,
+                            round_data.contact_phone,
+                            round_data.contact_phone,
+                            round_data.support_days,
+                            round_data.support_times
+                     )
+                }}
+            {% else %}
+                {{ contact_details(
+                    "fsd.support@levellingup.gov.uk",
+                    "",
+                    "",
+                    "9am to 5pm",
+                    "Monday to Friday"
                     )
                 }}
             {%  endif %}

@@ -46,7 +46,7 @@ def index_fund_round(fund_short_name, round_short_name):
         round_title=round_data.title,
         submission_deadline=round_data.deadline,
         is_past_submission_deadline=round_status.past_submission_deadline,
-        contact_us_email_address=round_data.contact_details["email_address"],
+        contact_us_email_address=round_data.contact_email,
         prospectus_link=round_data.prospectus,
         instruction_text=round_data.instructions,
     )

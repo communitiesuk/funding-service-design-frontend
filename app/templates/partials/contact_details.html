@@ -1,5 +1,5 @@
-{% macro contact_details(contact_us_email_address, contact_us_phone, contact_us_text_phone, opening_days, opening_time, closed) %}
-    {% if contact_us_email_address|length %}
+{% macro contact_details(contact_us_email_address, contact_us_phone, contact_us_text_phone, opening_days, opening_time) %}
+    {% if contact_us_email_address %}
         <h3 class="govuk-heading-s">{% trans %}Email{% endtrans %}</h3>
         <ul class="govuk-list">
             <li>
@@ -17,7 +17,7 @@
             through this service.{% endtrans %}
         </div>
     {% endif %}
-    {% if contact_us_phone|length %}
+    {% if contact_us_phone %}
         <h3 class="govuk-heading-s">{% trans %}Telephone{% endtrans %}</h3>
         <ul class="govuk-list">
             <li>
@@ -28,7 +28,7 @@
             </li>
         </ul>
     {% endif %}
-    {% if contact_us_text_phone|length %}
+    {% if contact_us_text_phone %}
         <h3 class="govuk-heading-s">{% trans %}Textphone{% endtrans %}</h3>
         <ul class="govuk-list">
                 <li>{{ contact_us_text_phone }}

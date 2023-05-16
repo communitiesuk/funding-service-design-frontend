@@ -3,6 +3,7 @@ import json
 from app.default.data import RoundStatus
 from app.models.account import Account
 from app.models.application import Application
+from app.models.application_display_mapping import ApplicationMapping
 from app.models.fund import Fund
 from app.models.round import Round
 
@@ -23,6 +24,11 @@ TEST_SUBMITTED_APPLICATION_STORE_DATA = data[
 ]
 
 TEST_ACCOUNT_STORE_DATA = data["account_store/accounts?account_id=test-user"]
+
+TEST_APPLICATION_DISPLAY_RESPONSE = data[
+    "fund_store/funds/funding-service-design/"
+    "rounds/summer/sections/application"
+]
 
 
 def test_tasklist_route(flask_test_client, mocker, monkeypatch):
@@ -50,12 +56,20 @@ def test_tasklist_route(flask_test_client, mocker, monkeypatch):
         "app.default.application_routes.get_account",
         return_value=Account.from_json(TEST_ACCOUNT_STORE_DATA),
     )
+    mocker.patch(
+        "app.default.application_routes.get_application_display_config",
+        return_value=[
+            ApplicationMapping.from_dict(section)
+            for section in TEST_APPLICATION_DISPLAY_RESPONSE
+        ],
+    )
     response = flask_test_client.get(
         "tasklist/test-application-id", follow_redirects=True
     )
     assert response.status_code == 200
     assert b"Help with filling out your application" in response.data
-    assert b"About your organisation" in response.data
+    assert b"Test Section 1" in response.data
+    assert b"Risk" in response.data
 
 
 def test_tasklist_route_after_deadline(flask_test_client, mocker, monkeypatch):

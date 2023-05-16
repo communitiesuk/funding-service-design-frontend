@@ -6,6 +6,7 @@ from app.constants import ApplicationStatus
 from app.default.data import determine_round_status
 from app.default.data import get_account
 from app.default.data import get_application_data
+from app.default.data import get_application_display_config
 from app.default.data import get_fund_data
 from app.default.data import get_round_data
 from app.helpers import format_rehydrate_payload
@@ -151,7 +152,13 @@ def tasklist(application_id):
         language=application.language,
         as_dict=False,
     )
-    sections = application.get_sections()
+
+    # Create tasklist display config
+    section_display_config = get_application_display_config(
+        application.fund_id, application.round_id
+    )
+    display_config = application.match_forms_to_state(section_display_config)
+
     form = FlaskForm()
     application_meta_data = {
         "application_id": application_id,
@@ -177,13 +184,11 @@ def tasklist(application_id):
         return render_template(
             "tasklist.html",
             application=application,
-            sections=sections,
+            sections=display_config,
             application_status=get_formatted,
             application_meta_data=application_meta_data,
             form=form,
-            contact_us_email_address=round_data.contact_details[
-                "email_address"
-            ],
+            contact_us_email_address=round_data.contact_email,
             submission_deadline=round_data.deadline,
             is_past_submission_deadline=current_datetime_after_given_iso_string(  # noqa:E501
                 round_data.deadline

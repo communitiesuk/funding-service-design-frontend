@@ -4,7 +4,6 @@ from datetime import datetime
 from typing import List
 
 from app.models.application_parts.form import Form
-from config import Config
 from flask import current_app
 
 
@@ -40,36 +39,28 @@ class Application:
             }
         )
 
-    def create_blank_sections(self):
-        FORMS_CONFIG_FOR_FUND_ROUND = Config.FORMS_CONFIG_FOR_FUND_ROUND
-        try:
-            sections_config = FORMS_CONFIG_FOR_FUND_ROUND[
-                ":".join([self.fund_id, self.round_id])
-            ]
-        except IndexError:
-            current_app.logger.error(
-                f"FORM CONFIG for FUND:{self.fund_id} and"
-                f" ROUND:{self.round_id} does not exist"
-            )
-        return [
-            {
-                "section_title": section["section_title"][self.language],
-                "section_weighting": section["section_weighting"],
-                "forms": [
-                    {"form_name": form[self.language], "state": None}
-                    for form in section["ordered_form_names_within_section"]
-                ],
-            }
-            for section in sections_config
-        ]
-
-    def get_sections(self):
+    def match_forms_to_state(self, display_config):
         current_app.logger.info(
             "Sorting forms into order using section config associated with"
             f"fund: {self.fund_id}, round: {self.round_id}"
             f", for application id:{self.id}."
         )
-        sections_config = self.create_blank_sections()
+        sections_config = [
+            {
+                "section_title": section.title,
+                "section_weighting": section.weighting,
+                "forms": [
+                    {
+                        "form_name": form.form_name,
+                        "state": None,
+                        "form_title": form.title,
+                    }
+                    for form in section.children
+                ],
+            }
+            for section in display_config
+        ]
+
         # fill the section/forms with form state from the application
         for form_state in self.forms:
             # find matching form in sections
@@ -77,4 +68,5 @@ class Application:
                 for form_in_config in section_config["forms"]:
                     if form_in_config["form_name"] == form_state["name"]:
                         form_in_config["state"] = form_state
+
         return sections_config

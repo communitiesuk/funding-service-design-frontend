@@ -5,11 +5,9 @@ from app.default.data import get_default_round_for_fund
 from app.default.data import RoundStatus
 from app.models.fund import Fund
 from app.models.round import Round
-from app.models.round import SupportAvailability
 
 
 default_round_fields = {
-    "assessment_criteria_weighting": [],
     "assessment_deadline": "",
     "fund_id": "",
     "title": "test round title",
@@ -17,8 +15,11 @@ default_round_fields = {
     "prospectus": "",
     "privacy_notice": "",
     "instructions": "",
-    "contact_details": {"email_address": "blah@google.com"},
-    "support_availability": SupportAvailability("", "", ""),
+    "contact_email": "test@example.com",
+    "contact_phone": "123456789",
+    "contact_textphone": "123456789",
+    "support_times": "9-5",
+    "support_days": "Mon-Fri",
 }
 
 
@@ -39,7 +40,7 @@ def mock_get_round(mocker):
         return_value=Round(
             id="1",
             opens="",
-            deadline="2023-01-01 12:00:00",
+            deadline="2023-01-01T12:00:00",
             **default_round_fields,
         ),
     )

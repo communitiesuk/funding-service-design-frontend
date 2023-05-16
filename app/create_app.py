@@ -2,18 +2,21 @@ from os import getenv
 
 from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
+from app.default.data import get_round_data_by_short_names
 from app.filters import date_format_short_month
 from app.filters import datetime_format
 from app.filters import datetime_format_short_month
 from app.filters import kebab_case_to_human
 from app.filters import snake_case_to_human
 from app.filters import status_translation
+from app.models.fund import Fund
 from app.models.fund import FUND_SHORT_CODES
 from config import Config
 from flask import current_app
 from flask import Flask
 from flask import make_response
 from flask import request
+from flask import url_for
 from flask_babel import Babel
 from flask_babel import gettext
 from flask_babel import pgettext
@@ -121,26 +124,36 @@ def create_app() -> Flask:
             else {},
         )
 
+    def find_fund_in_request():
+        fund_short_name = request.view_args.get("fund_short_name")
+        if fund_short_name and str.upper(fund_short_name) in [
+            member.value for member in FUND_SHORT_CODES
+        ]:
+            fund = get_fund_data_by_short_name(fund_short_name)
+        elif request.view_args.get("fund_id"):
+            fund = get_fund_data(request.view_args.get("fund_id"), True)
+        elif request.args.get("fund_id"):
+            fund = get_fund_data(request.args.get("fund_id"), True)
+        elif request.args.get("fund"):
+            fund = get_fund_data_by_short_name(request.args.get("fund"))
+        return fund
+
+    def find_round_in_request(fund):
+        round_short_name = request.view_args.get("round_short_name")
+        if not round_short_name:
+            round_short_name = request.args.get("round")
+        if round_short_name:
+            round = get_round_data_by_short_names(
+                fund.short_name, round_short_name, False
+            )
+        return round
+
     @flask_app.context_processor
     def inject_service_name():
         fund = None
         if request.view_args or request.args:
             try:
-                fund_short_name = request.view_args.get("fund_short_name")
-                if fund_short_name and str.upper(fund_short_name) in [
-                    member.value for member in FUND_SHORT_CODES
-                ]:
-                    fund = get_fund_data_by_short_name(fund_short_name)
-                elif request.view_args.get("fund_id"):
-                    fund = get_fund_data(
-                        request.view_args.get("fund_id"), True
-                    )
-                elif request.args.get("fund_id"):
-                    fund = get_fund_data(request.args.get("fund_id"), True)
-                elif request.args.get("fund"):
-                    fund = get_fund_data_by_short_name(
-                        request.args.get("fund")
-                    )
+                fund = find_fund_in_request()
             except Exception as e:  # noqa
                 current_app.logger.warn(
                     f"""Exception: {e}, occured when trying to
@@ -152,6 +165,36 @@ def create_app() -> Flask:
         else:
             service_title = gettext("Access Funding")
         return dict(service_title=service_title)
+
+    @flask_app.context_processor
+    def inject_content_urls():
+        try:
+            fund: Fund = find_fund_in_request()
+            if fund:
+                round = find_round_in_request(fund)
+                if round:
+                    return dict(
+                        contact_us_url=url_for(
+                            "content_routes.contact_us",
+                            fund=fund.short_name,
+                            round=round.short_name,
+                        ),
+                        privacy_url=url_for(
+                            "content_routes.privacy",
+                            fund=fund.short_name,
+                            round=round.short_name,
+                        ),
+                    )
+        except Exception as e:  # noqa
+            current_app.logger.warn(
+                f"""Exception: {e}, occured when trying to
+                reach url: {request.url}, with view_args:
+                {request.view_args}, and args: {request.args}"""
+            )
+        return dict(
+            contact_us_url=url_for("content_routes.contact_us"),
+            privacy_url=url_for("content_routes.privacy"),
+        )
 
     @flask_app.before_request
     def filter_favicon_requests():

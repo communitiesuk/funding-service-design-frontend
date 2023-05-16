@@ -92,6 +92,11 @@ class DefaultConfig:
         + "/funds/{fund_short_name}/rounds/{round_short_name}"
     )
 
+    GET_APPLICATION_DISPLAY_FOR_FUND_ENDPOINT = (
+        FUND_STORE_API_HOST
+        + "/funds/{fund_id}/rounds/{round_id}/sections/application"
+    )
+
     FORMS_TEST_HOST = "http://localhost:3009"
     FORMS_SERVICE_NAME = environ.get(
         "FORMS_SERVICE_NAME", "xgov_forms_service"
@@ -170,11 +175,6 @@ class DefaultConfig:
     }
 
     USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "False"))
-
-    DEFAULT_FUND_ID = CommonConfig.COF_FUND_ID
-    DEFAULT_ROUND_ID = CommonConfig.get_default_round_id()
-
-    FORMS_CONFIG_FOR_FUND_ROUND = CommonConfig.FORMS_CONFIG_FOR_FUND_ROUND
 
     # GOV.UK PaaS
     if environ.get("VCAP_SERVICES"):

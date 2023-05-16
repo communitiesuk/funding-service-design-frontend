@@ -17,31 +17,35 @@
   },
   "fund_store/funds/funding-service-design/rounds?language=en": [
     {
-      "opens": "2022-09-01 00:00:01",
-      "deadline": "2023-01-01 00:00:01",
-      "assessment_deadline": "2030-03-20 00:00:01",
+      "opens": "2022-09-01T00:00:01",
+      "deadline": "2023-01-01T00:00:01",
+      "assessment_deadline": "2030-03-20T00:00:01",
       "id": "cof-r2w2",
       "title": "Round 2 Window 2",
       "fund_id": "fund-service-design",
       "short_name": "R2W2",
-      "assessment_criteria_weighting": [],
-      "contact_details": {},
-      "support_availability": {},
+      "contact_email": "test@example.com",
+      "contact_phone": "123456789",
+      "contact_textphone": "123456789",
+      "support_times": "9-5",
+      "support_days": "Mon-Fri",
       "prospectus": "/cof_r2w2_prospectus",
       "privacy_notice": "",
       "instructions": "Round specific instruction text"
     },
     {
-      "opens": "2022-09-01 00:00:01",
-      "deadline": "2030-01-30 00:00:01",
-      "assessment_deadline": "2030-03-20 00:00:01",
+      "opens": "2022-09-01T00:00:01",
+      "deadline": "2030-01-30T00:00:01",
+      "assessment_deadline": "2030-03-20T00:00:01",
       "id": "summer",
       "title": "Summer round",
       "fund_id": "fund-service-design",
       "short_name": "R2W3",
-      "assessment_criteria_weighting": [],
-      "contact_details": {},
-      "support_availability": {},
+      "contact_email": "test@example.com",
+      "contact_phone": "123456789",
+      "contact_textphone": "123456789",
+      "support_times": "9-5",
+      "support_days": "Mon-Fri",
       "prospectus": "/fsd_r2w3_prospectus",
       "privacy_notice": "",
       "instructions": "Round specific instruction text"
@@ -63,41 +67,14 @@
     "privacy_notice": "",
     "instructions": "Round specific instruction text",
     "short_name": "R2W2",
-    "assessment_criteria_weighting": [
-      {
-        "id": "e2fd30d2-9207-421c-b8b3-c961bcee138b",
-        "name": "Strategic case",
-        "value": 0.3
-      },
-      {
-        "id": "e557773a-74c9-43ee-a52c-88ccae279d08",
-        "name": "Management case",
-        "value": 0.3
-      },
-      {
-        "id": "9e282cdb-6c42-4430-9563-dc4995b59bdd",
-        "name": "Potential to delivery community benefits",
-        "value": 0.3
-      },
-      {
-        "id": "6020db6c-df67-4932-a2f3-2e9dd1934164",
-        "name": "Added value to the community",
-        "value": 0.1
-      }
-    ],
-    "opens": "2022-09-01 00:00:01",
-    "deadline": "2030-01-30 00:00:01",
-    "assessment_deadline": "2030-03-20 00:00:01",
-    "contact_details": {
-      "phone": "",
-      "email_address": "COF@levellingup.gov.uk",
-      "text_phone": ""
-    },
-    "support_availability": {
-      "time": "9am to 5pm",
-      "days": "Monday to Friday",
-      "closed": "Easter Sunday, Christmas Day, Boxing Day and New Year’s Day"
-    }
+    "opens": "2022-09-01T00:00:01",
+    "deadline": "2030-01-30T00:00:01",
+    "assessment_deadline": "2030-03-20T00:00:01",
+    "contact_email": "test@example.com",
+    "contact_phone": "123456789",
+    "contact_textphone": "123456789",
+    "support_times": "9-5",
+    "support_days": "Mon-Fri"
   },
   "fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds/5cf439bf-ef6f-431e-92c5-a1d90a4dd32f?language=en": {
     "id": "5cf439bf-ef6f-431e-92c5-a1d90a4dd32f",
@@ -106,42 +83,14 @@
     "short_name": "R2W3",
     "instructions": "Round specific instruction text",
     "prospectus": "/prospectus_link",
-    "privacy_notice": "",
-    "assessment_criteria_weighting": [
-      {
-        "id": "e2fd30d2-9207-421c-b8b3-c961bcee138b",
-        "name": "Strategic case",
-        "value": 0.3
-      },
-      {
-        "id": "e557773a-74c9-43ee-a52c-88ccae279d08",
-        "name": "Management case",
-        "value": 0.3
-      },
-      {
-        "id": "9e282cdb-6c42-4430-9563-dc4995b59bdd",
-        "name": "Potential to delivery community benefits",
-        "value": 0.3
-      },
-      {
-        "id": "6020db6c-df67-4932-a2f3-2e9dd1934164",
-        "name": "Added value to the community",
-        "value": 0.1
-      }
-    ],
-    "opens": "2022-09-01 00:00:01",
-    "deadline": "2030-01-30 00:00:01",
-    "assessment_deadline": "2030-03-20 00:00:01",
-    "contact_details": {
-      "phone": "",
-      "email_address": "COF@levellingup.gov.uk",
-      "text_phone": ""
-    },
-    "support_availability": {
-      "time": "9am to 5pm",
-      "days": "Monday to Friday",
-      "closed": "Easter Sunday, Christmas Day, Boxing Day and New Year’s Day"
-    }
+    "opens": "2022-09-01T00:00:01",
+    "deadline": "2030-01-30T00:00:01",
+    "assessment_deadline": "2030-03-20T00:00:01",
+    "contact_email": "test@example.com",
+    "contact_phone": "123456789",
+    "contact_textphone": "123456789",
+    "support_times": "9-5",
+    "support_days": "Mon-Fri"
   },
   "application_store/applications/test_id": {
     "id": "test_id",
@@ -152,7 +101,7 @@
     "reference": "TEST-REF-A",
     "project_name": null,
     "date_submitted": null,
-    "started_at": "2022-05-20 14:47:12",
+    "started_at": "2022-05-20T14:47:12",
     "last_edited": null,
     "language": "en",
     "forms": [
@@ -268,8 +217,8 @@
       "reference": "TEST-REF-B",
       "project_name": null,
       "date_submitted": null,
-      "started_at": "2022-05-20 14:47:12",
-      "last_edited": "2022-05-24 11:03:59",
+      "started_at": "2022-05-20T14:47:12",
+      "last_edited": "2022-05-24T11:03:59",
       "language": "en"
     },
     {
@@ -311,8 +260,8 @@
       "reference": "TEST-REF-D",
       "project_name": null,
       "date_submitted": null,
-      "started_at": "2022-05-20 14:47:12",
-      "last_edited": "2022-05-24 11:03:59",
+      "started_at": "2022-05-20T14:47:12",
+      "last_edited": "2022-05-24T11:03:59",
       "language": "en"
     }
   ],
@@ -1265,11 +1214,6 @@
   "fund_store/funds/funding-service-design/rounds/summer" : {
     "assessment_deadline": "2030-03-30 12:00:00",
     "name":"Community Ownership Fund",
-    "contact_details": {
-      "email_address": "example@levellingup.gov.uk",
-      "phone": "",
-      "text_phone": ""
-    },
     "deadline": "2030-01-30 11:59:00",
     "fund_id": "funding-service-design",
     "id": "summer",
@@ -1278,34 +1222,12 @@
     "prospectus": "/prospectus_link",
     "privacy_notice": "",
     "instructions": "Round specific instruction text",
-    "support_availability": {
-      "closed": "Easter Sunday, Christmas Day, Boxing Day and New Year’s Day",
-      "days": "Monday to Friday",
-      "time": "9am to 5pm"
-    },
     "title": "Round 2 Window 2",
-    "assessment_criteria_weighting": [
-      {
-        "id": "123",
-        "name": "one",
-        "value": 0.25
-      },
-      {
-        "id": "234",
-        "name": "two",
-        "value": 0.2
-      },
-      {
-        "id": "345",
-        "name": "three",
-        "value": 0.3
-      },
-      {
-        "id": "456",
-        "name": "four",
-        "value": 0.25
-      }
-    ]
+      "contact_email": "test@example.com",
+    "contact_phone": "123456789",
+    "contact_textphone": "123456789",
+    "support_times": "9-5",
+    "support_days": "Mon-Fri"
   },
   "fund_store/funds/funding-service-design/rounds/summer?language=en" : {
     "assessment_deadline": "2030-03-30 12:00:00",
@@ -1313,44 +1235,17 @@
     "privacy_notice": "",
     "instructions": "Round specific instruction text",
     "name":"Community Ownership Fund",
-    "contact_details": {
-      "email_address": "example@levellingup.gov.uk",
-      "phone": "",
-      "text_phone": ""
-    },
     "deadline": "2030-01-30 11:59:00",
     "fund_id": "funding-service-design",
     "id": "summer",
     "opens": "2022-10-04 12:00:00",
     "short_name": "TT",
-    "support_availability": {
-      "closed": "Easter Sunday, Christmas Day, Boxing Day and New Year’s Day",
-      "days": "Monday to Friday",
-      "time": "9am to 5pm"
-    },
     "title": "Round 2 Window 2",
-    "assessment_criteria_weighting": [
-      {
-        "id": "123",
-        "name": "one",
-        "value": 0.25
-      },
-      {
-        "id": "234",
-        "name": "two",
-        "value": 0.2
-      },
-      {
-        "id": "345",
-        "name": "three",
-        "value": 0.3
-      },
-      {
-        "id": "456",
-        "name": "four",
-        "value": 0.25
-      }
-    ]
+    "contact_email": "test@example.com",
+    "contact_phone": "123456789",
+    "contact_textphone": "123456789",
+    "support_times": "9-5",
+    "support_days": "Mon-Fri"
   },
   "account_store/accounts?account_id=test-user": {
         "account_id": "test-user",
@@ -1365,138 +1260,110 @@
   },
   "fund_store/funds/COF/rounds/R2W3?language=en&use_short_name=true":
     {
-      "assessment_criteria_weighting": [
-        {
-          "id": "e2fd30d2-9207-421c-b8b3-c961bcee138b",
-          "name": "Strategic case",
-          "value": 0.3
-        },
-        {
-          "id": "e557773a-74c9-43ee-a52c-88ccae279d08",
-          "name": "Management case",
-          "value": 0.3
-        },
-        {
-          "id": "9e282cdb-6c42-4430-9563-dc4995b59bdd",
-          "name": "Potential to delivery community benefits",
-          "value": 0.3
-        },
-        {
-          "id": "6020db6c-df67-4932-a2f3-2e9dd1934164",
-          "name": "Added value to the community",
-          "value": 0.1
-        }
-      ],
       "assessment_deadline": "2023-05-05 12:00:00",
-      "contact_details": {
-        "email_address": "COF@levellingup.gov.uk",
-        "phone": "",
-        "text_phone": ""
-      },
       "deadline": "2023-04-14 12:00:00",
       "fund_id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
       "id": "5cf439bf-ef6f-431e-92c5-a1d90a4dd32f",
       "opens": "2023-02-15 12:00:00",
       "short_name": "R2W3",
-      "support_availability": {
-        "closed": "Easter Sunday, Christmas Day, Boxing Day and New Year’s Day",
-        "days": "Monday to Friday",
-        "time": "9am to 5pm"
-      },
       "title": "Round 2 Window 3",
       "prospectus": "http://google.com/search?q=r2w3",
+      "instructions": "Round specific instruction text",
       "privacy_notice": "",
-      "instructions": "Round specific instruction text"
+      "contact_email": "test@example.com",
+      "contact_phone": "123456789",
+      "contact_textphone": "123456789",
+      "support_times": "9-5",
+      "support_days": "Mon-Fri",
+      "privacy_notice": ""
     },
   "fund_store/funds/cof/rounds?language=en&use_short_name=true":
     [
       {
-        "assessment_criteria_weighting": [
-          {
-            "id": "e2fd30d2-9207-421c-b8b3-c961bcee138b",
-            "name": "Strategic case",
-            "value": 0.3
-          },
-          {
-            "id": "e557773a-74c9-43ee-a52c-88ccae279d08",
-            "name": "Management case",
-            "value": 0.3
-          },
-          {
-            "id": "9e282cdb-6c42-4430-9563-dc4995b59bdd",
-            "name": "Potential to delivery community benefits",
-            "value": 0.3
-          },
-          {
-            "id": "6020db6c-df67-4932-a2f3-2e9dd1934164",
-            "name": "Added value to the community",
-            "value": 0.1
-          }
-        ],
         "assessment_deadline": "2023-03-30 12:00:00",
-        "contact_details": {
-          "email_address": "COF@levellingup.gov.uk",
-          "phone": "",
-          "text_phone": ""
-        },
         "deadline": "2022-12-14 11:59:00",
         "fund_id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
         "id": "c603d114-5364-4474-a0c4-c41cbf4d3bbd",
         "opens": "2022-10-04 12:00:00",
         "short_name": "R2W2",
-        "support_availability": {
-          "closed": "Easter Sunday, Christmas Day, Boxing Day and New Year’s Day",
-          "days": "Monday to Friday",
-          "time": "9am to 5pm"
-        },
         "title": "Round 2 Window 2",
         "prospectus": "http://google.com/search?q=r2w2",
-        "privacy_notice": "",
-        "instructions": "Round specific instruction text for r2w2"
+        "instructions": "Round specific instruction text for r2w2",
+        "contact_email": "test@example.com",
+        "contact_phone": "123456789",
+        "contact_textphone": "123456789",
+        "support_times": "9-5",
+        "support_days": "Mon-Fri"
       },
       {
-        "assessment_criteria_weighting": [
-          {
-            "id": "e2fd30d2-9207-421c-b8b3-c961bcee138b",
-            "name": "Strategic case",
-            "value": 0.3
-          },
-          {
-            "id": "e557773a-74c9-43ee-a52c-88ccae279d08",
-            "name": "Management case",
-            "value": 0.3
-          },
-          {
-            "id": "9e282cdb-6c42-4430-9563-dc4995b59bdd",
-            "name": "Potential to delivery community benefits",
-            "value": 0.3
-          },
-          {
-            "id": "6020db6c-df67-4932-a2f3-2e9dd1934164",
-            "name": "Added value to the community",
-            "value": 0.1
-          }
-        ],
         "assessment_deadline": "2023-05-05 12:00:00",
-        "contact_details": {
-          "email_address": "COF@levellingup.gov.uk",
-          "phone": "",
-          "text_phone": ""
-        },
         "deadline": "2023-04-14 12:00:00",
         "fund_id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
         "id": "5cf439bf-ef6f-431e-92c5-a1d90a4dd32f",
         "opens": "2023-02-15 12:00:00",
         "short_name": "R2W3",
-        "support_availability": {
-          "closed": "Easter Sunday, Christmas Day, Boxing Day and New Year’s Day",
-          "days": "Monday to Friday",
-          "time": "9am to 5pm"
-        },
         "title": "Round 2 Window 3",
         "prospectus_link": "http://google.com/search?q=r2w3",
-        "privacy_notice": "",
-        "instructions": "Round specific instruction text for r2w3"
+        "instructions": "Round specific instruction text for r2w3",
+        "contact_email": "test@example.com",
+        "contact_phone": "123456789",
+        "contact_textphone": "123456789",
+        "support_times": "9-5",
+        "support_days": "Mon-Fri"
       }
-    ]
+    ],
+  "fund_store/funds/funding-service-design/rounds/summer/sections/application": [
+    {
+      "children": [
+        {
+          "children": [],
+          "fields": [],
+          "form_name": "risk",
+          "id": 4,
+          "path": "1.1.1.1",
+          "title": "Risk",
+          "title_content_id": null,
+          "weighting": null
+        },
+        {
+          "children": [],
+          "fields": [],
+          "form_name": "declarations",
+          "id": 5,
+          "path": "1.1.1.2",
+          "title": "Declarations",
+          "title_content_id": null,
+          "weighting": null
+        }
+      ],
+      "fields": [],
+      "form_name": null,
+      "id": 3,
+      "path": "1.1.1",
+      "title": "Test Section 1",
+      "title_content_id": null,
+      "weighting": null
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "fields": [],
+          "form_name": "community-use",
+          "id": 7,
+          "path": "1.1.2.1",
+          "title": "Community use",
+          "title_content_id": null,
+          "weighting": null
+        }
+      ],
+      "fields": [],
+      "form_name": null,
+      "id": 6,
+      "path": "1.1.2",
+      "title": "Test section 2",
+      "title_content_id": null,
+      "weighting": null
+    }
+  ]
   }

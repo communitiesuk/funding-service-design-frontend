@@ -3,9 +3,18 @@ import json
 from app.default.data import RoundStatus
 from app.models.account import Account
 from app.models.application import Application
+from app.models.application_display_mapping import ApplicationMapping
 from app.models.fund import Fund
 from app.models.round import Round
 from config.envs.default import DefaultConfig
+
+file = open("tests/api_data/endpoint_data.json")
+data = json.loads(file.read())
+
+TEST_APPLICATION_DISPLAY_RESPONSE = data[
+    "fund_store/funds/funding-service-design/"
+    "rounds/summer/sections/application"
+]
 
 
 class TestUserValidation:
@@ -113,6 +122,13 @@ class TestUserValidation:
         mocker.patch(
             "app.default.application_routes.get_round_data",
             return_value=Round.from_dict(self.TEST_ROUND_DATA),
+        )
+        mocker.patch(
+            "app.default.application_routes.get_application_display_config",
+            return_value=[
+                ApplicationMapping.from_dict(section)
+                for section in TEST_APPLICATION_DISPLAY_RESPONSE
+            ],
         )
 
         response = flask_test_client.get(
