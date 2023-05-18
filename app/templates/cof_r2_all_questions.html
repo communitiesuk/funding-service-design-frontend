@@ -7,69 +7,69 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <span class="govuk-caption-l">{% trans %}Community Ownership Fund{% endtrans %} {{round_title}}</span>
-            <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
+            <span class="govuk-caption-l">{% trans %}Community Ownership Fund{% endtrans %} {{ round_title }}</span>
+            <h1 class="govuk-heading-xl">{{ pageHeading }}</h1>
             <div class="govuk-!-margin-bottom-8">
-                <h2 class="govuk-heading-m ">{% trans %}Table of contents{% endtrans %}</h2>
+                <h2 class="govuk-heading-m">{% trans %}Table of contents{% endtrans %}</h2>
                 <ol class="govuk-list govuk-list--number">
                     <li>
-                        <a class="govuk-link" href="#{% trans %}about-organisation{% endtrans %}">{% trans %}About your organisation{% endtrans %}</a>
+                        <a class="govuk-link" href="#{%- trans -%}about-organisation{%- endtrans -%}">{% trans %}About your organisation{% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}about-project{% endtrans %}">{% trans %}About your project{% endtrans %}</a>
+                        <a class="govuk-link" href="#{%- trans -%}about-project{%- endtrans -%}">{% trans %}About your project{% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}strategic-case{% endtrans %}">{% trans %}Strategic case{% endtrans %}</a>
+                        <a class="govuk-link" href="#{%- trans -%}strategic-case{%- endtrans -%}">{% trans %}Strategic case{% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}management-case{% endtrans %}">{% trans %}Management case{% endtrans %}</a>
+                        <a class="govuk-link" href="#{%- trans -%}management-case{%- endtrans -%}">{% trans %}Management case{% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}community-benefits{% endtrans %}">{% trans %}Potential to deliver community benefits{% endtrans %}</a>
+                        <a class="govuk-link" href="#{%- trans -%}community-benefits{%- endtrans -%}">{% trans %}Potential to deliver community benefits{% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}community-value{% endtrans %}">{% trans %}Added value to community{% endtrans %}</a>
+                        <a class="govuk-link" href="#{%- trans -%}community-value{%- endtrans -%}">{% trans %}Added value to community{% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}subsidy-control{% endtrans %}">{% trans %}Subsidy control and state aid{% endtrans %}</a>
+                        <a class="govuk-link" href="#{%- trans -%}subsidy-control{%- endtrans -%}">{% trans %}Subsidy control and state aid{% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}declarations{% endtrans %}">{% trans %}Declarations{% endtrans %}</a>
+                        <a class="govuk-link" href="#{%- trans -%}declarations{%- endtrans -%}">{% trans %}Declarations{% endtrans %}</a>
                     </li>
                 </ol>
             </div>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l " id="{% trans %}about-organisation{% endtrans %}">1. {% trans %}About your organisation{% endtrans %}</h2>
-            <h3 class="govuk-heading-m ">1.1. {% trans %}Organisation information{% endtrans %}</h3>
-            <h4 class="govuk-heading-s  ">1.1.1. {% trans %}Your unique tracker number{% endtrans %}</h4>
+            <h2 class="govuk-heading-l" id="{%- trans -%}about-organisation{%- endtrans -%}">1. {% trans %}About your organisation{% endtrans %}</h2>
+            <h3 class="govuk-heading-m">1.1. {% trans %}Organisation information{% endtrans %}</h3>
+            <h4 class="govuk-heading-s">1.1.1. {% trans %}Your unique tracker number{% endtrans %}</h4>
             <p class="govuk-body">{% trans %}This was included in the letter we sent to confirm your successful expression of interest.{% endtrans %}</p>
             <p class="govuk-body">{% trans %}For example, ‘ANON-###-###-###’{% endtrans %}</p>
-            <h4 class="govuk-heading-s  ">1.1.2. {% trans %}Organisation name{% endtrans %}</h4>
+            <h4 class="govuk-heading-s">1.1.2. {% trans %}Organisation name{% endtrans %}</h4>
             <p class="govuk-body">{% trans %}This must match your registered legal organisation name{% endtrans %}</p>
-            <h4 class="govuk-heading-s  ">1.1.3. {% trans %}Does your organisation use any other names?{% endtrans %}</h4>
+            <h4 class="govuk-heading-s">1.1.3. {% trans %}Does your organisation use any other names?{% endtrans %}</h4>
             <p class="govuk-body">
                 {{ pgettext("individual", "If 'Yes', go to") }} <strong>1.1.3.1.</strong>
             </p>
             <p class="govuk-body">
                 {{ pgettext("individual", "If 'No', go to") }} <strong>1.1.4.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">1.1.3.1. {% trans %}Alternative names of your organisation{% endtrans %}</h4>
-            <h4 class="govuk-heading-s  ">1.1.4. {% trans %}What is your organisation's main purpose?{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}</h4>
-            <h4 class="govuk-heading-s  ">1.1.5. {% trans %}Tell us about your organisation's main activities{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}</h4>
-            <h4 class="govuk-heading-s  ">1.1.6. {% trans %}Have you delivered projects like this before?{% endtrans %}</h4>
+            <h4 class="govuk-heading-s">1.1.3.1. {% trans %}Alternative names of your organisation{% endtrans %}</h4>
+            <h4 class="govuk-heading-s">1.1.4. {% trans %}What is your organisation's main purpose?{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}</h4>
+            <h4 class="govuk-heading-s">1.1.5. {% trans %}Tell us about your organisation's main activities{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}</h4>
+            <h4 class="govuk-heading-s">1.1.6. {% trans %}Have you delivered projects like this before?{% endtrans %}</h4>
             <p class="govuk-body">
                 {{ pgettext("group", "If 'Yes', go to") }} <strong>1.1.6.1.</strong> {% trans %}and{% endtrans %} <strong>1.1.6.2.</strong>
             </p>
             <p class="govuk-body">
                 {{ pgettext("group", "If 'No', go to") }} <strong>1.1.7.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 1.1.6.1. {% trans %}Describe your previous projects{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 1.1.6.2. {% trans %}Provide any evidence to support your previous projects (optional){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 1.1.7. {% trans %}Type of organisation{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -151,7 +151,7 @@
             <p class="govuk-body">
                 {% trans %}For example, your company's Facebook, Instagram or Twitter accounts (if applicable){% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 1.1.12. {% trans %}Is your correspondence address different to the organisation address?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -176,16 +176,16 @@
             <h4 class="govuk-heading-s ">
                 1.1.13.2. {% trans %}Partner organisation address{% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 1.1.13.3. {% trans %}Tell us about your partnership and how you plan to work together{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}If you are working in partnership with more than one organisation, include their details here{% endtrans %}
             </p>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 1.2. {% trans %}Applicant information{% endtrans %}
             </h3>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 1.2.1. {% trans %}Name of lead contact{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -194,20 +194,20 @@
             <p class="govuk-body">
                 {% trans %}They will receive all the information about this application.{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 1.2.2. {% trans %}Lead contact email address{% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 1.2.3. {% trans %}Lead contact telephone number{% endtrans %}
             </h4>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l " id="{% trans %}about-project{% endtrans %}">
+            <h2 class="govuk-heading-l" id="{%- trans -%}about-project{%- endtrans -%}">
                 2. {% trans %}About your project{% endtrans %}
             </h2>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 2.1. {% trans %}Project information{% endtrans %}
             </h3>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.1.1. {% trans %}Have you been given funding through the Community Ownership Fund before?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -216,7 +216,7 @@
             <p class="govuk-body">
                 {{ pgettext("group", "If 'No', go to") }} <strong>2.1.2.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.1.1.1. {% trans %}Describe your previous project{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -233,12 +233,12 @@
                     {% trans %}date you received funding{% endtrans %}
                 </li>
             </ul>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.1.1.2. {% trans %}Amount of funding received{% endtrans %}
             </h4>
             <p class="govuk-body">
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.1.2. {% trans %}Project name{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -247,29 +247,29 @@
             <p class="govuk-body">
                 {% trans %}Choose a name that describes your project. For example, the name of your asset, or a link to your asset's location{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.1.3. {% trans %}Tell us how the asset is currently being used, or how it has been used before, and why it's important to the community{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.1.4. {% trans %}Explain why the asset is at risk of being lost to the community, or why it has already been lost{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.1.5. {% trans %}Give a brief summary of your project, including what you hope to achieve{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.1.6. {% trans %}Address of the community asset{% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.1.7. {% trans %}In which constituency is your asset?{% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.1.8. {% trans %}In which local council area is your asset?{% endtrans %}
             </h4>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 2.2. {% trans %}Asset information{% endtrans %}
             </h3>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.1. {% trans %}Asset type{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -313,7 +313,7 @@
                     {% trans %}Other{% endtrans %}
                 </li>
             </ul>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.2. {% trans %}What do you intend to do with the asset?{% endtrans %}
             </h4>
             <ul class="govuk-list govuk-list--bullet">
@@ -330,7 +330,7 @@
                     {% trans %}Already leased by organisation{% endtrans %}
                 </li>
             </ul>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.3. {% trans %}Do you know who currently owns your asset?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -339,13 +339,13 @@
             <p class="govuk-body">
                 {{ pgettext("group", "If 'No', go to") }} <strong>2.2.3.2.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.3.1. {% trans %}Name of current asset owner{% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.3.2. {% trans %}Describe the current ownership status{% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.4. {% trans %}Have you already completed the purchase or lease?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -357,13 +357,13 @@
             <h4 class="govuk-heading-s ">
                 2.2.4.1. {% trans %}Describe the sale process, e.g. an auction, or the terms of your lease if you have rented the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.4.2. {% trans %}Describe the expected sale process, or the proposed terms of your lease if you are renting the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.4.3. {% trans %}Expected date of sale or lease{% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.5. {% trans %}Is your asset currently publicly owned?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -372,19 +372,19 @@
             <p class="govuk-body">
                 {{ pgettext("individual", "If 'No', go to") }} <strong>2.2.6.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.5.1. {% trans %}Tell us about the person you have spoken to at the relevant public about the asset{% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.5.2. {% trans %}When you buy or lease a publicly owned asset, the public authority must continue to be responsible for delivering any statutory services the asset provides{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}This includes things like social care, waste collection and planning services{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.5.3. {% trans %}Grants from this fund cannot be used to buy the freehold or premium on the lease of a publicly owned asset. Money must only be used for renovation and refurbishment costs{% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.5.4. {% trans %}Upload supporting evidence{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -408,7 +408,7 @@
                 {% trans %}It should be a single file no bigger than 5MB in any of the following formats:{% endtrans %}
             </p>
             {{ file_formats() }}
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.6. {% trans %}Is this a registered Asset of Community Value (ACV)?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -417,10 +417,10 @@
             <p class="govuk-body">
                 {{ pgettext("individual", "If 'No', go to") }} <strong>2.2.7.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.6.1. {% trans %}Will you purchase the asset within the appropriate time frame?{% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.7. {% trans %}Is the asset listed for disposal, or part of a Community Asset Transfer?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -429,19 +429,19 @@
             <p class="govuk-body">
                 {{ pgettext("individual", "If 'No', go to") }} <strong>2.2.8.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.7.1. {% trans %}When was the asset listed?{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}For example, 27 3 2007{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.7.2. {% trans %}Provide a link to the listing{% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.7.3. {% trans %}Describe the current status of the Community Asset Transfer{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 2.2.8. {% trans %}Why is the asset at risk of closure?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -462,16 +462,16 @@
                 </li>
             </ul>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l " id="{% trans %}strategic-case{% endtrans %}">
+            <h2 class="govuk-heading-l" id="{%- trans -%}strategic-case{%- endtrans -%}">
                 3. {% trans %}Strategic case{% endtrans %}
             </h2>
             <p class="govuk-body-l">
                 {% trans %}This section is worth{% endtrans %} <strong>30%</strong> {% trans %}of the assessment criteria.{% endtrans %}
             </p>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 3.1. {% trans %}Community use{% endtrans %}
             </h3>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 3.1.1. {% trans %}What policy aims will your project deliver against?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -494,22 +494,22 @@
                     {% trans %}Fight climate change{% endtrans %}
                 </li>
             </ul>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 3.1.2. {% trans %}Who in the community uses the asset, or has used it in the past, and who benefits from it?{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 3.1.3. {% trans %}Tell us how losing the asset would affect, or has already affected, people in the community{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 3.1.4. {% trans %}Why will the asset be lost without community intervention?{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 3.2. {% trans %}Community engagement{% endtrans %}
             </h3>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 3.2.1. {% trans %}Tell us how you have engaged with the community about your intention to take ownership of the asset, and explain how this has shaped your project plans{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 3.2.2. {% trans %}Have you done any fundraising in the community?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -518,16 +518,16 @@
             <p class="govuk-body">
                 {{ pgettext("individual", "If 'No', go to") }} <strong>3.2.3.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 3.2.2.1. {% trans %}Describe your fundraising activities{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 3.2.3. {% trans %}Tell us how your project supports any wider local plans{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 3.3. {% trans %}Local support{% endtrans %}
             </h3>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 3.3.1. {% trans %}Are you confident there is local support for your project?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -547,7 +547,7 @@
             <p class="govuk-body">
                 {{ pgettext("group", "If 'Yes', go to") }} <strong>3.3.1.1.</strong> {% trans %}and{% endtrans %} <strong>3.3.1.2.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 3.3.1.1. {% trans %}Tell us more about the local support for your project{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -567,17 +567,17 @@
                     {% trans %}a letter from your local MP{% endtrans %}
                 </li>
             </ul>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 3.3.1.2. {% trans %}Upload supporting evidence (optional){% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}It should be a single file no bigger than 5MB in any of the following formats:{% endtrans %}
             </p>
             {{ file_formats() }}
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 3.4. {% trans %}Environmental sustainability{% endtrans %}
             </h3>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 3.4.1. {% trans %}Tell us how you have considered the environmental sustainability of your project{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -595,13 +595,13 @@
                 </li>
             </ul>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l " id="{% trans %}management-case{% endtrans %}">
+            <h2 class="govuk-heading-l" id="{%- trans -%}management-case{%- endtrans -%}">
                 4. {% trans %}Management case{% endtrans %}
             </h2>
             <p class="govuk-body-l">
                 {% trans %}This section is worth{% endtrans %} <strong>30%</strong> {% trans %}of the assessment criteria.{% endtrans %}
             </p>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 4.1. {% trans %}Funding required{% endtrans %}
             </h3>
             <p class="govuk-body">
@@ -628,18 +628,22 @@
                 {% trans %}We'll ask you to upload a business plan to support the answers you give us in this section.{% endtrans %}
             </p>
             <p class="govuk-body">
+            {# djlint:off H023 #}
                 {% trans %}This fund can offer up to 50&percnt; of your capital costs to renovate and repair the asset.{% endtrans %}
+            {# djlint:on #}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.1.1. {% trans %}Total funding request{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}This is the amount you are applying for from the Community Ownership Fund.{% endtrans %}
             </p>
             <p class="govuk-body">
+            {# djlint:off H023 #}
                 {% trans %}You can apply for up to 50&percnt; of your capital costs, up to a maximum of £250,000 (up to £1 million for sporting assets). You can apply for up to £50,000 of your revenue costs (no more than 20&percnt; of your capital funding).{% endtrans %}
+            {# djlint:on #}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.1.2. {% trans %}Capital costs{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -648,7 +652,7 @@
             <p class="govuk-body">
                 {% trans %}You can use your business plan to provide information that supports your answers.{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.1.3. {% trans %}Do you need to add revenue costs? (optional)?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -666,7 +670,9 @@
                 </li>
             </ul>
             <p class="govuk-body">
+            {# djlint:off H023 #}
                 {% trans %}It should be no more than £50,000, and no more than 20&percnt; of your capital funding.{% endtrans %}
+            {# djlint:on #}
             </p>
             <p class="govuk-body">
                 {{ pgettext("indefinite", "If 'Yes', go to") }} <strong>4.1.3.1.</strong>
@@ -674,7 +680,7 @@
             <p class="govuk-body">
                 {{ pgettext("indefinite", "If 'No', go to") }} <strong>4.1.4.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.1.3.1. {% trans %}Revenue costs (optional){% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -692,7 +698,9 @@
                 </li>
             </ul>
             <p class="govuk-body">
+            {# djlint:off H023 #}
                 {% trans %}It should be no more than £50,000, and no more than 20&percnt; of your capital funding.{% endtrans %}
+            {# djlint:on #}
             </p>
             <p class="govuk-body">
                 {% trans %}You can use your business plan to:{% endtrans %}
@@ -705,7 +713,7 @@
                     {% trans %}provide any information that supports your answers{% endtrans %}
                 </li>
             </ul>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.1.4. {% trans %}Have you secured any match funding yet?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -714,7 +722,7 @@
             <p class="govuk-body">
                 {{ pgettext("group", "If 'No', go to") }} <strong>4.1.5.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.1.4.1. {% trans %}Secured match funding{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -752,7 +760,7 @@
             <p class="govuk-body">
                 {% trans %}You can use your business plan to provide evidence to support your answers.{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.1.5. {% trans %}Do you have any match funding identified but not yet secured?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -761,7 +769,7 @@
             <p class="govuk-body">
                 {{ pgettext("indefinite", "If 'No', go to") }} <strong>4.1.6.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.1.5.1. {% trans %}Unsecured match funding{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -810,7 +818,7 @@
             <p class="govuk-body">
                 {% trans %}You can use your business plan to provide evidence to support your answers.{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.1.6. {% trans %}Asset value{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -825,7 +833,7 @@
             <p class="govuk-body">
                 {% trans %}If you have already bought or leased the asset, use its current valuation.{% endtrans %}
             </p>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 4.2. {% trans %}Feasibility{% endtrans %}
             </h3>
             <p class="govuk-body">
@@ -848,13 +856,13 @@
             <p class="govuk-body">
                 {% trans %}You can use your business plan to provide evidence to support your answers.{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.2.1. {% trans %}Tell us about the feasibility studies you have carried out for your project{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.2.2. {% trans %}Do you need to do any further feasibility work?{% endtrans %}
             </h4>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 4.3. {% trans %}Risk{% endtrans %}
             </h3>
             <p class="govuk-body">
@@ -877,7 +885,7 @@
                     {% trans %}staffing departures during delivery of your project{% endtrans %}
                 </li>
             </ul>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.3.1. {% trans %}Risks to your project (document upload){% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -910,7 +918,7 @@
             <p class="govuk-body">
                 {% trans %}Do not include any risks to the asset or why it may close, which we asked you about earlier in your application.{% endtrans %}
             </p>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 4.4. {% trans %}Project costs{% endtrans %}
             </h3>
             <p class="govuk-body">
@@ -928,13 +936,13 @@
             <p class="govuk-body">
                 {% trans %}You can use your business plan to provide information that supports your answers.{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.4.1. {% trans %}Summarise your cash flow for the running of the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.4.2. {% trans %}If successful, will you use your funding in the next 12 months?{% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.4.3. {% trans %}Income sources{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -943,7 +951,7 @@
             <p class="govuk-body">
                 {% trans %}You can use your business plan to provide information that supports your answers.{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.4.4. {% trans %}Running costs{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -963,7 +971,7 @@
             <p class="govuk-body">
                 {% trans %}You can use your business plan to provide information that supports your answers.{% endtrans %}
             </p>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 4.5. {% trans %}Skills and resources{% endtrans %}
             </h3>
             <p class="govuk-body">
@@ -981,7 +989,7 @@
             <p class="govuk-body">
                 {% trans %}You can use your business plan to provide information that supports your answers.{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.5.1. {% trans %}Do you have experience of managing a community asset?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -990,16 +998,16 @@
             <p class="govuk-body">
                 {{ pgettext("indefinite", "If 'No', go to") }} <strong>4.5.2.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.5.1.1. {% trans %}Describe any experience you have with community assets similar to this{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.5.2. {% trans %}Do you have any plans to recruit people to help you manage the asset?{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {{ pgettext("indefinite", "If 'Yes', go to") }} <strong>4.5.2.1.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.5.2.1. {% trans %}Tells us about the roles you'll recruit{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -1019,10 +1027,10 @@
             <p class="govuk-body">
                 {% trans %}You can use your business plan to provide evidence to support your answers.{% endtrans %}
             </p>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 4.6. {% trans %}Community representation{% endtrans %}
             </h3>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.6.1. {% trans %}List the members of your board{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -1039,37 +1047,37 @@
             <p class="govuk-body">
                 {% trans %}You can use your business plan to provide evidence to support your answers.{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.6.2. {% trans %}Tell us about your governance and membership structures{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.6.3. {% trans %}Explain how you'll consider the views of the community in the running of the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}Include how they'll be involved in decision making, and how you'll measure public support for your decisions{% endtrans %}
             </p>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 4.7. {% trans %}Inclusiveness and integration{% endtrans %}
             </h3>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.7.1. {% trans %}Describe the planned activities or services that will take place at the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.7.2. {% trans %}Describe anything that might prevent people from using the asset or participating in its running{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}For example, membership costs or eligibility criteria{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.7.3. {% trans %}Tell us how you'll make your project accessible and inclusive to everyone in the community{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}This includes considering people with protected characteristics, disability access needs, and making the space attractive to everyone{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 4.7.4. {% trans %}Describe how the project will bring people together from all over the community{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 4.8. {% trans %}Business plan{% endtrans %}
             </h3>
             <h4 class="govuk-heading-s">
@@ -1204,16 +1212,16 @@
                     {% trans %}supporting evidence of how you will manage performance and risks. For example, copies of your policy documents{% endtrans %}
                 </li>
             </ul>
-            <h2 class="govuk-heading-l " id="{% trans %}community-benefits{% endtrans %}">
+            <h2 class="govuk-heading-l" id="{%- trans -%}community-benefits{%- endtrans -%}">
                 5. {% trans %}Potential to deliver community benefits{% endtrans %}
             </h2>
             <p class="govuk-body-l">
                 {% trans %}This section is worth{% endtrans %} <strong>30%</strong> {% trans %}of the assessment criteria.{% endtrans %}
             </p>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 5.1. {% trans %}Community benefits{% endtrans %}
             </h3>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 5.1.1. {% trans %}What community benefits do you expect to deliver with this project?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -1242,23 +1250,23 @@
             <h4 class="govuk-heading-s">
                 5.1.3. {% trans %}Explain how you plan to sustain, and potentially expand, these benefits over time{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 5.1.4. {% trans %}Tell us how you'll make sure the whole community benefits from the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}For example, people who have not used the asset in the past{% endtrans %}
             </p>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l " id="{% trans %}community-value{% endtrans %}">
+            <h2 class="govuk-heading-l" id="{%- trans -%}community-value{%- endtrans -%}">
                 6.{% trans %}Added value to community{% endtrans %}
             </h2>
             <p class="govuk-body-l">
                 {% trans %}This section is worth{% endtrans %} <strong>10%</strong> {% trans %}of the assessment criteria.{% endtrans %}
             </p>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 6.1. {% trans %}Value to the community{% endtrans %}
             </h3>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 6.1.1. {% trans %}Tell us about your local community as a whole{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -1267,17 +1275,17 @@
             <p class="govuk-body">
                 {% trans %}Where possible, reference any data you have on protected characteristics and equality impacts.{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 6.1.2. {% trans %}Describe any specific challenges your community faces, and how the asset will address these{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l  " id="{% trans %}subsidy-control{% endtrans %}">
+            <h2 class="govuk-heading-l" id="{%- trans -%}subsidy-control{%- endtrans -%}">
                 7. {% trans %}Subsidy control and state aid{% endtrans %}
             </h2>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 7.1. {% trans %}Project qualification{% endtrans %}
             </h3>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 7.1.1. {% trans %}Does your project meet the definition of a subsidy?{% endtrans %}
             </h4>
             <p class="govuk-body">
@@ -1286,38 +1294,38 @@
             <p class="govuk-body">
                 {{ pgettext("individual", "If 'Yes', go to") }} <strong>7.1.1.1.</strong> {% trans %}and{% endtrans %} <strong>7.1.2.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 7.1.1.1. {% trans %}Explain how you think a grant from this fund can be provided in compliance with the Subsidy Control Act (2022){% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}This is measured by the 7 common principles laid out in Schedule 1{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 7.1.2. {% trans %}Is your project based in Northern Ireland?{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {{ pgettext("individual", "If 'Yes', go to") }} <strong>7.1.2.1.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 7.1.2.1. {% trans %}Explain how your project will comply with state aid rules{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}You can find more information about when state aid rules apply in Northern Ireland in the government guidance.{% endtrans %}
             </p>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l  " id="{% trans %}declarations{% endtrans %}">
+            <h2 class="govuk-heading-l" id="{%- trans -%}declarations{%- endtrans -%}">
                 8. {% trans %}Check declarations{% endtrans %}
             </h2>
-            <h3 class="govuk-heading-m ">
+            <h3 class="govuk-heading-m">
                 8.1. {% trans %}Final confirmations{% endtrans %}
             </h3>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 8.1.1. {% trans %}Confirm you have considered subsidy control and state aid implications for your project, and the information you have given us is correct{% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 8.1.2. {% trans %}Confirm you have considered people with protected characteristics throughout the planning of your project{% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
+            <h4 class="govuk-heading-s">
                 8.1.3. {% trans %}Confirm you have considered sustainability and the environment throughout the planning of your project, including compliance with the government's Net Zero ambitions{% endtrans %}
             </h4>
             <h4 class="govuk-heading-s">
@@ -1325,4 +1333,4 @@
             </h4>
         </div>
     </div>
-{% endblock %}
+{% endblock content %}

@@ -4,15 +4,15 @@
 {% from "partials/tasklist_submit.html" import tasklist_submit %}
 {% from "partials/round_closed_warning.html" import round_closed_warning %}
 {% block beforeContent %}
-    <a href="{{dashboard_url}}" class="govuk-back-link"> {% trans %}Back to your applications{% endtrans %}</a>
-{% endblock %}
+    <a href="{{ dashboard_url }}" class="govuk-back-link"> {% trans %}Back to your applications{% endtrans %}</a>
+{% endblock beforeContent %}
 {% set pageHeading %}{% trans %}Task List{% endtrans %}{% endset %}
 
 {% block content %}
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <span class="govuk-caption-l">{{ application_meta_data["fund_name"]}} {{ application_meta_data["round_name"] }}</span>
+            <span class="govuk-caption-l">{{ application_meta_data["fund_name"] }} {{ application_meta_data["round_name"] }}</span>
             <h1 class="govuk-heading-xl">{% trans %}Application for funding to save an asset in your community{% endtrans %}</h1>
             <details class="govuk-details" data-module="govuk-details">
                 <summary class="govuk-details__summary">
@@ -23,7 +23,7 @@
                 <div class="govuk-details__text">
                     <h2 class="govuk-heading govuk-heading-s">{% trans %}What we'll ask you for{% endtrans %}</h2>
                     <p class="govuk-body">
-                        {% trans %}You can preview the{% endtrans %} <a class="govuk-link" href="{{all_questions_url}}">{% trans %}full list of application questions{% endtrans %}</a>.
+                        {% trans %}You can preview the{% endtrans %} <a class="govuk-link" href="{{ all_questions_url }}">{% trans %}full list of application questions{% endtrans %}</a>.
                     </p>
                     <p class="govuk-body">
                         {% trans %}We'll also ask you to upload a business plan to support the answers you've given us in the management case section.{% endtrans %}
@@ -74,7 +74,6 @@
                     </p>
                     <p>{% trans %}Do not send any applications or attachments by email. We'll only accept applications through this service.{% endtrans %}</p>
 
-
                     <h2 class="govuk-heading govuk-heading-s">
                         {% trans %}How we'll use your information{% endtrans %}
                     </h2>
@@ -103,6 +102,7 @@
                 {% set completed_count = application_meta_data["number_of_completed_forms"] %}
                 {% set in_progress_count = application_meta_data["number_of_in_progress_forms"] %}
                 {% set form_count = application_meta_data["number_of_forms"] %}
+                {# djlint:off H025 #}
                 {% if application["status"] == application_meta_data["not_started_status"] %}
                 <dd class="govuk-tag not-started-tag govuk-!-margin-bottom-2">
                     {{ application_status("NOT_STARTED") }}
@@ -113,7 +113,7 @@
                 <dd class="govuk-tag complete-tag govuk-!-margin-bottom-2">
                     {{ application_status("COMPLETED") }}
                 {% endif %}
-
+                {# djlint:on #}
                 </dd>
             </dl>
             <p class="govuk-body govuk-!-margin-bottom-7">
@@ -138,5 +138,4 @@
         </div>
     </div>
 
-
-{% endblock %}
+{% endblock content %}

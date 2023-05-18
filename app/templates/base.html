@@ -1,26 +1,24 @@
-{% extends 'govuk_frontend_jinja/template.html' %}
+{% extends "govuk_frontend_jinja/template.html" %}
 
 {% set assetPath = url_for('static', filename='').rstrip('/') %}
 
-
-
-{% block pageTitle %}{{[pageHeading, service_title]|join(' - ') if pageHeading else service_title}}{% endblock %}
+{% block pageTitle %}{{ [pageHeading, service_title]|join(' - ') if pageHeading else service_title }}{% endblock pageTitle %}
 
 {% block head %}
-  {% include 'head.html' %}
-{% endblock %}
+  {% include "head.html" %}
+{% endblock head %}
 
 {% block header %}
-  {% include 'header.html' %}
-{% endblock %}
+  {% include "header.html" %}
+{% endblock header %}
 
 {% block footer %}
-  {% include 'footer.html' %}
-{% endblock %}
+  {% include "footer.html" %}
+{% endblock footer %}
 
 {% block bodyEnd %}
   <!--[if gt IE 8]><!-->
   <script src="{{ url_for('static', filename='govuk-frontend-4.0.0.min.js') }}"> </script>
   <script>window.GOVUKFrontend.initAll()</script>
   <!--<![endif]-->
-{% endblock %}
+{% endblock bodyEnd %}
