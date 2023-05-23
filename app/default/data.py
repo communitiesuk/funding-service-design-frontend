@@ -364,16 +364,16 @@ def get_default_fund_and_round() -> tuple[str, str]:
     default_fund: Fund = None
 
     for fund in get_all_funds():
-        round = get_default_round_for_fund(fund['short_name'])
+        round = get_default_round_for_fund(fund["short_name"])
         if round:
             status = determine_round_status(round)
             if status.is_open:
-                return (fund['short_name'], round.short_name)
+                return (fund["short_name"], round.short_name)
             else:
                 default_round = round
                 default_fund = fund
 
-    if (default_fund or default_round):
-        return (default_fund['short_name'], default_round.short_name)
+    if default_fund or default_round:
+        return (default_fund["short_name"], default_round.short_name)
     else:
         return (None, None)

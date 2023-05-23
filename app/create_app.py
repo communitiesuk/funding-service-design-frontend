@@ -1,8 +1,8 @@
 from os import getenv
 
-from app.default.data import get_fund_data
 from app.default.data import get_default_fund_and_round
 from app.default.data import get_default_round_for_fund
+from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data_by_short_names
 from app.filters import date_format_short_month
@@ -142,7 +142,9 @@ def create_app() -> Flask:
             (fund_short_name, _) = get_default_fund_and_round()
             fund = get_fund_data_by_short_name(fund_short_name)
             current_app.logger.warn(
-                f"Couldn't found any fund in the requests. Using {fund_short_name} as default fund!")
+                "Couldn't found any fund in the requests. Using"
+                f" {fund_short_name} as default fund!"
+            )
         return fund
 
     def find_round_in_request(fund):
@@ -156,7 +158,9 @@ def create_app() -> Flask:
         else:
             round = get_default_round_for_fund(fund.short_name)
             current_app.logger.warn(
-                f"Couldn't found any fund in the requests. Using {round.short_name} as default fund!")
+                "Couldn't found any fund in the requests. Using"
+                f" {round.short_name} as default fund!"
+            )
         return round
 
     @flask_app.context_processor
