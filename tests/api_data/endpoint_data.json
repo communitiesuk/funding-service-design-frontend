@@ -6,6 +6,13 @@
       "description": "test test",
       "short_name": "FSD",
       "title": "fund for testing"
+    },
+    {
+      "id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
+      "name": "Community Ownership Fund",
+      "description": "The Community Ownership Fund is a £150 million fund over 4 years to support community groups across England, Wales, Scotland and Northern Ireland to take ownership of assets which are at risk of being lost to the community.",
+      "short_name": "COF",
+      "title": "funding to save an asset in your community"
     }
   ],
   "fund_store/funds/funding-service-design?language=en": {
@@ -59,6 +66,42 @@
     "short_name": "FSD",
     "title": "funding to save an asset in your community"
   },
+  "fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds?language=en":[
+    {
+      "assessment_deadline": "2023-03-30 12:00:00",
+      "deadline": "2022-12-14 11:59:00",
+      "fund_id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
+      "id": "c603d114-5364-4474-a0c4-c41cbf4d3bbd",
+      "opens": "2022-10-04 12:00:00",
+      "short_name": "R2W2",
+      "title": "Round 2 Window 2",
+      "prospectus": "http://google.com/search?q=r2w2",
+      "instructions": "Round specific instruction text for r2w2",
+      "contact_email": "test@example.com",
+      "contact_phone": "123456789",
+      "contact_textphone": "123456789",
+      "support_times": "9-5",
+      "support_days": "Mon-Fri",
+      "privacy_notice": ""
+    },
+    {
+      "assessment_deadline": "2023-05-05 12:00:00",
+      "deadline": "2023-04-14 12:00:00",
+      "fund_id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
+      "id": "5cf439bf-ef6f-431e-92c5-a1d90a4dd32f",
+      "opens": "2023-02-15 12:00:00",
+      "short_name": "R2W3",
+      "title": "Round 2 Window 3",
+      "prospectus": "http://google.com/search?q=r2w3",
+      "instructions": "Round specific instruction text for r2w3",
+      "contact_email": "test@example.com",
+      "contact_phone": "123456789",
+      "contact_textphone": "123456789",
+      "support_times": "9-5",
+      "support_days": "Mon-Fri",
+      "privacy_notice": ""
+    }
+  ],
   "fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd?language=en": {
     "id": "c603d114-5364-4474-a0c4-c41cbf4d3bbd",
     "title": "Round 2 Window 2",
@@ -1251,14 +1294,14 @@
         "account_id": "test-user",
         "email_address": "test@example.com"
     },
-  "fund_store/funds/COF?language=en&use_short_name=True":{
+  "fund_store/funds/cof?language=en&use_short_name=True":{
     "description": "The Community Ownership Fund is a £150 million fund over 4 years to support community groups across England, Wales, Scotland and Northern Ireland to take ownership of assets which are at risk of being lost to the community.",
     "id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
     "name": "Community Ownership Fund",
     "short_name": "COF",
     "title": "funding to save an asset in your community"
   },
-  "fund_store/funds/COF/rounds/R2W3?language=en&use_short_name=true":
+  "fund_store/funds/cof/rounds/r2w3?language=en&use_short_name=true":
     {
       "assessment_deadline": "2023-05-05 12:00:00",
       "deadline": "2023-04-14 12:00:00",
@@ -1293,7 +1336,8 @@
         "contact_phone": "123456789",
         "contact_textphone": "123456789",
         "support_times": "9-5",
-        "support_days": "Mon-Fri"
+        "support_days": "Mon-Fri",
+        "privacy_notice": ""
       },
       {
         "assessment_deadline": "2023-05-05 12:00:00",
@@ -1303,13 +1347,14 @@
         "opens": "2023-02-15 12:00:00",
         "short_name": "R2W3",
         "title": "Round 2 Window 3",
-        "prospectus_link": "http://google.com/search?q=r2w3",
+        "prospectus": "http://google.com/search?q=r2w3",
         "instructions": "Round specific instruction text for r2w3",
         "contact_email": "test@example.com",
         "contact_phone": "123456789",
         "contact_textphone": "123456789",
         "support_times": "9-5",
-        "support_days": "Mon-Fri"
+        "support_days": "Mon-Fri",
+        "privacy_notice": ""
       }
     ],
   "fund_store/funds/funding-service-design/rounds/summer/sections/application": [

@@ -183,7 +183,7 @@ def get_fund_data_by_short_name(fund_short_name, as_dict=False):
         current_app.logger.warning(f"Invalid fund {fund_short_name}!")
         abort(404)
     fund_request_url = Config.GET_FUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
-        fund_short_name=fund_short_name
+        fund_short_name=fund_short_name.lower()
     )
     params = {"language": get_lang(), "use_short_name": True}
     fund_response = get_data_or_fail_gracefully(fund_request_url, params)
@@ -239,7 +239,7 @@ def get_round_data_by_short_names(
     params = {"language": get_lang(), "use_short_name": "true"}
 
     request_url = Config.GET_ROUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
-        fund_short_name=fund_short_name, round_short_name=round_short_name
+        fund_short_name=fund_short_name.lower(), round_short_name=round_short_name.lower()
     )
     response = get_data_or_fail_gracefully(request_url, params)
     if as_dict:
@@ -253,7 +253,7 @@ def get_round_data_fail_gracefully(fund_id, round_id, use_short_name=False):
         if fund_id and round_id:
             params = {}
             round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(
-                fund_id=fund_id, round_id=round_id
+                fund_id=fund_id.lower(), round_id=round_id.lower()
             )
             if use_short_name:
                 params["use_short_name"] = True
@@ -322,8 +322,8 @@ def get_all_rounds_for_fund(fund_id, as_dict=False, use_short_name=False):
     params = {"language": get_lang()}
     if use_short_name:
         params["use_short_name"] = "true"
-    rounds_response = get_data(
-        Config.GET_ALL_ROUNDS_FOR_FUND_ENDPOINT.format(fund_id=fund_id),
+    rounds_response = get_data_or_fail_gracefully(
+        Config.GET_ALL_ROUNDS_FOR_FUND_ENDPOINT.format(fund_id=fund_id.lower()),
         params,
     )
     if as_dict:
