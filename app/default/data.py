@@ -239,7 +239,8 @@ def get_round_data_by_short_names(
     params = {"language": get_lang(), "use_short_name": "true"}
 
     request_url = Config.GET_ROUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
-        fund_short_name=fund_short_name.lower(), round_short_name=round_short_name.lower()
+        fund_short_name=fund_short_name.lower(),
+        round_short_name=round_short_name.lower(),
     )
     response = get_data_or_fail_gracefully(request_url, params)
     if as_dict:
@@ -323,7 +324,9 @@ def get_all_rounds_for_fund(fund_id, as_dict=False, use_short_name=False):
     if use_short_name:
         params["use_short_name"] = "true"
     rounds_response = get_data_or_fail_gracefully(
-        Config.GET_ALL_ROUNDS_FOR_FUND_ENDPOINT.format(fund_id=fund_id.lower()),
+        Config.GET_ALL_ROUNDS_FOR_FUND_ENDPOINT.format(
+            fund_id=fund_id.lower()
+        ),
         params,
     )
     if as_dict:
