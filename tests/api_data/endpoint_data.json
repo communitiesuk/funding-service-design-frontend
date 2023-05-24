@@ -20,7 +20,8 @@
     "name": "Test Fund",
     "description": "test test",
     "short_name": "FSD",
-    "title": "fund for testing"
+    "title": "fund for testing",
+    "welsh_available": true
   },
   "fund_store/funds/funding-service-design/rounds?language=en": [
     {
@@ -107,7 +108,8 @@
     "name": "Test Fund",
     "description": "test test",
     "short_name": "FSD",
-    "title": "funding to save an asset in your community"
+    "title": "funding to save an asset in your community",
+    "welsh_available": true
   },
   "fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/rounds?language=en":[
     {
@@ -1354,7 +1356,8 @@
     "id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
     "name": "Community Ownership Fund",
     "short_name": "COF",
-    "title": "funding to save an asset in your community"
+    "title": "funding to save an asset in your community",
+    "welsh_available": true
   },
   "fund_store/funds/cof/rounds/r2w3?language=en&use_short_name=true":
     {

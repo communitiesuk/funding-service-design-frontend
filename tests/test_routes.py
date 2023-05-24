@@ -54,6 +54,7 @@ fund_args = {
     "name": "Testing Fund",
     "short_name": "",
     "description": "",
+    "welsh_available": True,
 }
 short_name_fund = Fund(**fund_args, title="Test Fund by short name")
 id_fund = Fund(**fund_args, title="Test Fund by ID")
