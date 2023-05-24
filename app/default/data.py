@@ -345,7 +345,9 @@ def get_latest_open_or_closed_round(rounds: List[Round]) -> Round:
         latest_open_round = max(open_rounds, key=lambda r: r.deadline)
         return latest_open_round
     else:  # if no open round is found then return recently closed round
-        all_rounds_by_closed = sorted(rounds, key=lambda r: r.deadline, reverse=True)
+        all_rounds_by_closed = sorted(
+            rounds, key=lambda r: r.deadline, reverse=True
+        )
         return all_rounds_by_closed[0]
 
 
@@ -367,15 +369,20 @@ def get_default_fund_and_round() -> tuple[str, str]:
     if all_funds:
         if len(all_funds) == 1:
             default_fund = all_funds[0]
-            default_round = get_default_round_for_fund(default_fund['short_name'])
+            default_round = get_default_round_for_fund(
+                default_fund["short_name"]
+            )
         else:
-            all_rounds = [get_default_round_for_fund(fund['short_name']) for fund in all_funds]
+            all_rounds = [
+                get_default_round_for_fund(fund["short_name"])
+                for fund in all_funds
+            ]
             all_rounds = [round for round in all_rounds if round]
             if not all_rounds:
-                return (all_funds[0]['short_name'], None)
+                return (all_funds[0]["short_name"], None)
             default_round = get_latest_open_or_closed_round(all_rounds)
             default_fund = get_fund_data(default_round.fund_id)
 
-        return (default_fund['short_name'], default_round.short_name)
+        return (default_fund["short_name"], default_round.short_name)
     else:
         raise ValueError("No Funds and rounds are found!")
