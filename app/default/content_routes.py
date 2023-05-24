@@ -1,3 +1,4 @@
+from app.default.data import get_default_fund_and_round
 from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data_by_short_names
 from app.default.data import get_round_data_fail_gracefully
@@ -50,6 +51,8 @@ def contact_us():
     current_app.logger.info("Contact us page loaded.")
     fund_short_name = request.args.get("fund")
     round_short_name = request.args.get("round")
+    if not (fund_short_name and round_short_name):
+        (fund_short_name, round_short_name) = get_default_fund_and_round()
     round_data = get_round_data_fail_gracefully(
         fund_short_name, round_short_name, True
     )
