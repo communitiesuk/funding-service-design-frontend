@@ -211,6 +211,16 @@ def create_app() -> Flask:
             privacy_url=url_for("content_routes.privacy"),
         )
 
+    @flask_app.after_request
+    def after_request(response):
+        if "Cache-Control" not in response.headers:
+            # As per the HTTP 1.1 specs, unless explicitly instructed otherwise,
+            # caching should be assumed to be on for client and intermediaries.
+            response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+            response.headers["Pragma"] = "no-cache"
+            response.headers["Expires"] = "0"
+        return response
+
     @flask_app.before_request
     def filter_favicon_requests():
         if request.path == "/favicon.ico":
