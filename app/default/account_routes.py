@@ -141,6 +141,7 @@ def dashboard():
 
     fund_short_name = request.args.get("fund")
     round_short_name = request.args.get("round")
+    welsh_available = True
 
     if fund_short_name and round_short_name:
         # find and display applications with this
@@ -150,11 +151,16 @@ def dashboard():
             fund_short_name,
             round_short_name,
         )
+        fund_details = get_fund_data_by_short_name(
+            fund_short_name,
+        )
+        welsh_available = fund_details.welsh_available
         search_params = {
             "fund_id": round_details.fund_id,
             "round_id": round_details.id,
             "account_id": account_id,
         }
+
     elif fund_short_name:
         # find and display all applications across
         # this fund else return 404
@@ -167,6 +173,7 @@ def dashboard():
             "fund_id": fund_details.id,
             "account_id": account_id,
         }
+        welsh_available = fund_details.welsh_available
     else:
         # Generic all applications dashboard
         template_name = "dashboard_all.html"
@@ -184,8 +191,6 @@ def dashboard():
     current_app.logger.info(
         f"Setting up applicant dashboard for :'{account_id}'"
     )
-    # TODO will need to tell the dashboard template whether it's for a
-    # particular fund or it's the generic dashboard.
     return render_template(
         template_name,
         account_id=account_id,
@@ -193,6 +198,7 @@ def dashboard():
         show_language_column=show_language_column,
         fund_short_name=fund_short_name,
         round_short_name=round_short_name,
+        welsh_available=welsh_available,
     )
 
 

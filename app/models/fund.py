@@ -14,6 +14,7 @@ class Fund:
     short_name: str
     description: str
     title: str
+    welsh_available: bool
 
     @classmethod
     def from_dict(cls, d: dict):
