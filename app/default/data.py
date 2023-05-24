@@ -1,6 +1,7 @@
 import json
 import os
 from collections import namedtuple
+from typing import List
 from urllib.parse import urlencode
 
 import requests
@@ -331,49 +332,50 @@ def determine_round_status(round: Round):
     return round_status
 
 
+def get_latest_open_or_closed_round(rounds: List[Round]) -> Round:
+    """Get the latest open round from the Rounds list, or if there are no open rounds,
+    then get the last closed round."""
+
+    if len(rounds) == 0:
+        return None
+
+    open_rounds = [r for r in rounds if determine_round_status(r).is_open]
+
+    if open_rounds:
+        latest_open_round = max(open_rounds, key=lambda r: r.deadline)
+        return latest_open_round
+    else:  # if no open round is found then return recently closed round
+        all_rounds_by_closed = sorted(rounds, key=lambda r: r.deadline, reverse=True)
+        return all_rounds_by_closed[0]
+
+
 def get_default_round_for_fund(fund_short_name: str) -> Round:
     try:
         rounds = get_all_rounds_for_fund(
             fund_short_name, as_dict=False, use_short_name=True
         )
-        if len(rounds) == 0:
-            return None
-        rounds_sorted_by_opens = sorted(
-            rounds,
-            key=lambda r: r.opens,
-            reverse=True,
-        )
-        status = determine_round_status(rounds_sorted_by_opens[0])
-        if status.is_open:
-            return rounds_sorted_by_opens[0]
-
-        rounds_sorted_by_closed = sorted(
-            rounds,
-            key=lambda r: r.deadline,
-            reverse=True,
-        )
-        return rounds_sorted_by_closed[0]
+        return get_latest_open_or_closed_round(rounds)
     except Exception as e:
         current_app.log_exception(e)
         return None
 
 
 def get_default_fund_and_round() -> tuple[str, str]:
-    """Get the first found upcoming open round as default round."""
-    default_round: Round = None
-    default_fund: Fund = None
+    """Get the latest opened or closed round as default round."""
+    all_funds = get_all_funds()
 
-    for fund in get_all_funds():
-        round = get_default_round_for_fund(fund["short_name"])
-        if round:
-            status = determine_round_status(round)
-            if status.is_open:
-                return (fund["short_name"], round.short_name)
-            else:
-                default_round = round
-                default_fund = fund
+    if all_funds:
+        if len(all_funds) == 1:
+            default_fund = all_funds[0]
+            default_round = get_default_round_for_fund(default_fund['short_name'])
+        else:
+            all_rounds = [get_default_round_for_fund(fund['short_name']) for fund in all_funds]
+            all_rounds = [round for round in all_rounds if round]
+            if not all_rounds:
+                return (all_funds[0]['short_name'], None)
+            default_round = get_latest_open_or_closed_round(all_rounds)
+            default_fund = get_fund_data(default_round.fund_id)
 
-    if default_fund or default_round:
-        return (default_fund["short_name"], default_round.short_name)
+        return (default_fund['short_name'], default_round.short_name)
     else:
-        return (None, None)
+        raise ValueError("No Funds and rounds are found!")
