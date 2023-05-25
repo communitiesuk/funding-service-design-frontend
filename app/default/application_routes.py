@@ -145,11 +145,13 @@ def tasklist(application_id):
 
     if application.status == ApplicationStatus.SUBMITTED.name:
         with force_locale(application.language):
-            return redirect(url_for(
-                "account_routes.dashboard",
-                fund=fund_data.short_name,
-                round=round_data.short_name,
-            ))
+            return redirect(
+                url_for(
+                    "account_routes.dashboard",
+                    fund=fund_data.short_name,
+                    round=round_data.short_name,
+                )
+            )
 
     # Create tasklist display config
     section_display_config = get_application_display_config(

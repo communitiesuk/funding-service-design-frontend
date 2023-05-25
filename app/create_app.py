@@ -216,7 +216,9 @@ def create_app() -> Flask:
         if "Cache-Control" not in response.headers:
             # As per the HTTP 1.1 specs, unless explicitly instructed otherwise,
             # caching should be assumed to be on for client and intermediaries.
-            response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+            response.headers[
+                "Cache-Control"
+            ] = "no-cache, no-store, must-revalidate"
             response.headers["Pragma"] = "no-cache"
             response.headers["Expires"] = "0"
         return response
