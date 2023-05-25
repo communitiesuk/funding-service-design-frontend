@@ -378,29 +378,3 @@ def get_default_round_for_fund(fund_short_name: str) -> Round:
     except Exception as e:
         current_app.log_exception(e)
         return None
-
-
-def get_default_fund_and_round() -> tuple[str, str]:
-    """Get the latest opened or closed round as default round."""
-    all_funds = get_all_funds()
-
-    if all_funds:
-        if len(all_funds) == 1:
-            default_fund = all_funds[0]
-            default_round = get_default_round_for_fund(
-                default_fund["short_name"]
-            )
-        else:
-            all_rounds = [
-                get_default_round_for_fund(fund["short_name"])
-                for fund in all_funds
-            ]
-            all_rounds = [round for round in all_rounds if round]
-            if not all_rounds:
-                return (all_funds[0]["short_name"], None)
-            default_round = get_latest_open_or_closed_round(all_rounds)
-            default_fund = get_fund_data(default_round.fund_id)
-
-        return (default_fund["short_name"], default_round.short_name)
-    else:
-        raise ValueError("No Funds and rounds are found!")
