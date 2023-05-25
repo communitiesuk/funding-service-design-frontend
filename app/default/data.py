@@ -265,27 +265,27 @@ def get_round_data_fail_gracefully(fund_id, round_id, use_short_name=False):
         current_app.logger.error(
             f"Call to Fund Store failed GET {round_request_url}"
         )
-        # return valid Round object with no values so we know we've
-        # failed and can handle in templates appropriately
-        return Round(
-            id="",
-            assessment_deadline="",
-            deadline="",
-            fund_id="",
-            opens="",
-            title="",
-            short_name="",
-            prospectus="",
-            privacy_notice="",
-            instructions="",
-            contact_email="",
-            contact_phone="",
-            contact_textphone="",
-            support_days="",
-            support_times="",
-            feedback_link="",
-            project_name_field_id="",
-        )
+    # return valid Round object with no values so we know we've
+    # failed and can handle in templates appropriately
+    return Round(
+        id="",
+        assessment_deadline="",
+        deadline="",
+        fund_id="",
+        opens="",
+        title="",
+        short_name="",
+        prospectus="",
+        privacy_notice="",
+        instructions="",
+        contact_email="",
+        contact_phone="",
+        contact_textphone="",
+        support_days="",
+        support_times="",
+        feedback_link="",
+        project_name_field_id="",
+    )
 
 
 def get_account(email: str = None, account_id: str = None) -> Account | None:
