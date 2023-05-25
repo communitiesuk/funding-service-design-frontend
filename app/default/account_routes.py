@@ -199,6 +199,8 @@ def dashboard():
 @account_bp.route("/account/new", methods=["POST"])
 @login_required
 def new():
+    fund_short_name=request.args.get("fund")
+    round_short_name=request.args.get("round")
     account_id = g.account_id
     new_application = requests.post(
         url=f"{Config.APPLICATION_STORE_API_HOST}/applications",
@@ -222,6 +224,8 @@ def new():
     return redirect(
         url_for(
             "application_routes.tasklist",
+            fund=fund_short_name,
+            round=round_short_name,
             application_id=new_application.json().get("id"),
         )
     )
