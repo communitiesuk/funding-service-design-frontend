@@ -48,9 +48,12 @@ def cof_r2w2_all_questions_redirect():
 
 @content_bp.route("/contact_us", methods=["GET"])
 def contact_us():
-    current_app.logger.info("Contact us page loaded.")
     fund_short_name = request.args.get("fund")
     round_short_name = request.args.get("round")
+    current_app.logger.info(
+        f"Contact us page loaded for fund {fund_short_name} round"
+        f" {round_short_name}."
+    )
     if not (fund_short_name and round_short_name):
         (fund_short_name, round_short_name) = get_default_fund_and_round()
     round_data = get_round_data_fail_gracefully(
@@ -91,4 +94,35 @@ def privacy():
     )
     return redirect(
         "https://www.gov.uk/government/publications/community-ownership-fund-privacy-notice/community-ownership-fund-privacy-notice"  # noqa
+    )
+
+
+@content_bp.route("/feedback", methods=["GET"])
+def feedback():
+    fund_short_name = request.args.get("fund")
+    round_short_name = request.args.get("round")
+    current_app.logger.info(
+        f"Feedback page loading for fund {fund_short_name} round"
+        f" {round_short_name}."
+    )
+    if fund_short_name and round_short_name:
+        round_data = get_round_data_by_short_names(
+            fund_short_name, round_short_name
+        )
+        feedback_url = getattr(round_data, "feedback_link", None)
+
+        if feedback_url:
+            current_app.logger.debug("Feedback link configured for fund")
+            return redirect(feedback_url)
+
+    current_app.logger.warning(
+        f"No feedback url configured for round ({fund_short_name} -"
+        f" {round_short_name}). Redirecting..."
+    )
+    return redirect(
+        url_for(
+            "content_routes.contact_us",
+            fund=fund_short_name,
+            round=round_short_name,
+        )
     )

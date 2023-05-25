@@ -283,6 +283,8 @@ def get_round_data_fail_gracefully(fund_id, round_id, use_short_name=False):
             contact_textphone="",
             support_days="",
             support_times="",
+            feedback_link="",
+            project_name_field_id="",
         )
 
 
