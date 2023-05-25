@@ -1,7 +1,7 @@
-from app.default.data import get_default_fund_and_round
 from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data_by_short_names
 from app.default.data import get_round_data_fail_gracefully
+from app.models.round import Round
 from flask import abort
 from flask import Blueprint
 from flask import current_app
@@ -54,16 +54,37 @@ def contact_us():
         f"Contact us page loaded for fund {fund_short_name} round"
         f" {round_short_name}."
     )
-    if not (fund_short_name and round_short_name):
-        (fund_short_name, round_short_name) = get_default_fund_and_round()
-    round_data = get_round_data_fail_gracefully(
-        fund_short_name, round_short_name, True
-    )
-    fund_data = get_fund_data_by_short_name(fund_short_name)
+    if round_short_name and fund_short_name:
+        round_data = get_round_data_fail_gracefully(
+            fund_short_name, round_short_name, True
+        )
+        fund_data = get_fund_data_by_short_name(fund_short_name)
+        fund_name = fund_data.name
+    else:
+        round_data = Round(
+            id="",
+            assessment_deadline="",
+            deadline="",
+            fund_id="",
+            opens="",
+            title="",
+            short_name="",
+            prospectus="",
+            privacy_notice="",
+            instructions="",
+            contact_email="",
+            contact_phone="",
+            contact_textphone="",
+            support_days="",
+            support_times="",
+            feedback_link="",
+            project_name_field_id="",
+        )
+        fund_name = ""
     return render_template(
         "contact_us.html",
         round_data=round_data,
-        fund_name=fund_data.name,
+        fund_name=fund_name,
     )
 
 
