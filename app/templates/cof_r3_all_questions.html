@@ -25,12 +25,6 @@
                         <a class="govuk-link" href="#{% trans %}management-case{% endtrans %}">{% trans %}Management case{% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}community-benefits{% endtrans %}">{% trans %}Potential to deliver community benefits{% endtrans %}</a>
-                    </li>
-                    <li>
-                        <a class="govuk-link" href="#{% trans %}community-value{% endtrans %}">{% trans %}Added value to community{% endtrans %}</a>
-                    </li>
-                    <li>
                         <a class="govuk-link" href="#{% trans %}subsidy-control{% endtrans %}">{% trans %}Subsidy control and state aid{% endtrans %}</a>
                     </li>
                     <li>
@@ -55,19 +49,19 @@
             </p>
             <h4 class="govuk-heading-s  ">1.1.3.1. {% trans %}Alternative names of your organisation{% endtrans %}</h4>
             <h4 class="govuk-heading-s  ">1.1.4. {% trans %}What is your organisation's main purpose?{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}</h4>
+            <p class="govuk-body">{% trans %}This is what the organisation was set up to achieve{% endtrans %}</p>
             <h4 class="govuk-heading-s  ">1.1.5. {% trans %}Tell us about your organisation's main activities{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}</h4>
+            <p class="govuk-body">{% trans %}Include any activities you undertake in order to achieve the organisation's purpose.{% endtrans %}</p>
+            <p class="govuk-body">{% trans %}You must list at least one, and can include up to three.{% endtrans %}</p>
             <h4 class="govuk-heading-s  ">1.1.6. {% trans %}Have you delivered projects like this before?{% endtrans %}</h4>
             <p class="govuk-body">
-                {{ pgettext("group", "If 'Yes', go to") }} <strong>1.1.6.1.</strong> {% trans %}and{% endtrans %} <strong>1.1.6.2.</strong>
+                {{ pgettext("group", "If 'Yes', go to") }} <strong>1.1.6.1.</strong>
             </p>
             <p class="govuk-body">
                 {{ pgettext("group", "If 'No', go to") }} <strong>1.1.7.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
                 1.1.6.1. {% trans %}Describe your previous projects{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
-            </h4>
-            <h4 class="govuk-heading-s  ">
-                1.1.6.2. {% trans %}Provide any evidence to support your previous projects (optional){% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
                 1.1.7. {% trans %}Type of organisation{% endtrans %}
@@ -96,19 +90,25 @@
                 </li>
             </ul>
             <p class="govuk-body">
-                {% trans %}If 'Charitable incorporated organisation (CIO)' or 'Scottish charitable incorporated organisation (SCIO)', go to{% endtrans %} <strong>1.1.7.1.</strong>
+                {% trans %}If 'Other', go to{% endtrans %} <strong>1.1.7.1</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'Co-operative, such as a community benefit society', 'Community interest company (CIC)', or 'Company limited by guarantee' go to{% endtrans %} <strong>1.1.7.2.</strong>
+                {% trans %}If 'Charitable incorporated organisation (CIO)' or 'Scottish charitable incorporated organisation (SCIO)', go to{% endtrans %} <strong>1.1.7.2.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'Other', go to{% endtrans %} <strong>1.1.8.</strong>
+                {% trans %}If 'Co-operative, such as a community benefit society', 'Community interest company (CIC)', or 'Company limited by guarantee' go to{% endtrans %} <strong>1.1.7.3.</strong>
+            </p>
+            <p class="govuk-body">
+                {% trans %}If 'Parish council', go to{% endtrans %} <strong>1.1.8.</strong>
             </p>
             <h4 class="govuk-heading-s">
-                1.1.7.1. {% trans %}Charity number{% endtrans %}
+                1.1.7.1. {% trans %}Type of organisation (other){% endtrans %}
             </h4>
             <h4 class="govuk-heading-s">
-                1.1.7.2. {% trans %}Company registration number{% endtrans %}
+                1.1.7.2. {% trans %}Charity number{% endtrans %}
+            </h4>
+            <h4 class="govuk-heading-s">
+                1.1.7.3. {% trans %}Company registration number{% endtrans %}
             </h4>
             <h4 class="govuk-heading-s">
                 1.1.8. {% trans %}Which regulatory body is your company registered with?{% endtrans %}
@@ -208,7 +208,16 @@
                 2.1. {% trans %}Project information{% endtrans %}
             </h3>
             <h4 class="govuk-heading-s  ">
-                2.1.1. {% trans %}Have you been given funding through the Community Ownership Fund before?{% endtrans %}
+                2.1.1. {% trans %}Have you applied to the Community Ownership Fund before?{% endtrans %}
+            </h4>
+            <p class="govuk-body">
+                {{ pgettext("group", "If 'Yes', go to") }} <strong>2.1.1.1.</strong>
+            </p>
+            <p class="govuk-body">
+                {{ pgettext("group", "If 'No', go to") }} <strong>2.1.2.</strong>
+            </p>
+            <h4 class="govuk-heading-s  ">
+                2.1.1.1. {% trans %}Was your application successful?{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {{ pgettext("group", "If 'Yes', go to") }} <strong>2.1.1.1.</strong> {% trans %}and{% endtrans %} <strong>2.1.1.2.</strong>
@@ -217,7 +226,7 @@
                 {{ pgettext("group", "If 'No', go to") }} <strong>2.1.2.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
-                2.1.1.1. {% trans %}Describe your previous project{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                2.1.1.1.1 {% trans %}Describe the project for which you were given funding{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}Include:{% endtrans %}
@@ -251,10 +260,10 @@
                 2.1.3. {% trans %}Tell us how the asset is currently being used, or how it has been used before, and why it's important to the community{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                2.1.4. {% trans %}Explain why the asset is at risk of being lost to the community, or why it has already been lost{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                2.1.4. {% trans %}Give a brief summary of your project, including what you hope to achieve{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                2.1.5. {% trans %}Give a brief summary of your project, including what you hope to achieve{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                2.1.5. {% trans %}Tell us about the planned activities and/or services that will take place in the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
                 2.1.6. {% trans %}Address of the community asset{% endtrans %}
@@ -314,7 +323,7 @@
                 </li>
             </ul>
             <h4 class="govuk-heading-s  ">
-                2.2.2. {% trans %}What do you intend to do with the asset?{% endtrans %}
+                2.2.2. {% trans %}How do you intend to take community ownership of the asset?{% endtrans %}
             </h4>
             <ul class="govuk-list govuk-list--bullet">
                 <li>
@@ -331,61 +340,76 @@
                 </li>
             </ul>
             <h4 class="govuk-heading-s  ">
-                2.2.3. {% trans %}Do you know who currently owns your asset?{% endtrans %}
+                2.2.3. {% trans %} Upload asset valuation or lease agreement{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {{ pgettext("group", "If 'Yes', go to") }} <strong>2.2.3.1.</strong>
+                {% trans %}Upload evidence to support what you plan to do with the asset.{% endtrans %}
             </p>
             <p class="govuk-body">
-                {{ pgettext("group", "If 'No', go to") }} <strong>2.2.3.2.</strong>
+                {% trans %}Buy the asset / already owned by the organisation: an official document showing the asset's value from an independent surveyor or similar professional.{% endtrans %}
+            </p>
+            <p class="govuk-body">
+                {% trans %}Lease the asset / already leased by the organisation: a copy of your tenancy agreement, or agreed heads of terms, showing at least 15 years tenancy with reasonable break clauses.{% endtrans %}
+            </p>
+            <p class="govuk-body">
+                {% trans %}It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, rtf, csv, xls, xlsx, ods).{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
-                2.2.3.1. {% trans %}Name of current asset owner{% endtrans %}
-            </h4>
-            <h4 class="govuk-heading-s  ">
-                2.2.3.2. {% trans %}Describe the current ownership status{% endtrans %}
-            </h4>
-            <h4 class="govuk-heading-s  ">
-                2.2.4. {% trans %}Have you already completed the purchase or lease?{% endtrans %}
+                2.2.4. {% trans %}Do you know who currently owns your asset?{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {{ pgettext("group", "If 'Yes', go to") }} <strong>2.2.4.1.</strong>
             </p>
             <p class="govuk-body">
-                {{ pgettext("group", "If 'No', go to") }} <strong>2.2.4.2.</strong> {% trans %}and{% endtrans %} <strong>2.2.4.3.</strong>
+                {{ pgettext("group", "If 'No', go to") }} <strong>2.2.4.2.</strong>
+            </p>
+            <h4 class="govuk-heading-s  ">
+                2.2.4.1. {% trans %}Name of current asset owner{% endtrans %}
+            </h4>
+            <h4 class="govuk-heading-s  ">
+                2.2.4.2. {% trans %}Describe the current ownership status{% endtrans %}
+            </h4>
+            <h4 class="govuk-heading-s  ">
+                2.2.5. {% trans %}Have you already completed the purchase or lease?{% endtrans %}
+            </h4>
+            <p class="govuk-body">
+                {{ pgettext("group", "If 'Yes', go to") }} <strong>2.2.5.1.</strong>
+            </p>
+            <p class="govuk-body">
+                {{ pgettext("group", "If 'No', go to") }} <strong>2.2.5.2.</strong> {% trans %}and{% endtrans %} <strong>2.2.5.3.</strong>
             </p>
             <h4 class="govuk-heading-s ">
-                2.2.4.1. {% trans %}Describe the sale process, e.g. an auction, or the terms of your lease if you have rented the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                2.2.5.1. {% trans %}Describe the sale process, e.g. an auction, or the terms of your lease if you have rented the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                2.2.4.2. {% trans %}Describe the expected sale process, or the proposed terms of your lease if you are renting the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                2.2.5.2. {% trans %}Describe the expected sale process, or the proposed terms of your lease if you are renting the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                2.2.4.3. {% trans %}Expected date of sale or lease{% endtrans %}
+                2.2.5.3. {% trans %}Expected date of sale or lease{% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                2.2.5. {% trans %}Is your asset currently publicly owned?{% endtrans %}
+                2.2.6. {% trans %}Is your asset currently publicly owned?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'Yes', go to") }} <strong>2.2.5.1.</strong>, <strong>2.2.5.2.</strong>, <strong>2.2.5.3.</strong> {% trans %}and{% endtrans %} <strong>2.2.5.4.</strong>
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>2.2.6.1.</strong>, <strong>2.2.6.2.</strong>, <strong>2.2.6.3.</strong> {% trans %}and{% endtrans %} <strong>2.2.6.4.</strong>
             </p>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'No', go to") }} <strong>2.2.6.</strong>
+                {{ pgettext("individual", "If 'No', go to") }} <strong>2.2.7.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
-                2.2.5.1. {% trans %}Tell us about the person you have spoken to at the relevant public about the asset{% endtrans %}
+                2.2.6.1. {% trans %}Tell us about the person you have spoken to at the relevant public about the asset{% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                2.2.5.2. {% trans %}When you buy or lease a publicly owned asset, the public authority must continue to be responsible for delivering any statutory services the asset provides{% endtrans %}
+                2.2.6.2. {% trans %}When you buy or lease a publicly owned asset, the public authority must continue to be responsible for delivering any statutory services the asset provides{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}This includes things like social care, waste collection and planning services{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
-                2.2.5.3. {% trans %}Grants from this fund cannot be used to buy the freehold or premium on the lease of a publicly owned asset. Money must only be used for renovation and refurbishment costs{% endtrans %}
+                2.2.6.3. {% trans %}Grants from this fund cannot be used to buy the freehold or premium on the lease of a publicly owned asset. Money must only be used for renovation and refurbishment costs{% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                2.2.5.4. {% trans %}Upload supporting evidence{% endtrans %}
+                2.2.6.4. {% trans %}Upload public ownership evidence{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}Upload supporting evidence to summarise:{% endtrans %}
@@ -405,44 +429,43 @@
                 {% trans %}For example, this evidence can include confirmation from the public owner or a letter from the local authority{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}It should be a single file no bigger than 5MB in any of the following formats:{% endtrans %}
-            </p>
-            {{ file_formats() }}
-            <h4 class="govuk-heading-s  ">
-                2.2.6. {% trans %}Is this a registered Asset of Community Value (ACV)?{% endtrans %}
-            </h4>
-            <p class="govuk-body">
-                {{ pgettext("individual", "If 'Yes', go to") }} <strong>2.2.6.1.</strong>
-            </p>
-            <p class="govuk-body">
-                {{ pgettext("individual", "If 'No', go to") }} <strong>2.2.7.</strong>
+                {% trans %}It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, rtf, csv, xls, xlsx, ods).{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
-                2.2.6.1. {% trans %}Will you purchase the asset within the appropriate time frame?{% endtrans %}
-            </h4>
-            <h4 class="govuk-heading-s  ">
-                2.2.7. {% trans %}Is the asset listed for disposal, or part of a Community Asset Transfer?{% endtrans %}
+                2.2.7. {% trans %}Is this a registered Asset of Community Value (ACV)?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'Yes', go to") }} <strong>2.2.7.1.</strong>, <strong>2.2.7.2.</strong>{% trans %}, and{% endtrans %} <strong>2.2.7.3.</strong>
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>2.2.7.1.</strong>
             </p>
             <p class="govuk-body">
                 {{ pgettext("individual", "If 'No', go to") }} <strong>2.2.8.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
-                2.2.7.1. {% trans %}When was the asset listed?{% endtrans %}
+                2.2.7.1. {% trans %}Will you purchase the asset within the appropriate time frame?{% endtrans %}
+            </h4>
+            <h4 class="govuk-heading-s  ">
+                2.2.8. {% trans %}Is the asset listed for disposal, or part of a Community Asset Transfer?{% endtrans %}
+            </h4>
+            <p class="govuk-body">
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>2.2.8.1.</strong>, <strong>2.2.8.2.</strong>{% trans %}, and{% endtrans %} <strong>2.2.8.3.</strong>
+            </p>
+            <p class="govuk-body">
+                {{ pgettext("individual", "If 'No', go to") }} <strong>2.2.9.</strong>
+            </p>
+            <h4 class="govuk-heading-s  ">
+                2.2.8.1. {% trans %}When was the asset listed?{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}For example, 27 3 2007{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
-                2.2.7.2. {% trans %}Provide a link to the listing{% endtrans %}
+                2.2.8.2. {% trans %}Provide a link to the listing{% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                2.2.7.3. {% trans %}Describe the current status of the Community Asset Transfer{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                2.2.8.3. {% trans %}Describe the current status of the Community Asset Transfer{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                2.2.8. {% trans %}Why is the asset at risk of closure?{% endtrans %}
+                2.2.9. {% trans %}Why is the asset at risk of closure?{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}Select all that apply{% endtrans %}
@@ -466,89 +489,70 @@
                 3. {% trans %}Strategic case{% endtrans %}
             </h2>
             <p class="govuk-body-l">
-                {% trans %}This section is worth{% endtrans %} <strong>30%</strong> {% trans %}of the assessment criteria.{% endtrans %}
+                {% trans %}This section is worth{% endtrans %} <strong>70%</strong> {% trans %}of the assessment criteria.{% endtrans %}
             </p>
             <h3 class="govuk-heading-m ">
                 3.1. {% trans %}Community use{% endtrans %}
             </h3>
             <h4 class="govuk-heading-s  ">
-                3.1.1. {% trans %}What policy aims will your project deliver against?{% endtrans %}
+                3.1.1. {% trans %}Who in the community uses the asset, or has used it in the past, and who benefits from it?{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}Select all that apply{% endtrans %}
+                {% trans %}Include any specific uses and how many people take part in these activities.{% endtrans %}
             </p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>
-                    {% trans %}Support local community{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}Improve local skills{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}Net zero{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}Regeneration{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}Fight climate change{% endtrans %}
-                </li>
-            </ul>
+            <p class="govuk-body">
+                {% trans %}Reference any statistics you have to reinforce this. For example, data on footfall{% endtrans %}
+            </p>
             <h4 class="govuk-heading-s  ">
-                3.1.2. {% trans %}Who in the community uses the asset, or has used it in the past, and who benefits from it?{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                3.1.2. {% trans %}Tell us how losing the asset would affect, or has already affected, people in the community{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
+            <p class="govuk-body">
+                {% trans %}Where possible give examples of these effects, such as important services ending or having to travel a significant distance to use a similar asset{% endtrans %}
+            </p>
             <h4 class="govuk-heading-s  ">
-                3.1.3. {% trans %}Tell us how losing the asset would affect, or has already affected, people in the community{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                3.1.3. {% trans %}Why will the asset be lost without community intervention?{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
+            <p class="govuk-body">
+                {% trans %}Include any evidence you have that it's use by the community will be threatened.{% endtrans %}
+            </p>
+            <p class="govuk-body">
+                {% trans %}For example, by the owner's intention or an imminent sale{% endtrans %}
+            </p>
             <h4 class="govuk-heading-s  ">
-                3.1.4. {% trans %}Why will the asset be lost without community intervention?{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                3.1.4. {% trans %}Explain how the community will be better served with the asset under community ownership{% endtrans %}
             </h4>
+            <p class="govuk-body">
+                {% trans %}Include why this is preferable to any other type of ownership{% endtrans %}
+            </p>
             <h3 class="govuk-heading-m ">
                 3.2. {% trans %}Community engagement{% endtrans %}
             </h3>
             <h4 class="govuk-heading-s  ">
-                3.2.1. {% trans %}Tell us how you have engaged with the community about your intention to take ownership of the asset, and explain how this has shaped your project plans{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
-            </h4>
-            <h4 class="govuk-heading-s  ">
-                3.2.2. {% trans %}Have you done any fundraising in the community?{% endtrans %}
+                3.2.1. {% trans %}Tell us how you have engaged with the community about your intention to take ownership of the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'Yes', go to") }} <strong>3.2.2.1.</strong>
+                {% trans %}Give examples of the different ways you've engaged with people, and how this has shaped your project plans{% endtrans %}
             </p>
+            <h4 class="govuk-heading-s  ">
+                3.2.2 {% trans %}Describe your fundraising activities{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+            </h4>
+            <h4 class="govuk-heading-s  ">
+                3.2.3. {% trans %}Tell us about any partnerships you've formed, and how they'll help the project be successful{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+            </h4>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'No', go to") }} <strong>3.2.3.</strong>
+                {% trans %}For example, any agreements you've reached with other local businesses or community organisations{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
-                3.2.2.1. {% trans %}Describe your fundraising activities{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                3.2.4. {% trans %}Tell us how your project supports any wider local plans{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
-                3.2.3. {% trans %}Tell us how your project supports any wider local plans{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
-            </h4>
+            <p class="govuk-body">
+                {% trans %}These could include plans led by the council, local businesses or the community{% endtrans %}
+            </p>
             <h3 class="govuk-heading-m ">
                 3.3. {% trans %}Local support{% endtrans %}
             </h3>
             <h4 class="govuk-heading-s  ">
-                3.3.1. {% trans %}Are you confident there is local support for your project?{% endtrans %}
-            </h4>
-            <p class="govuk-body">
-                {% trans %}This support can be from:{% endtrans %}
-            </p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>
-                    {% trans %}community groups{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}local businesses{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}public sector partners{% endtrans %}
-                </li>
-            </ul>
-            <p class="govuk-body">
-                {{ pgettext("group", "If 'Yes', go to") }} <strong>3.3.1.1.</strong> {% trans %}and{% endtrans %} <strong>3.3.1.2.</strong>
-            </p>
-            <h4 class="govuk-heading-s  ">
-                3.3.1.1. {% trans %}Tell us more about the local support for your project{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                3.3.1. {% trans %}Tell us more about the local support for your project{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}This can include:{% endtrans %}
@@ -567,18 +571,70 @@
                     {% trans %}a letter from your local MP{% endtrans %}
                 </li>
             </ul>
+            <p class="govuk-body">
+                {% trans %}If you plan to upload any supporting evidence below, reference it here.{% endtrans %}
+            </p>
             <h4 class="govuk-heading-s  ">
-                3.3.1.2. {% trans %}Upload supporting evidence (optional){% endtrans %}
+                3.3.2. {% trans %}Upload supporting evidence (optional){% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}It should be a single file no bigger than 5MB in any of the following formats:{% endtrans %}
+                {% trans %}Upload evidence to show the support you have from the community.{% endtrans %}
             </p>
-            {{ file_formats() }}
+            <p class="govuk-body">
+                {% trans %}It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, rtf, csv, xls, xlsx, ods).{% endtrans %}
+            </p>
             <h3 class="govuk-heading-m ">
-                3.4. {% trans %}Environmental sustainability{% endtrans %}
+                3.4. {% trans %}Community benefits{% endtrans %}
             </h3>
             <h4 class="govuk-heading-s  ">
-                3.4.1. {% trans %}Tell us how you have considered the environmental sustainability of your project{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                3.4.1. {% trans %}What community benefits do you expect to deliver with this project?{% endtrans %}
+            </h4>
+            <p class="govuk-body">
+                {% trans %}Select all that apply{% endtrans %}
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>
+                    {% trans %}Community pride and perceptions of the local area as a place to live{% endtrans %}
+                </li>
+                <li>
+                    {% trans %}Social trust, cohesion and a sense of belonging{% endtrans %}
+                </li>
+                <li>
+                    {% trans %}Participation in community life, arts and culture, or sport{% endtrans %}
+                </li>
+                <li>
+                    {% trans %}Local economic outcomes, such as employment and volunteering opportunities, and employability and skills{% endtrans %}
+                </li>
+                <li>
+                    {% trans %}Delivering positive impact in physical and mental health, and reducing loneliness and isolation{% endtrans %}
+                </li>
+            </ul>
+            <h4 class="govuk-heading-s  ">
+                3.4.2. {% trans %}Tell us about these benefits in detail, and how the asset's activities will help deliver them{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+            </h4>
+            <p class="govuk-body">
+                {% trans %}Include how the asset will address any specific needs the community faces, and how you researched these{% endtrans %}
+            </p>
+            <h4 class="govuk-heading-s  ">
+                3.4.3. {% trans %} Explain how you plan to deliver and sustain these benefits over time{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+            </h4>
+            <p class="govuk-body">
+                {% trans %}Include the key milestones you intend to meet in order to deliver these benefits{% endtrans %}
+            </p>
+            <h4 class="govuk-heading-s  ">
+                3.4.4. {% trans %} Tell us how you'll make sure the whole community benefits from the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+            </h4>
+            <p class="govuk-body">
+                {% trans %}For example, people who have not used the asset in the past, and other people who live in the local area.{% endtrans %}
+            </p>
+            <p class="govuk-body">
+                {% trans %}Where possible, reference any data you have on protected characteristics and equality impacts.{% endtrans %}
+            </p>
+            <h3 class="govuk-heading-m ">
+                3.5. {% trans %}Environmental sustainability{% endtrans %}
+            </h3>
+            <h4 class="govuk-heading-s  ">
+                3.5.1. {% trans %}Tell us how you have considered the environmental sustainability of your project{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}This could include:{% endtrans %}
@@ -631,91 +687,54 @@
                 {% trans %}This fund can offer up to 50&percnt; of your capital costs to renovate and repair the asset.{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
-                4.1.1. {% trans %}Total funding request{% endtrans %}
+                4.1.1. {% trans %}Total funding request(capital funding and revenue funding (optional)){% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}This is the amount you are applying for from the Community Ownership Fund.{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}You can apply for up to 50&percnt; of your capital costs, up to a maximum of £250,000 (up to £1 million for sporting assets). You can apply for up to £50,000 of your revenue costs (no more than 20&percnt; of your capital funding).{% endtrans %}
+                {% trans %}You can apply for up to 50&percnt; of your capital costs, up to a maximum of £1 million.{% endtrans %}
+            </p>
+            <p class="govuk-body">
+                {% trans %}You can apply for up to fifty thousand pounds(£50,000) of your revenue costs (no more than 20&percnt; of your capital funding).{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
                 4.1.2. {% trans %}Capital costs{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}This is used to purchase or lease the asset and pay for refurbishment costs. You can apply for up to £250,000 (up to £1 million for sporting assets){% endtrans %}
+                {% trans %}Tell us about your total capital costs.{% endtrans %}
+            </p>
+            <p class="govuk-body">
+                {% trans %}This should be for the whole project, not just what you're requesting from the fund.{% endtrans %}
+            </p>
+            <p class="govuk-body">
+                {% trans %}Capital costs can be used to:{% endtrans %}
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>
+                    {% trans %}purchase or lease the asset{% endtrans %}
+                </li>
+                <li>
+                    {% trans %}pay for refurbishment costs{% endtrans %}
+                </li>
+            </ul>
+            <p class="govuk-body">
+                {% trans %}Remember, you can apply for up to 50&percnt; of your capital costs, up to a maximum of £1 million.{% endtrans %}
             </p>
             <p class="govuk-body">
                 {% trans %}You can use your business plan to provide information that supports your answers.{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
-                4.1.3. {% trans %}Do you need to add revenue costs? (optional)?{% endtrans %}
+                4.1.3. {% trans %}Have you secured any match funding yet?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}This is used for the running costs of the project. This might include legal fees or general costs, including for:{% endtrans %}
-            </p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>
-                    {% trans %}utilities{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}staffing{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}appointing external consultants{% endtrans %}
-                </li>
-            </ul>
-            <p class="govuk-body">
-                {% trans %}It should be no more than £50,000, and no more than 20&percnt; of your capital funding.{% endtrans %}
+                {{ pgettext("group", "If 'Yes', go to") }} <strong>4.1.3.1.</strong>
             </p>
             <p class="govuk-body">
-                {{ pgettext("indefinite", "If 'Yes', go to") }} <strong>4.1.3.1.</strong>
-            </p>
-            <p class="govuk-body">
-                {{ pgettext("indefinite", "If 'No', go to") }} <strong>4.1.4.</strong>
+                {{ pgettext("group", "If 'No', go to") }} <strong>4.1.4.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
-                4.1.3.1. {% trans %}Revenue costs (optional){% endtrans %}
-            </h4>
-            <p class="govuk-body">
-                {% trans %}This is used for the running costs of the project. This might include legal fees or general costs, including for:{% endtrans %}
-            </p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>
-                    {% trans %}utilities{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}staffing{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}appointing external consultants{% endtrans %}
-                </li>
-            </ul>
-            <p class="govuk-body">
-                {% trans %}It should be no more than £50,000, and no more than 20&percnt; of your capital funding.{% endtrans %}
-            </p>
-            <p class="govuk-body">
-                {% trans %}You can use your business plan to:{% endtrans %}
-            </p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>
-                    {% trans %}tell us why you need revenue funding{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}provide any information that supports your answers{% endtrans %}
-                </li>
-            </ul>
-            <h4 class="govuk-heading-s  ">
-                4.1.4. {% trans %}Have you secured any match funding yet?{% endtrans %}
-            </h4>
-            <p class="govuk-body">
-                {{ pgettext("group", "If 'Yes', go to") }} <strong>4.1.4.1.</strong>
-            </p>
-            <p class="govuk-body">
-                {{ pgettext("group", "If 'No', go to") }} <strong>4.1.5.</strong>
-            </p>
-            <h4 class="govuk-heading-s  ">
-                4.1.4.1. {% trans %}Secured match funding{% endtrans %}
+                4.1.3.1. {% trans %}Secured match funding{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}You need to raise other sources of funding alongside investment from this fund.{% endtrans %}
@@ -753,16 +772,16 @@
                 {% trans %}You can use your business plan to provide evidence to support your answers.{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
-                4.1.5. {% trans %}Do you have any match funding identified but not yet secured?{% endtrans %}
+                4.1.4. {% trans %}Do you have any match funding identified but not yet secured?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {{ pgettext("indefinite", "If 'Yes', go to") }} <strong>4.1.5.1.</strong>
+                {{ pgettext("indefinite", "If 'Yes', go to") }} <strong>4.1.4.1.</strong>
             </p>
             <p class="govuk-body">
-                {{ pgettext("indefinite", "If 'No', go to") }} <strong>4.1.6.</strong>
+                {{ pgettext("indefinite", "If 'No', go to") }} <strong>4.1.5.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
-                4.1.5.1. {% trans %}Unsecured match funding{% endtrans %}
+                4.1.4.1. {% trans %}Unsecured match funding{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}You need to raise other sources of funding alongside investment from this fund.{% endtrans %}
@@ -807,23 +826,37 @@
                     {% trans %}- provide any information that supports your answers{% endtrans %}
                 </li>
             </ul>
-            <p class="govuk-body">
-                {% trans %}You can use your business plan to provide evidence to support your answers.{% endtrans %}
-            </p>
             <h4 class="govuk-heading-s  ">
-                4.1.6. {% trans %}Asset value{% endtrans %}
+                4.1.5. {% trans %}Are you applying for revenue funding from the Community Ownership Fund?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}You need to have the asset valued by someone independent before you take control of it.{% endtrans %}
+                {% trans %}Revenue costs go towards running the asset once you've taken ownership of it. This might include general costs, including for:{% endtrans %}
+            </p>
+            <ul class="govuk-list govuk-list--bullet">
+                <li>
+                    {% trans %}utilities{% endtrans %}
+                </li>
+                <li>
+                    {% trans %}staffing{% endtrans %}
+                </li>
+                <li>
+                    {% trans %}appointing external consultants{% endtrans %}
+                </li>
+            </ul>
+            <p class="govuk-body">
+                {% trans %}Remember, you can apply for up to fifty thousand pounds (£50,000) of your revenue costs (no more than 20&percnt; of your capital funding).{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}This includes the building and its contents, including fixtures and fittings, and any stock.{% endtrans %}
+                {% trans %}You can use your business plan to provide any information that supports your answers{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}You can use your business plan to provide evidence to support your answer.{% endtrans %}
+                {{ pgettext("indefinite", "If 'Yes', go to") }} <strong>4.1.5.1.</strong>
             </p>
+            <h4 class="govuk-heading-s  ">
+                4.1.5.1. {% trans %}Tell us how the revenue funding you've requested will help run the asset{% endtrans %}
+            </h4>
             <p class="govuk-body">
-                {% trans %}If you have already bought or leased the asset, use its current valuation.{% endtrans %}
+                {% trans %}Include the specific needs it will meet, and how you'll meet these needs once you've spent the funding.{% endtrans %}
             </p>
             <h3 class="govuk-heading-m ">
                 4.2. {% trans %}Feasibility{% endtrans %}
@@ -854,6 +887,15 @@
             <h4 class="govuk-heading-s  ">
                 4.2.2. {% trans %}Do you need to do any further feasibility work?{% endtrans %}
             </h4>
+            <p class="govuk-body">
+                {{ pgettext("indefinite", "If 'Yes', go to") }} <strong>4.2.2.1.</strong>
+            </p>
+            <h4 class="govuk-heading-s  ">
+                4.2.2.1. {% trans %}Describe the feasibility work you still need to complete {% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+            </h4>
+            <p class="govuk-body">
+                {% trans %}Include details of your plans and when you expect to complete them{% endtrans %}
+            </p>
             <h3 class="govuk-heading-m ">
                 4.3. {% trans %}Risk{% endtrans %}
             </h3>
@@ -881,10 +923,6 @@
                 4.3.1. {% trans %}Risks to your project (document upload){% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}It should be a single file no bigger than 5MB in any of the following formats:{% endtrans %}
-            </p>
-            {{ file_formats() }}
-            <p class="govuk-body">
                 {% trans %}Upload a document detailing any risks your project may face.{% endtrans %}
             </p>
             <p class="govuk-body">
@@ -910,14 +948,14 @@
             <p class="govuk-body">
                 {% trans %}Do not include any risks to the asset or why it may close, which we asked you about earlier in your application.{% endtrans %}
             </p>
+            <p class="govuk-body">
+                {% trans %}It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, rtf, csv, xls, xlsx, ods).{% endtrans %}
+            </p>
             <h3 class="govuk-heading-m ">
-                4.4. {% trans %}Project costs{% endtrans %}
+                4.4. {% trans %}Operational costs{% endtrans %}
             </h3>
             <p class="govuk-body">
-                {% trans %}This is analysis which tests the ability of your project to deliver its objectives.{% endtrans %}
-            </p>
-            <p class="govuk-body">
-                {% trans %}We're looking to understand your full financial forecasts for running the asset once you take ownership.{% endtrans %}
+                {% trans %}We're looking to understand your full operational costs for running the asset once you take ownership.{% endtrans %}
             </p>
             <p class="govuk-body">
                 {% trans %}This includes your sources of income and regular costs, as well as a summary of your expected cash flow for the next few years.{% endtrans %}
@@ -929,8 +967,11 @@
                 {% trans %}You can use your business plan to provide information that supports your answers.{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
-                4.4.1. {% trans %}Summarise your cash flow for the running of the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                4.4.1. {% trans %}Describe your cash flow for the running of the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
+            <p class="govuk-body">
+                {% trans %}Include how you see it working over the next three years. You can use your business plan to provide a forecast of figures.{% endtrans %}
+            </p>
             <h4 class="govuk-heading-s  ">
                 4.4.2. {% trans %}If successful, will you use your funding in the next 12 months?{% endtrans %}
             </h4>
@@ -961,6 +1002,9 @@
                 </li>
             </ul>
             <p class="govuk-body">
+                {% trans %}If you've requested revenue funding, include the costs this funding will help cover.{% endtrans %}
+            </p>
+            <p class="govuk-body">
                 {% trans %}You can use your business plan to provide information that supports your answers.{% endtrans %}
             </p>
             <h3 class="govuk-heading-m ">
@@ -982,16 +1026,7 @@
                 {% trans %}You can use your business plan to provide information that supports your answers.{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
-                4.5.1. {% trans %}Do you have experience of managing a community asset?{% endtrans %}
-            </h4>
-            <p class="govuk-body">
-                {{ pgettext("indefinite", "If 'Yes', go to") }} <strong>4.5.1.1.</strong>
-            </p>
-            <p class="govuk-body">
-                {{ pgettext("indefinite", "If 'No', go to") }} <strong>4.5.2.</strong>
-            </p>
-            <h4 class="govuk-heading-s  ">
-                4.5.1.1. {% trans %}Describe any experience you have with community assets similar to this{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                4.5.1. {% trans %}Describe any relevant experience you have delivering similar projects or running an asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
                 4.5.2. {% trans %}Do you have any plans to recruit people to help you manage the asset?{% endtrans %}
@@ -1052,23 +1087,17 @@
                 4.7. {% trans %}Inclusiveness and integration{% endtrans %}
             </h3>
             <h4 class="govuk-heading-s  ">
-                4.7.1. {% trans %}Describe the planned activities or services that will take place at the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                4.7.1. {% trans %}Tell us how the asset will be accountable to local people, and involve them in its running{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
+            <p class="govuk-body">
+                {% trans %}This means how you'll involve everyone in key decisions, such as how the asset is used{% endtrans %}
+            </p>
             <h4 class="govuk-heading-s  ">
                 4.7.2. {% trans %}Describe anything that might prevent people from using the asset or participating in its running{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}For example, membership costs or eligibility criteria{% endtrans %}
+                {% trans %}For example, high membership costs or exclusive eligibility criteria which prevent people from participating{% endtrans %}
             </p>
-            <h4 class="govuk-heading-s  ">
-                4.7.3. {% trans %}Tell us how you'll make your project accessible and inclusive to everyone in the community{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
-            </h4>
-            <p class="govuk-body">
-                {% trans %}This includes considering people with protected characteristics, disability access needs, and making the space attractive to everyone{% endtrans %}
-            </p>
-            <h4 class="govuk-heading-s  ">
-                4.7.4. {% trans %}Describe how the project will bring people together from all over the community{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
-            </h4>
             <h3 class="govuk-heading-m ">
                 4.8. {% trans %}Business plan{% endtrans %}
             </h3>
@@ -1082,246 +1111,155 @@
                 {% trans %}Include any information that supports the answers in your application. All figures must match those you've given in the management case section.{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}It should be a single file no bigger than 5MB in any of the following formats:{% endtrans %}
+                {% trans %}It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, rtf, csv, xls, xlsx, ods).{% endtrans %}
             </p>
-            {{ file_formats() }}
             <p class="govuk-body">
-                {% trans %}Your business plan could include:{% endtrans %}
+                {% trans %}Your business plan should include (but is not limited to):{% endtrans %}
             </p>
-            <h5 class="govuk-body govuk-!-font-weight-bold">
-                {% trans %}Funding details{% endtrans %}
-            </h5>
             <ul class="govuk-body govuk-list--bullet govuk-list">
                 <li>
-                    {% trans %}project costs{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}capital costs{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}revenue costs{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}total request for funding (capital costs plus revenue costs){% endtrans %}
-                </li>
-                <li>
-                    {% trans %}match funding details{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}funding you have already secured, with supporting evidence{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}funding you still need to secure{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}how long it will likely take to secure outstanding match funding{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}financial forecasts, including:{% endtrans %}
-                </li>
-                <li class="no-bullet-point">
-                    <ul class=" govuk-body govuk-list--bullet govuk-list">
-                        <li>
-                            {% trans %}income sources{% endtrans %}
-                        </li>
-                        <li>
-                            {% trans %}costs with an evidenced set of assumptions{% endtrans %}
-                        </li>
-                        <li>
-                            {% trans %}why you’ll need revenue funding and how you’ll use it{% endtrans %}
-                        </li>
-                        <li>
-                            {% trans %}cashflow{% endtrans %}
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    {% trans %}your most recent audited accounts covering the last 3 years{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}a bank account in your organisation’s name{% endtrans %}
-                </li>
-            </ul>
-            <h5 class="govuk-body govuk-!-font-weight-bold">
-                {% trans %}Asset details{% endtrans %}
-            </h5>
-            <ul class="govuk-body govuk-list--bullet govuk-list">
-                <li>
-                    {% trans %}independent valuation of the asset (if you intend to buy it), with supporting evidence{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}completed or planned feasibility studies, with supporting evidence{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}planned activities or services that will take place in the community asset{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}any supporting evidence that you will deliver the benefits to the community you have outlined{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}planned skills or resources needed to manage the asset{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}your experience of delivering similar projects{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}any relevant project management expertise{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}roles you plan to recruit to help you manage the asset{% endtrans %}
-                </li>
-            </ul>
-            <h5 class="govuk-body govuk-!-font-weight-bold">
-                {% trans %}Organisation details{% endtrans %}
-            </h5>
-            <ul class="govuk-body govuk-list--bullet govuk-list">
-                <li>
-                    {% trans %}your organisation’s governance and membership structures, with supporting evidence{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}members of your board, including their:{% endtrans %}
+                    {% trans %}Information about the capital element of your project. This could include:{% endtrans %}
                 </li>
                 <li class="no-bullet-point">
                     <ul class="govuk-body govuk-list--bullet govuk-list">
                         <li>
-                            {% trans %}role{% endtrans %}
+                            {% trans %}information about your completed or planned feasibility studies. This could include any relevant surveys{% endtrans %}
                         </li>
                         <li>
-                            {% trans %}main responsibilities{% endtrans %}
+                            {% trans %}a programme with key milestones for completion of your project{% endtrans %}
                         </li>
                     </ul>
                 </li>
                 <li>
-                    {% trans %}copies of your organisation’s memorandum and articles of association{% endtrans %}
+                    {% trans %}A financial breakdown of your project. This should include:{% endtrans %}
+                </li>
+                <li class="no-bullet-point">
+                    <ul class="govuk-body govuk-list--bullet govuk-list">
+                        <li>
+                            {% trans %}a clear breakdown of the total capital project costs and explanation of how these have been calculated. This could include any quotes or cost benchmarking{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}whether the costs include irrecoverable VAT{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}the capital funding request from the Community Ownership Fund{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}the total amount of match funding required{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}sources of match funding secured to date{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}sources of match funding still to be secured{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}timescales and potential sources for securing all outstanding match funding{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}your skills and resources to manage the capital project, including relevant project management expertise{% endtrans %}
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    {% trans %}a copy of your most recent governance board meeting minutes{% endtrans %}
+                    {% trans %}Information about how the asset will be used and managed in the future. This should include:{% endtrans %}
+                </li>
+                <li class="no-bullet-point">
+                    <ul class="govuk-body govuk-list--bullet govuk-list">
+                        <li>
+                            {% trans %}a discussion of planned activities and/or services that will take place in the community asset{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}your full financial forecasts, including income sources and costs with an evidenced set of assumptions{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}a clear breakdown of the revenue project costs and explanation of how these have been calculated{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}your cashflow and revenue budgets{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}any supporting evidence that you will deliver the benefits to the community you have outlined{% endtrans %}
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    {% trans %}supporting evidence of how you will manage finances and prevent fraud. For example, copies of your policy documents{% endtrans %}
+                    {% trans %}A consideration of risks and mitigations of both the capital works/spend and the ongoing operation of the asset{% endtrans %}
                 </li>
                 <li>
-                    {% trans %}supporting evidence of how you will manage performance and risks. For example, copies of your policy documents{% endtrans %}
+                    {% trans %}Organisational and governance information. This should include:{% endtrans %}
+                </li>
+                <li class="no-bullet-point">
+                    <ul class="govuk-body govuk-list--bullet govuk-list">
+                        <li>
+                            {% trans %}your organisation’s governance and membership structures, with supporting evidence{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}members of your board, including their role and main responsibilities{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}supporting evidence of how you will manage finances and prevent fraud. For example, copies of your policy documents{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}supporting evidence of how you will manage performance and risks. For example, copies of your policy documents{% endtrans %}
+                        </li>
+                    </ul>
                 </li>
             </ul>
-            <h2 class="govuk-heading-l " id="{% trans %}community-benefits{% endtrans %}">
-                5. {% trans %}Potential to deliver community benefits{% endtrans %}
-            </h2>
-            <p class="govuk-body-l">
-                {% trans %}This section is worth{% endtrans %} <strong>30%</strong> {% trans %}of the assessment criteria.{% endtrans %}
-            </p>
-            <h3 class="govuk-heading-m ">
-                5.1. {% trans %}Community benefits{% endtrans %}
-            </h3>
-            <h4 class="govuk-heading-s  ">
-                5.1.1. {% trans %}What community benefits do you expect to deliver with this project?{% endtrans %}
-            </h4>
-            <p class="govuk-body">
-                {% trans %}Select all that apply{% endtrans %}
-            </p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>
-                    {% trans %}Community pride and perceptions of the local area as a place to live{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}Social trust, cohesion and a sense of belonging{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}Participation in community life, arts and culture, or sport{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}Local economic outcomes, such as employment and volunteering opportunities, and employability and skills{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}Delivering positive impact in physical and mental health, and reducing loneliness and isolation{% endtrans %}
-                </li>
-            </ul>
-            <h4 class="govuk-heading-s">
-                5.1.2. {% trans %}Tell us about these benefits in detail, and explain how you'll measure the benefits it'll bring for the community{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
-            </h4>
-            <h4 class="govuk-heading-s">
-                5.1.3. {% trans %}Explain how you plan to sustain, and potentially expand, these benefits over time{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
-            </h4>
-            <h4 class="govuk-heading-s  ">
-                5.1.4. {% trans %}Tell us how you'll make sure the whole community benefits from the asset{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
-            </h4>
-            <p class="govuk-body">
-                {% trans %}For example, people who have not used the asset in the past{% endtrans %}
-            </p>
-            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l " id="{% trans %}community-value{% endtrans %}">
-                6.{% trans %}Added value to community{% endtrans %}
-            </h2>
-            <p class="govuk-body-l">
-                {% trans %}This section is worth{% endtrans %} <strong>10%</strong> {% trans %}of the assessment criteria.{% endtrans %}
-            </p>
-            <h3 class="govuk-heading-m ">
-                6.1. {% trans %}Value to the community{% endtrans %}
-            </h3>
-            <h4 class="govuk-heading-s  ">
-                6.1.1. {% trans %}Tell us about your local community as a whole{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
-            </h4>
-            <p class="govuk-body">
-                {% trans %}This includes details of any needs it has and how your project will look to support these.{% endtrans %}
-            </p>
-            <p class="govuk-body">
-                {% trans %}Where possible, reference any data you have on protected characteristics and equality impacts.{% endtrans %}
-            </p>
-            <h4 class="govuk-heading-s  ">
-                6.1.2. {% trans %}Describe any specific challenges your community faces, and how the asset will address these{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
-            </h4>
-            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
             <h2 class="govuk-heading-l  " id="{% trans %}subsidy-control{% endtrans %}">
-                7. {% trans %}Subsidy control and state aid{% endtrans %}
+                5. {% trans %}Subsidy control and state aid{% endtrans %}
             </h2>
             <h3 class="govuk-heading-m ">
-                7.1. {% trans %}Project qualification{% endtrans %}
+                5.1. {% trans %}Project qualification{% endtrans %}
             </h3>
             <h4 class="govuk-heading-s  ">
-                7.1.1. {% trans %}Does your project meet the definition of a subsidy?{% endtrans %}
+                5.1.1. {% trans %}Does your project meet the definition of a subsidy?{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}For projects in England, Northern Ireland, Scotland and Wales, this definition is laid out in Paragraph 2 of the Subsidy Control Act (2022){% endtrans %}
             </p>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'Yes', go to") }} <strong>7.1.1.1.</strong> {% trans %}and{% endtrans %} <strong>7.1.2.</strong>
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>5.1.1.1.</strong> {% trans %}and{% endtrans %} <strong>5.1.2.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
-                7.1.1.1. {% trans %}Explain how you think a grant from this fund can be provided in compliance with the Subsidy Control Act (2022){% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                5.1.1.1. {% trans %}Explain how you think a grant from this fund can be provided in compliance with the Subsidy Control Act (2022){% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}This is measured by the 7 common principles laid out in Schedule 1{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
-                7.1.2. {% trans %}Is your project based in Northern Ireland?{% endtrans %}
+                5.1.2. {% trans %}Is your project based in Northern Ireland?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'Yes', go to") }} <strong>7.1.2.1.</strong>
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>5.1.2.1.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
-                7.1.2.1. {% trans %}Explain how your project will comply with state aid rules{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                5.1.2.1. {% trans %}Explain how your project will comply with state aid rules{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}You can find more information about when state aid rules apply in Northern Ireland in the government guidance.{% endtrans %}
             </p>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
             <h2 class="govuk-heading-l  " id="{% trans %}declarations{% endtrans %}">
-                8. {% trans %}Check declarations{% endtrans %}
+                6. {% trans %}Check declarations{% endtrans %}
             </h2>
             <h3 class="govuk-heading-m ">
-                8.1. {% trans %}Final confirmations{% endtrans %}
+                6.1. {% trans %}Final confirmations{% endtrans %}
             </h3>
             <h4 class="govuk-heading-s  ">
-                8.1.1. {% trans %}Confirm you have considered subsidy control and state aid implications for your project, and the information you have given us is correct{% endtrans %}
+                6.1.1. {% trans %}Confirm you have considered subsidy control and state aid implications for your project, and the information you have given us is correct{% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                8.1.2. {% trans %}Confirm you have considered people with protected characteristics throughout the planning of your project{% endtrans %}
+                6.1.2. {% trans %}Confirm you have considered people with protected characteristics throughout the planning of your project{% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                8.1.3. {% trans %}Confirm you have considered sustainability and the environment throughout the planning of your project, including compliance with the government's Net Zero ambitions{% endtrans %}
+                6.1.3. {% trans %}Confirm you have considered sustainability and the environment throughout the planning of your project, including compliance with the government's Net Zero ambitions{% endtrans %}
             </h4>
             <h4 class="govuk-heading-s">
-                8.1.4. {% trans %}Confirm you have a bank account set up and associated with the organisation you are applying on behalf of{% endtrans %}
+                6.1.4. {% trans %}Confirm you have a bank account set up and associated with the organisation you are applying on behalf of{% endtrans %}
+            </h4>
+            <h4 class="govuk-heading-s">
+                6.1.5. {% trans %}Confirm that the information you've provided in this application is accurate to the best of your knowledge on the date of submission{% endtrans %}
             </h4>
         </div>
     </div>

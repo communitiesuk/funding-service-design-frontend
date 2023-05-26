@@ -30,9 +30,21 @@ def all_questions(fund_short_name, round_short_name):
     round = get_round_data_by_short_names(fund_short_name, round_short_name)
     if not round:
         return abort(404)
-    return render_template(
-        "cof_r2_all_questions.html", round_title=round.title
-    )
+
+    if fund_short_name.lower() == 'cof':
+        if 'r2' in round_short_name.lower():
+            return render_template(
+                "cof_r2_all_questions.html", round_title=round.title
+            )
+        elif 'r3' in round_short_name.lower():
+            return render_template(
+                "cof_r3_all_questions.html", round_title=round.title
+            )
+    else:
+        # TODO: Implement all questions page for other funds
+        return render_template(
+            "cof_r2_all_questions.html", round_title=round.title
+        )
 
 
 @content_bp.route("/cof_r2w2_all_questions", methods=["GET"])
