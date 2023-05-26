@@ -59,16 +59,15 @@ def contact_us():
     fund_short_name = request.args.get("fund")
     round_short_name = request.args.get("round")
     if not (fund_short_name and round_short_name):
-        (fund_short_name, round_short_name) = get_default_fund_and_round()
+        return render_template("contact_us.html")
+
     round_data = get_round_data_fail_gracefully(
         fund_short_name, round_short_name, True
     )
     fund_data = get_fund_data_by_short_name(fund_short_name)
-    return render_template(
-        "contact_us.html",
-        round_data=round_data,
-        fund_name=fund_data.name,
-    )
+    return render_template("contact_us.html",
+                           round_data=round_data,
+                           fund_name=fund_data.name,)
 
 
 @content_bp.route("/cookie_policy", methods=["GET"])
