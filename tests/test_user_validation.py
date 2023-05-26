@@ -101,15 +101,6 @@ class TestUserValidation:
             lambda: {"accountId": self.TEST_USER},
         )
         mocker.patch(
-            "app.default.application_routes.get_account",
-            return_value=Account.from_json(
-                {
-                    "account_id": self.TEST_USER,
-                    "email_address": "test@example.com",
-                }
-            ),
-        )
-        mocker.patch(
             "app.default.application_routes.get_application_data",
             return_value=Application.from_dict(
                 self.TEST_APPLICATION_STORE_DATA
