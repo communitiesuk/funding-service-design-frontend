@@ -5,9 +5,9 @@ from app.models.application import Application
 from app.models.application_display_mapping import ApplicationMapping
 from app.models.fund import Fund
 from app.models.round import Round
-from tests.test_data import TEST_ROUNDS_DATA
-from tests.test_data import TEST_DISPLAY_DATA
 from tests.test_data import TEST_APP_STORE_DATA
+from tests.test_data import TEST_DISPLAY_DATA
+from tests.test_data import TEST_ROUNDS_DATA
 
 file = open("tests/api_data/endpoint_data.json")
 data = json.loads(file.read())
@@ -127,8 +127,9 @@ def test_tasklist_for_submit_application_route(
     assert response.status_code == 200
     get_apps_mock.assert_called_once_with(
         search_params={
-                "account_id": "test-user",
-                "fund_id": "111",
-                "round_id": "fsd-r2w2"
-            }, as_dict=False
+            "account_id": "test-user",
+            "fund_id": "111",
+            "round_id": "fsd-r2w2",
+        },
+        as_dict=False,
     )
