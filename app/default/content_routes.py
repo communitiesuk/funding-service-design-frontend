@@ -31,12 +31,12 @@ def all_questions(fund_short_name, round_short_name):
     if not round:
         return abort(404)
 
-    if fund_short_name.lower() == 'cof':
-        if 'r2' in round_short_name.lower():
+    if fund_short_name.lower() == "cof":
+        if "r2" in round_short_name.lower():
             return render_template(
                 "cof_r2_all_questions.html", round_title=round.title
             )
-        elif 'r3' in round_short_name.lower():
+        elif "r3" in round_short_name.lower():
             return render_template(
                 "cof_r3_all_questions.html", round_title=round.title
             )
@@ -65,9 +65,11 @@ def contact_us():
         fund_short_name, round_short_name, True
     )
     fund_data = get_fund_data_by_short_name(fund_short_name)
-    return render_template("contact_us.html",
-                           round_data=round_data,
-                           fund_name=fund_data.name,)
+    return render_template(
+        "contact_us.html",
+        round_data=round_data,
+        fund_name=fund_data.name,
+    )
 
 
 @content_bp.route("/cookie_policy", methods=["GET"])
