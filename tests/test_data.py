@@ -73,6 +73,7 @@ TEST_FUNDS_DATA = [
         "description": "test test",
         "short_name": "FSD",
         "title": "fund for testing",
+        "welsh_available": True,
     },
     {
         "id": "222",
@@ -80,6 +81,7 @@ TEST_FUNDS_DATA = [
         "description": "test test 2",
         "short_name": "FSD2",
         "title": "fund for testing 2",
+        "welsh_available": False,
     },
 ]
 

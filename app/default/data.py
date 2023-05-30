@@ -179,9 +179,9 @@ def get_fund_data(fund_id, language=None, as_dict=False):
 
 
 def get_fund_data_by_short_name(fund_short_name, as_dict=False):
-    all_funds = [fund["short_name"].lower() for fund in get_all_funds()]
+    all_funds = {fund["short_name"].lower() for fund in get_all_funds()}
     if fund_short_name.lower() not in all_funds:
-        current_app.logger.warning(f"Invalid fund {fund_short_name}!")
+        current_app.logger.warning(f"Invalid fund {fund_short_name.lower()}!")
         abort(404)
     fund_request_url = Config.GET_FUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
         fund_short_name=fund_short_name.lower()
@@ -235,7 +235,9 @@ def get_round_data_by_short_names(
         )
     ]
     if round_short_name.lower() not in all_rounds:
-        current_app.logger.warning(f"Invalid round {round_short_name}!")
+        current_app.logger.warning(
+            f"Invalid round {round_short_name.lower()}!"
+        )
         abort(404)
     params = {"language": get_lang(), "use_short_name": "true"}
 
