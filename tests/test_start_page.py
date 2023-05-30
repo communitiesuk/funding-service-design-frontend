@@ -20,6 +20,8 @@ default_round_fields = {
     "contact_textphone": "123456789",
     "support_times": "9-5",
     "support_days": "Mon-Fri",
+    "project_name_field_id": "",
+    "feedback_link": "",
 }
 
 
