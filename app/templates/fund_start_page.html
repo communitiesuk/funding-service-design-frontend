@@ -4,7 +4,8 @@
 {% endset %}
 {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText
     -%} {%- from "govuk_frontend_jinja/components/button/macro.html" import
-    govukButton -%} {% from "partials/available_in_language.html" import available_in_language %} {% from "partials/round_closed_warning.html" import round_closed_warning %}
+    govukButton -%} {% from "partials/available_in_language.html" import available_in_language %}
+{% from "partials/round_closed_warning.html" import round_closed_warning %}
  {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
@@ -19,7 +20,7 @@
             {% if is_past_submission_deadline %}
                 {{ round_closed_warning(fund_name, round_title, submission_deadline) }}
             {% endif %}
-            {{available_in_language(inset=True, warn=False)}}
+            {{available_in_language(inset=True, warn=False, welsh_available=welsh_available)}}
             <p class="govuk-body">
                 {{instruction_text|safe}}
             </p>

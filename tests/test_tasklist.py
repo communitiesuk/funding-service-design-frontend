@@ -7,6 +7,7 @@ from app.models.fund import Fund
 from app.models.round import Round
 from tests.test_data import TEST_APP_STORE_DATA
 from tests.test_data import TEST_DISPLAY_DATA
+from tests.test_data import TEST_FUNDS_DATA
 from tests.test_data import TEST_ROUNDS_DATA
 
 file = open("tests/api_data/endpoint_data.json")
@@ -112,6 +113,10 @@ def test_tasklist_for_submit_application_route(
     get_apps_mock = mocker.patch(
         "app.default.account_routes.get_round_data_by_short_names",
         return_value=TEST_ROUNDS_DATA[0],
+    )
+    get_apps_mock = mocker.patch(
+        "app.default.account_routes.get_fund_data_by_short_name",
+        return_value=Fund.from_dict(TEST_FUNDS_DATA[0]),
     )
     get_apps_mock = mocker.patch(
         "app.default.account_routes.search_applications",

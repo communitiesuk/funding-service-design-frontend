@@ -30,7 +30,7 @@ def mock_get_fund(mocker):
     mocker.patch(
         "app.default.routes.get_fund_data_by_short_name",
         return_value=Fund(
-            "", "Testing Fund", "", "", "test some funding stuff"
+            "", "Testing Fund", "", "", "test some funding stuff", True
         ),
     )
 
