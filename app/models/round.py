@@ -21,6 +21,8 @@ class Round:
     contact_textphone: str
     support_days: str
     support_times: str
+    feedback_link: str
+    project_name_field_id: str
 
     @classmethod
     def from_dict(cls, d: dict):
