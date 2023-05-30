@@ -59,7 +59,7 @@ fund_args = {
 short_name_fund = Fund(**fund_args, title="Test Fund by short name")
 id_fund = Fund(**fund_args, title="Test Fund by ID")
 
-default_service_title = "Access Funding"
+default_service_title = "Apply for funding to save an asset in your community"
 
 
 @pytest.mark.parametrize(
