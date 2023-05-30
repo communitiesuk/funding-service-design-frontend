@@ -235,7 +235,9 @@ def get_round_data_by_short_names(
         )
     ]
     if round_short_name.lower() not in all_rounds:
-        current_app.logger.warning(f"Invalid round {round_short_name}!")
+        current_app.logger.warning(
+            f"Invalid round {round_short_name.lower()}!"
+        )
         abort(404)
     params = {"language": get_lang(), "use_short_name": "true"}
 
