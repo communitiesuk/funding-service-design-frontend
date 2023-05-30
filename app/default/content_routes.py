@@ -1,4 +1,3 @@
-from app.default.data import get_default_fund_and_round
 from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data_by_short_names
 from app.default.data import get_round_data_fail_gracefully

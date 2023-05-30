@@ -1,7 +1,5 @@
 from os import getenv
 
-from app.default.data import get_default_fund_and_round
-from app.default.data import get_default_round_for_fund
 from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data_by_short_names
