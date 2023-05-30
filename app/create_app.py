@@ -138,7 +138,7 @@ def create_app() -> Flask:
         elif request.args.get("fund"):
             fund = get_fund_data_by_short_name(request.args.get("fund"))
         else:
-            current_app.logger.warn("Couldn't found any fund in the request")
+            current_app.logger.warn("Couldn't find any fund in the request")
         return fund
 
     def find_round_in_request(fund):
@@ -152,8 +152,8 @@ def create_app() -> Flask:
         else:
             round = get_default_round_for_fund(fund.short_name)
             current_app.logger.warn(
-                "Couldn't found any fund in the requests. Using"
-                f" {round.short_name} as default fund!"
+                "Couldn't find round in request. Using"
+                f" {round.short_name} as default for fund {fund.short_name}"
             )
         return round
 
