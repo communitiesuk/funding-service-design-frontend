@@ -4,7 +4,6 @@ from http.client import METHOD_NOT_ALLOWED
 import requests
 from app.constants import ApplicationStatus
 from app.default.data import determine_round_status
-from app.default.data import get_account
 from app.default.data import get_application_data
 from app.default.data import get_application_display_config
 from app.default.data import get_fund_data
@@ -131,15 +130,6 @@ def tasklist(application_id):
     """
 
     application = get_application_data(application_id, as_dict=True)
-    account = get_account(account_id=application.account_id)
-    if application.status == ApplicationStatus.SUBMITTED.name:
-        with force_locale(application.language):
-            return render_template(
-                "application_submitted.html",
-                application_id=application.id,
-                application_reference=application.reference,
-                application_email=account.email,
-            )
 
     fund_data = get_fund_data(
         fund_id=application.fund_id,
@@ -152,6 +142,16 @@ def tasklist(application_id):
         language=application.language,
         as_dict=False,
     )
+
+    if application.status == ApplicationStatus.SUBMITTED.name:
+        with force_locale(application.language):
+            return redirect(
+                url_for(
+                    "account_routes.dashboard",
+                    fund=fund_data.short_name,
+                    round=round_data.short_name,
+                )
+            )
 
     # Create tasklist display config
     section_display_config = get_application_display_config(
