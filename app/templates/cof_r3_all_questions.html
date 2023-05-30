@@ -86,6 +86,9 @@
                     {% trans %}Scottish charitable incorporated organisation (SCIO){% endtrans %}
                 </li>
                 <li>
+                    {% trans %}Parish, town or community council{% endtrans %}
+                </li>
+                <li>
                     {% trans %}Other{% endtrans %}
                 </li>
             </ul>
@@ -346,13 +349,16 @@
                 {% trans %}Upload evidence to support what you plan to do with the asset.{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}Buy the asset / already owned by the organisation: an official document showing the asset's value from an independent surveyor or similar professional.{% endtrans %}
+                {% trans %}Buy the asset: an official document showing the asset's value from an independent surveyor or similar professional.{% endtrans %}
+            </p>
+            <p class="govuk-body">
+                {% trans %}Already owned by the organisation: evidence that you already own your asset.{% endtrans %}
             </p>
             <p class="govuk-body">
                 {% trans %}Lease the asset / already leased by the organisation: a copy of your tenancy agreement, or agreed heads of terms, showing at least 15 years tenancy with reasonable break clauses.{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, rtf, csv, xls, xlsx, ods).{% endtrans %}
+                {% trans %}It should be a single file no bigger than 10MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
                 2.2.4. {% trans %}Do you know who currently owns your asset?{% endtrans %}
@@ -429,7 +435,7 @@
                 {% trans %}For example, this evidence can include confirmation from the public owner or a letter from the local authority{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, rtf, csv, xls, xlsx, ods).{% endtrans %}
+                {% trans %}It should be a single file no bigger than 10MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
                 2.2.7. {% trans %}Is this a registered Asset of Community Value (ACV)?{% endtrans %}
@@ -581,7 +587,7 @@
                 {% trans %}Upload evidence to show the support you have from the community.{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, rtf, csv, xls, xlsx, ods).{% endtrans %}
+                {% trans %}It should be a single file no bigger than 10MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).{% endtrans %}
             </p>
             <h3 class="govuk-heading-m ">
                 3.4. {% trans %}Community benefits{% endtrans %}
@@ -684,7 +690,7 @@
                 {% trans %}We'll ask you to upload a business plan to support the answers you give us in this section.{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}This fund can offer up to 50&percnt; of your capital costs to renovate and repair the asset.{% endtrans %}
+                {% trans %}This fund can offer up to 80&percnt; of your capital costs to renovate and repair the asset.{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
                 4.1.1. {% trans %}Total funding request(capital funding and revenue funding (optional)){% endtrans %}
@@ -693,7 +699,10 @@
                 {% trans %}This is the amount you are applying for from the Community Ownership Fund.{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}You can apply for up to 50&percnt; of your capital costs, up to a maximum of £1 million.{% endtrans %}
+                {% trans %}You can apply for up to 80&percnt; of your capital costs, up to a maximum of £1 million.{% endtrans %}
+            </p>
+            <p class="govuk-body">
+                {% trans %}In certain circumstances you can apply for up to 90&percnt; of your capital costs. If you are eligible to do this, the development support provider will have already confirmed with you.{% endtrans %}
             </p>
             <p class="govuk-body">
                 {% trans %}You can apply for up to fifty thousand pounds(£50,000) of your revenue costs (no more than 20&percnt; of your capital funding).{% endtrans %}
@@ -719,7 +728,7 @@
                 </li>
             </ul>
             <p class="govuk-body">
-                {% trans %}Remember, you can apply for up to 50&percnt; of your capital costs, up to a maximum of £1 million.{% endtrans %}
+                {% trans %}Remember, you can apply for up to 80&percnt; (or 90&percnt; if the development support provider has confirmed you're eligible to do this) of your capital costs, up to a maximum of £1 million.{% endtrans %}
             </p>
             <p class="govuk-body">
                 {% trans %}You can use your business plan to provide information that supports your answers.{% endtrans %}
@@ -949,7 +958,7 @@
                 {% trans %}Do not include any risks to the asset or why it may close, which we asked you about earlier in your application.{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, rtf, csv, xls, xlsx, ods).{% endtrans %}
+                {% trans %}It should be a single file no bigger than 10MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).{% endtrans %}
             </p>
             <h3 class="govuk-heading-m ">
                 4.4. {% trans %}Operational costs{% endtrans %}
@@ -1111,7 +1120,7 @@
                 {% trans %}Include any information that supports the answers in your application. All figures must match those you've given in the management case section.{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, rtf, csv, xls, xlsx, ods).{% endtrans %}
+                {% trans %}It should be a single file no bigger than 10MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).{% endtrans %}
             </p>
             <p class="govuk-body">
                 {% trans %}Your business plan should include (but is not limited to):{% endtrans %}
@@ -1127,6 +1136,9 @@
                         </li>
                         <li>
                             {% trans %}a programme with key milestones for completion of your project{% endtrans %}
+                        </li>
+                        <li>
+                            {% trans %}your skills and resources to manage the capital project, including relevant project management expertise{% endtrans %}
                         </li>
                     </ul>
                 </li>
@@ -1155,9 +1167,6 @@
                         </li>
                         <li>
                             {% trans %}timescales and potential sources for securing all outstanding match funding{% endtrans %}
-                        </li>
-                        <li>
-                            {% trans %}your skills and resources to manage the capital project, including relevant project management expertise{% endtrans %}
                         </li>
                     </ul>
                 </li>
