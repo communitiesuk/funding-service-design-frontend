@@ -172,7 +172,9 @@ def create_app() -> Flask:
         if fund:
             service_title = gettext("Apply for") + " " + fund.title
         else:
-            service_title = gettext("Access Funding")
+            service_title = gettext(
+                "Apply for funding to save an asset in your community"
+            )
         return dict(service_title=service_title)
 
     @flask_app.context_processor
