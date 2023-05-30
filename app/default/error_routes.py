@@ -1,3 +1,5 @@
+import traceback
+
 from app.default.account_routes import account_bp
 from app.default.application_routes import application_bp
 from app.default.content_routes import content_bp
@@ -37,7 +39,9 @@ def not_found(error):
 @application_bp.errorhandler(Exception)
 @content_bp.errorhandler(Exception)
 def internal_server_error(error):
-    current_app.logger.error(f"Encountered 500: {error}")
+    error_message = f"Encountered 500: {error}"
+    stack_trace = traceback.format_exc()
+    current_app.logger.error(f"{error_message}\n{stack_trace}")
     return render_template("500.html"), 500
 
 
@@ -46,7 +50,9 @@ def internal_server_error(error):
 @content_bp.errorhandler(401)
 @account_bp.errorhandler(401)
 def unauthorised_error(error):
-    current_app.logger.error(f"Encountered 401: {error}")
+    error_message = f"Encountered 401: {error}"
+    stack_trace = traceback.format_exc()
+    current_app.logger.error(f"{error_message}\n{stack_trace}")
     fund_short_name = request.args.get("fund")
     round_short_name = request.args.get("round")
     round_data = get_round_data_fail_gracefully(
@@ -63,5 +69,7 @@ def unauthorised_error(error):
 def csrf_token_expiry(error):
     if not g.account_id:
         return redirect(g.logout_url)
-    current_app.logger.error(f"Encountered 500: {error}")
+    error_message = f"Encountered 500: {error}"
+    stack_trace = traceback.format_exc()
+    current_app.logger.error(f"{error_message}\n{stack_trace}")
     return render_template("500.html"), 500
