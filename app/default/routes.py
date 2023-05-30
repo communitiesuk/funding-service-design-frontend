@@ -19,8 +19,7 @@ def index():
     """
     Redirects from the old landing page to the new one at /cof/r2w3
     """
-    current_app.logger.info("Redirecting from index to /cof/r2w3")
-    return redirect("funding-round/cof/r2w3")
+    return abort(404)
 
 
 @default_bp.route("/funding-round/<fund_short_name>/<round_short_name>")
