@@ -150,9 +150,7 @@ def dashboard():
             fund_short_name,
             round_short_name,
         )
-        fund_details = get_fund_data_by_short_name(
-            fund_short_name,
-        )
+        fund_details = get_fund_data_by_short_name(fund_short_name)
         welsh_available = fund_details.welsh_available
         search_params = {
             "fund_id": round_details.fund_id,
@@ -165,9 +163,7 @@ def dashboard():
         # this fund else return 404
 
         template_name = "dashboard_single_fund.html"
-        fund_details = get_fund_data_by_short_name(
-            fund_short_name,
-        )
+        fund_details = get_fund_data_by_short_name(fund_short_name)
         search_params = {
             "fund_id": fund_details.id,
             "account_id": account_id,
