@@ -57,11 +57,9 @@ def cof_r2w2_all_questions_redirect():
 def contact_us():
     fund_short_name = request.args.get("fund")
     round_short_name = request.args.get("round")
-    if not (fund_short_name and round_short_name):
-        return render_template("contact_us.html")
-
-    round_data = get_round_data_fail_gracefully(
-        fund_short_name, round_short_name, True
+    current_app.logger.info(
+        f"Contact us page loaded for fund {fund_short_name} round"
+        f" {round_short_name}."
     )
     if round_short_name and fund_short_name:
         round_data = get_round_data_fail_gracefully(

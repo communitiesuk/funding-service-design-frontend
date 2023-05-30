@@ -1,5 +1,6 @@
 from os import getenv
 
+from app.default.data import get_default_round_for_fund
 from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data_by_short_names
@@ -136,6 +137,8 @@ def create_app() -> Flask:
             fund = get_fund_data(request.args.get("fund_id"), True)
         elif request.args.get("fund"):
             fund = get_fund_data_by_short_name(request.args.get("fund"))
+        else:
+            current_app.logger.warn("Couldn't find any fund in the request")
         return fund
 
     def find_round_in_request(fund):
@@ -145,6 +148,12 @@ def create_app() -> Flask:
         if round_short_name:
             round = get_round_data_by_short_names(
                 fund.short_name, round_short_name, False
+            )
+        else:
+            round = get_default_round_for_fund(fund.short_name)
+            current_app.logger.warn(
+                "Couldn't find round in request. Using"
+                f" {round.short_name} as default for fund {fund.short_name}"
             )
         return round
 

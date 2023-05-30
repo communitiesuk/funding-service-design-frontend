@@ -11,10 +11,8 @@
             {% if fund_name %}
                 <p class="govuk-body">{% trans %}Contact the{% endtrans %} {{fund_name}} {% trans %}if you have any questions.{% endtrans %}</p>
             {% else %}
-                <p class="govuk-body">{% trans %}Contact the{% endtrans %} Funding Service Design {% trans %}if you have any questions.{% endtrans %}</p>
+                <p class="govuk-body">{% trans %}Contact us if you have any questions.{% endtrans %}</p>
             {% endif %}
-
-            {% if round_data %}
                 {% if round_data.contact_email or round_data.contact_phone or round_data.support_days or round_data.support_times %}
                     {{ contact_details(
                                 round_data.contact_email,
@@ -34,16 +32,6 @@
                         )
                     }}
                 {%  endif %}
-            {% else %}
-                {{ contact_details(
-                    "fsd.support@levellingup.gov.uk",
-                    "",
-                    "",
-                    "9am to 5pm",
-                    "Monday to Friday"
-                    )
-                }}
-            {%  endif %}
         </div>
     </div>
 {% endblock %}
