@@ -13,25 +13,25 @@
             {% else %}
                 <p class="govuk-body">{% trans %}Contact us if you have any questions.{% endtrans %}</p>
             {% endif %}
-                {% if round_data.contact_email or round_data.contact_phone or round_data.support_days or round_data.support_times %}
-                    {{ contact_details(
-                                round_data.contact_email,
-                                round_data.contact_phone,
-                                round_data.contact_phone,
-                                round_data.support_days,
-                                round_data.support_times
-                        )
-                    }}
-                {% else %}
-                    {{ contact_details(
-                        "fsd.support@levellingup.gov.uk",
-                        "",
-                        "",
-                        "9am to 5pm",
-                        "Monday to Friday"
-                        )
-                    }}
-                {%  endif %}
+            {% if round_data.contact_email or round_data.contact_phone or round_data.support_days or round_data.support_times %}
+                {{ contact_details(
+                            round_data.contact_email,
+                            round_data.contact_phone,
+                            round_data.contact_phone,
+                            round_data.support_days,
+                            round_data.support_times
+                     )
+                }}
+            {% else %}
+                {{ contact_details(
+                    "fsd.support@levellingup.gov.uk",
+                    "",
+                    "",
+                    "9am to 5pm",
+                    "Monday to Friday"
+                    )
+                }}
+            {%  endif %}
         </div>
     </div>
 {% endblock %}
