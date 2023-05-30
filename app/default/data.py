@@ -179,7 +179,7 @@ def get_fund_data(fund_id, language=None, as_dict=False):
 
 
 def get_fund_data_by_short_name(fund_short_name, as_dict=False):
-    all_funds = [fund["short_name"].lower() for fund in get_all_funds()]
+    all_funds = {fund["short_name"].lower() for fund in get_all_funds()}
     if fund_short_name.lower() not in all_funds:
         current_app.logger.warning(f"Invalid fund {fund_short_name.lower()}!")
         abort(404)
