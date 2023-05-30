@@ -32,14 +32,14 @@ def all_questions(fund_short_name, round_short_name):
         return abort(404)
 
     if fund_short_name.lower() == "cof":
-        if "r2" in round_short_name.lower():
-            return render_template(
-                "cof_r2_all_questions.html", round_title=round.title
-            )
-        elif "r3" in round_short_name.lower():
-            return render_template(
-                "cof_r3_all_questions.html", round_title=round.title
-            )
+        return render_template(
+            fund_short_name.lower()
+            + "_"
+            + round_short_name.lower()[0:2]
+            + "_"
+            + "all_questions.html",
+            round_title=round.title,
+        )
 
 
 @content_bp.route("/cof_r2w2_all_questions", methods=["GET"])
