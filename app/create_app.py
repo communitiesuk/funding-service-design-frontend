@@ -184,6 +184,11 @@ def create_app() -> Flask:
                             fund=fund.short_name,
                             round=round.short_name,
                         ),
+                        feedback_url=url_for(
+                            "content_routes.feedback",
+                            fund=fund.short_name,
+                            round=round.short_name,
+                        ),
                     )
         except Exception as e:  # noqa
             current_app.logger.warn(
@@ -194,6 +199,7 @@ def create_app() -> Flask:
         return dict(
             contact_us_url=url_for("content_routes.contact_us"),
             privacy_url=url_for("content_routes.privacy"),
+            feedback_url=url_for("content_routes.feedback"),
         )
 
     @flask_app.before_request

@@ -1,6 +1,7 @@
 from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data_by_short_names
 from app.default.data import get_round_data_fail_gracefully
+from app.models.round import Round
 from flask import abort
 from flask import Blueprint
 from flask import current_app
@@ -54,7 +55,6 @@ def cof_r2w2_all_questions_redirect():
 
 @content_bp.route("/contact_us", methods=["GET"])
 def contact_us():
-    current_app.logger.info("Contact us page loaded.")
     fund_short_name = request.args.get("fund")
     round_short_name = request.args.get("round")
     if not (fund_short_name and round_short_name):
@@ -63,11 +63,37 @@ def contact_us():
     round_data = get_round_data_fail_gracefully(
         fund_short_name, round_short_name, True
     )
-    fund_data = get_fund_data_by_short_name(fund_short_name)
+    if round_short_name and fund_short_name:
+        round_data = get_round_data_fail_gracefully(
+            fund_short_name, round_short_name, True
+        )
+        fund_data = get_fund_data_by_short_name(fund_short_name)
+        fund_name = fund_data.name
+    else:
+        round_data = Round(
+            id="",
+            assessment_deadline="",
+            deadline="",
+            fund_id="",
+            opens="",
+            title="",
+            short_name="",
+            prospectus="",
+            privacy_notice="",
+            instructions="",
+            contact_email="",
+            contact_phone="",
+            contact_textphone="",
+            support_days="",
+            support_times="",
+            feedback_link="",
+            project_name_field_id="",
+        )
+        fund_name = ""
     return render_template(
         "contact_us.html",
         round_data=round_data,
-        fund_name=fund_data.name,
+        fund_name=fund_name,
     )
 
 
@@ -98,4 +124,35 @@ def privacy():
     )
     return redirect(
         "https://www.gov.uk/government/publications/community-ownership-fund-privacy-notice/community-ownership-fund-privacy-notice"  # noqa
+    )
+
+
+@content_bp.route("/feedback", methods=["GET"])
+def feedback():
+    fund_short_name = request.args.get("fund")
+    round_short_name = request.args.get("round")
+    current_app.logger.info(
+        f"Feedback page loading for fund {fund_short_name} round"
+        f" {round_short_name}."
+    )
+    if fund_short_name and round_short_name:
+        round_data = get_round_data_by_short_names(
+            fund_short_name, round_short_name
+        )
+        feedback_url = getattr(round_data, "feedback_link", None)
+
+        if feedback_url:
+            current_app.logger.debug("Feedback link configured for fund")
+            return redirect(feedback_url)
+
+    current_app.logger.warning(
+        f"No feedback url configured for round ({fund_short_name} -"
+        f" {round_short_name}). Redirecting..."
+    )
+    return redirect(
+        url_for(
+            "content_routes.contact_us",
+            fund=fund_short_name,
+            round=round_short_name,
+        )
     )
