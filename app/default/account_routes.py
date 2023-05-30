@@ -141,7 +141,6 @@ def dashboard():
 
     fund_short_name = request.args.get("fund")
     round_short_name = request.args.get("round")
-    welsh_available = True
 
     if fund_short_name and round_short_name:
         # find and display applications with this
@@ -178,6 +177,7 @@ def dashboard():
         # Generic all applications dashboard
         template_name = "dashboard_all.html"
         search_params = {"account_id": account_id}
+        welsh_available = False
 
     applications = search_applications(
         search_params=search_params, as_dict=False
