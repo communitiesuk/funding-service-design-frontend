@@ -33,11 +33,7 @@ def all_questions(fund_short_name, round_short_name):
 
     if fund_short_name.lower() == "cof":
         return render_template(
-            fund_short_name.lower()
-            + "_"
-            + round_short_name.lower()[0:2]
-            + "_"
-            + "all_questions.html",
+            f"{fund_short_name.lower()}_{round_short_name.lower()[0:2]}_all_questions.html",
             round_title=round.title,
         )
 
