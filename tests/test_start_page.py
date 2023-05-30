@@ -50,8 +50,7 @@ def mock_get_round(mocker):
 
 def test_old_index_redirect(client):
     result = client.get("/", follow_redirects=False)
-    assert result.status_code == 302
-    assert result.location == "funding-round/cof/r2w3"
+    assert result.status_code == 404
 
 
 def test_start_page_unknown_fund(client, mocker):
