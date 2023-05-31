@@ -180,6 +180,16 @@ def tasklist(application_id):
             )
         ),
     }
+    app_guidance = ""
+    if round_data.application_guidance:
+        app_guidance = round_data.application_guidance.format(
+            all_questions_url=url_for(
+                "content_routes.all_questions",
+                fund_short_name=fund_data.short_name,
+                round_short_name=round_data.short_name,
+                lang=application.language,
+            ),
+        )
 
     with force_locale(application.language):
         return render_template(
@@ -194,18 +204,12 @@ def tasklist(application_id):
             is_past_submission_deadline=current_datetime_after_given_iso_string(  # noqa:E501
                 round_data.deadline
             ),
-            all_questions_url=url_for(
-                "content_routes.all_questions",
-                fund_short_name=fund_data.short_name,
-                round_short_name=round_data.short_name,
-                lang=application.language,
-            ),
             dashboard_url=url_for(
                 "account_routes.dashboard",
                 fund=fund_data.short_name,
                 round=round_data.short_name,
             ),
-            application_guidance=round_data.application_guidance,
+            application_guidance=app_guidance,
         )
 
 
