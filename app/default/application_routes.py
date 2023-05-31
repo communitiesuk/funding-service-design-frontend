@@ -163,6 +163,7 @@ def tasklist(application_id):
     application_meta_data = {
         "application_id": application_id,
         "fund_name": fund_data.name,
+        "fund_title": fund_data.title,
         "round_name": round_data.title,
         "not_started_status": ApplicationStatus.NOT_STARTED.name,
         "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
