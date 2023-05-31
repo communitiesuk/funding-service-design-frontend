@@ -125,6 +125,10 @@ def templates_rendered(app):
 @pytest.fixture(autouse=True)
 def mock_get_fund_round(mocker):
     mocker.patch(
+        "app.default.account_routes.get_all_funds",
+        return_value=TEST_FUNDS_DATA,
+    )
+    mocker.patch(
         "app.default.account_routes.get_fund_data_by_short_name",
         return_value=Fund.from_dict(TEST_FUNDS_DATA[0]),
     )
@@ -151,6 +155,10 @@ def mock_get_fund_round(mocker):
     mocker.patch(
         "app.default.application_routes.get_round_data",
         return_value=TEST_ROUNDS_DATA[0],
+    )
+    mocker.patch(
+        "app.default.application_routes.get_fund_data",
+        return_value=Fund.from_dict(TEST_FUNDS_DATA[0]),
     )
     mocker.patch(
         "app.default.data.get_round_data_fail_gracefully",
