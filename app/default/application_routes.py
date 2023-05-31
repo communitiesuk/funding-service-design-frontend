@@ -142,6 +142,14 @@ def tasklist(application_id):
         language=application.language,
         as_dict=False,
     )
+    # TODO: We should see if hiding all questions will be something used frequently
+    # TODO: in the future and therefore should be a fund store db property.
+    # TODO: Tech debt Ticket for this - https://digital.dclg.gov.uk/jira/browse/FS-2902
+    show_all_questions_link = (
+        False
+        if fund_data.name in ["Night Shelter Transformation Fund"]
+        else True
+    )
 
     if application.status == ApplicationStatus.SUBMITTED.name:
         with force_locale(application.language):
@@ -191,6 +199,7 @@ def tasklist(application_id):
             form=form,
             contact_us_email_address=round_data.contact_email,
             submission_deadline=round_data.deadline,
+            show_all_questions_link=show_all_questions_link,
             is_past_submission_deadline=current_datetime_after_given_iso_string(  # noqa:E501
                 round_data.deadline
             ),
