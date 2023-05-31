@@ -179,9 +179,9 @@ def get_fund_data(fund_id, language=None, as_dict=False):
 
 
 def get_fund_data_by_short_name(fund_short_name, as_dict=False):
-    all_funds = [fund["short_name"].lower() for fund in get_all_funds()]
+    all_funds = {fund["short_name"].lower() for fund in get_all_funds()}
     if fund_short_name.lower() not in all_funds:
-        current_app.logger.warning(f"Invalid fund {fund_short_name}!")
+        current_app.logger.warning(f"Invalid fund {fund_short_name.lower()}!")
         abort(404)
     fund_request_url = Config.GET_FUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
         fund_short_name=fund_short_name.lower()
@@ -235,7 +235,9 @@ def get_round_data_by_short_names(
         )
     ]
     if round_short_name.lower() not in all_rounds:
-        current_app.logger.warning(f"Invalid round {round_short_name}!")
+        current_app.logger.warning(
+            f"Invalid round {round_short_name.lower()}!"
+        )
         abort(404)
     params = {"language": get_lang(), "use_short_name": "true"}
 
@@ -265,25 +267,27 @@ def get_round_data_fail_gracefully(fund_id, round_id, use_short_name=False):
         current_app.logger.error(
             f"Call to Fund Store failed GET {round_request_url}"
         )
-        # return valid Round object with no values so we know we've
-        # failed and can handle in templates appropriately
-        return Round(
-            id="",
-            assessment_deadline="",
-            deadline="",
-            fund_id="",
-            opens="",
-            title="",
-            short_name="",
-            prospectus="",
-            privacy_notice="",
-            instructions="",
-            contact_email="",
-            contact_phone="",
-            contact_textphone="",
-            support_days="",
-            support_times="",
-        )
+    # return valid Round object with no values so we know we've
+    # failed and can handle in templates appropriately
+    return Round(
+        id="",
+        assessment_deadline="",
+        deadline="",
+        fund_id="",
+        opens="",
+        title="",
+        short_name="",
+        prospectus="",
+        privacy_notice="",
+        instructions="",
+        contact_email="",
+        contact_phone="",
+        contact_textphone="",
+        support_days="",
+        support_times="",
+        feedback_link="",
+        project_name_field_id="",
+    )
 
 
 def get_account(email: str = None, account_id: str = None) -> Account | None:
@@ -376,29 +380,3 @@ def get_default_round_for_fund(fund_short_name: str) -> Round:
     except Exception as e:
         current_app.log_exception(e)
         return None
-
-
-def get_default_fund_and_round() -> tuple[str, str]:
-    """Get the latest opened or closed round as default round."""
-    all_funds = get_all_funds()
-
-    if all_funds:
-        if len(all_funds) == 1:
-            default_fund = all_funds[0]
-            default_round = get_default_round_for_fund(
-                default_fund["short_name"]
-            )
-        else:
-            all_rounds = [
-                get_default_round_for_fund(fund["short_name"])
-                for fund in all_funds
-            ]
-            all_rounds = [round for round in all_rounds if round]
-            if not all_rounds:
-                return (all_funds[0]["short_name"], None)
-            default_round = get_latest_open_or_closed_round(all_rounds)
-            default_fund = get_fund_data(default_round.fund_id)
-
-        return (default_fund["short_name"], default_round.short_name)
-    else:
-        raise ValueError("No Funds and rounds are found!")

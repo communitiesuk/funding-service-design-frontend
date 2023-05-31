@@ -8,8 +8,11 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
-            <p class="govuk-body">{% trans %}Contact the{% endtrans %} {{fund_name}} {% trans %}if you have any questions.{% endtrans %}</p>
-
+            {% if fund_name %}
+                <p class="govuk-body">{% trans %}Contact the{% endtrans %} {{fund_name}} {% trans %}if you have any questions.{% endtrans %}</p>
+            {% else %}
+                <p class="govuk-body">{% trans %}Contact us if you have any questions.{% endtrans %}</p>
+            {% endif %}
             {% if round_data.contact_email or round_data.contact_phone or round_data.support_days or round_data.support_times %}
                 {{ contact_details(
                             round_data.contact_email,

@@ -21,7 +21,7 @@ Your applications
         {% trans %}You have started{% endtrans %}&nbsp;{% trans count=application_count%} {{application_count}} application{% pluralize %}{{application_count}} applications{% endtrans %}&nbsp;{% trans %}using this email address{% endtrans %}.
     </p>
 
-    {{available_in_language(inset=False, warn=True)}}
+    {{available_in_language(inset=False, warn=True, welsh_available=welsh_available)}}
 
 
     {% for fund in display_data["funds"] %}

@@ -19,8 +19,7 @@ def index():
     """
     Redirects from the old landing page to the new one at /cof/r2w3
     """
-    current_app.logger.info("Redirecting from index to /cof/r2w3")
-    return redirect("funding-round/cof/r2w3")
+    return abort(404)
 
 
 @default_bp.route("/funding-round/<fund_short_name>/<round_short_name>")
@@ -49,6 +48,7 @@ def index_fund_round(fund_short_name, round_short_name):
         contact_us_email_address=round_data.contact_email,
         prospectus_link=round_data.prospectus,
         instruction_text=round_data.instructions,
+        welsh_available=fund_data.welsh_available,
     )
 
 

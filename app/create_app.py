@@ -1,6 +1,5 @@
 from os import getenv
 
-from app.default.data import get_default_fund_and_round
 from app.default.data import get_default_round_for_fund
 from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
@@ -139,12 +138,7 @@ def create_app() -> Flask:
         elif request.args.get("fund"):
             fund = get_fund_data_by_short_name(request.args.get("fund"))
         else:
-            (fund_short_name, _) = get_default_fund_and_round()
-            fund = get_fund_data_by_short_name(fund_short_name)
-            current_app.logger.warn(
-                "Couldn't found any fund in the requests. Using"
-                f" {fund_short_name} as default fund!"
-            )
+            current_app.logger.warn("Couldn't find any fund in the request")
         return fund
 
     def find_round_in_request(fund):
@@ -158,8 +152,8 @@ def create_app() -> Flask:
         else:
             round = get_default_round_for_fund(fund.short_name)
             current_app.logger.warn(
-                "Couldn't found any fund in the requests. Using"
-                f" {round.short_name} as default fund!"
+                "Couldn't find round in request. Using"
+                f" {round.short_name} as default for fund {fund.short_name}"
             )
         return round
 
@@ -178,7 +172,9 @@ def create_app() -> Flask:
         if fund:
             service_title = gettext("Apply for") + " " + fund.title
         else:
-            service_title = gettext("Access Funding")
+            service_title = gettext(
+                "Apply for funding to save an asset in your community"
+            )
         return dict(service_title=service_title)
 
     @flask_app.context_processor
@@ -199,6 +195,11 @@ def create_app() -> Flask:
                             fund=fund.short_name,
                             round=round.short_name,
                         ),
+                        feedback_url=url_for(
+                            "content_routes.feedback",
+                            fund=fund.short_name,
+                            round=round.short_name,
+                        ),
                     )
         except Exception as e:  # noqa
             current_app.logger.warn(
@@ -209,7 +210,18 @@ def create_app() -> Flask:
         return dict(
             contact_us_url=url_for("content_routes.contact_us"),
             privacy_url=url_for("content_routes.privacy"),
+            feedback_url=url_for("content_routes.feedback"),
         )
+
+    @flask_app.after_request
+    def after_request(response):
+        if "Cache-Control" not in response.headers:
+            response.headers[
+                "Cache-Control"
+            ] = "no-cache, no-store, must-revalidate"
+            response.headers["Pragma"] = "no-cache"
+            response.headers["Expires"] = "0"
+        return response
 
     @flask_app.before_request
     def filter_favicon_requests():

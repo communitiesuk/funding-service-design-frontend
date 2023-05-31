@@ -20,6 +20,8 @@ default_round_fields = {
     "contact_textphone": "123456789",
     "support_times": "9-5",
     "support_days": "Mon-Fri",
+    "project_name_field_id": "",
+    "feedback_link": "",
 }
 
 
@@ -28,7 +30,7 @@ def mock_get_fund(mocker):
     mocker.patch(
         "app.default.routes.get_fund_data_by_short_name",
         return_value=Fund(
-            "", "Testing Fund", "", "", "test some funding stuff"
+            "", "Testing Fund", "", "", "test some funding stuff", True
         ),
     )
 
@@ -48,8 +50,7 @@ def mock_get_round(mocker):
 
 def test_old_index_redirect(client):
     result = client.get("/", follow_redirects=False)
-    assert result.status_code == 302
-    assert result.location == "funding-round/cof/r2w3"
+    assert result.status_code == 404
 
 
 def test_start_page_unknown_fund(client, mocker):

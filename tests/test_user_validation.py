@@ -1,7 +1,6 @@
 import json
 
 from app.default.data import RoundStatus
-from app.models.account import Account
 from app.models.application import Application
 from app.models.application_display_mapping import ApplicationMapping
 from app.models.fund import Fund
@@ -99,15 +98,6 @@ class TestUserValidation:
         monkeypatch.setattr(
             "fsd_utils.authentication.decorators._check_access_token",
             lambda: {"accountId": self.TEST_USER},
-        )
-        mocker.patch(
-            "app.default.application_routes.get_account",
-            return_value=Account.from_json(
-                {
-                    "account_id": self.TEST_USER,
-                    "email_address": "test@example.com",
-                }
-            ),
         )
         mocker.patch(
             "app.default.application_routes.get_application_data",
