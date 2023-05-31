@@ -3,7 +3,6 @@ from unittest import mock
 import pytest
 from app.default.data import get_default_round_for_fund
 from app.default.data import RoundStatus
-from app.models.fund import Fund
 from app.models.round import Round
 
 
@@ -22,30 +21,8 @@ default_round_fields = {
     "support_days": "Mon-Fri",
     "project_name_field_id": "",
     "feedback_link": "",
+    "application_guidance": "",
 }
-
-
-@pytest.fixture
-def mock_get_fund(mocker):
-    mocker.patch(
-        "app.default.routes.get_fund_data_by_short_name",
-        return_value=Fund(
-            "", "Testing Fund", "", "", "test some funding stuff", True
-        ),
-    )
-
-
-@pytest.fixture
-def mock_get_round(mocker):
-    mocker.patch(
-        "app.default.routes.get_round_data_by_short_names",
-        return_value=Round(
-            id="1",
-            opens="",
-            deadline="2023-01-01T12:00:00",
-            **default_round_fields,
-        ),
-    )
 
 
 def test_old_index_redirect(client):
@@ -69,7 +46,7 @@ def test_start_page_without_namespace(client, mocker):
     assert result.status_code == 404
 
 
-def test_start_page_unknown_round(client, mocker, mock_get_fund):
+def test_start_page_unknown_round(client, mocker):
     mocker.patch(
         "app.default.routes.get_round_data_by_short_names", return_value=None
     )
@@ -77,9 +54,7 @@ def test_start_page_unknown_round(client, mocker, mock_get_fund):
     assert result.status_code == 404
 
 
-def test_start_page_not_yet_open(
-    client, mocker, mock_get_fund, mock_get_round
-):
+def test_start_page_not_yet_open(client, mocker):
     mocker.patch(
         "app.default.routes.determine_round_status",
         return_value=RoundStatus(False, True, False),
@@ -88,9 +63,7 @@ def test_start_page_not_yet_open(
     assert result.status_code == 404
 
 
-def test_start_page_open(
-    client, mocker, mock_get_fund, mock_get_round, templates_rendered
-):
+def test_start_page_open(client, mocker, templates_rendered):
     mocker.patch(
         "app.default.routes.determine_round_status",
         return_value=RoundStatus(False, False, True),
@@ -100,14 +73,12 @@ def test_start_page_open(
     assert 1 == len(templates_rendered)
     rendered_template = templates_rendered[0]
     assert rendered_template[0].name == "fund_start_page.html"
-    assert rendered_template[1]["fund_title"] == "test some funding stuff"
-    assert rendered_template[1]["round_title"] == "test round title"
+    assert rendered_template[1]["fund_title"] == "fund for testing"
+    assert rendered_template[1]["round_title"] == "closed_round"
     assert rendered_template[1]["is_past_submission_deadline"] is False
 
 
-def test_start_page_closed(
-    client, mocker, mock_get_fund, mock_get_round, templates_rendered
-):
+def test_start_page_closed(client, mocker, templates_rendered):
     mocker.patch(
         "app.default.routes.determine_round_status",
         return_value=RoundStatus(True, False, False),
@@ -117,8 +88,8 @@ def test_start_page_closed(
     assert 1 == len(templates_rendered)
     rendered_template = templates_rendered[0]
     assert rendered_template[0].name == "fund_start_page.html"
-    assert rendered_template[1]["fund_title"] == "test some funding stuff"
-    assert rendered_template[1]["round_title"] == "test round title"
+    assert rendered_template[1]["fund_title"] == "fund for testing"
+    assert rendered_template[1]["round_title"] == "closed_round"
     assert rendered_template[1]["is_past_submission_deadline"] is True
 
 

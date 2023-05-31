@@ -67,7 +67,7 @@ def test_serialise_application_summary():
             None,
             {
                 "account_id": "test-user",
-                "fund_id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
+                "fund_id": "111",
             },
         ),
     ],
@@ -143,7 +143,7 @@ def test_dashboard_route(flask_test_client, mocker, mock_login):
             soup.find_all(
                 "h2",
                 string=lambda text: "Window closed - Community Ownership Fund "
-                + "Round 2 Window 3"
+                + "Round 2 Window 2"
                 in text,
             )
         )
@@ -196,6 +196,7 @@ def test_dashboard_route_no_applications(
         "app.default.account_routes.search_applications",
         return_value=[],
     )
+
     response = flask_test_client.get("/account", follow_redirects=True)
     assert response.status_code == 200
 
