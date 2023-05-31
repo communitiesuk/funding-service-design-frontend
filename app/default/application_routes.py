@@ -164,6 +164,7 @@ def tasklist(application_id):
         "application_id": application_id,
         "fund_name": fund_data.name,
         "round_name": round_data.title,
+        "application_guidance": round_data.application_guidance,
         "not_started_status": ApplicationStatus.NOT_STARTED.name,
         "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
         "completed_status": ApplicationStatus.COMPLETED.name,
