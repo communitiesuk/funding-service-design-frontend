@@ -9,6 +9,8 @@ from flask import redirect
 from flask import render_template
 from flask import request
 from flask import url_for
+from flask import g
+from fsd_utils.authentication.decorators import login_requested
 
 content_bp = Blueprint("content_routes", __name__, template_folder="templates")
 
@@ -50,6 +52,7 @@ def cof_r2w2_all_questions_redirect():
 
 
 @content_bp.route("/contact_us", methods=["GET"])
+@login_requested
 def contact_us():
     fund_short_name = request.args.get("fund")
     round_short_name = request.args.get("round")
