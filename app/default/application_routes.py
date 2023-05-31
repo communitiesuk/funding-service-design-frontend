@@ -205,6 +205,7 @@ def tasklist(application_id):
                 fund=fund_data.short_name,
                 round=round_data.short_name,
             ),
+            application_guidance=round_data.application_guidance,
         )
 
 
