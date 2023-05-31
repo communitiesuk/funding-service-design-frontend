@@ -1,5 +1,6 @@
 from os import getenv
 
+from app.default.data import get_application_data
 from app.default.data import get_default_round_for_fund
 from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
@@ -139,6 +140,7 @@ def create_app() -> Flask:
             fund = get_fund_data_by_short_name(request.args.get("fund"))
         else:
             current_app.logger.warn("Couldn't find any fund in the request")
+            fund = None
         return fund
 
     def find_round_in_request(fund):
@@ -160,9 +162,23 @@ def create_app() -> Flask:
     @flask_app.context_processor
     def inject_service_name():
         fund = None
-        if request.view_args or request.args:
+        if request.view_args or request.args or request.form:
             try:
                 fund = find_fund_in_request()
+                if not fund:
+                    application_id = (
+                        request.view_args.get("application_id")
+                        or request.form["application_id"]
+                    )
+                    application = get_application_data(
+                        application_id, as_dict=True
+                    )
+                    fund = get_fund_data(
+                        fund_id=application.fund_id,
+                        language=application.language,
+                        as_dict=True,
+                    )
+
             except Exception as e:  # noqa
                 current_app.logger.warn(
                     f"""Exception: {e}, occured when trying to
@@ -181,26 +197,38 @@ def create_app() -> Flask:
     def inject_content_urls():
         try:
             fund: Fund = find_fund_in_request()
-            if fund:
-                round = find_round_in_request(fund)
-                if round:
-                    return dict(
-                        contact_us_url=url_for(
-                            "content_routes.contact_us",
-                            fund=fund.short_name,
-                            round=round.short_name,
-                        ),
-                        privacy_url=url_for(
-                            "content_routes.privacy",
-                            fund=fund.short_name,
-                            round=round.short_name,
-                        ),
-                        feedback_url=url_for(
-                            "content_routes.feedback",
-                            fund=fund.short_name,
-                            round=round.short_name,
-                        ),
-                    )
+            if not fund:
+                application_id = (
+                    request.view_args.get("application_id")
+                    or request.form["application_id"]
+                )
+                application = get_application_data(
+                    application_id, as_dict=True
+                )
+                fund = get_fund_data(
+                    fund_id=application.fund_id,
+                    language=application.language,
+                    as_dict=True,
+                )
+            round = find_round_in_request(fund)
+            if round:
+                return dict(
+                    contact_us_url=url_for(
+                        "content_routes.contact_us",
+                        fund=fund.short_name,
+                        round=round.short_name,
+                    ),
+                    privacy_url=url_for(
+                        "content_routes.privacy",
+                        fund=fund.short_name,
+                        round=round.short_name,
+                    ),
+                    feedback_url=url_for(
+                        "content_routes.feedback",
+                        fund=fund.short_name,
+                        round=round.short_name,
+                    ),
+                )
         except Exception as e:  # noqa
             current_app.logger.warn(
                 f"""Exception: {e}, occured when trying to
