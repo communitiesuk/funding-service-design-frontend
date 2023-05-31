@@ -5,11 +5,11 @@ from app.models.round import Round
 from flask import abort
 from flask import Blueprint
 from flask import current_app
+from flask import g
 from flask import redirect
 from flask import render_template
 from flask import request
 from flask import url_for
-from flask import g
 from fsd_utils.authentication.decorators import login_requested
 
 content_bp = Blueprint("content_routes", __name__, template_folder="templates")
