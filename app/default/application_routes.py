@@ -189,6 +189,16 @@ def tasklist(application_id):
             )
         ),
     }
+    app_guidance = ""
+    if round_data.application_guidance:
+        app_guidance = round_data.application_guidance.format(
+            all_questions_url=url_for(
+                "content_routes.all_questions",
+                fund_short_name=fund_data.short_name,
+                round_short_name=round_data.short_name,
+                lang=application.language,
+            ),
+        )
 
     with force_locale(application.language):
         return render_template(
