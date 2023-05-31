@@ -168,8 +168,7 @@ def create_app() -> Flask:
                 if not fund:
                     application_id = (
                         request.view_args.get("application_id")
-                        if request.view_args.get("application_id")
-                        else request.form["application_id"]
+                        or request.form["application_id"]
                     )
                     application = get_application_data(
                         application_id, as_dict=True
@@ -201,8 +200,7 @@ def create_app() -> Flask:
             if not fund:
                 application_id = (
                     request.view_args.get("application_id")
-                    if request.view_args.get("application_id")
-                    else request.form["application_id"]
+                    or request.form["application_id"]
                 )
                 application = get_application_data(
                     application_id, as_dict=True
