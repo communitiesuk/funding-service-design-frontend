@@ -31,6 +31,8 @@ def index_fund_round(fund_short_name, round_short_name):
     round_data = get_round_data_by_short_names(
         fund_short_name, round_short_name
     )
+    if not fund_data or not round_data:
+        abort(404)
     round_status = determine_round_status(round_data)
     if round_status.not_yet_open:
         abort(404)

@@ -14,6 +14,9 @@ common_round_data = {
     "prospectus": "/cof_r2w2_prospectus",
     "instructions": "Round specific instruction text",
     "privacy_notice": "",
+    "project_name_field_id": "",
+    "feedback_link": "",
+    "application_guidance": "",
 }
 common_application_data = {
     "account_id": "test-user",
@@ -94,8 +97,6 @@ TEST_ROUNDS_DATA = [
             "short_name": "r2w2",
             "title": "closed_round",
             "deadline": "2023-01-01T00:00:01",
-            "project_name_field_id": "",
-            "feedback_link": "",
         }
     ),
     Round.from_dict(
@@ -106,8 +107,6 @@ TEST_ROUNDS_DATA = [
             "short_name": "r2w3",
             "title": "open_round",
             "deadline": "2050-01-01T00:00:01",
-            "project_name_field_id": "",
-            "feedback_link": "",
         }
     ),
     Round.from_dict(
@@ -118,8 +117,6 @@ TEST_ROUNDS_DATA = [
             "short_name": "r1",
             "title": "closed_round",
             "deadline": "2023-01-01T00:00:01",
-            "project_name_field_id": "",
-            "feedback_link": "",
         }
     ),
     Round.from_dict(
@@ -130,8 +127,6 @@ TEST_ROUNDS_DATA = [
             "short_name": "r2",
             "title": "open_round",
             "deadline": "2050-01-01T00:00:01",
-            "project_name_field_id": "",
-            "feedback_link": "",
         }
     ),
 ]

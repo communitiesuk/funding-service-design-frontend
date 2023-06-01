@@ -23,6 +23,7 @@ class Round:
     support_times: str
     feedback_link: str
     project_name_field_id: str
+    application_guidance: str
 
     @classmethod
     def from_dict(cls, d: dict):

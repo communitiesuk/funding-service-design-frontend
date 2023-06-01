@@ -21,15 +21,7 @@
           </span>
                 </summary>
                 <div class="govuk-details__text">
-                    <h2 class="govuk-heading govuk-heading-s">{% trans %}What we'll ask you for{% endtrans %}</h2>
-                    {% if show_all_questions_link %}
-                    <p class="govuk-body">
-                        {% trans %}You can preview the{% endtrans %} <a class="govuk-link" href="{{all_questions_url}}">{% trans %}full list of application questions{% endtrans %}</a>.
-                    </p>
-                    {% endif %}
-                    <p class="govuk-body">
-                        {% trans %}We'll also ask you to upload a business plan to support the answers you've given us in the management case section.{% endtrans %}
-                    </p>
+                    {{ application_guidance | safe if application_guidance}}
 
                     <h2 class="govuk-heading govuk-heading-s">
                         {% trans %}Moving through the form{% endtrans %}
@@ -81,7 +73,7 @@
                         {% trans %}How we'll use your information{% endtrans %}
                     </h2>
                     <p class="govuk-body">
-                        {% trans %}Read how we'll use the information from your application in our{% endtrans %} <a class="govuk-link" href="https://www.gov.uk/government/publications/community-ownership-fund-privacy-notice/community-ownership-fund-privacy-notice">{% trans %}privacy notice{% endtrans %}</a>.
+                        {% trans %}Read how we'll use the information from your application in our{% endtrans %} <a class="govuk-link" href="{{ privacy_url }}">{% trans %}privacy notice{% endtrans %}</a>.
                     </p>
 
                 </div>
