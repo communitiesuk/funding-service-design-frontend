@@ -180,7 +180,7 @@ def tasklist(application_id):
             )
         ),
     }
-    app_guidance = ""
+    app_guidance = None
     if round_data.application_guidance:
         app_guidance = round_data.application_guidance.format(
             all_questions_url=url_for(
