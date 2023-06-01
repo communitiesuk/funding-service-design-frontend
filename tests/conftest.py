@@ -5,7 +5,6 @@ import platform
 import pytest
 from app.create_app import create_app
 from app.models.fund import Fund
-from app.models.fund import Fund
 from flask import template_rendered
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
