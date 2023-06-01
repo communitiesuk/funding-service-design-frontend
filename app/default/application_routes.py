@@ -281,6 +281,11 @@ def submit_application():
     application_id = request.form.get("application_id")
     application = get_application_data(application_id, as_dict=True)
 
+    fund_data = get_fund_data(
+        fund_id=application.fund_id,
+        language=application.language,
+        as_dict=True,
+    )
     submitted = format_payload_and_submit_application(application_id)
 
     application_id = submitted.get("id")
@@ -292,6 +297,7 @@ def submit_application():
             application_id=application_id,
             application_reference=application_reference,
             application_email=application_email,
+            fund_name=fund_data.name,
         )
 
 
