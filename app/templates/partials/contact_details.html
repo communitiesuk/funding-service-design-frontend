@@ -13,9 +13,28 @@
         </ul>
 
         <div class="govuk-inset-text">
-            {% trans %}Do not send any applications or attachments by email. We'll only accept applications
-            through this service.{% endtrans %}
+            <p>{% trans %}We will respond to policy and general queries by email.{% endtrans %}</p>
+            <p>{% trans %}Do not send any applications or attachments by email. We'll only accept applications
+            through this service.{% endtrans %}</p>
         </div>
+
+        <h2 class="govuk-heading-m">{% trans %}Arrange a callback{% endtrans %}</h2>
+        <p class="govuk-body">
+            {% trans %}If you need support filling in the form, we can help you over the phone.{% endtrans %}
+        </p>
+        <p class="govuk-body">
+            {% trans %}To help us call you back quickly, email us at {% endtrans %}
+            <a class="govuk-link" href="mailto:{{ contact_us_email_address }}">
+                {{ contact_us_email_address }}
+            </a> {% trans %}and tell us{% endtrans %}:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>{% trans %}that this is a callback request in the subject of your email{% endtrans %}</li>
+          <li>{% trans %}what you need help with{% endtrans %}</li>
+          <li>{% trans %}your phone number{% endtrans %}</li>
+          <li>{% trans %}when to call you{% endtrans %}</li>
+        </ul>
     {% endif %}
     {% if contact_us_phone %}
         <h3 class="govuk-heading-s">{% trans %}Telephone{% endtrans %}</h3>
