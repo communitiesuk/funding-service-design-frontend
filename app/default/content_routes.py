@@ -84,6 +84,7 @@ def contact_us():
             support_times="",
             feedback_link="",
             project_name_field_id="",
+            application_guidance="",
         )
         fund_name = ""
     return render_template(

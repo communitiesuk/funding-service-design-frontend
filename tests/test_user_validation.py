@@ -3,8 +3,6 @@ import json
 from app.default.data import RoundStatus
 from app.models.application import Application
 from app.models.application_display_mapping import ApplicationMapping
-from app.models.fund import Fund
-from app.models.round import Round
 from config.envs.default import DefaultConfig
 
 file = open("tests/api_data/endpoint_data.json")
@@ -23,16 +21,6 @@ class TestUserValidation:
     TEST_USER = "test-user"
     TEST_APPLICATION_STORE_DATA = data[
         f"application_store/applications/{TEST_ID}"
-    ]
-    TEST_FUND_DATA = data[
-        "fund_store/funds/funding-service-design?language=en"
-    ]
-    TEST_ROUND_DATA = data[
-        "fund_store/funds/47aef2f5-3fcb-4d45-acb5-f0152b5f03c4/"
-        "rounds/c603d114-5364-4474-a0c4-c41cbf4d3bbd?language=en"
-    ]
-    TEST_ROUND_STORE_DATA = data[
-        "fund_store/funds/funding-service-design/rounds/summer?language=en"
     ]
     REHYDRATION_TOKEN = "test_token"
 
@@ -58,6 +46,10 @@ class TestUserValidation:
             "get_token_to_return_to_application",
             return_value=self.REHYDRATION_TOKEN,
         )
+        mocker.patch(
+            "app.default.application_routes.determine_round_status",
+            return_value=RoundStatus(False, False, True),
+        )
         expected_redirect_url = DefaultConfig.FORM_REHYDRATION_URL.format(
             rehydration_token=self.REHYDRATION_TOKEN
         )
@@ -82,10 +74,6 @@ class TestUserValidation:
                 self.TEST_APPLICATION_STORE_DATA
             ),
         )
-        mocker.patch(
-            "app.default.data.get_round_data_fail_gracefully",
-            return_value=self.TEST_ROUND_DATA,
-        )
 
         response = flask_test_client.get(
             f"/continue_application/{self.TEST_ID}", follow_redirects=False
@@ -106,19 +94,15 @@ class TestUserValidation:
             ),
         )
         mocker.patch(
-            "app.default.application_routes.get_fund_data",
-            return_value=Fund.from_dict(self.TEST_FUND_DATA),
-        )
-        mocker.patch(
-            "app.default.application_routes.get_round_data",
-            return_value=Round.from_dict(self.TEST_ROUND_DATA),
-        )
-        mocker.patch(
             "app.default.application_routes.get_application_display_config",
             return_value=[
                 ApplicationMapping.from_dict(section)
                 for section in TEST_APPLICATION_DISPLAY_RESPONSE
             ],
+        )
+        mocker.patch(
+            "app.default.application_routes.determine_round_status",
+            return_value=RoundStatus(False, False, True),
         )
 
         response = flask_test_client.get(
@@ -220,10 +204,6 @@ class TestUserValidation:
             return_value=Application.from_dict(
                 self.TEST_APPLICATION_STORE_DATA
             ),
-        )
-        mocker.patch(
-            "app.default.data.get_round_data_fail_gracefully",
-            return_value=self.TEST_ROUND_DATA,
         )
 
         response = flask_test_client.post(
