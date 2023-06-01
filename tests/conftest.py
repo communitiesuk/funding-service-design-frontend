@@ -4,10 +4,13 @@ import platform
 
 import pytest
 from app.create_app import create_app
+from app.models.fund import Fund
 from flask import template_rendered
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
+from tests.test_data import TEST_FUNDS_DATA
+from tests.test_data import TEST_ROUNDS_DATA
 from webdriver_manager.chrome import ChromeDriverManager
 
 if platform.system() == "Darwin":
@@ -117,3 +120,59 @@ def templates_rendered(app):
         yield recorded
     finally:
         template_rendered.disconnect(record, app)
+
+
+@pytest.fixture(autouse=True)
+def mock_get_fund_round(mocker):
+    mocker.patch(
+        "app.default.account_routes.get_all_funds",
+        return_value=TEST_FUNDS_DATA,
+    )
+    mocker.patch(
+        "app.default.account_routes.get_fund_data_by_short_name",
+        return_value=Fund.from_dict(TEST_FUNDS_DATA[0]),
+    )
+    mocker.patch(
+        "app.default.account_routes.get_round_data_by_short_names",
+        return_value=TEST_ROUNDS_DATA[0],
+    )
+    mocker.patch(
+        "app.default.account_routes.get_all_rounds_for_fund",
+        return_value=TEST_ROUNDS_DATA,
+    )
+    mocker.patch(
+        "app.create_app.get_round_data_by_short_names",
+        return_value=TEST_ROUNDS_DATA[0],
+    )
+    mocker.patch(
+        "app.create_app.get_fund_data_by_short_name",
+        return_value=Fund.from_dict(TEST_FUNDS_DATA[0]),
+    )
+    mocker.patch(
+        "app.create_app.get_default_round_for_fund",
+        return_value=TEST_ROUNDS_DATA[0],
+    )
+    mocker.patch(
+        "app.default.application_routes.get_round_data",
+        return_value=TEST_ROUNDS_DATA[0],
+    )
+    mocker.patch(
+        "app.default.application_routes.get_fund_data",
+        return_value=Fund.from_dict(TEST_FUNDS_DATA[0]),
+    )
+    mocker.patch(
+        "app.default.data.get_round_data_fail_gracefully",
+        return_value=TEST_ROUNDS_DATA[0],
+    )
+    mocker.patch(
+        "app.default.content_routes.get_round_data_by_short_names",
+        return_value=TEST_ROUNDS_DATA[0],
+    )
+    mocker.patch(
+        "app.default.routes.get_fund_data_by_short_name",
+        return_value=Fund.from_dict(TEST_FUNDS_DATA[0]),
+    )
+    mocker.patch(
+        "app.default.routes.get_round_data_by_short_names",
+        return_value=TEST_ROUNDS_DATA[0],
+    )
