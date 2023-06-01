@@ -94,7 +94,7 @@ class DefaultConfig:
 
     GET_APPLICATION_DISPLAY_FOR_FUND_ENDPOINT = (
         FUND_STORE_API_HOST
-        + "/funds/{fund_id}/rounds/{round_id}/sections/application"
+        + "/funds/{fund_id}/rounds/{round_id}/sections/application?language={language}"
     )
 
     FORMS_TEST_HOST = "http://localhost:3009"

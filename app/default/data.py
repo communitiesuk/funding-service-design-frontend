@@ -206,11 +206,10 @@ def get_round_data(fund_id, round_id, language=None, as_dict=False):
         return Round.from_dict(round_response)
 
 
-def get_application_display_config(fund_id, round_id, language=None):
-    language = {"language": language or get_lang()}
+def get_application_display_config(fund_id, round_id, language):
     application_display_request_url = (
         Config.GET_APPLICATION_DISPLAY_FOR_FUND_ENDPOINT.format(
-            fund_id=fund_id, round_id=round_id
+            fund_id=fund_id, round_id=round_id, language=language
         )
     )
     application_display_response = get_data(application_display_request_url)
