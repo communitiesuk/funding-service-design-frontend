@@ -159,14 +159,6 @@ def tasklist(application_id):
     )
     display_config = application.match_forms_to_state(section_display_config)
 
-    app_guidance = None
-    if round_data.application_guidance:
-        app_guidance = round_data.application_guidance.format(
-            all_questions_url=Config.APPLICATION_ALL_QUESTIONS_URL.format(
-                fund_short_name=fund_data.short_name,
-                round_short_name=round_data.short_name,
-            )
-        )
     form = FlaskForm()
     application_meta_data = {
         "application_id": application_id,
@@ -210,7 +202,6 @@ def tasklist(application_id):
             form=form,
             contact_us_email_address=round_data.contact_email,
             submission_deadline=round_data.deadline,
-            show_all_questions_link=show_all_questions_link,
             is_past_submission_deadline=current_datetime_after_given_iso_string(  # noqa:E501
                 round_data.deadline
             ),
