@@ -155,7 +155,9 @@ def tasklist(application_id):
 
     # Create tasklist display config
     section_display_config = get_application_display_config(
-        application.fund_id, application.round_id
+        application.fund_id,
+        application.round_id,
+        language=application.language,
     )
     display_config = application.match_forms_to_state(section_display_config)
 
