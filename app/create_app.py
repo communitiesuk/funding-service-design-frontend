@@ -133,9 +133,11 @@ def create_app() -> Flask:
         ]:
             fund = get_fund_data_by_short_name(fund_short_name)
         elif request.view_args.get("fund_id"):
-            fund = get_fund_data(request.view_args.get("fund_id"), True)
+            fund = get_fund_data(
+                request.view_args.get("fund_id"), as_dict=True
+            )
         elif request.args.get("fund_id"):
-            fund = get_fund_data(request.args.get("fund_id"), True)
+            fund = get_fund_data(request.args.get("fund_id"), as_dict=True)
         elif request.args.get("fund"):
             fund = get_fund_data_by_short_name(request.args.get("fund"))
         else:
@@ -188,9 +190,7 @@ def create_app() -> Flask:
         if fund:
             service_title = gettext("Apply for") + " " + fund.title
         else:
-            service_title = gettext(
-                "Apply for funding to save an asset in your community"
-            )
+            service_title = gettext("Access Funding")
         return dict(service_title=service_title)
 
     @flask_app.context_processor
