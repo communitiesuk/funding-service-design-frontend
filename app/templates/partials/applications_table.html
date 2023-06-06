@@ -2,7 +2,7 @@
 {%- from "govuk_frontend_jinja/components/tag/macro.html" import govukTag -%}
 {%- from "govuk_frontend_jinja/components/table/macro.html" import govukTable -%}
 
-{% macro applications_table(applications, is_past_submission_deadline, show_language_column, fund_short_name, round_short_name) %}
+{% macro applications_table(applications, is_past_submission_deadline, show_language_column) %}
 
 	{% set ns = namespace(rows = []) %}
 	{% for application in applications %}
