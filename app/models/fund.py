@@ -5,6 +5,7 @@ from enum import Enum
 
 class FUND_SHORT_CODES(Enum):
     COF = "COF"
+    NSTF = "NSTF"
 
 
 @dataclass
