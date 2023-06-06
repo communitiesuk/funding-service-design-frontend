@@ -36,7 +36,7 @@
                         {% if round["is_past_submission_deadline"] %}
                             {{ round_closed_warning(fund["fund_data"]["name"], round["round_details"]["title"], round["round_details"]["deadline"]) }}
                         {% endif %}
-                            {{ applications_table(round["applications"], round["is_past_submission_deadline"], show_language_column, fund["fund_data"]["short_name"], round["round_details"]["short_name"]) }}
+                            {{ applications_table(round["applications"], round["is_past_submission_deadline"], show_language_column) }}
                             <p class="govuk-body"><a href="{{url_for('account_routes.dashboard', fund=fund['fund_data']['short_name'])}}" class="govuk-link govuk-link">View applications from all rounds/windows</a></p>
                     {% endif %}
                 {% endfor %}
