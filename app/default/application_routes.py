@@ -285,6 +285,9 @@ def submit_application():
         language=application.language,
         as_dict=True,
     )
+    round_data = get_round_data(
+        application.fund_id, application.round_id, as_dict=False
+    )
     submitted = format_payload_and_submit_application(application_id)
 
     application_id = submitted.get("id")
@@ -297,6 +300,8 @@ def submit_application():
             application_reference=application_reference,
             application_email=application_email,
             fund_name=fund_data.name,
+            fund_short_name=fund_data.short_name,
+            round_short_name=round_data.short_name,
         )
 
 
