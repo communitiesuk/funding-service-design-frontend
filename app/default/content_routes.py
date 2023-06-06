@@ -1,4 +1,7 @@
+from app.default.data import get_application_data
+from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
+from app.default.data import get_round_data
 from app.default.data import get_round_data_by_short_names
 from app.default.data import get_round_data_fail_gracefully
 from app.models.round import Round
@@ -128,19 +131,38 @@ def privacy():
 def feedback():
     fund_short_name = request.args.get("fund")
     round_short_name = request.args.get("round")
-    current_app.logger.info(
-        f"Feedback page loading for fund {fund_short_name} round"
-        f" {round_short_name}."
-    )
+    application_id = request.args.get("application_id")
+    feedback_url = ""
+
     if fund_short_name and round_short_name:
         round_data = get_round_data_by_short_names(
             fund_short_name, round_short_name
         )
         feedback_url = getattr(round_data, "feedback_link", None)
 
-        if feedback_url:
-            current_app.logger.debug("Feedback link configured for fund")
-            return redirect(feedback_url)
+    elif application_id:
+        application = get_application_data(application_id, as_dict=True)
+        fund_short_name = get_fund_data(
+            fund_id=application.fund_id,
+            language=application.language,
+            as_dict=True,
+        ).short_name
+
+        round_data = get_round_data(
+            fund_id=application.fund_id,
+            round_id=application.round_id,
+            language=application.language,
+        )
+        round_short_name = round_data.short_name
+        feedback_url = getattr(round_data, "feedback_link", None)
+
+    if feedback_url:
+        current_app.logger.info(
+            f"Feedback page loading for fund {fund_short_name} round"
+            f" {round_short_name}."
+        )
+        current_app.logger.debug("Feedback link configured for fund")
+        return redirect(feedback_url)
 
     current_app.logger.warning(
         f"No feedback url configured for round ({fund_short_name} -"
