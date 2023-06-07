@@ -58,6 +58,7 @@ def cof_r2w2_all_questions_redirect():
 def contact_us():
     fund_short_name = request.args.get("fund")
     round_short_name = request.args.get("round")
+    application_id = request.args.get("application_id")
     current_app.logger.info(
         f"Contact us page loaded for fund {fund_short_name} round"
         f" {round_short_name}."
@@ -68,6 +69,19 @@ def contact_us():
         )
         fund_data = get_fund_data_by_short_name(fund_short_name)
         fund_name = fund_data.name
+    elif application_id:
+        application = get_application_data(application_id, as_dict=True)
+        fund_name = get_fund_data(
+            fund_id=application.fund_id,
+            language=application.language,
+            as_dict=True,
+        ).name
+
+        round_data = get_round_data(
+            fund_id=application.fund_id,
+            round_id=application.round_id,
+            language=application.language,
+        )
     else:
         round_data = Round(
             id="",
