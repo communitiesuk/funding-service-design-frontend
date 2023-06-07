@@ -4,6 +4,7 @@ from app.default.data import get_application_data
 from app.default.data import get_default_round_for_fund
 from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
+from app.default.data import get_round_data
 from app.default.data import get_round_data_by_short_names
 from app.filters import date_format_short_month
 from app.filters import datetime_format
@@ -140,9 +141,24 @@ def create_app() -> Flask:
             fund = get_fund_data(request.args.get("fund_id"), as_dict=True)
         elif request.args.get("fund"):
             fund = get_fund_data_by_short_name(request.args.get("fund"))
+        elif (
+            request.args.get("application_id")
+            or request.view_args.get("application_id")
+            or request.form["application_id"]
+        ):
+            application_id = (
+                request.args.get("application_id")
+                or request.view_args.get("application_id")
+                or request.form["application_id"]
+            )
+            application = get_application_data(application_id, as_dict=True)
+            fund = get_fund_data(
+                fund_id=application.fund_id,
+                language=application.language,
+                as_dict=True,
+            )
         else:
             current_app.logger.warn("Couldn't find any fund in the request")
-            fund = None
         return fund
 
     def find_round_in_request(fund):
@@ -152,6 +168,22 @@ def create_app() -> Flask:
         if round_short_name:
             round = get_round_data_by_short_names(
                 fund.short_name, round_short_name, False
+            )
+        elif (
+            request.args.get("application_id")
+            or request.view_args.get("application_id")
+            or request.form["application_id"]
+        ):
+            application_id = (
+                request.args.get("application_id")
+                or request.view_args.get("application_id")
+                or request.form["application_id"]
+            )
+            application = get_application_data(application_id, as_dict=True)
+            round = get_round_data(
+                fund_id=application.fund_id,
+                round_id=application.round_id,
+                language=application.language,
             )
         else:
             round = get_default_round_for_fund(fund.short_name)
@@ -167,20 +199,6 @@ def create_app() -> Flask:
         if request.view_args or request.args or request.form:
             try:
                 fund = find_fund_in_request()
-                if not fund:
-                    application_id = (
-                        request.view_args.get("application_id")
-                        or request.form["application_id"]
-                    )
-                    application = get_application_data(
-                        application_id, as_dict=True
-                    )
-                    fund = get_fund_data(
-                        fund_id=application.fund_id,
-                        language=application.language,
-                        as_dict=True,
-                    )
-
             except Exception as e:  # noqa
                 current_app.logger.warn(
                     f"""Exception: {e}, occured when trying to
@@ -197,19 +215,6 @@ def create_app() -> Flask:
     def inject_content_urls():
         try:
             fund: Fund = find_fund_in_request()
-            if not fund:
-                application_id = (
-                    request.view_args.get("application_id")
-                    or request.form["application_id"]
-                )
-                application = get_application_data(
-                    application_id, as_dict=True
-                )
-                fund = get_fund_data(
-                    fund_id=application.fund_id,
-                    language=application.language,
-                    as_dict=True,
-                )
             round = find_round_in_request(fund)
             if round:
                 return dict(
