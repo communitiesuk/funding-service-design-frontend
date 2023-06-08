@@ -142,9 +142,9 @@ def create_app() -> Flask:
         elif request.args.get("fund"):
             fund = get_fund_data_by_short_name(request.args.get("fund"))
         elif (
-            request.args.get("application_id")
+            application_id := request.args.get("application_id")
             or request.view_args.get("application_id")
-            or request.form["application_id"]
+            or request.form.get("application_id")
         ):
             application_id = (
                 request.args.get("application_id")
@@ -170,9 +170,9 @@ def create_app() -> Flask:
                 fund.short_name, round_short_name, False
             )
         elif (
-            request.args.get("application_id")
+            application_id := request.args.get("application_id")
             or request.view_args.get("application_id")
-            or request.form["application_id"]
+            or request.form.get("application_id")
         ):
             application_id = (
                 request.args.get("application_id")
