@@ -68,56 +68,70 @@ default_service_title = "Access Funding"
 
 
 @pytest.mark.parametrize(
-    "key_name, view_args_value, args_value, expected_title",
+    "view_args, args, form, mock_fund_value, expected_title",
     [
         (
-            "fund_short_name",
-            "TEST",
-            None,
+            mock.MagicMock(),
+            mock.MagicMock(),
+            mock.MagicMock(),
+            short_name_fund,
             "Apply for " + short_name_fund.title,
         ),
         (
-            "fund_short_name",
-            "BAD",
+            mock.MagicMock(),
+            mock.MagicMock(),
+            mock.MagicMock(),
             None,
-            default_service_title,
+            "Access Funding",
         ),
-        ("fund_short_name", None, None, default_service_title),
-        ("fund_short_name", None, "TEST", default_service_title),
-        ("fund_id", "TEST", None, "Apply for " + id_fund.title),
-        ("fund_id", None, None, default_service_title),
-        ("fund_id", None, "TEST", "Apply for " + id_fund.title),
-        ("fund", None, "TEST", "Apply for " + short_name_fund.title),
-        ("fund", None, None, default_service_title),
-        ("fund", "TEST", None, default_service_title),
+        (
+            None,
+            None,
+            None,
+            None,
+            "Access Funding",
+        ),
+        (
+            mock.MagicMock(),
+            None,
+            None,
+            short_name_fund,
+            "Apply for " + short_name_fund.title,
+        ),
+        (
+            None,
+            mock.MagicMock(),
+            None,
+            short_name_fund,
+            "Apply for " + short_name_fund.title,
+        ),
+        (
+            None,
+            None,
+            mock.MagicMock(),
+            short_name_fund,
+            "Apply for " + short_name_fund.title,
+        ),
     ],
 )
-def test_inject_service_name(
-    key_name,
-    view_args_value,
-    args_value,
+def test_inject_service_name_simpler(
+    view_args,
+    args,
+    form,
+    mock_fund_value,
     expected_title,
     app,
     templates_rendered,
     mocker,
 ):
-    class TEST_FUND_SHORT_CODES(Enum):
-        TEST = "TEST"
-
-    mocker.patch("app.create_app.FUND_SHORT_CODES", new=TEST_FUND_SHORT_CODES)
     mocker.patch(
-        "app.create_app.get_fund_data_by_short_name",
-        return_value=short_name_fund,
-    )
-    mocker.patch(
-        "app.create_app.get_fund_data",
-        return_value=id_fund,
+        "app.create_app.find_fund_in_request",
+        return_value=mock_fund_value,
     )
     request_mock = mocker.patch("app.create_app.request")
-    request_mock.view_args.get = (
-        lambda key: view_args_value if key == key_name else None
-    )
-    request_mock.args.get = lambda key: args_value if key == key_name else None
+    request_mock.view_args = view_args
+    request_mock.args = args
+    request_mock.form = form
     with app.app_context():
         render_template("fund_start_page.html")
     assert len(templates_rendered) == 1
