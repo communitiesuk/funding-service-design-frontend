@@ -40,6 +40,62 @@ from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
 
 
+def find_round_in_request(fund):
+    if round_short_name := request.view_args.get(
+        "round_short_name"
+    ) or request.args.get("round"):
+        round = get_round_data_by_short_names(
+            fund.short_name, round_short_name, False
+        )
+    elif (
+        application_id := request.args.get("application_id")
+        or request.view_args.get("application_id")
+        or request.form.get("application_id")
+    ):
+        application = get_application_data(application_id, as_dict=True)
+        round = get_round_data(
+            fund_id=application.fund_id,
+            round_id=application.round_id,
+            language=application.language,
+        )
+    else:
+        round = get_default_round_for_fund(fund.short_name)
+        current_app.logger.warn(
+            "Couldn't find round in request. Using"
+            f" {round.short_name} as default for fund {fund.short_name}"
+        )
+    return round
+
+
+def find_fund_in_request():
+    if (
+        fund_short_name := request.view_args.get("fund_short_name")
+        or request.args.get("fund")
+    ) and str.upper(fund_short_name) in [
+        member.value for member in FUND_SHORT_CODES
+    ]:
+        fund = get_fund_data_by_short_name(fund_short_name, as_dict=False)
+    elif fund_id := request.view_args.get("fund_id") or request.args.get(
+        "fund_id"
+    ):
+        fund = get_fund_data(fund_id, as_dict=True)
+    elif (
+        application_id := request.args.get("application_id")
+        or request.view_args.get("application_id")
+        or request.form.get("application_id")
+    ):
+        application = get_application_data(application_id, as_dict=True)
+        fund = get_fund_data(
+            fund_id=application.fund_id,
+            language=application.language,
+            as_dict=True,
+        )
+    else:
+        current_app.logger.warn("Couldn't find any fund in the request")
+        return None
+    return fund
+
+
 def create_app() -> Flask:
     init_sentry()
 
@@ -126,62 +182,6 @@ def create_app() -> Flask:
             if toggle_client
             else {},
         )
-
-    def find_fund_in_request():
-        fund_short_name = request.view_args.get("fund_short_name")
-        if fund_short_name and str.upper(fund_short_name) in [
-            member.value for member in FUND_SHORT_CODES
-        ]:
-            fund = get_fund_data_by_short_name(fund_short_name)
-        elif request.view_args.get("fund_id"):
-            fund = get_fund_data(
-                request.view_args.get("fund_id"), as_dict=True
-            )
-        elif request.args.get("fund_id"):
-            fund = get_fund_data(request.args.get("fund_id"), as_dict=True)
-        elif request.args.get("fund"):
-            fund = get_fund_data_by_short_name(request.args.get("fund"))
-        elif (
-            application_id := request.args.get("application_id")
-            or request.view_args.get("application_id")
-            or request.form.get("application_id")
-        ):
-            application = get_application_data(application_id, as_dict=True)
-            fund = get_fund_data(
-                fund_id=application.fund_id,
-                language=application.language,
-                as_dict=True,
-            )
-        else:
-            current_app.logger.warn("Couldn't find any fund in the request")
-        return fund
-
-    def find_round_in_request(fund):
-        round_short_name = request.view_args.get("round_short_name")
-        if not round_short_name:
-            round_short_name = request.args.get("round")
-        if round_short_name:
-            round = get_round_data_by_short_names(
-                fund.short_name, round_short_name, False
-            )
-        elif (
-            application_id := request.args.get("application_id")
-            or request.view_args.get("application_id")
-            or request.form.get("application_id")
-        ):
-            application = get_application_data(application_id, as_dict=True)
-            round = get_round_data(
-                fund_id=application.fund_id,
-                round_id=application.round_id,
-                language=application.language,
-            )
-        else:
-            round = get_default_round_for_fund(fund.short_name)
-            current_app.logger.warn(
-                "Couldn't find round in request. Using"
-                f" {round.short_name} as default for fund {fund.short_name}"
-            )
-        return round
 
     @flask_app.context_processor
     def inject_service_name():
