@@ -58,6 +58,7 @@ def cof_r2w2_all_questions_redirect():
 def contact_us():
     fund_short_name = request.args.get("fund")
     round_short_name = request.args.get("round")
+    application_id = request.args.get("application_id")
     current_app.logger.info(
         f"Contact us page loaded for fund {fund_short_name} round"
         f" {round_short_name}."
@@ -68,6 +69,19 @@ def contact_us():
         )
         fund_data = get_fund_data_by_short_name(fund_short_name)
         fund_name = fund_data.name
+    elif application_id:
+        application = get_application_data(application_id, as_dict=True)
+        fund_name = get_fund_data(
+            fund_id=application.fund_id,
+            language=application.language,
+            as_dict=True,
+        ).name
+
+        round_data = get_round_data(
+            fund_id=application.fund_id,
+            round_id=application.round_id,
+            language=application.language,
+        )
     else:
         round_data = Round(
             id="",
@@ -108,23 +122,44 @@ def privacy():
     current_app.logger.info("Privacy_notice page loaded.")
     fund_short_name = request.args.get("fund")
     round_short_name = request.args.get("round")
+    application_id = request.args.get("application_id")
+    privacy_notice_url = ""
+
     if fund_short_name and round_short_name:
         round_data = get_round_data_by_short_names(
             fund_short_name, round_short_name
         )
         privacy_notice_url = getattr(round_data, "privacy_notice", None)
 
-        if privacy_notice_url:
-            current_app.logger.info("Privacy notice configured for fund")
-            return redirect(privacy_notice_url)
+    elif application_id:
+        application = get_application_data(application_id, as_dict=True)
+        fund_short_name = get_fund_data(
+            fund_id=application.fund_id,
+            language=application.language,
+            as_dict=True,
+        ).short_name
+
+        round_data = get_round_data(
+            fund_id=application.fund_id,
+            round_id=application.round_id,
+            language=application.language,
+        )
+        round_short_name = round_data.short_name
+        privacy_notice_url = getattr(round_data, "privacy_notice", None)
+
+    if privacy_notice_url:
+        current_app.logger.info(
+            f"Privacy notice loading for fund {fund_short_name} round"
+            f" {round_short_name}."
+        )
+        current_app.logger.info("Privacy notice configured for fund")
+        return redirect(privacy_notice_url)
 
     current_app.logger.warning(
         f"No privacy notice configured for round ({fund_short_name} -"
         f" {round_short_name}). Redirecting..."
     )
-    return redirect(
-        "https://www.gov.uk/government/publications/community-ownership-fund-privacy-notice/community-ownership-fund-privacy-notice"  # noqa
-    )
+    return abort(404)
 
 
 @content_bp.route("/feedback", methods=["GET"])
