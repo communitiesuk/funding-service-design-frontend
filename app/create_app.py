@@ -146,11 +146,6 @@ def create_app() -> Flask:
             or request.view_args.get("application_id")
             or request.form.get("application_id")
         ):
-            application_id = (
-                request.args.get("application_id")
-                or request.view_args.get("application_id")
-                or request.form["application_id"]
-            )
             application = get_application_data(application_id, as_dict=True)
             fund = get_fund_data(
                 fund_id=application.fund_id,
@@ -174,11 +169,6 @@ def create_app() -> Flask:
             or request.view_args.get("application_id")
             or request.form.get("application_id")
         ):
-            application_id = (
-                request.args.get("application_id")
-                or request.view_args.get("application_id")
-                or request.form["application_id"]
-            )
             application = get_application_data(application_id, as_dict=True)
             round = get_round_data(
                 fund_id=application.fund_id,
