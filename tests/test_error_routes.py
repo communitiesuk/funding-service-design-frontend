@@ -102,7 +102,7 @@ def test_404_with_bad_fund_n_round(client, mocker):
     assert "fsd.support@levellingup.gov.uk" in soup.find("li").text
 
 
-def test_500(client, mocker):
+def test_unauthorised_error(client, mocker):
     mocker.patch(
         "app.default.error_routes.get_round_data_fail_gracefully",
         return_value=default_round_data,
@@ -115,7 +115,7 @@ def test_500(client, mocker):
     assert "test@example.com" in soup.find("li").text
 
 
-def test_500_with_bad_fund_n_round(client, mocker):
+def test_unauthorised_error_with_bad_fund_n_round(client, mocker):
     mocker.patch(
         "app.default.error_routes.get_round_data_fail_gracefully",
         return_value=empty_round_data,
