@@ -37,10 +37,16 @@ def not_found(error):
     # use default round if incorrect round name is provided
     if fund_short_name and not round_data.id:
         round_data = get_default_round_for_fund(fund_short_name) or round_data
-        current_app.logger.warning(
-            f"Invalid round_short_name {round_short_name} provided. Using"
-            f" default {round_data.short_name} round for {fund_short_name}."
-        )
+        if not round_data.id:
+            current_app.logger.warning(
+                f"Invalid fund_short_name '{fund_short_name}' provided."
+            )
+        else:
+            current_app.logger.warning(
+                f"Invalid round_short_name '{round_short_name}' provided."
+                f" Using default '{round_data.short_name}' round for"
+                f" {fund_short_name}."
+            )
 
     return render_template("404.html", round_data=round_data), 404
 
@@ -82,10 +88,16 @@ def unauthorised_error(error):
     # use default round if incorrect round name is provided
     if fund_short_name and not round_data.id:
         round_data = get_default_round_for_fund(fund_short_name) or round_data
-        current_app.logger.warning(
-            f"Invalid round_short_name {round_short_name} provided. Using"
-            f" default {round_data.short_name} round for {fund_short_name}."
-        )
+        if not round_data.id:
+            current_app.logger.warning(
+                f"Invalid fund_short_name '{fund_short_name}' provided."
+            )
+        else:
+            current_app.logger.warning(
+                f"Invalid round_short_name '{round_short_name}' provided."
+                f" Using default '{round_data.short_name}' round for"
+                f" {fund_short_name}."
+            )
     return render_template("500.html", round_data=round_data), 401
 
 
