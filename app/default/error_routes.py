@@ -3,6 +3,7 @@ import traceback
 from app.default.account_routes import account_bp
 from app.default.application_routes import application_bp
 from app.default.content_routes import content_bp
+from app.default.data import get_default_round_for_fund
 from app.default.data import get_round_data_fail_gracefully
 from app.default.routes import default_bp
 from flask import current_app
@@ -22,11 +23,31 @@ def not_found(error):
     current_app.logger.warning(
         f"Encountered 404 against url {request.path}: {error}"
     )
-    fund_short_name = request.args.get("fund")
-    round_short_name = request.args.get("round")
+    fund_short_name = request.args.get("fund") or (
+        request.view_args.get("fund_short_name") if request.view_args else None
+    )
+    round_short_name = request.args.get("round") or (
+        request.view_args.get("round_short_name")
+        if request.view_args
+        else None
+    )
     round_data = get_round_data_fail_gracefully(
         fund_short_name, round_short_name, True
     )
+    # use default round if incorrect round name is provided
+    if fund_short_name and not round_data.id:
+        round_data = get_default_round_for_fund(fund_short_name) or round_data
+        if not round_data.id:
+            current_app.logger.warning(
+                f"Invalid fund_short_name '{fund_short_name}' provided."
+            )
+        else:
+            current_app.logger.warning(
+                f"Invalid round_short_name '{round_short_name}' provided."
+                f" Using default '{round_data.short_name}' round for"
+                f" {fund_short_name}."
+            )
+
     return render_template("404.html", round_data=round_data), 404
 
 
@@ -53,11 +74,30 @@ def unauthorised_error(error):
     error_message = f"Encountered 401: {error}"
     stack_trace = traceback.format_exc()
     current_app.logger.error(f"{error_message}\n{stack_trace}")
-    fund_short_name = request.args.get("fund")
-    round_short_name = request.args.get("round")
+    fund_short_name = request.args.get("fund") or (
+        request.view_args.get("fund_short_name") if request.view_args else None
+    )
+    round_short_name = request.args.get("round") or (
+        request.view_args.get("round_short_name")
+        if request.view_args
+        else None
+    )
     round_data = get_round_data_fail_gracefully(
         fund_short_name, round_short_name, True
     )
+    # use default round if incorrect round name is provided
+    if fund_short_name and not round_data.id:
+        round_data = get_default_round_for_fund(fund_short_name) or round_data
+        if not round_data.id:
+            current_app.logger.warning(
+                f"Invalid fund_short_name '{fund_short_name}' provided."
+            )
+        else:
+            current_app.logger.warning(
+                f"Invalid round_short_name '{round_short_name}' provided."
+                f" Using default '{round_data.short_name}' round for"
+                f" {fund_short_name}."
+            )
     return render_template("500.html", round_data=round_data), 401
 
 

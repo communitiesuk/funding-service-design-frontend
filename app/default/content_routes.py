@@ -1,4 +1,5 @@
 from app.default.data import get_application_data
+from app.default.data import get_default_round_for_fund
 from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data
@@ -67,6 +68,9 @@ def contact_us():
         round_data = get_round_data_fail_gracefully(
             fund_short_name, round_short_name, True
         )
+        # use default round if incorrect round name is provided
+        if not round_data.id:
+            round_data = get_default_round_for_fund(fund_short_name)
         fund_data = get_fund_data_by_short_name(fund_short_name)
         fund_name = fund_data.name
     elif application_id:
