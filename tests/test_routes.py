@@ -2,9 +2,9 @@ from enum import Enum
 from unittest import mock
 
 import pytest
-from app.create_app import find_fund_in_request
-from app.create_app import find_round_in_request
 from app.default.data import get_round_data_fail_gracefully
+from app.helpers import find_fund_in_request
+from app.helpers import find_round_in_request
 from app.models.fund import Fund
 from bs4 import BeautifulSoup
 from flask import render_template
@@ -180,20 +180,20 @@ def test_find_fund_in_request(
     class TEST_FUND_SHORT_CODES(Enum):
         TEST = "TEST"
 
-    mocker.patch("app.create_app.FUND_SHORT_CODES", new=TEST_FUND_SHORT_CODES)
+    mocker.patch("app.helpers.FUND_SHORT_CODES", new=TEST_FUND_SHORT_CODES)
     mocker.patch(
-        "app.create_app.get_fund_data_by_short_name",
+        "app.helpers.get_fund_data_by_short_name",
         return_value=short_name_fund,
     )
     mocker.patch(
-        "app.create_app.get_fund_data",
+        "app.helpers.get_fund_data",
         return_value=id_fund,
     )
     mocker.patch(
-        "app.create_app.get_application_data",
+        "app.helpers.get_application_data",
         return_value=TEST_APP_STORE_DATA[0],
     )
-    request_mock = mocker.patch("app.create_app.request")
+    request_mock = mocker.patch("app.helpers.request")
     request_mock.view_args.get = (
         lambda key: view_args_value if key == key_name else None
     )
@@ -235,22 +235,22 @@ def test_find_round_in_request(
     mocker,
 ):
     mocker.patch(
-        "app.create_app.get_round_data_fail_gracefully",
+        "app.helpers.get_round_data_by_short_names",
         return_value=short_name_round,
     )
     mocker.patch(
-        "app.create_app.get_application_data",
+        "app.helpers.get_application_data",
         return_value=TEST_APP_STORE_DATA[0],
     )
     mocker.patch(
-        "app.create_app.get_round_data",
+        "app.helpers.get_round_data",
         return_value=app_id_round,
     )
     mocker.patch(
-        "app.create_app.get_default_round_for_fund",
+        "app.helpers.get_default_round_for_fund",
         return_value=TEST_ROUNDS_DATA[3],
     )
-    request_mock = mocker.patch("app.create_app.request")
+    request_mock = mocker.patch("app.helpers.request")
     request_mock.view_args.get = (
         lambda key: view_args_value if key == key_name else None
     )

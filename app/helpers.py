@@ -1,6 +1,14 @@
 import requests
+from app.default.data import get_application_data
+from app.default.data import get_default_round_for_fund
+from app.default.data import get_fund_data
+from app.default.data import get_fund_data_by_short_name
+from app.default.data import get_round_data
+from app.default.data import get_round_data_by_short_names
+from app.models.fund import FUND_SHORT_CODES
 from config import Config
 from flask import current_app
+from flask import request
 
 
 def get_token_to_return_to_application(form_name: str, rehydrate_payload):
@@ -100,3 +108,61 @@ def format_rehydrate_payload(form_data, application_id, returnUrl, form_name):
     formatted_data["metadata"]["form_session_identifier"] = application_id
     formatted_data["metadata"]["form_name"] = form_name
     return formatted_data
+
+
+def find_round_in_request(fund):
+    round = None
+    if round_short_name := request.view_args.get(
+        "round_short_name"
+    ) or request.args.get("round"):
+        round = get_round_data_by_short_names(
+            fund.short_name, round_short_name, False
+        )
+    elif (
+        application_id := request.args.get("application_id")
+        or request.view_args.get("application_id")
+        or request.form.get("application_id")
+    ):
+        application = get_application_data(application_id, as_dict=True)
+        round = get_round_data(
+            fund_id=application.fund_id,
+            round_id=application.round_id,
+            language=application.language,
+        )
+
+    if not round:
+        round = get_default_round_for_fund(fund.short_name)
+        current_app.logger.warn(
+            "Couldn't find round in request. Using"
+            f" {round.short_name} as default for fund {fund.short_name}"
+        )
+    return round
+
+
+def find_fund_in_request():
+    if (
+        fund_short_name := request.view_args.get("fund_short_name")
+        or request.args.get("fund")
+    ) and str.upper(fund_short_name) in [
+        member.value for member in FUND_SHORT_CODES
+    ]:
+        fund = get_fund_data_by_short_name(fund_short_name, as_dict=False)
+    elif fund_id := request.view_args.get("fund_id") or request.args.get(
+        "fund_id"
+    ):
+        fund = get_fund_data(fund_id, as_dict=True)
+    elif (
+        application_id := request.args.get("application_id")
+        or request.view_args.get("application_id")
+        or request.form.get("application_id")
+    ):
+        application = get_application_data(application_id, as_dict=True)
+        fund = get_fund_data(
+            fund_id=application.fund_id,
+            language=application.language,
+            as_dict=True,
+        )
+    else:
+        current_app.logger.warn("Couldn't find any fund in the request")
+        return None
+    return fund

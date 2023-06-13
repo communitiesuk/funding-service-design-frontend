@@ -141,15 +141,15 @@ def mock_get_fund_round(mocker):
         return_value=TEST_ROUNDS_DATA,
     )
     mocker.patch(
-        "app.create_app.get_round_data_fail_gracefully",
+        "app.helpers.get_round_data_by_short_names",
         return_value=TEST_ROUNDS_DATA[0],
     )
     mocker.patch(
-        "app.create_app.get_fund_data_by_short_name",
+        "app.helpers.get_fund_data_by_short_name",
         return_value=Fund.from_dict(TEST_FUNDS_DATA[0]),
     )
     mocker.patch(
-        "app.create_app.get_default_round_for_fund",
+        "app.helpers.get_default_round_for_fund",
         return_value=TEST_ROUNDS_DATA[0],
     )
     mocker.patch(
