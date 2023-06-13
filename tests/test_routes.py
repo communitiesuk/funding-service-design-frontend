@@ -235,7 +235,7 @@ def test_find_round_in_request(
     mocker,
 ):
     mocker.patch(
-        "app.create_app.get_round_data_by_short_names",
+        "app.create_app.get_round_data_fail_gracefully",
         return_value=short_name_round,
     )
     mocker.patch(
