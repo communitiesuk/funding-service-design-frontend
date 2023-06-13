@@ -17,6 +17,14 @@ if platform.system() == "Darwin":
     multiprocessing.set_start_method("fork")  # Required on macOSX
 
 
+@pytest.fixture
+def mock_login(monkeypatch):
+    monkeypatch.setattr(
+        "fsd_utils.authentication.decorators._check_access_token",
+        lambda return_app: {"accountId": "test-user"},
+    )
+
+
 def post_driver(driver, path, params):
     driver.execute_script(
         """

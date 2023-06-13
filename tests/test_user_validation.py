@@ -25,12 +25,8 @@ class TestUserValidation:
     REHYDRATION_TOKEN = "test_token"
 
     def test_continue_application_correct_user(
-        self, flask_test_client, mocker, monkeypatch
+        self, flask_test_client, mocker, mock_login
     ):
-        monkeypatch.setattr(
-            "fsd_utils.authentication.decorators._check_access_token",
-            lambda: {"accountId": self.TEST_USER},
-        )
         mocker.patch(
             "app.default.application_routes.get_application_data",
             return_value=Application.from_dict(
@@ -66,7 +62,7 @@ class TestUserValidation:
     ):
         monkeypatch.setattr(
             "fsd_utils.authentication.decorators._check_access_token",
-            lambda: {"accountId": "different-user"},
+            lambda return_app: {"accountId": "different-user"},
         )
         mocker.patch(
             "app.default.application_routes.get_application_data",
@@ -81,12 +77,8 @@ class TestUserValidation:
         assert 401 == response.status_code, "Incorrect status code"
 
     def test_tasklist_correct_user(
-        self, flask_test_client, mocker, monkeypatch
+        self, flask_test_client, mocker, mock_login
     ):
-        monkeypatch.setattr(
-            "fsd_utils.authentication.decorators._check_access_token",
-            lambda: {"accountId": self.TEST_USER},
-        )
         mocker.patch(
             "app.default.application_routes.get_application_data",
             return_value=Application.from_dict(
@@ -115,7 +107,7 @@ class TestUserValidation:
     def test_tasklist_bad_user(self, flask_test_client, mocker, monkeypatch):
         monkeypatch.setattr(
             "fsd_utils.authentication.decorators._check_access_token",
-            lambda: {"accountId": "different-user"},
+            lambda return_app: {"accountId": "different-user"},
         )
         mocker.patch(
             "app.default.application_routes.get_application_data",
@@ -129,17 +121,13 @@ class TestUserValidation:
         )
         assert 401 == response.status_code, "Incorrect status code"
 
-    def test_submit_correct_user(self, flask_test_client, mocker, monkeypatch):
+    def test_submit_correct_user(self, flask_test_client, mocker, mock_login):
 
         mocker.patch(
             "app.default.application_routes.get_application_data",
             return_value=Application.from_dict(
                 self.TEST_APPLICATION_STORE_DATA
             ),
-        )
-        monkeypatch.setattr(
-            "fsd_utils.authentication.decorators._check_access_token",
-            lambda: {"accountId": self.TEST_USER},
         )
         mocker.patch(
             "app.default.application_routes.determine_round_status",
@@ -168,7 +156,7 @@ class TestUserValidation:
         )
 
     def test_submit_correct_user_bad_dates(
-        self, flask_test_client, mocker, monkeypatch
+        self, flask_test_client, mocker, mock_login
     ):
 
         mocker.patch(
@@ -176,10 +164,6 @@ class TestUserValidation:
             return_value=Application.from_dict(
                 self.TEST_APPLICATION_STORE_DATA
             ),
-        )
-        monkeypatch.setattr(
-            "fsd_utils.authentication.decorators._check_access_token",
-            lambda: {"accountId": self.TEST_USER},
         )
         mocker.patch(
             "app.default.application_routes.determine_round_status",
@@ -197,7 +181,7 @@ class TestUserValidation:
     def test_submit_bad_user(self, flask_test_client, mocker, monkeypatch):
         monkeypatch.setattr(
             "fsd_utils.authentication.decorators._check_access_token",
-            lambda: {"accountId": "different-user"},
+            lambda return_app: {"accountId": "different-user"},
         )
         mocker.patch(
             "app.default.application_routes.get_application_data",
