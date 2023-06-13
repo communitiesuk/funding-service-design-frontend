@@ -1,11 +1,6 @@
-from app.default.data import get_application_data
-from app.default.data import get_default_round_for_fund
-from app.default.data import get_fund_data
-from app.default.data import get_fund_data_by_short_name
-from app.default.data import get_round_data
 from app.default.data import get_round_data_by_short_names
-from app.default.data import get_round_data_fail_gracefully
-from app.models.round import Round
+from app.helpers import find_fund_in_request
+from app.helpers import find_round_in_request
 from flask import abort
 from flask import Blueprint
 from flask import current_app
@@ -57,60 +52,12 @@ def cof_r2w2_all_questions_redirect():
 @content_bp.route("/contact_us", methods=["GET"])
 @login_requested
 def contact_us():
-    fund_short_name = request.args.get("fund")
-    round_short_name = request.args.get("round")
-    application_id = request.args.get("application_id")
-    current_app.logger.info(
-        f"Contact us page loaded for fund {fund_short_name} round"
-        f" {round_short_name}."
-    )
-    if round_short_name and fund_short_name:
-        round_data = get_round_data_fail_gracefully(
-            fund_short_name, round_short_name, True
-        )
-        # use default round if incorrect round name is provided
-        if not round_data.id:
-            round_data = get_default_round_for_fund(fund_short_name)
-        fund_data = get_fund_data_by_short_name(fund_short_name)
-        fund_name = fund_data.name
-    elif application_id:
-        application = get_application_data(application_id, as_dict=True)
-        fund_name = get_fund_data(
-            fund_id=application.fund_id,
-            language=application.language,
-            as_dict=True,
-        ).name
-
-        round_data = get_round_data(
-            fund_id=application.fund_id,
-            round_id=application.round_id,
-            language=application.language,
-        )
-    else:
-        round_data = Round(
-            id="",
-            assessment_deadline="",
-            deadline="",
-            fund_id="",
-            opens="",
-            title="",
-            short_name="",
-            prospectus="",
-            privacy_notice="",
-            instructions="",
-            contact_email="",
-            contact_phone="",
-            contact_textphone="",
-            support_days="",
-            support_times="",
-            feedback_link="",
-            project_name_field_id="",
-            application_guidance="",
-        )
-        fund_name = ""
+    fund = find_fund_in_request()
+    fund_name = fund.name if fund else None
+    round = find_round_in_request(fund) if fund else None
     return render_template(
         "contact_us.html",
-        round_data=round_data,
+        round_data=round,
         fund_name=fund_name,
     )
 
@@ -123,94 +70,39 @@ def cookie_policy():
 
 @content_bp.route("/privacy", methods=["GET"])
 def privacy():
-    current_app.logger.info("Privacy_notice page loaded.")
-    fund_short_name = request.args.get("fund")
-    round_short_name = request.args.get("round")
-    application_id = request.args.get("application_id")
-    privacy_notice_url = ""
+    privacy_notice_url = None
+    fund = find_fund_in_request()
+    round = find_round_in_request(fund) if fund else None
 
-    if fund_short_name and round_short_name:
-        round_data = get_round_data_by_short_names(
-            fund_short_name, round_short_name
-        )
-        privacy_notice_url = getattr(round_data, "privacy_notice", None)
-
-    elif application_id:
-        application = get_application_data(application_id, as_dict=True)
-        fund_short_name = get_fund_data(
-            fund_id=application.fund_id,
-            language=application.language,
-            as_dict=True,
-        ).short_name
-
-        round_data = get_round_data(
-            fund_id=application.fund_id,
-            round_id=application.round_id,
-            language=application.language,
-        )
-        round_short_name = round_data.short_name
-        privacy_notice_url = getattr(round_data, "privacy_notice", None)
+    privacy_notice_url = (
+        getattr(round, "privacy_notice", None) if round else None
+    )
 
     if privacy_notice_url:
         current_app.logger.info(
-            f"Privacy notice loading for fund {fund_short_name} round"
-            f" {round_short_name}."
+            f"Privacy notice loading for fund {fund.short_name} round"
+            f" {round.short_name}."
         )
-        current_app.logger.info("Privacy notice configured for fund")
         return redirect(privacy_notice_url)
 
-    current_app.logger.warning(
-        f"No privacy notice configured for round ({fund_short_name} -"
-        f" {round_short_name}). Redirecting..."
-    )
     return abort(404)
 
 
 @content_bp.route("/feedback", methods=["GET"])
 def feedback():
-    fund_short_name = request.args.get("fund")
-    round_short_name = request.args.get("round")
-    application_id = request.args.get("application_id")
-    feedback_url = ""
+    fund = find_fund_in_request()
+    round = find_round_in_request(fund) if fund else None
+    feedback_url = None
 
-    if fund_short_name and round_short_name:
-        round_data = get_round_data_by_short_names(
-            fund_short_name, round_short_name
-        )
-        feedback_url = getattr(round_data, "feedback_link", None)
-
-    elif application_id:
-        application = get_application_data(application_id, as_dict=True)
-        fund_short_name = get_fund_data(
-            fund_id=application.fund_id,
-            language=application.language,
-            as_dict=True,
-        ).short_name
-
-        round_data = get_round_data(
-            fund_id=application.fund_id,
-            round_id=application.round_id,
-            language=application.language,
-        )
-        round_short_name = round_data.short_name
-        feedback_url = getattr(round_data, "feedback_link", None)
+    feedback_url = getattr(round, "feedback_link", None) if round else None
 
     if feedback_url:
-        current_app.logger.info(
-            f"Feedback page loading for fund {fund_short_name} round"
-            f" {round_short_name}."
-        )
-        current_app.logger.debug("Feedback link configured for fund")
         return redirect(feedback_url)
 
-    current_app.logger.warning(
-        f"No feedback url configured for round ({fund_short_name} -"
-        f" {round_short_name}). Redirecting..."
-    )
     return redirect(
         url_for(
             "content_routes.contact_us",
-            fund=fund_short_name,
-            round=round_short_name,
+            fund=request.args.get("fund"),
+            round=request.args.get("round"),
         )
     )

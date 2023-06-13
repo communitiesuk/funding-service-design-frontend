@@ -13,9 +13,9 @@ common_round_data = {
     "support_days": "Mon-Fri",
     "prospectus": "/cof_r2w2_prospectus",
     "instructions": "Round specific instruction text",
-    "privacy_notice": "",
+    "privacy_notice": "http://privacy.com",
     "project_name_field_id": "",
-    "feedback_link": "",
+    "feedback_link": "http://feedback.com",
     "application_guidance": "",
 }
 common_application_data = {
