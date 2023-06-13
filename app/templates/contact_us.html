@@ -13,7 +13,7 @@
             {% else %}
                 <p class="govuk-body">{% trans %}Contact us if you have any questions.{% endtrans %}</p>
             {% endif %}
-            {% if round_data.contact_email or round_data.contact_phone or round_data.support_days or round_data.support_times %}
+            {% if round_data %}
                 {{ contact_details(
                             round_data.contact_email,
                             round_data.contact_phone,
