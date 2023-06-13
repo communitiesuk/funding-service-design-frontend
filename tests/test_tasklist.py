@@ -22,11 +22,7 @@ TEST_APPLICATION_DISPLAY_RESPONSE = data[
 ]
 
 
-def test_tasklist_route(flask_test_client, mocker, monkeypatch):
-    monkeypatch.setattr(
-        "fsd_utils.authentication.decorators._check_access_token",
-        lambda: {"accountId": "test-user"},
-    )
+def test_tasklist_route(flask_test_client, mocker, mock_login):
     mocker.patch(
         "app.default.application_routes.get_application_data",
         return_value=Application.from_dict(TEST_APPLICATION_STORE_DATA),
@@ -51,11 +47,7 @@ def test_tasklist_route(flask_test_client, mocker, monkeypatch):
     assert b"Risk" in response.data
 
 
-def test_tasklist_route_after_deadline(flask_test_client, mocker, monkeypatch):
-    monkeypatch.setattr(
-        "fsd_utils.authentication.decorators._check_access_token",
-        lambda: {"accountId": "test-user"},
-    )
+def test_tasklist_route_after_deadline(flask_test_client, mocker, mock_login):
     mocker.patch(
         "app.default.application_routes.get_application_data",
         return_value=Application.from_dict(TEST_APPLICATION_STORE_DATA),
@@ -72,12 +64,8 @@ def test_tasklist_route_after_deadline(flask_test_client, mocker, monkeypatch):
 
 
 def test_tasklist_for_submit_application_route(
-    flask_test_client, mocker, monkeypatch
+    flask_test_client, mocker, mock_login
 ):
-    monkeypatch.setattr(
-        "fsd_utils.authentication.decorators._check_access_token",
-        lambda: {"accountId": "test-user"},
-    )
     mocker.patch(
         "app.default.application_routes.get_application_data",
         return_value=Application.from_dict(

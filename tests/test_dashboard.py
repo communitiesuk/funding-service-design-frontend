@@ -26,14 +26,6 @@ TEST_SUBMITTED_APPLICATION_STORE_DATA = data[
 ]
 
 
-@pytest.fixture
-def mock_login(monkeypatch):
-    monkeypatch.setattr(
-        "fsd_utils.authentication.decorators._check_access_token",
-        lambda: {"accountId": "test-user"},
-    )
-
-
 def test_serialise_application_summary():
     application_list = TEST_APPLICATION_STORE_JSON
 
