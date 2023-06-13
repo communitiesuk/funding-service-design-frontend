@@ -5,7 +5,7 @@ from app.default.data import get_default_round_for_fund
 from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data
-from app.default.data import get_round_data_by_short_names
+from app.default.data import get_round_data_fail_gracefully
 from app.filters import date_format_short_month
 from app.filters import datetime_format
 from app.filters import datetime_format_short_month
@@ -44,9 +44,17 @@ def find_round_in_request(fund):
     if round_short_name := request.view_args.get(
         "round_short_name"
     ) or request.args.get("round"):
-        round = get_round_data_by_short_names(
-            fund.short_name, round_short_name, False
+        round = get_round_data_fail_gracefully(
+            fund.short_name, round_short_name, True
         )
+        # use default round if incorrect round name is provided
+        if not round.id:
+            round = get_default_round_for_fund(fund.short_name)
+            current_app.logger.warning(
+                f"Invalid round_short_name '{round_short_name}' provided."
+                f" Using default '{round.short_name}' round for"
+                f" {fund.short_name}."
+            )
     elif (
         application_id := request.args.get("application_id")
         or request.view_args.get("application_id")
