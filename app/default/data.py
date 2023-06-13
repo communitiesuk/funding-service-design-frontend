@@ -237,7 +237,7 @@ def get_round_data_by_short_names(
         current_app.logger.warning(
             f"Invalid round {round_short_name.lower()}!"
         )
-        abort(404)
+        return None
     params = {"language": get_lang(), "use_short_name": "true"}
 
     request_url = Config.GET_ROUND_DATA_BY_SHORT_NAME_ENDPOINT.format(

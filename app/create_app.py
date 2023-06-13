@@ -145,7 +145,7 @@ def create_app() -> Flask:
         try:
             fund: Fund = find_fund_in_request()
             round = find_round_in_request(fund)
-            if round:
+            if fund and round:
                 return dict(
                     contact_us_url=url_for(
                         "content_routes.contact_us",

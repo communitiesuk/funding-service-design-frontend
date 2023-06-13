@@ -111,6 +111,7 @@ def format_rehydrate_payload(form_data, application_id, returnUrl, form_name):
 
 
 def find_round_in_request(fund):
+    round = None
     if round_short_name := request.view_args.get(
         "round_short_name"
     ) or request.args.get("round"):
@@ -128,7 +129,8 @@ def find_round_in_request(fund):
             round_id=application.round_id,
             language=application.language,
         )
-    else:
+
+    if not round:
         round = get_default_round_for_fund(fund.short_name)
         current_app.logger.warn(
             "Couldn't find round in request. Using"
