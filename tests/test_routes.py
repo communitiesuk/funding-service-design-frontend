@@ -1,11 +1,17 @@
+from enum import Enum
 from unittest import mock
 
 import pytest
+from app.create_app import find_fund_in_request
+from app.create_app import find_round_in_request
 from app.default.data import get_round_data_fail_gracefully
 from app.models.fund import Fund
 from bs4 import BeautifulSoup
 from flask import render_template
 from requests import HTTPError
+from tests.test_data import TEST_APP_STORE_DATA
+from tests.test_data import TEST_FUNDS_DATA
+from tests.test_data import TEST_ROUNDS_DATA
 
 
 def test_dodgy_url_returns_404(flask_test_client):
@@ -50,46 +56,131 @@ def test_get_round_data_fail_gracefully(app, mocker):
 
 
 fund_args = {
-    "id": "",
     "name": "Testing Fund",
     "short_name": "",
     "description": "",
     "welsh_available": True,
 }
-short_name_fund = Fund(**fund_args, title="Test Fund by short name")
-id_fund = Fund(**fund_args, title="Test Fund by ID")
+short_name_fund = Fund(**fund_args, title="Test Fund by short name", id="111")
+id_fund = Fund(**fund_args, title="Test Fund by ID", id="222")
 
 default_service_title = "Access Funding"
 
 
 @pytest.mark.parametrize(
-    "key_name, view_args_value, args_value, expected_title",
+    "view_args, args, form, mock_fund_value, expected_title",
     [
         (
-            "fund_short_name",
-            "TEST",
-            None,
-            default_service_title,
+            mock.MagicMock(),
+            mock.MagicMock(),
+            mock.MagicMock(),
+            short_name_fund,
+            "Apply for " + short_name_fund.title,
         ),
-        ("fund_short_name", None, None, default_service_title),
-        ("fund_short_name", None, "TEST", default_service_title),
-        ("fund_id", "TEST", None, "Apply for " + id_fund.title),
-        ("fund_id", None, None, default_service_title),
-        ("fund_id", None, "TEST", "Apply for " + id_fund.title),
-        ("fund", None, "TEST", "Apply for " + short_name_fund.title),
-        ("fund", None, None, default_service_title),
-        ("fund", "TEST", None, default_service_title),
+        (
+            mock.MagicMock(),
+            mock.MagicMock(),
+            mock.MagicMock(),
+            None,
+            "Access Funding",
+        ),
+        (
+            None,
+            None,
+            None,
+            None,
+            "Access Funding",
+        ),
+        (
+            mock.MagicMock(),
+            None,
+            None,
+            short_name_fund,
+            "Apply for " + short_name_fund.title,
+        ),
+        (
+            None,
+            mock.MagicMock(),
+            None,
+            short_name_fund,
+            "Apply for " + short_name_fund.title,
+        ),
+        (
+            None,
+            None,
+            mock.MagicMock(),
+            short_name_fund,
+            "Apply for " + short_name_fund.title,
+        ),
     ],
 )
-def test_inject_service_name(
-    key_name,
-    view_args_value,
-    args_value,
+def test_inject_service_name_simpler(
+    view_args,
+    args,
+    form,
+    mock_fund_value,
     expected_title,
     app,
     templates_rendered,
     mocker,
 ):
+    mocker.patch(
+        "app.create_app.find_fund_in_request",
+        return_value=mock_fund_value,
+    )
+    request_mock = mocker.patch("app.create_app.request")
+    request_mock.view_args = view_args
+    request_mock.args = args
+    request_mock.form = form
+    with app.app_context():
+        render_template("fund_start_page.html")
+    assert len(templates_rendered) == 1
+    assert templates_rendered[0][1]["service_title"] == expected_title
+
+
+default_fund = None
+
+
+@pytest.mark.parametrize(
+    "key_name, view_args_value, args_value, form_value, expected_fund",
+    [
+        (
+            "fund_short_name",
+            "TEST",
+            None,
+            None,
+            short_name_fund,
+        ),
+        (
+            "fund_short_name",
+            "BAD",
+            None,
+            None,
+            default_fund,
+        ),
+        ("fund_short_name", None, None, None, default_fund),
+        ("fund_short_name", None, "TEST", None, default_fund),
+        ("fund_id", "TEST", None, None, id_fund),
+        ("fund_id", None, None, None, default_fund),
+        ("fund_id", None, "TEST", None, id_fund),
+        ("fund", None, "TEST", None, short_name_fund),
+        ("fund", None, None, None, default_fund),
+        ("fund", "TEST", None, None, default_fund),
+    ],
+)
+def test_find_fund_in_request(
+    key_name,
+    view_args_value,
+    args_value,
+    form_value,
+    expected_fund,
+    app,
+    mocker,
+):
+    class TEST_FUND_SHORT_CODES(Enum):
+        TEST = "TEST"
+
+    mocker.patch("app.create_app.FUND_SHORT_CODES", new=TEST_FUND_SHORT_CODES)
     mocker.patch(
         "app.create_app.get_fund_data_by_short_name",
         return_value=short_name_fund,
@@ -98,15 +189,76 @@ def test_inject_service_name(
         "app.create_app.get_fund_data",
         return_value=id_fund,
     )
+    mocker.patch(
+        "app.create_app.get_application_data",
+        return_value=TEST_APP_STORE_DATA[0],
+    )
     request_mock = mocker.patch("app.create_app.request")
     request_mock.view_args.get = (
         lambda key: view_args_value if key == key_name else None
     )
     request_mock.args.get = lambda key: args_value if key == key_name else None
+    request_mock.form.get = lambda key: form_value if key == key_name else None
     with app.app_context():
-        render_template("fund_start_page.html")
-    assert len(templates_rendered) == 1
-    assert templates_rendered[0][1]["service_title"] == expected_title
+        fund = find_fund_in_request()
+    if expected_fund:
+        assert fund.id == expected_fund.id
+    else:
+        assert fund is None
+
+
+short_name_round = TEST_ROUNDS_DATA[0]
+app_id_round = TEST_ROUNDS_DATA[1]
+default_round_for_fund = TEST_ROUNDS_DATA[3]
+
+
+@pytest.mark.parametrize(
+    "key_name, view_args_value, args_value, form_value, expected_round",
+    [
+        ("round_short_name", "TEST", None, None, short_name_round),
+        ("round", None, "TEST", None, short_name_round),
+        ("round", None, None, None, default_round_for_fund),
+        ("round_short_name", None, None, None, default_round_for_fund),
+        ("application_id", None, None, None, default_round_for_fund),
+        ("application_id", None, None, "123", app_id_round),
+        ("application_id", None, "123", None, app_id_round),
+        ("application_id", "123", None, None, app_id_round),
+    ],
+)
+def test_find_round_in_request(
+    key_name,
+    view_args_value,
+    args_value,
+    form_value,
+    expected_round,
+    app,
+    mocker,
+):
+    mocker.patch(
+        "app.create_app.get_round_data_by_short_names",
+        return_value=short_name_round,
+    )
+    mocker.patch(
+        "app.create_app.get_application_data",
+        return_value=TEST_APP_STORE_DATA[0],
+    )
+    mocker.patch(
+        "app.create_app.get_round_data",
+        return_value=app_id_round,
+    )
+    mocker.patch(
+        "app.create_app.get_default_round_for_fund",
+        return_value=TEST_ROUNDS_DATA[3],
+    )
+    request_mock = mocker.patch("app.create_app.request")
+    request_mock.view_args.get = (
+        lambda key: view_args_value if key == key_name else None
+    )
+    request_mock.args.get = lambda key: args_value if key == key_name else None
+    request_mock.form.get = lambda key: form_value if key == key_name else None
+    with app.app_context():
+        round = find_round_in_request(Fund.from_dict(TEST_FUNDS_DATA[0]))
+    assert round.short_name == expected_round.short_name
 
 
 def test_healthcheck(flask_test_client):
