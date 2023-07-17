@@ -28,3 +28,9 @@ jobs:
       RSA256_PUBLIC_KEY_BASE64: ${{secrets.RSA256_PUBLIC_KEY_BASE64}}
       SENTRY_DSN: ${{secrets.SENTRY_DSN}}
       FORMS_SERVICE_PRIVATE_HOST: ${{secrets.FORMS_SERVICE_PRIVATE_HOST}}
+  paketo_build:
+    permissions:
+      packages: write
+    uses: ./.github/workflows/package.yml
+    with:
+      version_to_build: $(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
