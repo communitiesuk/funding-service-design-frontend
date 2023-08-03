@@ -5,10 +5,13 @@ from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data
 from app.default.data import get_round_data_by_short_names
+from app.models.fund import Fund
 from app.models.fund import FUND_SHORT_CODES
+from app.models.round import Round
 from config import Config
 from flask import current_app
 from flask import request
+from flask import session
 
 
 def get_token_to_return_to_application(form_name: str, rehydrate_payload):
@@ -166,3 +169,86 @@ def find_fund_in_request():
         current_app.logger.warn("Couldn't find any fund in the request")
         return None
     return fund
+
+
+CACHED_FUND_ROUNDS_PROPERTY = "cached_fund_rounds"
+FUNDS_BY_ID_PROPERTY = "funds_by_id"
+FUNDS_BY_SHORT_NAME_PROPERTY = "funds_by_short_name"
+ROUNDS_BY_ID_PROPERTY = "rounds_by_id"
+ROUNDS_BY_SHORT_NAME_PROPERTY = "rounds_by_short_name"
+
+
+def get_fund_and_round(
+    fund_id: str = None,
+    round_id: str = None,
+    fund_short_name: str = None,
+    round_short_name: str = None,
+):
+    fund = None
+    round = None
+    if cached_fund_rounds := session.get(CACHED_FUND_ROUNDS_PROPERTY):
+        fund = (
+            Fund.from_dict(
+                cached_fund_rounds.get(FUNDS_BY_ID_PROPERTY).get(fund_id)
+            )
+            if fund_id
+            else (
+                Fund.from_dict(
+                    cached_fund_rounds.get(FUNDS_BY_SHORT_NAME_PROPERTY).get(
+                        str.upper(fund_short_name)
+                    )
+                )
+                if fund_short_name
+                else None
+            )
+        )
+
+        round = (
+            Round.from_dict(
+                cached_fund_rounds.get(ROUNDS_BY_ID_PROPERTY).get(round_id)
+            )
+            if round_id
+            else (
+                Round.from_dict(
+                    cached_fund_rounds.get(ROUNDS_BY_SHORT_NAME_PROPERTY).get(
+                        str.upper(round_short_name)
+                    )
+                )
+                if round_short_name
+                else None
+            )
+        )
+
+        if fund and round:
+            return fund, round
+
+    if not cached_fund_rounds:
+        cached_fund_rounds = {}
+    fund = (
+        get_fund_data(fund_id, as_dict=False)
+        if fund_id
+        else (
+            get_fund_data_by_short_name(fund_short_name, as_dict=False)
+            if fund_short_name
+            else None
+        )
+    )
+    round = (
+        get_round_data(fund_id, round_id, as_dict=False)
+        if round_id and fund_id
+        else (
+            get_round_data_by_short_names(
+                fund_short_name, round_short_name, as_dict=False
+            )
+            if fund_short_name and round_short_name
+            else None
+        )
+    )
+    cached_fund_rounds[FUNDS_BY_ID_PROPERTY] = {fund.id: fund}
+    cached_fund_rounds[FUNDS_BY_SHORT_NAME_PROPERTY] = {fund.short_name: fund}
+    cached_fund_rounds[ROUNDS_BY_ID_PROPERTY] = {round.id: round}
+    cached_fund_rounds[ROUNDS_BY_SHORT_NAME_PROPERTY] = {
+        round.short_name: round
+    }
+    session[CACHED_FUND_ROUNDS_PROPERTY] = cached_fund_rounds
+    return fund, round

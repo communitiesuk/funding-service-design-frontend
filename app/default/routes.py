@@ -1,7 +1,6 @@
 from app.default.data import determine_round_status
 from app.default.data import get_default_round_for_fund
-from app.default.data import get_fund_data_by_short_name
-from app.default.data import get_round_data_by_short_names
+from app.helpers import get_fund_and_round
 from app.models.fund import FUND_SHORT_CODES
 from app.models.round import Round
 from config import Config
@@ -27,9 +26,13 @@ def index_fund_round(fund_short_name, round_short_name):
     current_app.logger.info(
         f"In fund-round start page {fund_short_name} {round_short_name}"
     )
-    fund_data = get_fund_data_by_short_name(fund_short_name, as_dict=False)
-    round_data = get_round_data_by_short_names(
-        fund_short_name, round_short_name
+
+    # fund_data = get_fund_data_by_short_name(fund_short_name, as_dict=False)
+    # round_data = get_round_data_by_short_names(
+    #     fund_short_name, round_short_name
+    # )
+    fund_data, round_data = get_fund_and_round(
+        fund_short_name=fund_short_name, round_short_name=round_short_name
     )
     if not fund_data or not round_data:
         abort(404)
