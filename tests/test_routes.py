@@ -1,4 +1,3 @@
-from enum import Enum
 from unittest import mock
 
 import pytest
@@ -177,10 +176,8 @@ def test_find_fund_in_request(
     app,
     mocker,
 ):
-    class TEST_FUND_SHORT_CODES(Enum):
-        TEST = "TEST"
 
-    mocker.patch("app.helpers.FUND_SHORT_CODES", new=TEST_FUND_SHORT_CODES)
+    mocker.patch("app.helpers.get_all_fund_short_codes", return_value=["TEST"])
     mocker.patch(
         "app.helpers.get_fund_data_by_short_name",
         return_value=short_name_fund,

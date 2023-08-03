@@ -80,10 +80,6 @@ def test_dashboard_route_search_call(
         else (round_short_name if key == "round" else None)
     )
     get_apps_mock = mocker.patch(
-        "app.default.account_routes.get_round_data_by_short_names",
-        return_value=TEST_ROUNDS_DATA[0],
-    )
-    get_apps_mock = mocker.patch(
         "app.default.account_routes.search_applications",
         return_value=TEST_APP_STORE_DATA,
     )

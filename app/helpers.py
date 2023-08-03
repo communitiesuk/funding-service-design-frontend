@@ -120,7 +120,7 @@ def format_rehydrate_payload(form_data, application_id, returnUrl, form_name):
     return formatted_data
 
 
-def find_round_short_name_in_request(fund):
+def find_round_short_name_in_request():
     if round_short_name := request.view_args.get(
         "round_short_name"
     ) or request.args.get("round"):
@@ -129,7 +129,7 @@ def find_round_short_name_in_request(fund):
         return None
 
 
-def find_round_id_in_request(fund):
+def find_round_id_in_request():
     if (
         application_id := request.args.get("application_id")
         or request.view_args.get("application_id")
@@ -174,10 +174,12 @@ def find_fund_in_request():
     )
 
 
-def find_round_in_request():
-    return get_fund_and_round(
-        find_round_id_in_request(),
-        find_round_short_name_in_request(),
+def find_round_in_request(fund=None, fund_short_name=None):
+    return get_round(
+        fund=fund if fund else find_fund_in_request(),
+        fund_short_name=fund_short_name,
+        round_id=find_round_id_in_request(),
+        round_short_name=find_round_short_name_in_request(),
     )
 
 
@@ -197,7 +199,9 @@ def get_fund_and_round(
     round_short_name: str = None,
 ):
     fund = get_fund(fund_id, fund_short_name)
-    round = get_round(fund, round_id, round_short_name)
+    round = get_round(
+        fund=fund, round_id=round_id, round_short_name=round_short_name
+    )
     return fund, round
 
 
@@ -220,15 +224,22 @@ def get_fund(
 
 
 def get_round(
-    fund: Fund,
+    fund: Fund = None,
+    fund_short_name: str = None,
     round_id: str = None,
     round_short_name: str = None,
 ):
+    if fund_short_name:
+        fund = get_fund_data_by_short_name(
+            fund_short_name, ttl_hash=get_ttl_hash(300)
+        )
+    if not fund:
+        return None
     round = (
         get_round_data(
             fund.id, round_id, as_dict=False, ttl_hash=get_ttl_hash(3000)
         )
-        if round_id and fund.id
+        if round_id and fund
         else (
             get_round_data_by_short_names(
                 fund.short_name,
@@ -236,7 +247,7 @@ def get_round(
                 as_dict=False,
                 ttl_hash=get_ttl_hash(3000),
             )
-            if fund.short_name and round_short_name
+            if fund and round_short_name
             else None
         )
     )

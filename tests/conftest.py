@@ -137,14 +137,6 @@ def mock_get_fund_round(mocker):
         return_value=TEST_FUNDS_DATA,
     )
     mocker.patch(
-        "app.default.account_routes.get_fund_data_by_short_name",
-        return_value=Fund.from_dict(TEST_FUNDS_DATA[0]),
-    )
-    mocker.patch(
-        "app.default.account_routes.get_round_data_by_short_names",
-        return_value=TEST_ROUNDS_DATA[0],
-    )
-    mocker.patch(
         "app.default.account_routes.get_all_rounds_for_fund",
         return_value=TEST_ROUNDS_DATA,
     )
@@ -155,6 +147,14 @@ def mock_get_fund_round(mocker):
     mocker.patch(
         "app.helpers.get_fund_data_by_short_name",
         return_value=Fund.from_dict(TEST_FUNDS_DATA[0]),
+    )
+    mocker.patch(
+        "app.default.routes.get_all_fund_short_codes",
+        return_value=["COF", "NSTF"],
+    )
+    mocker.patch(
+        "app.helpers.get_all_fund_short_codes",
+        return_value=["COF", "NSTF"],
     )
     mocker.patch(
         "app.helpers.get_default_round_for_fund",
@@ -170,17 +170,5 @@ def mock_get_fund_round(mocker):
     )
     mocker.patch(
         "app.default.data.get_round_data_fail_gracefully",
-        return_value=TEST_ROUNDS_DATA[0],
-    )
-    mocker.patch(
-        "app.default.content_routes.get_round_data_by_short_names",
-        return_value=TEST_ROUNDS_DATA[0],
-    )
-    mocker.patch(
-        "app.default.routes.get_fund_data_by_short_name",
-        return_value=Fund.from_dict(TEST_FUNDS_DATA[0]),
-    )
-    mocker.patch(
-        "app.default.routes.get_round_data_by_short_names",
         return_value=TEST_ROUNDS_DATA[0],
     )

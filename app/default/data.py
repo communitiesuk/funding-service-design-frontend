@@ -408,7 +408,10 @@ def get_latest_open_or_closed_round(rounds: List[Round]) -> Round:
 def get_default_round_for_fund(fund_short_name: str) -> Round:
     try:
         rounds = get_all_rounds_for_fund(
-            fund_short_name, as_dict=False, use_short_name=True
+            fund_short_name,
+            as_dict=False,
+            use_short_name=True,
+            ttl_hash=get_ttl_hash(),
         )
         return get_latest_open_or_closed_round(rounds)
     except Exception as e:

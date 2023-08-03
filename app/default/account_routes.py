@@ -2,10 +2,11 @@ import requests
 from app.default.data import determine_round_status
 from app.default.data import get_all_funds
 from app.default.data import get_all_rounds_for_fund
-from app.default.data import get_fund_data_by_short_name
 from app.default.data import RoundStatus
 from app.default.data import search_applications
+from app.helpers import get_fund
 from app.helpers import get_fund_and_round
+from app.helpers import get_ttl_hash
 from app.models.application_summary import ApplicationSummary
 from config import Config
 from flask import Blueprint
@@ -27,7 +28,7 @@ def get_visible_funds(visible_fund_short_name):
 
     :param visible_fund_short_name: short name to look for
     """
-    all_funds = get_all_funds()
+    all_funds = get_all_funds(ttl_hash=get_ttl_hash(300))
 
     if visible_fund_short_name:
         funds_to_show = [
@@ -145,11 +146,6 @@ def dashboard():
         # find and display applications with this
         # fund and round else return 404
         template_name = "dashboard_single_fund.html"
-        # round_details = get_round_data_by_short_names(
-        #     fund_short_name,
-        #     round_short_name,
-        # )
-        # fund_details = get_fund_data_by_short_name(fund_short_name)
         fund_details, round_details = get_fund_and_round(
             fund_short_name=fund_short_name, round_short_name=round_short_name
         )
@@ -166,7 +162,7 @@ def dashboard():
         # this fund else return 404
 
         template_name = "dashboard_single_fund.html"
-        fund_details = get_fund_data_by_short_name(fund_short_name)
+        fund_details = get_fund(fund_short_name=fund_short_name)
         search_params = {
             "fund_id": fund_details.id,
             "account_id": account_id,
