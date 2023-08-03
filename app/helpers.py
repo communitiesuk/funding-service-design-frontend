@@ -5,13 +5,12 @@ from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data
 from app.default.data import get_round_data_by_short_names
+from app.default.data import get_ttl_hash
 from app.models.fund import Fund
 from app.models.fund import FUND_SHORT_CODES
-from app.models.round import Round
 from config import Config
 from flask import current_app
 from flask import request
-from flask import session
 
 
 def get_token_to_return_to_application(form_name: str, rehydrate_payload):
@@ -113,69 +112,76 @@ def format_rehydrate_payload(form_data, application_id, returnUrl, form_name):
     return formatted_data
 
 
-def find_round_in_request(fund):
-    round = None
+def find_round_short_name_in_request(fund):
     if round_short_name := request.view_args.get(
         "round_short_name"
     ) or request.args.get("round"):
-        round = get_round_data_by_short_names(
-            fund.short_name, round_short_name, False
-        )
+        return round_short_name
+    else:
+        return None
+
+
+def find_round_id_in_request(fund):
+    if (
+        application_id := request.args.get("application_id")
+        or request.view_args.get("application_id")
+        or request.form.get("application_id")
+    ):
+        application = get_application_data(application_id, as_dict=True)
+        return application.round_id
+    else:
+        return None
+
+
+def find_fund_id_in_request():
+    if fund_id := request.view_args.get("fund_id") or request.args.get(
+        "fund_id"
+    ):
+        return fund_id
     elif (
         application_id := request.args.get("application_id")
         or request.view_args.get("application_id")
         or request.form.get("application_id")
     ):
         application = get_application_data(application_id, as_dict=True)
-        round = get_round_data(
-            fund_id=application.fund_id,
-            round_id=application.round_id,
-            language=application.language,
-        )
-
-    if not round:
-        round = get_default_round_for_fund(fund.short_name)
-        current_app.logger.warn(
-            "Couldn't find round in request. Using"
-            f" {round.short_name} as default for fund {fund.short_name}"
-        )
-    return round
+        return application.fund_id
+    else:
+        return None
 
 
-def find_fund_in_request():
+def find_fund_short_name_in_request():
     if (
         fund_short_name := request.view_args.get("fund_short_name")
         or request.args.get("fund")
     ) and str.upper(fund_short_name) in [
         member.value for member in FUND_SHORT_CODES
     ]:
-        fund = get_fund_data_by_short_name(fund_short_name, as_dict=False)
-    elif fund_id := request.view_args.get("fund_id") or request.args.get(
-        "fund_id"
-    ):
-        fund = get_fund_data(fund_id, as_dict=True)
-    elif (
-        application_id := request.args.get("application_id")
-        or request.view_args.get("application_id")
-        or request.form.get("application_id")
-    ):
-        application = get_application_data(application_id, as_dict=True)
-        fund = get_fund_data(
-            fund_id=application.fund_id,
-            language=application.language,
-            as_dict=True,
-        )
+        return fund_short_name
     else:
-        current_app.logger.warn("Couldn't find any fund in the request")
         return None
-    return fund
 
 
-CACHED_FUND_ROUNDS_PROPERTY = "cached_fund_rounds"
-FUNDS_BY_ID_PROPERTY = "funds_by_id"
-FUNDS_BY_SHORT_NAME_PROPERTY = "funds_by_short_name"
-ROUNDS_BY_ID_PROPERTY = "rounds_by_id"
-ROUNDS_BY_SHORT_NAME_PROPERTY = "rounds_by_short_name"
+def find_fund_in_request():
+    return get_fund(
+        find_fund_id_in_request(),
+        find_fund_short_name_in_request(),
+    )
+
+
+def find_round_in_request():
+    return get_fund_and_round(
+        find_round_id_in_request(),
+        find_round_short_name_in_request(),
+    )
+
+
+def find_fund_and_round_in_request():
+    return get_fund_and_round(
+        find_fund_id_in_request(),
+        find_round_id_in_request(),
+        find_fund_short_name_in_request(),
+        find_round_short_name_in_request(),
+    )
 
 
 def get_fund_and_round(
@@ -184,71 +190,50 @@ def get_fund_and_round(
     fund_short_name: str = None,
     round_short_name: str = None,
 ):
-    fund = None
-    round = None
-    if cached_fund_rounds := session.get(CACHED_FUND_ROUNDS_PROPERTY):
-        fund = (
-            Fund.from_dict(
-                cached_fund_rounds.get(FUNDS_BY_ID_PROPERTY).get(fund_id)
-            )
-            if fund_id
-            else (
-                Fund.from_dict(
-                    cached_fund_rounds.get(FUNDS_BY_SHORT_NAME_PROPERTY).get(
-                        str.upper(fund_short_name)
-                    )
-                )
-                if fund_short_name
-                else None
-            )
-        )
+    fund = get_fund(fund_id, fund_short_name)
+    round = get_round(fund, round_id, round_short_name)
+    return fund, round
 
-        round = (
-            Round.from_dict(
-                cached_fund_rounds.get(ROUNDS_BY_ID_PROPERTY).get(round_id)
-            )
-            if round_id
-            else (
-                Round.from_dict(
-                    cached_fund_rounds.get(ROUNDS_BY_SHORT_NAME_PROPERTY).get(
-                        str.upper(round_short_name)
-                    )
-                )
-                if round_short_name
-                else None
-            )
-        )
 
-        if fund and round:
-            return fund, round
-
-    if not cached_fund_rounds:
-        cached_fund_rounds = {}
+def get_fund(
+    fund_id: str = None,
+    fund_short_name: str = None,
+):
     fund = (
-        get_fund_data(fund_id, as_dict=False)
+        get_fund_data(fund_id, as_dict=False, ttl_hash=get_ttl_hash(3000))
         if fund_id
         else (
-            get_fund_data_by_short_name(fund_short_name, as_dict=False)
+            get_fund_data_by_short_name(
+                fund_short_name, as_dict=False, ttl_hash=get_ttl_hash(3000)
+            )
             if fund_short_name
             else None
         )
     )
+    return fund
+
+
+def get_round(
+    fund: Fund,
+    round_id: str = None,
+    round_short_name: str = None,
+):
     round = (
-        get_round_data(fund_id, round_id, as_dict=False)
-        if round_id and fund_id
+        get_round_data(
+            fund.id, round_id, as_dict=False, ttl_hash=get_ttl_hash(3000)
+        )
+        if round_id and fund.id
         else (
             get_round_data_by_short_names(
-                fund_short_name, round_short_name, as_dict=False
+                fund.short_name,
+                round_short_name,
+                as_dict=False,
+                ttl_hash=get_ttl_hash(3000),
             )
-            if fund_short_name and round_short_name
+            if fund.short_name and round_short_name
             else None
         )
     )
-    cached_fund_rounds[FUNDS_BY_ID_PROPERTY] = {fund.id: fund}
-    cached_fund_rounds[FUNDS_BY_SHORT_NAME_PROPERTY] = {fund.short_name: fund}
-    cached_fund_rounds[ROUNDS_BY_ID_PROPERTY] = {round.id: round}
-    cached_fund_rounds[ROUNDS_BY_SHORT_NAME_PROPERTY] = {
-        round.short_name: round
-    }
-    session[CACHED_FUND_ROUNDS_PROPERTY] = cached_fund_rounds
-    return fund, round
+    if not round:
+        round = get_default_round_for_fund(fund.short_name)
+    return round

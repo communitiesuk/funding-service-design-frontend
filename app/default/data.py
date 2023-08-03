@@ -1,6 +1,8 @@
 import json
 import os
+import time
 from collections import namedtuple
+from functools import lru_cache
 from typing import List
 from urllib.parse import urlencode
 
@@ -21,6 +23,11 @@ from fsd_utils.simple_utils.date_utils import (
 from fsd_utils.simple_utils.date_utils import (
     current_datetime_before_given_iso_string,
 )
+
+
+def get_ttl_hash(seconds=300) -> int:
+    return round(time.time() / seconds)
+
 
 RoundStatus = namedtuple(
     "RoundStatus", "past_submission_deadline not_yet_open is_open"
@@ -168,7 +175,9 @@ def get_applications_for_account(account_id, as_dict=False):
     )
 
 
-def get_fund_data(fund_id, language=None, as_dict=False):
+@lru_cache(maxsize=5)
+def get_fund_data(fund_id, language=None, as_dict=False, ttl_hash=None):
+    del ttl_hash  # Only needed for lru_cache
     language = {"language": language or get_lang()}
     fund_request_url = Config.GET_FUND_DATA_ENDPOINT.format(fund_id=fund_id)
     fund_response = get_data(fund_request_url, language)
@@ -178,7 +187,9 @@ def get_fund_data(fund_id, language=None, as_dict=False):
         return fund_response
 
 
-def get_fund_data_by_short_name(fund_short_name, as_dict=False):
+@lru_cache(maxsize=5)
+def get_fund_data_by_short_name(fund_short_name, as_dict=False, ttl_hash=None):
+    del ttl_hash  # Only needed for lru_cache
     all_funds = {fund["short_name"].lower() for fund in get_all_funds()}
     if fund_short_name.lower() not in all_funds:
         current_app.logger.warning(f"Invalid fund {fund_short_name.lower()}!")
@@ -194,7 +205,11 @@ def get_fund_data_by_short_name(fund_short_name, as_dict=False):
         return Fund.from_dict(fund_response)
 
 
-def get_round_data(fund_id, round_id, language=None, as_dict=False):
+@lru_cache(maxsize=5)
+def get_round_data(
+    fund_id, round_id, language=None, as_dict=False, ttl_hash=None
+):
+    del ttl_hash  # Only needed for lru_cache
     language = {"language": language or get_lang()}
     round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(
         fund_id=fund_id, round_id=round_id
@@ -224,9 +239,14 @@ def get_application_display_config(fund_id, round_id, language):
         )
 
 
+@lru_cache(maxsize=5)
 def get_round_data_by_short_names(
-    fund_short_name, round_short_name, as_dict=False
+    fund_short_name,
+    round_short_name,
+    as_dict=False,
+    ttl_hash=None,
 ) -> Round | dict:
+    del ttl_hash  # Only needed for lru_cache
     all_rounds = [
         rnd.short_name.lower()
         for rnd in get_all_rounds_for_fund(
@@ -254,17 +274,25 @@ def get_round_data_by_short_names(
 def get_round_data_fail_gracefully(fund_id, round_id, use_short_name=False):
     try:
         if fund_id and round_id:
-            params = {}
-            round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(
-                fund_id=fund_id.lower(), round_id=round_id.lower()
-            )
             if use_short_name:
-                params["use_short_name"] = True
-            round_response = get_data(round_request_url, params)
+                round_response = get_round_data_by_short_names(
+                    fund_id,
+                    round_id,
+                    ttl_hash=get_ttl_hash(3000),
+                    as_dict=True,
+                )
+            else:
+                round_response = get_round_data(
+                    fund_id,
+                    round_id,
+                    get_ttl_hash=get_ttl_hash(3000),
+                    as_dict=True,
+                )
             return Round.from_dict(round_response)
     except:  # noqa
-        current_app.logger.error(
-            f"Call to Fund Store failed GET {round_request_url}"
+        current_app.logger.warn(
+            f"Failed to retrieve round using fund_id {fund_id}, round_id"
+            f" {round_id}, use_short_name={use_short_name}"
         )
     # return valid Round object with no values so we know we've
     # failed and can handle in templates appropriately
@@ -318,13 +346,19 @@ def get_account(email: str = None, account_id: str = None) -> Account | None:
         return Account.from_json(response)
 
 
-def get_all_funds():
+@lru_cache(maxsize=1)
+def get_all_funds(ttl_hash=None):
+    del ttl_hash  # Only needed for lru_cache
     language = {"language": get_lang()}
     fund_response = get_data(Config.GET_ALL_FUNDS_ENDPOINT, language)
     return fund_response
 
 
-def get_all_rounds_for_fund(fund_id, as_dict=False, use_short_name=False):
+@lru_cache(maxsize=1)
+def get_all_rounds_for_fund(
+    fund_id, as_dict=False, use_short_name=False, ttl_hash=None
+):
+    del ttl_hash  # Only needed for lru_cache
     params = {"language": get_lang()}
     if use_short_name:
         params["use_short_name"] = "true"
