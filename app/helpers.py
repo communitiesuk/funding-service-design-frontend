@@ -1,4 +1,7 @@
+from functools import lru_cache
+
 import requests
+from app.default.data import get_all_funds
 from app.default.data import get_application_data
 from app.default.data import get_default_round_for_fund
 from app.default.data import get_fund_data
@@ -7,10 +10,15 @@ from app.default.data import get_round_data
 from app.default.data import get_round_data_by_short_names
 from app.default.data import get_ttl_hash
 from app.models.fund import Fund
-from app.models.fund import FUND_SHORT_CODES
 from config import Config
 from flask import current_app
 from flask import request
+
+
+@lru_cache(maxsize=1)
+def get_all_fund_short_codes(ttl_hash=get_ttl_hash(3000)):
+    del ttl_hash  # only needed for lru_cache
+    return [str.upper(fund.short_code) for fund in get_all_funds()]
 
 
 def get_token_to_return_to_application(form_name: str, rehydrate_payload):
@@ -153,9 +161,7 @@ def find_fund_short_name_in_request():
     if (
         fund_short_name := request.view_args.get("fund_short_name")
         or request.args.get("fund")
-    ) and str.upper(fund_short_name) in [
-        member.value for member in FUND_SHORT_CODES
-    ]:
+    ) and str.upper(fund_short_name) in get_all_fund_short_codes():
         return fund_short_name
     else:
         return None

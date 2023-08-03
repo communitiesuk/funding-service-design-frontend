@@ -1,7 +1,7 @@
 from app.default.data import determine_round_status
 from app.default.data import get_default_round_for_fund
+from app.helpers import get_all_fund_short_codes
 from app.helpers import get_fund_and_round
-from app.models.fund import FUND_SHORT_CODES
 from app.models.round import Round
 from config import Config
 from flask import abort
@@ -59,9 +59,7 @@ def index_fund_round(fund_short_name, round_short_name):
 
 @default_bp.route("/funding-round/<fund_short_name>")
 def index_fund_only(fund_short_name):
-    if str.upper(fund_short_name) in [
-        member.value for member in FUND_SHORT_CODES
-    ]:
+    if str.upper(fund_short_name) in get_all_fund_short_codes():
         current_app.logger.info(
             f"In fund-only start page route for {fund_short_name}"
         )
