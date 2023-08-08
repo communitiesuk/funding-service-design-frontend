@@ -20,7 +20,7 @@ applications:
     COOKIE_DOMAIN: .test.gids.dev
     GITHUB_SHA: ((GITHUB_SHA))
   routes:
-    - route: frontend.test.fundingservice.co.uk
+    - route: frontend.test.gids.dev
   health-check-http-endpoint: /healthcheck
   health-check-type: http
   health-check-invocation-timeout: 10
