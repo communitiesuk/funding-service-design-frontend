@@ -149,11 +149,11 @@ def mock_get_fund_round(mocker):
         return_value=Fund.from_dict(TEST_FUNDS_DATA[0]),
     )
     mocker.patch(
-        "app.default.routes.get_all_fund_short_codes",
+        "app.default.routes.get_all_fund_short_names",
         return_value=["COF", "NSTF"],
     )
     mocker.patch(
-        "app.helpers.get_all_fund_short_codes",
+        "app.helpers.get_all_fund_short_names",
         return_value=["COF", "NSTF"],
     )
     mocker.patch(

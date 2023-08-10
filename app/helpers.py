@@ -16,9 +16,9 @@ from flask import request
 
 
 @lru_cache(maxsize=1)
-def get_all_fund_short_codes(ttl_hash=get_ttl_hash(3000)):
+def get_all_fund_short_names(ttl_hash=get_ttl_hash(3000)):
     del ttl_hash  # only needed for lru_cache
-    return [str.upper(fund.short_code) for fund in get_all_funds()]
+    return [str.upper(fund["short_name"]) for fund in get_all_funds()]
 
 
 def get_token_to_return_to_application(form_name: str, rehydrate_payload):
@@ -161,7 +161,7 @@ def find_fund_short_name_in_request():
     if (
         fund_short_name := request.view_args.get("fund_short_name")
         or request.args.get("fund")
-    ) and str.upper(fund_short_name) in get_all_fund_short_codes():
+    ) and str.upper(fund_short_name) in get_all_fund_short_names():
         return fund_short_name
     else:
         return None

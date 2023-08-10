@@ -177,7 +177,7 @@ def test_find_fund_in_request(
     mocker,
 ):
 
-    mocker.patch("app.helpers.get_all_fund_short_codes", return_value=["TEST"])
+    mocker.patch("app.helpers.get_all_fund_short_names", return_value=["TEST"])
     mocker.patch(
         "app.helpers.get_fund_data_by_short_name",
         return_value=short_name_fund,

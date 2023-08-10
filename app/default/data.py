@@ -182,9 +182,9 @@ def get_fund_data(fund_id, language=None, as_dict=False, ttl_hash=None):
     fund_request_url = Config.GET_FUND_DATA_ENDPOINT.format(fund_id=fund_id)
     fund_response = get_data(fund_request_url, language)
     if as_dict:
-        return Fund.from_dict(fund_response)
-    else:
         return fund_response
+    else:
+        return Fund.from_dict(fund_response)
 
 
 @lru_cache(maxsize=5)

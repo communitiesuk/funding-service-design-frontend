@@ -134,7 +134,7 @@ def tasklist(application_id):
     fund_data = get_fund_data(
         fund_id=application.fund_id,
         language=application.language,
-        as_dict=True,
+        as_dict=False,
     )
     round_data = get_round_data(
         fund_id=application.fund_id,
@@ -283,7 +283,7 @@ def submit_application():
     fund_data = get_fund_data(
         fund_id=application.fund_id,
         language=application.language,
-        as_dict=True,
+        as_dict=False,
     )
     round_data = get_round_data(
         application.fund_id, application.round_id, as_dict=False
