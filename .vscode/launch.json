@@ -33,6 +33,19 @@
       "justMyCode": true
     },
     {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "host": "localhost",
+      "port": 9091,
+      "cwd": "${workspaceFolder}",
+      "env": { "PYTHONPATH":"${workspaceFolder}"},
+      "envFile": "${workspaceFolder}/.flaskenv",
+      "justMyCode": false
+    },
+    {
       "name": "Run Tests: All",
       "type": "python",
       "request": "launch",
