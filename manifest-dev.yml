@@ -21,7 +21,6 @@ applications:
     SENTRY_DSN: ((SENTRY_DSN))
     GITHUB_SHA: ((GITHUB_SHA))
   routes:
-    - route: frontend.dev.fundingservice.co.uk
     - route: frontend.dev.gids.dev
   health-check-http-endpoint: /healthcheck
   health-check-type: http
