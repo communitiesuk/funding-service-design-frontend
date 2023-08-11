@@ -28,7 +28,7 @@ def get_visible_funds(visible_fund_short_name):
 
     :param visible_fund_short_name: short name to look for
     """
-    all_funds = get_all_funds(ttl_hash=get_ttl_hash(300))
+    all_funds = get_all_funds(ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME))
 
     if visible_fund_short_name:
         funds_to_show = [
@@ -83,7 +83,11 @@ def build_application_data_for_display(
     funds_to_show = get_visible_funds(visible_fund_short_name)
     for fund in funds_to_show:
         fund_id = fund["id"]
-        all_rounds_in_fund = get_all_rounds_for_fund(fund_id, as_dict=False)
+        all_rounds_in_fund = get_all_rounds_for_fund(
+            fund_id,
+            as_dict=False,
+            ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+        )
         fund_data_for_display = {
             "fund_data": fund,
             "rounds": [],

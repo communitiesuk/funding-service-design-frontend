@@ -8,6 +8,7 @@ from app.default.data import get_application_data
 from app.default.data import get_application_display_config
 from app.default.data import get_fund_data
 from app.default.data import get_round_data
+from app.default.data import get_ttl_hash
 from app.helpers import format_rehydrate_payload
 from app.helpers import get_token_to_return_to_application
 from app.models.statuses import get_formatted
@@ -26,6 +27,7 @@ from fsd_utils.authentication.decorators import login_required
 from fsd_utils.simple_utils.date_utils import (
     current_datetime_after_given_iso_string,
 )
+
 
 application_bp = Blueprint(
     "application_routes", __name__, template_folder="templates"
@@ -99,7 +101,9 @@ def verify_round_open(f):
         round_data = get_round_data(
             fund_id=application.fund_id,
             round_id=application.round_id,
+            language=application.language,
             as_dict=False,
+            ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
         )
         round_status = determine_round_status(round_data)
         if round_status.is_open:
@@ -135,12 +139,14 @@ def tasklist(application_id):
         fund_id=application.fund_id,
         language=application.language,
         as_dict=False,
+        ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
     )
     round_data = get_round_data(
         fund_id=application.fund_id,
         round_id=application.round_id,
         language=application.language,
         as_dict=False,
+        ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
     )
 
     if application.status == ApplicationStatus.SUBMITTED.name:
@@ -284,9 +290,13 @@ def submit_application():
         fund_id=application.fund_id,
         language=application.language,
         as_dict=False,
+        ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
     )
     round_data = get_round_data(
-        application.fund_id, application.round_id, as_dict=False
+        application.fund_id,
+        application.round_id,
+        as_dict=False,
+        ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
     )
     submitted = format_payload_and_submit_application(application_id)
 

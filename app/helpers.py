@@ -16,7 +16,7 @@ from flask import request
 
 
 @lru_cache(maxsize=1)
-def get_all_fund_short_names(ttl_hash=get_ttl_hash(3000)):
+def get_all_fund_short_names(ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME)):
     del ttl_hash  # only needed for lru_cache
     return [str.upper(fund["short_name"]) for fund in get_all_funds()]
 
@@ -210,11 +210,17 @@ def get_fund(
     fund_short_name: str = None,
 ):
     fund = (
-        get_fund_data(fund_id, as_dict=False, ttl_hash=get_ttl_hash(3000))
+        get_fund_data(
+            fund_id,
+            as_dict=False,
+            ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+        )
         if fund_id
         else (
             get_fund_data_by_short_name(
-                fund_short_name, as_dict=False, ttl_hash=get_ttl_hash(3000)
+                fund_short_name,
+                as_dict=False,
+                ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
             )
             if fund_short_name
             else None
@@ -231,13 +237,16 @@ def get_round(
 ):
     if fund_short_name:
         fund = get_fund_data_by_short_name(
-            fund_short_name, ttl_hash=get_ttl_hash(300)
+            fund_short_name, ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME)
         )
     if not fund:
         return None
     round = (
         get_round_data(
-            fund.id, round_id, as_dict=False, ttl_hash=get_ttl_hash(3000)
+            fund.id,
+            round_id,
+            as_dict=False,
+            ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
         )
         if round_id and fund
         else (
@@ -245,7 +254,7 @@ def get_round(
                 fund.short_name,
                 round_short_name,
                 as_dict=False,
-                ttl_hash=get_ttl_hash(3000),
+                ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
             )
             if fund and round_short_name
             else None

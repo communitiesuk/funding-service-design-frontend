@@ -278,14 +278,14 @@ def get_round_data_fail_gracefully(fund_id, round_id, use_short_name=False):
                 round_response = get_round_data_by_short_names(
                     fund_id,
                     round_id,
-                    ttl_hash=get_ttl_hash(3000),
+                    ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
                     as_dict=True,
                 )
             else:
                 round_response = get_round_data(
                     fund_id,
                     round_id,
-                    get_ttl_hash=get_ttl_hash(3000),
+                    get_ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
                     as_dict=True,
                 )
             return Round.from_dict(round_response)
@@ -354,7 +354,7 @@ def get_all_funds(ttl_hash=None):
     return fund_response
 
 
-@lru_cache(maxsize=1)
+@lru_cache(maxsize=5)
 def get_all_rounds_for_fund(
     fund_id, as_dict=False, use_short_name=False, ttl_hash=None
 ):
