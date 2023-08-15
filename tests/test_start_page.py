@@ -32,7 +32,7 @@ def test_old_index_redirect(client):
 
 def test_start_page_unknown_fund(client, mocker):
     mocker.patch(
-        "app.default.routes.get_fund_data_by_short_name", return_value=None
+        "app.default.routes.get_fund_and_round", return_value=(None, None)
     )
     result = client.get("funding-round/bad_fund/r2w2")
     assert result.status_code == 404
@@ -40,7 +40,7 @@ def test_start_page_unknown_fund(client, mocker):
 
 def test_start_page_without_namespace(client, mocker):
     mocker.patch(
-        "app.default.routes.get_fund_data_by_short_name", return_value=None
+        "app.default.routes.get_fund_and_round", return_value=(None, None)
     )
     result = client.get("cof/r2w2")
     assert result.status_code == 404
@@ -48,7 +48,7 @@ def test_start_page_without_namespace(client, mocker):
 
 def test_start_page_unknown_round(client, mocker):
     mocker.patch(
-        "app.default.routes.get_round_data_by_short_names", return_value=None
+        "app.default.routes.get_fund_and_round", return_value=(None, None)
     )
     result = client.get("/cof/bad_round_id")
     assert result.status_code == 404

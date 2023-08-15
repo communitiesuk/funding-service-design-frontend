@@ -2,10 +2,11 @@ import requests
 from app.default.data import determine_round_status
 from app.default.data import get_all_funds
 from app.default.data import get_all_rounds_for_fund
-from app.default.data import get_fund_data_by_short_name
-from app.default.data import get_round_data_by_short_names
 from app.default.data import RoundStatus
 from app.default.data import search_applications
+from app.helpers import get_fund
+from app.helpers import get_fund_and_round
+from app.helpers import get_ttl_hash
 from app.models.application_summary import ApplicationSummary
 from config import Config
 from flask import Blueprint
@@ -18,7 +19,6 @@ from flask import url_for
 from fsd_utils.authentication.decorators import login_required
 from fsd_utils.locale_selector.get_lang import get_lang
 
-
 account_bp = Blueprint("account_routes", __name__, template_folder="templates")
 
 
@@ -28,7 +28,7 @@ def get_visible_funds(visible_fund_short_name):
 
     :param visible_fund_short_name: short name to look for
     """
-    all_funds = get_all_funds()
+    all_funds = get_all_funds(ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME))
 
     if visible_fund_short_name:
         funds_to_show = [
@@ -83,7 +83,11 @@ def build_application_data_for_display(
     funds_to_show = get_visible_funds(visible_fund_short_name)
     for fund in funds_to_show:
         fund_id = fund["id"]
-        all_rounds_in_fund = get_all_rounds_for_fund(fund_id, as_dict=False)
+        all_rounds_in_fund = get_all_rounds_for_fund(
+            fund_id,
+            as_dict=False,
+            ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+        )
         fund_data_for_display = {
             "fund_data": fund,
             "rounds": [],
@@ -146,11 +150,10 @@ def dashboard():
         # find and display applications with this
         # fund and round else return 404
         template_name = "dashboard_single_fund.html"
-        round_details = get_round_data_by_short_names(
-            fund_short_name,
-            round_short_name,
+        fund_details, round_details = get_fund_and_round(
+            fund_short_name=fund_short_name, round_short_name=round_short_name
         )
-        fund_details = get_fund_data_by_short_name(fund_short_name)
+
         welsh_available = fund_details.welsh_available
         search_params = {
             "fund_id": round_details.fund_id,
@@ -163,7 +166,7 @@ def dashboard():
         # this fund else return 404
 
         template_name = "dashboard_single_fund.html"
-        fund_details = get_fund_data_by_short_name(fund_short_name)
+        fund_details = get_fund(fund_short_name=fund_short_name)
         search_params = {
             "fund_id": fund_details.id,
             "account_id": account_id,

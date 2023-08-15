@@ -6,9 +6,8 @@ from app.filters import datetime_format_short_month
 from app.filters import kebab_case_to_human
 from app.filters import snake_case_to_human
 from app.filters import status_translation
+from app.helpers import find_fund_and_round_in_request
 from app.helpers import find_fund_in_request
-from app.helpers import find_round_in_request
-from app.models.fund import Fund
 from config import Config
 from flask import current_app
 from flask import Flask
@@ -143,8 +142,7 @@ def create_app() -> Flask:
     @flask_app.context_processor
     def inject_content_urls():
         try:
-            fund: Fund = find_fund_in_request()
-            round = find_round_in_request(fund)
+            fund, round = find_fund_and_round_in_request()
             if fund and round:
                 return dict(
                     contact_us_url=url_for(

@@ -24,3 +24,6 @@ class TestConfig(DefaultConfig):
         )
     )
     TOGGLES_URL = REDIS_INSTANCE_URI + "/0"
+
+    # LRU cache settings
+    LRU_CACHE_TIME = 300  # in seconds

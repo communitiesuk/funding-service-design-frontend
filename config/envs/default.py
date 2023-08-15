@@ -186,3 +186,6 @@ class DefaultConfig:
     REDIS_INSTANCE_URI = getenv("REDIS_INSTANCE_URI", "redis://localhost:6379")
     TOGGLES_URL = REDIS_INSTANCE_URI + "/0"
     FEATURE_CONFIG = CommonConfig.dev_feature_configuration
+
+    # LRU cache settings
+    LRU_CACHE_TIME = int(environ.get("LRU_CACHE_TIME", 3600))  # in seconds

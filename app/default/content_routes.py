@@ -1,6 +1,6 @@
-from app.default.data import get_round_data_by_short_names
-from app.helpers import find_fund_in_request
+from app.helpers import find_fund_and_round_in_request
 from app.helpers import find_round_in_request
+from app.helpers import get_round
 from flask import abort
 from flask import Blueprint
 from flask import current_app
@@ -27,15 +27,16 @@ def all_questions(fund_short_name, round_short_name):
         f"All questions page loaded for fund {fund_short_name} round"
         f" {round_short_name}."
     )
-    round = get_round_data_by_short_names(fund_short_name, round_short_name)
-    if not round:
-        return abort(404)
 
     if fund_short_name.lower() == "cof":
-        return render_template(
-            f"{fund_short_name.lower()}_{round_short_name.lower()[0:2]}_all_questions.html",
-            round_title=round.title,
-        )
+        if round := get_round(
+            fund_short_name=fund_short_name, round_short_name=round_short_name
+        ):
+            return render_template(
+                f"{fund_short_name.lower()}_{round_short_name.lower()[0:2]}_all_questions.html",
+                round_title=round.title,
+            )
+    return abort(404)
 
 
 @content_bp.route("/cof_r2w2_all_questions", methods=["GET"])
@@ -52,9 +53,8 @@ def cof_r2w2_all_questions_redirect():
 @content_bp.route("/contact_us", methods=["GET"])
 @login_requested
 def contact_us():
-    fund = find_fund_in_request()
+    fund, round = find_fund_and_round_in_request()
     fund_name = fund.name if fund else None
-    round = find_round_in_request(fund) if fund else None
     return render_template(
         "contact_us.html",
         round_data=round,
@@ -71,8 +71,7 @@ def cookie_policy():
 @content_bp.route("/privacy", methods=["GET"])
 def privacy():
     privacy_notice_url = None
-    fund = find_fund_in_request()
-    round = find_round_in_request(fund) if fund else None
+    fund, round = find_fund_and_round_in_request()
 
     privacy_notice_url = (
         getattr(round, "privacy_notice", None) if round else None
@@ -90,8 +89,7 @@ def privacy():
 
 @content_bp.route("/feedback", methods=["GET"])
 def feedback():
-    fund = find_fund_in_request()
-    round = find_round_in_request(fund) if fund else None
+    round = find_round_in_request()
     feedback_url = None
 
     feedback_url = getattr(round, "feedback_link", None) if round else None
