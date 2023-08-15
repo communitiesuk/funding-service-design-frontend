@@ -188,4 +188,4 @@ class DefaultConfig:
     FEATURE_CONFIG = CommonConfig.dev_feature_configuration
 
     # LRU cache settings
-    LRU_CACHE_TIME = 300  # in seconds
+    LRU_CACHE_TIME = int(environ.get("LRU_CACHE_TIME", 3600))  # in seconds

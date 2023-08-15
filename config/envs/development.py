@@ -22,3 +22,6 @@ class DevelopmentConfig(DefaultConfig):
         )
         with open(_test_public_key_path, mode="rb") as public_key_file:
             RSA256_PUBLIC_KEY = public_key_file.read()
+
+    # LRU cache settings
+    LRU_CACHE_TIME = 300  # in seconds
