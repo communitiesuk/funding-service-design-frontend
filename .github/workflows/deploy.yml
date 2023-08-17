@@ -56,8 +56,6 @@ jobs:
     if: ${{ github.event.inputs.copilot }}
     secrets:
       E2E_PAT: ${{secrets.E2E_PAT}}
-      SENTRY_DSN: ${{secrets.SENTRY_DSN}}
-      FORMS_SERVICE_PRIVATE_HOST: ${{secrets.FORMS_SERVICE_PRIVATE_HOST}}
     uses: communitiesuk/funding-design-service-workflows/.github/workflows/pre-deploy.yml@main
     with:
       postgres_unit_testing: false
