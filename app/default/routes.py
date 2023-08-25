@@ -21,6 +21,17 @@ def index():
     return abort(404)
 
 
+### REMOVE - JUST FOR TEMPORARY DEV ACCESS TO PAGE
+@default_bp.route('/section_feedback_intro')
+def feedback_intro():
+    return render_template('section_feedback_intro.html')
+
+@default_bp.route('/section_feedback_survey_1')
+def section_feedback_survey_1():
+    return render_template('section_feedback_survey_1.html')
+###################################################
+
+
 @default_bp.route("/funding-round/<fund_short_name>/<round_short_name>")
 def index_fund_round(fund_short_name, round_short_name):
     current_app.logger.info(

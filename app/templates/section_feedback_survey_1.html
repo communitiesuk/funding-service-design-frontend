@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText
+    -%} {%- from "govuk_frontend_jinja/components/button/macro.html" import
+    govukButton -%} {% from "partials/available_in_language.html" import available_in_language %}
+{% from "partials/round_closed_warning.html" import round_closed_warning %}
+
+<!--
+    Pass dashboard url
+-->
+{% block beforeContent %}
+    <a href="{{dashboard_url}}" class="govuk-back-link">Go back to application overview</a>
+{% endblock %}
+
+{% block content %}          
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+  
+      <span class="govuk-caption-l">{section name} feedback</span>
+  
+      <form action="#" class="form" method="post">
+  
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                How easy did you find it to complete this section?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="section-feedback-experience" name="section-feedback-experience" type="radio" value="very easy">
+                <label class="govuk-label govuk-radios__label" for="section-feedback-experience">
+                  Very easy
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="section-feedback-experience-2" name="section-feedback-experience" type="radio" value="easy">
+                <label class="govuk-label govuk-radios__label" for="section-feedback-experience-2">
+                  Easy
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="section-feedback-experience-3" name="section-feedback-experience" type="radio" value="neither easy or difficult">
+                <label class="govuk-label govuk-radios__label" for="section-feedback-experience-3">
+                  Neither easy nor difficult
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="section-feedback-experience-4" name="section-feedback-experience" type="radio" value="difficult">
+                <label class="govuk-label govuk-radios__label" for="section-feedback-experience-4">
+                  Difficult
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="section-feedback-experience-5" name="section-feedback-experience" type="radio" value="very difficult">
+                <label class="govuk-label govuk-radios__label" for="section-feedback-experience-5">
+                  Very difficult
+                </label>
+              </div>
+            </div>
+            <br><br>
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--s" for="more-detail">
+                Explain why you chose this score (optional)
+              </label>
+            <textarea class="govuk-textarea" id="more-detail" name="more-detail" rows="5" aria-describedby="more-detail"></textarea>
+            </div>
+          </fieldset>
+        </div>
+  
+        <div>
+          <button class="govuk-button" data-module="govuk-button">Submit feedback</button>
+        </div>
+      </form>
+      
+    </div>
+  
+    </div>
+{% endblock %}

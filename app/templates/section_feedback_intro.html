@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText
+    -%} {%- from "govuk_frontend_jinja/components/button/macro.html" import
+    govukButton -%} {% from "partials/available_in_language.html" import available_in_language %}
+{% from "partials/round_closed_warning.html" import round_closed_warning %}
+
+<!--
+    Pass dashboard url
+-->
+{% block beforeContent %}
+    <a href="{{dashboard_url}}" class="govuk-back-link">Go back to application overview</a>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <h1 class="govuk-heading-l">{section name} feedback</h1>
+
+            <p class="govuk-body">We'll ask about your experience of completing this section, so we can improve our application forms. Your responses will not be scored.</p>
+
+            <!--
+            Link to next page
+            -->
+            <a href="./#" role="button" draggable="false" class="govuk-button" data-module="govuk-button">
+                Continue
+            </a>
+        </div>
+    </div>
+{% endblock %}

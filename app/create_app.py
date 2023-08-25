@@ -9,7 +9,7 @@ from app.filters import status_translation
 from app.helpers import find_fund_and_round_in_request
 from app.helpers import find_fund_in_request
 from config import Config
-from flask import current_app
+from flask import current_app, render_template
 from flask import Flask
 from flask import make_response
 from flask import request
