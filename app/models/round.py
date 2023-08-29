@@ -24,6 +24,7 @@ class Round:
     feedback_link: str
     project_name_field_id: str
     application_guidance: str
+    requires_feedback: bool = False
 
     @classmethod
     def from_dict(cls, d: dict):

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block beforeContent %}
+    <a href="{{ url_for("application_routes.tasklist", application_id=application_id) }}"
+       class="govuk-back-link">Go back to application overview</a>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <span class="govuk-caption-l">Applicant feedback survey</span>
+                </div>
+                <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+                    <span class="govuk-body">4 of 4 questions</span>
+                </div>
+            </div>
+
+            <form method="post">
+                {{ form.hidden_tag() }}
+                {{ form.csrf_token }}
+                {{ form.application_id() }}
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                            <h1 class="govuk-fieldset__heading">
+                                Approximately how many hours did your organisation spend preparing and working on this
+                                application?
+                            </h1>
+                        </legend>
+                        <div class="govuk-hint">
+                            This includes time spent attending meetings, preparing documents and business cases, doing
+                            research and collating answers, from both paid and volunteer resources.
+                        </div>
+                        <div id="" class="govuk-label govuk-label--s">
+                            {{ form.hours_spent.label }}
+                        </div>
+                        <div class="govuk-form-group">
+                            {{ form.hours_spent(class="govuk-input", id="hours-spent") }}
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div>
+                    <button class="govuk-button" data-module="govuk-button">Submit feedback</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+{% endblock %}
