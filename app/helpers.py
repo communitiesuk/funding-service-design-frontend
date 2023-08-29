@@ -1,13 +1,17 @@
+import re
+from datetime import datetime
 from functools import lru_cache
 
 import requests
 from app.default.data import get_all_funds
 from app.default.data import get_application_data
 from app.default.data import get_default_round_for_fund
+from app.default.data import get_feedback
 from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data
 from app.default.data import get_round_data_by_short_names
+from app.default.data import get_survey_data
 from app.default.data import get_ttl_hash
 from app.models.fund import Fund
 from config import Config
@@ -135,7 +139,7 @@ def find_round_id_in_request():
         or request.view_args.get("application_id")
         or request.form.get("application_id")
     ):
-        application = get_application_data(application_id, as_dict=True)
+        application = get_application_data(application_id)
         return application.round_id
     else:
         return None
@@ -151,7 +155,7 @@ def find_fund_id_in_request():
         or request.view_args.get("application_id")
         or request.form.get("application_id")
     ):
-        application = get_application_data(application_id, as_dict=True)
+        application = get_application_data(application_id)
         return application.fund_id
     else:
         return None
@@ -263,3 +267,65 @@ def get_round(
     if not round:
         round = get_default_round_for_fund(fund.short_name)
     return round
+
+
+def get_feedback_survey_data(
+    application, application_id, current_feedback_list, section_display_config
+):
+
+    # we grab the number from the last section i.e "6. Foobar" then increment it to get "7. " for feedback.
+    last_section_title = section_display_config[-1].title
+    number = None
+    if re.search(r"\b(\d+)\.", last_section_title):
+        number = int(re.search(r"\b(\d+)\.", last_section_title).group(1)) + 1
+
+    round_feedback_available = application.all_forms_complete and all(
+        current_feedback_list
+    )
+    existing_survey_data_map = {
+        page_number: get_survey_data(application_id, page_number)
+        for page_number in ["1", "2", "3", "4"]
+    }
+
+    survey_has_been_completed = all(existing_survey_data_map.values())
+    latest_feedback_submission = None
+    if survey_has_been_completed:
+        all_submission_dates = [
+            s.date_submitted for s in existing_survey_data_map.values()
+        ]
+        all_submission_datetimes = [
+            datetime.fromisoformat(d.replace("Z", "+00:00"))
+            for d in all_submission_dates
+        ]
+        latest_feedback_submission = max(all_submission_datetimes).strftime(
+            "%d/%m/%Y"
+        )
+
+    feedback_survey_data = {
+        "number": f"{number}. " if number else "",
+        "available": round_feedback_available,
+        "completed": survey_has_been_completed,
+        "started": any(existing_survey_data_map.values()),
+        "submitted": latest_feedback_submission,
+    }
+
+    return feedback_survey_data
+
+
+def get_section_feedback_data(application, section_display_config):
+    existing_feedback_map = {
+        s.section_id: get_feedback(
+            application.id,
+            s.section_id,
+            application.fund_id,
+            application.round_id,
+        )
+        for s in section_display_config
+        if s.requires_feedback
+    }
+    current_feedback_list = [
+        existing_feedback_map.get(s.section_id)
+        for s in section_display_config
+        if s.requires_feedback
+    ]
+    return current_feedback_list, existing_feedback_map

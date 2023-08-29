@@ -11,6 +11,8 @@ from app.models.account import Account
 from app.models.application import Application
 from app.models.application_display_mapping import ApplicationMapping
 from app.models.application_summary import ApplicationSummary
+from app.models.feedback import EndOfApplicationSurveyData
+from app.models.feedback import FeedbackSubmission
 from app.models.fund import Fund
 from app.models.round import Round
 from config import Config
@@ -107,7 +109,6 @@ def get_data_or_fail_gracefully(endpoint: str, params: dict = None):
 
 
 def get_remote_data(endpoint):
-
     response = requests.get(endpoint)
     if response.status_code == 200:
         data = response.json()
@@ -121,7 +122,6 @@ def get_remote_data(endpoint):
 
 
 def get_remote_data_force_return(endpoint):
-
     response = requests.get(endpoint)
     response_status = response.status_code
     data = response.json()
@@ -129,7 +129,6 @@ def get_remote_data_force_return(endpoint):
 
 
 def get_local_data(endpoint: str):
-
     api_data_json = os.path.join(
         Config.FLASK_ROOT, "tests", "api_data", "endpoint_data.json"
     )
@@ -149,7 +148,7 @@ def get_application_data(application_id, as_dict=False):
         application_id=application_id
     )
     application_response = get_data(application_request_url)
-    if as_dict:
+    if not as_dict:
         return Application.from_dict(application_response)
     else:
         return application_response
@@ -417,3 +416,74 @@ def get_default_round_for_fund(fund_short_name: str) -> Round:
     except Exception as e:
         current_app.log_exception(e)
         return None
+
+
+def submit_feedback(
+    application_id, comment, rating, fund_id, round_id, section_id
+):
+    post_data = {
+        "application_id": application_id,
+        "feedback_json": {"comment": comment, "rating": rating},
+        "fund_id": fund_id,
+        "round_id": round_id,
+        "section_id": section_id,
+        "status": "COMPLETED",
+    }
+
+    feedback_response = requests.post(Config.FEEDBACK_ENDPOINT, json=post_data)
+    if not feedback_response.ok:
+        return None
+
+    json_response = feedback_response.json()
+    return FeedbackSubmission.from_dict(json_response)
+
+
+def get_feedback(application_id, section_id, fund_id, round_id):
+    params = {
+        "application_id": application_id,
+        "section_id": section_id,
+        "fund_id": fund_id,
+        "round_id": round_id,
+    }
+
+    feedback_response = requests.get(Config.FEEDBACK_ENDPOINT, params)
+    if feedback_response.ok:
+        return FeedbackSubmission.from_dict(feedback_response.json())
+
+    current_app.logger.info(
+        f"No feedback found for {application_id} section {section_id}"
+    )
+
+
+def post_survey_data(
+    application_id, fund_id, round_id, page_number, form_data_dict
+):
+    post_data = {
+        "application_id": application_id,
+        "data": form_data_dict,
+        "fund_id": fund_id,
+        "page_number": int(page_number),
+        "round_id": round_id,
+    }
+
+    survey_response = requests.post(
+        Config.END_OF_APP_SURVEY_FEEDBACK_ENDPOINT, json=post_data
+    )
+    if not survey_response.ok:
+        return None
+
+    json_response = survey_response.json()
+    return EndOfApplicationSurveyData.from_dict(json_response)
+
+
+def get_survey_data(application_id, page_number):
+    params = {
+        "application_id": application_id,
+        "page_number": page_number,
+    }
+
+    survey_response = requests.get(
+        Config.END_OF_APP_SURVEY_FEEDBACK_ENDPOINT, params
+    )
+    if survey_response.ok:
+        return EndOfApplicationSurveyData.from_dict(survey_response.json())

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block beforeContent %}
+    <a href="{{ url_for("application_routes.tasklist", application_id=application_id) }}"
+       class="govuk-back-link">Go back to application overview</a>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    <span class="govuk-caption-l">Applicant feedback survey</span>
+                </div>
+                <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+                    <span class="govuk-body">3 of 4 questions</span>
+                </div>
+            </div>
+
+            <form method="post">
+                {{ form.hidden_tag() }}
+                {{ form.csrf_token }}
+                {{ form.application_id() }}
+
+                <div class="govuk-form-group">
+                    <fieldset class="govuk-fieldset">
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                            <h1 class="govuk-fieldset__heading">
+                                {{ form.understand_eligibility_criteria.label }}
+                            </h1>
+                        </legend>
+                        <div class="govuk-radios" data-module="govuk-radios">
+                            {% for choice_value, choice_label in form.understand_eligibility_criteria.choices %}
+                                <div class="govuk-radios__item">
+                                    <input class="govuk-radios__input" id="{{ choice_value }}"
+                                           name="{{ form.understand_eligibility_criteria.name }}" type="radio"
+                                           value="{{ choice_value }}"
+                                            {% if choice_value == form.understand_eligibility_criteria.data %}
+                                           checked
+                                            {% endif %}>
+                                    <label class="govuk-label govuk-radios__label" for="{{ choice_value }}">
+                                        {{ choice_label }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div>
+                    <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+{% endblock %}

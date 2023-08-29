@@ -23,7 +23,9 @@ class Form:
 class ApplicationMapping:
     title: str
     weighting: int
+    section_id: str
     children: List[Form]
+    requires_feedback: bool = False
 
     @staticmethod
     def from_dict(d: dict):
@@ -36,4 +38,5 @@ class ApplicationMapping:
                 if k in inspect.signature(ApplicationMapping).parameters
             },
             children=children,
+            section_id=d.get("id"),
         )

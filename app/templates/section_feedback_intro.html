@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block beforeContent %}
+    <a href="{{ url_for("application_routes.tasklist", application_id=application_id) }}"
+       class="govuk-back-link">Go back to application overview</a>
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+            <h1 class="govuk-heading-l">{{ section.title }} feedback</h1>
+
+            <p class="govuk-body">We'll ask about your experience of completing this section, so we can improve our
+                application forms. Your responses will not be scored.</p>
+
+            <a href="{{ url_for("application_routes.section_feedback",
+                               application_id=application_id,
+                               section_id=section.section_id) }}"
+               role="button"
+               draggable="false"
+               class="govuk-button"
+               data-module="govuk-button">
+                Continue
+            </a>
+        </div>
+    </div>
+{% endblock %}
