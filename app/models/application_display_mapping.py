@@ -24,8 +24,8 @@ class ApplicationMapping:
     title: str
     weighting: int
     section_id: str
-    requires_feedback: bool
     children: List[Form]
+    requires_feedback: bool = False
 
     @staticmethod
     def from_dict(d: dict):
