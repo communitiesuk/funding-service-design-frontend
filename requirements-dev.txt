@@ -80,7 +80,7 @@ commonmark==0.9.1
     # via
     #   -r requirements.txt
     #   rich
-cryptography==37.0.4
+cryptography==41.0.3
     # via
     #   -r requirements.txt
     #   pyjwt
@@ -154,6 +154,10 @@ gitpython==3.1.27
     # via bandit
 govuk-frontend-jinja==2.0.0
     # via -r requirements.txt
+greenlet==2.0.2
+    # via
+    #   -r requirements.txt
+    #   sqlalchemy
 gunicorn==20.1.0
     # via
     #   -r requirements.txt
@@ -276,7 +280,7 @@ pytest-flask==1.2.0
     # via -r requirements-dev.in
 pytest-html==3.1.1
     # via pytest-selenium
-pytest-metadata==2.0.1
+pytest-metadata==3.0.0
     # via pytest-html
 pytest-mock==3.7.0
     # via -r requirements-dev.in
@@ -394,8 +398,6 @@ toml==0.10.2
     #   pre-commit
 tomli==2.0.1
     # via
-    #   black
-    #   build
     #   pep517
     #   pytest
 tqdm==4.64.1
