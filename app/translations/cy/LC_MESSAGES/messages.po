@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-09-04 15:39+0100\n"
+"POT-Creation-Date: 2023-09-04 16:13+0100\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -270,21 +270,21 @@ msgstr "Gwerth ychwanegol i'r gymuned"
 #: app/templates/cof_r2_all_questions.html:34
 #: app/templates/cof_r2_all_questions.html:1274
 #: app/templates/cof_r3_all_questions.html:28
-#: app/templates/cof_r3_all_questions.html:1193
+#: app/templates/cof_r3_all_questions.html:1205
 msgid "subsidy-control"
 msgstr "rheoli-cymhorthdal"
 
 #: app/templates/cof_r2_all_questions.html:34
 #: app/templates/cof_r2_all_questions.html:1275
 #: app/templates/cof_r3_all_questions.html:28
-#: app/templates/cof_r3_all_questions.html:1194
+#: app/templates/cof_r3_all_questions.html:1206
 msgid "Subsidy control and state aid"
 msgstr "Rheoli cymorthdaliadau a chymorth gwladwriaethol"
 
 #: app/templates/cof_r2_all_questions.html:37
 #: app/templates/cof_r2_all_questions.html:1308
 #: app/templates/cof_r3_all_questions.html:31
-#: app/templates/cof_r3_all_questions.html:1227
+#: app/templates/cof_r3_all_questions.html:1239
 msgid "declarations"
 msgstr "datganiadau"
 
@@ -348,8 +348,8 @@ msgstr "A yw eich sefydliad yn defnyddio unrhyw enwau eraill?"
 #: app/templates/cof_r3_all_questions.html:173
 #: app/templates/cof_r3_all_questions.html:406
 #: app/templates/cof_r3_all_questions.html:450
-#: app/templates/cof_r3_all_questions.html:1206
 #: app/templates/cof_r3_all_questions.html:1218
+#: app/templates/cof_r3_all_questions.html:1230
 msgctxt "individual"
 msgid "If 'Yes', go to"
 msgstr "Os 'Ydy', ewch i"
@@ -439,18 +439,18 @@ msgstr "Beth yw prif ddiben eich sefydliad?"
 #: app/templates/cof_r3_all_questions.html:666
 #: app/templates/cof_r3_all_questions.html:672
 #: app/templates/cof_r3_all_questions.html:684
-#: app/templates/cof_r3_all_questions.html:931
-#: app/templates/cof_r3_all_questions.html:940
-#: app/templates/cof_r3_all_questions.html:1004
-#: app/templates/cof_r3_all_questions.html:1013
-#: app/templates/cof_r3_all_questions.html:1022
-#: app/templates/cof_r3_all_questions.html:1045
-#: app/templates/cof_r3_all_questions.html:1062
-#: app/templates/cof_r3_all_questions.html:1065
+#: app/templates/cof_r3_all_questions.html:943
+#: app/templates/cof_r3_all_questions.html:952
+#: app/templates/cof_r3_all_questions.html:1016
+#: app/templates/cof_r3_all_questions.html:1025
+#: app/templates/cof_r3_all_questions.html:1034
+#: app/templates/cof_r3_all_questions.html:1057
 #: app/templates/cof_r3_all_questions.html:1074
-#: app/templates/cof_r3_all_questions.html:1080
-#: app/templates/cof_r3_all_questions.html:1209
+#: app/templates/cof_r3_all_questions.html:1077
+#: app/templates/cof_r3_all_questions.html:1086
+#: app/templates/cof_r3_all_questions.html:1092
 #: app/templates/cof_r3_all_questions.html:1221
+#: app/templates/cof_r3_all_questions.html:1233
 msgid "(maximum 500 words)"
 msgstr "(uchafswm o 500 o eiriau)"
 
@@ -491,7 +491,7 @@ msgstr "Os 'Ydyn', ewch i"
 #: app/templates/cof_r3_all_questions.html:174
 #: app/templates/cof_r3_all_questions.html:229
 #: app/templates/cof_r3_all_questions.html:406
-#: app/templates/cof_r3_all_questions.html:1206
+#: app/templates/cof_r3_all_questions.html:1218
 msgid "and"
 msgstr "a"
 
@@ -1427,23 +1427,23 @@ msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:659
 #: app/templates/cof_r2_all_questions.html:685
-#: app/templates/cof_r3_all_questions.html:852
-#: app/templates/cof_r3_all_questions.html:881
-#: app/templates/cof_r3_all_questions.html:895
+#: app/templates/cof_r3_all_questions.html:858
+#: app/templates/cof_r3_all_questions.html:887
+#: app/templates/cof_r3_all_questions.html:901
 msgid "utilities"
 msgstr "cyfleustodau"
 
 #: app/templates/cof_r2_all_questions.html:662
 #: app/templates/cof_r2_all_questions.html:688
-#: app/templates/cof_r3_all_questions.html:855
-#: app/templates/cof_r3_all_questions.html:884
-#: app/templates/cof_r3_all_questions.html:898
+#: app/templates/cof_r3_all_questions.html:861
+#: app/templates/cof_r3_all_questions.html:890
+#: app/templates/cof_r3_all_questions.html:904
 msgid "staffing"
 msgstr "staffio"
 
 #: app/templates/cof_r2_all_questions.html:665
 #: app/templates/cof_r2_all_questions.html:691
-#: app/templates/cof_r3_all_questions.html:858
+#: app/templates/cof_r3_all_questions.html:864
 msgid "appointing external consultants"
 msgstr "penodi ymgynghorwyr allanol"
 
@@ -1461,9 +1461,9 @@ msgstr ""
 #: app/templates/cof_r2_all_questions.html:988
 #: app/templates/cof_r2_all_questions.html:1000
 #: app/templates/cof_r3_all_questions.html:822
-#: app/templates/cof_r3_all_questions.html:868
-#: app/templates/cof_r3_all_questions.html:937
-#: app/templates/cof_r3_all_questions.html:1019
+#: app/templates/cof_r3_all_questions.html:874
+#: app/templates/cof_r3_all_questions.html:949
+#: app/templates/cof_r3_all_questions.html:1031
 msgctxt "indefinite"
 msgid "If 'Yes', go to"
 msgstr "Os 'Oes', ewch i"
@@ -1472,7 +1472,7 @@ msgstr "Os 'Oes', ewch i"
 #: app/templates/cof_r2_all_questions.html:762
 #: app/templates/cof_r2_all_questions.html:991
 #: app/templates/cof_r3_all_questions.html:825
-#: app/templates/cof_r3_all_questions.html:871
+#: app/templates/cof_r3_all_questions.html:877
 msgctxt "indefinite"
 msgid "If 'No', go to"
 msgstr "Os 'Nac oes', ewch i"
@@ -1484,7 +1484,7 @@ msgstr "cosau refeniw (dewisol)"
 #: app/templates/cof_r2_all_questions.html:698
 #: app/templates/cof_r2_all_questions.html:800
 #: app/templates/cof_r3_all_questions.html:834
-#: app/templates/cof_r3_all_questions.html:891
+#: app/templates/cof_r3_all_questions.html:897
 msgid "You can use your business plan to:"
 msgstr "Gallech ddefnyddio eich cynllun busnes i:"
 
@@ -1577,9 +1577,9 @@ msgstr "benthycwyr eraill"
 #: app/templates/cof_r2_all_questions.html:849
 #: app/templates/cof_r2_all_questions.html:1020
 #: app/templates/cof_r2_all_questions.html:1040
-#: app/templates/cof_r3_all_questions.html:928
-#: app/templates/cof_r3_all_questions.html:1039
-#: app/templates/cof_r3_all_questions.html:1059
+#: app/templates/cof_r3_all_questions.html:940
+#: app/templates/cof_r3_all_questions.html:1051
+#: app/templates/cof_r3_all_questions.html:1071
 msgid ""
 "You can use your business plan to provide evidence to support your "
 "answers."
@@ -1642,25 +1642,25 @@ msgstr ""
 "presennol."
 
 #: app/templates/cof_r2_all_questions.html:829
-#: app/templates/cof_r3_all_questions.html:908
+#: app/templates/cof_r3_all_questions.html:920
 msgid "Feasibility"
 msgstr "Dichonoldeb"
 
 #: app/templates/cof_r2_all_questions.html:832
 #: app/templates/cof_r2_all_questions.html:917
-#: app/templates/cof_r3_all_questions.html:911
+#: app/templates/cof_r3_all_questions.html:923
 msgid ""
 "This is analysis which tests the ability of your project to deliver its "
 "objectives."
 msgstr "Dadansoddiad yw hwn sy'n profi gallu eich prosiect i gyflawni ei amcanion."
 
 #: app/templates/cof_r2_all_questions.html:835
-#: app/templates/cof_r3_all_questions.html:914
+#: app/templates/cof_r3_all_questions.html:926
 msgid "You should use your feasibility studies to:"
 msgstr "Dylech ddefnyddio'ch astudiaethau dichonoldeb i:"
 
 #: app/templates/cof_r2_all_questions.html:839
-#: app/templates/cof_r3_all_questions.html:918
+#: app/templates/cof_r3_all_questions.html:930
 msgid ""
 "test the context and resources within which the project is operating, "
 "including market analysis and whether the financial, technical and "
@@ -1673,17 +1673,17 @@ msgstr ""
 "gynlluniwyd ar gyfer yr ased"
 
 #: app/templates/cof_r2_all_questions.html:842
-#: app/templates/cof_r3_all_questions.html:921
+#: app/templates/cof_r3_all_questions.html:933
 msgid "test the viability and sustainability of the project in the long term"
 msgstr "profi hyfywedd a chynaliadwyedd y prosiect yn y tymor hir"
 
 #: app/templates/cof_r2_all_questions.html:845
-#: app/templates/cof_r3_all_questions.html:924
+#: app/templates/cof_r3_all_questions.html:936
 msgid "develop a strong business plan"
 msgstr "datblygu cynllun busnes cadarn"
 
 #: app/templates/cof_r2_all_questions.html:852
-#: app/templates/cof_r3_all_questions.html:931
+#: app/templates/cof_r3_all_questions.html:943
 msgid ""
 "Tell us about the feasibility studies you have carried out for your "
 "project"
@@ -1692,19 +1692,19 @@ msgstr ""
 "gyfer eich prosiect"
 
 #: app/templates/cof_r2_all_questions.html:855
-#: app/templates/cof_r3_all_questions.html:934
+#: app/templates/cof_r3_all_questions.html:946
 msgid "Do you need to do any further feasibility work?"
 msgstr ""
 "A oes angen i chi ymgymryd ag unrhyw waith pellach yn ymwneud â "
 "dichonoldeb?"
 
 #: app/templates/cof_r2_all_questions.html:858
-#: app/templates/cof_r3_all_questions.html:946
+#: app/templates/cof_r3_all_questions.html:958
 msgid "Risk"
 msgstr "Risg"
 
 #: app/templates/cof_r2_all_questions.html:861
-#: app/templates/cof_r3_all_questions.html:949
+#: app/templates/cof_r3_all_questions.html:961
 msgid ""
 "We want to understand any risks your project may face and how you intend "
 "to mitigate them. They can be during the planning or delivery stages, or "
@@ -1715,7 +1715,7 @@ msgstr ""
 "neu gyflawni, neu ar ôl i chi gymryd perchnogaeth o'r ased."
 
 #: app/templates/cof_r2_all_questions.html:864
-#: app/templates/cof_r3_all_questions.html:952
+#: app/templates/cof_r3_all_questions.html:964
 msgid ""
 "This does not include any risks to the asset or why it may close, which "
 "we asked you about earlier in your application."
@@ -1724,69 +1724,69 @@ msgstr ""
 "gwnaethom eich holi ynglŷn â hyn yn gynharach yn eich cais."
 
 #: app/templates/cof_r2_all_questions.html:867
-#: app/templates/cof_r3_all_questions.html:955
+#: app/templates/cof_r3_all_questions.html:967
 msgid "Examples of risks include:"
 msgstr "Mae enghreifftiau o risgiau yn cynnwys:"
 
 #: app/templates/cof_r2_all_questions.html:871
-#: app/templates/cof_r3_all_questions.html:959
+#: app/templates/cof_r3_all_questions.html:971
 msgid "planning consent for any work needed on the asset"
 msgstr "caniatâd cynllunio ar gyfer unrhyw waith angenrheidiol ar yr ased"
 
 #: app/templates/cof_r2_all_questions.html:874
-#: app/templates/cof_r3_all_questions.html:962
+#: app/templates/cof_r3_all_questions.html:974
 msgid "potential issues with the supply of building materials"
 msgstr "problemau posibl gyda chyflenwi deunyddiau adeiladu"
 
 #: app/templates/cof_r2_all_questions.html:877
-#: app/templates/cof_r3_all_questions.html:965
+#: app/templates/cof_r3_all_questions.html:977
 msgid "staffing departures during delivery of your project"
 msgstr "staff yn gadael yn ystod cyfnod cyflawni eich prosiect"
 
 #: app/templates/cof_r2_all_questions.html:881
-#: app/templates/cof_r3_all_questions.html:969
+#: app/templates/cof_r3_all_questions.html:981
 msgid "Risks to your project (document upload)"
 msgstr "Risgiau i'ch prosiect (lanlwytho dogfen)"
 
 #: app/templates/cof_r2_all_questions.html:888
-#: app/templates/cof_r3_all_questions.html:972
+#: app/templates/cof_r3_all_questions.html:984
 msgid "Upload a document detailing any risks your project may face."
 msgstr ""
 "Lanlwythwch ddogfen sy'n nodi manylion unrhyw risgiau y gallai eich "
 "prosiect eu hwynebu."
 
 #: app/templates/cof_r2_all_questions.html:891
-#: app/templates/cof_r3_all_questions.html:975
+#: app/templates/cof_r3_all_questions.html:987
 msgid "You should include:"
 msgstr "Dylech gynnwys:"
 
 #: app/templates/cof_r2_all_questions.html:895
-#: app/templates/cof_r3_all_questions.html:979
+#: app/templates/cof_r3_all_questions.html:991
 msgid "a description of the risk"
 msgstr "disgrifiad o'r risg"
 
 #: app/templates/cof_r2_all_questions.html:898
-#: app/templates/cof_r3_all_questions.html:982
+#: app/templates/cof_r3_all_questions.html:994
 msgid "the likelihood of it happening"
 msgstr "y tebygolrwydd y bydd yn digwydd"
 
 #: app/templates/cof_r2_all_questions.html:901
-#: app/templates/cof_r3_all_questions.html:985
+#: app/templates/cof_r3_all_questions.html:997
 msgid "when it may occur"
 msgstr "pa bryd y gallai ddigwydd"
 
 #: app/templates/cof_r2_all_questions.html:904
-#: app/templates/cof_r3_all_questions.html:988
+#: app/templates/cof_r3_all_questions.html:1000
 msgid "how you intend to mitigate it"
 msgstr "sut y bwriadwch liniaru'r risg"
 
 #: app/templates/cof_r2_all_questions.html:907
-#: app/templates/cof_r3_all_questions.html:991
+#: app/templates/cof_r3_all_questions.html:1003
 msgid "the likelihood of it happening after mitigation"
 msgstr "y tebygolrwydd y bydd yn digwydd ar ôl lliniaru"
 
 #: app/templates/cof_r2_all_questions.html:911
-#: app/templates/cof_r3_all_questions.html:995
+#: app/templates/cof_r3_all_questions.html:1007
 msgid ""
 "Do not include any risks to the asset or why it may close, which we asked"
 " you about earlier in your application."
@@ -1871,7 +1871,7 @@ msgid "security measures"
 msgstr "mesurau diogelwch"
 
 #: app/templates/cof_r2_all_questions.html:967
-#: app/templates/cof_r3_all_questions.html:1010
+#: app/templates/cof_r3_all_questions.html:1022
 msgid "Skills and resources"
 msgstr "Sgiliau ac adnoddau"
 
@@ -1917,17 +1917,17 @@ msgstr ""
 "un hwn"
 
 #: app/templates/cof_r2_all_questions.html:997
-#: app/templates/cof_r3_all_questions.html:1016
+#: app/templates/cof_r3_all_questions.html:1028
 msgid "Do you have any plans to recruit people to help you manage the asset?"
 msgstr "A oes cynlluniau gennych i recriwtio pobl i'ch helpu i reoli'r ased?"
 
 #: app/templates/cof_r2_all_questions.html:1003
-#: app/templates/cof_r3_all_questions.html:1022
+#: app/templates/cof_r3_all_questions.html:1034
 msgid "Tells us about the roles you'll recruit"
 msgstr "Dywedwch wrthym am y rolau y byddwch yn eu recriwtio"
 
 #: app/templates/cof_r2_all_questions.html:1006
-#: app/templates/cof_r3_all_questions.html:1025
+#: app/templates/cof_r3_all_questions.html:1037
 msgid ""
 "These should be positions which will help you effectively manage the "
 "asset during community ownership."
@@ -1936,55 +1936,55 @@ msgstr ""
 "effeithiol yn ystod perchnogaeth gymunedol."
 
 #: app/templates/cof_r2_all_questions.html:1009
-#: app/templates/cof_r3_all_questions.html:1028
+#: app/templates/cof_r3_all_questions.html:1040
 msgid "Include the:"
 msgstr "Cynhwyswch:"
 
 #: app/templates/cof_r2_all_questions.html:1013
 #: app/templates/cof_r2_all_questions.html:1033
 #: app/templates/cof_r2_all_questions.html:1187
-#: app/templates/cof_r3_all_questions.html:1032
-#: app/templates/cof_r3_all_questions.html:1052
+#: app/templates/cof_r3_all_questions.html:1044
+#: app/templates/cof_r3_all_questions.html:1064
 msgid "role"
 msgstr "rôl"
 
 #: app/templates/cof_r2_all_questions.html:1016
 #: app/templates/cof_r2_all_questions.html:1036
 #: app/templates/cof_r2_all_questions.html:1190
-#: app/templates/cof_r3_all_questions.html:1035
-#: app/templates/cof_r3_all_questions.html:1055
+#: app/templates/cof_r3_all_questions.html:1047
+#: app/templates/cof_r3_all_questions.html:1067
 msgid "main responsibilities"
 msgstr "prif gyfrifoldebau"
 
 #: app/templates/cof_r2_all_questions.html:1023
-#: app/templates/cof_r3_all_questions.html:1042
+#: app/templates/cof_r3_all_questions.html:1054
 msgid "Community representation"
 msgstr "Cynrychiolaeth gymunedol"
 
 #: app/templates/cof_r2_all_questions.html:1026
-#: app/templates/cof_r3_all_questions.html:1045
+#: app/templates/cof_r3_all_questions.html:1057
 msgid "List the members of your board"
 msgstr "Rhestrwch aelodau eich bwrdd"
 
 #: app/templates/cof_r2_all_questions.html:1029
-#: app/templates/cof_r3_all_questions.html:1048
+#: app/templates/cof_r3_all_questions.html:1060
 msgid "Include their:"
 msgstr "Cynhwyswch eu:"
 
 #: app/templates/cof_r2_all_questions.html:1043
-#: app/templates/cof_r3_all_questions.html:1062
+#: app/templates/cof_r3_all_questions.html:1074
 msgid "Tell us about your governance and membership structures"
 msgstr "Dywedwch wrthym am eich strwythurau llywodraethu ac aelodaeth"
 
 #: app/templates/cof_r2_all_questions.html:1046
-#: app/templates/cof_r3_all_questions.html:1065
+#: app/templates/cof_r3_all_questions.html:1077
 msgid ""
 "Explain how you'll consider the views of the community in the running of "
 "the asset"
 msgstr "Eglurwch sut byddwch chi'n ystyried barn y gymuned wrth redeg yr ased"
 
 #: app/templates/cof_r2_all_questions.html:1049
-#: app/templates/cof_r3_all_questions.html:1068
+#: app/templates/cof_r3_all_questions.html:1080
 msgid ""
 "Include how they'll be involved in decision making, and how you'll "
 "measure public support for your decisions"
@@ -1993,7 +1993,7 @@ msgstr ""
 " a sut byddwch chi'n mesur cefnogaeth gyhoeddus i'ch penderfyniadau"
 
 #: app/templates/cof_r2_all_questions.html:1052
-#: app/templates/cof_r3_all_questions.html:1071
+#: app/templates/cof_r3_all_questions.html:1083
 msgid "Inclusiveness and integration"
 msgstr "Cynhwysiant ac integreiddio"
 
@@ -2006,7 +2006,7 @@ msgstr ""
 "yn yr ased cymuned"
 
 #: app/templates/cof_r2_all_questions.html:1058
-#: app/templates/cof_r3_all_questions.html:1080
+#: app/templates/cof_r3_all_questions.html:1092
 msgid ""
 "Describe anything that might prevent people from using the asset or "
 "participating in its running"
@@ -2043,22 +2043,22 @@ msgstr ""
 "gymuned"
 
 #: app/templates/cof_r2_all_questions.html:1073
-#: app/templates/cof_r3_all_questions.html:1086
+#: app/templates/cof_r3_all_questions.html:1098
 msgid "Business plan"
 msgstr "Cynllun busnes"
 
 #: app/templates/cof_r2_all_questions.html:1076
-#: app/templates/cof_r3_all_questions.html:1089
+#: app/templates/cof_r3_all_questions.html:1101
 msgid "Business plan (document upload)"
 msgstr "cynllun busnes (lanlwytho dogfen)"
 
 #: app/templates/cof_r2_all_questions.html:1079
-#: app/templates/cof_r3_all_questions.html:1092
+#: app/templates/cof_r3_all_questions.html:1104
 msgid "Upload your business plan."
 msgstr "Lanlwythwch eich cynllun busnes."
 
 #: app/templates/cof_r2_all_questions.html:1082
-#: app/templates/cof_r3_all_questions.html:1095
+#: app/templates/cof_r3_all_questions.html:1107
 msgid ""
 "Include any information that supports the answers in your application. "
 "All figures must match those you've given in the management case section."
@@ -2160,7 +2160,7 @@ msgstr ""
 "yn yr ased cymuned"
 
 #: app/templates/cof_r2_all_questions.html:1159
-#: app/templates/cof_r3_all_questions.html:1166
+#: app/templates/cof_r3_all_questions.html:1178
 msgid ""
 "any supporting evidence that you will deliver the benefits to the "
 "community you have outlined"
@@ -2191,7 +2191,7 @@ msgid "Organisation details"
 msgstr "Manylion y sefydliad"
 
 #: app/templates/cof_r2_all_questions.html:1179
-#: app/templates/cof_r3_all_questions.html:1179
+#: app/templates/cof_r3_all_questions.html:1191
 msgid ""
 "your organisation’s governance and membership structures, with supporting"
 " evidence"
@@ -2212,7 +2212,7 @@ msgid "a copy of your most recent governance board meeting minutes"
 msgstr "copi o gofnodion eich cyfarfod bwrdd llywodraethu mwyaf diweddar"
 
 #: app/templates/cof_r2_all_questions.html:1201
-#: app/templates/cof_r3_all_questions.html:1185
+#: app/templates/cof_r3_all_questions.html:1197
 msgid ""
 "supporting evidence of how you will manage finances and prevent fraud. "
 "For example, copies of your policy documents"
@@ -2221,7 +2221,7 @@ msgstr ""
 "Er enghraifft, copïau o'ch dogfennau polisi"
 
 #: app/templates/cof_r2_all_questions.html:1204
-#: app/templates/cof_r3_all_questions.html:1188
+#: app/templates/cof_r3_all_questions.html:1200
 msgid ""
 "supporting evidence of how you will manage performance and risks. For "
 "example, copies of your policy documents"
@@ -2332,17 +2332,17 @@ msgstr ""
 "bydd yr ased yn mynd i'r afael â'r rhain"
 
 #: app/templates/cof_r2_all_questions.html:1278
-#: app/templates/cof_r3_all_questions.html:1197
+#: app/templates/cof_r3_all_questions.html:1209
 msgid "Project qualification"
 msgstr "Cymhwystra'r prosiect"
 
 #: app/templates/cof_r2_all_questions.html:1281
-#: app/templates/cof_r3_all_questions.html:1200
+#: app/templates/cof_r3_all_questions.html:1212
 msgid "Does your project meet the definition of a subsidy?"
 msgstr "A yw eich prosiect yn bodloni diffiniad cymhorthdal?"
 
 #: app/templates/cof_r2_all_questions.html:1284
-#: app/templates/cof_r3_all_questions.html:1203
+#: app/templates/cof_r3_all_questions.html:1215
 msgid ""
 "For projects in England, Northern Ireland, Scotland and Wales, this "
 "definition is laid out in Paragraph 2 of the Subsidy Control Act (2022)"
@@ -2352,7 +2352,7 @@ msgstr ""
 "Cymorthdaliadau (2022)"
 
 #: app/templates/cof_r2_all_questions.html:1290
-#: app/templates/cof_r3_all_questions.html:1209
+#: app/templates/cof_r3_all_questions.html:1221
 msgid ""
 "Explain how you think a grant from this fund can be provided in "
 "compliance with the Subsidy Control Act (2022)"
@@ -2361,24 +2361,24 @@ msgstr ""
 "gydymffurfio â'r Ddeddf Rheoli Cymorthdaliadau (2022)"
 
 #: app/templates/cof_r2_all_questions.html:1293
-#: app/templates/cof_r3_all_questions.html:1212
+#: app/templates/cof_r3_all_questions.html:1224
 msgid "This is measured by the 7 common principles laid out in Schedule 1"
 msgstr "Caiff hyn ei fesur gan y 7 egwyddor gyffredin a bennwyd yn Atodlen"
 
 #: app/templates/cof_r2_all_questions.html:1296
-#: app/templates/cof_r3_all_questions.html:1215
+#: app/templates/cof_r3_all_questions.html:1227
 msgid "Is your project based in Northern Ireland?"
 msgstr "A yw eich prosiect wedi'i leoli yng Ngogledd Iwerddon?"
 
 #: app/templates/cof_r2_all_questions.html:1302
-#: app/templates/cof_r3_all_questions.html:1221
+#: app/templates/cof_r3_all_questions.html:1233
 msgid "Explain how your project will comply with state aid rules"
 msgstr ""
 "Eglurwch sut bydd eich prosiect yn cydymffurfio â rheolau cymorth "
 "gwladwriaethol"
 
 #: app/templates/cof_r2_all_questions.html:1305
-#: app/templates/cof_r3_all_questions.html:1224
+#: app/templates/cof_r3_all_questions.html:1236
 msgid ""
 "You can find more information about when state aid rules apply in "
 "Northern Ireland in the government guidance."
@@ -2388,17 +2388,17 @@ msgstr ""
 "llywodraeth"
 
 #: app/templates/cof_r2_all_questions.html:1309
-#: app/templates/cof_r3_all_questions.html:1228
+#: app/templates/cof_r3_all_questions.html:1240
 msgid "Check declarations"
 msgstr "Gwirio datganiadau"
 
 #: app/templates/cof_r2_all_questions.html:1312
-#: app/templates/cof_r3_all_questions.html:1231
+#: app/templates/cof_r3_all_questions.html:1243
 msgid "Final confirmations"
 msgstr "Cadarnhadau terfynol"
 
 #: app/templates/cof_r2_all_questions.html:1315
-#: app/templates/cof_r3_all_questions.html:1234
+#: app/templates/cof_r3_all_questions.html:1246
 msgid ""
 "Confirm you have considered subsidy control and state aid implications "
 "for your project, and the information you have given us is correct"
@@ -2408,7 +2408,7 @@ msgstr ""
 "wedi'i rhoi i ni yn gywir"
 
 #: app/templates/cof_r2_all_questions.html:1318
-#: app/templates/cof_r3_all_questions.html:1237
+#: app/templates/cof_r3_all_questions.html:1249
 msgid ""
 "Confirm you have considered people with protected characteristics "
 "throughout the planning of your project"
@@ -2417,7 +2417,7 @@ msgstr ""
 "gydol proses cynllunio'ch prosiect"
 
 #: app/templates/cof_r2_all_questions.html:1321
-#: app/templates/cof_r3_all_questions.html:1240
+#: app/templates/cof_r3_all_questions.html:1252
 msgid ""
 "Confirm you have considered sustainability and the environment throughout"
 " the planning of your project, including compliance with the government's"
@@ -2428,7 +2428,7 @@ msgstr ""
 "uchelgeisiau Sero Net y llywodraeth"
 
 #: app/templates/cof_r2_all_questions.html:1324
-#: app/templates/cof_r3_all_questions.html:1243
+#: app/templates/cof_r3_all_questions.html:1255
 msgid ""
 "Confirm you have a bank account set up and associated with the "
 "organisation you are applying on behalf of"
@@ -2566,8 +2566,8 @@ msgstr ""
 #: app/templates/cof_r3_all_questions.html:444
 #: app/templates/cof_r3_all_questions.html:485
 #: app/templates/cof_r3_all_questions.html:631
-#: app/templates/cof_r3_all_questions.html:998
-#: app/templates/cof_r3_all_questions.html:1098
+#: app/templates/cof_r3_all_questions.html:1010
+#: app/templates/cof_r3_all_questions.html:1110
 msgid ""
 "It should be a single file no bigger than 10MB in an accepted format "
 "(jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods)."
@@ -2896,11 +2896,14 @@ msgid ""
 msgstr ""
 
 #: app/templates/cof_r3_all_questions.html:766
+#: app/templates/cof_r3_all_questions.html:908
 #, fuzzy
 msgid "Describe the cost"
 msgstr "Prydlesu'r ased"
 
 #: app/templates/cof_r3_all_questions.html:769
+#: app/templates/cof_r3_all_questions.html:848
+#: app/templates/cof_r3_all_questions.html:911
 msgid "Amount"
 msgstr ""
 
@@ -2940,18 +2943,23 @@ msgstr ""
 
 #: app/templates/cof_r3_all_questions.html:845
 #, fuzzy
+msgid "Source of unsecured match funding"
+msgstr "dyddiad y derbynioch gyllid"
+
+#: app/templates/cof_r3_all_questions.html:851
+#, fuzzy
 msgid "Are you applying for revenue funding from the Community Ownership Fund?"
 msgstr ""
 "A ydych chi wedi derbyn cyllid drwy'r Gronfa Perchnogaeth Gymunedol o'r "
 "blaen?"
 
-#: app/templates/cof_r3_all_questions.html:848
+#: app/templates/cof_r3_all_questions.html:854
 msgid ""
 "Revenue costs go towards running the asset once you've taken ownership of"
 " it. This might include general costs, including for:"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:862
+#: app/templates/cof_r3_all_questions.html:868
 #, fuzzy
 msgid ""
 "Remember, you can apply for up to fifty thousand pounds (£50,000) of your"
@@ -2962,7 +2970,7 @@ msgstr ""
 " gallwch wneud cais am hyd at £50,000 o'ch costau refeniw (dim mwy nag "
 "20percnt; o'ch cyllid cyfalaf)."
 
-#: app/templates/cof_r3_all_questions.html:865
+#: app/templates/cof_r3_all_questions.html:871
 #, fuzzy
 msgid ""
 "You can use your business plan to provide any information that supports "
@@ -2971,12 +2979,12 @@ msgstr ""
 "Gallwch ddefnyddio'ch cynllun busnes i ddarparu gwybodaeth sy'n ategu'ch "
 "atebion."
 
-#: app/templates/cof_r3_all_questions.html:874
+#: app/templates/cof_r3_all_questions.html:880
 #, fuzzy
 msgid "Tell us about the total revenue costs of your project."
 msgstr "Dywedwch fwy wrthym am y gefnogaeth leol i'ch prosiect"
 
-#: app/templates/cof_r3_all_questions.html:877
+#: app/templates/cof_r3_all_questions.html:883
 #, fuzzy
 msgid ""
 "These are the running costs of the project. This might include general "
@@ -2985,7 +2993,7 @@ msgstr ""
 "Defnyddir hwn ar gyfer costau rhedeg y prosiect. Gallai hyn gynnwys "
 "ffioedd cyfreithiol neu gostau cyffredinol, gan gynnwys ar gyfer:"
 
-#: app/templates/cof_r3_all_questions.html:888
+#: app/templates/cof_r3_all_questions.html:894
 #, fuzzy
 msgid ""
 "Remember, you can apply for up to £50,000 of your revenue costs (no more "
@@ -2994,143 +3002,143 @@ msgstr ""
 "Ni ddylai fod yn fwy na £50,000, a dim mwy nag 20percnt; o'ch cyllid "
 "cyfalaf."
 
-#: app/templates/cof_r3_all_questions.html:902
+#: app/templates/cof_r3_all_questions.html:914
 msgid "Tell us how the revenue funding you've requested will help run the asset"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:905
+#: app/templates/cof_r3_all_questions.html:917
 msgid ""
 "Include the specific needs it will meet, and how you'll meet these needs "
 "once you've spent the funding."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:940
+#: app/templates/cof_r3_all_questions.html:952
 msgid "Describe the feasibility work you still need to complete "
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:943
+#: app/templates/cof_r3_all_questions.html:955
 #, fuzzy
 msgid "Include details of your plans and when you expect to complete them"
 msgstr ""
 "Mae hyn yn cynnwys manylion unrhyw anghenion sydd ganddi, a sut bydd eich"
 " prosiect yn mynd ati i gefnogi'r rhain."
 
-#: app/templates/cof_r3_all_questions.html:1001
+#: app/templates/cof_r3_all_questions.html:1013
 #, fuzzy
 msgid "Operational costs"
 msgstr "costau cyfalaf"
 
-#: app/templates/cof_r3_all_questions.html:1004
+#: app/templates/cof_r3_all_questions.html:1016
 #, fuzzy
 msgid "Summarise your income and operational costs for the running of the asset"
 msgstr "Crynhowch eich llif arian ar gyfer rhedeg yr ased"
 
-#: app/templates/cof_r3_all_questions.html:1007
+#: app/templates/cof_r3_all_questions.html:1019
 msgid ""
 "Include how you see it working over the next three years. You must use "
 "your business plan to provide a forecast of figures."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1013
+#: app/templates/cof_r3_all_questions.html:1025
 #, fuzzy
 msgid ""
 "Describe any relevant experience you have delivering similar projects or "
 "running an asset"
 msgstr "eich profiad o gyflawni prosiectau tebyg"
 
-#: app/templates/cof_r3_all_questions.html:1074
+#: app/templates/cof_r3_all_questions.html:1086
 msgid ""
 "Tell us how the asset will be accountable to local people, and involve "
 "them in its running"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1077
+#: app/templates/cof_r3_all_questions.html:1089
 msgid ""
 "This means how you'll involve everyone in key decisions, such as how the "
 "asset is used"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1083
+#: app/templates/cof_r3_all_questions.html:1095
 #, fuzzy
 msgid ""
 "For example, high membership costs or exclusive eligibility criteria "
 "which prevent people from participating"
 msgstr "Er enghraifft, costau aelodaeth neu feini prawf cymhwysedd"
 
-#: app/templates/cof_r3_all_questions.html:1101
+#: app/templates/cof_r3_all_questions.html:1113
 #, fuzzy
 msgid "Your business plan should include (but is not limited to):"
 msgstr "Gallai eich cynllun busnes gynnwys:"
 
-#: app/templates/cof_r3_all_questions.html:1105
+#: app/templates/cof_r3_all_questions.html:1117
 msgid "Information about the capital element of your project. This could include:"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1110
+#: app/templates/cof_r3_all_questions.html:1122
 msgid ""
 "information about your completed or planned feasibility studies. This "
 "could include any relevant surveys"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1113
+#: app/templates/cof_r3_all_questions.html:1125
 msgid "a programme with key milestones for completion of your project"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1116
+#: app/templates/cof_r3_all_questions.html:1128
 msgid ""
 "your skills and resources to manage the capital project, including "
 "relevant project management expertise"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1121
+#: app/templates/cof_r3_all_questions.html:1133
 msgid "A financial breakdown of your project. This should include:"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1126
+#: app/templates/cof_r3_all_questions.html:1138
 msgid ""
 "a clear breakdown of the total capital project costs and explanation of "
 "how these have been calculated. This could include any quotes or cost "
 "benchmarking"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1129
+#: app/templates/cof_r3_all_questions.html:1141
 msgid "whether the costs include irrecoverable VAT"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1132
+#: app/templates/cof_r3_all_questions.html:1144
 #, fuzzy
 msgid "the capital funding request from the Community Ownership Fund"
 msgstr ""
 "Dyma'r swm yr ydych yn ymgeisio amdano ar gyfer y Gronfa Perchnogaeth "
 "Gymunedol"
 
-#: app/templates/cof_r3_all_questions.html:1135
+#: app/templates/cof_r3_all_questions.html:1147
 #, fuzzy
 msgid "the total amount of match funding required"
 msgstr "Swm y cyllid a dderbyniwyd"
 
-#: app/templates/cof_r3_all_questions.html:1138
+#: app/templates/cof_r3_all_questions.html:1150
 msgid "sources of match funding secured to date"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1141
+#: app/templates/cof_r3_all_questions.html:1153
 #, fuzzy
 msgid "sources of match funding still to be secured"
 msgstr "cyllid y mae angen i chi ei sicrhau o hyd"
 
-#: app/templates/cof_r3_all_questions.html:1144
+#: app/templates/cof_r3_all_questions.html:1156
 msgid ""
 "timescales and potential sources for securing all outstanding match "
 "funding"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1149
+#: app/templates/cof_r3_all_questions.html:1161
 msgid ""
 "Information about how the asset will be used and managed in the future. "
 "This should include:"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1154
+#: app/templates/cof_r3_all_questions.html:1166
 #, fuzzy
 msgid ""
 "a discussion of planned activities and/or services that will take place "
@@ -3139,38 +3147,38 @@ msgstr ""
 "gweithgareddau neu wasanaethau wedi'u cynllunio a fydd yn cael eu cynnal "
 "yn yr ased cymuned"
 
-#: app/templates/cof_r3_all_questions.html:1157
+#: app/templates/cof_r3_all_questions.html:1169
 msgid ""
 "your full financial forecasts, including income sources and costs with an"
 " evidenced set of assumptions"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1160
+#: app/templates/cof_r3_all_questions.html:1172
 msgid ""
 "a clear breakdown of the revenue project costs and explanation of how "
 "these have been calculated"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1163
+#: app/templates/cof_r3_all_questions.html:1175
 msgid "your cashflow and revenue budgets"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1171
+#: app/templates/cof_r3_all_questions.html:1183
 msgid ""
 "A consideration of risks and mitigations of both the capital works/spend "
 "and the ongoing operation of the asset"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1174
+#: app/templates/cof_r3_all_questions.html:1186
 msgid "Organisational and governance information. This should include:"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1182
+#: app/templates/cof_r3_all_questions.html:1194
 #, fuzzy
 msgid "members of your board, including their role and main responsibilities"
 msgstr "aelodau eich bwrdd, gan gynnwys eu:"
 
-#: app/templates/cof_r3_all_questions.html:1246
+#: app/templates/cof_r3_all_questions.html:1258
 msgid ""
 "Confirm that the information you've provided in this application is "
 "accurate to the best of your knowledge on the date of submission"
