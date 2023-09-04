@@ -18,7 +18,7 @@ on:
 jobs:
   tag-to-release:
     if: ${{ github.actor != 'dependabot[bot]' }}
-    uses: communitiesuk/funding-design-service-workflows/.github/workflows/tag-to-release.yml@main
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/tag-to-release.yml@main
   paketo_build:
     needs: tag-to-release
     permissions:
