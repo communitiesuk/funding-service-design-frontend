@@ -22,13 +22,16 @@ def index():
 
 
 ### REMOVE - JUST FOR TEMPORARY DEV ACCESS TO PAGE
-@default_bp.route('/section_feedback_intro')
+@default_bp.route("/section_feedback_intro")
 def feedback_intro():
-    return render_template('section_feedback_intro.html')
+    return render_template("section_feedback_intro.html")
 
-@default_bp.route('/section_feedback_survey_1')
+
+@default_bp.route("/section_feedback_survey_1")
 def section_feedback_survey_1():
-    return render_template('section_feedback_survey_1.html')
+    return render_template("section_feedback_survey_1.html")
+
+
 ###################################################
 
 

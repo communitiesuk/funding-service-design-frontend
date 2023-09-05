@@ -10,7 +10,10 @@ from flask import request
 from flask import url_for
 from fsd_utils.authentication.decorators import login_requested
 
-content_bp = Blueprint("feedback_routes", __name__, template_folder="templates")
+content_bp = Blueprint(
+    "feedback_routes", __name__, template_folder="templates"
+)
+
 
 @content_bp.route("/section_feedback_intro/<application_id>/<section_id>")
 def section_feedback_intro(application_id, section_id):
