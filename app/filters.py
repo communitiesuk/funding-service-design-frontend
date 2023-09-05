@@ -20,6 +20,12 @@ def datetime_format_short_month(value: datetime) -> str:
         return ""
 
 
+def custom_format_datetime(date_string, output_format="%d/%m/%Y"):
+    original_date = datetime.strptime(date_string, "%Y-%m-%dT%H:%M:%S.%f")
+    formatted_date = original_date.strftime(output_format)
+    return formatted_date
+
+
 def datetime_format(value: str) -> str:
     parsed = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S")
     formatted_date = format_datetime(parsed, format="dd MMMM yyyy ")

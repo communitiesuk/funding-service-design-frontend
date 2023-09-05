@@ -1,5 +1,6 @@
 from os import getenv
 
+from app.filters import custom_format_datetime
 from app.filters import date_format_short_month
 from app.filters import datetime_format
 from app.filters import datetime_format_short_month
@@ -92,6 +93,9 @@ def create_app() -> Flask:
     flask_app.jinja_env.filters[
         "datetime_format_short_month"
     ] = datetime_format_short_month
+    flask_app.jinja_env.filters[
+        "custom_format_datetime"
+    ] = custom_format_datetime
     flask_app.jinja_env.filters[
         "date_format_short_month"
     ] = date_format_short_month
