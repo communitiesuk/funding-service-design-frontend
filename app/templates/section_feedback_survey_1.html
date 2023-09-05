@@ -4,9 +4,6 @@
     govukButton -%} {% from "partials/available_in_language.html" import available_in_language %}
 {% from "partials/round_closed_warning.html" import round_closed_warning %}
 
-<!--
-    Pass dashboard url
--->
 {% block beforeContent %}
     <a href="{{dashboard_url}}" class="govuk-back-link">Go back to application overview</a>
 {% endblock %}
