@@ -21,30 +21,12 @@ def index():
     return abort(404)
 
 
-### REMOVE - JUST FOR TEMPORARY DEV ACCESS TO PAGE
-@default_bp.route("/section_feedback_intro")
-def feedback_intro():
-    return render_template("section_feedback_intro.html")
-
-
-@default_bp.route("/section_feedback_survey_1")
-def section_feedback_survey_1():
-    return render_template("section_feedback_survey_1.html")
-
-
-###################################################
-
-
 @default_bp.route("/funding-round/<fund_short_name>/<round_short_name>")
 def index_fund_round(fund_short_name, round_short_name):
     current_app.logger.info(
         f"In fund-round start page {fund_short_name} {round_short_name}"
     )
 
-    # fund_data = get_fund_data_by_short_name(fund_short_name, as_dict=False)
-    # round_data = get_round_data_by_short_names(
-    #     fund_short_name, round_short_name
-    # )
     fund_data, round_data = get_fund_and_round(
         fund_short_name=fund_short_name, round_short_name=round_short_name
     )
