@@ -6,6 +6,22 @@
 {% endblock %}
 
 {% block content %}
+    {% if form.errors.get('understand_eligibility_criteria') %}
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+        <div role="alert">
+        <h2 class="govuk-error-summary__title">
+            There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+                <li>
+                    <a href="#understand_eligibility_criteria">Select a score</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    {% endif %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
@@ -30,9 +46,14 @@
                                 {{ form.understand_eligibility_criteria.label }}
                             </h1>
                         </legend>
-                        <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios {% if form.errors.get('understand_eligibility_criteria') %} govuk-form-group--error {% endif %}" data-module="govuk-radios" id="understand_eligibility_criteria">
+                            {% if form.errors.get('understand_eligibility_criteria') %}
+                            <p id="experience-error" class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> Select a score
+                            </p>
+                            {% endif %}
                             {% for choice_value, choice_label in form.understand_eligibility_criteria.choices %}
-                                <div class="govuk-radios__item">
+                                <div class="govuk-radios__item ">
                                     <input class="govuk-radios__input" id="{{ choice_value }}"
                                            name="{{ form.understand_eligibility_criteria.name }}" type="radio"
                                            value="{{ choice_value }}"

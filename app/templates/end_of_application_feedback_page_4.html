@@ -6,6 +6,22 @@
 {% endblock %}
 
 {% block content %}
+    {% if form.errors.get('hours_spent') %}
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+        <div role="alert">
+        <h2 class="govuk-error-summary__title">
+            There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+                <li>
+                    <a href="#hours_spent">Select a score</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    {% endif %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
@@ -18,7 +34,7 @@
                 </div>
             </div>
 
-            <form method="post">
+            <form method="post" novalidate>
                 {{ form.hidden_tag() }}
                 {{ form.csrf_token }}
                 {{ form.application_id() }}
@@ -31,15 +47,22 @@
                                 application?
                             </h1>
                         </legend>
-                        <div class="govuk-hint">
+                        <div class="govuk-form-group  {% if form.errors.get('hours_spent') %} govuk-form-group--error {% endif %}">
+                            <div class="govuk-hint">
                             This includes time spent attending meetings, preparing documents and business cases, doing
                             research and collating answers, from both paid and volunteer resources.
                         </div>
+                        {% if form.errors.get('hours_spent') %}
+                            <p id="hours-error" class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> Select a score
+                            </p>
+                        {% endif %}
                         <div id="" class="govuk-label govuk-label--s">
                             {{ form.hours_spent.label }}
                         </div>
                         <div class="govuk-form-group">
                             {{ form.hours_spent(class="govuk-input", id="hours-spent") }}
+                        </div>
                         </div>
                     </fieldset>
                 </div>

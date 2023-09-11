@@ -6,6 +6,22 @@
 {% endblock %}
 
 {% block content %}
+    {% if form.errors.get('demonstrate_why_org_funding') %}
+    <div class="govuk-error-summary" data-module="govuk-error-summary">
+        <div role="alert">
+        <h2 class="govuk-error-summary__title">
+            There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+                <li>
+                    <a href="#demonstrate_why_org_funding">Select a score</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    {% endif %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
@@ -30,10 +46,15 @@
                                 {{ form.demonstrate_why_org_funding.label }}
                             </h1>
                         </legend>
-                        <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios {% if form.errors.get('demonstrate_why_org_funding') %} govuk-form-group--error {% endif %}" data-module="govuk-radios">
+                            {% if form.errors.get('demonstrate_why_org_funding') %}
+                            <p id="experience-error" class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> Select a score
+                            </p>
+                            {% endif %}
                             {% for choice_value, choice_label in form.demonstrate_why_org_funding.choices %}
                                 <div class="govuk-radios__item">
-                                    <input class="govuk-radios__input" id="{{ form.demonstrate_why_org_funding.id }}"
+                                    <input class="govuk-radios__input" id="{{ form.demonstrate_why_org_funding.id }}-{{ loop.index }}"
                                            name="{{ form.demonstrate_why_org_funding.name }}" type="radio"
                                            value="{{ choice_value }}"
                                            {% if form.demonstrate_why_org_funding.data == choice_value %}checked{% endif %}>
