@@ -36,8 +36,6 @@
 
             <form method="post" novalidate>
                 {{ form.hidden_tag() }}
-                {{ form.csrf_token }}
-                {{ form.application_id() }}
 
                 <div class="govuk-form-group">
                     <fieldset class="govuk-fieldset">
@@ -58,8 +56,9 @@
                             </p>
                         {% endif %}
                         <div id="" class="govuk-label govuk-label--s">
+                        <label for="hours-spent" class="govuk-label govuk-label--s">
                             {{ form.hours_spent.label }}
-                        </div>
+                        </label>
                         <div class="govuk-form-group">
                             {{ form.hours_spent(class="govuk-input", id="hours-spent") }}
                         </div>
