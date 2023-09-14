@@ -22,9 +22,7 @@ class DefaultSectionFeedbackForm(ApplicationFlaskForm):
             ("difficult", "Difficult"),
             ("very difficult", "Very difficult"),
         ],
-        validators=[InputRequired( 
-            message="Select a score"
-            )],
+        validators=[InputRequired(message="Select a score")],
     )
     more_detail = TextAreaField("Explain why you chose this score (optional)")
 
@@ -61,9 +59,7 @@ class EndOfApplicationPage1Form(EndOfApplicationPageForm):
             ("poor", "Poor"),
             ("very poor", "Very poor"),
         ],
-        validators=[InputRequired( 
-            message="Select a score"
-        )],
+        validators=[InputRequired(message="Select a score")],
     )
     more_detail = TextAreaField("Explain why you chose this score (optional)")
 
@@ -79,9 +75,7 @@ class EndOfApplicationPage2Form(EndOfApplicationPageForm):
             ("disagree", "Disagree"),
             ("strongly disagree", "Strongly disagree"),
         ],
-        validators=[InputRequired(
-            message="Select a score"
-        )],
+        validators=[InputRequired(message="Select a score")],
     )
 
 
@@ -96,17 +90,14 @@ class EndOfApplicationPage3Form(EndOfApplicationPageForm):
             ("difficult", "Difficult"),
             ("very difficult", "Very difficult"),
         ],
-        validators=[DataRequired(
-            message="Select a score"
-        )],
+        validators=[DataRequired(message="Select a score")],
     )
 
 
 class EndOfApplicationPage4Form(EndOfApplicationPageForm):
     hours_spent = IntegerField(
-        "Number of hours spent:", validators=[DataRequired(
-            message="Enter number of hours"
-        )]
+        "Number of hours spent:",
+        validators=[DataRequired(message="Enter number of hours")],
     )
 
 
