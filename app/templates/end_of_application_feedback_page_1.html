@@ -36,7 +36,7 @@
                         <div class="govuk-radios {% if form.errors.get('overall_application_experience') %} govuk-form-group--error {% endif %}" data-module="govuk-radios" id="overall_application_experience">
                             {% if form.errors.get('overall_application_experience') %}
                             <p id="experience-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> Select a score
+                                <span class="govuk-visually-hidden">Error:</span> {{form.errors.get('overall_application_experience')[0]}}
                             </p>
                             {% endif %}
                             {% for choice, label in form.overall_application_experience.choices %}

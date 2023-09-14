@@ -36,7 +36,7 @@
                         <div class="govuk-radios {% if form.errors.get('demonstrate_why_org_funding') %} govuk-form-group--error {% endif %}" data-module="govuk-radios" id="demonstrate_why_org_funding">
                             {% if form.errors.get('demonstrate_why_org_funding') %}
                             <p id="experience-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> Select a score
+                                <span class="govuk-visually-hidden">Error:</span> {{form.errors.get('demonstrate_why_org_funding')[0]}}
                             </p>
                             {% endif %}
                             {% for choice_value, choice_label in form.demonstrate_why_org_funding.choices %}

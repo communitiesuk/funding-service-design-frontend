@@ -29,7 +29,7 @@
                         <div class="govuk-radios {% if form.errors.get('experience') %} govuk-form-group--error {% endif %}" data-module="govuk-radios">
                             {% if form.errors.get('experience') %}
                             <p id="experience-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> Select a score
+                                <span class="govuk-visually-hidden">Error:</span> {{form.errors.get('experience')[0]}}
                             </p>
                             {% endif %}
                             {% for subfield in form.experience %}

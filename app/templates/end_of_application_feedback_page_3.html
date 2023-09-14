@@ -35,7 +35,7 @@
                         <div class="govuk-radios {% if form.errors.get('understand_eligibility_criteria') %} govuk-form-group--error {% endif %}" data-module="govuk-radios" id="understand_eligibility_criteria">
                             {% if form.errors.get('understand_eligibility_criteria') %}
                             <p id="experience-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> Select a score
+                                <span class="govuk-visually-hidden">Error:</span> {{form.errors.get('understand_eligibility_criteria')[0]}}
                             </p>
                             {% endif %}
                             {% for choice_value, choice_label in form.understand_eligibility_criteria.choices %}

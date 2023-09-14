@@ -40,7 +40,7 @@
                         </div>
                         {% if form.errors.get('hours_spent') %}
                             <p id="hours-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> Enter number of hours
+                                <span class="govuk-visually-hidden">Error:</span> {{form.errors.get('hours_spent')[0]}}
                             </p>
                         {% endif %}
                         <div id="" class="govuk-label govuk-label--s">
