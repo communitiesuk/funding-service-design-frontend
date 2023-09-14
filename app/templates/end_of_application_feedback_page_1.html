@@ -9,7 +9,7 @@
 
 {% block content %}
     {% if form.errors.get('overall_application_experience') %}
-        {{  feedback_error_summary("Select a score", "#overall_application_experience") }}
+        {{  feedback_error_summary(form.errors.get('overall_application_experience')[0], "#overall_application_experience") }}
     {% endif %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">

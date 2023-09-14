@@ -9,7 +9,7 @@
 
 {% block content %}
     {% if form.errors.get('experience') %}
-    {{  feedback_error_summary("Select a score", "#experience") }}
+    {{  feedback_error_summary(form.errors.get('experience')[0], "#experience") }}
     {% endif %}
 
     <div class="govuk-grid-row">
