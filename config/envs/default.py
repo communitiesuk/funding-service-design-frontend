@@ -181,8 +181,10 @@ class DefaultConfig:
 
     USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "False"))
 
-    # GOV.UK PaaS
-    if environ.get("VCAP_SERVICES"):
+    if "COPILOT_AWS_BUCKET_NAME" in os.environ:
+        AWS_BUCKET_NAME = environ.get("COPILOT_AWS_BUCKET_NAME")
+        AWS_REGION = environ.get("AWS_REGION")
+    elif "VCAP_SERVICES" in os.environ: # GOV.UK PaaS
         VCAP_SERVICES = VcapServices.from_env_json(
             environ.get("VCAP_SERVICES")
         )
