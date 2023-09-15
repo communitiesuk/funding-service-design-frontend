@@ -101,7 +101,7 @@ jobs:
 
     - name: Inject replacement image into manifest
       run: |
-        yq -i '.image.location = "ghcr.io/communitiesuk/funding-service-frontend:${{ github.ref_name }}"'  copilot/fsd-frontend/manifest.yml
+        yq -i '.image.location = "ghcr.io/communitiesuk/funding-service-frontend:latest"'  copilot/fsd-frontend/manifest.yml
 
     - name: Replace AUTHENTICATOR_HOST variable
       if: ${{ inputs.environment == 'prod' }}
