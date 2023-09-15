@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% from "partials/feedback_error_summary.html" import feedback_error_summary %}
+
 
 {% block beforeContent %}
     <a href="{{ url_for("application_routes.tasklist", application_id=application_id) }}"
@@ -6,6 +8,9 @@
 {% endblock %}
 
 {% block content %}
+    {% if form.errors.get('overall_application_experience') %}
+        {{  feedback_error_summary(form.errors.get('overall_application_experience')[0], "#overall_application_experience") }}
+    {% endif %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
@@ -28,7 +33,12 @@
                                 {{ form.overall_application_experience.label }}
                             </h1>
                         </legend>
-                        <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios {% if form.errors.get('overall_application_experience') %} govuk-form-group--error {% endif %}" data-module="govuk-radios" id="overall_application_experience">
+                            {% if form.errors.get('overall_application_experience') %}
+                            <p id="experience-error" class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span> {{form.errors.get('overall_application_experience')[0]}}
+                            </p>
+                            {% endif %}
                             {% for choice, label in form.overall_application_experience.choices %}
                                 <div class="govuk-radios__item">
                                     <input class="govuk-radios__input"
@@ -48,7 +58,7 @@
                             <label class="govuk-label govuk-label--s" for="{{ form.more_detail.id }}">
                                 {{ form.more_detail.label }}
                             </label>
-                            {{ form.more_detail(class="govuk-textarea") }}
+                            {{ form.more_detail(class="govuk-textarea", rows=5) }}
                         </div>
                     </fieldset>
                 </div>
