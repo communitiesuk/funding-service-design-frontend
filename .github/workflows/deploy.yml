@@ -59,3 +59,50 @@ jobs:
     uses: communitiesuk/funding-service-design-workflows/.github/workflows/pre-deploy.yml@main
     with:
       postgres_unit_testing: false
+  copilot_build:
+    if: ${{ github.event.inputs.copilot }}
+    concurrency: deploy-${{ inputs.environment || 'test' }}
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: read  # This is required for actions/checkout
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment || 'test' }}
+    steps:
+    - name: Git clone the repository
+      uses: actions/checkout@v3
+
+    - name: Get current date
+      id: currentdatetime
+      run: echo "datetime=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_OUTPUT
+
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT }}:role/GithubCopilotDeploy
+        role-session-name: FRONTEND_COPILOT_${{ steps.currentdatetime.outputs.datetime }}
+        aws-region: eu-west-2
+
+    - name: Install AWS Copilot CLI
+      run: |
+        curl -Lo aws-copilot https://github.com/aws/copilot-cli/releases/latest/download/copilot-linux && chmod +x aws-copilot && sudo mv aws-copilot /usr/local/bin/copilot
+
+    - name: Inject Git SHA into manifest
+      run: |
+        yq -i '.variables.GITHUB_SHA = "${{ github.sha }}"'  copilot/fsd-frontend/manifest.yml
+
+    - name: Inject RSA256_PUBLIC_KEY_BASE64 into manifest
+      run: |
+        yq -i '.variables.RSA256_PUBLIC_KEY_BASE64 = "${{ secrets.RSA256_PUBLIC_KEY_BASE64 }}"'  copilot/fsd-frontend/manifest.yml
+
+    - name: Inject replacement image into manifest
+      run: |
+        yq -i '.image.location = "ghcr.io/communitiesuk/funding-service-frontend:${{ github.ref_name }}"'  copilot/fsd-frontend/manifest.yml
+
+    - name: Replace AUTHENTICATOR_HOST variable
+      if: ${{ inputs.environment == 'prod' }}
+      run: |
+        yq -i '.variables.AUTHENTICATOR_HOST = "https://authenticator.${{ inputs.environment }}.levellingup.gov.uk"'  copilot/fsd-frontend/manifest.yml
+
+    - name: Copilot deploy
+      run: |
+        copilot deploy --env ${{ inputs.environment || 'test' }}
