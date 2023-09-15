@@ -44,6 +44,7 @@ jobs:
       CF_PASSWORD: ${{secrets.CF_PASSWORD}}
       E2E_PAT: ${{secrets.E2E_PAT}}
       RSA256_PUBLIC_KEY_BASE64: ${{secrets.RSA256_PUBLIC_KEY_BASE64}}
+      RSA256_PRIVATE_KEY_BASE64: ${{secrets.RSA256_PUBLIC_KEY_BASE64}}
       SENTRY_DSN: ${{secrets.SENTRY_DSN}}
       FORMS_SERVICE_PRIVATE_HOST: ${{secrets.FORMS_SERVICE_PRIVATE_HOST}}
   paketo_build:
@@ -93,6 +94,10 @@ jobs:
     - name: Inject RSA256_PUBLIC_KEY_BASE64 into manifest
       run: |
         yq -i '.variables.RSA256_PUBLIC_KEY_BASE64 = "${{ secrets.RSA256_PUBLIC_KEY_BASE64 }}"'  copilot/fsd-frontend/manifest.yml
+
+    - name: Inject RSA256_PRIVATE_KEY_BASE64 into manifest
+      run: |
+        yq -i '.variables.RSA256_PRIVATE_KEY_BASE64 = "${{ secrets.RSA256_PRIVATE_KEY_BASE64 }}"'  copilot/fsd-frontend/manifest.yml
 
     - name: Inject replacement image into manifest
       run: |
