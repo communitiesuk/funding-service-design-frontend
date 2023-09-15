@@ -329,10 +329,10 @@
                 </li>
             </ul>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'other', go to") }} <strong>2.2.1.1</strong>
+                {{ pgettext("individual", "If 'other', go to") }} <strong>2.2.1.1.</strong>
             </p>
             <h4 class="govuk-heading-s ">
-                2.2.1.1 {% trans %}Type of asset{% endtrans %}{% trans %}(other){% endtrans %}
+                2.2.1.1. {% trans %}Type of asset {% endtrans %}{% trans %}(other){% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
                 2.2.2. {% trans %}How do you intend to take community ownership of the asset?{% endtrans %}
@@ -352,19 +352,19 @@
                 </li>
             </ul>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'buy the asset' go to 2.2.3., 2.2.4., 2.2.5., 2.2.7., 2.2.8. and 2.2.9.") }} <strong>2.2.1.1</strong>
+                {{ pgettext("individual", "If ‘buy the asset’ go to ") }} <strong>2.2.2.1., 2.2.2.2., 2.2.2.3.,</strong> and <strong>2.2.2.6.</strong>
             </p>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'lease the asset' go to 2.2.3., 2.2.4., 2.2.5., 2.2.7., 2.2.8. and 2.2.9.") }} <strong>2.2.1.1</strong>
+                {{ pgettext("individual", "If ‘lease the asset’ go to ") }} <strong>2.2.2.1., 2.2.2.2., 2.2.2.3.,</strong> and <strong>2.2.2.6.</strong>
             </p>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'already owned by the organisation' go to 2.2.7. and 2.2.9.") }} <strong>2.2.1.1</strong>
+                {{ pgettext("individual", "If ‘already owned by the organisation’ go to") }} <strong>2.2.3.</strong>
             </p>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'already leased by the organisation' go to 2.2.3., 2.2.5., 2.2.6., 2.2.7., 2.2.8. and 2.2.9.") }} <strong>2.2.1.1</strong>
+                {{ pgettext("individual", "If ‘already leased by the organisation’ go to ") }} <strong>2.2.2.1., 2.2.2.3., 2.2.2.5.</strong> and <strong>2.2.2.6.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
-                2.2.3. {% trans %} Upload asset valuation or lease agreement{% endtrans %}
+                2.2.2.1 {% trans %} Upload asset valuation or lease agreement{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}Please upload evidence that shows the asset valuation (if you are buying the asset) or the lease agreement (if you are leasing the asset).{% endtrans %}
@@ -376,87 +376,46 @@
                 {% trans %}If you are leasing the asset: this could be a copy of your tenancy agreement, or agreed heads of terms, showing at least 15 years tenancy with reasonable break clauses.{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}It should be a single file no bigger than 10MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).{% endtrans %}
+                {% trans %}It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
-                2.2.4. {% trans %}Do you know who currently owns your asset?{% endtrans %}
+                2.2.2.2. {% trans %}Do you know who currently owns your asset?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {{ pgettext("group", "If 'Yes', go to") }} <strong>2.2.4.1.</strong>
+                {{ pgettext("group", "If 'Yes', go to") }} <strong>2.2.2.2.1.</strong>
             </p>
             <p class="govuk-body">
-                {{ pgettext("group", "If 'No', go to") }} <strong>2.2.4.2.</strong>
+                {{ pgettext("group", "If 'No', go to") }} <strong>2.2.2.2.2.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
-                2.2.4.1. {% trans %}Name of current asset owner{% endtrans %}
+                2.2.2.2.1. {% trans %}Name of current asset owner{% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                2.2.4.2. {% trans %}Tell us what you know about the sale or the lease of the asset{% endtrans %}
+                2.2.2.2.2. {% trans %}Tell us what you know about the sale or the lease of the asset{% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                2.2.5. {% trans %}Describe the expected sale process, or the proposed terms of your lease if you are planning to rent the asset{% endtrans %}{% trans %}(maximum 500 words){% endtrans %}
+                2.2.2.3. {% trans %}Describe the expected sale process, or the proposed terms of your lease if you are planning to rent the asset{% endtrans %}{% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <h4 class="govuk-heading-s ">
-                2.2.5.1. {% trans %}Expected date of sale or lease{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+                2.2.2.4. {% trans %}Expected date of sale or lease{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                2.2.6. {% trans %}Describe the terms of your lease if you have rented the asset{% endtrans %}
-            </h4>
-            <p class="govuk-body">
-                {{ pgettext("individual", "If 'Yes', go to") }} <strong>2.2.7.1.</strong>, <strong>2.2.7.2.</strong>, <strong>2.2.7.3.</strong> {% trans %}and{% endtrans %} <strong>2.2.7.4.</strong>
-            </p>
-            <p class="govuk-body">
-                {{ pgettext("individual", "If 'No', go to") }} <strong>2.2.8.</strong>
-            </p>
-            <h4 class="govuk-heading-s  ">
-                2.2.6.1. {% trans %}Tell us about the person you have spoken to at the relevant public about the asset{% endtrans %}
+                2.2.2.5. {% trans %}Describe the terms of your lease if you have rented the asset{% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                2.2.6.2. {% trans %}When you buy or lease a publicly owned asset, the public authority must continue to be responsible for delivering any statutory services the asset provides{% endtrans %}
+                2.2.2.6. {% trans %}Is your asset currently publicly owned?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {% trans %}This includes things like social care, waste collection and planning services{% endtrans %}
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>2.2.2.6.1</strong>, <strong>2.2.2.6.2.</strong>, <strong>2.2.2.6.3.</strong> {% trans %}and{% endtrans %} <strong>2.2.2.6.4.</strong>
+            </p>
+            <p class="govuk-body">
+                {{ pgettext("individual", "If 'No', go to") }} <strong>2.2.3.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
-                2.2.6.3. {% trans %}Grants from this fund cannot be used to buy the freehold or premium on the lease of a publicly owned asset. Money must only be used for renovation and refurbishment costs{% endtrans %}
+                2.2.2.6.1 {% trans %}Tell us about the person you have spoken to at the relevant public about the asset{% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                2.2.6.4. {% trans %}Upload public ownership evidence{% endtrans %}
-            </h4>
-            <p class="govuk-body">
-                {% trans %}Upload supporting evidence to summarise:{% endtrans %}
-            </p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>
-                    {% trans %}the risk the asset is facing{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}that any statutory services will not be transferred from the public authority{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}that the asset will be sustainable after it has been transferred{% endtrans %}
-                </li>
-            </ul>
-            <p class="govuk-body">
-                {% trans %}For example, this evidence can include confirmation from the public owner or a letter from the local authority{% endtrans %}
-            </p>
-            <p class="govuk-body">
-                {% trans %}It should be a single file no bigger than 10MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).{% endtrans %}
-            </p>
-            <h4 class="govuk-heading-s  ">
-                2.2.7. {% trans %}Is this a registered Asset of Community Value (ACV)?{% endtrans %}
-            </h4>
-            <p class="govuk-body">
-                {{ pgettext("individual", "If 'Yes', go to") }} <strong>2.2.7.1.</strong>
-            </p>
-            <p class="govuk-body">
-                {{ pgettext("individual", "If 'No', go to") }} <strong>2.2.8.</strong>
-            </p>
-            <h4 class="govuk-heading-s  ">
-                2.2.7.1. {% trans %}Tell us about the person you have spoken to at the relevant public about the asset{% endtrans %}
-            </h4>
-            <h4 class="govuk-heading-s  ">
-                2.2.7.2. {% trans %}When you buy or lease a publicly owned asset, the public authority cannot transfer statutory services or duties to the community group{% endtrans %}
+                2.2.2.6.2. {% trans %}When you buy or lease a publicly owned asset, the public authority must continue to be responsible for delivering any statutory services the asset provides{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}This includes things like social care, waste collection and planning services.{% endtrans %}
@@ -465,10 +424,10 @@
                 {% trans %}We do not define individual libraries as statutory services for this purpose.{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
-                2.2.7.3. {% trans %}Grants from this fund cannot be used to buy the freehold or premium on the lease of a publicly owned asset. Money must only be used for renovation and refurbishment costs{% endtrans %}
+                2.2.2.6.3. {% trans %}Grants from this fund cannot be used to buy the freehold or premium on the lease of a publicly owned asset. Money must only be used for renovation and refurbishment costs{% endtrans %}
             </h4>
             <h4 class="govuk-heading-s  ">
-                2.2.7.4. {% trans %}Upload evidence to confirm the above information and that the asset is at risk{% endtrans %}
+                2.2.2.6.4. {% trans %}Upload evidence to confirm the above information and that the asset is at risk{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}This could be from:{% endtrans %}
@@ -482,10 +441,10 @@
                 </li>
             </ul>
             <p class="govuk-body">
-                {% trans %}It should be a single file no bigger than 10MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).{% endtrans %}
+                {% trans %}It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
-                2.2.8. {% trans %}Why is the asset at risk of closure?{% endtrans %}
+                2.2.3. {% trans %}Why is the asset at risk of closure?{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}Select all that apply{% endtrans %}
@@ -511,25 +470,25 @@
                 </li>
             </ul>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'listed for disposal', go to") }} <strong>2.2.8.1.</strong>{% trans %} and{% endtrans %} <strong>2.2.8.2.</strong>
+                {% trans %}If ‘listed for disposal, go to <strong>2.2.3.1.</strong> and <strong>2.2.3.2.</strong>{% endtrans %}
             </p>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'Part of a Community Asset Transfer', go to") }} <strong>2.2.8.3</strong>
+                {% trans %}If ‘Part of a Community Asset Transfer’, go to <strong>2.2.3.3.</strong>{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
-                2.2.8.1. {% trans %}When was the asset listed?{% endtrans %}
+                2.2.3.1. {% trans %}When was the asset listed?{% endtrans %}
             </h4>
             <p class="govuk-body">
                 {% trans %}For example, 27 3 2007{% endtrans %}
             </p>
             <h4 class="govuk-heading-s  ">
-                2.2.8.2. {% trans %}Provide a link to the listing{% endtrans %}
+                2.2.3.2. {% trans %}Provide a link to the listing{% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
-                2.2.8.3. {% trans %}Describe the current status of the Community Asset Transfer{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
+             <h4 class="govuk-heading-s  ">
+                2.2.3.3. {% trans %}Describe the current status of the Community Asset Transfer (maximum 500 words){% endtrans %}
             </h4>
-            <h4 class="govuk-heading-s  ">
-                2.2.9. {% trans %}Is this a registered Asset of Community Value (ACV)?{% endtrans %}
+             <h4 class="govuk-heading-s  ">
+                2.2.4. {% trans %}Is this a registered Asset of Community Value (ACV)?{% endtrans %}
             </h4>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
             <h2 class="govuk-heading-l " id="{% trans %}strategic-case{% endtrans %}">
@@ -609,7 +568,7 @@
                     {% trans %}surveys of the community{% endtrans %}
                 </li>
                 <li>
-                    {% trans %}town hall meetings you have runs{% endtrans %}
+                    {% trans %}town hall meetings you have run{% endtrans %}
                 </li>
                 <li>
                     {% trans %}the estimated number of volunteers you have for your project{% endtrans %}
@@ -757,22 +716,22 @@
                 </li>
             </ul>
             <p class="govuk-body">
-                {% trans %}Remember, you can apply for up to 80&percnt; (or 90&percnt; if the development support provider has confirmed you're eligible to do this) of your capital costs, up to a maximum of £1 million.{% endtrans %}
+                <b>{% trans %}Remember, you can apply for up to 80% (or 90% if the development support provider has confirmed you're eligible to do this) of your capital costs, up to a maximum of £2 million.{% endtrans %}</b>
             </p>
             <p class="govuk-body">
-                {% trans %}You can use your business plan to provide information that supports your answers.{% endtrans %}
+                <b>{% trans %}You can use your business plan to provide information that supports your answers.{% endtrans %}</b>
+            </p>
+            <p class="govuk-body">
+                <b>{% trans %}Describe the cost.{% endtrans %}</b>
             </p>
              <p class="govuk-body">
-                <b>{% trans %}Describe the cost{% endtrans %}</b>
-            </p>
-             <p class="govuk-body">
-                <b>{% trans %}Amount{% endtrans %}</b>
+                <b>{% trans %}Amount.{% endtrans %}</b>
             </p>
             <h4 class="govuk-heading-s  ">
                 4.1.4. {% trans %}Have you secured any match funding yet?{% endtrans %}
             </h4>
             <p class="govuk-body">
-                {{ pgettext("group", "If 'Yes', go to") }} <strong>4.1.4.1. and 4.1.4.2</strong>
+                {{ pgettext("group", "If 'Yes', go to") }} <strong>4.1.4.1.</strong> <strong>and 4.1.4.2</strong>
             </p>
             <p class="govuk-body">
                 {{ pgettext("group", "If 'No', go to") }} <strong>4.1.5.</strong>
@@ -842,10 +801,10 @@
                 </li>
             </ul>
             <p class="govuk-body">
-                <b>{% trans %}Source of unsecured match funding{% endtrans %}</b>
+                <b>{% trans %}Source of unsecured match funding.{% endtrans %}</b>
             </p>
              <p class="govuk-body">
-                <b>{% trans %}Amount{% endtrans %}</b>
+                <b>{% trans %}Amount.{% endtrans %}</b>
             </p>
             <h4 class="govuk-heading-s  ">
                 4.1.6. {% trans %}Are you applying for revenue funding from the Community Ownership Fund?{% endtrans %}
@@ -871,14 +830,17 @@
                 {% trans %}You can use your business plan to provide any information that supports your answers{% endtrans %}
             </p>
             <p class="govuk-body">
-                {{ pgettext("indefinite", "If 'Yes', go to") }} <strong>4.1.6.1. and 4.1.6.2.</strong>
+                {{ pgettext("indefinite", "If 'Yes', go to") }} <strong>4.1.6.1.</strong> <strong>and 4.1.6.2.</strong>
             </p>
             <p class="govuk-body">
                 {{ pgettext("indefinite", "If 'No', go to") }} <strong>4.2.</strong>
             </p>
             <h4 class="govuk-heading-s  ">
-                4.1.6.1. {% trans %}Tell us about the total revenue costs of your project.{% endtrans %}
+                4.1.6.1. {% trans %}Revenue costs (optional){% endtrans %}
             </h4>
+            <p class="govuk-body">
+                {% trans %}Tell us about the total revenue costs of your project.{% endtrans %}
+           ribe the cost </p>
             <p class="govuk-body">
                 {% trans %}These are the running costs of the project. This might include general costs, including for:{% endtrans %}
             </p>
@@ -898,17 +860,17 @@
             </p>
             <ul class="govuk-list govuk-list--bullet">
                 <li>
-                    {% trans %}utilities{% endtrans %}
+                    {% trans %}tell us why you need revenue funding{% endtrans %}
                 </li>
                 <li>
-                    {% trans %}staffing{% endtrans %}
+                    {% trans %}provide any information that supports your answers{% endtrans %}
                 </li>
             </ul>
             <p class="govuk-body">
-                <b>{% trans %}Describe the cost{% endtrans %}</b>
+                <b>{% trans %}Describe the cost.{% endtrans %}</b>
             </p>
              <p class="govuk-body">
-                <b>{% trans %}Amount{% endtrans %}</b>
+                <b>{% trans %}Amount.{% endtrans %}</b>
             </p>
             <h3 class="govuk-heading-m ">
                 4.1.6.2. {% trans %}Tell us how the revenue funding you've requested will help run the asset{% endtrans %}
