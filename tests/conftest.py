@@ -165,6 +165,10 @@ def mock_get_fund_round(mocker):
         return_value=TEST_ROUNDS_DATA[0],
     )
     mocker.patch(
+        "app.default.application_routes.get_round",
+        return_value=TEST_ROUNDS_DATA[0],
+    )
+    mocker.patch(
         "app.default.application_routes.get_fund_data",
         return_value=Fund.from_dict(TEST_FUNDS_DATA[0]),
     )
