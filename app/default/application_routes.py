@@ -19,6 +19,7 @@ from app.forms.feedback_forms import (
 )
 from app.helpers import format_rehydrate_payload
 from app.helpers import get_feedback_survey_data
+from app.helpers import get_round
 from app.helpers import get_section_feedback_data
 from app.helpers import get_token_to_return_to_application
 from app.models.statuses import get_formatted
@@ -287,11 +288,18 @@ def continue_application(application_id):
     )
 
     application = get_application_data(application_id)
+    round = get_round(
+        fund_id=application.fund_id, round_id=application.round_id
+    )
 
     form_data = application.get_form_data(application, form_name)
 
     rehydrate_payload = format_rehydrate_payload(
-        form_data, application_id, return_url, form_name
+        form_data,
+        application_id,
+        return_url,
+        form_name,
+        round.mark_as_complete_enabled,
     )
 
     rehydration_token = get_token_to_return_to_application(

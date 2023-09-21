@@ -25,6 +25,7 @@ class Round:
     project_name_field_id: str
     application_guidance: str
     requires_feedback: bool = False
+    mark_as_complete_enabled: bool = False
 
     @classmethod
     def from_dict(cls, d: dict):
