@@ -1,0 +1,84 @@
+# The manifest for the "fsd-assessment" service.
+# Read the full specification for the "Load Balanced Web Service" type at:
+#  https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/
+
+# Your service name will be used in naming your resources like log groups, ECS services, etc.
+name: fsd-frontend
+type: Load Balanced Web Service
+
+# Distribute traffic to your service.
+http:
+  # Requests to this path will be forwarded to your service.
+  # To match all requests you can use the "/" path.
+  path: '/'
+  # You can specify a custom health check path. The default is "/".
+  healthcheck: '/healthcheck'
+  alias: frontend.test.access-funding.test.levellingup.gov.uk
+
+# Configuration for your containers and service.
+image:
+  # Docker build arguments. For additional overrides: https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#image-location
+  location: ghcr.io/communitiesuk/funding-service-design-frontend:latest
+  # Port exposed through your container to route traffic to it.
+  port: 8080
+
+# Valid values: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html
+# Number of CPU units for the task.
+cpu: 256
+# Amount of memory in MiB used by the task.
+memory: 1024
+
+# See https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#platform
+platform: linux/x86_64
+# Number of tasks that should be running in your service.
+count: 1
+# Enable running commands in your container.
+exec: true
+
+network:
+  connect: true # Enable Service Connect for intra-environment traffic between services.
+
+# storage:
+  # readonly_fs: true       # Limit to read-only access to mounted root filesystems.
+
+# Optional fields for more advanced use-cases.
+#
+# Pass environment variables as key value pairs.
+variables:
+  # SENTRY_DSN: "https://5ea1346b1c1b4dd8af0c95435ca77945@o1432034.ingest.sentry.io/4503903486148608"
+  FLASK_ENV: ${COPILOT_ENVIRONMENT_NAME}
+  COOKIE_DOMAIN: ".test.levellingup.gov.uk"
+  APPLICANT_FRONTEND_HOST: "https://frontend.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk"
+  AUTHENTICATOR_HOST: "https://fsd:fsd@authenticator.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk" # pragma: allowlist secret
+  ACCOUNT_STORE_API_HOST: "http://fsd-account-store:8080"
+  APPLICATION_STORE_API_HOST: "http://fsd-application-store:8080"
+
+  FORMS_SERVICE_PUBLIC_HOST: "https://fsd:fsd@forms.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk" #pragma: allowlist secret
+  FORMS_SERVICE_PRIVATE_HOST: "https://fsd:fsd@forms.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk" #pragma: allowlist secret
+
+  FUND_STORE_API_HOST: "http://fsd-fund-store:8080"
+  NOTIFICATION_SERVICE_HOST: http://fsd-notification:8080
+  REDIS_INSTANCE_URI:
+    from_cfn: ${COPILOT_APPLICATION_NAME}-${COPILOT_ENVIRONMENT_NAME}-RedisInstanceURI
+
+secrets:
+  RSA256_PUBLIC_KEY_BASE64: /copilot/${COPILOT_APPLICATION_NAME}/${COPILOT_ENVIRONMENT_NAME}/secrets/frontend_RSA256_PUBLIC_KEY_BASE64
+  RSA256_PRIVATE_KEY_BASE64: /copilot/${COPILOT_APPLICATION_NAME}/${COPILOT_ENVIRONMENT_NAME}/secrets/frontend_RSA256_PRIVATE_KEY_BASE64
+
+# You can override any of the values defined above by environment.
+environments:
+  # uat:
+    # http:
+    #   alias: frontend.uat.access-funding.test.levellingup.gov.uk
+  production:
+    http:
+      alias: frontend.access-funding.levellingup.gov.uk
+    variables:
+      COOKIE_DOMAIN: ".levellingup.gov.uk"
+      AUTHENTICATOR_HOST: "https://fsd:fsd@authenticator.access-funding.levellingup.gov.uk" #pragma: allowlist secret
+      APPLICANT_FRONTEND_HOST: "https://frontend.access-funding.levellingup.gov.uk"
+      ASSESSMENT_FRONTEND_HOST: "https://assessment.access-funding.levellingup.gov.uk"
+
+  test:
+    deployment:
+      rolling: 'recreate'
