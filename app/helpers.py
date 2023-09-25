@@ -111,7 +111,8 @@ def format_rehydrate_payload(
 
     current_app.logger.info(
         "constructing session rehydration payload for application"
-        f" id:{application_id}."
+        f" id:{application_id}, markAsCompleteEnabled:"
+        f" {markAsCompleteEnabled}."
     )
     formatted_data = {}
     callback_url = Config.UPDATE_APPLICATION_FORM_ENDPOINT
