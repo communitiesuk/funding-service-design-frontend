@@ -152,7 +152,10 @@ class DefaultConfig:
     ALLOW_FROM = "ALLOW-FROM"
     ONE_YEAR_IN_SECS = 31556926
 
-    FORCE_HTTPS = True
+    if environ.get("VCAP_SERVICES"):
+        FORCE_HTTPS = True
+    else:
+        FORCE_HTTPS = False
 
     TALISMAN_SETTINGS = {
         "feature_policy": FSD_FEATURE_POLICY,
