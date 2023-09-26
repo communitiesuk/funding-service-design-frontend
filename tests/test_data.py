@@ -17,6 +17,7 @@ common_round_data = {
     "project_name_field_id": "",
     "feedback_link": "http://feedback.com",
     "application_guidance": "",
+    "mark_as_complete_enabled": False,
 }
 common_application_data = {
     "account_id": "test-user",

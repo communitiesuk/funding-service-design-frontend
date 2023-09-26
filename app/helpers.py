@@ -14,6 +14,7 @@ from app.default.data import get_round_data_by_short_names
 from app.default.data import get_survey_data
 from app.default.data import get_ttl_hash
 from app.models.fund import Fund
+from app.models.round import Round
 from config import Config
 from flask import current_app
 from flask import request
@@ -65,7 +66,13 @@ def extract_subset_of_data_from_application(
     return application_data[data_subset_name]
 
 
-def format_rehydrate_payload(form_data, application_id, returnUrl, form_name):
+def format_rehydrate_payload(
+    form_data,
+    application_id,
+    returnUrl,
+    form_name,
+    markAsCompleteEnabled: bool,
+):
     """
     Returns information in a JSON format that provides the
     POST body for the utilisation of the save and return
@@ -104,7 +111,8 @@ def format_rehydrate_payload(form_data, application_id, returnUrl, form_name):
 
     current_app.logger.info(
         "constructing session rehydration payload for application"
-        f" id:{application_id}."
+        f" id:{application_id}, markAsCompleteEnabled:"
+        f" {markAsCompleteEnabled}."
     )
     formatted_data = {}
     callback_url = Config.UPDATE_APPLICATION_FORM_ENDPOINT
@@ -113,6 +121,7 @@ def format_rehydrate_payload(form_data, application_id, returnUrl, form_name):
         "callbackUrl": callback_url,
         "customText": {"nextSteps": "Form Submitted"},
         "returnUrl": returnUrl,
+        "markAsCompleteComponent": markAsCompleteEnabled,
     }
     formatted_data["questions"] = extract_subset_of_data_from_application(
         form_data, "questions"
@@ -235,13 +244,20 @@ def get_fund(
 
 def get_round(
     fund: Fund = None,
+    fund_id=None,
     fund_short_name: str = None,
     round_id: str = None,
     round_short_name: str = None,
-):
+) -> Round:
     if fund_short_name:
         fund = get_fund_data_by_short_name(
             fund_short_name, ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME)
+        )
+    elif fund_id:
+        fund = get_fund_data(
+            fund_id=fund_id,
+            as_dict=False,
+            ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
         )
     if not fund:
         return None
