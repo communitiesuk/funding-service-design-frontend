@@ -1,6 +1,6 @@
 from app.helpers import find_fund_and_round_in_request
 from app.helpers import find_round_in_request
-from app.helpers import get_round
+from app.helpers import get_fund_and_round
 from flask import abort
 from flask import Blueprint
 from flask import current_app
@@ -9,6 +9,7 @@ from flask import render_template
 from flask import request
 from flask import url_for
 from fsd_utils.authentication.decorators import login_requested
+from jinja2.exceptions import TemplateNotFound
 
 content_bp = Blueprint("content_routes", __name__, template_folder="templates")
 
@@ -27,14 +28,21 @@ def all_questions(fund_short_name, round_short_name):
         f"All questions page loaded for fund {fund_short_name} round"
         f" {round_short_name}."
     )
+    fund, round = get_fund_and_round(
+        fund_short_name=fund_short_name, round_short_name=round_short_name
+    )
 
-    if fund_short_name.lower() == "cof":
-        if round := get_round(
-            fund_short_name=fund_short_name, round_short_name=round_short_name
-        ):
+    if fund and round:
+        try:
             return render_template(
                 f"{fund_short_name.lower()}_{round_short_name.lower()[0:2]}_all_questions.html",
+                fund_title=fund.name,
                 round_title=round.title,
+            )
+        except TemplateNotFound:
+            current_app.logger.warn(
+                "No all questions page found for"
+                f" {fund_short_name}:{round_short_name}"
             )
     return abort(404)
 

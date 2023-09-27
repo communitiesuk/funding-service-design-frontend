@@ -10,4 +10,4 @@ def test_all_questions_page_from_short_name(flask_test_client, mocker):
     assert response.status_code == 200
     soup = BeautifulSoup(response.data, "html.parser")
     assert soup.find("h1").text == "Full list of application questions"
-    assert "Community Ownership Fund closed_round" in soup.get_text()
+    assert "Test Fund closed_round" in soup.get_text()
