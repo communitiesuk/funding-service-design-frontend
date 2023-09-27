@@ -13,19 +13,22 @@
                 <h2 class="govuk-heading-m ">{% trans %}Table of contents{% endtrans %}</h2>
                 <ol class="govuk-list govuk-list--number">
                     <li>
-                        <a class="govuk-link" href="#{% trans %}about-organisation{% endtrans %}">{% trans %}About your organisation{% endtrans %}</a>
+                        <a class="govuk-link" href="#{% trans %}before-you-start{% endtrans %}">{% trans %}Before you start {% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}about-project{% endtrans %}">{% trans %}About your project{% endtrans %}</a>
+                        <a class="govuk-link" href="#{% trans %}about-org{% endtrans %}">{% trans %}About your organisation{% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}strategic-case{% endtrans %}">{% trans %}Strategic case{% endtrans %}</a>
+                        <a class="govuk-link" href="#{% trans %}skills-experience{% endtrans %}">{% trans %}Your skills and experience{% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}management-case{% endtrans %}">{% trans %}Management case{% endtrans %}</a>
+                        <a class="govuk-link" href="#{% trans %}your-project{% endtrans %}">{% trans %}Your project{% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}subsidy-control{% endtrans %}">{% trans %}Subsidy control and state aid{% endtrans %}</a>
+                        <a class="govuk-link" href="#{% trans %}risks{% endtrans %}">{% trans %}Risks and deliverability {% endtrans %}</a>
+                    </li>
+                    <li>
+                        <a class="govuk-link" href="#{% trans %}value-for-money{% endtrans %}">{% trans %}Value for money{% endtrans %}</a>
                     </li>
                     <li>
                         <a class="govuk-link" href="#{% trans %}declarations{% endtrans %}">{% trans %}Declarations{% endtrans %}</a>
@@ -33,133 +36,116 @@
                 </ol>
             </div>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l " id="{% trans %}about-organisation{% endtrans %}">1. {% trans %}About your organisation{% endtrans %}</h2>
-            <h3 class="govuk-heading-m ">1.1. {% trans %}Organisation information{% endtrans %}</h3>
-            <h4 class="govuk-heading-s  ">1.1.1. {% trans %}Your unique tracker number{% endtrans %}</h4>
-            <p class="govuk-body">{% trans %}This was included in the letter we sent to confirm your successful expression of interest.{% endtrans %}</p>
-            <p class="govuk-body">{% trans %}For example, ‘ANON-###-###-###’{% endtrans %}</p>
-            <h4 class="govuk-heading-s  ">1.1.2. {% trans %}Organisation name{% endtrans %}</h4>
+            <h2 class="govuk-heading-l " id="{% trans %}before-you-start{% endtrans %}">1. {% trans %}Before you start{% endtrans %}</h2>
+            <h3 class="govuk-heading-m ">1.1. {% trans %}Name your application{% endtrans %}</h3>
+            <p class="govuk-body">{% trans %}This is what your application will be called and will help you find it when you save and return. Choose a memorable name that describes your application. {% endtrans %}</p>
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+            <h2 class="govuk-heading-l " id="{% trans %}before-you-start{% endtrans %}">2. {% trans %}About your organisation{% endtrans %}</h2>
+            <h3 class="govuk-heading-m ">2.1. {% trans %}Organisation details {% endtrans %}</h3>
+            <h4 class="govuk-heading-s  ">2.1.1. {% trans %}Organisation name{% endtrans %}</h4>
             <p class="govuk-body">{% trans %}This must match your registered legal organisation name{% endtrans %}</p>
-            <h4 class="govuk-heading-s  ">1.1.3. {% trans %}Does your organisation use any other names?{% endtrans %}</h4>
+            <h4 class="govuk-heading-s  ">{% trans %}Does your organisation use any other names?{% endtrans %}</h4>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'Yes', go to") }} <strong>1.1.3.1.</strong>
+                {{ pgettext("individual", "If 'Yes', go to") }} <strong>2.1.1.1.</strong>
             </p>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'No', go to") }} <strong>1.1.4.</strong>
+                {{ pgettext("individual", "If 'No', go to") }} <strong>2.1.2.</strong>
             </p>
-            <h4 class="govuk-heading-s  ">1.1.3.1. {% trans %}Alternative names of your organisation{% endtrans %}</h4>
-            <h4 class="govuk-heading-s  ">1.1.4. {% trans %}What is your organisation's main purpose?{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}</h4>
-            <p class="govuk-body">{% trans %}This is what the organisation was set up to achieve{% endtrans %}</p>
-            <h4 class="govuk-heading-s  ">1.1.5. {% trans %}Tell us about your organisation's main activities{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}</h4>
+            <h4 class="govuk-heading-s  ">2.1.1.1. {% trans %}Alternative names of your organisation{% endtrans %}</h4>
+
+            <h4 class="govuk-heading-s  ">2.1.2. {% trans %}Tell us about your organisation's main activities{% endtrans %}</h4>
             <p class="govuk-body">{% trans %}Include any activities you undertake in order to achieve the organisation's purpose.{% endtrans %}</p>
-            <p class="govuk-body">{% trans %}You must list at least one, and can include up to three.{% endtrans %}</p>
-            <h4 class="govuk-heading-s  ">1.1.6. {% trans %}Have you delivered projects like this before?{% endtrans %}</h4>
-            <p class="govuk-body">
-                {{ pgettext("group", "If 'Yes', go to") }} <strong>1.1.6.1.</strong>
-            </p>
-            <p class="govuk-body">
-                {{ pgettext("group", "If 'No', go to") }} <strong>1.1.7.</strong>
-            </p>
+            <p class="govuk-body">{% trans %}You must list at least one, and can include up to three (500 words for each activity).{% endtrans %}</p>
+
             <h4 class="govuk-heading-s  ">
-                1.1.6.1. {% trans %}Describe your previous projects{% endtrans %} {% trans %}(maximum 500 words){% endtrans %}
-            </h4>
-            <h4 class="govuk-heading-s  ">
-                1.1.7. {% trans %}Type of organisation{% endtrans %}
+                2.1.3 How is your organisation classified?
             </h4>
             <p class="govuk-body">
                 {% trans %}Select one option{% endtrans %}
             </p>
             <ul class="govuk-list govuk-list--bullet">
                 <li>
-                    {% trans %}Charitable incorporated organisation (CIO){% endtrans %}
+                    Upper or lower tier local authority
                 </li>
                 <li>
-                    {% trans %}Co-operative, such as a community benefit society{% endtrans %}
+                    Charity with a registered charity number
                 </li>
                 <li>
-                    {% trans %}Community interest company (CIC){% endtrans %}
+                    Registered community interest company
                 </li>
                 <li>
-                    {% trans %}Company limited by guarantee{% endtrans %}
+                    Social enterprise
                 </li>
                 <li>
-                    {% trans %}Scottish charitable incorporated organisation (SCIO){% endtrans %}
-                </li>
-                <li>
-                    {% trans %}Parish, town or community council{% endtrans %}
+                    Community group
                 </li>
                 <li>
                     {% trans %}Other{% endtrans %}
                 </li>
             </ul>
             <p class="govuk-body">
-                {% trans %}If 'Other', go to{% endtrans %} <strong>1.1.7.1</strong>
+                If 'Upper or lower tier local authority' 'Registered community interest company', 'Social enterprise company', 'Community group' go to <strong>2.1.3.1.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'Charitable incorporated organisation (CIO)' or 'Scottish charitable incorporated organisation (SCIO)', go to{% endtrans %} <strong>1.1.7.2.</strong>
+                Charity with a registered charity number' got to <strong>2.1.3.2.</strong>
             </p>
             <p class="govuk-body">
-                {% trans %}If 'Co-operative, such as a community benefit society', 'Community interest company (CIC)', or 'Company limited by guarantee' go to{% endtrans %} <strong>1.1.7.3.</strong>
+                {% trans %}If 'Other', go to{% endtrans %} <strong>2.1.3.3.</strong>
             </p>
-            <p class="govuk-body">
-                {% trans %}If 'Parish council', go to{% endtrans %} <strong>1.1.8.</strong>
-            </p>
+
             <h4 class="govuk-heading-s">
-                1.1.7.1. {% trans %}Type of organisation (other){% endtrans %}
+                2.1.3.1. Company registration number
             </h4>
             <h4 class="govuk-heading-s">
-                1.1.7.2. {% trans %}Charity number{% endtrans %}
+                2.1.3.2. Charity number
             </h4>
             <h4 class="govuk-heading-s">
-                1.1.7.3. {% trans %}Company registration number{% endtrans %}
+                2.1.3.3. How is your organisation classified? (other)
             </h4>
+
             <h4 class="govuk-heading-s">
-                1.1.8. {% trans %}Which regulatory body is your company registered with?{% endtrans %}
-            </h4>
-            <p class="govuk-body">
-                {% trans %}Select one option{% endtrans %}
-            </p>
-            <ul class="govuk-list govuk-list--bullet">
-                <li>
-                    {% trans %}Companies House{% endtrans %}
-                </li>
-                <li>
-                    {% trans %}Other{% endtrans %}
-                </li>
-            </ul>
-            <h4 class="govuk-heading-s">
-                1.1.9. {% trans %}Is your organisation a trading subsidiary of a parent company?{% endtrans %}
-            </h4>
-            <p class="govuk-body">
-                {{ pgettext("individual", "If 'Yes', go to") }} <strong>1.1.9.1.</strong> {% trans %}and{% endtrans %} <strong>1.1.9.2.</strong>
-            </p>
-            <p class="govuk-body">
-                {{ pgettext("individual", "If 'No', go to") }} <strong>1.1.10.</strong>
-            </p>
-            <h4 class="govuk-heading-s ">
-                1.1.9.1. {% trans %}Name of parent organisation{% endtrans %}
+                2.1.4. Registered organisation address
             </h4>
             <h4 class="govuk-heading-s ">
-                1.1.9.2. {% trans %}Date parent organisation was established{% endtrans %}
+                2.1.5 Alternative organisation address (optional)
+            </h4>
+            <h4 class="govuk-heading-s ">
+                2.1.6 Is your application a joint bid in partnership with other organisations?
             </h4>
             <p class="govuk-body">
-                {% trans %}For example, 27 3 2007{% endtrans %}
+                If 'Yes', go to <strong>2.1.6.1</strong>, <strong>2.1.6.2</strong> and <strong>2.1.6.3</strong>
             </p>
+
             <h4 class="govuk-heading-s ">
-                1.1.10. {% trans %}Organisation address{% endtrans %}
-            </h4>
-            <h4 class="govuk-heading-s ">
-                1.1.11. {% trans %}Website and social media{% endtrans %}
+                2.1.6.1 Partner organisation details
             </h4>
             <p class="govuk-body">
-                {% trans %}For example, your company's Facebook, Instagram or Twitter accounts (if applicable){% endtrans %}
+                Partner organisation name
+            </p>
+            <p class="govuk-body">
+                Partner organisation address
+            </p>
+            <p class="govuk-body">
+                Website and social media links
+            </p>
+
+            <h4 class="govuk-heading-s ">
+                2.1.6.2 Tell us about how you plan to work with the partner organisations
+            </h4>
+            <p class="govuk-body">
+                Explain what their role is in the delivery of the project and how they’ll assist with delivery (500 words)
             </p>
             <h4 class="govuk-heading-s  ">
-                1.1.12. {% trans %}Is your correspondence address different to the organisation address?{% endtrans %}
+                2.1.6.3 Does an agreement currently exist between your organisation and the partnership organisations?
             </h4>
             <p class="govuk-body">
-                {{ pgettext("individual", "If 'Yes', go to") }} <strong>1.1.12.1.</strong>
+                We may ask for a copy of the agreement if your application is successful
             </p>
+
+            <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
             <p class="govuk-body">
                 {{ pgettext("individual", "If 'No', go to") }} <strong>1.1.13.</strong>
             </p>
