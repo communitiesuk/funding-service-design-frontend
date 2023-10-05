@@ -8,6 +8,7 @@ from dataclasses import dataclass
 class FeedbackSurveyConfig:
     requires_survey: bool = False
     isSurveyOptional: bool = True
+    requires_section_feedback: bool = False
 
 
 @dataclass
@@ -30,20 +31,20 @@ class Round:
     feedback_link: str
     project_name_field_id: str
     application_guidance: str
-    feedback_survey_config: FeedbackSurveyConfig = (FeedbackSurveyConfig(),)
     mark_as_complete_enabled: bool = False
+    feedback_survey_config: FeedbackSurveyConfig = None
 
     def __post_init__(self):
-        self.feedback_survey_config = (
-            FeedbackSurveyConfig(
-                requires_survey=self.feedback_survey_config["requires_survey"],
-                isSurveyOptional=self.feedback_survey_config[
-                    "isSurveyOptional"
-                ],
+        if isinstance(self.feedback_survey_config, dict):
+            self.feedback_survey_config = FeedbackSurveyConfig(
+                **{
+                    k: v
+                    for k, v in self.feedback_survey_config.items()
+                    if k in inspect.signature(FeedbackSurveyConfig).parameters
+                }
             )
-            if isinstance(self.feedback_survey_config, dict)
-            else self.feedback_survey_config
-        )
+        elif self.feedback_survey_config is None:
+            self.feedback_survey_config = FeedbackSurveyConfig()
 
     @classmethod
     def from_dict(cls, d: dict):
