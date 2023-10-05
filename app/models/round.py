@@ -5,6 +5,12 @@ from dataclasses import dataclass
 
 
 @dataclass
+class FeedbackSurveyConfig:
+    requires_survey: bool = False
+    isSurveyOptional: bool = True
+
+
+@dataclass
 class Round:
     id: str
     assessment_deadline: str
@@ -24,8 +30,20 @@ class Round:
     feedback_link: str
     project_name_field_id: str
     application_guidance: str
-    requires_feedback: bool = False
+    feedback_survey_config: FeedbackSurveyConfig = (FeedbackSurveyConfig(),)
     mark_as_complete_enabled: bool = False
+
+    def __post_init__(self):
+        self.feedback_survey_config = (
+            FeedbackSurveyConfig(
+                requires_survey=self.feedback_survey_config["requires_survey"],
+                isSurveyOptional=self.feedback_survey_config[
+                    "isSurveyOptional"
+                ],
+            )
+            if isinstance(self.feedback_survey_config, dict)
+            else self.feedback_survey_config
+        )
 
     @classmethod
     def from_dict(cls, d: dict):

@@ -144,10 +144,17 @@
                             {{ feedback_survey_data.number }}Applicant feedback survey (not scored)
                         </h2>
                         {% if not feedback_survey_data.completed %}
-                            <p class="govuk-body">
-                                You must complete all other sections before starting the feedback survey. This section
-                                should take approximately 1 minute to complete.
-                            </p>
+                            {% if feedback_survey_data.isSurveyOptional %}
+                                <p class="govuk-body">
+                                    You must complete all other sections before starting the feedback survey. This section
+                                    is optional and should take approximately 1 minute to complete.
+                                </p>
+                            {% else %}
+                                <p class="govuk-body">
+                                    You must complete all other sections before starting the feedback survey. This section
+                                    should take approximately 1 minute to complete.
+                                </p>
+                            {% endif %}
                             <ul class="app-task-list__items">
                                 <li class="app-task-list__item task-list__new-design">
                                     {% if not feedback_survey_data.available %}
