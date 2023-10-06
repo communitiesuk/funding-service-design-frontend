@@ -39,7 +39,7 @@
         {{ derive_status_tag(form["state"]["status"], application_meta_data, application_status) }}
       </li>
       {% endfor %}
-        {% if section.requires_feedback %}
+        {% if section.requires_feedback and application_meta_data.has_section_feedback %}
             <li class="app-task-list__item task-list__new-design">
                 {% if not section.all_forms_complete %}
                     Feedback on this section (not scored)

@@ -290,50 +290,47 @@ def get_feedback_survey_data(
     application_id,
     current_feedback_list,
     section_display_config,
-    feedback_survey_config,
+    is_feedback_survey_optional,
 ):
 
-    if feedback_survey_config.has_feedback_survey:
-        # we grab the number from the last section i.e "6. Foobar" then increment it to get "7. " for feedback.
-        last_section_title = section_display_config[-1].title
-        number = None
-        if re.search(r"\b(\d+)\.", last_section_title):
-            number = (
-                int(re.search(r"\b(\d+)\.", last_section_title).group(1)) + 1
-            )
+    # we grab the number from the last section i.e "6. Foobar" then increment it to get "7. " for feedback.
+    last_section_title = section_display_config[-1].title
+    number = None
+    if re.search(r"\b(\d+)\.", last_section_title):
+        number = int(re.search(r"\b(\d+)\.", last_section_title).group(1)) + 1
 
-        round_feedback_available = application.all_forms_complete and all(
-            current_feedback_list
+    round_feedback_available = application.all_forms_complete and all(
+        current_feedback_list
+    )
+    existing_survey_data_map = {
+        page_number: get_survey_data(application_id, page_number)
+        for page_number in ["1", "2", "3", "4"]
+    }
+
+    survey_has_been_completed = all(existing_survey_data_map.values())
+    latest_feedback_submission = None
+    if survey_has_been_completed:
+        all_submission_dates = [
+            s.date_submitted for s in existing_survey_data_map.values()
+        ]
+        all_submission_datetimes = [
+            datetime.fromisoformat(d.replace("Z", "+00:00"))
+            for d in all_submission_dates
+        ]
+        latest_feedback_submission = max(all_submission_datetimes).strftime(
+            "%d/%m/%Y"
         )
-        existing_survey_data_map = {
-            page_number: get_survey_data(application_id, page_number)
-            for page_number in ["1", "2", "3", "4"]
-        }
 
-        survey_has_been_completed = all(existing_survey_data_map.values())
-        latest_feedback_submission = None
-        if survey_has_been_completed:
-            all_submission_dates = [
-                s.date_submitted for s in existing_survey_data_map.values()
-            ]
-            all_submission_datetimes = [
-                datetime.fromisoformat(d.replace("Z", "+00:00"))
-                for d in all_submission_dates
-            ]
-            latest_feedback_submission = max(
-                all_submission_datetimes
-            ).strftime("%d/%m/%Y")
+    feedback_survey_data = {
+        "number": f"{number}. " if number else "",
+        "available": round_feedback_available,
+        "completed": survey_has_been_completed,
+        "started": any(existing_survey_data_map.values()),
+        "submitted": latest_feedback_submission,
+        "is_feedback_survey_optional": is_feedback_survey_optional,
+    }
 
-        feedback_survey_data = {
-            "number": f"{number}. " if number else "",
-            "available": round_feedback_available,
-            "completed": survey_has_been_completed,
-            "started": any(existing_survey_data_map.values()),
-            "submitted": latest_feedback_submission,
-            "is_feedback_survey_optional": feedback_survey_config.is_feedback_survey_optional,
-        }
-
-        return feedback_survey_data
+    return feedback_survey_data
 
 
 def get_section_feedback_data(application, section_display_config):

@@ -179,17 +179,28 @@ def tasklist(application_id):
 
     # note that individual section feedback COULD be independent of round feedback survey.
     # which is why this is not under a conditional round_data.feedback_survey_config.
-    current_feedback_list, existing_feedback_map = get_section_feedback_data(
-        application,
-        section_display_config,
-    )
+    if round_data.feedback_survey_config.has_section_feedback:
+        (
+            current_feedback_list,
+            existing_feedback_map,
+        ) = get_section_feedback_data(
+            application,
+            section_display_config,
+        )
+    else:
+        current_feedback_list = []
+        existing_feedback_map = {}
 
-    feedback_survey_data = get_feedback_survey_data(
-        application,
-        application_id,
-        current_feedback_list,
-        section_display_config,
-        round_data.feedback_survey_config,
+    feedback_survey_data = (
+        get_feedback_survey_data(
+            application,
+            application_id,
+            current_feedback_list,
+            section_display_config,
+            round_data.feedback_survey_config.is_feedback_survey_optional,
+        )
+        if round_data.feedback_survey_config.has_feedback_survey
+        else None
     )
 
     form = FlaskForm()
@@ -203,8 +214,16 @@ def tasklist(application_id):
         "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
         "completed_status": ApplicationStatus.COMPLETED.name,
         "submitted_status": ApplicationStatus.SUBMITTED.name,
+        "has_section_feedback": round_data.feedback_survey_config.has_section_feedback,
         "number_of_forms": len(application.forms)
-        + sum(1 for s in section_display_config if s.requires_feedback),
+        + sum(
+            1
+            for s in section_display_config
+            if (
+                s.requires_feedback
+                and round_data.feedback_survey_config.has_section_feedback
+            )
+        ),
         "number_of_completed_forms": len(
             list(
                 filter(
