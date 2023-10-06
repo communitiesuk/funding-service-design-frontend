@@ -177,22 +177,19 @@ def tasklist(application_id):
     )
     display_config = application.match_forms_to_state(section_display_config)
 
-    # note that individual section feedback COULD be independent of round feedback.
-    # which is why this is not under a conditional round_data.requires_feedback.
+    # note that individual section feedback COULD be independent of round feedback survey.
+    # which is why this is not under a conditional round_data.feedback_survey_config.
     current_feedback_list, existing_feedback_map = get_section_feedback_data(
         application,
         section_display_config,
     )
 
-    feedback_survey_data = (
-        get_feedback_survey_data(
-            application,
-            application_id,
-            current_feedback_list,
-            section_display_config,
-        )
-        if round_data.requires_feedback
-        else None
+    feedback_survey_data = get_feedback_survey_data(
+        application,
+        application_id,
+        current_feedback_list,
+        section_display_config,
+        round_data.feedback_survey_config,
     )
 
     form = FlaskForm()
@@ -485,7 +482,7 @@ def round_feedback(application_id, page_number):
         as_dict=False,
         ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
     )
-    if not round_data.requires_feedback:
+    if not round_data.feedback_survey_config.has_feedback_survey:
         abort(404)
 
     if page_number == "END":
@@ -561,7 +558,7 @@ def round_feedback_intro(application_id):
         ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
     )
 
-    if not round_data.requires_feedback:
+    if not round_data.feedback_survey_config.has_feedback_survey:
         abort(404)
 
     existing_survey_data_map = {
