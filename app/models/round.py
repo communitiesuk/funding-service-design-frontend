@@ -11,7 +11,7 @@ class FeedbackSurveyConfig:
     has_section_feedback: bool = False
     is_section_feedback_optional: bool = True
 
-    @staticmethod
+    @classmethod
     def from_dict(cls, d: dict):
         # Filter unknown fields from JSON dictionary
         return cls(
