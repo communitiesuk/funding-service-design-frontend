@@ -293,7 +293,7 @@ def get_feedback_survey_data(
     feedback_survey_config,
 ):
 
-    if feedback_survey_config.requires_survey:
+    if feedback_survey_config.has_feedback_survey:
         # we grab the number from the last section i.e "6. Foobar" then increment it to get "7. " for feedback.
         last_section_title = section_display_config[-1].title
         number = None
@@ -330,7 +330,7 @@ def get_feedback_survey_data(
             "completed": survey_has_been_completed,
             "started": any(existing_survey_data_map.values()),
             "submitted": latest_feedback_submission,
-            "isSurveyOptional": feedback_survey_config.isSurveyOptional,
+            "is_feedback_survey_optional": feedback_survey_config.is_feedback_survey_optional,
         }
 
         return feedback_survey_data

@@ -482,7 +482,7 @@ def round_feedback(application_id, page_number):
         as_dict=False,
         ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
     )
-    if not round_data.feedback_survey_config.requires_survey:
+    if not round_data.feedback_survey_config.has_feedback_survey:
         abort(404)
 
     if page_number == "END":
@@ -558,7 +558,7 @@ def round_feedback_intro(application_id):
         ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
     )
 
-    if not round_data.feedback_survey_config.requires_survey:
+    if not round_data.feedback_survey_config.has_feedback_survey:
         abort(404)
 
     existing_survey_data_map = {

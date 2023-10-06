@@ -11,9 +11,12 @@
     "started_at": "2022-05-20T14:47:12",
     "last_edited": null,
     "language": "en",
-    "feedback_survey_config": {"requires_survey": true,
-                                    "isSurveyOptional": false,
-                                   },
+    "feedback_survey_config": {
+      "has_feedback_survey": true,
+      "has_section_feedback": true,
+      "is_feedback_survey_optional": false,
+      "is_section_feedback_optional": false
+    },
     "forms": [
       {
         "name": "applicant-information",

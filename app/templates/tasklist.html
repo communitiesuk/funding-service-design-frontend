@@ -144,7 +144,7 @@
                             {{ feedback_survey_data.number }}Applicant feedback survey (not scored)
                         </h2>
                         {% if not feedback_survey_data.completed %}
-                            {% if feedback_survey_data.isSurveyOptional %}
+                            {% if feedback_survey_data.is_feedback_survey_optional %}
                                 <p class="govuk-body">
                                     You must complete all other sections before starting the feedback survey. This section
                                     is optional and should take approximately 1 minute to complete.
