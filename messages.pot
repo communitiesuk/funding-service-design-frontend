@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-09-04 16:13+0100\n"
+"POT-Creation-Date: 2023-10-03 15:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.11.0\n"
+"Generated-By: Babel 2.10.3\n"
 
 #: app/create_app.py:141
 msgid "Apply for"
@@ -27,6 +27,10 @@ msgstr ""
 
 #: app/filters.py:15 app/filters.py:32
 msgid "at"
+msgstr ""
+
+#: app/forms/feedback_forms.py:21 app/templates/feedback_generic_survey.html:26
+msgid "How easy did you find it to complete this section?"
 msgstr ""
 
 #: app/models/language.py:5
@@ -156,16 +160,20 @@ msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:6
 #: app/templates/cof_r3_all_questions.html:6
+#: app/templates/cyp_r1_all_questions.html:6
 msgid "Full list of application questions"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:10
 #: app/templates/cof_r3_all_questions.html:10
-msgid "Community Ownership Fund"
+#: app/templates/cyp_r1_all_questions.html:10
+#, python-format
+msgid "%(fund_title)s"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:13
 #: app/templates/cof_r3_all_questions.html:13
+#: app/templates/cyp_r1_all_questions.html:13
 msgid "Table of contents"
 msgstr ""
 
@@ -180,6 +188,7 @@ msgstr ""
 #: app/templates/cof_r2_all_questions.html:42
 #: app/templates/cof_r3_all_questions.html:16
 #: app/templates/cof_r3_all_questions.html:36
+#: app/templates/cyp_r1_all_questions.html:54
 msgid "About your organisation"
 msgstr ""
 
@@ -200,28 +209,28 @@ msgstr ""
 #: app/templates/cof_r2_all_questions.html:22
 #: app/templates/cof_r2_all_questions.html:465
 #: app/templates/cof_r3_all_questions.html:22
-#: app/templates/cof_r3_all_questions.html:535
+#: app/templates/cof_r3_all_questions.html:494
 msgid "strategic-case"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:22
 #: app/templates/cof_r2_all_questions.html:466
 #: app/templates/cof_r3_all_questions.html:22
-#: app/templates/cof_r3_all_questions.html:536
+#: app/templates/cof_r3_all_questions.html:495
 msgid "Strategic case"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:25
 #: app/templates/cof_r2_all_questions.html:598
 #: app/templates/cof_r3_all_questions.html:25
-#: app/templates/cof_r3_all_questions.html:701
+#: app/templates/cof_r3_all_questions.html:660
 msgid "management-case"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:25
 #: app/templates/cof_r2_all_questions.html:599
 #: app/templates/cof_r3_all_questions.html:25
-#: app/templates/cof_r3_all_questions.html:702
+#: app/templates/cof_r3_all_questions.html:661
 msgid "Management case"
 msgstr ""
 
@@ -248,26 +257,28 @@ msgstr ""
 #: app/templates/cof_r2_all_questions.html:34
 #: app/templates/cof_r2_all_questions.html:1274
 #: app/templates/cof_r3_all_questions.html:28
-#: app/templates/cof_r3_all_questions.html:1205
+#: app/templates/cof_r3_all_questions.html:1167
 msgid "subsidy-control"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:34
 #: app/templates/cof_r2_all_questions.html:1275
 #: app/templates/cof_r3_all_questions.html:28
-#: app/templates/cof_r3_all_questions.html:1206
+#: app/templates/cof_r3_all_questions.html:1168
 msgid "Subsidy control and state aid"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:37
 #: app/templates/cof_r2_all_questions.html:1308
 #: app/templates/cof_r3_all_questions.html:31
-#: app/templates/cof_r3_all_questions.html:1239
+#: app/templates/cof_r3_all_questions.html:1201
+#: app/templates/cyp_r1_all_questions.html:40
 msgid "declarations"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:37
 #: app/templates/cof_r3_all_questions.html:31
+#: app/templates/cyp_r1_all_questions.html:40
 msgid "Declarations"
 msgstr ""
 
@@ -295,16 +306,19 @@ msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:47
 #: app/templates/cof_r3_all_questions.html:41
+#: app/templates/cyp_r1_all_questions.html:56
 msgid "Organisation name"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:48
 #: app/templates/cof_r3_all_questions.html:42
+#: app/templates/cyp_r1_all_questions.html:57
 msgid "This must match your registered legal organisation name"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:49
 #: app/templates/cof_r3_all_questions.html:43
+#: app/templates/cyp_r1_all_questions.html:58
 msgid "Does your organisation use any other names?"
 msgstr ""
 
@@ -322,10 +336,10 @@ msgstr ""
 #: app/templates/cof_r3_all_questions.html:134
 #: app/templates/cof_r3_all_questions.html:161
 #: app/templates/cof_r3_all_questions.html:173
-#: app/templates/cof_r3_all_questions.html:406
-#: app/templates/cof_r3_all_questions.html:450
-#: app/templates/cof_r3_all_questions.html:1218
-#: app/templates/cof_r3_all_questions.html:1230
+#: app/templates/cof_r3_all_questions.html:409
+#: app/templates/cof_r3_all_questions.html:1180
+#: app/templates/cof_r3_all_questions.html:1192
+#: app/templates/cyp_r1_all_questions.html:60
 msgctxt "individual"
 msgid "If 'Yes', go to"
 msgstr ""
@@ -340,14 +354,15 @@ msgstr ""
 #: app/templates/cof_r3_all_questions.html:48
 #: app/templates/cof_r3_all_questions.html:137
 #: app/templates/cof_r3_all_questions.html:164
-#: app/templates/cof_r3_all_questions.html:409
-#: app/templates/cof_r3_all_questions.html:453
+#: app/templates/cof_r3_all_questions.html:412
+#: app/templates/cyp_r1_all_questions.html:63
 msgctxt "individual"
 msgid "If 'No', go to"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:56
 #: app/templates/cof_r3_all_questions.html:50
+#: app/templates/cyp_r1_all_questions.html:65
 msgid "Alternative names of your organisation"
 msgstr ""
 
@@ -401,37 +416,36 @@ msgstr ""
 #: app/templates/cof_r3_all_questions.html:269
 #: app/templates/cof_r3_all_questions.html:272
 #: app/templates/cof_r3_all_questions.html:397
-#: app/templates/cof_r3_all_questions.html:400
-#: app/templates/cof_r3_all_questions.html:529
-#: app/templates/cof_r3_all_questions.html:545
-#: app/templates/cof_r3_all_questions.html:554
-#: app/templates/cof_r3_all_questions.html:560
-#: app/templates/cof_r3_all_questions.html:578
-#: app/templates/cof_r3_all_questions.html:584
-#: app/templates/cof_r3_all_questions.html:587
-#: app/templates/cof_r3_all_questions.html:593
-#: app/templates/cof_r3_all_questions.html:602
-#: app/templates/cof_r3_all_questions.html:660
-#: app/templates/cof_r3_all_questions.html:666
-#: app/templates/cof_r3_all_questions.html:672
-#: app/templates/cof_r3_all_questions.html:684
-#: app/templates/cof_r3_all_questions.html:943
-#: app/templates/cof_r3_all_questions.html:952
-#: app/templates/cof_r3_all_questions.html:1016
-#: app/templates/cof_r3_all_questions.html:1025
-#: app/templates/cof_r3_all_questions.html:1034
-#: app/templates/cof_r3_all_questions.html:1057
-#: app/templates/cof_r3_all_questions.html:1074
-#: app/templates/cof_r3_all_questions.html:1077
-#: app/templates/cof_r3_all_questions.html:1086
-#: app/templates/cof_r3_all_questions.html:1092
-#: app/templates/cof_r3_all_questions.html:1221
-#: app/templates/cof_r3_all_questions.html:1233
+#: app/templates/cof_r3_all_questions.html:504
+#: app/templates/cof_r3_all_questions.html:513
+#: app/templates/cof_r3_all_questions.html:519
+#: app/templates/cof_r3_all_questions.html:537
+#: app/templates/cof_r3_all_questions.html:543
+#: app/templates/cof_r3_all_questions.html:546
+#: app/templates/cof_r3_all_questions.html:552
+#: app/templates/cof_r3_all_questions.html:561
+#: app/templates/cof_r3_all_questions.html:619
+#: app/templates/cof_r3_all_questions.html:625
+#: app/templates/cof_r3_all_questions.html:631
+#: app/templates/cof_r3_all_questions.html:643
+#: app/templates/cof_r3_all_questions.html:905
+#: app/templates/cof_r3_all_questions.html:914
+#: app/templates/cof_r3_all_questions.html:978
+#: app/templates/cof_r3_all_questions.html:987
+#: app/templates/cof_r3_all_questions.html:996
+#: app/templates/cof_r3_all_questions.html:1019
+#: app/templates/cof_r3_all_questions.html:1036
+#: app/templates/cof_r3_all_questions.html:1039
+#: app/templates/cof_r3_all_questions.html:1048
+#: app/templates/cof_r3_all_questions.html:1054
+#: app/templates/cof_r3_all_questions.html:1183
+#: app/templates/cof_r3_all_questions.html:1195
 msgid "(maximum 500 words)"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:58
 #: app/templates/cof_r3_all_questions.html:53
+#: app/templates/cyp_r1_all_questions.html:67
 msgid "Tell us about your organisation's main activities"
 msgstr ""
 
@@ -450,7 +464,7 @@ msgstr ""
 #: app/templates/cof_r3_all_questions.html:220
 #: app/templates/cof_r3_all_questions.html:229
 #: app/templates/cof_r3_all_questions.html:385
-#: app/templates/cof_r3_all_questions.html:775
+#: app/templates/cof_r3_all_questions.html:734
 msgctxt "group"
 msgid "If 'Yes', go to"
 msgstr ""
@@ -466,8 +480,8 @@ msgstr ""
 #: app/templates/cof_r3_all_questions.html:134
 #: app/templates/cof_r3_all_questions.html:174
 #: app/templates/cof_r3_all_questions.html:229
-#: app/templates/cof_r3_all_questions.html:406
-#: app/templates/cof_r3_all_questions.html:1218
+#: app/templates/cof_r3_all_questions.html:409
+#: app/templates/cof_r3_all_questions.html:1180
 msgid "and"
 msgstr ""
 
@@ -480,7 +494,7 @@ msgstr ""
 #: app/templates/cof_r3_all_questions.html:223
 #: app/templates/cof_r3_all_questions.html:232
 #: app/templates/cof_r3_all_questions.html:388
-#: app/templates/cof_r3_all_questions.html:778
+#: app/templates/cof_r3_all_questions.html:737
 msgctxt "group"
 msgid "If 'No', go to"
 msgstr ""
@@ -503,6 +517,7 @@ msgstr ""
 #: app/templates/cof_r2_all_questions.html:117
 #: app/templates/cof_r3_all_questions.html:70
 #: app/templates/cof_r3_all_questions.html:120
+#: app/templates/cyp_r1_all_questions.html:78
 msgid "Select one option"
 msgstr ""
 
@@ -537,6 +552,7 @@ msgstr ""
 #: app/templates/cof_r3_all_questions.html:92
 #: app/templates/cof_r3_all_questions.html:127
 #: app/templates/cof_r3_all_questions.html:328
+#: app/templates/cyp_r1_all_questions.html:97
 msgid "Other"
 msgstr ""
 
@@ -556,6 +572,7 @@ msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:105
 #: app/templates/cof_r3_all_questions.html:96
+#: app/templates/cyp_r1_all_questions.html:108
 msgid "If 'Other', go to"
 msgstr ""
 
@@ -597,7 +614,7 @@ msgstr ""
 #: app/templates/cof_r2_all_questions.html:143
 #: app/templates/cof_r2_all_questions.html:436
 #: app/templates/cof_r3_all_questions.html:146
-#: app/templates/cof_r3_all_questions.html:523
+#: app/templates/cof_r3_all_questions.html:482
 msgid "For example, 27 3 2007"
 msgstr ""
 
@@ -910,19 +927,18 @@ msgid "Expected date of sale or lease"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:367
+#: app/templates/cof_r3_all_questions.html:406
 msgid "Is your asset currently publicly owned?"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:376
-#: app/templates/cof_r3_all_questions.html:412
-#: app/templates/cof_r3_all_questions.html:456
+#: app/templates/cof_r3_all_questions.html:415
 msgid ""
 "Tell us about the person you have spoken to at the relevant public about "
 "the asset"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:379
-#: app/templates/cof_r3_all_questions.html:415
 msgid ""
 "When you buy or lease a publicly owned asset, the public authority must "
 "continue to be responsible for delivering any statutory services the "
@@ -930,15 +946,13 @@ msgid ""
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:382
-#: app/templates/cof_r3_all_questions.html:418
 msgid ""
 "This includes things like social care, waste collection and planning "
 "services"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:385
-#: app/templates/cof_r3_all_questions.html:421
-#: app/templates/cof_r3_all_questions.html:468
+#: app/templates/cof_r3_all_questions.html:427
 msgid ""
 "Grants from this fund cannot be used to buy the freehold or premium on "
 "the lease of a publicly owned asset. Money must only be used for "
@@ -950,29 +964,24 @@ msgid "Upload supporting evidence"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:391
-#: app/templates/cof_r3_all_questions.html:427
 msgid "Upload supporting evidence to summarise:"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:395
-#: app/templates/cof_r3_all_questions.html:431
 msgid "the risk the asset is facing"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:398
-#: app/templates/cof_r3_all_questions.html:434
 msgid ""
 "that any statutory services will not be transferred from the public "
 "authority"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:401
-#: app/templates/cof_r3_all_questions.html:437
 msgid "that the asset will be sustainable after it has been transferred"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:405
-#: app/templates/cof_r3_all_questions.html:441
 msgid ""
 "For example, this evidence can include confirmation from the public owner"
 " or a letter from the local authority"
@@ -988,8 +997,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:412
-#: app/templates/cof_r3_all_questions.html:447
-#: app/templates/cof_r3_all_questions.html:532
+#: app/templates/cof_r3_all_questions.html:491
 msgid "Is this a registered Asset of Community Value (ACV)?"
 msgstr ""
 
@@ -1006,30 +1014,29 @@ msgid ", and"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:433
-#: app/templates/cof_r3_all_questions.html:520
+#: app/templates/cof_r3_all_questions.html:479
 msgid "When was the asset listed?"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:439
-#: app/templates/cof_r3_all_questions.html:526
+#: app/templates/cof_r3_all_questions.html:485
 msgid "Provide a link to the listing"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:442
-#: app/templates/cof_r3_all_questions.html:529
 msgid "Describe the current status of the Community Asset Transfer"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:445
-#: app/templates/cof_r3_all_questions.html:488
+#: app/templates/cof_r3_all_questions.html:447
 msgid "Why is the asset at risk of closure?"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:448
 #: app/templates/cof_r2_all_questions.html:478
 #: app/templates/cof_r2_all_questions.html:1220
-#: app/templates/cof_r3_all_questions.html:491
-#: app/templates/cof_r3_all_questions.html:640
+#: app/templates/cof_r3_all_questions.html:450
+#: app/templates/cof_r3_all_questions.html:599
 msgid "Select all that apply"
 msgstr ""
 
@@ -1053,8 +1060,8 @@ msgstr ""
 #: app/templates/cof_r2_all_questions.html:602
 #: app/templates/cof_r2_all_questions.html:1211
 #: app/templates/cof_r2_all_questions.html:1256
-#: app/templates/cof_r3_all_questions.html:539
-#: app/templates/cof_r3_all_questions.html:705
+#: app/templates/cof_r3_all_questions.html:498
+#: app/templates/cof_r3_all_questions.html:664
 #: app/templates/partials/tasklist_section.html:28
 msgid "This section is worth"
 msgstr ""
@@ -1063,13 +1070,13 @@ msgstr ""
 #: app/templates/cof_r2_all_questions.html:602
 #: app/templates/cof_r2_all_questions.html:1211
 #: app/templates/cof_r2_all_questions.html:1256
-#: app/templates/cof_r3_all_questions.html:539
-#: app/templates/cof_r3_all_questions.html:705
+#: app/templates/cof_r3_all_questions.html:498
+#: app/templates/cof_r3_all_questions.html:664
 msgid "of the assessment criteria."
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:472
-#: app/templates/cof_r3_all_questions.html:542
+#: app/templates/cof_r3_all_questions.html:501
 msgid "Community use"
 msgstr ""
 
@@ -1098,26 +1105,26 @@ msgid "Fight climate change"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:498
-#: app/templates/cof_r3_all_questions.html:545
+#: app/templates/cof_r3_all_questions.html:504
 msgid ""
 "Who in the community uses the asset, or has used it in the past, and who "
 "benefits from it?"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:501
-#: app/templates/cof_r3_all_questions.html:554
+#: app/templates/cof_r3_all_questions.html:513
 msgid ""
 "Tell us how losing the asset would affect, or has already affected, "
 "people in the community"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:504
-#: app/templates/cof_r3_all_questions.html:560
+#: app/templates/cof_r3_all_questions.html:519
 msgid "Why will the asset be lost without community intervention?"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:507
-#: app/templates/cof_r3_all_questions.html:575
+#: app/templates/cof_r3_all_questions.html:534
 msgid "Community engagement"
 msgstr ""
 
@@ -1133,17 +1140,17 @@ msgid "Have you done any fundraising in the community?"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:522
-#: app/templates/cof_r3_all_questions.html:584
+#: app/templates/cof_r3_all_questions.html:543
 msgid "Describe your fundraising activities"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:525
-#: app/templates/cof_r3_all_questions.html:593
+#: app/templates/cof_r3_all_questions.html:552
 msgid "Tell us how your project supports any wider local plans"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:528
-#: app/templates/cof_r3_all_questions.html:599
+#: app/templates/cof_r3_all_questions.html:558
 msgid "Local support"
 msgstr ""
 
@@ -1168,74 +1175,73 @@ msgid "public sector partners"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:551
-#: app/templates/cof_r3_all_questions.html:602
+#: app/templates/cof_r3_all_questions.html:561
 msgid "Tell us more about the local support for your project"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:554
-#: app/templates/cof_r3_all_questions.html:605
+#: app/templates/cof_r3_all_questions.html:564
 msgid "This can include:"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:558
-#: app/templates/cof_r3_all_questions.html:609
+#: app/templates/cof_r3_all_questions.html:568
 msgid "surveys of the community"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:561
-#: app/templates/cof_r3_all_questions.html:612
 msgid "town hall meetings you have runs"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:564
-#: app/templates/cof_r3_all_questions.html:615
+#: app/templates/cof_r3_all_questions.html:574
 msgid "the estimated number of volunteers you have for your project"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:567
-#: app/templates/cof_r3_all_questions.html:618
+#: app/templates/cof_r3_all_questions.html:577
 msgid "a letter from your local MP"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:571
-#: app/templates/cof_r3_all_questions.html:625
+#: app/templates/cof_r3_all_questions.html:584
 msgid "Upload supporting evidence (optional)"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:578
-#: app/templates/cof_r3_all_questions.html:681
+#: app/templates/cof_r3_all_questions.html:640
 msgid "Environmental sustainability"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:581
-#: app/templates/cof_r3_all_questions.html:684
+#: app/templates/cof_r3_all_questions.html:643
 msgid ""
 "Tell us how you have considered the environmental sustainability of your "
 "project"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:584
-#: app/templates/cof_r3_all_questions.html:687
+#: app/templates/cof_r3_all_questions.html:646
 msgid "This could include:"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:588
-#: app/templates/cof_r3_all_questions.html:691
+#: app/templates/cof_r3_all_questions.html:650
 msgid "any low or zero carbon approaches you will adopt during construction"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:591
-#: app/templates/cof_r3_all_questions.html:694
+#: app/templates/cof_r3_all_questions.html:653
 msgid "how the asset will align with Net Zero initiatives in future"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:594
-#: app/templates/cof_r3_all_questions.html:697
+#: app/templates/cof_r3_all_questions.html:656
 msgid "how you will measure and reduce the asset's environmental impact"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:605
-#: app/templates/cof_r3_all_questions.html:708
+#: app/templates/cof_r3_all_questions.html:667
 msgid "Funding required"
 msgstr ""
 
@@ -1307,7 +1313,7 @@ msgstr ""
 #: app/templates/cof_r2_all_questions.html:944
 #: app/templates/cof_r2_all_questions.html:964
 #: app/templates/cof_r2_all_questions.html:982
-#: app/templates/cof_r3_all_questions.html:763
+#: app/templates/cof_r3_all_questions.html:722
 msgid ""
 "You can use your business plan to provide information that supports your "
 "answers."
@@ -1326,23 +1332,21 @@ msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:659
 #: app/templates/cof_r2_all_questions.html:685
-#: app/templates/cof_r3_all_questions.html:858
-#: app/templates/cof_r3_all_questions.html:887
-#: app/templates/cof_r3_all_questions.html:901
+#: app/templates/cof_r3_all_questions.html:817
+#: app/templates/cof_r3_all_questions.html:849
 msgid "utilities"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:662
 #: app/templates/cof_r2_all_questions.html:688
-#: app/templates/cof_r3_all_questions.html:861
-#: app/templates/cof_r3_all_questions.html:890
-#: app/templates/cof_r3_all_questions.html:904
+#: app/templates/cof_r3_all_questions.html:820
+#: app/templates/cof_r3_all_questions.html:852
 msgid "staffing"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:665
 #: app/templates/cof_r2_all_questions.html:691
-#: app/templates/cof_r3_all_questions.html:864
+#: app/templates/cof_r3_all_questions.html:823
 msgid "appointing external consultants"
 msgstr ""
 
@@ -1357,10 +1361,10 @@ msgstr ""
 #: app/templates/cof_r2_all_questions.html:759
 #: app/templates/cof_r2_all_questions.html:988
 #: app/templates/cof_r2_all_questions.html:1000
-#: app/templates/cof_r3_all_questions.html:822
-#: app/templates/cof_r3_all_questions.html:874
-#: app/templates/cof_r3_all_questions.html:949
-#: app/templates/cof_r3_all_questions.html:1031
+#: app/templates/cof_r3_all_questions.html:781
+#: app/templates/cof_r3_all_questions.html:833
+#: app/templates/cof_r3_all_questions.html:911
+#: app/templates/cof_r3_all_questions.html:993
 msgctxt "indefinite"
 msgid "If 'Yes', go to"
 msgstr ""
@@ -1368,39 +1372,42 @@ msgstr ""
 #: app/templates/cof_r2_all_questions.html:675
 #: app/templates/cof_r2_all_questions.html:762
 #: app/templates/cof_r2_all_questions.html:991
-#: app/templates/cof_r3_all_questions.html:825
-#: app/templates/cof_r3_all_questions.html:877
+#: app/templates/cof_r3_all_questions.html:784
+#: app/templates/cof_r3_all_questions.html:836
 msgctxt "indefinite"
 msgid "If 'No', go to"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:678
+#: app/templates/cof_r3_all_questions.html:839
 msgid "Revenue costs (optional)"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:698
 #: app/templates/cof_r2_all_questions.html:800
-#: app/templates/cof_r3_all_questions.html:834
-#: app/templates/cof_r3_all_questions.html:897
+#: app/templates/cof_r3_all_questions.html:793
+#: app/templates/cof_r3_all_questions.html:859
 msgid "You can use your business plan to:"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:702
+#: app/templates/cof_r3_all_questions.html:863
 msgid "tell us why you need revenue funding"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:705
-#: app/templates/cof_r3_all_questions.html:841
+#: app/templates/cof_r3_all_questions.html:800
+#: app/templates/cof_r3_all_questions.html:866
 msgid "provide any information that supports your answers"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:709
-#: app/templates/cof_r3_all_questions.html:772
+#: app/templates/cof_r3_all_questions.html:731
 msgid "Have you secured any match funding yet?"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:718
-#: app/templates/cof_r3_all_questions.html:781
+#: app/templates/cof_r3_all_questions.html:740
 msgid "Secured match funding"
 msgstr ""
 
@@ -1425,43 +1432,43 @@ msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:731
 #: app/templates/cof_r2_all_questions.html:778
-#: app/templates/cof_r3_all_questions.html:791
+#: app/templates/cof_r3_all_questions.html:750
 msgid "public bodies"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:734
 #: app/templates/cof_r2_all_questions.html:781
-#: app/templates/cof_r3_all_questions.html:794
+#: app/templates/cof_r3_all_questions.html:753
 msgid "devolved administrations"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:737
 #: app/templates/cof_r2_all_questions.html:784
-#: app/templates/cof_r3_all_questions.html:797
+#: app/templates/cof_r3_all_questions.html:756
 msgid "charitable trusts"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:740
 #: app/templates/cof_r2_all_questions.html:787
-#: app/templates/cof_r3_all_questions.html:800
+#: app/templates/cof_r3_all_questions.html:759
 msgid "national lottery funders"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:743
 #: app/templates/cof_r2_all_questions.html:790
-#: app/templates/cof_r3_all_questions.html:803
+#: app/templates/cof_r3_all_questions.html:762
 msgid "community shares"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:746
 #: app/templates/cof_r2_all_questions.html:793
-#: app/templates/cof_r3_all_questions.html:806
+#: app/templates/cof_r3_all_questions.html:765
 msgid "social investors"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:749
 #: app/templates/cof_r2_all_questions.html:796
-#: app/templates/cof_r3_all_questions.html:809
+#: app/templates/cof_r3_all_questions.html:768
 msgid "other lenders"
 msgstr ""
 
@@ -1470,9 +1477,9 @@ msgstr ""
 #: app/templates/cof_r2_all_questions.html:849
 #: app/templates/cof_r2_all_questions.html:1020
 #: app/templates/cof_r2_all_questions.html:1040
-#: app/templates/cof_r3_all_questions.html:940
-#: app/templates/cof_r3_all_questions.html:1051
-#: app/templates/cof_r3_all_questions.html:1071
+#: app/templates/cof_r3_all_questions.html:902
+#: app/templates/cof_r3_all_questions.html:1013
+#: app/templates/cof_r3_all_questions.html:1033
 msgid ""
 "You can use your business plan to provide evidence to support your "
 "answers."
@@ -1483,12 +1490,12 @@ msgid "Do you have any match funding identified but not yet secured?"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:765
-#: app/templates/cof_r3_all_questions.html:828
+#: app/templates/cof_r3_all_questions.html:787
 msgid "Unsecured match funding"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:804
-#: app/templates/cof_r3_all_questions.html:838
+#: app/templates/cof_r3_all_questions.html:797
 msgid ""
 "tell us how long it will likely take to secure any outstanding match "
 "funding"
@@ -1523,25 +1530,25 @@ msgid "If you have already bought or leased the asset, use its current valuation
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:829
-#: app/templates/cof_r3_all_questions.html:920
+#: app/templates/cof_r3_all_questions.html:882
 msgid "Feasibility"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:832
 #: app/templates/cof_r2_all_questions.html:917
-#: app/templates/cof_r3_all_questions.html:923
+#: app/templates/cof_r3_all_questions.html:885
 msgid ""
 "This is analysis which tests the ability of your project to deliver its "
 "objectives."
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:835
-#: app/templates/cof_r3_all_questions.html:926
+#: app/templates/cof_r3_all_questions.html:888
 msgid "You should use your feasibility studies to:"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:839
-#: app/templates/cof_r3_all_questions.html:930
+#: app/templates/cof_r3_all_questions.html:892
 msgid ""
 "test the context and resources within which the project is operating, "
 "including market analysis and whether the financial, technical and "
@@ -1550,34 +1557,34 @@ msgid ""
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:842
-#: app/templates/cof_r3_all_questions.html:933
+#: app/templates/cof_r3_all_questions.html:895
 msgid "test the viability and sustainability of the project in the long term"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:845
-#: app/templates/cof_r3_all_questions.html:936
+#: app/templates/cof_r3_all_questions.html:898
 msgid "develop a strong business plan"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:852
-#: app/templates/cof_r3_all_questions.html:943
+#: app/templates/cof_r3_all_questions.html:905
 msgid ""
 "Tell us about the feasibility studies you have carried out for your "
 "project"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:855
-#: app/templates/cof_r3_all_questions.html:946
+#: app/templates/cof_r3_all_questions.html:908
 msgid "Do you need to do any further feasibility work?"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:858
-#: app/templates/cof_r3_all_questions.html:958
+#: app/templates/cof_r3_all_questions.html:920
 msgid "Risk"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:861
-#: app/templates/cof_r3_all_questions.html:961
+#: app/templates/cof_r3_all_questions.html:923
 msgid ""
 "We want to understand any risks your project may face and how you intend "
 "to mitigate them. They can be during the planning or delivery stages, or "
@@ -1585,74 +1592,74 @@ msgid ""
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:864
-#: app/templates/cof_r3_all_questions.html:964
+#: app/templates/cof_r3_all_questions.html:926
 msgid ""
 "This does not include any risks to the asset or why it may close, which "
 "we asked you about earlier in your application."
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:867
-#: app/templates/cof_r3_all_questions.html:967
+#: app/templates/cof_r3_all_questions.html:929
 msgid "Examples of risks include:"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:871
-#: app/templates/cof_r3_all_questions.html:971
+#: app/templates/cof_r3_all_questions.html:933
 msgid "planning consent for any work needed on the asset"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:874
-#: app/templates/cof_r3_all_questions.html:974
+#: app/templates/cof_r3_all_questions.html:936
 msgid "potential issues with the supply of building materials"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:877
-#: app/templates/cof_r3_all_questions.html:977
+#: app/templates/cof_r3_all_questions.html:939
 msgid "staffing departures during delivery of your project"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:881
-#: app/templates/cof_r3_all_questions.html:981
+#: app/templates/cof_r3_all_questions.html:943
 msgid "Risks to your project (document upload)"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:888
-#: app/templates/cof_r3_all_questions.html:984
+#: app/templates/cof_r3_all_questions.html:946
 msgid "Upload a document detailing any risks your project may face."
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:891
-#: app/templates/cof_r3_all_questions.html:987
+#: app/templates/cof_r3_all_questions.html:949
 msgid "You should include:"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:895
-#: app/templates/cof_r3_all_questions.html:991
+#: app/templates/cof_r3_all_questions.html:953
 msgid "a description of the risk"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:898
-#: app/templates/cof_r3_all_questions.html:994
+#: app/templates/cof_r3_all_questions.html:956
 msgid "the likelihood of it happening"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:901
-#: app/templates/cof_r3_all_questions.html:997
+#: app/templates/cof_r3_all_questions.html:959
 msgid "when it may occur"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:904
-#: app/templates/cof_r3_all_questions.html:1000
+#: app/templates/cof_r3_all_questions.html:962
 msgid "how you intend to mitigate it"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:907
-#: app/templates/cof_r3_all_questions.html:1003
+#: app/templates/cof_r3_all_questions.html:965
 msgid "the likelihood of it happening after mitigation"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:911
-#: app/templates/cof_r3_all_questions.html:1007
+#: app/templates/cof_r3_all_questions.html:969
 msgid ""
 "Do not include any risks to the asset or why it may close, which we asked"
 " you about earlier in your application."
@@ -1685,7 +1692,7 @@ msgid "Summarise your cash flow for the running of the asset"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:935
-#: app/templates/cof_r3_all_questions.html:737
+#: app/templates/cof_r3_all_questions.html:696
 msgid "If successful, will you use your funding in the next 12 months?"
 msgstr ""
 
@@ -1722,7 +1729,7 @@ msgid "security measures"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:967
-#: app/templates/cof_r3_all_questions.html:1022
+#: app/templates/cof_r3_all_questions.html:984
 msgid "Skills and resources"
 msgstr ""
 
@@ -1759,79 +1766,79 @@ msgid "Describe any experience you have with community assets similar to this"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:997
-#: app/templates/cof_r3_all_questions.html:1028
+#: app/templates/cof_r3_all_questions.html:990
 msgid "Do you have any plans to recruit people to help you manage the asset?"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1003
-#: app/templates/cof_r3_all_questions.html:1034
+#: app/templates/cof_r3_all_questions.html:996
 msgid "Tells us about the roles you'll recruit"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1006
-#: app/templates/cof_r3_all_questions.html:1037
+#: app/templates/cof_r3_all_questions.html:999
 msgid ""
 "These should be positions which will help you effectively manage the "
 "asset during community ownership."
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1009
-#: app/templates/cof_r3_all_questions.html:1040
+#: app/templates/cof_r3_all_questions.html:1002
 msgid "Include the:"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1013
 #: app/templates/cof_r2_all_questions.html:1033
 #: app/templates/cof_r2_all_questions.html:1187
-#: app/templates/cof_r3_all_questions.html:1044
-#: app/templates/cof_r3_all_questions.html:1064
+#: app/templates/cof_r3_all_questions.html:1006
+#: app/templates/cof_r3_all_questions.html:1026
 msgid "role"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1016
 #: app/templates/cof_r2_all_questions.html:1036
 #: app/templates/cof_r2_all_questions.html:1190
-#: app/templates/cof_r3_all_questions.html:1047
-#: app/templates/cof_r3_all_questions.html:1067
+#: app/templates/cof_r3_all_questions.html:1009
+#: app/templates/cof_r3_all_questions.html:1029
 msgid "main responsibilities"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1023
-#: app/templates/cof_r3_all_questions.html:1054
+#: app/templates/cof_r3_all_questions.html:1016
 msgid "Community representation"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1026
-#: app/templates/cof_r3_all_questions.html:1057
+#: app/templates/cof_r3_all_questions.html:1019
 msgid "List the members of your board"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1029
-#: app/templates/cof_r3_all_questions.html:1060
+#: app/templates/cof_r3_all_questions.html:1022
 msgid "Include their:"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1043
-#: app/templates/cof_r3_all_questions.html:1074
+#: app/templates/cof_r3_all_questions.html:1036
 msgid "Tell us about your governance and membership structures"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1046
-#: app/templates/cof_r3_all_questions.html:1077
+#: app/templates/cof_r3_all_questions.html:1039
 msgid ""
 "Explain how you'll consider the views of the community in the running of "
 "the asset"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1049
-#: app/templates/cof_r3_all_questions.html:1080
+#: app/templates/cof_r3_all_questions.html:1042
 msgid ""
 "Include how they'll be involved in decision making, and how you'll "
 "measure public support for your decisions"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1052
-#: app/templates/cof_r3_all_questions.html:1083
+#: app/templates/cof_r3_all_questions.html:1045
 msgid "Inclusiveness and integration"
 msgstr ""
 
@@ -1842,7 +1849,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1058
-#: app/templates/cof_r3_all_questions.html:1092
+#: app/templates/cof_r3_all_questions.html:1054
 msgid ""
 "Describe anything that might prevent people from using the asset or "
 "participating in its running"
@@ -1871,22 +1878,22 @@ msgid ""
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1073
-#: app/templates/cof_r3_all_questions.html:1098
+#: app/templates/cof_r3_all_questions.html:1060
 msgid "Business plan"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1076
-#: app/templates/cof_r3_all_questions.html:1101
+#: app/templates/cof_r3_all_questions.html:1063
 msgid "Business plan (document upload)"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1079
-#: app/templates/cof_r3_all_questions.html:1104
+#: app/templates/cof_r3_all_questions.html:1066
 msgid "Upload your business plan."
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1082
-#: app/templates/cof_r3_all_questions.html:1107
+#: app/templates/cof_r3_all_questions.html:1069
 msgid ""
 "Include any information that supports the answers in your application. "
 "All figures must match those you've given in the management case section."
@@ -1979,7 +1986,7 @@ msgid "planned activities or services that will take place in the community asse
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1159
-#: app/templates/cof_r3_all_questions.html:1178
+#: app/templates/cof_r3_all_questions.html:1140
 msgid ""
 "any supporting evidence that you will deliver the benefits to the "
 "community you have outlined"
@@ -2006,7 +2013,7 @@ msgid "Organisation details"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1179
-#: app/templates/cof_r3_all_questions.html:1191
+#: app/templates/cof_r3_all_questions.html:1153
 msgid ""
 "your organisation’s governance and membership structures, with supporting"
 " evidence"
@@ -2025,53 +2032,53 @@ msgid "a copy of your most recent governance board meeting minutes"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1201
-#: app/templates/cof_r3_all_questions.html:1197
+#: app/templates/cof_r3_all_questions.html:1159
 msgid ""
 "supporting evidence of how you will manage finances and prevent fraud. "
 "For example, copies of your policy documents"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1204
-#: app/templates/cof_r3_all_questions.html:1200
+#: app/templates/cof_r3_all_questions.html:1162
 msgid ""
 "supporting evidence of how you will manage performance and risks. For "
 "example, copies of your policy documents"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1214
-#: app/templates/cof_r3_all_questions.html:634
+#: app/templates/cof_r3_all_questions.html:593
 msgid "Community benefits"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1217
-#: app/templates/cof_r3_all_questions.html:637
+#: app/templates/cof_r3_all_questions.html:596
 msgid "What community benefits do you expect to deliver with this project?"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1224
-#: app/templates/cof_r3_all_questions.html:644
+#: app/templates/cof_r3_all_questions.html:603
 msgid "Community pride and perceptions of the local area as a place to live"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1227
-#: app/templates/cof_r3_all_questions.html:647
+#: app/templates/cof_r3_all_questions.html:606
 msgid "Social trust, cohesion and a sense of belonging"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1230
-#: app/templates/cof_r3_all_questions.html:650
+#: app/templates/cof_r3_all_questions.html:609
 msgid "Participation in community life, arts and culture, or sport"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1233
-#: app/templates/cof_r3_all_questions.html:653
+#: app/templates/cof_r3_all_questions.html:612
 msgid ""
 "Local economic outcomes, such as employment and volunteering "
 "opportunities, and employability and skills"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1236
-#: app/templates/cof_r3_all_questions.html:656
+#: app/templates/cof_r3_all_questions.html:615
 msgid ""
 "Delivering positive impact in physical and mental health, and reducing "
 "loneliness and isolation"
@@ -2112,7 +2119,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1268
-#: app/templates/cof_r3_all_questions.html:678
+#: app/templates/cof_r3_all_questions.html:637
 msgid ""
 "Where possible, reference any data you have on protected characteristics "
 "and equality impacts."
@@ -2125,77 +2132,77 @@ msgid ""
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1278
-#: app/templates/cof_r3_all_questions.html:1209
+#: app/templates/cof_r3_all_questions.html:1171
 msgid "Project qualification"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1281
-#: app/templates/cof_r3_all_questions.html:1212
+#: app/templates/cof_r3_all_questions.html:1174
 msgid "Does your project meet the definition of a subsidy?"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1284
-#: app/templates/cof_r3_all_questions.html:1215
+#: app/templates/cof_r3_all_questions.html:1177
 msgid ""
 "For projects in England, Northern Ireland, Scotland and Wales, this "
 "definition is laid out in Paragraph 2 of the Subsidy Control Act (2022)"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1290
-#: app/templates/cof_r3_all_questions.html:1221
+#: app/templates/cof_r3_all_questions.html:1183
 msgid ""
 "Explain how you think a grant from this fund can be provided in "
 "compliance with the Subsidy Control Act (2022)"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1293
-#: app/templates/cof_r3_all_questions.html:1224
+#: app/templates/cof_r3_all_questions.html:1186
 msgid "This is measured by the 7 common principles laid out in Schedule 1"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1296
-#: app/templates/cof_r3_all_questions.html:1227
+#: app/templates/cof_r3_all_questions.html:1189
 msgid "Is your project based in Northern Ireland?"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1302
-#: app/templates/cof_r3_all_questions.html:1233
+#: app/templates/cof_r3_all_questions.html:1195
 msgid "Explain how your project will comply with state aid rules"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1305
-#: app/templates/cof_r3_all_questions.html:1236
+#: app/templates/cof_r3_all_questions.html:1198
 msgid ""
 "You can find more information about when state aid rules apply in "
 "Northern Ireland in the government guidance."
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1309
-#: app/templates/cof_r3_all_questions.html:1240
+#: app/templates/cof_r3_all_questions.html:1202
 msgid "Check declarations"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1312
-#: app/templates/cof_r3_all_questions.html:1243
+#: app/templates/cof_r3_all_questions.html:1205
 msgid "Final confirmations"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1315
-#: app/templates/cof_r3_all_questions.html:1246
+#: app/templates/cof_r3_all_questions.html:1208
 msgid ""
 "Confirm you have considered subsidy control and state aid implications "
 "for your project, and the information you have given us is correct"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1318
-#: app/templates/cof_r3_all_questions.html:1249
+#: app/templates/cof_r3_all_questions.html:1211
 msgid ""
 "Confirm you have considered people with protected characteristics "
 "throughout the planning of your project"
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1321
-#: app/templates/cof_r3_all_questions.html:1252
+#: app/templates/cof_r3_all_questions.html:1214
 msgid ""
 "Confirm you have considered sustainability and the environment throughout"
 " the planning of your project, including compliance with the government's"
@@ -2203,7 +2210,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/cof_r2_all_questions.html:1324
-#: app/templates/cof_r3_all_questions.html:1255
+#: app/templates/cof_r3_all_questions.html:1217
 msgid ""
 "Confirm you have a bank account set up and associated with the "
 "organisation you are applying on behalf of"
@@ -2263,7 +2270,7 @@ msgid "If 'other', go to"
 msgstr ""
 
 #: app/templates/cof_r3_all_questions.html:335
-msgid "Type of asset"
+msgid "Type of asset "
 msgstr ""
 
 #: app/templates/cof_r3_all_questions.html:335
@@ -2276,26 +2283,22 @@ msgstr ""
 
 #: app/templates/cof_r3_all_questions.html:355
 msgctxt "individual"
-msgid "If 'buy the asset' go to 2.2.3., 2.2.4., 2.2.5., 2.2.7., 2.2.8. and 2.2.9."
+msgid "If ‘buy the asset’ go to "
 msgstr ""
 
 #: app/templates/cof_r3_all_questions.html:358
 msgctxt "individual"
-msgid ""
-"If 'lease the asset' go to 2.2.3., 2.2.4., 2.2.5., 2.2.7., 2.2.8. and "
-"2.2.9."
+msgid "If ‘lease the asset’ go to "
 msgstr ""
 
 #: app/templates/cof_r3_all_questions.html:361
 msgctxt "individual"
-msgid "If 'already owned by the organisation' go to 2.2.7. and 2.2.9."
+msgid "If ‘already owned by the organisation’ go to"
 msgstr ""
 
 #: app/templates/cof_r3_all_questions.html:364
 msgctxt "individual"
-msgid ""
-"If 'already leased by the organisation' go to 2.2.3., 2.2.5., 2.2.6., "
-"2.2.7., 2.2.8. and 2.2.9."
+msgid "If ‘already leased by the organisation’ go to "
 msgstr ""
 
 #: app/templates/cof_r3_all_questions.html:367
@@ -2323,13 +2326,9 @@ msgstr ""
 
 #: app/templates/cof_r3_all_questions.html:379
 #: app/templates/cof_r3_all_questions.html:444
-#: app/templates/cof_r3_all_questions.html:485
-#: app/templates/cof_r3_all_questions.html:631
-#: app/templates/cof_r3_all_questions.html:1010
-#: app/templates/cof_r3_all_questions.html:1110
 msgid ""
-"It should be a single file no bigger than 10MB in an accepted format "
-"(jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods)."
+"It should be a single file no bigger than 5MB in an accepted format (jpg,"
+" jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods)."
 msgstr ""
 
 #: app/templates/cof_r3_all_questions.html:394
@@ -2346,511 +2345,522 @@ msgstr ""
 msgid "Describe the terms of your lease if you have rented the asset"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:424
-msgid "Upload public ownership evidence"
-msgstr ""
-
-#: app/templates/cof_r3_all_questions.html:459
+#: app/templates/cof_r3_all_questions.html:418
 msgid ""
 "When you buy or lease a publicly owned asset, the public authority cannot"
 " transfer statutory services or duties to the community group"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:462
+#: app/templates/cof_r3_all_questions.html:421
 msgid ""
 "This includes things like social care, waste collection and planning "
 "services."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:465
+#: app/templates/cof_r3_all_questions.html:424
 msgid ""
 "We do not define individual libraries as statutory services for this "
 "purpose."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:471
+#: app/templates/cof_r3_all_questions.html:430
 msgid ""
 "Upload evidence to confirm the above information and that the asset is at"
 " risk"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:474
+#: app/templates/cof_r3_all_questions.html:433
 msgid "This could be from:"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:478
+#: app/templates/cof_r3_all_questions.html:437
 msgid "a letter from an appropriate public authority officer or cabinet member"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:481
+#: app/templates/cof_r3_all_questions.html:440
 msgid "a published cabinet paper from a local authority"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:495
+#: app/templates/cof_r3_all_questions.html:454
 msgid "Closure"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:498
+#: app/templates/cof_r3_all_questions.html:457
 msgid "Sale"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:501
+#: app/templates/cof_r3_all_questions.html:460
 msgid "Neglect or dereliction"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:504
+#: app/templates/cof_r3_all_questions.html:463
 msgid "Unsustainable current business model"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:507
+#: app/templates/cof_r3_all_questions.html:466
 msgid "Listed for disposal"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:510
+#: app/templates/cof_r3_all_questions.html:469
 msgid "Part of a Community Asset Transfer"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:514
-msgctxt "individual"
-msgid "If 'listed for disposal', go to"
+#: app/templates/cof_r3_all_questions.html:473
+msgid ""
+"If ‘listed for disposal, go to <strong>2.2.3.1.</strong> and "
+"<strong>2.2.3.2.</strong>"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:514
-msgid " and"
+#: app/templates/cof_r3_all_questions.html:476
+msgid "If ‘Part of a Community Asset Transfer’, go to <strong>2.2.3.3.</strong>"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:517
-msgctxt "individual"
-msgid "If 'Part of a Community Asset Transfer', go to"
+#: app/templates/cof_r3_all_questions.html:488
+msgid ""
+"Describe the current status of the Community Asset Transfer (maximum 500 "
+"words)"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:548
+#: app/templates/cof_r3_all_questions.html:507
 msgid ""
 "Include any specific uses and how many people take part in these "
 "activities."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:551
+#: app/templates/cof_r3_all_questions.html:510
 msgid ""
 "Reference any statistics you have to reinforce this. For example, data on"
 " footfall"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:557
+#: app/templates/cof_r3_all_questions.html:516
 msgid ""
 "Where possible give examples of these effects, such as important services"
 " ending or having to travel a significant distance to use a similar asset"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:563
+#: app/templates/cof_r3_all_questions.html:522
 msgid ""
 "Include any evidence you have that it's use by the community will be "
 "threatened."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:566
+#: app/templates/cof_r3_all_questions.html:525
 msgid "For example, by the owner's intention or an imminent sale"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:569
+#: app/templates/cof_r3_all_questions.html:528
 msgid ""
 "Explain how the community will be better served with the asset under "
 "community ownership"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:572
+#: app/templates/cof_r3_all_questions.html:531
 msgid "Include why this is preferable to any other type of ownership"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:578
+#: app/templates/cof_r3_all_questions.html:537
 msgid ""
 "Tell us how you have engaged with the community about your intention to "
 "take ownership of the asset"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:581
+#: app/templates/cof_r3_all_questions.html:540
 msgid ""
 "Give examples of the different ways you've engaged with people, and how "
 "this has shaped your project plans"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:587
+#: app/templates/cof_r3_all_questions.html:546
 msgid ""
 "Tell us about any partnerships you've formed, and how they'll help the "
 "project be successful"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:590
+#: app/templates/cof_r3_all_questions.html:549
 msgid ""
 "For example, any agreements you've reached with other local businesses or"
 " community organisations"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:596
+#: app/templates/cof_r3_all_questions.html:555
 msgid ""
 "These could include plans led by the council, local businesses or the "
 "community"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:622
+#: app/templates/cof_r3_all_questions.html:571
+msgid "town hall meetings you have run"
+msgstr ""
+
+#: app/templates/cof_r3_all_questions.html:581
 msgid "If you plan to upload any supporting evidence below, reference it here."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:628
+#: app/templates/cof_r3_all_questions.html:587
 msgid "Upload evidence to show the support you have from the community."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:660
+#: app/templates/cof_r3_all_questions.html:590
+#: app/templates/cof_r3_all_questions.html:972
+#: app/templates/cof_r3_all_questions.html:1072
+msgid ""
+"It should be a single file no bigger than 10MB in an accepted format "
+"(jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods)."
+msgstr ""
+
+#: app/templates/cof_r3_all_questions.html:619
 msgid ""
 "Tell us about these benefits in detail, and how the asset's activities "
 "will help deliver them"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:663
+#: app/templates/cof_r3_all_questions.html:622
 msgid ""
 "Include how the asset will address any specific needs the community "
 "faces, and how you researched these"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:666
+#: app/templates/cof_r3_all_questions.html:625
 msgid " Explain how you plan to deliver and sustain these benefits over time"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:669
+#: app/templates/cof_r3_all_questions.html:628
 msgid ""
 "Include the key milestones you intend to meet in order to deliver these "
 "benefits"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:672
+#: app/templates/cof_r3_all_questions.html:631
 msgid " Tell us how you'll make sure the whole community benefits from the asset"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:675
+#: app/templates/cof_r3_all_questions.html:634
 msgid ""
 "For example, people who have not used the asset in the past, and other "
 "people who live in the local area."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:711
+#: app/templates/cof_r3_all_questions.html:670
 msgid "Capital funding request"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:714
+#: app/templates/cof_r3_all_questions.html:673
 msgid ""
 "Capital costs are the costs of buying or leasing your asset and paying "
 "for refurbishment."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:717
+#: app/templates/cof_r3_all_questions.html:676
 msgid ""
 "Community Ownership Fund (COF) will fund up to 80&percnt; of your capital"
 " costs, up to a maximum of £2 million."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:720
+#: app/templates/cof_r3_all_questions.html:679
 msgid ""
 "At least 20&percnt; of the total capital costs of your project must be "
 "covered by other sources (match funding). For example:"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:724
+#: app/templates/cof_r3_all_questions.html:683
 msgid ""
 "You want to purchase a community asset which costs £2,500,000. You can "
 "apply for £2m from COF, and must raise the remaining £500,000 from other "
 "sources."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:727
+#: app/templates/cof_r3_all_questions.html:686
 msgid ""
 "You want to purchase a community asset which costs £250,000. You can "
 "apply for £200,000 from COF, and must raise the remaining £50,000 from "
 "other sources."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:731
+#: app/templates/cof_r3_all_questions.html:690
 msgid ""
 "(In exceptional circumstances, you may only need to secure 10&percnt; in "
 "match funding. Your development support provider will have already "
 "confirmed this with you if you're eligible.)"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:734
+#: app/templates/cof_r3_all_questions.html:693
 msgid "If successful, you must spend all the funding within 12 months."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:740
+#: app/templates/cof_r3_all_questions.html:699
 msgid "Capital costs for yor project"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:743
+#: app/templates/cof_r3_all_questions.html:702
 msgid "Tell us about your total capital costs."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:746
+#: app/templates/cof_r3_all_questions.html:705
 msgid ""
 "This should be for the whole project, not just what you're requesting "
 "from the fund."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:749
+#: app/templates/cof_r3_all_questions.html:708
 msgid "Capital costs can be used to:"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:753
+#: app/templates/cof_r3_all_questions.html:712
 msgid "purchase or lease the asset"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:756
+#: app/templates/cof_r3_all_questions.html:715
 msgid "pay for refurbishment costs"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:760
+#: app/templates/cof_r3_all_questions.html:719
+#, python-format
 msgid ""
-"Remember, you can apply for up to 80&percnt; (or 90&percnt; if the "
-"development support provider has confirmed you're eligible to do this) of"
-" your capital costs, up to a maximum of £1 million."
+"Remember, you can apply for up to 80% (or 90% if the development support "
+"provider has confirmed you're eligible to do this) of your capital costs,"
+" up to a maximum of £2 million."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:766
-#: app/templates/cof_r3_all_questions.html:908
-msgid "Describe the cost"
+#: app/templates/cof_r3_all_questions.html:725
+#: app/templates/cof_r3_all_questions.html:870
+msgid "Describe the cost."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:769
-#: app/templates/cof_r3_all_questions.html:848
-#: app/templates/cof_r3_all_questions.html:911
-msgid "Amount"
+#: app/templates/cof_r3_all_questions.html:728
+#: app/templates/cof_r3_all_questions.html:807
+#: app/templates/cof_r3_all_questions.html:873
+msgid "Amount."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:784
+#: app/templates/cof_r3_all_questions.html:743
 msgid ""
 "Tell us which sources of funding you have already secured as match "
 "funding."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:787
+#: app/templates/cof_r3_all_questions.html:746
 msgid "Match funding sources could include:"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:813
+#: app/templates/cof_r3_all_questions.html:772
 msgid "Source of secured funding"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:816
+#: app/templates/cof_r3_all_questions.html:775
 msgid "Have you already spent the match funding you have secured?"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:819
+#: app/templates/cof_r3_all_questions.html:778
 msgid "Have you identified, but not yet secured, any additional match funding?"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:831
+#: app/templates/cof_r3_all_questions.html:790
 msgid "Tell us which sources of funding you intend to secure as match funding."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:845
-msgid "Source of unsecured match funding"
+#: app/templates/cof_r3_all_questions.html:804
+msgid "Source of unsecured match funding."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:851
+#: app/templates/cof_r3_all_questions.html:810
 msgid "Are you applying for revenue funding from the Community Ownership Fund?"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:854
+#: app/templates/cof_r3_all_questions.html:813
 msgid ""
 "Revenue costs go towards running the asset once you've taken ownership of"
 " it. This might include general costs, including for:"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:868
+#: app/templates/cof_r3_all_questions.html:827
 msgid ""
 "Remember, you can apply for up to fifty thousand pounds (£50,000) of your"
 " revenue costs (no more than 20&percnt; of your capital funding)."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:871
+#: app/templates/cof_r3_all_questions.html:830
 msgid ""
 "You can use your business plan to provide any information that supports "
 "your answers"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:880
+#: app/templates/cof_r3_all_questions.html:842
 msgid "Tell us about the total revenue costs of your project."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:883
+#: app/templates/cof_r3_all_questions.html:845
 msgid ""
 "These are the running costs of the project. This might include general "
 "costs, including for:"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:894
+#: app/templates/cof_r3_all_questions.html:856
 msgid ""
 "Remember, you can apply for up to £50,000 of your revenue costs (no more "
 "than 20&percnt; of your capital funding)."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:914
+#: app/templates/cof_r3_all_questions.html:876
 msgid "Tell us how the revenue funding you've requested will help run the asset"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:917
+#: app/templates/cof_r3_all_questions.html:879
 msgid ""
 "Include the specific needs it will meet, and how you'll meet these needs "
 "once you've spent the funding."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:952
+#: app/templates/cof_r3_all_questions.html:914
 msgid "Describe the feasibility work you still need to complete "
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:955
+#: app/templates/cof_r3_all_questions.html:917
 msgid "Include details of your plans and when you expect to complete them"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1013
+#: app/templates/cof_r3_all_questions.html:975
 msgid "Operational costs"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1016
+#: app/templates/cof_r3_all_questions.html:978
 msgid "Summarise your income and operational costs for the running of the asset"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1019
+#: app/templates/cof_r3_all_questions.html:981
 msgid ""
 "Include how you see it working over the next three years. You must use "
 "your business plan to provide a forecast of figures."
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1025
+#: app/templates/cof_r3_all_questions.html:987
 msgid ""
 "Describe any relevant experience you have delivering similar projects or "
 "running an asset"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1086
+#: app/templates/cof_r3_all_questions.html:1048
 msgid ""
 "Tell us how the asset will be accountable to local people, and involve "
 "them in its running"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1089
+#: app/templates/cof_r3_all_questions.html:1051
 msgid ""
 "This means how you'll involve everyone in key decisions, such as how the "
 "asset is used"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1095
+#: app/templates/cof_r3_all_questions.html:1057
 msgid ""
 "For example, high membership costs or exclusive eligibility criteria "
 "which prevent people from participating"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1113
+#: app/templates/cof_r3_all_questions.html:1075
 msgid "Your business plan should include (but is not limited to):"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1117
+#: app/templates/cof_r3_all_questions.html:1079
 msgid "Information about the capital element of your project. This could include:"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1122
+#: app/templates/cof_r3_all_questions.html:1084
 msgid ""
 "information about your completed or planned feasibility studies. This "
 "could include any relevant surveys"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1125
+#: app/templates/cof_r3_all_questions.html:1087
 msgid "a programme with key milestones for completion of your project"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1128
+#: app/templates/cof_r3_all_questions.html:1090
 msgid ""
 "your skills and resources to manage the capital project, including "
 "relevant project management expertise"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1133
+#: app/templates/cof_r3_all_questions.html:1095
 msgid "A financial breakdown of your project. This should include:"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1138
+#: app/templates/cof_r3_all_questions.html:1100
 msgid ""
 "a clear breakdown of the total capital project costs and explanation of "
 "how these have been calculated. This could include any quotes or cost "
 "benchmarking"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1141
+#: app/templates/cof_r3_all_questions.html:1103
 msgid "whether the costs include irrecoverable VAT"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1144
+#: app/templates/cof_r3_all_questions.html:1106
 msgid "the capital funding request from the Community Ownership Fund"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1147
+#: app/templates/cof_r3_all_questions.html:1109
 msgid "the total amount of match funding required"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1150
+#: app/templates/cof_r3_all_questions.html:1112
 msgid "sources of match funding secured to date"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1153
+#: app/templates/cof_r3_all_questions.html:1115
 msgid "sources of match funding still to be secured"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1156
+#: app/templates/cof_r3_all_questions.html:1118
 msgid ""
 "timescales and potential sources for securing all outstanding match "
 "funding"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1161
+#: app/templates/cof_r3_all_questions.html:1123
 msgid ""
 "Information about how the asset will be used and managed in the future. "
 "This should include:"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1166
+#: app/templates/cof_r3_all_questions.html:1128
 msgid ""
 "a discussion of planned activities and/or services that will take place "
 "in the community asset"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1169
+#: app/templates/cof_r3_all_questions.html:1131
 msgid ""
 "your full financial forecasts, including income sources and costs with an"
 " evidenced set of assumptions"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1172
+#: app/templates/cof_r3_all_questions.html:1134
 msgid ""
 "a clear breakdown of the revenue project costs and explanation of how "
 "these have been calculated"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1175
+#: app/templates/cof_r3_all_questions.html:1137
 msgid "your cashflow and revenue budgets"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1183
+#: app/templates/cof_r3_all_questions.html:1145
 msgid ""
 "A consideration of risks and mitigations of both the capital works/spend "
 "and the ongoing operation of the asset"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1186
+#: app/templates/cof_r3_all_questions.html:1148
 msgid "Organisational and governance information. This should include:"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1194
+#: app/templates/cof_r3_all_questions.html:1156
 msgid "members of your board, including their role and main responsibilities"
 msgstr ""
 
-#: app/templates/cof_r3_all_questions.html:1258
+#: app/templates/cof_r3_all_questions.html:1220
 msgid ""
 "Confirm that the information you've provided in this application is "
 "accurate to the best of your knowledge on the date of submission"
@@ -2870,6 +2880,95 @@ msgstr ""
 
 #: app/templates/contact_us.html:14
 msgid "Contact us if you have any questions."
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:16
+#: app/templates/cyp_r1_all_questions.html:46
+msgid "before-you-start"
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:16
+msgid ""
+"Before you\n"
+"                        start "
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:20
+msgid "about-org"
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:20
+msgid ""
+"About your\n"
+"                        organisation"
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:24
+msgid "skills-experience"
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:24
+msgid ""
+"Your skills and\n"
+"                        experience"
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:28
+msgid "your-project"
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:28
+msgid "Your project"
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:32
+msgid "risks"
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:32
+msgid "Risks and deliverability "
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:36
+msgid "value-for-money"
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:36
+msgid "Value for money"
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:46
+msgid "Before you start"
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:48
+msgid "Name your application"
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:49
+msgid ""
+"This is what your application will be called and will help you find it "
+"when you\n"
+"            save and return. Choose a memorable name that describes your "
+"application. "
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:55
+msgid "Organisation details "
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:69
+msgid ""
+"Include any activities you undertake in order to achieve the "
+"organisation's\n"
+"            purpose."
+msgstr ""
+
+#: app/templates/cyp_r1_all_questions.html:71
+msgid ""
+"You must list at least one, and can include up to three (500 words for "
+"each\n"
+"            activity)."
 msgstr ""
 
 #: app/templates/dashboard_all.html:11
@@ -2896,6 +2995,90 @@ msgstr ""
 
 #: app/templates/dashboard_single_fund.html:12
 msgid "Your applications for "
+msgstr ""
+
+#: app/templates/end_of_application_feedback_page_1.html:7
+#: app/templates/end_of_application_feedback_page_2.html:7
+#: app/templates/end_of_application_feedback_page_3.html:6
+#: app/templates/end_of_application_feedback_page_4.html:6
+#: app/templates/end_of_application_survey.html:5
+#: app/templates/feedback_generic_survey.html:7
+#: app/templates/section_feedback_intro.html:5
+msgid "Go back to application overview"
+msgstr ""
+
+#: app/templates/end_of_application_feedback_page_1.html:19
+#: app/templates/end_of_application_feedback_page_2.html:19
+#: app/templates/end_of_application_feedback_page_3.html:18
+#: app/templates/end_of_application_feedback_page_4.html:18
+#: app/templates/end_of_application_survey.html:12
+msgid "Applicant feedback survey"
+msgstr ""
+
+#: app/templates/end_of_application_feedback_page_1.html:22
+msgid "1 of 4 questions"
+msgstr ""
+
+#: app/templates/end_of_application_feedback_page_1.html:39
+#: app/templates/end_of_application_feedback_page_4.html:43
+#: app/templates/feedback_generic_survey.html:32
+msgid "Error:"
+msgstr ""
+
+#: app/templates/end_of_application_feedback_page_1.html:67
+#: app/templates/end_of_application_feedback_page_3.html:59
+msgid "Save and continue"
+msgstr ""
+
+#: app/templates/end_of_application_feedback_page_2.html:22
+msgid "2 of 4 questions"
+msgstr ""
+
+#: app/templates/end_of_application_feedback_page_3.html:21
+msgid "3 of 4 questions"
+msgstr ""
+
+#: app/templates/end_of_application_feedback_page_4.html:21
+msgid "4 of 4 questions"
+msgstr ""
+
+#: app/templates/end_of_application_feedback_page_4.html:32
+msgid ""
+"Approximately how many hours did your organisation spend preparing and "
+"working on this\n"
+"                                application?"
+msgstr ""
+
+#: app/templates/end_of_application_feedback_page_4.html:38
+msgid ""
+"This includes time spent attending meetings, preparing documents and "
+"business cases, doing\n"
+"                                research and collating answers, from both"
+" paid and volunteer resources."
+msgstr ""
+
+#: app/templates/end_of_application_feedback_page_4.html:58
+#: app/templates/feedback_generic_survey.html:53
+msgid "Submit feedback"
+msgstr ""
+
+#: app/templates/end_of_application_survey.html:14
+msgid ""
+"This section will ask about your overall experience of completing this "
+"application, so\n"
+"                we\n"
+"                can improve our application forms. Your responses will "
+"not be scored."
+msgstr ""
+
+#: app/templates/end_of_application_survey.html:21
+#: app/templates/section_feedback_intro.html:24
+msgid "Continue"
+msgstr ""
+
+#: app/templates/feedback_generic_survey.html:18
+#: app/templates/section_feedback_intro.html:12
+msgid "feedback"
 msgstr ""
 
 #: app/templates/footer.html:10
@@ -2958,6 +3141,13 @@ msgstr ""
 
 #: app/templates/header.html:52
 msgid "This is a new service."
+msgstr ""
+
+#: app/templates/section_feedback_intro.html:14
+msgid ""
+"We'll ask about your experience of completing this section, so we can "
+"improve our\n"
+"                application forms. Your responses will not be scored."
 msgstr ""
 
 #: app/templates/tasklist.html:7
@@ -3196,4 +3386,23 @@ msgstr ""
 
 #: app/templates/partials/tasklist_section.html:28
 msgid "of the assessment criteria"
+msgstr ""
+
+#: app/templates/partials/tasklist_section.html:45
+#: app/templates/partials/tasklist_section.html:59
+msgid "Feedback on this section (not scored)"
+msgstr ""
+
+#: app/templates/partials/tasklist_section.html:48
+msgid "Cannot start yet"
+msgstr ""
+
+#: app/templates/partials/tasklist_section.html:52
+msgid "Feedback on this section submitted"
+msgstr ""
+
+#: app/templates/partials/tasklist_section.html:65
+msgid ""
+"You must complete all other questions in this section before giving "
+"feedback"
 msgstr ""

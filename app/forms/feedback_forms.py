@@ -1,3 +1,4 @@
+from flask_babel import gettext
 from flask_wtf import FlaskForm
 from wtforms import HiddenField
 from wtforms import IntegerField
@@ -14,17 +15,22 @@ class ApplicationFlaskForm(FlaskForm):
 
 class DefaultSectionFeedbackForm(ApplicationFlaskForm):
     experience = RadioField(
-        "How easy did you find it to complete this section?",
+        gettext("How easy did you find it to complete this section?"),
         choices=[
-            ("very easy", "Very easy"),
-            ("easy", "Easy"),
-            ("neither easy or difficult", "Neither easy nor difficult"),
-            ("difficult", "Difficult"),
-            ("very difficult", "Very difficult"),
+            ("very easy", gettext("Very easy")),
+            ("easy", gettext("Easy")),
+            (
+                "neither easy or difficult",
+                gettext("Neither easy nor difficult"),
+            ),
+            ("difficult", gettext("Difficult")),
+            ("very difficult", gettext("Very difficult")),
         ],
-        validators=[InputRequired(message="Select a score")],
+        validators=[InputRequired(message=gettext("Select a score"))],
     )
-    more_detail = TextAreaField("Explain why you chose this score (optional)")
+    more_detail = TextAreaField(
+        gettext("Explain why you chose this score (optional)")
+    )
 
     @property
     def as_dict(self):
@@ -51,53 +57,65 @@ class EndOfApplicationPageForm(ApplicationFlaskForm):
 
 class EndOfApplicationPage1Form(EndOfApplicationPageForm):
     overall_application_experience = RadioField(
-        "How was your overall application experience?",
+        gettext("How was your overall application experience?"),
         choices=[
-            ("very good", "Very good"),
-            ("good", "Good"),
-            ("average", "Average"),
-            ("poor", "Poor"),
-            ("very poor", "Very poor"),
+            ("very good", gettext("Very good")),
+            ("good", gettext("Good")),
+            ("average", gettext("Average")),
+            ("poor", gettext("Poor")),
+            ("very poor", gettext("Very poor")),
         ],
-        validators=[InputRequired(message="Select a score")],
+        validators=[InputRequired(message=gettext("Select a score"))],
     )
-    more_detail = TextAreaField("Explain why you chose this score (optional)")
+    more_detail = TextAreaField(
+        gettext("Explain why you chose this score (optional)")
+    )
 
 
 class EndOfApplicationPage2Form(EndOfApplicationPageForm):
     demonstrate_why_org_funding = RadioField(
-        "To what extent do you agree that this application form allowed you to"
-        " demonstrate why your organisation should receive funding?",
+        gettext(
+            "To what extent do you agree that this application form allowed"
+            " you to demonstrate why your organisation should receive funding?"
+        ),
         choices=[
-            ("strongly agree", "Strongly agree"),
-            ("agree", "Agree"),
-            ("neither agree nor disagree", "Neither agree nor disagree"),
-            ("disagree", "Disagree"),
-            ("strongly disagree", "Strongly disagree"),
+            ("strongly agree", gettext("Strongly agree")),
+            ("agree", gettext("Agree")),
+            (
+                "neither agree nor disagree",
+                gettext("Neither agree nor disagree"),
+            ),
+            ("disagree", gettext("Disagree")),
+            ("strongly disagree", gettext("Strongly disagree")),
         ],
-        validators=[InputRequired(message="Select a score")],
+        validators=[InputRequired(message=gettext("Select a score"))],
     )
 
 
 class EndOfApplicationPage3Form(EndOfApplicationPageForm):
     understand_eligibility_criteria = RadioField(
-        "How easy was it to understand the eligibility criteria for this"
-        " fund?",
+        gettext(
+            "How easy was it to understand the eligibility criteria for this"
+            " fund?"
+        ),
         choices=[
-            ("very easy", "Very easy"),
-            ("easy", "Easy"),
-            ("neither easy or difficult", "Neither easy nor difficult"),
-            ("difficult", "Difficult"),
-            ("very difficult", "Very difficult"),
+            ("very easy", gettext("Very easy")),
+            ("easy", gettext("Easy")),
+            (
+                "neither easy or difficult",
+                gettext("Neither easy nor difficult"),
+            ),
+            ("difficult", gettext("Difficult")),
+            ("very difficult", gettext("Very difficult")),
         ],
-        validators=[DataRequired(message="Select a score")],
+        validators=[DataRequired(message=gettext("Select a score"))],
     )
 
 
 class EndOfApplicationPage4Form(EndOfApplicationPageForm):
     hours_spent = IntegerField(
-        "Number of hours spent:",
-        validators=[DataRequired(message="Enter number of hours")],
+        gettext("Number of hours spent:"),
+        validators=[DataRequired(message=gettext("Enter number of hours"))],
     )
 
 
