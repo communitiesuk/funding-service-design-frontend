@@ -73,7 +73,7 @@ def internal_server_error(error):
 def unauthorised_error(error):
     error_message = f"Encountered 401: {error}"
     stack_trace = traceback.format_exc()
-    current_app.logger.error(f"{error_message}\n{stack_trace}")
+    current_app.logger.warning(f"{error_message}\n{stack_trace}")
     fund_short_name = request.args.get("fund") or (
         request.view_args.get("fund_short_name") if request.view_args else None
     )
