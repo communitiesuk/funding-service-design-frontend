@@ -1,0 +1,1745 @@
+
+{% extends "base.html" %}
+{%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText -%}
+{%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
+
+{% from "partials/file-formats.html" import file_formats %}
+{% set pageHeading %}{% trans %}Full list of application questions{% endtrans %}{% endset %}
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-l">{% trans %}{{fund_title}}{% endtrans %} {{round_title}}</span>
+        <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
+<div class="govuk-!-margin-bottom-8">
+  <h2 class="govuk-heading-m ">
+    {% trans %}Table of contents{% endtrans %}
+  </h2>
+  <ol class="govuk-list govuk-list--number">
+    <li>
+      <a class="govuk-link" href="#before-you-start">
+        Before you start
+      </a>
+    </li>
+    <li>
+      <a class="govuk-link" href="#about-your-organisation">
+        About your organisation
+      </a>
+    </li>
+    <li>
+      <a class="govuk-link" href="#your-skills-and-experience">
+        Your skills and experience
+      </a>
+    </li>
+    <li>
+      <a class="govuk-link" href="#your-proposal">
+        Your proposal
+      </a>
+    </li>
+    <li>
+      <a class="govuk-link" href="#outputs-and-outcomes">
+        Outputs and outcomes
+      </a>
+    </li>
+    <li>
+      <a class="govuk-link" href="#risk-and-deliverability">
+        Risk and deliverability
+      </a>
+    </li>
+    <li>
+      <a class="govuk-link" href="#value-for-money">
+        Value for money
+      </a>
+    </li>
+    <li>
+      <a class="govuk-link" href="#declarations">
+        Declarations
+      </a>
+    </li>
+  </ol>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
+  <h2 class="govuk-heading-l" id="before-you-start">
+    1. Before you start
+  </h2>
+  <h3 class="govuk-heading-m">
+    1.1. Name your application
+  </h3>
+  <p class="govuk-body">
+    This is what your application will be called and will help you find it when you save and return.
+  </p>
+  <p class="govuk-body">
+    Choose a memorable name that describes your application.
+  </p>
+  <h3 class="govuk-heading-m">
+    1.2. Organisation type
+  </h3>
+  <h4 class="govuk-heading-s">
+    1.2.1. How is your organisation classified?
+  </h4>
+  <p class="govuk-body">
+    Select all that apply.
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Charity
+    </li>
+    <li class="">
+      Company limited by guarantee
+    </li>
+    <li class="">
+      Charitable incorporated organisation
+    </li>
+    <li class="">
+      Community interest company
+    </li>
+    <li class="">
+      Community benefits society
+    </li>
+    <li class="">
+      None of these
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'None of these', go to <strong>1.2.1.2</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    1.2.1.1. Company registration number (optional)
+  </h4>
+  <p class="govuk-body">
+    For example, 10527177.
+  </p>
+  <h4 class="govuk-heading-s">
+    1.2.1.2. Charity number (optional)
+  </h4>
+  <p class="govuk-body">
+    Charity number
+  </p>
+  <h4 class="govuk-heading-s">
+    1.2.1.2. How is your organisation classified?
+  </h4>
+  <h4 class="govuk-heading-s">
+    1.2.1.3. Names of trustees or committee members
+  </h4>
+  <p class="govuk-body">
+    <p class="govuk-hint">You can add more names on the next step.</p>
+  </p>
+  <p class="govuk-body">
+    Your trustees or committee members
+  </p>
+  <p class="govuk-body">
+    The MultiInputField needed
+  </p>
+  <h4 class="govuk-heading-s">
+    1.2.1.4. How long has your organisation been operating?
+  </h4>
+  <p class="govuk-body">
+    Select one option
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      More than 3 years
+    </li>
+    <li class="">
+      More than 2 years, but less than 3
+    </li>
+    <li class="">
+      Less than 2 years
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'More than 3 years', go to <strong>1.2.1.4.1</strong>
+  </p>
+  <p class="govuk-body">
+    If 'More than 2 years, but less than 3', go to <strong>1.2.1.4.2</strong>
+  </p>
+  <p class="govuk-body">
+    If 'Less than 2 years', go to <strong>1.2.1.4.3</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    1.2.1.4.1. Upload your organisation's annual accounts from the last 3 years
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    1.2.1.4.2. Upload your organisation's annual accounts that you have available
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    1.2.1.4.3. Upload a current bank statement which is less than 2 months old
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    1.2.1.4.4. Upload an annual budget for your organisation
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h3 class="govuk-heading-m">
+    1.3. Applicant information
+  </h3>
+  <h4 class="govuk-heading-s">
+    1.3.1. Lead contact details
+  </h4>
+  <p class="govuk-body">
+    <p class="govuk-hint">They will receive all the information about this application.</p>
+  </p>
+  <p class="govuk-body">
+    Name of lead contact
+  </p>
+  <p class="govuk-body">
+    Lead contact job title
+  </p>
+  <p class="govuk-body">
+    Lead contact email address
+  </p>
+  <p class="govuk-body">
+    Lead contact telephone number
+  </p>
+  <p class="govuk-body">
+    Is the lead contact the same person as the authorised signatory?
+  </p>
+  <p class="govuk-body">
+    An authorised signatory:
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      is allowed to act on behalf of the organisation
+    </li>
+    <li class="">
+      will sign the grant funding agreement if your application is successful
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'No', go to <strong>1.3.1.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    1.3.1.1. Authorised signatory details
+  </h4>
+  <p class="govuk-body">
+    An authorised signatory:
+
+<ul class="govuk-hint">
+<li>is allowed to act on behalf of the organisation</li>
+<li>will sign the grant funding agreement if your application is successful</li>
+</ul>
+
+  </p>
+  <p class="govuk-body">
+    Authorised signatory full name
+  </p>
+  <p class="govuk-body">
+    Authorised signatory job title
+  </p>
+  <p class="govuk-body">
+    Authorised signatory email address
+  </p>
+  <p class="govuk-body">
+    Authorised signatory telephone number
+  </p>
+  <h3 class="govuk-heading-m">
+    1.4. Joint applications
+  </h3>
+  <h4 class="govuk-heading-s">
+    1.4.1. Is your application a joint bid in partnership with other organisations?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>1.4.1.2</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    1.4.1.2. Partner organisation details
+  </h4>
+  <p class="govuk-body">
+    Your partner organisations
+  </p>
+  <p class="govuk-body">
+    The MultiInputField needed
+  </p>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
+  <h2 class="govuk-heading-l" id="about-your-organisation">
+    2. About your organisation
+  </h2>
+  <h3 class="govuk-heading-m">
+    2.1. Applicant information
+  </h3>
+  <h4 class="govuk-heading-s">
+    2.1.1. Lead contact details
+  </h4>
+  <p class="govuk-body">
+    <p class="govuk-hint">They will receive all the information about this application.</p>
+  </p>
+  <p class="govuk-body">
+    Name of lead contact
+  </p>
+  <p class="govuk-body">
+    Lead contact job title
+  </p>
+  <p class="govuk-body">
+    Lead contact email address
+  </p>
+  <p class="govuk-body">
+    Lead contact telephone number
+  </p>
+  <p class="govuk-body">
+    Is the lead contact the same person as the authorised signatory?
+  </p>
+  <p class="govuk-body">
+    An authorised signatory:
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      is allowed to act on behalf of the organisation
+    </li>
+    <li class="">
+      will sign the grant funding agreement if your application is successful
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'No', go to <strong>2.1.1.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    2.1.1.1. Authorised signatory details
+  </h4>
+  <p class="govuk-body">
+    An authorised signatory:
+
+<ul class="govuk-hint">
+<li>is allowed to act on behalf of the organisation</li>
+<li>will sign the grant funding agreement if your application is successful</li>
+</ul>
+
+  </p>
+  <p class="govuk-body">
+    Authorised signatory full name
+  </p>
+  <p class="govuk-body">
+    Authorised signatory job title
+  </p>
+  <p class="govuk-body">
+    Authorised signatory email address
+  </p>
+  <p class="govuk-body">
+    Authorised signatory telephone number
+  </p>
+  <h3 class="govuk-heading-m">
+    2.2. Joint applications
+  </h3>
+  <h4 class="govuk-heading-s">
+    2.2.1. Is your application a joint bid in partnership with other organisations?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>2.2.1.2</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    2.2.1.2. Partner organisation details
+  </h4>
+  <p class="govuk-body">
+    Your partner organisations
+  </p>
+  <p class="govuk-body">
+    The MultiInputField needed
+  </p>
+  <h3 class="govuk-heading-m">
+    2.3. Organisation information
+  </h3>
+  <h4 class="govuk-heading-s">
+    2.3.1. Organisation details
+  </h4>
+  <p class="govuk-body">
+    Organisation name
+  </p>
+  <p class="govuk-body">
+    This must match your registered legal organisation name.
+  </p>
+  <p class="govuk-body">
+    Organisation address
+  </p>
+  <p class="govuk-body">
+    Which region of England do you work in?
+  </p>
+  <h4 class="govuk-heading-s">
+    2.3.2. What is your organisation's main purpose?
+  </h4>
+  <p class="govuk-body">
+    This is what the organisation was set up to achieve.
+  </p>
+  <h4 class="govuk-heading-s">
+    2.3.3. What are your organisation’s charitable objects?
+  </h4>
+  <p class="govuk-body">
+    You can find this in your organisation's governing document.
+  </p>
+  <h4 class="govuk-heading-s">
+    2.3.4. What is your organisation's annual turnover?
+  </h4>
+  <p class="govuk-body">
+    1 April 2022 to 31 March 2023
+  </p>
+  <p class="govuk-body">
+    1 April 2021 to 31 March 2022
+  </p>
+  <h4 class="govuk-heading-s">
+    2.3.5. Which membership organisations are you a member of?
+  </h4>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Homeless Link
+    </li>
+    <li class="">
+      Housing Justice
+    </li>
+    <li class="">
+      Both
+    </li>
+    <li class="">
+      None
+    </li>
+  </ul>
+  <h3 class="govuk-heading-m">
+    2.4. Organisation type
+  </h3>
+  <h4 class="govuk-heading-s">
+    2.4.1. How is your organisation classified?
+  </h4>
+  <p class="govuk-body">
+    Select all that apply.
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Charity
+    </li>
+    <li class="">
+      Company limited by guarantee
+    </li>
+    <li class="">
+      Charitable incorporated organisation
+    </li>
+    <li class="">
+      Community interest company
+    </li>
+    <li class="">
+      Community benefits society
+    </li>
+    <li class="">
+      None of these
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'None of these', go to <strong>2.4.1.2</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    2.4.1.1. Company registration number (optional)
+  </h4>
+  <p class="govuk-body">
+    For example, 10527177.
+  </p>
+  <h4 class="govuk-heading-s">
+    2.4.1.2. Charity number (optional)
+  </h4>
+  <p class="govuk-body">
+    Charity number
+  </p>
+  <h4 class="govuk-heading-s">
+    2.4.1.2. How is your organisation classified?
+  </h4>
+  <h4 class="govuk-heading-s">
+    2.4.1.3. Names of trustees or committee members
+  </h4>
+  <p class="govuk-body">
+    <p class="govuk-hint">You can add more names on the next step.</p>
+  </p>
+  <p class="govuk-body">
+    Your trustees or committee members
+  </p>
+  <p class="govuk-body">
+    The MultiInputField needed
+  </p>
+  <h4 class="govuk-heading-s">
+    2.4.1.4. How long has your organisation been operating?
+  </h4>
+  <p class="govuk-body">
+    Select one option
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      More than 3 years
+    </li>
+    <li class="">
+      More than 2 years, but less than 3
+    </li>
+    <li class="">
+      Less than 2 years
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'More than 3 years', go to <strong>2.4.1.4.1</strong>
+  </p>
+  <p class="govuk-body">
+    If 'More than 2 years, but less than 3', go to <strong>2.4.1.4.2</strong>
+  </p>
+  <p class="govuk-body">
+    If 'Less than 2 years', go to <strong>2.4.1.4.3</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    2.4.1.4.1. Upload your organisation's annual accounts from the last 3 years
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    2.4.1.4.2. Upload your organisation's annual accounts that you have available
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    2.4.1.4.3. Upload a current bank statement which is less than 2 months old
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    2.4.1.4.4. Upload an annual budget for your organisation
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
+  <h2 class="govuk-heading-l" id="your-skills-and-experience">
+    3. Your skills and experience
+  </h2>
+  <h3 class="govuk-heading-m">
+    3.1. Local need and support
+  </h3>
+  <h4 class="govuk-heading-s">
+    3.1.1. Tell us why your proposal is needed in your area
+  </h4>
+  <h4 class="govuk-heading-s">
+    3.1.2. Local authority support
+  </h4>
+  <p class="govuk-body">
+    What is the name of the local authority where your proposal will be based?
+  </p>
+  <p class="govuk-body">
+    Do you have the local authority's support and endorsement for your proposal?
+  </p>
+  <p class="govuk-body">
+    Upload letter of endorsement from your local authority (optional)
+  </p>
+  <p class="govuk-body">
+    Upload the letter now if you have it.
+  </p>
+  <p class="govuk-body">
+    If you do not have it at the moment, we might contact you by email when we assess your application.
+  </p>
+  <p class="govuk-body">
+    The letter should be written by a rough sleeping lead and must not be written by a local councillor.
+  </p>
+  <p class="govuk-body">
+    Your application will not be considered if you cannot provide the letter of endorsement.
+  </p>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods.)
+  </p>
+  <h3 class="govuk-heading-m">
+    3.2. Proposed services
+  </h3>
+  <h4 class="govuk-heading-s">
+    3.2.1. Tell us how your proposal will transform your existing services
+  </h4>
+  <h4 class="govuk-heading-s">
+    3.2.2. Do you plan to use this funding to make any changes to the existing night shelter or emergency accommodation?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>3.2.2.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    3.2.2.1. How many single rooms will you provide with the funding?
+  </h4>
+  <h4 class="govuk-heading-s">
+    3.2.3. Do you plan to use this funding to make any changes to the existing day provision?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>3.2.3.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    3.2.3.1. Which additional day provision will your proposal provide?
+  </h4>
+  <p class="govuk-body">
+    Select all that apply.
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Outreach
+    </li>
+    <li class="">
+      Health interventions
+    </li>
+    <li class="">
+      Employment support
+    </li>
+    <li class="">
+      Financial advice
+    </li>
+    <li class="">
+      Onsite inreach services from other organisations
+    </li>
+    <li class="">
+      Housing advice
+    </li>
+    <li class="">
+      Other
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'Other', go to <strong>3.2.3.1.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    3.2.3.1.1. Which other additional day provision will your proposal provide?
+  </h4>
+  <h4 class="govuk-heading-s">
+    3.2.3.2. Will you provide any other additional services?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>3.2.3.2.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    3.2.3.2.1. Which other services will you use the funding to provide?
+  </h4>
+  <h4 class="govuk-heading-s">
+    3.2.3.3. Will your proposal provide additional specialist support?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>3.2.3.3.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    3.2.3.3.1. Who will your proposal provide targeted specialist support to?
+  </h4>
+  <p class="govuk-body">
+    Select all that apply.
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Women
+    </li>
+    <li class="">
+      Survivors of domestic abuse
+    </li>
+    <li class="">
+      Ethnic minorities
+    </li>
+    <li class="">
+      People who identify as LGBTQIA+ (lesbian, gay, bisexual, transgender, queer, intersex, asexual, and agender)
+    </li>
+    <li class="">
+      Non-UK nationals with restricted eligibility to public funds
+    </li>
+    <li class="">
+      People with mental health problems
+    </li>
+    <li class="">
+      People with social care needs
+    </li>
+    <li class="">
+      People experiencing substance misuse
+    </li>
+    <li class="">
+      Disabled people
+    </li>
+    <li class="">
+      Other
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'Other', go to <strong>3.2.3.3.1.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    3.2.3.3.1.1. Who will your proposal provide specialist support to?
+  </h4>
+  <h3 class="govuk-heading-m">
+    3.3. Working in partnership
+  </h3>
+  <h4 class="govuk-heading-s">
+    3.3.1. Describe your important local partners and how they will support your proposal
+  </h4>
+  <h3 class="govuk-heading-m">
+    3.4. Proposal sustainability
+  </h3>
+  <h4 class="govuk-heading-s">
+    3.4.1. How will this funding support the longer-term sustainability of your proposal beyond the funding period?
+  </h4>
+  <h3 class="govuk-heading-m">
+    3.5. Staff and volunteers
+  </h3>
+  <h4 class="govuk-heading-s">
+    3.5.1. Employed staff and volunteers at your organisation
+  </h4>
+  <p class="govuk-body">
+    How many staff members are currently employed in your organisation?
+  </p>
+  <p class="govuk-body">
+    How many volunteers are actively involved in your organisation?
+  </p>
+  <p class="govuk-body">
+    What percentage of your employed staff work part-time?
+  </p>
+  <p class="govuk-body">
+    For part-time employees, what is their average full-time equivalency (FTE)?
+  </p>
+  <h3 class="govuk-heading-m">
+    3.6. Current services
+  </h3>
+  <h4 class="govuk-heading-s">
+    3.6.1. Have you provided a night shelter or emergency accommodation on or after 1 April 2019?
+  </h4>
+  <p class="govuk-body">
+    Night shelter or emergency accommodation is a service with rapid access and a low barrier to entry for people experiencing rough sleeping or at imminent risk of rough sleeping.
+  </p>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>3.6.1.1</strong>
+  </p>
+  <p class="govuk-body">
+    If 'No', go to <strong>3.6.2</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    3.6.1.1. Night shelter or emergency accommodation
+  </h4>
+  <p class="govuk-body">
+    Is the night shelter or emergency accommodation communal?
+  </p>
+  <p class="govuk-body">
+    Is the night shelter or emergency accommodation single room accommodation?
+  </p>
+  <p class="govuk-body">
+    A single room is separate living accommodation. It has a lockable door, four walls and a ceiling, secure window and appropriate ventilation. 
+It also has access to cooking facilities and full bathroom facilities (single-use or shared). Cooking facilities are required unless this is explicitly indicated as unnecessary, for example in fully catered provision.
+  </p>
+  <p class="govuk-body">
+    How many bed spaces did the night shelter or emergency accommodation provide from 1 April 2022 to 31 March 2023?
+  </p>
+  <p class="govuk-body">
+    Is the night shelter or emergency accommodation used for SWEP (severe weather emergency protocol)?
+  </p>
+  <p class="govuk-body">
+    Do you accept referrals from the local authority or other agencies for available bed spaces?
+  </p>
+  <h4 class="govuk-heading-s">
+    3.6.1.2. How many nights did the night shelter or emergency accommodation open from 1 April 2022 to 31 March 2023?
+  </h4>
+  <h4 class="govuk-heading-s">
+    3.6.2. Do you currently provide day provision?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>3.6.2.1</strong>
+  </p>
+  <p class="govuk-body">
+    If 'No', go to <strong>3.6.2.3</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    3.6.2.1. When did you start providing day provision?
+  </h4>
+  <p class="govuk-body">
+    For example, 3 2007
+  </p>
+  <h4 class="govuk-heading-s">
+    3.6.2.2. Which day provision services are you currently providing?
+  </h4>
+  <p class="govuk-body">
+    Select all that apply.
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Outreach
+    </li>
+    <li class="">
+      Health interventions
+    </li>
+    <li class="">
+      Employment support
+    </li>
+    <li class="">
+      Financial advice
+    </li>
+    <li class="">
+      Onsite inreach services from other organisations
+    </li>
+    <li class="">
+      Housing advice
+    </li>
+    <li class="">
+      Other
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'Other', go to <strong>3.6.2.2.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    3.6.2.2.1. Which other day provision do you currently provide?
+  </h4>
+  <h4 class="govuk-heading-s">
+    3.6.2.3. Do you currently provide any other services?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>3.6.2.3.1</strong>
+  </p>
+  <p class="govuk-body">
+    If 'No', go to <strong>3.6.2.4</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    3.6.2.3.1. What other services are you currently providing?
+  </h4>
+  <h4 class="govuk-heading-s">
+    3.6.2.4. Do you currently provide specialist support?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>3.6.2.4.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    3.6.2.4.1. Who do you currently provide targeted specialist support to?
+  </h4>
+  <p class="govuk-body">
+    Select all that apply.
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Women
+    </li>
+    <li class="">
+      Survivors of domestic abuse
+    </li>
+    <li class="">
+      Ethnic minorities
+    </li>
+    <li class="">
+      People who identify as LGBTQIA+ (lesbian, gay, bisexual, transgender, queer, intersex, asexual, and agender)
+    </li>
+    <li class="">
+      Non-UK nationals with restricted eligibility to public funds
+    </li>
+    <li class="">
+      People with mental health problems
+    </li>
+    <li class="">
+      People with social care needs
+    </li>
+    <li class="">
+      People experiencing substance misuse
+    </li>
+    <li class="">
+      Disabled people
+    </li>
+    <li class="">
+      Other
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'Other', go to <strong>3.6.2.4.1.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    3.6.2.4.1.1. Which other groups of people do you provide targeted specialist support to?
+  </h4>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
+  <h2 class="govuk-heading-l" id="your-proposal">
+    4. Your proposal
+  </h2>
+  <h3 class="govuk-heading-m">
+    4.1. Milestones
+  </h3>
+  <h4 class="govuk-heading-s">
+    4.1.1. Proposal milestones
+  </h4>
+  <p class="govuk-body">
+    <p class="govuk-hint">Tell us your proposal's milestones up to, and including 2025.</p>
+<p class="govuk-hint">You can add more milestones on the next step.</p>
+  </p>
+  <p class="govuk-body">
+    Milestones
+  </p>
+  <p class="govuk-body">
+    The MultiInputField needed
+  </p>
+  <h3 class="govuk-heading-m">
+    4.2. Local need and support
+  </h3>
+  <h4 class="govuk-heading-s">
+    4.2.1. Tell us why your proposal is needed in your area
+  </h4>
+  <h4 class="govuk-heading-s">
+    4.2.2. Local authority support
+  </h4>
+  <p class="govuk-body">
+    What is the name of the local authority where your proposal will be based?
+  </p>
+  <p class="govuk-body">
+    Do you have the local authority's support and endorsement for your proposal?
+  </p>
+  <p class="govuk-body">
+    Upload letter of endorsement from your local authority (optional)
+  </p>
+  <p class="govuk-body">
+    Upload the letter now if you have it.
+  </p>
+  <p class="govuk-body">
+    If you do not have it at the moment, we might contact you by email when we assess your application.
+  </p>
+  <p class="govuk-body">
+    The letter should be written by a rough sleeping lead and must not be written by a local councillor.
+  </p>
+  <p class="govuk-body">
+    Your application will not be considered if you cannot provide the letter of endorsement.
+  </p>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods.)
+  </p>
+  <h3 class="govuk-heading-m">
+    4.3. Proposed services
+  </h3>
+  <h4 class="govuk-heading-s">
+    4.3.1. Tell us how your proposal will transform your existing services
+  </h4>
+  <h4 class="govuk-heading-s">
+    4.3.2. Do you plan to use this funding to make any changes to the existing night shelter or emergency accommodation?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>4.3.2.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    4.3.2.1. How many single rooms will you provide with the funding?
+  </h4>
+  <h4 class="govuk-heading-s">
+    4.3.3. Do you plan to use this funding to make any changes to the existing day provision?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>4.3.3.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    4.3.3.1. Which additional day provision will your proposal provide?
+  </h4>
+  <p class="govuk-body">
+    Select all that apply.
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Outreach
+    </li>
+    <li class="">
+      Health interventions
+    </li>
+    <li class="">
+      Employment support
+    </li>
+    <li class="">
+      Financial advice
+    </li>
+    <li class="">
+      Onsite inreach services from other organisations
+    </li>
+    <li class="">
+      Housing advice
+    </li>
+    <li class="">
+      Other
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'Other', go to <strong>4.3.3.1.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    4.3.3.1.1. Which other additional day provision will your proposal provide?
+  </h4>
+  <h4 class="govuk-heading-s">
+    4.3.3.2. Will you provide any other additional services?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>4.3.3.2.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    4.3.3.2.1. Which other services will you use the funding to provide?
+  </h4>
+  <h4 class="govuk-heading-s">
+    4.3.3.3. Will your proposal provide additional specialist support?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>4.3.3.3.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    4.3.3.3.1. Who will your proposal provide targeted specialist support to?
+  </h4>
+  <p class="govuk-body">
+    Select all that apply.
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Women
+    </li>
+    <li class="">
+      Survivors of domestic abuse
+    </li>
+    <li class="">
+      Ethnic minorities
+    </li>
+    <li class="">
+      People who identify as LGBTQIA+ (lesbian, gay, bisexual, transgender, queer, intersex, asexual, and agender)
+    </li>
+    <li class="">
+      Non-UK nationals with restricted eligibility to public funds
+    </li>
+    <li class="">
+      People with mental health problems
+    </li>
+    <li class="">
+      People with social care needs
+    </li>
+    <li class="">
+      People experiencing substance misuse
+    </li>
+    <li class="">
+      Disabled people
+    </li>
+    <li class="">
+      Other
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'Other', go to <strong>4.3.3.3.1.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    4.3.3.3.1.1. Who will your proposal provide specialist support to?
+  </h4>
+  <h3 class="govuk-heading-m">
+    4.4. Working in partnership
+  </h3>
+  <h4 class="govuk-heading-s">
+    4.4.1. Describe your important local partners and how they will support your proposal
+  </h4>
+  <h3 class="govuk-heading-m">
+    4.5. Proposal sustainability
+  </h3>
+  <h4 class="govuk-heading-s">
+    4.5.1. How will this funding support the longer-term sustainability of your proposal beyond the funding period?
+  </h4>
+  <h3 class="govuk-heading-m">
+    4.6. Objectives and activities
+  </h3>
+  <h4 class="govuk-heading-s">
+    4.6.1. Give a brief summary of your project, including what you hope to achieve
+  </h4>
+  <h4 class="govuk-heading-s">
+    4.6.2. Objectives and activities
+  </h4>
+  <p class="govuk-body">
+    <p class="govuk-hint">Tell us about your project's objectives and how you plan to achieve these objectives.<p>
+
+<p class="govuk-hint">You must include one objective about how your project will address local rough sleeping.</p>
+
+<p class="govuk-hint">You can add more objectives and activities on the next screen.</p>
+  </p>
+  <p class="govuk-body">
+    Proposal milestones
+  </p>
+  <p class="govuk-body">
+    The MultiInputField needed
+  </p>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
+  <h2 class="govuk-heading-l" id="outputs-and-outcomes">
+    5. Outputs and outcomes
+  </h2>
+  <h3 class="govuk-heading-m">
+    5.1. Outputs and outcomes
+  </h3>
+  <h4 class="govuk-heading-s">
+    5.1.1. Who your proposal will support
+  </h4>
+  <p class="govuk-body">
+    <h2 class="govuk-heading-m">How many people will the proposal support with the funding?</h2>
+
+  </p>
+  <p class="govuk-body">
+    1 April 2023 to 31 March 2024
+  </p>
+  <p class="govuk-body">
+    1 April 2024 to 31 March 2025
+  </p>
+  <p class="govuk-body">
+    <h2 class="govuk-heading-m">How many people with restricted eligibility will the proposal support?</h2>
+
+  </p>
+  <p class="govuk-body">
+    1 April 2023 to 31 March 2024
+  </p>
+  <p class="govuk-body">
+    1 April 2024 to 31 March 2025
+  </p>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
+  <h2 class="govuk-heading-l" id="risk-and-deliverability">
+    6. Risk and deliverability
+  </h2>
+  <h3 class="govuk-heading-m">
+    6.1. Building works
+  </h3>
+  <h4 class="govuk-heading-s">
+    6.1.1. Will you use the funding to conduct building works?
+  </h4>
+  <p class="govuk-body">
+    You can only conduct building works if you’re applying for capital funding.
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.2. Number of new single room units (optional)
+  </h4>
+  <h4 class="govuk-heading-s">
+    6.1.1.3. Do you need planning approval for your proposal?
+  </h4>
+  <p class="govuk-body">
+    Select one option
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Yes
+    </li>
+    <li class="">
+      No
+    </li>
+    <li class="">
+      I don't know
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>6.1.1.3.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1. Have you made an application for planning permission?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>6.1.1.3.1.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.1. What's your planning application number?
+  </h4>
+  <p class="govuk-body">
+    You can find this on communications from your local planning department about your application.
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.2. Have you received any pre-application planning advice?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>6.1.1.3.1.2.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.2.1. Give a brief summary of the advice you received
+  </h4>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.3. Will you procure a construction contract for the building works?
+  </h4>
+  <p class="govuk-body">
+    You’re expected to enter into a legally binding agreement when procuring any building works.
+  </p>
+  <p class="govuk-body">
+    Where appropriate, you should use a recognised standard form of contract.
+  </p>
+  <p class="govuk-body">
+    For example, a JCT Minor Works Building Contract.
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.4. Will you use any professional advisors for the proposal?
+  </h4>
+  <p class="govuk-body">
+    For example, architects, quantity surveyors, project managers.
+  </p>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>6.1.1.3.1.4.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.4.1. Details of professional advisors
+  </h4>
+  <p class="govuk-body">
+    <p class="govuk-hint">You can add more advisors on the next step.<p>
+  </p>
+  <p class="govuk-body">
+    Details of professional advisors
+  </p>
+  <p class="govuk-body">
+    The MultiInputField needed
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5. Will you be hiring contractors to complete the building works?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>6.1.1.3.1.5.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.1. Do you know which contractors will be conducting the work?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>6.1.1.3.1.5.1.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.1.1. Which contractors will you use to carry out this work?
+  </h4>
+  <p class="govuk-body">
+    <p class="govuk-hint">You can add more items on the next step.</p>
+  </p>
+  <p class="govuk-body">
+    Your contractors
+  </p>
+  <p class="govuk-body">
+    The MultiInputField needed
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.2. Do you have a cost estimate for the building works?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>6.1.1.3.1.5.2.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.2.1. Upload cost estimate
+  </h4>
+  <p class="govuk-body">
+    This can be from:
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      a qualified quantity surveyor
+    </li>
+    <li class="">
+      a contract administrator
+    </li>
+    <li class="">
+      a reputable building contractor
+    </li>
+  </ul>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.3. Do you have a condition survey?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>6.1.1.3.1.5.3.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.3.1. Upload a condition survey
+  </h4>
+  <p class="govuk-body">
+    This must include:
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      asbestos installations
+    </li>
+    <li class="">
+      electrical installations
+    </li>
+    <li class="">
+      gas installations
+    </li>
+  </ul>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.4. Do you have a buildings and contents insurance certificate?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>6.1.1.3.1.5.4.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.4.1. Upload buildings and contents insurance certificate
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.5. Do you own the premises?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>6.1.1.3.1.5.5.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.5.1. Upload a copy of the land registry title
+  </h4>
+  <p class="govuk-body">
+    This must show your ownership of the premises.
+  </p>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.5.2. Upload the land owner's consent
+  </h4>
+  <p class="govuk-body">
+    This must show the consent for the proposed changes of your services.
+  </p>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.5.3. How long is left on the lease agreement?
+  </h4>
+  <p class="govuk-body">
+    Select one option
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      More than 4 years
+    </li>
+    <li class="">
+      Less than 4 years
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'More than 4 years', go to <strong>6.1.1.3.1.5.5.3.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.5.3.1. Upload a copy of the lease agreement
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.5.3.2. Upload correspondence from your landlord to show that lease renewal discussions have started
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.5.3.3. Upload heads of terms outlining new lease agreement
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.5.4. Is the building listed?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>6.1.1.3.1.5.5.4.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    6.1.1.3.1.5.5.4.1. Upload listed building consent
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h3 class="govuk-heading-m">
+    6.2. Match funding
+  </h3>
+  <h4 class="govuk-heading-s">
+    6.2.1. Will you use match funding for this proposal?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>6.2.1.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    6.2.1.1. Match funding
+  </h4>
+  <p class="govuk-body">
+    <p class="govuk-hint">You can add more funding sources on the next step</p>
+  </p>
+  <p class="govuk-body">
+    Match funding
+  </p>
+  <p class="govuk-body">
+    The MultiInputField needed
+  </p>
+  <h3 class="govuk-heading-m">
+    6.3. Risk and deliverability
+  </h3>
+  <h4 class="govuk-heading-s">
+    6.3.1. Risks to the proposal
+  </h4>
+  <p class="govuk-body">
+    <p class="govuk-hint">Tell us about:
+
+<ul class="govuk-hint">
+<li>any risks to the proposal</li>
+<li>the likelihood of them happening</li>
+<li>how you plan to mitigate them</li>
+</ul>
+</p>
+
+<p class="govuk-hint">You can add more risks on the next step.</p>
+  </p>
+  <p class="govuk-body">
+    Risk
+  </p>
+  <p class="govuk-body">
+    The MultiInputField needed
+  </p>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
+  <h2 class="govuk-heading-l" id="value-for-money">
+    7. Value for money
+  </h2>
+  <h3 class="govuk-heading-m">
+    7.1. Building works
+  </h3>
+  <h4 class="govuk-heading-s">
+    7.1.1. Will you use the funding to conduct building works?
+  </h4>
+  <p class="govuk-body">
+    You can only conduct building works if you’re applying for capital funding.
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.2. Number of new single room units (optional)
+  </h4>
+  <h4 class="govuk-heading-s">
+    7.1.1.3. Do you need planning approval for your proposal?
+  </h4>
+  <p class="govuk-body">
+    Select one option
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Yes
+    </li>
+    <li class="">
+      No
+    </li>
+    <li class="">
+      I don't know
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>7.1.1.3.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1. Have you made an application for planning permission?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>7.1.1.3.1.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.1. What's your planning application number?
+  </h4>
+  <p class="govuk-body">
+    You can find this on communications from your local planning department about your application.
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.2. Have you received any pre-application planning advice?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>7.1.1.3.1.2.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.2.1. Give a brief summary of the advice you received
+  </h4>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.3. Will you procure a construction contract for the building works?
+  </h4>
+  <p class="govuk-body">
+    You’re expected to enter into a legally binding agreement when procuring any building works.
+  </p>
+  <p class="govuk-body">
+    Where appropriate, you should use a recognised standard form of contract.
+  </p>
+  <p class="govuk-body">
+    For example, a JCT Minor Works Building Contract.
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.4. Will you use any professional advisors for the proposal?
+  </h4>
+  <p class="govuk-body">
+    For example, architects, quantity surveyors, project managers.
+  </p>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>7.1.1.3.1.4.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.4.1. Details of professional advisors
+  </h4>
+  <p class="govuk-body">
+    <p class="govuk-hint">You can add more advisors on the next step.<p>
+  </p>
+  <p class="govuk-body">
+    Details of professional advisors
+  </p>
+  <p class="govuk-body">
+    The MultiInputField needed
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5. Will you be hiring contractors to complete the building works?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>7.1.1.3.1.5.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.1. Do you know which contractors will be conducting the work?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>7.1.1.3.1.5.1.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.1.1. Which contractors will you use to carry out this work?
+  </h4>
+  <p class="govuk-body">
+    <p class="govuk-hint">You can add more items on the next step.</p>
+  </p>
+  <p class="govuk-body">
+    Your contractors
+  </p>
+  <p class="govuk-body">
+    The MultiInputField needed
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.2. Do you have a cost estimate for the building works?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>7.1.1.3.1.5.2.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.2.1. Upload cost estimate
+  </h4>
+  <p class="govuk-body">
+    This can be from:
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      a qualified quantity surveyor
+    </li>
+    <li class="">
+      a contract administrator
+    </li>
+    <li class="">
+      a reputable building contractor
+    </li>
+  </ul>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.3. Do you have a condition survey?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>7.1.1.3.1.5.3.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.3.1. Upload a condition survey
+  </h4>
+  <p class="govuk-body">
+    This must include:
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      asbestos installations
+    </li>
+    <li class="">
+      electrical installations
+    </li>
+    <li class="">
+      gas installations
+    </li>
+  </ul>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.4. Do you have a buildings and contents insurance certificate?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>7.1.1.3.1.5.4.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.4.1. Upload buildings and contents insurance certificate
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.5. Do you own the premises?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>7.1.1.3.1.5.5.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.5.1. Upload a copy of the land registry title
+  </h4>
+  <p class="govuk-body">
+    This must show your ownership of the premises.
+  </p>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.5.2. Upload the land owner's consent
+  </h4>
+  <p class="govuk-body">
+    This must show the consent for the proposed changes of your services.
+  </p>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.5.3. How long is left on the lease agreement?
+  </h4>
+  <p class="govuk-body">
+    Select one option
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      More than 4 years
+    </li>
+    <li class="">
+      Less than 4 years
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'More than 4 years', go to <strong>7.1.1.3.1.5.5.3.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.5.3.1. Upload a copy of the lease agreement
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.5.3.2. Upload correspondence from your landlord to show that lease renewal discussions have started
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.5.3.3. Upload heads of terms outlining new lease agreement
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.5.4. Is the building listed?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>7.1.1.3.1.5.5.4.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    7.1.1.3.1.5.5.4.1. Upload listed building consent
+  </h4>
+  <p class="govuk-body">
+    It should be a single file no bigger than 5MB in an accepted format (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h3 class="govuk-heading-m">
+    7.2. Match funding
+  </h3>
+  <h4 class="govuk-heading-s">
+    7.2.1. Will you use match funding for this proposal?
+  </h4>
+  <p class="govuk-body">
+    If 'Yes', go to <strong>7.2.1.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    7.2.1.1. Match funding
+  </h4>
+  <p class="govuk-body">
+    <p class="govuk-hint">You can add more funding sources on the next step</p>
+  </p>
+  <p class="govuk-body">
+    Match funding
+  </p>
+  <p class="govuk-body">
+    The MultiInputField needed
+  </p>
+  <h3 class="govuk-heading-m">
+    7.3. Funding required
+  </h3>
+  <h4 class="govuk-heading-s">
+    7.3.1. What funding are you applying for?
+  </h4>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Revenue
+    </li>
+    <li class="">
+      Capital
+    </li>
+    <li class="">
+      Both revenue and capital
+    </li>
+  </ul>
+  <p class="govuk-body">
+    If 'Revenue', go to <strong>7.3.1.1</strong>
+  </p>
+  <p class="govuk-body">
+    If 'Capital', go to <strong>7.3.1.2</strong>
+  </p>
+  <p class="govuk-body">
+    If 'Both revenue and capital', go to <strong>7.3.1.3</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    7.3.1.1. How much revenue are you applying for?
+  </h4>
+  <p class="govuk-body">
+    1 April 2023 to 31 March 2024
+  </p>
+  <p class="govuk-body">
+    1 April 2024 to 31 March 2025
+  </p>
+  <h4 class="govuk-heading-s">
+    7.3.1.2. Revenue funding
+  </h4>
+  <p class="govuk-body">
+    <p class="govuk-hint">You can add more items on the next step.</p>
+  </p>
+  <p class="govuk-body">
+    Revenue costs
+  </p>
+  <p class="govuk-body">
+    The MultiInputField needed
+  </p>
+  <h4 class="govuk-heading-s">
+    7.3.1.2. How much capital are you applying for?
+  </h4>
+  <p class="govuk-body">
+    1 April 2023 to 31 March 2024
+  </p>
+  <p class="govuk-body">
+    1 April 2024 to 31 March 2025
+  </p>
+  <h4 class="govuk-heading-s">
+    7.3.1.3. How much funding are you applying for?
+  </h4>
+  <p class="govuk-body">
+    Revenue funding 1 April 2023 to 31 March 2024
+  </p>
+  <p class="govuk-body">
+    Revenue funding 1 April 2024 to 31 March 2025
+  </p>
+  <p class="govuk-body">
+    Capital funding 1 April 2023 to 31 March 2024
+  </p>
+  <p class="govuk-body">
+    Capital funding 1 April 2024 to 31 March 2025
+  </p>
+  <h4 class="govuk-heading-s">
+    7.3.2. Capital funding
+  </h4>
+  <p class="govuk-body">
+    <p class="govuk-hint">You can add more items on the next step.</p>
+  </p>
+  <p class="govuk-body">
+    Capital costs
+  </p>
+  <p class="govuk-body">
+    The MultiInputField needed
+  </p>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
+  <h2 class="govuk-heading-l" id="declarations">
+    8. Declarations
+  </h2>
+  <h3 class="govuk-heading-m">
+    8.1. Declarations
+  </h3>
+  <h4 class="govuk-heading-s">
+    8.1.1. Agree to the final confirmations
+  </h4>
+  <p class="govuk-body">
+    Confirm you have a bank account set up and associated with the organisation you are applying on behalf of
+  </p>
+  <p class="govuk-body">
+    Confirm that the information you've provided in this application is accurate to the best of your knowledge on the date of submission
+  </p>
+  <p class="govuk-body">
+    Confirm you have a safeguarding, data protection and health and safety policy
+  </p>
+</div>
+    </div>
+</div>
+{% endblock %}
