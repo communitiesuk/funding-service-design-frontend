@@ -52,7 +52,6 @@ def all_questions(fund_short_name, round_short_name):
             template_name = f"{all_questions_prefix}_all_questions_en.html"
         try:
             return render_template(
-                f"{fund_short_name.lower()}_{round_short_name.lower()[0:2]}_all_questions.html",
                 template_name,
                 fund_title=fund.name,
                 round_title=round.title,
