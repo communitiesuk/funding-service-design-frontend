@@ -9,6 +9,7 @@ from flask import render_template
 from flask import request
 from flask import url_for
 from fsd_utils.authentication.decorators import login_requested
+from fsd_utils.locale_selector.get_lang import get_lang
 from jinja2.exceptions import TemplateNotFound
 
 content_bp = Blueprint("content_routes", __name__, template_folder="templates")
@@ -33,9 +34,26 @@ def all_questions(fund_short_name, round_short_name):
     )
 
     if fund and round:
+        lang = get_lang()
+
+        # Allow for COF R2 and R3 to use the old mechanism for translating all questions into welsh - the template
+        # for these rounds contains translation tags to build the page on the fly.
+        # All future rounds that need welsh all questions will have them generated from the form json so should
+        # be named with the language in the filename
+        all_questions_prefix = (
+            f"{fund_short_name.lower()}_{round_short_name.lower()[0:2]}"
+        )
+        template_name = f"{all_questions_prefix}_all_questions_{lang}.html"
+        if fund.welsh_available and all_questions_prefix.startswith(
+            ("cof_r2", "cof_r3")
+        ):
+            template_name = f"{all_questions_prefix}_all_questions.html"
+        elif (not fund.welsh_available) and lang != "en":
+            template_name = f"{all_questions_prefix}_all_questions_en.html"
         try:
             return render_template(
                 f"{fund_short_name.lower()}_{round_short_name.lower()[0:2]}_all_questions.html",
+                template_name,
                 fund_title=fund.name,
                 round_title=round.title,
             )
