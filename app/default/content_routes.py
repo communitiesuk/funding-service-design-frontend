@@ -1,6 +1,7 @@
 from app.helpers import find_fund_and_round_in_request
 from app.helpers import find_round_in_request
 from app.helpers import get_fund_and_round
+from app.models.fund import Fund
 from flask import abort
 from flask import Blueprint
 from flask import current_app
@@ -21,6 +22,39 @@ def accessibility_statement():
     return render_template("accessibility_statement.html")
 
 
+def determine_all_questions_template_name(
+    fund_short_name: str, round_short_name: str, lang: str, fund: Fund
+):
+
+    # Allow for COF R2 and R3 to use the old mechanism for translating all questions into welsh - the template
+    # for these rounds contains translation tags to build the page on the fly.
+    # All future rounds that need welsh all questions will have them generated from the form json so should
+    # be named with the language in the filename
+
+    if fund_short_name.casefold() == "cof" and round_short_name.casefold() in [
+        "r2w2",
+        "r2w3",
+        "r3w1",
+        "r3w2",
+    ]:
+        # In cof rounds, the different windows have the same questions
+        all_questions_prefix = (
+            f"{fund_short_name.lower()}_{round_short_name.lower()[0:2]}"
+        )
+        template_name = f"all_questions/uses_translations/{all_questions_prefix}_all_questions.html"
+    else:
+        all_questions_prefix = (
+            f"{fund_short_name.lower()}_{round_short_name.lower()}"
+        )
+        # If in welsh mode but there isn't welsh, default to english
+        if (not fund.welsh_available) and lang != "en":
+            template_name = f"all_questions/en/{all_questions_prefix}_all_questions_en.html"
+
+        else:
+            template_name = f"all_questions/{lang}/{all_questions_prefix}_all_questions_{lang}.html"
+    return template_name
+
+
 @content_bp.route(
     "/all_questions/<fund_short_name>/<round_short_name>", methods=["GET"]
 )
@@ -36,20 +70,9 @@ def all_questions(fund_short_name, round_short_name):
     if fund and round:
         lang = get_lang()
 
-        # Allow for COF R2 and R3 to use the old mechanism for translating all questions into welsh - the template
-        # for these rounds contains translation tags to build the page on the fly.
-        # All future rounds that need welsh all questions will have them generated from the form json so should
-        # be named with the language in the filename
-        all_questions_prefix = (
-            f"{fund_short_name.lower()}_{round_short_name.lower()[0:2]}"
+        template_name = determine_all_questions_template_name(
+            fund_short_name, round_short_name, lang, fund
         )
-        template_name = f"{all_questions_prefix}_all_questions_{lang}.html"
-        if fund.welsh_available and all_questions_prefix.startswith(
-            ("cof_r2", "cof_r3")
-        ):
-            template_name = f"{all_questions_prefix}_all_questions.html"
-        elif (not fund.welsh_available) and lang != "en":
-            template_name = f"{all_questions_prefix}_all_questions_en.html"
         try:
             return render_template(
                 template_name,
