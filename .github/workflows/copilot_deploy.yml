@@ -43,6 +43,18 @@ on:
 
 
 jobs:
+  paketo_build:
+    permissions:
+      packages: write
+    uses: ./.github/workflows/package.yml
+    with:
+      version_to_build: $(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+  pre_deploy_tests:
+    secrets:
+      E2E_PAT: ${{secrets.E2E_PAT}}
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/pre-deploy.yml@main
+    with:
+      postgres_unit_testing: false
   deployment:
     concurrency: deploy-${{ inputs.environment || 'test' }} # Forces only one workflow at a time can run on the environment
     permissions:
@@ -57,3 +69,12 @@ jobs:
       - name: Get current date
         id: currentdatetime
         run: echo "::set-output name=datetime::$(date +'%Y%m%d%H%M%S')"
+  post_deploy_tests:
+    needs: copilot_build
+    secrets:
+      E2E_PAT: ${{secrets.E2E_PAT}}
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/post-deploy.yml@main
+    with: 
+      run_performance_tests: ${{ inputs.run_performance_tests }}
+      run_e2e_tests: ${{ inputs.run_e2e_tests }}
+      app_name: frontend
