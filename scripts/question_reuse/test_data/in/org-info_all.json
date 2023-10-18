@@ -1,0 +1,25 @@
+{
+    "pages": [
+        {
+            "component_names": [
+                "reuse-organisation-name",
+                "reuse-organisation-other-names-yes-no"
+            ]
+        },
+        {
+            "component_names": [
+                "reuse-organisation-address"
+            ]
+        },
+        {
+            "component_names": [
+                "reuse-organisation-main-purpose"
+            ]
+        },
+        {
+            "component_names": [
+                "reuse-organisation-website-social-media-links"
+            ]
+        }
+    ]
+}
