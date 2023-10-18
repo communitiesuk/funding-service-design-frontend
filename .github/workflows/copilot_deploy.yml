@@ -70,7 +70,7 @@ jobs:
         id: currentdatetime
         run: echo "::set-output name=datetime::$(date +'%Y%m%d%H%M%S')"
   post_deploy_tests:
-    needs: copilot_build
+    needs: deployment
     secrets:
       E2E_PAT: ${{secrets.E2E_PAT}}
     uses: communitiesuk/funding-service-design-workflows/.github/workflows/post-deploy.yml@main
