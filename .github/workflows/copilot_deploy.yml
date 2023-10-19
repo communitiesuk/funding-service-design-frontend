@@ -21,7 +21,7 @@ on:
         default: false
         type: boolean
         description: Run e2e tests
-  push: 
+  push:
     paths: # Ignore README markdown and only deploy when something in the copilot folder has changed
       - 'copilot/**'
       - '!**/README.md'
