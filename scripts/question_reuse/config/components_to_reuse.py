@@ -17,18 +17,20 @@ COMPONENTS_TO_REUSE = {
         "title": "What is your organisation's main purpose?",
         "hint": "This is what the organisation was set up to achieve.",
     },
-    "reuse-organisation-other-names-yes-no": {
+    "reuse_organisation_other_names_yes_no": {
         "options": {},
         "type": "YesNoField",
         "title": "Does your organisation use any other names?",
         "schema": {},
         "conditions": [
             {
+                "name": "organisation_other_names_no",
                 "value": "false",
                 "operator": "is",
                 "destination_page": "CONTINUE",
             },
             {
+                "name": "organisation_other_names_yes",
                 "value": "true",
                 "operator": "is",
                 "destination_page": "/alternative-organisation-name",

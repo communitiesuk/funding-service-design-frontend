@@ -1,8 +1,13 @@
 PAGES_TO_REUSE = {
+    "organisation-single-name": {
+        "component_names": [
+            "reuse-organisation-name",
+        ],
+    },
     "organisation-name": {
         "component_names": [
             "reuse-organisation-name",
-            "reuse-organisation-other-names-yes-no",
+            "reuse_organisation_other_names_yes_no",
         ],
     },
     "organisation-address": {
@@ -13,5 +18,6 @@ PAGES_TO_REUSE = {
     },
     "organisation-web-links": {
         "component_names": ["reuse-organisation-website-social-media-links"],
+        "controller": "RepeatingFieldPageController",
     },
 }
