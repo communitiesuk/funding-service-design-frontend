@@ -5,42 +5,29 @@ on:
       - main
   workflow_dispatch:
     inputs:
-        environment:
-          description:  Which AWS Account to use
-          type: choice
-          required: true
-          options:
-          - test
-        # Shared workflow consideration
-        # application:
-        #   description:  Application Name
-        #   type: string/choice
-        # - notification
-        #   required: true
-        init:
-          description: Initialise the application?
-          type: boolean
-          default: false
-        service:
-          description: Service Name
-          type: string
-          required: true
-          default: 'funding-service-design-frontend'
-        port:
-          description: Access port
-          type: string
-          default: '80'
-        type:
-          description: Type of service to deploy
-          type: choice
-          options:
-          - 'Backend Service'
-          - 'Load Balanced Web Service'
-          - 'Request-Driven Web Service'
-          - 'Scheduled Job'
-          - 'Worker Service'
-          default: 'Backend Service'
-
+      environment:
+        description:  Which AWS Account to use
+        type: choice
+        required: true
+        options:
+        - test
+      run_performance_tests:
+        required: false
+        default: false
+        type: boolean
+        description: Run performance tests
+      run_e2e_tests:
+        required: false
+        default: false
+        type: boolean
+        description: Run e2e tests
+  push: 
+    paths: # Ignore README markdown and only deploy when something in the copilot folder has changed
+      - 'copilot/**'
+      - '!**/README.md'
+  pull_request:
+    types:
+      - closed # Further protection - only allow this workflow to run automatically on closed pull requests
 
 jobs:
   paketo_build:
