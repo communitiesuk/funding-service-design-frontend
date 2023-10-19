@@ -33,6 +33,7 @@ from scripts.question_reuse.generate_form import build_form_json
                         "path": "/summary",
                         "title": "Check your answers",
                         "next": [],
+                        "exp_component_count": 0,
                     },
                 ],
             },
@@ -54,3 +55,8 @@ def test_build_form(input_json, exp_results):
                 len(result_page["components"])
                 == exp_page["exp_component_count"]
             )
+        if "next" in exp_page:
+            for exp_next in exp_page["next"]:
+                assert exp_next["path"] in [
+                    next["path"] for next in result_page["next"]
+                ]
