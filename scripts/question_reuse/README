@@ -29,4 +29,4 @@ Example of input to generate assessment configuration for the `Full Organisation
 # Steps to generate assessment config for a set of questions
 1. Create an input file, as per [example inputs](#example-inputs---assessment) specifying the layout of themes etc that you need
 1. Generate field info for the forms you are using - atm run `test_generate_assessment_fields_for_testing` in `test_generate_all_questions.py` in fund-store.
-1. Run the assessment config generation script: `python -m scripts.question_reuse.generate_assessment_config` and answer the prompts, point it to the input file you created and the generated field info.
+1. Run the assessment config generation script: `python -m scripts.question_reuse.generate_assessment_config` and answer the prompts, point it to the input file you created and the generated field info from the previous step.
