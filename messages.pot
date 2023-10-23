@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-03 15:29+0100\n"
+"POT-Creation-Date: 2023-10-19 12:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,8 +29,99 @@ msgstr ""
 msgid "at"
 msgstr ""
 
-#: app/forms/feedback_forms.py:21 app/templates/feedback_generic_survey.html:26
+#: app/forms/feedback_forms.py:19 app/forms/feedback_forms.py:74
+#: app/forms/feedback_forms.py:97 app/forms/feedback_forms.py:117
+msgid "Select a score"
+msgstr ""
+
+#: app/forms/feedback_forms.py:27 app/templates/feedback_generic_survey.html:26
 msgid "How easy did you find it to complete this section?"
+msgstr ""
+
+#: app/forms/feedback_forms.py:29 app/forms/feedback_forms.py:108
+msgid "Very easy"
+msgstr ""
+
+#: app/forms/feedback_forms.py:30 app/forms/feedback_forms.py:109
+msgid "Easy"
+msgstr ""
+
+#: app/forms/feedback_forms.py:33 app/forms/feedback_forms.py:112
+msgid "Neither easy nor difficult"
+msgstr ""
+
+#: app/forms/feedback_forms.py:35 app/forms/feedback_forms.py:114
+msgid "Difficult"
+msgstr ""
+
+#: app/forms/feedback_forms.py:36 app/forms/feedback_forms.py:115
+msgid "Very difficult"
+msgstr ""
+
+#: app/forms/feedback_forms.py:38 app/forms/feedback_forms.py:77
+msgid "Explain why you chose this score (optional)"
+msgstr ""
+
+#: app/forms/feedback_forms.py:66
+msgid "How was your overall application experience?"
+msgstr ""
+
+#: app/forms/feedback_forms.py:68
+msgid "Very good"
+msgstr ""
+
+#: app/forms/feedback_forms.py:69
+msgid "Good"
+msgstr ""
+
+#: app/forms/feedback_forms.py:70
+msgid "Average"
+msgstr ""
+
+#: app/forms/feedback_forms.py:71
+msgid "Poor"
+msgstr ""
+
+#: app/forms/feedback_forms.py:72
+msgid "Very poor"
+msgstr ""
+
+#: app/forms/feedback_forms.py:83
+msgid ""
+"To what extent do you agree that this application form allowed you to "
+"demonstrate why your organisation should receive funding?"
+msgstr ""
+
+#: app/forms/feedback_forms.py:88
+msgid "Strongly agree"
+msgstr ""
+
+#: app/forms/feedback_forms.py:89
+msgid "Agree"
+msgstr ""
+
+#: app/forms/feedback_forms.py:92
+msgid "Neither agree nor disagree"
+msgstr ""
+
+#: app/forms/feedback_forms.py:94
+msgid "Disagree"
+msgstr ""
+
+#: app/forms/feedback_forms.py:95
+msgid "Strongly disagree"
+msgstr ""
+
+#: app/forms/feedback_forms.py:103
+msgid "How easy was it to understand the eligibility criteria for this fund?"
+msgstr ""
+
+#: app/forms/feedback_forms.py:123
+msgid "Number of hours spent:"
+msgstr ""
+
+#: app/forms/feedback_forms.py:124
+msgid "Enter number of hours"
 msgstr ""
 
 #: app/models/language.py:5
@@ -3406,3 +3497,4 @@ msgid ""
 "You must complete all other questions in this section before giving "
 "feedback"
 msgstr ""
+
