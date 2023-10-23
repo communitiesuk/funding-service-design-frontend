@@ -16,7 +16,7 @@ class ApplicationFlaskForm(FlaskForm):
 class DefaultSectionFeedbackForm(ApplicationFlaskForm):
     experience = RadioField(
         label="How easy did you find it to complete this section?",
-        validators=[InputRequired(message=gettext("Select a score"))]
+        validators=[InputRequired(message=gettext("Select a score"))],
     )
     more_detail = TextAreaField(
         label="Explain why you chose this score (optional)"
@@ -24,7 +24,9 @@ class DefaultSectionFeedbackForm(ApplicationFlaskForm):
 
     def __init__(self, *args, **kwargs):
         super(DefaultSectionFeedbackForm, self).__init__(*args, **kwargs)
-        self.experience.label.text = gettext("How easy did you find it to complete this section?")
+        self.experience.label.text = gettext(
+            "How easy did you find it to complete this section?"
+        )
         self.experience.choices = [
             ("very easy", gettext("Very easy")),
             ("easy", gettext("Easy")),
@@ -35,8 +37,9 @@ class DefaultSectionFeedbackForm(ApplicationFlaskForm):
             ("difficult", gettext("Difficult")),
             ("very difficult", gettext("Very difficult")),
         ]
-        self.more_detail.label.text = gettext("Explain why you chose this score (optional)")
-
+        self.more_detail.label.text = gettext(
+            "Explain why you chose this score (optional)"
+        )
 
     @property
     def as_dict(self):
