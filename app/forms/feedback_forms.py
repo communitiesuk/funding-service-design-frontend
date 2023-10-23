@@ -6,6 +6,7 @@ from wtforms import RadioField
 from wtforms import TextAreaField
 from wtforms.validators import DataRequired
 from wtforms.validators import InputRequired
+from wtforms.validators import NumberRange
 
 
 # Always has an application_id, as it's required by @verify_application_owner_local on POST requests.
@@ -63,28 +64,37 @@ class EndOfApplicationPageForm(ApplicationFlaskForm):
 
 class EndOfApplicationPage1Form(EndOfApplicationPageForm):
     overall_application_experience = RadioField(
-        gettext("How was your overall application experience?"),
-        choices=[
+        label="How was your overall application experience?",
+        validators=[InputRequired(message="Select a score")]
+    )
+    more_detail = TextAreaField(
+        label="Explain why you chose this score (optional)"
+    )
+
+    def __init__(self, *args, **kwargs):
+        super(EndOfApplicationPage1Form, self).__init__(*args, **kwargs)
+        self.overall_application_experience.label.text = gettext("How was your overall application experience?")
+        self.overall_application_experience.choices = [
             ("very good", gettext("Very good")),
             ("good", gettext("Good")),
             ("average", gettext("Average")),
             ("poor", gettext("Poor")),
             ("very poor", gettext("Very poor")),
-        ],
-        validators=[InputRequired(message=gettext("Select a score"))],
-    )
-    more_detail = TextAreaField(
-        gettext("Explain why you chose this score (optional)")
-    )
+        ]
+        self.more_detail.label.text = gettext("Explain why you chose this score (optional)")
+
 
 
 class EndOfApplicationPage2Form(EndOfApplicationPageForm):
     demonstrate_why_org_funding = RadioField(
-        gettext(
-            "To what extent do you agree that this application form allowed"
-            " you to demonstrate why your organisation should receive funding?"
-        ),
-        choices=[
+        label="To what extent do you agree that this application form allowed you to demonstrate why your organization should receive funding?",
+        validators=[InputRequired(message="Select a score")]
+    )
+
+    def __init__(self, *args, **kwargs):
+        super(EndOfApplicationPage2Form, self).__init__(*args, **kwargs)
+        self.demonstrate_why_org_funding.label.text = gettext("To what extent do you agree that this application form allowed you to demonstrate why your organization should receive funding?")
+        self.demonstrate_why_org_funding.choices = [
             ("strongly agree", gettext("Strongly agree")),
             ("agree", gettext("Agree")),
             (
@@ -93,18 +103,19 @@ class EndOfApplicationPage2Form(EndOfApplicationPageForm):
             ),
             ("disagree", gettext("Disagree")),
             ("strongly disagree", gettext("Strongly disagree")),
-        ],
-        validators=[InputRequired(message=gettext("Select a score"))],
-    )
+        ]
 
 
 class EndOfApplicationPage3Form(EndOfApplicationPageForm):
     understand_eligibility_criteria = RadioField(
-        gettext(
-            "How easy was it to understand the eligibility criteria for this"
-            " fund?"
-        ),
-        choices=[
+        label="How easy was it to understand the eligibility criteria for this fund?",
+        validators=[DataRequired(message="Select a score")]
+    )
+
+    def __init__(self, *args, **kwargs):
+        super(EndOfApplicationPage3Form, self).__init__(*args, **kwargs)
+        self.understand_eligibility_criteria.label.text = gettext("How easy was it to understand the eligibility criteria for this fund?")
+        self.understand_eligibility_criteria.choices = [
             ("very easy", gettext("Very easy")),
             ("easy", gettext("Easy")),
             (
@@ -113,16 +124,18 @@ class EndOfApplicationPage3Form(EndOfApplicationPageForm):
             ),
             ("difficult", gettext("Difficult")),
             ("very difficult", gettext("Very difficult")),
-        ],
-        validators=[DataRequired(message=gettext("Select a score"))],
-    )
+        ]
 
 
 class EndOfApplicationPage4Form(EndOfApplicationPageForm):
     hours_spent = IntegerField(
-        gettext("Number of hours spent:"),
-        validators=[DataRequired(message=gettext("Enter number of hours"))],
+        label="Number of hours spent:",
+        validators=[NumberRange(min=0, message="Enter number of hours")]
     )
+
+    def __init__(self, *args, **kwargs):
+        super(EndOfApplicationPage4Form, self).__init__(*args, **kwargs)
+        self.hours_spent.label.text = gettext("Number of hours spent:")
 
 
 END_OF_APPLICATION_FEEDBACK_SURVEY_PAGE_NUMBER_MAP = {
