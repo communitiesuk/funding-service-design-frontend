@@ -148,7 +148,7 @@ class EndOfApplicationPage3Form(EndOfApplicationPageForm):
 class EndOfApplicationPage4Form(EndOfApplicationPageForm):
     hours_spent = IntegerField(
         label="Number of hours spent:",
-        validators=[NumberRange(min=0, message="Enter number of hours")],
+        validators=[NumberRange(min=0.5, message="Enter number of hours")],
     )
 
     def __init__(self, *args, **kwargs):
