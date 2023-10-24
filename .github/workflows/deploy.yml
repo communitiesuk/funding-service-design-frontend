@@ -10,11 +10,6 @@ on:
         options:
         - test
         - uat
-      copilot:
-        description: Whether to deploy to AWS?
-        type: boolean
-        required: false
-        default: false
       deploy_to_dev:
         required: false
         default: false
@@ -26,7 +21,7 @@ on:
 
 jobs:
   test_and_deploy:
-    if: ${{ github.actor != 'dependabot[bot]' && !github.event.inputs.copilot }}
+    if: ${{ github.actor != 'dependabot[bot]' }}
     uses: communitiesuk/funding-service-design-workflows/.github/workflows/deploy.yml@main
     with:
       app_name: ${{ github.event.repository.name }}
@@ -46,16 +41,3 @@ jobs:
       RSA256_PUBLIC_KEY_BASE64: ${{secrets.RSA256_PUBLIC_KEY_BASE64}}
       SENTRY_DSN: ${{secrets.SENTRY_DSN}}
       FORMS_SERVICE_PRIVATE_HOST: ${{secrets.FORMS_SERVICE_PRIVATE_HOST}}
-  paketo_build:
-    permissions:
-      packages: write
-    uses: ./.github/workflows/package.yml
-    with:
-      version_to_build: $(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-  pre_deploy_tests:
-    if: ${{ github.event.inputs.copilot }}
-    secrets:
-      E2E_PAT: ${{secrets.E2E_PAT}}
-    uses: communitiesuk/funding-service-design-workflows/.github/workflows/pre-deploy.yml@main
-    with:
-      postgres_unit_testing: false

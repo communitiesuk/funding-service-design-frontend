@@ -177,12 +177,19 @@ def tasklist(application_id):
     )
     display_config = application.match_forms_to_state(section_display_config)
 
-    # note that individual section feedback COULD be independent of round feedback.
-    # which is why this is not under a conditional round_data.requires_feedback.
-    current_feedback_list, existing_feedback_map = get_section_feedback_data(
-        application,
-        section_display_config,
-    )
+    # note that individual section feedback COULD be independent of round feedback survey.
+    # which is why this is not under a conditional round_data.feedback_survey_config.
+    if round_data.feedback_survey_config.has_section_feedback:
+        (
+            current_feedback_list,
+            existing_feedback_map,
+        ) = get_section_feedback_data(
+            application,
+            section_display_config,
+        )
+    else:
+        current_feedback_list = []
+        existing_feedback_map = {}
 
     feedback_survey_data = (
         get_feedback_survey_data(
@@ -190,8 +197,9 @@ def tasklist(application_id):
             application_id,
             current_feedback_list,
             section_display_config,
+            round_data.feedback_survey_config.is_feedback_survey_optional,
         )
-        if round_data.requires_feedback
+        if round_data.feedback_survey_config.has_feedback_survey
         else None
     )
 
@@ -206,8 +214,16 @@ def tasklist(application_id):
         "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
         "completed_status": ApplicationStatus.COMPLETED.name,
         "submitted_status": ApplicationStatus.SUBMITTED.name,
+        "has_section_feedback": round_data.feedback_survey_config.has_section_feedback,
         "number_of_forms": len(application.forms)
-        + sum(1 for s in section_display_config if s.requires_feedback),
+        + sum(
+            1
+            for s in section_display_config
+            if (
+                s.requires_feedback
+                and round_data.feedback_survey_config.has_section_feedback
+            )
+        ),
         "number_of_completed_forms": len(
             list(
                 filter(
@@ -485,7 +501,7 @@ def round_feedback(application_id, page_number):
         as_dict=False,
         ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
     )
-    if not round_data.requires_feedback:
+    if not round_data.feedback_survey_config.has_feedback_survey:
         abort(404)
 
     if page_number == "END":
@@ -561,7 +577,7 @@ def round_feedback_intro(application_id):
         ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
     )
 
-    if not round_data.requires_feedback:
+    if not round_data.feedback_survey_config.has_feedback_survey:
         abort(404)
 
     existing_survey_data_map = {
