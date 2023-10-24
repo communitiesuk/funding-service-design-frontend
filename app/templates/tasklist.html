@@ -141,34 +141,34 @@
                 {% if feedback_survey_data %}
                     <li>
                         <h2 class="app-task-list__section">
-                            {{ feedback_survey_data.number }}Applicant feedback survey (not scored)
+                            {{ feedback_survey_data.number }}{% trans %}Applicant feedback survey (not scored){% endtrans %}
                         </h2>
                         {% if not feedback_survey_data.completed %}
                             {% if feedback_survey_data.is_feedback_survey_optional %}
                                 <p class="govuk-body">
-                                    You must complete all other sections before starting the feedback survey. This section
-                                    is optional and should take approximately 1 minute to complete.
+                                    {% trans %}You must complete all other sections before starting the feedback survey. This section
+                                    is optional and should take approximately 1 minute to complete.{% endtrans %}
                                 </p>
                             {% else %}
                                 <p class="govuk-body">
-                                    You must complete all other sections before starting the feedback survey. This section
-                                    should take approximately 1 minute to complete.
+                                    {% trans %} You must complete all other sections before starting the feedback survey. This section
+                                    should take approximately 1 minute to complete.{% endtrans %}
                                 </p>
                             {% endif %}
                             <ul class="app-task-list__items">
                                 <li class="app-task-list__item task-list__new-design">
                                     {% if not feedback_survey_data.available %}
                                         <span class="app-task-list__task-name">
-                                              Applicant feedback survey
+                                            {% trans %}Applicant feedback survey{% endtrans %}
                                         </span>
                                         <span class="govuk-tag not-started-tag app-task-list__tag">
-                                            Cannot start yet
+                                            {% trans %}Cannot start yet{% endtrans %}
                                         </span>
                                     {% else %}
                                         <span class="app-task-list__task-name">
                                             <a class="govuk-link"
                                                href="{{ url_for("application_routes.round_feedback_intro", application_id=application.id) }}">
-                                                Applicant feedback survey
+                                                {% trans %}Applicant feedback survey{% endtrans %}
                                             </a>
                                         </span>
                                         {% if feedback_survey_data.started %}
@@ -188,7 +188,7 @@
                             <ul class="app-task-list__items">
                                 <li class="app-task-list__item task-list__new-design">
                                     <span class="app-task-list__task-name">
-                                        Applicant feedback submitted {{ feedback_survey_data.submitted }}
+                                        {% trans %}Applicant feedback submitted{% endtrans %} {{ feedback_survey_data.submitted }}
                                     </span>
                                     <span class="govuk-tag complete-tag app-task-list__tag">
                                         {{ application_status("COMPLETED") }}

@@ -42,27 +42,27 @@
         {% if section.requires_feedback and application_meta_data.has_section_feedback %}
             <li class="app-task-list__item task-list__new-design">
                 {% if not section.all_forms_complete %}
-                    Feedback on this section (not scored)
+                {% trans %}Feedback on this section (not scored){% endtrans %}
                     <span class="app-task-list__tag" id="read-declaration-status">
                         <strong class="govuk-tag not-started-tag">
-                            Cannot start yet
+                            {% trans %}Cannot start yet{% endtrans %}
                         </strong>
                     </span>{% elif existing_feedback_map.get(section.section_id) %}
                     {% set feedback_value = existing_feedback_map.get(section.section_id) %}
-                    Feedback on this section submitted {{ feedback_value.date_submitted | custom_format_datetime }}
+                    {% trans %}Feedback on this section submitted{% endtrans %} {{ feedback_value.date_submitted | custom_format_datetime }}
                     {{ derive_status_tag(feedback_value.status, application_meta_data, application_status) }}
                 {% else %}
                     <a class="govuk-body govuk-link govuk-link--no-visited-state"
                        href="{{ url_for("application_routes.section_feedback_intro",
                                application_id=application_meta_data["application_id"],
                                section_id=section.section_id) }}">
-                    Feedback on this section (not scored)
+                    {% trans %}Feedback on this section (not scored){% endtrans %}
                     </a>
                     {{ derive_status_tag("NOT_STARTED", application_meta_data, application_status) }}
                 {% endif %}
             </li>
             {% if not section.all_forms_complete %}
-                <p class="govuk-hint">You must complete all other questions in this section before giving feedback</p>
+                <p class="govuk-hint">{% trans %}You must complete all other questions in this section before giving feedback{% endtrans %}</p>
             {% endif %}
         {% endif %}
     </ul>
