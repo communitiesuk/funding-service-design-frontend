@@ -501,13 +501,8 @@ def round_feedback(application_id, page_number):
         as_dict=False,
         ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
     )
-<<<<<<< HEAD
-    # if not round_data.requires_feedback:
-    #     abort(404)
-=======
     if not round_data.feedback_survey_config.has_feedback_survey:
         abort(404)
->>>>>>> 7c715266fb3cacf82f5eebd74bab05b60942cb1e
 
     if page_number == "END":
         return redirect(
@@ -519,8 +514,8 @@ def round_feedback(application_id, page_number):
     form_template_tuple = (
         END_OF_APPLICATION_FEEDBACK_SURVEY_PAGE_NUMBER_MAP.get(page_number)
     )
-    # if not form_template_tuple:
-    #     abort(404)
+    if not form_template_tuple:
+        abort(404)
 
     form_constructor, template = form_template_tuple
     form = form_constructor()
@@ -582,13 +577,8 @@ def round_feedback_intro(application_id):
         ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
     )
 
-<<<<<<< HEAD
-    # if not round_data.requires_feedback:
-    #     abort(404)
-=======
     if not round_data.feedback_survey_config.has_feedback_survey:
         abort(404)
->>>>>>> 7c715266fb3cacf82f5eebd74bab05b60942cb1e
 
     existing_survey_data_map = {
         page_number: get_survey_data(application_id, page_number)
