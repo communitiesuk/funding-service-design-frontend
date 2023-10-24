@@ -641,7 +641,7 @@ msgstr "datganiadau"
 
 #: app/templates/tasklist.html:144
 msgid "Applicant feedback survey (not scored)"
-msgstr "Arolwg adborth ymgeiswyr (ni fydd yn cael e"
+msgstr "Arolwg adborth ymgeiswyr (ni fydd yn cael ei sgorio)"
 
 #: app/templates/tasklist.html:149
 msgid ""
