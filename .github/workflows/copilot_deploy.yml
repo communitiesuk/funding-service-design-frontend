@@ -1,0 +1,67 @@
+name: Copilot Workflows
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description:  Which AWS Account to use
+        type: choice
+        required: true
+        options:
+        - test
+      run_performance_tests:
+        required: false
+        default: false
+        type: boolean
+        description: Run performance tests
+      run_e2e_tests:
+        required: false
+        default: false
+        type: boolean
+        description: Run e2e tests
+  push:
+    paths: # Ignore README markdown and only deploy when something in the copilot folder has changed
+      - 'copilot/**'
+      - '!**/README.md'
+  pull_request:
+    types:
+      - closed # Further protection - only allow this workflow to run automatically on closed pull requests
+
+jobs:
+  paketo_build:
+    permissions:
+      packages: write
+    uses: ./.github/workflows/package.yml
+    with:
+      version_to_build: $(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+  pre_deploy_tests:
+    secrets:
+      E2E_PAT: ${{secrets.E2E_PAT}}
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/pre-deploy.yml@main
+    with:
+      postgres_unit_testing: false
+  deployment:
+    concurrency: deploy-${{ inputs.environment || 'test' }} # Forces only one workflow at a time can run on the environment
+    permissions:
+      id-token: write # This is required for requesting the JWT
+      contents: read  # This is required for actions/checkout
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment || 'test' }}
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v3
+
+      - name: Get current date
+        id: currentdatetime
+        run: echo "::set-output name=datetime::$(date +'%Y%m%d%H%M%S')"
+  post_deploy_tests:
+    needs: deployment
+    secrets:
+      E2E_PAT: ${{secrets.E2E_PAT}}
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/post-deploy.yml@main
+    with:
+      run_performance_tests: ${{ inputs.run_performance_tests }}
+      run_e2e_tests: ${{ inputs.run_e2e_tests }}
+      app_name: frontend

@@ -286,7 +286,11 @@ def get_round(
 
 
 def get_feedback_survey_data(
-    application, application_id, current_feedback_list, section_display_config
+    application,
+    application_id,
+    current_feedback_list,
+    section_display_config,
+    is_feedback_survey_optional,
 ):
 
     # we grab the number from the last section i.e "6. Foobar" then increment it to get "7. " for feedback.
@@ -323,6 +327,7 @@ def get_feedback_survey_data(
         "completed": survey_has_been_completed,
         "started": any(existing_survey_data_map.values()),
         "submitted": latest_feedback_submission,
+        "is_feedback_survey_optional": is_feedback_survey_optional,
     }
 
     return feedback_survey_data

@@ -23,9 +23,12 @@ def test_datetime_format_short_month():
 @pytest.mark.parametrize(
     "input_date, expected",
     [
-        ("2020-01-01T00:00:00", "01 January 2020 at 00:00am"),
-        ("2020-01-01T12:00:00", "01 January 2020 at 12:00pm"),
-        ("2020-12-01T23:59:59", "01 December 2020 at 23:59pm"),
+        ("2020-01-01T00:00:00", "01 January 2020 at midnight"),
+        ("2020-01-01T12:00:00", "01 January 2020 at midday"),
+        ("2020-01-01T05:30:00", "01 January 2020 at 5:30am"),
+        ("2020-12-01T23:59:59", "01 December 2020 at 11:59pm"),
+        ("2020-12-01T15:45:00", "01 December 2020 at 3:45pm"),
+        ("2020-12-01T01:00:00", "01 December 2020 at 1:00am"),
     ],
 )
 def test_datetime_format(input_date, expected):
