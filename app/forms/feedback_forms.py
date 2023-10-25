@@ -1,5 +1,6 @@
 from flask_babel import gettext
 from flask_wtf import FlaskForm
+from wtforms import FloatField
 from wtforms import HiddenField
 from wtforms import FloatField
 from wtforms import RadioField
