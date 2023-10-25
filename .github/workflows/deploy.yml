@@ -1,20 +1,6 @@
 name: Deploy to Gov PaaS
 
 on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description:  Which AWS Account to use
-        type: choice
-        required: true
-        options:
-        - test
-        - uat
-      deploy_to_dev:
-        required: false
-        default: false
-        type: boolean
-        description: Deploy to CloudFoundry dev?
   push:
     paths-ignore:
       - '**/README.md'

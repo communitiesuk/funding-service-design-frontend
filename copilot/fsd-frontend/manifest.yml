@@ -45,7 +45,7 @@ network:
 #
 # Pass environment variables as key value pairs.
 variables:
-  # SENTRY_DSN: "https://5ea1346b1c1b4dd8af0c95435ca77945@o1432034.ingest.sentry.io/4503903486148608"
+  SENTRY_DSN: "https://3c6d2fd1e3824aecb3826a7d640b29a9@o1432034.ingest.sentry.io/4503897449103360"
   FLASK_ENV: ${COPILOT_ENVIRONMENT_NAME}
   COOKIE_DOMAIN: ".test.levellingup.gov.uk"
   APPLICANT_FRONTEND_HOST: "https://frontend.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk"
