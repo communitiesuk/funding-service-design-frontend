@@ -133,14 +133,14 @@ class DefaultConfig:
             "'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ='",
             "'sha256-zPWJa5jTaPDjrjA0fb+eB8v6o7Q4D4pFQfRDQUz17g8='",
             "'sha256-RgdCrr7A9yqYVstE6QiM/9RNRj4bYipcUa2C2ywQT1A='",
-            "'https://tagmanager.google.com/'",
-            "'https://www.googletagmanager.com/'",
+            "'https://tagmanager.google.com'",
+            "'https://www.googletagmanager.com'",
         ],
         "connect-src": "",  # APPLICATION_STORE_API_HOST_PUBLIC,
-        "img-src": ["data:", "'self'", "'https://ssl.gstatic.com/'"],
+        "img-src": ["data:", "'self'", "'https://ssl.gstatic.com'"],
         "style-src": [
-            "'https://tagmanager.google.com/'",
-            "'https://fonts.googleapis.com/'",
+            "'self''https://tagmanager.google.com'",
+            "'https://fonts.googleapis.com'",
         ],
     }
 
