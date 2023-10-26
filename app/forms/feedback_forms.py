@@ -1,7 +1,7 @@
 from flask_babel import gettext
 from flask_wtf import FlaskForm
+from wtforms import FloatField
 from wtforms import HiddenField
-from wtforms import IntegerField
 from wtforms import RadioField
 from wtforms import TextAreaField
 from wtforms.validators import DataRequired
@@ -146,9 +146,17 @@ class EndOfApplicationPage3Form(EndOfApplicationPageForm):
 
 
 class EndOfApplicationPage4Form(EndOfApplicationPageForm):
-    hours_spent = IntegerField(
+    hours_spent = FloatField(
         label="Number of hours spent:",
-        validators=[NumberRange(min=0, message="Enter number of hours")],
+        validators=[
+            DataRequired(
+                message=(
+                    "Enter a number only. The number must be at least 0.5 or"
+                    " greater."
+                )
+            ),
+            NumberRange(min=0.5),
+        ],
     )
 
     def __init__(self, *args, **kwargs):

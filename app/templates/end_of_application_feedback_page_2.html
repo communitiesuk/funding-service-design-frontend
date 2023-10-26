@@ -46,7 +46,7 @@
                                            value="{{ choice_value }}"
                                            {% if form.demonstrate_why_org_funding.data == choice_value %}checked{% endif %}>
                                     <label class="govuk-label govuk-radios__label"
-                                           for="{{ form.demonstrate_why_org_funding.id }}">
+                                           for="{{ form.demonstrate_why_org_funding.id }}-{{ loop.index }}">
                                         {{ choice_label }}
                                     </label>
                                 </div>
