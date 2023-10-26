@@ -138,10 +138,6 @@ class DefaultConfig:
         ],
         "connect-src": "",  # APPLICATION_STORE_API_HOST_PUBLIC,
         "img-src": ["data:", "'self'", "'https://ssl.gstatic.com'"],
-        "style-src": [
-            "'self''https://tagmanager.google.com'",
-            "'https://fonts.googleapis.com'",
-        ],
     }
 
     # Talisman Config
