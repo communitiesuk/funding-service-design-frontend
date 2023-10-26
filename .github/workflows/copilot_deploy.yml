@@ -22,8 +22,13 @@ on:
         type: boolean
         description: Run e2e tests
   push:
-    paths: # Ignore README markdown and only deploy when something in the copilot folder has changed
+    # Ignore README markdown and the docs folder
+    # Only automatically deploy when something in the app or tests folder has changed
+    paths:
       - '!**/README.md'
+      - '!docs/**'
+      - 'app/**'
+      - 'tests/**'
 
 jobs:
   paketo_build:
@@ -34,6 +39,7 @@ jobs:
       version_to_build: $(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
       owner: ${{ github.repository_owner }}
       application: funding-service-design-frontend
+      assets_required: true
 
   pre_deploy_tests:
     secrets:
