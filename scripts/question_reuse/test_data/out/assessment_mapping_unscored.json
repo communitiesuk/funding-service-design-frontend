@@ -14,53 +14,33 @@
                             "answers": [
                                 {
                                     "field_id": "reuse-organisation-name",
-                                    "form_name": "test-org-info-form",
+                                    "form_name": "org-info-3",
                                     "field_type": "TextField",
                                     "presentation_type": "text",
                                     "question": "Organisation name"
                                 },
                                 {
                                     "field_id": "reuse-organisation-address",
-                                    "form_name": "test-org-info-form",
+                                    "form_name": "org-info-3",
                                     "field_type": "UkAddressField",
                                     "presentation_type": "address",
                                     "question": "Organisation address"
                                 },
                                 {
                                     "field_id": "reuse_organisation_other_names_yes_no",
-                                    "form_name": "test-org-info-form",
+                                    "form_name": "org-info-3",
                                     "field_type": "YesNoField",
                                     "presentation_type": "text",
                                     "question": "Does your organisation use any other names?"
                                 },
-                                {
-                                    "field_id": "reuse-organisation-website-social-media-links",
-                                    "form_name": "test-org-info-form",
-                                    "field_type": "MultiInputField",
-                                    "presentation_type": "table",
-                                    "question": [
-                                        "Website and social media",
-                                        {
-                                            "reuse-web-link": {
-                                                "column_title": "Link",
-                                                "type": "WebsiteField"
-                                            }
-                                        }
-                                    ]
-                                }
+                                null
                             ]
                         },
                         {
                             "id": "activities",
                             "name": "Activities",
                             "answers": [
-                                {
-                                    "field_id": "reuse-organisation-main-purpose",
-                                    "form_name": "test-org-info-form",
-                                    "field_type": "FreeTextField",
-                                    "presentation_type": "free_text",
-                                    "question": "What is your organisation's main purpose?"
-                                }
+                                null
                             ]
                         }
                     ]

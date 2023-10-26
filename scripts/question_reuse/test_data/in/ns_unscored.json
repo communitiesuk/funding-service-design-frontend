@@ -1,0 +1,22 @@
+{
+    "unscored_sections": [
+        {
+            "id": "your_organisation",
+            "subcriteria": [
+                {
+                    "id": "organisation_information",
+                    "themes": [
+                        "org_info_ns"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "declarations",
+            "subcriteria": []
+        }
+    ],
+    "scored_sections": []
+}
+
+

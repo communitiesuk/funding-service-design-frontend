@@ -4,6 +4,8 @@
         "organisation-name",
         "organisation-address",
         "organisation-main-purpose",
-        "organisation-web-links"
+        "organisation-web-links",
+        "lead-contact-details-and-auth-signatory",
+        "annual-turnover"
     ]
 }

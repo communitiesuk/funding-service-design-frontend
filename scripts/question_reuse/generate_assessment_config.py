@@ -29,26 +29,44 @@ form_json_to_assessment_display_types = {
 }
 
 
-def build_answer_from_component(component_name, component, form_name) -> dict:
-    result = {
-        "field_id": component_name,
-        "form_name": form_name,
-        "field_type": component["type"],
-        "presentation_type": form_json_to_assessment_display_types.get(
-            component["type"].lower(), None
-        ),
-        "question": component["title"],
-    }
+def generate_field_info_from_forms(forms_dir: str) -> dict:
+    results = {}
+    for file_name in os.listdir(forms_dir):
+        with open(os.path.join(forms_dir, file_name), "r") as f:
+            form_data = json.load(f)
+            results.update(
+                build_answers_from_form(form_data, file_name.split(".")[0])
+            )
 
-    return result
+    return results
 
 
-def find_component_in_field_info(component_name: str, field_info: dict):
-    for form_name, fields in field_info.items():
-        for field in fields:
-            if field["field_id"] == component_name:
-                return field
-    return None
+def build_answers_from_form(form_data, form_name) -> dict:
+    results = {}
+    for page in form_data["pages"]:
+        for component in page["components"]:
+            question = component.get("title", None)
+            if component["type"].lower() == "multiinputfield":
+                question = [page["title"]]
+                child_fields = {}
+                for field in component["children"]:
+                    child_fields[field["name"]] = {
+                        "column_title": field["title"],
+                        "type": field["type"],
+                    }
+                question.append(child_fields)
+
+            results[component["name"]] = {
+                "field_id": component["name"],
+                "form_name": form_name,
+                "field_type": component["type"],
+                "presentation_type": form_json_to_assessment_display_types.get(
+                    component["type"].lower(), None
+                ),
+                "question": question,
+            }
+
+    return results
 
 
 def build_theme(theme_id: str, field_info: dict):
@@ -56,8 +74,7 @@ def build_theme(theme_id: str, field_info: dict):
     result.update({"id": theme_id, "name": LOOKUPS[theme_id]})
     for answer in THEMES_TO_REUSE[theme_id]["answers"]:
         result["answers"].append(
-            # build_answer_from_component(answer, COMPONENTS_TO_REUSE[answer])
-            find_component_in_field_info(answer, field_info)
+            field_info.get(answer, None)
         )
 
     return result
@@ -122,21 +139,22 @@ def build_assessment_config(input_data: dict, field_info: dict) -> dict:
     prompt=True,
 )
 @click.option(
-    "--field_info_file",
-    default=(
-        "./scripts/question_reuse/test_data/in/test-org-info-field-info.json"
-    ),
-    help="Input configuration",
+    "--forms_dir",
+    default="./scripts/question_reuse/test_data/out/forms/",
+    help="Directory containing forms",
     prompt=True,
 )
 def generate_assessment_config(
-    input_folder, input_file, output_folder, output_file, field_info_file
+    input_folder,
+    input_file,
+    output_folder,
+    output_file,
+    forms_dir,
 ):
     with open(os.path.join(input_folder, input_file), "r") as f:
         input_data = json.load(f)
 
-    with open(field_info_file, "r") as f:
-        field_info = json.load(f)
+    field_info = generate_field_info_from_forms(forms_dir)
 
     assessment_config = build_assessment_config(input_data, field_info)
 

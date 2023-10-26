@@ -1,0 +1,84 @@
+{
+    "unscored_sections": [
+        {
+            "id": "your_organisation",
+            "name": "Your organisation",
+            "sub_criteria": [
+                {
+                    "id": "organisation_information",
+                    "name": "Organisation information",
+                    "themes": [
+                        {
+                            "id": "org_info_ns",
+                            "name": "Organisation information",
+                            "answers": [
+                                {
+                                    "field_id": "reuse-organisation-name",
+                                    "form_name": "ns-org-info",
+                                    "field_type": "TextField",
+                                    "presentation_type": "text",
+                                    "question": "Organisation name"
+                                },
+                                {
+                                    "field_id": "reuse-organisation-address",
+                                    "form_name": "ns-org-info",
+                                    "field_type": "UkAddressField",
+                                    "presentation_type": "address",
+                                    "question": "Organisation address"
+                                },
+                                {
+                                    "field_id": "reuse-english-region",
+                                    "form_name": "ns-org-info",
+                                    "field_type": "TextField",
+                                    "presentation_type": "text",
+                                    "question": "Which region of England do you work in?"
+                                },
+                                {
+                                    "field_id": "reuse-organisation-main-purpose",
+                                    "form_name": "ns-org-info",
+                                    "field_type": "FreeTextField",
+                                    "presentation_type": "free_text",
+                                    "question": "What is your organisation's main purpose?"
+                                },
+                                {
+                                    "field_id": "reuse-charitable-objects",
+                                    "form_name": "ns-org-info",
+                                    "field_type": "FreeTextField",
+                                    "presentation_type": "free_text",
+                                    "question": "What are your organisation\u2019s charitable objects?"
+                                },
+                                {
+                                    "field_id": "reuse-annual-turnover-23",
+                                    "form_name": "ns-org-info",
+                                    "field_type": "NumberField",
+                                    "presentation_type": "integer",
+                                    "question": "Annual turnover for 1 April 2022 to 31 March 2023"
+                                },
+                                {
+                                    "field_id": "reuse-annual-turnover-22",
+                                    "form_name": "ns-org-info",
+                                    "field_type": "NumberField",
+                                    "presentation_type": "integer",
+                                    "question": "Annual turnover for 1 April 2021 to 31 March 2022"
+                                },
+                                {
+                                    "field_id": "ns-membership-organisations",
+                                    "form_name": "ns-org-info",
+                                    "field_type": "RadiosField",
+                                    "presentation_type": "text",
+                                    "question": "Which membership organisations are you a member of?"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "declarations",
+            "name": "Declarations",
+            "sub_criteria": []
+        }
+    ],
+    "scored_sections": []
+}
