@@ -14,13 +14,6 @@
   {% include 'header.html' %}
 {% endblock %}
 
-{%  block content %}
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5J9Q8HV"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-{% endblock %}
-
 {% block footer %}
   {% include 'footer.html' %}
 {% endblock %}
@@ -30,4 +23,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script src="{{ url_for('static', filename='govuk-frontend-4.0.0.min.js') }}"> </script>
   <script>window.GOVUKFrontend.initAll()</script>
   <!--<![endif]-->
+        <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M5J9Q8HV"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 {% endblock %}
