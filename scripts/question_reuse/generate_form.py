@@ -6,7 +6,7 @@ import click
 from scripts.question_reuse.config.components_to_reuse import (
     COMPONENTS_TO_REUSE,
 )
-from scripts.question_reuse.config.lookups import LOOKUPS
+from scripts.question_reuse.config.lookups import LOOKUPS, LISTS
 from scripts.question_reuse.config.pages_to_reuse import PAGES_TO_REUSE
 import datetime
 from scripts.question_reuse.config.sub_pages_to_reuse import SUB_PAGES_TO_REUSE
@@ -156,6 +156,20 @@ def build_navigation(results: dict, input_pages: list[str]) -> dict:
     return results
 
 
+def build_lists(form_json: dict) -> dict:
+    for page in form_json["pages"]:
+        for component in page["components"]:
+            if "list" in component:
+                list = copy.deepcopy(LISTS[component["list"]])
+                list.update({
+                    "name": component["list"],
+                    "title": component["title"]
+                })
+                form_json["lists"].append(list)
+
+    return form_json
+
+
 def build_form_json(input_json: dict) -> dict:
 
     results = copy.deepcopy(BASIC_FORM_STRUCTURE)
@@ -177,6 +191,8 @@ def build_form_json(input_json: dict) -> dict:
         results["pages"].append(build_page(page))
 
     results = build_navigation(results, input_json["pages"])
+
+    results = build_lists(results)
 
     results["pages"].append(SUMMARY_PAGE)
 
