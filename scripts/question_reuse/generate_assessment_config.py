@@ -30,6 +30,14 @@ form_json_to_assessment_display_types = {
 
 
 def generate_field_info_from_forms(forms_dir: str) -> dict:
+    """Generates the display info for all fields in a form
+
+    Args:
+        forms_dir (str): Directory containing the forms
+
+    Returns:
+        dict: Dictionary of field IDs to display info
+    """
     results = {}
     for file_name in os.listdir(forms_dir):
         with open(os.path.join(forms_dir, file_name), "r") as f:
@@ -41,7 +49,16 @@ def generate_field_info_from_forms(forms_dir: str) -> dict:
     return results
 
 
-def build_answers_from_form(form_data, form_name) -> dict:
+def build_answers_from_form(form_data: dict, form_name: str) -> dict:
+    """Generates the list of display info for a particular form
+
+    Args:
+        form_data (dict): Full form data
+        form_name (str): name of this form
+
+    Returns:
+        dict: Dictionary of field IDs to display info
+    """
     results = {}
     for page in form_data["pages"]:
         for component in page["components"]:
@@ -69,7 +86,16 @@ def build_answers_from_form(form_data, form_name) -> dict:
     return results
 
 
-def build_theme(theme_id: str, field_info: dict):
+def build_theme(theme_id: str, field_info: dict) -> dict:
+    """Creates a theme object and populates with the display info for the answers in that theme
+
+    Args:
+        theme_id (str): ID of the theme
+        field_info (dict): Dictionary of field display info for all fields
+
+    Returns:
+        dict: Dictionary representing a theme within the assessment config
+    """
     result = copy.deepcopy(BASIC_THEME_STRUCTURE)
     result.update({"id": theme_id, "name": LOOKUPS[theme_id]})
     for answer in THEMES_TO_REUSE[theme_id]["answers"]:
@@ -80,7 +106,16 @@ def build_theme(theme_id: str, field_info: dict):
     return result
 
 
-def build_sub_criteria(sub_criteria, field_info: dict):
+def build_sub_criteria(sub_criteria: dict, field_info: dict) -> dict:
+    """Generates a sub criteria, containing themes
+
+    Args:
+        sub_criteria (dict): Input subcriteria details
+        field_info (dict): Dictionary of fields and their display info
+
+    Returns:
+        dict: Dictionary of subcriteria IDs to their config (containing themes)
+    """
     result = copy.deepcopy(BASIC_SUB_CRITERIA_STRUCTURE)
     result.update(
         {"id": sub_criteria["id"], "name": LOOKUPS[sub_criteria["id"]]}
@@ -91,6 +126,15 @@ def build_sub_criteria(sub_criteria, field_info: dict):
 
 
 def build_assessment_config(input_data: dict, field_info: dict) -> dict:
+    """Builds a dictionary represting the full assessment config based on the input data 
+
+    Args:
+        input_data (dict): Dictionary of input data (eg. test_data/in/ns_unscored.json)
+        field_info (dict): Dictionary of field IDs to their display info
+
+    Returns:
+        dict: Full assessment display config
+    """
     results = {}
     for key, value in input_data.items():
         # key = 'unscored_sections'
