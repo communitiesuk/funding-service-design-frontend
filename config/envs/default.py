@@ -136,6 +136,7 @@ class DefaultConfig:
             "'sha256-mAJIcmt9QydTTnda747+5zMhOE1X29t6bOxa/Y85SOw='",
             "https://tagmanager.google.com",
             "https://www.googletagmanager.com",
+            "https://*.google-analytics.com",
         ],
         "connect-src": "",  # APPLICATION_STORE_API_HOST_PUBLIC,
         "img-src": ["data:", "'self'", "https://ssl.gstatic.com"],
