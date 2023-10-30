@@ -137,7 +137,7 @@ class DefaultConfig:
             "https://www.googletagmanager.com",
             "https://*.google-analytics.com",
         ],
-        "connect-src": ["https://*.google-analytics.com"],  # APPLICATION_STORE_API_HOST_PUBLIC,
+        "connect-src": ["'self'", "https://*.google-analytics.com"],  # APPLICATION_STORE_API_HOST_PUBLIC,
         "img-src": ["data:", "'self'", "https://ssl.gstatic.com"],
     }
 
