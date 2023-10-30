@@ -139,7 +139,6 @@ class DefaultConfig:
         "connect-src": "",  # APPLICATION_STORE_API_HOST_PUBLIC,
         "img-src": ["data:", "'self'", "https://ssl.gstatic.com"],
     }
-    # comment to trigger build
 
     # Talisman Config
     FSD_REFERRER_POLICY = "strict-origin-when-cross-origin"
