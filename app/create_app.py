@@ -60,6 +60,7 @@ def create_app() -> Flask:
             ),
         ]
     )
+    # comment to trigger build
 
     flask_app.jinja_env.trim_blocks = True
     flask_app.jinja_env.lstrip_blocks = True
