@@ -131,7 +131,7 @@ class DefaultConfig:
             "'self'",
             "'sha256-+6WnXIl4mbFTCARd8N3COQmT3bJJmo32N8q8ZSQAIcU='",
             "'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ='",
-            "'sha256-zPWJa5jTaPDjrjA0fb+eB8v6o7Q4D4pFQfRDQUz17g8='",
+            "'sha256-z+p4q2n8BOpGMK2/OMOXrTYmjbeEhWQQHC3SF/uMOyg='",
             "'sha256-RgdCrr7A9yqYVstE6QiM/9RNRj4bYipcUa2C2ywQT1A='",
             "'sha256-mAJIcmt9QydTTnda747+5zMhOE1X29t6bOxa/Y85SOw='",
             "https://tagmanager.google.com",
