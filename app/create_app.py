@@ -1,4 +1,3 @@
-import os
 from os import getenv
 
 from app.filters import custom_format_datetime
@@ -108,7 +107,6 @@ def create_app() -> Flask:
     @flask_app.context_processor
     def inject_global_constants():
         return dict(
-            GOOGLE_ANALYTICS=os.getenv("GOOGLE_ANALYTICS") or False,
             stage="beta",
             service_meta_author=(
                 "Department for Levelling up Housing and Communities"

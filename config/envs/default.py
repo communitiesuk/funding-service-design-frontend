@@ -133,7 +133,6 @@ class DefaultConfig:
             "'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ='",
             "'sha256-z+p4q2n8BOpGMK2/OMOXrTYmjbeEhWQQHC3SF/uMOyg='",
             "'sha256-RgdCrr7A9yqYVstE6QiM/9RNRj4bYipcUa2C2ywQT1A='",
-            "'sha256-mAJIcmt9QydTTnda747+5zMhOE1X29t6bOxa/Y85SOw='",
             "https://tagmanager.google.com",
             "https://www.googletagmanager.com",
             "https://*.google-analytics.com",
