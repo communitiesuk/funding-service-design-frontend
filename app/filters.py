@@ -13,8 +13,8 @@ def datetime_format_short_month(value: datetime) -> str:
     if value:
         formatted_date = format_datetime(value, format="dd MMM yyyy ")
         formatted_date += gettext("at")
-        formatted_date += format_datetime(value, format=" HH:mm", rebase=False)
-        formatted_date += format_datetime(value, "a").lower()
+        formatted_date += format_datetime(value, format=" h:mm", rebase=False)
+        formatted_date += format_datetime(value, "a", rebase=False).lower()
         return formatted_date
     else:
         return ""
