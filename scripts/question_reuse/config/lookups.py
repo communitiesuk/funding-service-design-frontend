@@ -1,31 +1,46 @@
 LOOKUPS = {
-    "about-your-organisation": "About your organisation",
-    "organisation-name": "Organisation name",
-    "organisation-single-name": "Organisation name",
-    "organisation-address": "Registered organisation address",
-    "organisation-main-purpose": "Purpose and activities",
-    "organisation-web-links": "Website and social media",
-    "organisation_information": "Organisation information",
-    "organisation-charitable-objects": "What are your organisation’s charitable objects?",
-    "ns-membership-organisations": "Which membership organisations are you a member of?",
-    "ns-org-name": "Organisation information",
-    "your_organisation": "Your organisation",
-    "unscored": "Unscored",
-    "general_information": "General information",
-    "org_info_ns": "Organisation information",
-    "activities": "Activities",
+    "about_your_organisation": "About your organisation",
+    "future_work": "Future work",
     "declarations": "Declarations",
-    "lead-contact-details-and-auth-signatory": "Lead contact details",
-    "annual-turnover": "What is your organisation's annual turnover?",
+    "your_skills_and_experience": "Your skills and experience",
+    "roles_and_recruitment": "Roles and recruitment",
+    "engaging_the_ODP_community": "Engaging the ODP community",
+    "engaging_the_organisation": "Engaging the organisation",
+    "dataset_information": "Dataset information",
+    "about_your_organisation_and_future_work": (
+        "About your organisation and future work"
+    ),
+    "about_your_project": "About your project",
 }
 LISTS = {
-    "list_ns_membership_organisations": {
+    "data_sets": {
         "type": "string",
         "items": [
-            {"text": "Homeless Link", "value": "homeless-link"},
-            {"text": "Housing Justice", "value": "housing-justice"},
-            {"text": "Both", "value": "both"},
-            {"text": "None", "value": "none"},
+            {"text": "Conservation areas", "value": "conservation-areas"},
+            {"text": "Article 4 direction", "value": "article-4-direction"},
+            {"text": "Listed buildings", "value": "listed-buildings"},
+            {
+                "text": "Tree preservation orders",
+                "value": "tree-preservation-orders",
+            },
         ],
-    }
+    },
+    "software_improvements": {
+        "type": "string",
+        "items": [
+            {"text": "Adopting PlanX", "value": "adopting-planX"},
+            {
+                "text": "Adopting BOPS (Back Office Planning System)",
+                "value": "adopting-bops",
+            },
+            {
+                "text": "Working with an existing software provider",
+                "value": "working-with-existing-software",
+            },
+            {
+                "text": "Working with a new software provider",
+                "value": "working-with-new-software",
+            },
+        ],
+    },
 }

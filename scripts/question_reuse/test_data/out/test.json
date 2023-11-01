@@ -1,0 +1,372 @@
+{
+    "unscored_sections": [
+        {
+            "id": "about_your_organisation_and_future_work",
+            "name": "About your organisation and future work",
+            "sub_criteria": [
+                {
+                    "id": "about_your_organisation_and_future_work",
+                    "name": "About your organisation and future work",
+                    "themes": [
+                        {
+                            "id": "about_your_organisation",
+                            "name": "About your organisation",
+                            "answers": [
+                                {
+                                    "field_id": "nYJiWy",
+                                    "form_name": "organisation-information-dpi",
+                                    "field_type": "TextField",
+                                    "presentation_type": "text",
+                                    "question": "Organisation name"
+                                },
+                                {
+                                    "field_id": "uYsivE",
+                                    "form_name": "organisation-information-dpi",
+                                    "field_type": "TextField",
+                                    "presentation_type": "text",
+                                    "question": "Name of project sponsor"
+                                },
+                                {
+                                    "field_id": "xgrxxv",
+                                    "form_name": "organisation-information-dpi",
+                                    "field_type": "EmailAddressField",
+                                    "presentation_type": "text",
+                                    "question": "Project sponsor email address"
+                                },
+                                {
+                                    "field_id": "xbOBdn",
+                                    "form_name": "organisation-information-dpi",
+                                    "field_type": "TelephoneNumberField",
+                                    "presentation_type": "text",
+                                    "question": "Project sponsor telephone number"
+                                },
+                                {
+                                    "field_id": "cPpwET",
+                                    "form_name": "organisation-information-dpi",
+                                    "field_type": "TextField",
+                                    "presentation_type": "text",
+                                    "question": "Name of section 151 officer"
+                                },
+                                {
+                                    "field_id": "EMukio",
+                                    "form_name": "organisation-information-dpi",
+                                    "field_type": "EmailAddressField",
+                                    "presentation_type": "text",
+                                    "question": "Section 151 officer email address"
+                                },
+                                {
+                                    "field_id": "GPxiGe",
+                                    "form_name": "organisation-information-dpi",
+                                    "field_type": "TelephoneNumberField",
+                                    "presentation_type": "text",
+                                    "question": "Section 151 officer telephone number"
+                                },
+                                {
+                                    "field_id": "AYmilW",
+                                    "form_name": "organisation-information-dpi",
+                                    "field_type": "TextField",
+                                    "presentation_type": "text",
+                                    "question": "Name of lead contact"
+                                },
+                                {
+                                    "field_id": "UjZJtC",
+                                    "form_name": "organisation-information-dpi",
+                                    "field_type": "TextField",
+                                    "presentation_type": "text",
+                                    "question": "Lead contact job title"
+                                },
+                                {
+                                    "field_id": "IRugBv",
+                                    "form_name": "organisation-information-dpi",
+                                    "field_type": "EmailAddressField",
+                                    "presentation_type": "text",
+                                    "question": "Lead contact email address"
+                                },
+                                {
+                                    "field_id": "jvfZpA",
+                                    "form_name": "organisation-information-dpi",
+                                    "field_type": "TelephoneNumberField",
+                                    "presentation_type": "text",
+                                    "question": "Lead contact telephone number"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "future_work",
+                            "name": "Future work",
+                            "answers": [
+                                {
+                                    "field_id": "DCQllx",
+                                    "form_name": "future-work-dpi",
+                                    "field_type": "CheckboxesField",
+                                    "presentation_type": "list",
+                                    "question": "Which software improvements are you interested in working on in the future?"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "declarations",
+            "name": "Declarations",
+            "sub_criteria": [
+                {
+                    "id": "declarations",
+                    "name": "Declarations",
+                    "themes": [
+                        {
+                            "id": "declarations",
+                            "name": "Declarations",
+                            "answers": [
+                                {
+                                    "field_id": "JUgCya",
+                                    "form_name": "declarations-dpi",
+                                    "field_type": "YesNoField",
+                                    "presentation_type": "text",
+                                    "question": "You have signed the Local Digital Declaration and agree to follow the 5 core principles"
+                                },
+                                {
+                                    "field_id": "vbmqwB",
+                                    "form_name": "declarations-dpi",
+                                    "field_type": "YesNoField",
+                                    "presentation_type": "text",
+                                    "question": "Your section 151 officer consents to the funds being carried over and spent in the next financial year (March 2024-25) and beyond if deemed necessary in project budget planning"
+                                },
+                                {
+                                    "field_id": "EQffUz",
+                                    "form_name": "declarations-dpi",
+                                    "field_type": "YesNoField",
+                                    "presentation_type": "text",
+                                    "question": "You agree to let all outputs from this work be published under open licence with a view to any organisation accessing, using or adopting them freely"
+                                },
+                                {
+                                    "field_id": "kPYiQE",
+                                    "form_name": "declarations-dpi",
+                                    "field_type": "YesNoField",
+                                    "presentation_type": "text",
+                                    "question": "The information you have provided is accurate"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "scored_sections": [
+        {
+            "id": "your_skills_and_experience",
+            "name": "Your skills and experience",
+            "sub_criteria": [
+                {
+                    "id": "your_skills_and_experience",
+                    "name": "Your skills and experience",
+                    "themes": [
+                        {
+                            "id": "your_skills_and_experience",
+                            "name": "Your skills and experience",
+                            "answers": [
+                                {
+                                    "field_id": "rGADMs",
+                                    "form_name": "your-skills-and-experience-dpi",
+                                    "field_type": "YesNoField",
+                                    "presentation_type": "text",
+                                    "question": "Has your organisation delivered projects like this before?"
+                                },
+                                {
+                                    "field_id": "zHgZBx",
+                                    "form_name": "your-skills-and-experience-dpi",
+                                    "field_type": "FreeTextField",
+                                    "presentation_type": "free_text",
+                                    "question": "Tell us about how your organisation has worked on similar previous projects"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "roles_and_recruitment",
+                    "name": "Roles and recruitment",
+                    "themes": [
+                        {
+                            "id": "roles_and_recruitment",
+                            "name": "Roles and recruitment",
+                            "answers": [
+                                {
+                                    "field_id": "vuZiab",
+                                    "form_name": "roles-and-recruitment-dpi",
+                                    "field_type": "YesNoField",
+                                    "presentation_type": "text",
+                                    "question": "Do you have a team in place ready to deliver the project?"
+                                },
+                                {
+                                    "field_id": "MXfVrs",
+                                    "form_name": "roles-and-recruitment-dpi",
+                                    "field_type": "FreeTextField",
+                                    "presentation_type": "free_text",
+                                    "question": "How will you make sure you have a team in place ready to deliver the project?"
+                                },
+                                {
+                                    "field_id": "OPOrME",
+                                    "form_name": "roles-and-recruitment-dpi",
+                                    "field_type": "FreeTextField",
+                                    "presentation_type": "free_text",
+                                    "question": "Tell us about the shape of the project team"
+                                },
+                                {
+                                    "field_id": "gSQPxs",
+                                    "form_name": "roles-and-recruitment-dpi",
+                                    "field_type": "YesNoField",
+                                    "presentation_type": "text",
+                                    "question": "Will you need to backfill any roles in your organisation?"
+                                },
+                                {
+                                    "field_id": "KEnthg",
+                                    "form_name": "roles-and-recruitment-dpi",
+                                    "field_type": "NumberField",
+                                    "presentation_type": "integer",
+                                    "question": "What is the estimated cost of backfilling roles?"
+                                },
+                                {
+                                    "field_id": "pRqIkv",
+                                    "form_name": "roles-and-recruitment-dpi",
+                                    "field_type": "YesNoField",
+                                    "presentation_type": "text",
+                                    "question": "Do you know who will lead the day-to-day delivery of the project in your organisation?"
+                                },
+                                {
+                                    "field_id": "eWmNSY",
+                                    "form_name": "roles-and-recruitment-dpi",
+                                    "field_type": "TextField",
+                                    "presentation_type": "text",
+                                    "question": "Who will lead the day-to-day delivery of the project in your organisation?"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "about_your_project",
+            "name": "About your project",
+            "sub_criteria": [
+                {
+                    "id": "engaging_the_ODP_community",
+                    "name": "Engaging the ODP community",
+                    "themes": [
+                        {
+                            "id": "engaging_the_ODP_community",
+                            "name": "Engaging the ODP community",
+                            "answers": [
+                                {
+                                    "field_id": "mmTkva",
+                                    "form_name": "engaging-the-odp-community-dpi",
+                                    "field_type": "FreeTextField",
+                                    "presentation_type": "free_text",
+                                    "question": "Why do you want to be a part of the ODP (Open Digital Planning) community?"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "engaging_the_organisation",
+                    "name": "Engaging the organisation",
+                    "themes": [
+                        {
+                            "id": "engaging_the_organisation",
+                            "name": "Engaging the organisation",
+                            "answers": [
+                                {
+                                    "field_id": "bpzrMJ",
+                                    "form_name": "engaging-the-organisation-dpi",
+                                    "field_type": "FreeTextField",
+                                    "presentation_type": "free_text",
+                                    "question": "How will you make sure team members engage with other parts of your organisation?"
+                                },
+                                {
+                                    "field_id": "oFyZJS",
+                                    "form_name": "engaging-the-organisation-dpi",
+                                    "field_type": "FreeTextField",
+                                    "presentation_type": "free_text",
+                                    "question": "How will you share the progress of the work across your organisation?"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "dataset_information",
+                    "name": "Dataset information",
+                    "themes": [
+                        {
+                            "id": "dataset_information",
+                            "name": "Dataset information",
+                            "answers": [
+                                {
+                                    "field_id": "PfjXKB",
+                                    "form_name": "dataset-information-dpi",
+                                    "field_type": "CheckboxesField",
+                                    "presentation_type": "list",
+                                    "question": "Which datasets have you collected?"
+                                },
+                                {
+                                    "field_id": "gBIWQr",
+                                    "form_name": "dataset-information-dpi",
+                                    "field_type": "CheckboxesField",
+                                    "presentation_type": "list",
+                                    "question": "Which format is your dataset in for conservation areas?"
+                                },
+                                {
+                                    "field_id": "JootFe",
+                                    "form_name": "dataset-information-dpi",
+                                    "field_type": "CheckboxesField",
+                                    "presentation_type": "list",
+                                    "question": "Which format is your dataset in for article 4 direction?"
+                                },
+                                {
+                                    "field_id": "KmGRXX",
+                                    "form_name": "dataset-information-dpi",
+                                    "field_type": "CheckboxesField",
+                                    "presentation_type": "list",
+                                    "question": "Which format is your dataset in for listed buildings?"
+                                },
+                                {
+                                    "field_id": "eptZkL",
+                                    "form_name": "dataset-information-dpi",
+                                    "field_type": "CheckboxesField",
+                                    "presentation_type": "list",
+                                    "question": "Which format is your dataset in for tree preservation orders?"
+                                },
+                                {
+                                    "field_id": "kgGPmd",
+                                    "form_name": "dataset-information-dpi",
+                                    "field_type": "FreeTextField",
+                                    "presentation_type": "free_text",
+                                    "question": "What are the current known issues and challenges you have with data quality and publication?"
+                                },
+                                {
+                                    "field_id": "BQKLZz",
+                                    "form_name": "dataset-information-dpi",
+                                    "field_type": "YesNoField",
+                                    "presentation_type": "text",
+                                    "question": "Does your organisation collect at least one of the datasets?"
+                                },
+                                {
+                                    "field_id": "WSaPbE",
+                                    "form_name": "dataset-information-dpi",
+                                    "field_type": "RadiosField",
+                                    "presentation_type": "text",
+                                    "question": "How long do you think it will take your organisation to publish all 4 datasets?"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

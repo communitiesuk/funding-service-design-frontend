@@ -1,0 +1,69 @@
+{
+    "unscored_sections": [
+        {
+            "id": "about_your_organisation_and_future_work",
+            "subcriteria": [
+                {
+                    "id": "about_your_organisation_and_future_work",
+                    "themes": [
+                        "about_your_organisation",
+                        "future_work"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "declarations",
+            "subcriteria": [
+                {
+                    "id": "declarations",
+                    "themes": [
+                        "declarations"
+                    ]
+                }
+            ]
+        }
+    ],
+    "scored_sections": [
+        {
+            "id": "your_skills_and_experience",
+            "subcriteria": [
+                {
+                    "id": "your_skills_and_experience",
+                    "themes": [
+                        "your_skills_and_experience"
+                    ]
+                },
+                {
+                    "id": "roles_and_recruitment",
+                    "themes": [
+                        "roles_and_recruitment"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "about_your_project",
+            "subcriteria": [
+                {
+                    "id": "engaging_the_ODP_community",
+                    "themes": [
+                        "engaging_the_ODP_community"
+                    ]
+                },
+                {
+                    "id": "engaging_the_organisation",
+                    "themes": [
+                        "engaging_the_organisation"
+                    ]
+                },
+                {
+                    "id": "dataset_information",
+                    "themes": [
+                        "dataset_information"
+                    ]
+                }
+            ]
+        }
+    ]
+}
