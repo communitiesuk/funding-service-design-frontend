@@ -1,6 +1,29 @@
+import re
+from datetime import datetime
+from functools import lru_cache
+
 import requests
+from app.default.data import get_all_funds
+from app.default.data import get_application_data
+from app.default.data import get_default_round_for_fund
+from app.default.data import get_feedback
+from app.default.data import get_fund_data
+from app.default.data import get_fund_data_by_short_name
+from app.default.data import get_round_data
+from app.default.data import get_round_data_by_short_names
+from app.default.data import get_survey_data
+from app.default.data import get_ttl_hash
+from app.models.fund import Fund
+from app.models.round import Round
 from config import Config
 from flask import current_app
+from flask import request
+
+
+@lru_cache(maxsize=1)
+def get_all_fund_short_names(ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME)):
+    del ttl_hash  # only needed for lru_cache
+    return [str.upper(fund["short_name"]) for fund in get_all_funds()]
 
 
 def get_token_to_return_to_application(form_name: str, rehydrate_payload):
@@ -43,7 +66,13 @@ def extract_subset_of_data_from_application(
     return application_data[data_subset_name]
 
 
-def format_rehydrate_payload(form_data, application_id, returnUrl, form_name):
+def format_rehydrate_payload(
+    form_data,
+    application_id,
+    returnUrl,
+    form_name,
+    markAsCompleteEnabled: bool,
+):
     """
     Returns information in a JSON format that provides the
     POST body for the utilisation of the save and return
@@ -82,7 +111,8 @@ def format_rehydrate_payload(form_data, application_id, returnUrl, form_name):
 
     current_app.logger.info(
         "constructing session rehydration payload for application"
-        f" id:{application_id}."
+        f" id:{application_id}, markAsCompleteEnabled:"
+        f" {markAsCompleteEnabled}."
     )
     formatted_data = {}
     callback_url = Config.UPDATE_APPLICATION_FORM_ENDPOINT
@@ -91,6 +121,7 @@ def format_rehydrate_payload(form_data, application_id, returnUrl, form_name):
         "callbackUrl": callback_url,
         "customText": {"nextSteps": "Form Submitted"},
         "returnUrl": returnUrl,
+        "markAsCompleteComponent": markAsCompleteEnabled,
     }
     formatted_data["questions"] = extract_subset_of_data_from_application(
         form_data, "questions"
@@ -100,3 +131,222 @@ def format_rehydrate_payload(form_data, application_id, returnUrl, form_name):
     formatted_data["metadata"]["form_session_identifier"] = application_id
     formatted_data["metadata"]["form_name"] = form_name
     return formatted_data
+
+
+def find_round_short_name_in_request():
+    if round_short_name := request.view_args.get(
+        "round_short_name"
+    ) or request.args.get("round"):
+        return round_short_name
+    else:
+        return None
+
+
+def find_round_id_in_request():
+    if (
+        application_id := request.args.get("application_id")
+        or request.view_args.get("application_id")
+        or request.form.get("application_id")
+    ):
+        application = get_application_data(application_id)
+        return application.round_id
+    else:
+        return None
+
+
+def find_fund_id_in_request():
+    if fund_id := request.view_args.get("fund_id") or request.args.get(
+        "fund_id"
+    ):
+        return fund_id
+    elif (
+        application_id := request.args.get("application_id")
+        or request.view_args.get("application_id")
+        or request.form.get("application_id")
+    ):
+        application = get_application_data(application_id)
+        return application.fund_id
+    else:
+        return None
+
+
+def find_fund_short_name_in_request():
+    if (
+        fund_short_name := request.view_args.get("fund_short_name")
+        or request.args.get("fund")
+    ) and str.upper(fund_short_name) in get_all_fund_short_names():
+        return fund_short_name
+    else:
+        return None
+
+
+def find_fund_in_request():
+    return get_fund(
+        find_fund_id_in_request(),
+        find_fund_short_name_in_request(),
+    )
+
+
+def find_round_in_request(fund=None, fund_short_name=None):
+    return get_round(
+        fund=fund if fund else find_fund_in_request(),
+        fund_short_name=fund_short_name,
+        round_id=find_round_id_in_request(),
+        round_short_name=find_round_short_name_in_request(),
+    )
+
+
+def find_fund_and_round_in_request():
+    return get_fund_and_round(
+        find_fund_id_in_request(),
+        find_round_id_in_request(),
+        find_fund_short_name_in_request(),
+        find_round_short_name_in_request(),
+    )
+
+
+def get_fund_and_round(
+    fund_id: str = None,
+    round_id: str = None,
+    fund_short_name: str = None,
+    round_short_name: str = None,
+):
+    fund = get_fund(fund_id, fund_short_name)
+    round = get_round(
+        fund=fund, round_id=round_id, round_short_name=round_short_name
+    )
+    return fund, round
+
+
+def get_fund(
+    fund_id: str = None,
+    fund_short_name: str = None,
+):
+    fund = (
+        get_fund_data(
+            fund_id,
+            as_dict=False,
+            ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+        )
+        if fund_id
+        else (
+            get_fund_data_by_short_name(
+                fund_short_name,
+                as_dict=False,
+                ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+            )
+            if fund_short_name
+            else None
+        )
+    )
+    return fund
+
+
+def get_round(
+    fund: Fund = None,
+    fund_id=None,
+    fund_short_name: str = None,
+    round_id: str = None,
+    round_short_name: str = None,
+) -> Round:
+    if fund_short_name:
+        fund = get_fund_data_by_short_name(
+            fund_short_name, ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME)
+        )
+    elif fund_id:
+        fund = get_fund_data(
+            fund_id=fund_id,
+            as_dict=False,
+            ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+        )
+    if not fund:
+        return None
+    round = (
+        get_round_data(
+            fund.id,
+            round_id,
+            as_dict=False,
+            ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+        )
+        if round_id and fund
+        else (
+            get_round_data_by_short_names(
+                fund.short_name,
+                round_short_name,
+                as_dict=False,
+                ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+            )
+            if fund and round_short_name
+            else None
+        )
+    )
+    if not round:
+        round = get_default_round_for_fund(fund.short_name)
+    return round
+
+
+def get_feedback_survey_data(
+    application,
+    application_id,
+    current_feedback_list,
+    section_display_config,
+    is_feedback_survey_optional,
+):
+
+    # we grab the number from the last section i.e "6. Foobar" then increment it to get "7. " for feedback.
+    last_section_title = section_display_config[-1].title
+    number = None
+    if re.search(r"\b(\d+)\.", last_section_title):
+        number = int(re.search(r"\b(\d+)\.", last_section_title).group(1)) + 1
+
+    round_feedback_available = application.all_forms_complete and all(
+        current_feedback_list
+    )
+    existing_survey_data_map = {
+        page_number: get_survey_data(application_id, page_number)
+        for page_number in ["1", "2", "3", "4"]
+    }
+
+    survey_has_been_completed = all(existing_survey_data_map.values())
+    latest_feedback_submission = None
+    if survey_has_been_completed:
+        all_submission_dates = [
+            s.date_submitted for s in existing_survey_data_map.values()
+        ]
+        all_submission_datetimes = [
+            datetime.fromisoformat(d.replace("Z", "+00:00"))
+            for d in all_submission_dates
+        ]
+        latest_feedback_submission = max(all_submission_datetimes).strftime(
+            "%d/%m/%Y"
+        )
+
+    feedback_survey_data = {
+        "number": f"{number}. " if number else "",
+        "available": round_feedback_available,
+        "completed": survey_has_been_completed,
+        "started": any(existing_survey_data_map.values()),
+        "submitted": latest_feedback_submission,
+        "is_feedback_survey_optional": is_feedback_survey_optional,
+    }
+
+    return feedback_survey_data
+
+
+def get_section_feedback_data(application, section_display_config):
+    existing_feedback_map = {
+        s.section_id: get_feedback(
+            application.id,
+            s.section_id,
+            application.fund_id,
+            application.round_id,
+        )
+        for s in section_display_config
+        if s.requires_feedback
+    }
+    current_feedback_list = [
+        existing_feedback_map.get(s.section_id)
+        for s in section_display_config
+        if s.requires_feedback
+    ]
+    return current_feedback_list, existing_feedback_map

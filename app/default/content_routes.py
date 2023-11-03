@@ -1,12 +1,17 @@
-from app.default.data import get_round_data_by_short_names
-from app.default.data import get_round_data_fail_gracefully
-from config import Config
+from app.helpers import find_fund_and_round_in_request
+from app.helpers import find_round_in_request
+from app.helpers import get_fund_and_round
+from app.models.fund import Fund
 from flask import abort
 from flask import Blueprint
 from flask import current_app
 from flask import redirect
 from flask import render_template
+from flask import request
 from flask import url_for
+from fsd_utils.authentication.decorators import login_requested
+from fsd_utils.locale_selector.get_lang import get_lang
+from jinja2.exceptions import TemplateNotFound
 
 content_bp = Blueprint("content_routes", __name__, template_folder="templates")
 
@@ -17,6 +22,39 @@ def accessibility_statement():
     return render_template("accessibility_statement.html")
 
 
+def determine_all_questions_template_name(
+    fund_short_name: str, round_short_name: str, lang: str, fund: Fund
+):
+
+    # Allow for COF R2 and R3 to use the old mechanism for translating all questions into welsh - the template
+    # for these rounds contains translation tags to build the page on the fly.
+    # All future rounds that need welsh all questions will have them generated from the form json so should
+    # be named with the language in the filename
+
+    if fund_short_name.casefold() == "cof" and round_short_name.casefold() in [
+        "r2w2",
+        "r2w3",
+        "r3w1",
+        "r3w2",
+    ]:
+        # In cof rounds, the different windows have the same questions
+        all_questions_prefix = (
+            f"{fund_short_name.lower()}_{round_short_name.lower()[0:2]}"
+        )
+        template_name = f"all_questions/uses_translations/{all_questions_prefix}_all_questions.html"
+    else:
+        all_questions_prefix = (
+            f"{fund_short_name.lower()}_{round_short_name.lower()}"
+        )
+        # If in welsh mode but there isn't welsh, default to english
+        if (not fund.welsh_available) and lang != "en":
+            template_name = f"all_questions/en/{all_questions_prefix}_all_questions_en.html"
+
+        else:
+            template_name = f"all_questions/{lang}/{all_questions_prefix}_all_questions_{lang}.html"
+    return template_name
+
+
 @content_bp.route(
     "/all_questions/<fund_short_name>/<round_short_name>", methods=["GET"]
 )
@@ -25,12 +63,28 @@ def all_questions(fund_short_name, round_short_name):
         f"All questions page loaded for fund {fund_short_name} round"
         f" {round_short_name}."
     )
-    round = get_round_data_by_short_names(fund_short_name, round_short_name)
-    if not round:
-        return abort(404)
-    return render_template(
-        "cof_r2_all_questions.html", round_title=round["title"]
+    fund, round = get_fund_and_round(
+        fund_short_name=fund_short_name, round_short_name=round_short_name
     )
+
+    if fund and round:
+        lang = get_lang()
+
+        template_name = determine_all_questions_template_name(
+            fund_short_name, round_short_name, lang, fund
+        )
+        try:
+            return render_template(
+                template_name,
+                fund_title=fund.name,
+                round_title=round.title,
+            )
+        except TemplateNotFound:
+            current_app.logger.warn(
+                "No all questions page found for"
+                f" {fund_short_name}:{round_short_name}"
+            )
+    return abort(404)
 
 
 @content_bp.route("/cof_r2w2_all_questions", methods=["GET"])
@@ -45,15 +99,56 @@ def cof_r2w2_all_questions_redirect():
 
 
 @content_bp.route("/contact_us", methods=["GET"])
+@login_requested
 def contact_us():
-    current_app.logger.info("Contact us page loaded.")
-    round_data = get_round_data_fail_gracefully(
-        Config.DEFAULT_FUND_ID, Config.DEFAULT_ROUND_ID
+    fund, round = find_fund_and_round_in_request()
+    fund_name = fund.name if fund else None
+    return render_template(
+        "contact_us.html",
+        round_data=round,
+        fund_name=fund_name,
     )
-    return render_template("contact_us.html", round_data=round_data)
 
 
 @content_bp.route("/cookie_policy", methods=["GET"])
 def cookie_policy():
     current_app.logger.info("Cookie policy page loaded.")
     return render_template("cookie_policy.html")
+
+
+@content_bp.route("/privacy", methods=["GET"])
+def privacy():
+    privacy_notice_url = None
+    fund, round = find_fund_and_round_in_request()
+
+    privacy_notice_url = (
+        getattr(round, "privacy_notice", None) if round else None
+    )
+
+    if privacy_notice_url:
+        current_app.logger.info(
+            f"Privacy notice loading for fund {fund.short_name} round"
+            f" {round.short_name}."
+        )
+        return redirect(privacy_notice_url)
+
+    return abort(404)
+
+
+@content_bp.route("/feedback", methods=["GET"])
+def feedback():
+    round = find_round_in_request()
+    feedback_url = None
+
+    feedback_url = getattr(round, "feedback_link", None) if round else None
+
+    if feedback_url:
+        return redirect(feedback_url)
+
+    return redirect(
+        url_for(
+            "content_routes.contact_us",
+            fund=request.args.get("fund"),
+            round=request.args.get("round"),
+        )
+    )

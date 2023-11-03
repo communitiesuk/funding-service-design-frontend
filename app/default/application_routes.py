@@ -3,11 +3,24 @@ from http.client import METHOD_NOT_ALLOWED
 
 import requests
 from app.constants import ApplicationStatus
-from app.default.data import get_account
+from app.default.data import determine_round_status
 from app.default.data import get_application_data
+from app.default.data import get_application_display_config
+from app.default.data import get_feedback
 from app.default.data import get_fund_data
 from app.default.data import get_round_data
+from app.default.data import get_survey_data
+from app.default.data import get_ttl_hash
+from app.default.data import post_survey_data
+from app.default.data import submit_feedback
+from app.forms.feedback_forms import DefaultSectionFeedbackForm
+from app.forms.feedback_forms import (
+    END_OF_APPLICATION_FEEDBACK_SURVEY_PAGE_NUMBER_MAP,
+)
 from app.helpers import format_rehydrate_payload
+from app.helpers import get_feedback_survey_data
+from app.helpers import get_round
+from app.helpers import get_section_feedback_data
 from app.helpers import get_token_to_return_to_application
 from app.models.statuses import get_formatted
 from config import Config
@@ -24,9 +37,6 @@ from flask_wtf import FlaskForm
 from fsd_utils.authentication.decorators import login_required
 from fsd_utils.simple_utils.date_utils import (
     current_datetime_after_given_iso_string,
-)
-from fsd_utils.simple_utils.date_utils import (
-    current_datetime_before_given_iso_string,
 )
 
 application_bp = Blueprint(
@@ -57,7 +67,7 @@ def verify_application_owner_local(f):
                 f"Http method {request.method} is not supported",
             )
 
-        application = get_application_data(application_id, as_dict=True)
+        application = get_application_data(application_id)
         application_owner = application.account_id
         current_user = g.account_id
         if current_user == application_owner:
@@ -97,15 +107,16 @@ def verify_round_open(f):
                 f"Http method {request.method} is not supported",
             )
 
-        application = get_application_data(application_id, as_dict=True)
+        application = get_application_data(application_id)
         round_data = get_round_data(
             fund_id=application.fund_id,
             round_id=application.round_id,
-            as_dict=True,
+            language=application.language,
+            as_dict=False,
+            ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
         )
-        if current_datetime_after_given_iso_string(
-            round_data.opens
-        ) and current_datetime_before_given_iso_string(round_data.deadline):
+        round_status = determine_round_status(round_data)
+        if round_status.is_open:
             return f(*args, **kwargs)
         else:
             current_app.logger.info(
@@ -132,39 +143,87 @@ def tasklist(application_id):
         function: a function which renders the tasklist template.
     """
 
-    application = get_application_data(application_id, as_dict=True)
-    account = get_account(account_id=application.account_id)
-    if application.status == ApplicationStatus.SUBMITTED.name:
-        with force_locale(application.language):
-            return render_template(
-                "application_submitted.html",
-                application_id=application.id,
-                application_reference=application.reference,
-                application_email=account.email,
-            )
+    application = get_application_data(application_id)
 
     fund_data = get_fund_data(
         fund_id=application.fund_id,
         language=application.language,
-        as_dict=True,
+        as_dict=False,
+        ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
     )
     round_data = get_round_data(
         fund_id=application.fund_id,
         round_id=application.round_id,
         language=application.language,
-        as_dict=True,
+        as_dict=False,
+        ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
     )
-    sections = application.get_sections()
+
+    if application.status == ApplicationStatus.SUBMITTED.name:
+        with force_locale(application.language):
+            return redirect(
+                url_for(
+                    "account_routes.dashboard",
+                    fund=fund_data.short_name,
+                    round=round_data.short_name,
+                )
+            )
+
+    # Create tasklist display config
+    section_display_config = get_application_display_config(
+        application.fund_id,
+        application.round_id,
+        language=application.language,
+    )
+    display_config = application.match_forms_to_state(section_display_config)
+
+    # note that individual section feedback COULD be independent of round feedback survey.
+    # which is why this is not under a conditional round_data.feedback_survey_config.
+    if round_data.feedback_survey_config.has_section_feedback:
+        (
+            current_feedback_list,
+            existing_feedback_map,
+        ) = get_section_feedback_data(
+            application,
+            section_display_config,
+        )
+    else:
+        current_feedback_list = []
+        existing_feedback_map = {}
+
+    feedback_survey_data = (
+        get_feedback_survey_data(
+            application,
+            application_id,
+            current_feedback_list,
+            section_display_config,
+            round_data.feedback_survey_config.is_feedback_survey_optional,
+        )
+        if round_data.feedback_survey_config.has_feedback_survey
+        else None
+    )
+
     form = FlaskForm()
     application_meta_data = {
         "application_id": application_id,
         "fund_name": fund_data.name,
+        "fund_title": fund_data.title,
         "round_name": round_data.title,
+        "application_guidance": round_data.application_guidance,
         "not_started_status": ApplicationStatus.NOT_STARTED.name,
         "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
         "completed_status": ApplicationStatus.COMPLETED.name,
         "submitted_status": ApplicationStatus.SUBMITTED.name,
-        "number_of_forms": len(application.forms),
+        "has_section_feedback": round_data.feedback_survey_config.has_section_feedback,
+        "number_of_forms": len(application.forms)
+        + sum(
+            1
+            for s in section_display_config
+            if (
+                s.requires_feedback
+                and round_data.feedback_survey_config.has_section_feedback
+            )
+        ),
         "number_of_completed_forms": len(
             list(
                 filter(
@@ -173,30 +232,41 @@ def tasklist(application_id):
                     application.forms,
                 )
             )
-        ),
+        )
+        + sum(1 for f in current_feedback_list if f),
     }
-
-    with force_locale(application.language):
-        return render_template(
-            "tasklist.html",
-            application=application,
-            sections=sections,
-            application_status=get_formatted,
-            application_meta_data=application_meta_data,
-            form=form,
-            contact_us_email_address=round_data.contact_details[
-                "email_address"
-            ],
-            submission_deadline=round_data.deadline,
-            is_past_submission_deadline=current_datetime_after_given_iso_string(  # noqa:E501
-                round_data.deadline
-            ),
+    app_guidance = None
+    if round_data.application_guidance:
+        app_guidance = round_data.application_guidance.format(
             all_questions_url=url_for(
                 "content_routes.all_questions",
                 fund_short_name=fund_data.short_name,
                 round_short_name=round_data.short_name,
                 lang=application.language,
             ),
+        )
+
+    with force_locale(application.language):
+        return render_template(
+            "tasklist.html",
+            application=application,
+            sections=display_config,
+            application_status=get_formatted,
+            application_meta_data=application_meta_data,
+            form=form,
+            contact_us_email_address=round_data.contact_email,
+            submission_deadline=round_data.deadline,
+            is_past_submission_deadline=current_datetime_after_given_iso_string(  # noqa:E501
+                round_data.deadline
+            ),
+            dashboard_url=url_for(
+                "account_routes.dashboard",
+                fund=fund_data.short_name,
+                round=round_data.short_name,
+            ),
+            application_guidance=app_guidance,
+            existing_feedback_map=existing_feedback_map,
+            feedback_survey_data=feedback_survey_data,
         )
 
 
@@ -233,12 +303,19 @@ def continue_application(application_id):
         f"Url the form runner should return to '{return_url}'."
     )
 
-    application = get_application_data(application_id, as_dict=True)
+    application = get_application_data(application_id)
+    round = get_round(
+        fund_id=application.fund_id, round_id=application.round_id
+    )
 
     form_data = application.get_form_data(application, form_name)
 
     rehydrate_payload = format_rehydrate_payload(
-        form_data, application_id, return_url, form_name
+        form_data,
+        application_id,
+        return_url,
+        form_name,
+        round.mark_as_complete_enabled,
     )
 
     rehydration_token = get_token_to_return_to_application(
@@ -262,8 +339,20 @@ def continue_application(application_id):
 @verify_round_open
 def submit_application():
     application_id = request.form.get("application_id")
-    application = get_application_data(application_id, as_dict=True)
+    application = get_application_data(application_id)
 
+    fund_data = get_fund_data(
+        fund_id=application.fund_id,
+        language=application.language,
+        as_dict=False,
+        ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+    )
+    round_data = get_round_data(
+        application.fund_id,
+        application.round_id,
+        as_dict=False,
+        ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+    )
     submitted = format_payload_and_submit_application(application_id)
 
     application_id = submitted.get("id")
@@ -275,6 +364,9 @@ def submit_application():
             application_id=application_id,
             application_reference=application_reference,
             application_email=application_email,
+            fund_name=fund_data.name,
+            fund_short_name=fund_data.short_name,
+            round_short_name=round_data.short_name,
         )
 
 
@@ -299,3 +391,207 @@ def format_payload_and_submit_application(application_id):
             + str(submission_response.json())
         )
     return submitted
+
+
+def retrieve_section_or_abort(application_id, section_id):
+    application = get_application_data(application_id=application_id)
+    section_config = get_application_display_config(
+        application.fund_id,
+        application.round_id,
+        language=application.language,
+    )
+
+    matching_sections = [
+        s for s in section_config if str(s.section_id) == section_id
+    ]
+    if not matching_sections:
+        abort(404)
+
+    section, *_ = matching_sections
+    if not application.are_forms_complete(
+        [c.form_name for c in section.children]
+    ):
+        abort(404)
+
+    return application, section
+
+
+@application_bp.route(
+    "/feedback/<application_id>/section/<section_id>/intro", methods=["GET"]
+)
+@login_required
+@verify_application_owner_local
+@verify_round_open
+def section_feedback_intro(application_id, section_id):
+    application, section = retrieve_section_or_abort(
+        application_id, section_id
+    )
+    return render_template(
+        "section_feedback_intro.html",
+        dashboard_url="",
+        application_id=application_id,
+        section=section,
+    )
+
+
+@application_bp.route(
+    "/feedback/<application_id>/section/<section_id>", methods=["GET", "POST"]
+)
+@login_required
+@verify_application_owner_local
+@verify_round_open
+def section_feedback(application_id, section_id):
+    application, section = retrieve_section_or_abort(
+        application_id, section_id
+    )
+    existing_feedback = get_feedback(
+        application_id, section_id, application.fund_id, application.round_id
+    )
+    if existing_feedback:
+        abort(404)
+
+    form = DefaultSectionFeedbackForm()
+    form.application_id.data = application_id
+
+    if form.validate_on_submit():
+        was_submitted = submit_feedback(
+            application_id,
+            form.more_detail.data,
+            form.experience.data,
+            application.fund_id,
+            application.round_id,
+            section_id,
+        )
+
+        if not was_submitted:
+            abort(500)
+
+        return redirect(
+            url_for(
+                "application_routes.tasklist", application_id=application_id
+            )
+        )
+
+    # # Note: If we ever allow upserts for feedback, we could use this to re-fill the form.
+    # existing_feedback = get_feedback(application_id, section_id, application.fund_id, application.round_id)
+    # if existing_feedback:
+    #     form.more_detail.data = existing_feedback.feedback.comment
+    #     form.experience.data = existing_feedback.feedback.rating
+
+    return render_template(
+        "feedback_generic_survey.html",
+        section=section,
+        form=form,
+        application_id=application_id,
+    )
+
+
+@application_bp.route(
+    "/feedback/<application_id>/page/<page_number>", methods=["GET", "POST"]
+)
+@login_required
+@verify_application_owner_local
+@verify_round_open
+def round_feedback(application_id, page_number):
+    application = get_application_data(application_id=application_id)
+    round_data = get_round_data(
+        fund_id=application.fund_id,
+        round_id=application.round_id,
+        language=application.language,
+        as_dict=False,
+        ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+    )
+    if not round_data.feedback_survey_config.has_feedback_survey:
+        abort(404)
+
+    if page_number == "END":
+        return redirect(
+            url_for(
+                "application_routes.tasklist", application_id=application_id
+            )
+        )
+
+    form_template_tuple = (
+        END_OF_APPLICATION_FEEDBACK_SURVEY_PAGE_NUMBER_MAP.get(page_number)
+    )
+    if not form_template_tuple:
+        abort(404)
+
+    form_constructor, template = form_template_tuple
+    form = form_constructor()
+    form.application_id.data = application_id
+
+    existing_survey_data_map = {
+        page_number: get_survey_data(application_id, page_number)
+        for page_number in ["1", "2", "3", "4"]
+    }
+    if all(
+        existing_survey_data_map.values()
+    ):  # if user has already submitted data redirect them to tasklist
+        return redirect(
+            url_for(
+                "application_routes.tasklist", application_id=application_id
+            )
+        )
+
+    if form.validate_on_submit():
+        posted_survey_data = post_survey_data(
+            application_id,
+            application.fund_id,
+            application.round_id,
+            page_number,
+            form.as_dict(),
+        )
+
+        if posted_survey_data:
+            next_page = "END" if page_number == "4" else int(page_number) + 1
+            return redirect(
+                url_for(
+                    "application_routes.round_feedback",
+                    application_id=application_id,
+                    page_number=next_page,
+                )
+            )
+
+    if survey_data := existing_survey_data_map.get(page_number):
+        form.back_fill_data(survey_data.data)
+
+    return render_template(
+        template,
+        form=form,
+        application_id=application_id,
+    )
+
+
+@application_bp.route("/feedback/<application_id>/intro", methods=["GET"])
+@login_required
+@verify_application_owner_local
+@verify_round_open
+def round_feedback_intro(application_id):
+    application = get_application_data(application_id=application_id)
+    round_data = get_round_data(
+        fund_id=application.fund_id,
+        round_id=application.round_id,
+        language=application.language,
+        as_dict=False,
+        ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+    )
+
+    if not round_data.feedback_survey_config.has_feedback_survey:
+        abort(404)
+
+    existing_survey_data_map = {
+        page_number: get_survey_data(application_id, page_number)
+        for page_number in ["1", "2", "3", "4"]
+    }
+    if all(existing_survey_data_map.values()):
+        return redirect(
+            url_for(
+                "application_routes.tasklist", application_id=application_id
+            )
+        )
+
+    return render_template(
+        "end_of_application_survey.html",
+        application_id=application.id,
+    )

@@ -3,20 +3,32 @@
 {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText -%}
 {%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
 {% from "partials/contact_details.html" import contact_details %}
-{% set pageHeading %}Contact us{% endset %}
+{% set pageHeading %}{% trans %}Contact us{% endtrans %}{% endset %}
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
-            <p class="govuk-body">Contact the Community Ownership Fund if you have any questions. </p>
-            {% if round_data.contact_details["email_address"]|length %}
+            {% if fund_name %}
+                <p class="govuk-body">{% trans %}Contact the{% endtrans %} {{fund_name}} {% trans %}if you have any questions.{% endtrans %}</p>
+            {% else %}
+                <p class="govuk-body">{% trans %}Contact us if you have any questions.{% endtrans %}</p>
+            {% endif %}
+            {% if round_data %}
                 {{ contact_details(
-                        round_data.contact_details["email_address"],
-                        round_data.contact_details["phone"],
-                        round_data.contact_details["text_phone"],
-                        round_data.support_availability["days"],
-                        round_data.support_availability["time"],
-                        round_data.support_availability["closed"]
+                            round_data.contact_email,
+                            round_data.contact_phone,
+                            round_data.contact_phone,
+                            round_data.support_days,
+                            round_data.support_times
+                     )
+                }}
+            {% else %}
+                {{ contact_details(
+                    "fsd.support@levellingup.gov.uk",
+                    "",
+                    "",
+                    "9am to 5pm",
+                    "Monday to Friday"
                     )
                 }}
             {%  endif %}

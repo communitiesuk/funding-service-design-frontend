@@ -28,6 +28,12 @@
             <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide navigation menu" aria-expanded="true">Menu</button>
             <nav>
               <ul id="navigation" class="signout govuk-header__navigation app-navigation" aria-label="Navigation menu">
+
+                {% if toggle_dict.get("MULTIFUND_DASHBOARD") %}
+                <li class="govuk-header__navigation-item">
+                    <a class="govuk-header__link" href="{{url_for('account_routes.dashboard')}}">{% trans %}View all applications{% endtrans %}</a>
+                </li>
+                {% endif %}
                     <li class="govuk-header__navigation-item">
                         <a class="govuk-header__link" href="{{ g.logout_url }}">{% trans %}Sign out{% endtrans %}</a>
                     </li>
@@ -43,6 +49,6 @@
         'tag': {
             'text': gettext('beta')
         },
-        'html': '{}<a href="https://forms.office.com/Pages/ResponsePage.aspx?id=EGg0v32c3kOociSi7zmVqFJBHpeOL2tNnpiwpdL2iElUREIySU9OWTU4R0RTNjhBUDE1Q1VYVFBEMi4u" class="govuk-link">{}</a>{}'.format(gettext('This is a new service - your '), gettext('feedback'), gettext(' will help us to improve it.'))
+        'html': gettext('This is a new service.')
     })}}
 </div>
