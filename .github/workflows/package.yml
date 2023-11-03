@@ -20,7 +20,7 @@ jobs:
     name: Packaging and building the application
     steps:
       - uses: buildpacks/github-actions/setup-pack@v5.0.0
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
