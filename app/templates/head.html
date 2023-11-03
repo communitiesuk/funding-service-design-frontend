@@ -1,7 +1,40 @@
-<meta name="description" content="{{ service_meta_description }}">
-<meta name="keywords" content="{{ service_meta_keywords }}">
+<meta name="description" content="{{ service_title }}">
+<meta name="keywords" content="{{ service_title }}">
 <meta name="author" content="{{ service_meta_author }}">
 
 <!--[if gt IE 8]><!--><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='govuk-frontend-4.0.0.min.css') }}" /><!--<![endif]-->
 <!--[if IE 8]><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='govuk-frontend-ie8-4.0.0.min.css') }}" /><![endif]-->
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/tasklist.css') }}">
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments)}
+
+    if(localStorage.getItem('consentMode') === null) {
+        gtag('consent', 'default', {
+            'ad_storage': 'denied',
+            'analytics_storage': 'denied',
+            'personalisation_storage': 'denied',
+            'functionality_storage': 'denied',
+            'security_storage': 'denied',
+        });
+    } else {
+        gtag('consent', 'default', JSON.parse(localStorage.getItem('consentMode')));
+    }
+</script>
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({
+        'gtm.start':
+            new Date().getTime(), event: 'gtm.js'
+    });
+    var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-M5J9Q8HV');
+</script>
+<!-- End Google Tag Manager -->

@@ -4,6 +4,7 @@ from os import environ
 from os import getenv
 from pathlib import Path
 
+from config.utils import VcapServices
 from distutils.util import strtobool
 from fsd_utils import CommonConfig
 from fsd_utils import configclass
@@ -27,6 +28,11 @@ class DefaultConfig:
     FSD_USER_TOKEN_COOKIE_NAME = "fsd_user_token"
     AUTHENTICATOR_HOST = environ.get("AUTHENTICATOR_HOST", "authenticator")
     ENTER_APPLICATION_URL = AUTHENTICATOR_HOST + "/service/magic-links/new"
+    MAGIC_LINK_URL = (
+        AUTHENTICATOR_HOST
+        + "/service/magic-links/new?"
+        + "fund={fund_short_name}&round={round_short_name}"
+    )
     SESSION_COOKIE_DOMAIN = environ.get("SESSION_COOKIE_DOMAIN")
     COOKIE_DOMAIN = environ.get("COOKIE_DOMAIN", None)
 
@@ -52,6 +58,10 @@ class DefaultConfig:
     GET_APPLICATION_ENDPOINT = (
         APPLICATION_STORE_API_HOST + "/applications/{application_id}"
     )
+    SEARCH_APPLICATIONS_ENDPOINT = (
+        APPLICATION_STORE_API_HOST
+        + "/applications?order_by=last_edited&order_rev=1&{search_params}"
+    )
     GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT = (
         APPLICATION_STORE_API_HOST
         + "/applications?account_id={account_id}"
@@ -63,6 +73,11 @@ class DefaultConfig:
     SUBMIT_APPLICATION_ENDPOINT = (
         APPLICATION_STORE_API_HOST + "/applications/{application_id}/submit"
     )
+    FEEDBACK_ENDPOINT = APPLICATION_STORE_API_HOST + "/application/feedback"
+    END_OF_APP_SURVEY_FEEDBACK_ENDPOINT = (
+        APPLICATION_STORE_API_HOST
+        + "/application/end_of_application_survey_data"
+    )
     FUND_STORE_API_HOST = environ.get(
         "FUND_STORE_API_HOST", TEST_FUND_STORE_API_HOST
     )
@@ -73,6 +88,18 @@ class DefaultConfig:
     )
     GET_ROUND_DATA_FOR_FUND_ENDPOINT = (
         FUND_STORE_API_HOST + "/funds/{fund_id}/rounds/{round_id}"
+    )
+    GET_FUND_DATA_BY_SHORT_NAME_ENDPOINT = (
+        FUND_STORE_API_HOST + "/funds/{fund_short_name}"
+    )
+    GET_ROUND_DATA_BY_SHORT_NAME_ENDPOINT = (
+        FUND_STORE_API_HOST
+        + "/funds/{fund_short_name}/rounds/{round_short_name}"
+    )
+
+    GET_APPLICATION_DISPLAY_FOR_FUND_ENDPOINT = (
+        FUND_STORE_API_HOST
+        + "/funds/{fund_id}/rounds/{round_id}/sections/application?language={language}"
     )
 
     FORMS_TEST_HOST = "http://localhost:3009"
@@ -104,9 +131,17 @@ class DefaultConfig:
             "'self'",
             "'sha256-+6WnXIl4mbFTCARd8N3COQmT3bJJmo32N8q8ZSQAIcU='",
             "'sha256-l1eTVSK8DTnK8+yloud7wZUqFrI0atVo6VlC6PJvYaQ='",
+            "'sha256-z+p4q2n8BOpGMK2/OMOXrTYmjbeEhWQQHC3SF/uMOyg='",
+            "'sha256-RgdCrr7A9yqYVstE6QiM/9RNRj4bYipcUa2C2ywQT1A='",
+            "https://tagmanager.google.com",
+            "https://www.googletagmanager.com",
+            "https://*.google-analytics.com",
         ],
-        "connect-src": "",  # APPLICATION_STORE_API_HOST_PUBLIC,
-        "img-src": ["data:", "'self'"],
+        "connect-src": [
+            "'self'",
+            "https://*.google-analytics.com",
+        ],  # APPLICATION_STORE_API_HOST_PUBLIC,
+        "img-src": ["data:", "'self'", "https://ssl.gstatic.com"],
     }
 
     # Talisman Config
@@ -125,7 +160,10 @@ class DefaultConfig:
     ALLOW_FROM = "ALLOW-FROM"
     ONE_YEAR_IN_SECS = 31556926
 
-    FORCE_HTTPS = True
+    if environ.get("VCAP_SERVICES"):
+        FORCE_HTTPS = True
+    else:
+        FORCE_HTTPS = False
 
     TALISMAN_SETTINGS = {
         "feature_policy": FSD_FEATURE_POLICY,
@@ -154,7 +192,16 @@ class DefaultConfig:
 
     USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "False"))
 
-    DEFAULT_FUND_ID = CommonConfig.COF_FUND_ID
-    DEFAULT_ROUND_ID = CommonConfig.get_default_round_id()
+    # GOV.UK PaaS
+    if environ.get("VCAP_SERVICES"):
+        VCAP_SERVICES = VcapServices.from_env_json(
+            environ.get("VCAP_SERVICES")
+        )
 
-    FORMS_CONFIG_FOR_FUND_ROUND = CommonConfig.FORMS_CONFIG_FOR_FUND_ROUND
+    # Redis Feature Toggle Configuration
+    REDIS_INSTANCE_URI = getenv("REDIS_INSTANCE_URI", "redis://localhost:6379")
+    TOGGLES_URL = REDIS_INSTANCE_URI + "/0"
+    FEATURE_CONFIG = CommonConfig.dev_feature_configuration
+
+    # LRU cache settings
+    LRU_CACHE_TIME = int(environ.get("LRU_CACHE_TIME", 3600))  # in seconds

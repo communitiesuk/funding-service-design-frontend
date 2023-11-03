@@ -1,7 +1,6 @@
 name: Deploy to Gov PaaS
 
 on:
-  workflow_dispatch:
   push:
     paths-ignore:
       - '**/README.md'
@@ -9,7 +8,7 @@ on:
 jobs:
   test_and_deploy:
     if: ${{ github.actor != 'dependabot[bot]' }}
-    uses: communitiesuk/funding-design-service-workflows/.github/workflows/deploy.yml@main
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/deploy.yml@main
     with:
       app_name: ${{ github.event.repository.name }}
       api: false

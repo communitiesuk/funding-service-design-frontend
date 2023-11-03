@@ -1,11 +1,20 @@
+from os import getenv
+
+from app.filters import custom_format_datetime
 from app.filters import date_format_short_month
 from app.filters import datetime_format
 from app.filters import datetime_format_short_month
 from app.filters import kebab_case_to_human
 from app.filters import snake_case_to_human
 from app.filters import status_translation
+from app.helpers import find_fund_and_round_in_request
+from app.helpers import find_fund_in_request
 from config import Config
+from flask import current_app
 from flask import Flask
+from flask import make_response
+from flask import request
+from flask import url_for
 from flask_babel import Babel
 from flask_babel import gettext
 from flask_babel import pgettext
@@ -18,6 +27,9 @@ from fsd_utils.healthchecks.checkers import FlaskRunningChecker
 from fsd_utils.healthchecks.healthcheck import Healthcheck
 from fsd_utils.locale_selector.get_lang import get_lang
 from fsd_utils.logging import logging
+from fsd_utils.toggles.toggles import create_toggles_client
+from fsd_utils.toggles.toggles import initialise_toggles_redis_store
+from fsd_utils.toggles.toggles import load_toggles
 from jinja2 import ChoiceLoader
 from jinja2 import PackageLoader
 from jinja2 import PrefixLoader
@@ -29,6 +41,12 @@ def create_app() -> Flask:
     flask_app = Flask(__name__, static_url_path="/assets")
 
     flask_app.config.from_object("config.Config")
+
+    toggle_client = None
+    if getenv("FLASK_ENV") != "unit_test":
+        initialise_toggles_redis_store(flask_app)
+        toggle_client = create_toggles_client()
+        load_toggles(Config.FEATURE_CONFIG, toggle_client)
 
     babel = Babel(flask_app)
     babel.locale_selector_func = get_lang
@@ -76,6 +94,9 @@ def create_app() -> Flask:
         "datetime_format_short_month"
     ] = datetime_format_short_month
     flask_app.jinja_env.filters[
+        "custom_format_datetime"
+    ] = custom_format_datetime
+    flask_app.jinja_env.filters[
         "date_format_short_month"
     ] = date_format_short_month
     flask_app.jinja_env.filters["datetime_format"] = datetime_format
@@ -87,19 +108,83 @@ def create_app() -> Flask:
     def inject_global_constants():
         return dict(
             stage="beta",
-            service_title=(
-                gettext("Apply for funding to save an asset in your community")
-            ),
-            service_meta_description=(
-                "Apply for funding to save an asset in your community"
-            ),
-            service_meta_keywords=(
-                "Apply for funding to save an asset in your community"
-            ),
             service_meta_author=(
                 "Department for Levelling up Housing and Communities"
             ),
+            toggle_dict={
+                feature.name: feature.is_enabled()
+                for feature in toggle_client.list()
+            }
+            if toggle_client
+            else {},
         )
+
+    @flask_app.context_processor
+    def inject_service_name():
+        fund = None
+        if request.view_args or request.args or request.form:
+            try:
+                fund = find_fund_in_request()
+            except Exception as e:  # noqa
+                current_app.logger.warn(
+                    f"""Exception: {e}, occured when trying to
+                    reach url: {request.url}, with view_args:
+                    {request.view_args}, and args: {request.args}"""
+                )
+        if fund:
+            service_title = gettext("Apply for") + " " + fund.title
+        else:
+            service_title = gettext("Access Funding")
+        return dict(service_title=service_title)
+
+    @flask_app.context_processor
+    def inject_content_urls():
+        try:
+            fund, round = find_fund_and_round_in_request()
+            if fund and round:
+                return dict(
+                    contact_us_url=url_for(
+                        "content_routes.contact_us",
+                        fund=fund.short_name,
+                        round=round.short_name,
+                    ),
+                    privacy_url=url_for(
+                        "content_routes.privacy",
+                        fund=fund.short_name,
+                        round=round.short_name,
+                    ),
+                    feedback_url=url_for(
+                        "content_routes.feedback",
+                        fund=fund.short_name,
+                        round=round.short_name,
+                    ),
+                )
+        except Exception as e:  # noqa
+            current_app.logger.warn(
+                f"""Exception: {e}, occured when trying to
+                reach url: {request.url}, with view_args:
+                {request.view_args}, and args: {request.args}"""
+            )
+        return dict(
+            contact_us_url=url_for("content_routes.contact_us"),
+            privacy_url=url_for("content_routes.privacy"),
+            feedback_url=url_for("content_routes.feedback"),
+        )
+
+    @flask_app.after_request
+    def after_request(response):
+        if "Cache-Control" not in response.headers:
+            response.headers[
+                "Cache-Control"
+            ] = "no-cache, no-store, must-revalidate"
+            response.headers["Pragma"] = "no-cache"
+            response.headers["Expires"] = "0"
+        return response
+
+    @flask_app.before_request
+    def filter_favicon_requests():
+        if request.path == "/favicon.ico":
+            return make_response("404"), 404
 
     health = Healthcheck(flask_app)
     health.add_check(FlaskRunningChecker())
