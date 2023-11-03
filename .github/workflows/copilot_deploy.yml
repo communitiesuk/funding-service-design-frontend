@@ -29,6 +29,10 @@ on:
       - '!docs/**'
       - 'app/**'
       - 'tests/**'
+      - 'requirements-dev.in'
+      - 'requirements-dev.txt'
+      - 'requirements.in'
+      - 'requirements.txt'
 
 jobs:
   paketo_build:
