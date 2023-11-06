@@ -66,9 +66,15 @@ secrets:
 
 # You can override any of the values defined above by environment.
 environments:
-  # uat:
-    # http:
-    #   alias: frontend.uat.access-funding.test.levellingup.gov.uk
+  dev:
+    http:
+      alias: frontend.dev.access-funding.test.levellingup.gov.uk
+  test:
+    http:
+      alias: frontend.test.access-funding.test.levellingup.gov.uk
+  uat:
+    http:
+      alias: frontend.uat.access-funding.test.levellingup.gov.uk
   production:
     http:
       alias: frontend.access-funding.levellingup.gov.uk
