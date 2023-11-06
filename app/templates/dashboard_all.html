@@ -12,10 +12,6 @@
 {% endset %}
 {% block content %}
     <h1 class="govuk-heading-xl">{{ pageHeading }}</h1>
-    <p class="govuk-body">
-        {% set application_count=display_data["total_applications_to_display"]%}
-        {% trans %}You have started{% endtrans %}&nbsp;{% trans count=application_count%} {{application_count}} application{% pluralize %}{{application_count}} applications{% endtrans %}&nbsp;{% trans %}using this email address{% endtrans %}.
-    </p>
 {{available_in_language(inset=False, warn=True, welsh_available=welsh_available)}}
 
 <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
