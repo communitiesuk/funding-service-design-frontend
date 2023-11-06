@@ -8,6 +8,8 @@ on:
     secrets:
       AWS_ACCOUNT:
         required: true
+      RSA256_PUBLIC_KEY_BASE64:
+        required: true
 
 jobs:
   copilot_deploy:
