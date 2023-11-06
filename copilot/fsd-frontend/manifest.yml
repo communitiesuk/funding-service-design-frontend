@@ -72,6 +72,8 @@ environments:
   test:
     http:
       alias: frontend.test.access-funding.test.levellingup.gov.uk
+    deployment:
+      rolling: 'recreate'
   uat:
     http:
       alias: frontend.uat.access-funding.test.levellingup.gov.uk
@@ -83,7 +85,3 @@ environments:
       AUTHENTICATOR_HOST: "https://fsd:fsd@authenticator.access-funding.levellingup.gov.uk" #pragma: allowlist secret
       APPLICANT_FRONTEND_HOST: "https://frontend.access-funding.levellingup.gov.uk"
       ASSESSMENT_FRONTEND_HOST: "https://assessment.access-funding.levellingup.gov.uk"
-
-  test:
-    deployment:
-      rolling: 'recreate'
