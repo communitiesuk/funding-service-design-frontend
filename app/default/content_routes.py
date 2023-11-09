@@ -80,7 +80,7 @@ def all_questions(fund_short_name, round_short_name):
                 round_title=round.title,
             )
         except TemplateNotFound:
-            current_app.logger.warn(
+            current_app.logger.warning(
                 "No all questions page found for"
                 f" {fund_short_name}:{round_short_name}"
             )

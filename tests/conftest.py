@@ -6,12 +6,8 @@ import pytest
 from app.create_app import create_app
 from app.models.fund import Fund
 from flask import template_rendered
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
 from tests.test_data import TEST_FUNDS_DATA
 from tests.test_data import TEST_ROUNDS_DATA
-from webdriver_manager.chrome import ChromeDriverManager
 
 if platform.system() == "Darwin":
     multiprocessing.set_start_method("fork")  # Required on macOSX
@@ -21,7 +17,12 @@ if platform.system() == "Darwin":
 def mock_login(monkeypatch):
     monkeypatch.setattr(
         "fsd_utils.authentication.decorators._check_access_token",
-        lambda return_app: {"accountId": "test-user"},
+        lambda return_app: {
+            "accountId": "test-user",
+            "fullName": "Test User",
+            "email": "test-user@test.com",
+            "roles": [],
+        },
     )
 
 
@@ -75,28 +76,6 @@ def flask_test_client():
     """
     with create_app().test_client() as test_client:
         yield test_client
-
-
-@pytest.fixture(scope="class")
-def selenium_chrome_driver(request):
-    """
-    Returns a Selenium Chrome driver as a fixture for testing.
-    using an installed Chromedriver from the .venv chromedriver_py package
-    install location. Accessible with the
-    @pytest.mark.uses_fixture('selenium_chrome_driver')
-    :return: A selenium chrome driver.
-    """
-    service_object = Service(ChromeDriverManager().install())
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")
-    # TODO: set chrome_options.binary_location = ...
-    #  (if setting to run in container or on GitHub)
-    chrome_driver = webdriver.Chrome(
-        service=service_object, options=chrome_options
-    )
-    request.cls.driver = chrome_driver
-    yield
-    request.cls.driver.close()
 
 
 def mock_get_data(endpoint):

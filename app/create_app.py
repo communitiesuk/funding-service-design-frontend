@@ -126,7 +126,7 @@ def create_app() -> Flask:
             try:
                 fund = find_fund_in_request()
             except Exception as e:  # noqa
-                current_app.logger.warn(
+                current_app.logger.warning(
                     f"""Exception: {e}, occured when trying to
                     reach url: {request.url}, with view_args:
                     {request.view_args}, and args: {request.args}"""
@@ -160,7 +160,7 @@ def create_app() -> Flask:
                     ),
                 )
         except Exception as e:  # noqa
-            current_app.logger.warn(
+            current_app.logger.warning(
                 f"""Exception: {e}, occured when trying to
                 reach url: {request.url}, with view_args:
                 {request.view_args}, and args: {request.args}"""
