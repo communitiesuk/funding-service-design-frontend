@@ -71,7 +71,7 @@ def index_fund_only(fund_short_name):
                 f"/funding-round/{fund_short_name}/{default_round.short_name}"
             )
 
-        current_app.logger.warn(
+        current_app.logger.warning(
             f"Unable to retrieve default round for fund {fund_short_name}"
         )
     return (
