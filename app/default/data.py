@@ -97,11 +97,11 @@ def get_data_or_fail_gracefully(endpoint: str, params: dict = None):
         current_app.logger.info(f"Fetching data from '{endpoint}'.")
         response_status, data = get_remote_data_force_return(endpoint)
     if (data is None) or (response_status in [404, 500]):
-        current_app.logger.warn(
+        current_app.logger.warning(
             f"Data request failed, unable to recover: {endpoint}"
         )
-        current_app.logger.warn(f"Data retrieved: {data}")
-        current_app.logger.warn(
+        current_app.logger.warning(f"Data retrieved: {data}")
+        current_app.logger.warning(
             f"Service response status code: {response_status}"
         )
         return abort(404)
@@ -114,7 +114,7 @@ def get_remote_data(endpoint):
         data = response.json()
         return data, 200
     else:
-        current_app.logger.warn(
+        current_app.logger.warning(
             "GET remote data call was unsuccessful with status code:"
             f" {response.status_code}."
         )
@@ -289,7 +289,7 @@ def get_round_data_fail_gracefully(fund_id, round_id, use_short_name=False):
                 )
             return Round.from_dict(round_response)
     except:  # noqa
-        current_app.logger.warn(
+        current_app.logger.warning(
             f"Failed to retrieve round using fund_id {fund_id}, round_id"
             f" {round_id}, use_short_name={use_short_name}"
         )

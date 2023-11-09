@@ -21,7 +21,12 @@ if platform.system() == "Darwin":
 def mock_login(monkeypatch):
     monkeypatch.setattr(
         "fsd_utils.authentication.decorators._check_access_token",
-        lambda return_app: {"accountId": "test-user"},
+        lambda return_app: {
+            "accountId": "test-user",
+            "fullName": "Test User",
+            "email": "test-user@test.com",
+            "roles": [],
+        },
     )
 
 

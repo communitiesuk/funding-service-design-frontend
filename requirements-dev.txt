@@ -27,8 +27,11 @@ babel==2.10.3
     #   flask-babel
 bandit==1.7.4
     # via -r requirements-dev.in
-beautifulsoup4==4.11.1
-    # via -r requirements-dev.in
+beautifulsoup4==4.12.2
+    # via
+    #   -r requirements-dev.in
+    #   -r requirements.txt
+    #   funding-service-design-utils
 black==22.6.0
     # via -r requirements-dev.in
 blinker==1.5
@@ -146,7 +149,7 @@ flipper-client==1.3.1
     # via
     #   -r requirements.txt
     #   funding-service-design-utils
-funding-service-design-utils==2.0.5
+funding-service-design-utils==2.0.32
     # via -r requirements.txt
 gitdb==4.0.9
     # via gitpython
@@ -171,7 +174,7 @@ idna==3.3
     #   urllib3
 iniconfig==1.1.1
     # via pytest
-invoke==1.7.3
+invoke==2.2.0
     # via -r requirements-dev.in
 itsdangerous==2.1.2
     # via
@@ -200,6 +203,7 @@ markupsafe==2.1.1
     #   -r requirements.txt
     #   jinja2
     #   mako
+    #   sentry-sdk
     #   werkzeug
     #   wtforms
 mypy-extensions==0.4.3
@@ -343,7 +347,7 @@ selenium==4.2.0
     # via
     #   -r requirements-dev.in
     #   pytest-selenium
-sentry-sdk[flask]==1.9.9
+sentry-sdk[flask]==1.31.0
     # via
     #   -r requirements.txt
     #   funding-service-design-utils
@@ -364,8 +368,10 @@ sniffio==1.2.0
     # via trio
 sortedcontainers==2.4.0
     # via trio
-soupsieve==2.3.2.post1
-    # via beautifulsoup4
+soupsieve==2.5
+    # via
+    #   -r requirements.txt
+    #   beautifulsoup4
 sqlalchemy==2.0.9
     # via
     #   -r requirements.txt
