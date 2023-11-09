@@ -423,7 +423,7 @@ typing-extensions==4.5.0
     #   -r requirements.txt
     #   alembic
     #   sqlalchemy
-urllib3[secure,socks]==1.26.12
+urllib3[secure,socks]==1.26.18
     # via
     #   -r requirements.txt
     #   botocore
