@@ -31,7 +31,7 @@ beautifulsoup4==4.12.2
     #   -r requirements-dev.in
     #   -r requirements.txt
     #   funding-service-design-utils
-black==22.6.0
+black==23.11.0
     # via -r requirements-dev.in
 blinker==1.5
     # via
@@ -219,8 +219,9 @@ ordered-set==4.1.0
     # via deepdiff
 outcome==1.2.0
     # via trio
-packaging==21.3
+packaging==23.2
     # via
+    #   black
     #   build
     #   dparse
     #   pytest
@@ -259,8 +260,6 @@ pyjwt[crypto]==2.4.0
     #   pyjwt
 pyopenssl==22.0.0
     # via urllib3
-pyparsing==3.0.9
-    # via packaging
 pyscss==1.4.0
     # via -r requirements.txt
 pysocks==1.7.1
@@ -421,6 +420,7 @@ typing-extensions==4.5.0
     # via
     #   -r requirements.txt
     #   alembic
+    #   black
     #   sqlalchemy
 urllib3[secure,socks]==1.26.18
     # via
