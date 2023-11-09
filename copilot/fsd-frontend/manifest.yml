@@ -13,7 +13,7 @@ http:
   path: '/'
   # You can specify a custom health check path. The default is "/".
   healthcheck: '/healthcheck'
-  alias: frontend.test.access-funding.test.levellingup.gov.uk
+  alias: frontend.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk
 
 # Configuration for your containers and service.
 image:
@@ -59,7 +59,7 @@ variables:
   FUND_STORE_API_HOST: "http://fsd-fund-store:8080"
   NOTIFICATION_SERVICE_HOST: http://fsd-notification:8080
   REDIS_INSTANCE_URI:
-    from_cfn: ${COPILOT_APPLICATION_NAME}-${COPILOT_ENVIRONMENT_NAME}-RedisInstanceURI
+    from_cfn: ${COPILOT_APPLICATION_NAME}-${COPILOT_ENVIRONMENT_NAME}-MagicLinksRedisInstanceURI
 
 secrets:
   RSA256_PUBLIC_KEY_BASE64: /copilot/${COPILOT_APPLICATION_NAME}/${COPILOT_ENVIRONMENT_NAME}/secrets/RSA256_PUBLIC_KEY_BASE64
