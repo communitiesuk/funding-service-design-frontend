@@ -1,24 +1,25 @@
 #-----------------------------------
 #   FSD Utils
 #-----------------------------------
-funding-service-design-utils>=2.0.32,<2.1.0
+#funding-service-design-utils>=2.0.32,<2.1.0
+git+https://github.com/communitiesuk/funding-service-design-utils.git@temp-upgrade-flask
 requests
 
 #-----------------------------------
 #   Flask Version
 #-----------------------------------
-Flask==2.2.5
+Flask==3.0.0
 
 #-----------------------------------
 #   Security
 #-----------------------------------
-flask-talisman==0.8.1
+flask-talisman #==0.8.1
 
 #-----------------------------------
 #   Static Assets
 #-----------------------------------
-Flask-Assets==2.0
-Flask-Compress==1.14
+Flask-Assets>=2.1.0
+Flask-Compress #==1.14
 cssmin==0.2.0
 pyScss==1.4.0
 jsmin==3.0.1
@@ -27,12 +28,12 @@ govuk-frontend-jinja==2.7.0
 #-----------------------------------
 #   i18n
 #-----------------------------------
-Flask-Babel>=2.0.0
+Flask-Babel>=4.0.0 #>=2.0.0
 
 #-----------------------------------
 #   Forms
 #-----------------------------------
-Flask-WTF==1.2.0
+Flask-WTF #==1.2.0
 email-validator==1.2.1
 
 #-----------------------------------
