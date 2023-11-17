@@ -2,39 +2,141 @@
 <meta name="keywords" content="{{ service_title }}">
 <meta name="author" content="{{ service_meta_author }}">
 
-<!--[if gt IE 8]><!--><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='govuk-frontend-4.0.0.min.css') }}" /><!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='govuk-frontend-4.0.0.min.css') }}" />
+<!--<![endif]-->
 <!--[if IE 8]><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='govuk-frontend-ie8-4.0.0.min.css') }}" /><![endif]-->
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/tasklist.css') }}">
-
-<script>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/tasklist.css') }}">
+{% block bodyStart %}
+<div class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on Access Funding"
+    id="cookie-banner" hidden>
+    <div class="govuk-cookie-banner__message govuk-width-container" id="cookies-choice-msg">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on Access Funding</h2>
+                <div class="govuk-cookie-banner__content">
+                    <p class="govuk-body">We use some essential cookies to make this service work.</p>
+                    <p class="govuk-body">We'd also like to use analytics cookies so we can understand how you use the
+                        service and make improvements.</p>
+                </div>
+            </div>
+        </div>
+        <div class="govuk-button-group">
+            <button type="button" class="govuk-button" data-module="govuk-button" id="accept_cookies_btn">
+                Accept analytics cookies
+            </button>
+            <button type="button" class="govuk-button" data-module="govuk-button" id="deny_cookies_btn">
+                Reject analytics cookies
+            </button>
+            <a class="govuk-link" href="#">View cookies</a>
+        </div>
+    </div>
+    <div class="govuk-cookie-banner__message govuk-width-container" role="alert" id="cookies-accepted-msg" hidden>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <div class="govuk-cookie-banner__content">
+                    <p class="govuk-body">You've accepted analytics cookies. You can <a class="govuk-link"
+                            href="#">change your cookie settings</a> at any time.</p>
+                </div>
+            </div>
+        </div>
+        <div class="govuk-button-group">
+            <button type="button" class="govuk-button" data-module="govuk-button" name="cookies-hide-btn">
+                Hide cookie message
+            </button>
+        </div>
+    </div>
+    <div class="govuk-cookie-banner__message govuk-width-container" role="alert" id="cookies-rejected-msg" hidden>
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <div class="govuk-cookie-banner__content">
+                    <p class="govuk-body">You've rejected analytics cookies. You can <a class="govuk-link"
+                            href="#">change your cookie settings</a> at any time.</p>
+                </div>
+            </div>
+        </div>
+        <div class="govuk-button-group">
+            <button type="button" class="govuk-button" data-module="govuk-button" name="cookies-hide-btn">
+                Hide cookie message
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+<script nonce="{{ csp_nonce() }}">
+    console.debug("In inline script")
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments)}
+    function gtag() { dataLayer.push(arguments) }
 
-    if(localStorage.getItem('consentMode') === null) {
-        gtag('consent', 'default', {
-            'ad_storage': 'denied',
-            'analytics_storage': 'denied',
-            'personalisation_storage': 'denied',
-            'functionality_storage': 'denied',
-            'security_storage': 'denied',
-        });
-    } else {
-        gtag('consent', 'default', JSON.parse(localStorage.getItem('consentMode')));
+    DEFAULT_CONSENT = {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'personalisation_storage': 'denied',
+        'functionality_storage': 'denied',
+        'security_storage': 'denied'
     }
+
+    function initCookieState() {
+        localConsentMode = localStorage.getItem('consentMode');
+
+        if (localConsentMode === null) {
+            gtag('consent', 'default', DEFAULT_CONSENT);
+            document.getElementById("cookie-banner").removeAttribute("hidden");
+        }
+        else {
+            gtag('consent', 'default', JSON.parse(localStorage.getItem('consentMode')));
+        }
+        document.getElementById("accept_cookies_btn").addEventListener("click", acceptCookies);
+        document.getElementById("deny_cookies_btn").addEventListener("click", denyCookies);
+        document.getElementsByName("cookies-hide-btn").forEach(element => {
+            element.addEventListener("click", hideCookiesMessage);
+        });
+    }
+
+    function updateCookieConsent(newValue) {
+        gtag('consent', 'update', {
+            'analytics_storage': newValue
+        });
+        consentObj = {...DEFAULT_CONSENT}
+        consentObj.analytics_storage = newValue;
+        localStorage.setItem("consentMode", JSON.stringify(consentObj));
+
+    }
+
+    function acceptCookies() {
+        console.debug("Accepted cookies");
+        updateCookieConsent('granted');
+        document.getElementById("cookies-choice-msg").setAttribute("hidden", "true");
+        document.getElementById("cookies-accepted-msg").removeAttribute("hidden");
+    }
+
+    function denyCookies() {
+        console.debug("Rejected cookies");
+        updateCookieConsent('denied');
+        document.getElementById("cookies-choice-msg").setAttribute("hidden", "true");
+        document.getElementById("cookies-rejected-msg").removeAttribute("hidden");
+    }
+
+    function hideCookiesMessage(){
+        document.getElementById("cookie-banner").setAttribute("hidden", "true");
+    }
+
+    initCookieState();
+
 </script>
 <!-- Google Tag Manager -->
-<script>(function (w, d, s, l, i) {
-    w[l] = w[l] || [];
-    w[l].push({
-        'gtm.start':
-            new Date().getTime(), event: 'gtm.js'
-    });
-    var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-    j.async = true;
-    j.src =
-        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-    f.parentNode.insertBefore(j, f);
-})(window, document, 'script', 'dataLayer', 'GTM-M5J9Q8HV');
+<script nonce="{{ csp_nonce() }}">(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-M5J9Q8HV');
 </script>
 <!-- End Google Tag Manager -->
