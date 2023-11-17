@@ -45,39 +45,56 @@ network:
 #
 # Pass environment variables as key value pairs.
 variables:
-  SENTRY_DSN: "https://3c6d2fd1e3824aecb3826a7d640b29a9@o1432034.ingest.sentry.io/4503897449103360"
-  FLASK_ENV: ${COPILOT_ENVIRONMENT_NAME}
-  COOKIE_DOMAIN: ".test.levellingup.gov.uk"
-  APPLICANT_FRONTEND_HOST: "https://frontend.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk"
-  AUTHENTICATOR_HOST: "https://fsd:fsd@authenticator.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk" # pragma: allowlist secret
   ACCOUNT_STORE_API_HOST: "http://fsd-account-store:8080"
+  APPLICANT_FRONTEND_HOST: "https://frontend.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk"
   APPLICATION_STORE_API_HOST: "http://fsd-application-store:8080"
-
-  FORMS_SERVICE_PUBLIC_HOST: "https://fsd:fsd@forms.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk" #pragma: allowlist secret
-  FORMS_SERVICE_PRIVATE_HOST: "https://fsd:fsd@forms.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk" #pragma: allowlist secret
-
+  AUTHENTICATOR_HOST: "https://authenticator.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk"
+  COOKIE_DOMAIN: ".test.levellingup.gov.uk"
+  FLASK_ENV: ${COPILOT_ENVIRONMENT_NAME}
+  FORMS_SERVICE_PUBLIC_HOST: "https://forms.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk"
   FUND_STORE_API_HOST: "http://fsd-fund-store:8080"
   NOTIFICATION_SERVICE_HOST: http://fsd-notification:8080
   REDIS_INSTANCE_URI:
     from_cfn: ${COPILOT_APPLICATION_NAME}-${COPILOT_ENVIRONMENT_NAME}-MagicLinksRedisInstanceURI
+  SENTRY_DSN: "https://3c6d2fd1e3824aecb3826a7d640b29a9@o1432034.ingest.sentry.io/4503897449103360"
 
 secrets:
   RSA256_PUBLIC_KEY_BASE64: /copilot/${COPILOT_APPLICATION_NAME}/${COPILOT_ENVIRONMENT_NAME}/secrets/RSA256_PUBLIC_KEY_BASE64
 
 # You can override any of the values defined above by environment.
 environments:
-  # uat:
-    # http:
-    #   alias: frontend.uat.access-funding.test.levellingup.gov.uk
-  production:
-    http:
-      alias: frontend.access-funding.levellingup.gov.uk
-    variables:
-      COOKIE_DOMAIN: ".levellingup.gov.uk"
-      AUTHENTICATOR_HOST: "https://fsd:fsd@authenticator.access-funding.levellingup.gov.uk" #pragma: allowlist secret
-      APPLICANT_FRONTEND_HOST: "https://frontend.access-funding.levellingup.gov.uk"
-      ASSESSMENT_FRONTEND_HOST: "https://assessment.access-funding.levellingup.gov.uk"
-
   test:
     deployment:
       rolling: 'recreate'
+  uat:
+    count:
+      range: 2-4
+      cooldown:
+        in: 60s
+        out: 30s
+      cpu_percentage:
+        value: 70
+      memory_percentage:
+        value: 80
+      requests: 30
+      response_time: 2s
+  production:
+    http:
+      alias: frontend.production.access-funding.levellingup.gov.uk
+    variables:
+      COOKIE_DOMAIN: ".levellingup.gov.uk"
+      AUTHENTICATOR_HOST: "https://authenticator.production.access-funding.levellingup.gov.uk"
+      APPLICANT_FRONTEND_HOST: "https://frontend.production.access-funding.levellingup.gov.uk"
+      ASSESSMENT_FRONTEND_HOST: "https://assessment.production.access-funding.levellingup.gov.uk"
+      FORMS_SERVICE_PUBLIC_HOST: "https://forms.${COPILOT_ENVIRONMENT_NAME}.access-funding.levellingup.gov.uk"
+
+    count:
+      range: 2-4
+      cooldown:
+        in: 60s
+        out: 30s
+      cpu_percentage:
+        value: 70
+      memory_percentage:
+        value: 80
+      requests: 30
