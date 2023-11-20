@@ -27,7 +27,7 @@
             <button type="button" class="govuk-button" data-module="govuk-button" id="deny_cookies_btn">
                 {% trans %}Reject analytics cookies{% endtrans %}
             </button>
-            <a class="govuk-link" href="#">View cookies</a>
+            <a class="govuk-link" href="{{url_for('content_routes.cookie_policy')}}">View cookies</a>
         </div>
     </div>
     <div class="govuk-cookie-banner__message govuk-width-container" role="alert" id="cookies-accepted-msg" hidden>
@@ -35,7 +35,7 @@
             <div class="govuk-grid-column-two-thirds">
                 <div class="govuk-cookie-banner__content">
                     <p class="govuk-body">{% trans %}You've accepted analytics cookies. You can{% endtrans %} <a class="govuk-link"
-                            href="#">{% trans %}change your cookie settings{% endtrans %}</a> {% trans %}at any time.{% endtrans %}</p>
+                            href="{{url_for('content_routes.cookie_policy')}}">{% trans %}change your cookie settings{% endtrans %}</a> {% trans %}at any time.{% endtrans %}</p>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
             <div class="govuk-grid-column-two-thirds">
                 <div class="govuk-cookie-banner__content">
                     <p class="govuk-body">{% trans %}You've rejected analytics cookies. You can{% endtrans %} <a class="govuk-link"
-                            href="#">{% trans %}change your cookie settings{% endtrans %}</a> {% trans %}at any time.{% endtrans %}</p>
+                            href="{{url_for('content_routes.cookie_policy')}}">{% trans %}change your cookie settings{% endtrans %}</a> {% trans %}at any time.{% endtrans %}</p>
                 </div>
             </div>
         </div>
@@ -89,6 +89,7 @@
     }
 
     function updateCookieConsent(newValue) {
+        console.info("in update consent with value " + newValue);
         gtag('consent', 'update', {
             'analytics_storage': newValue
         });
