@@ -13,20 +13,19 @@
     <div class="govuk-cookie-banner__message govuk-width-container" id="cookies-choice-msg">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on Access Funding</h2>
+                <h2 class="govuk-cookie-banner__heading govuk-heading-m">{% trans %}Cookies on Access Funding{% endtrans %}</h2>
                 <div class="govuk-cookie-banner__content">
-                    <p class="govuk-body">We use some essential cookies to make this service work.</p>
-                    <p class="govuk-body">We'd also like to use analytics cookies so we can understand how you use the
-                        service and make improvements.</p>
+                    <p class="govuk-body">{% trans %}We use some essential cookies to make this service work.{% endtrans %}</p>
+                    <p class="govuk-body">{% trans %}We'd also like to use analytics cookies so we can understand how you use the service and make improvements.{% endtrans %}</p>
                 </div>
             </div>
         </div>
         <div class="govuk-button-group">
             <button type="button" class="govuk-button" data-module="govuk-button" id="accept_cookies_btn">
-                Accept analytics cookies
+                {% trans %}Accept analytics cookies{% endtrans %}
             </button>
             <button type="button" class="govuk-button" data-module="govuk-button" id="deny_cookies_btn">
-                Reject analytics cookies
+                {% trans %}Reject analytics cookies{% endtrans %}
             </button>
             <a class="govuk-link" href="#">View cookies</a>
         </div>
@@ -35,14 +34,14 @@
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                 <div class="govuk-cookie-banner__content">
-                    <p class="govuk-body">You've accepted analytics cookies. You can <a class="govuk-link"
-                            href="#">change your cookie settings</a> at any time.</p>
+                    <p class="govuk-body">{% trans %}You've accepted analytics cookies. You can{% endtrans %} <a class="govuk-link"
+                            href="#">{% trans %}change your cookie settings{% endtrans %}</a> {% trans %}at any time.{% endtrans %}</p>
                 </div>
             </div>
         </div>
         <div class="govuk-button-group">
             <button type="button" class="govuk-button" data-module="govuk-button" name="cookies-hide-btn">
-                Hide cookie message
+                {% trans %}Hide cookie message{% endtrans %}
             </button>
         </div>
     </div>
@@ -50,14 +49,14 @@
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                 <div class="govuk-cookie-banner__content">
-                    <p class="govuk-body">You've rejected analytics cookies. You can <a class="govuk-link"
-                            href="#">change your cookie settings</a> at any time.</p>
+                    <p class="govuk-body">{% trans %}You've rejected analytics cookies. You can{% endtrans %} <a class="govuk-link"
+                            href="#">{% trans %}change your cookie settings{% endtrans %}</a> {% trans %}at any time.{% endtrans %}</p>
                 </div>
             </div>
         </div>
         <div class="govuk-button-group">
             <button type="button" class="govuk-button" data-module="govuk-button" name="cookies-hide-btn">
-                Hide cookie message
+                {% trans %}Hide cookie message{% endtrans %}
             </button>
         </div>
     </div>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-24 12:15+0000\n"
+"POT-Creation-Date: 2023-11-20 12:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,7 +115,7 @@ msgstr ""
 msgid "How easy was it to understand the eligibility criteria for this fund?"
 msgstr ""
 
-#: app/forms/feedback_forms.py:156
+#: app/forms/feedback_forms.py:164
 msgid "Number of hours spent:"
 msgstr ""
 
@@ -418,6 +418,48 @@ msgid ""
 "applications through this service."
 msgstr ""
 
+#: app/templates/head.html:16
+msgid "Cookies on Access Funding"
+msgstr ""
+
+#: app/templates/head.html:18
+msgid "We use some essential cookies to make this service work."
+msgstr ""
+
+#: app/templates/head.html:19
+msgid ""
+"We'd also like to use analytics cookies so we can understand how you use "
+"the service and make improvements."
+msgstr ""
+
+#: app/templates/head.html:25
+msgid "Accept analytics cookies"
+msgstr ""
+
+#: app/templates/head.html:28
+msgid "Reject analytics cookies"
+msgstr ""
+
+#: app/templates/head.html:37
+msgid "You've accepted analytics cookies. You can"
+msgstr ""
+
+#: app/templates/head.html:38 app/templates/head.html:53
+msgid "change your cookie settings"
+msgstr ""
+
+#: app/templates/head.html:38 app/templates/head.html:53
+msgid "at any time."
+msgstr ""
+
+#: app/templates/head.html:44 app/templates/head.html:59
+msgid "Hide cookie message"
+msgstr ""
+
+#: app/templates/head.html:52
+msgid "You've rejected analytics cookies. You can"
+msgstr ""
+
 #: app/templates/header.html:34
 msgid "View all applications"
 msgstr ""
@@ -615,7 +657,7 @@ msgstr ""
 msgid "%(fund_title)s"
 msgstr ""
 
-#: app/templates/all_questions/en/cyp_r1_all_questions_en.html:12
+#: app/templates/all_questions/en/cyp_r1_all_questions_en.html:11
 #: app/templates/all_questions/en/dpif_r2_all_questions_en.html:11
 #, python-format
 msgid "%(round_title)s"
@@ -3426,3 +3468,4 @@ msgid ""
 "You must complete all other questions in this section before giving "
 "feedback"
 msgstr ""
+
