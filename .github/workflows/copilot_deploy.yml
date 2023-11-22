@@ -57,7 +57,6 @@ jobs:
 
   pre_deploy_tests:
     secrets:
-      E2E_PAT: ${{secrets.E2E_PAT}}
       GOV_NOTIFY_API_KEY: ${{secrets.GOV_NOTIFY_API_KEY}}
     uses: communitiesuk/funding-service-design-workflows/.github/workflows/pre-deploy.yml@main
     with:
