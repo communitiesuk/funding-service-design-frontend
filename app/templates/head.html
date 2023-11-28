@@ -27,7 +27,7 @@
             <button type="button" class="govuk-button" data-module="govuk-button" id="deny_cookies_btn">
                 {% trans %}Reject analytics cookies{% endtrans %}
             </button>
-            <a class="govuk-link" href="{{url_for('content_routes.cookie_policy')}}">View cookies</a>
+            <a class="govuk-link" href="{{url_for('content_routes.cookie_policy')}}">{% trans %}View cookies{% endtrans %}</a>
         </div>
     </div>
     <div class="govuk-cookie-banner__message govuk-width-container" role="alert" id="cookies-accepted-msg" hidden>
