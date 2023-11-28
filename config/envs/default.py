@@ -188,7 +188,7 @@ class DefaultConfig:
         "session_cookie_samesite": FSD_SESSION_COOKIE_SAMESITE,
         "x_content_type_options": True,
         "x_xss_protection": True,
-        "content_security_policy_nonce_in":['script-src'],
+        "content_security_policy_nonce_in": ["script-src"],
     }
 
     USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "False"))
