@@ -140,11 +140,11 @@
           }
         },
         "items": [
-          {"value":"granted", "text":"Yes"},{"value": "denied", "text":"No"}
+          {"value":"granted", "text":gettext("Yes")},{"value": "denied", "text":gettext("No")}
         ]})
       }}
       <button class="govuk-button" data-module="govuk-button" id="cookie-settings-save">
-        Save cookie settings
+        {% trans %}Save cookie settings{% endtrans %}
       </button>
     </div>
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-11-21 14:57+0000\n"
+"POT-Creation-Date: 2023-11-28 09:00+0000\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -289,6 +289,18 @@ msgstr "os oes gennych unrhyw gwestiynau."
 msgid "Do you want to accept analytics cookies?"
 msgstr "Ydych chi eisiau derbyn cwcis dadansoddeg?"
 
+#: app/templates/cookie_policy.html:143
+msgid "Yes"
+msgstr "Ydw"
+
+#: app/templates/cookie_policy.html:143
+msgid "No"
+msgstr "Nac ydw"
+
+#: app/templates/cookie_policy.html:147
+msgid "Save cookie settings"
+msgstr "Arbed gosodiadau cwcis"
+
 #: app/templates/dashboard_all.html:11
 msgid "All applications"
 msgstr "Eich ceisiadau"
@@ -461,7 +473,6 @@ msgstr ""
 "derbyn ceisiadau drwy'r gwasanaeth hon yn unig."
 
 #: app/templates/head.html:16
-#, fuzzy
 msgid "Cookies on Access Funding"
 msgstr "Cwcis ar Gyllid Mynediad"
 
@@ -485,25 +496,29 @@ msgstr "Derbyn cwcis dadansoddeg"
 msgid "Reject analytics cookies"
 msgstr "Gwrthod cwcis dadansoddeg"
 
+#: app/templates/head.html:30
+msgid "View cookies"
+msgstr "Gweld cwcis"
+
 #: app/templates/head.html:37
 msgid "You've accepted analytics cookies. You can"
-msgstr ""
+msgstr "Rydych wedi derbyn cwcis dadansoddeg. Gallwch"
 
 #: app/templates/head.html:38 app/templates/head.html:53
 msgid "change your cookie settings"
-msgstr ""
+msgstr "newid eich gosodiadau cwcis"
 
 #: app/templates/head.html:38 app/templates/head.html:53
 msgid "at any time."
-msgstr ""
+msgstr "unrhyw bryd."
 
 #: app/templates/head.html:44 app/templates/head.html:59
 msgid "Hide cookie message"
-msgstr ""
+msgstr "Cuddio'r neges ynghylch cwcis"
 
 #: app/templates/head.html:52
 msgid "You've rejected analytics cookies. You can"
-msgstr ""
+msgstr "Rydych wedi gwrthod cwcis dadansoddeg. Gallwch"
 
 #: app/templates/header.html:34
 msgid "View all applications"
