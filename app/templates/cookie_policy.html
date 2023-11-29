@@ -150,23 +150,16 @@
 
   </div>
 </div>
+<script nonce="{{ csp_nonce() }}" type="text/javascript" src="{{url_for('static', filename='js/fsd_cookies.js')}}"></script>
 <script nonce="{{ csp_nonce() }}">
 
    window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments) }
 
-  function saveAnalyticsPrefs(){
-    if(document.getElementById("cookies-analytics").checked == true){
-      updateCookieConsent('granted');
-    } else {
-      updateCookieConsent('denied');
-    }
-  }
-
   function initCookieRadios(){
-    localConsentMode = localStorage.getItem('consentMode');
+    localConsentMode = readConsentCookie();
     if (localConsentMode != null){
-      if (JSON.parse(localStorage.getItem('consentMode')).analytics_storage == 'granted'){
+      if (localConsentMode.analytics_storage == 'granted'){
         document.getElementById("cookies-analytics").checked = true;
       } else {
         document.getElementById("cookies-analytics-2").checked = true;
