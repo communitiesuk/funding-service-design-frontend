@@ -236,7 +236,10 @@ def tasklist(application_id):
         + sum(1 for f in current_feedback_list if f),
     }
 
-    if round_data.feedback_survey_config.has_feedback_survey:
+    if (
+        round_data.feedback_survey_config.has_feedback_survey
+        and not round_data.feedback_survey_config.is_feedback_survey_optional
+    ):
         application_meta_data["number_of_forms"] += 1
 
     app_guidance = None
