@@ -68,8 +68,6 @@ def build_assets():
     os.remove("./govuk_frontend.zip")
 
 
-
-
 if __name__ == "__main__":
 
     build_assets()
