@@ -12,7 +12,7 @@ from app.helpers import find_fund_in_request
 from config import Config
 from flask import current_app
 from flask import Flask
-from flask import make_response
+from flask import render_template, make_response
 from flask import request
 from flask import url_for
 from flask_babel import Babel
@@ -182,9 +182,12 @@ def create_app() -> Flask:
         return response
 
     @flask_app.before_request
-    def filter_favicon_requests():
+    def filter_all_requests():
         if request.path == "/favicon.ico":
             return make_response("404"), 404
+        
+        if not(request.path.endswith("js") or request.path.endswith("css")):
+            return render_template("system_unavailable.html")
 
     health = Healthcheck(flask_app)
     health.add_check(FlaskRunningChecker())
