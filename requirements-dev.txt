@@ -294,7 +294,7 @@ requests==2.31.0
     #   funding-service-design-utils
     #   python-consul
     #   requests-mock
-requests-mock==1.9.3
+requests-mock==1.11.0
     # via -r requirements-dev.in
 rich==12.4.4
     # via
