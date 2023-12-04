@@ -1,52 +1,41 @@
 
-DEFAULT_CONSENT = {
-    'analytics_storage': 'denied',
-}
-COOKIE_FSD_CONSENT = "fsd_cookie_consent";
+const DEFAULT_CONSENT = {'analytics_storage': 'denied'}
+const COOKIE_FSD_CONSENT = "fsd_cookie_consent";
 
 function readConsentCookie() {
-    cookies = document.cookie.split(";")
-    for (i=0; i<cookies.length; i++) {
-        let c = cookies[i];
-        if (c.split("=")[0].trim() == COOKIE_FSD_CONSENT){
-            let value = c.substring(c.indexOf("=")+1);
-            return JSON.parse(value);
-        }
-    }
-    return null;
+    const cookie = document.cookie.split(";").find(c => c.trim().startsWith(`${COOKIE_FSD_CONSENT}=`));
+    return cookie ? JSON.parse(atob(cookie.split("=")[1])) : null;
 }
 
-function updateCookieConsent(newValue) {
-    console.info("in update consent with value " + newValue);
-    gtag('consent', 'update', {
-        'analytics_storage': newValue
-    });
-    consentObj = {...DEFAULT_CONSENT}
-    consentObj.analytics_storage = newValue;
-    document.cookie = COOKIE_FSD_CONSENT + "=" + JSON.stringify(consentObj) + ";path=/";
-
+function updateCookieConsent(value) {
+    const consentObject = {'analytics_storage': value};
+    gtag('consent', 'update', consentObject);
+    document.cookie = `${COOKIE_FSD_CONSENT}=${btoa(JSON.stringify(consentObject))};path=/`;
 }
 
 function acceptCookies() {
-    console.debug("Accepted cookies");
     updateCookieConsent('granted');
     document.getElementById("cookies-choice-msg").setAttribute("hidden", "true");
     document.getElementById("cookies-accepted-msg").removeAttribute("hidden");
 }
 
 function denyCookies() {
-    console.debug("Rejected cookies");
     updateCookieConsent('denied');
     document.getElementById("cookies-choice-msg").setAttribute("hidden", "true");
     document.getElementById("cookies-rejected-msg").removeAttribute("hidden");
 }
 
-function hideCookiesMessage(){
+function hideCookiesMessage() {
     document.getElementById("cookie-banner").setAttribute("hidden", "true");
 }
 
+function unhideCookiesMessage() {
+    document.getElementById("cookie-banner").removeAttribute("hidden");
+}
+
+
 function saveAnalyticsPrefs(){
-  if(document.getElementById("cookies-analytics").checked == true){
+  if (document.getElementById("cookies-analytics").checked) {
     updateCookieConsent('granted');
     hideCookiesMessage();
   } else {

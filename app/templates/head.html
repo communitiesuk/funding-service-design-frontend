@@ -68,15 +68,15 @@
     function gtag() { dataLayer.push(arguments) }
 
     function initCookieState() {
-        localConsentMode = readConsentCookie();
+        const localConsentMode = readConsentCookie();
 
-        if (localConsentMode === null) {
+        if (!localConsentMode) {
             gtag('consent', 'default', DEFAULT_CONSENT);
-            document.getElementById("cookie-banner").removeAttribute("hidden");
-        }
-        else {
+            unhideCookiesMessage();
+        } else {
             gtag('consent', 'default', readConsentCookie());
         }
+
         document.getElementById("accept_cookies_btn").addEventListener("click", acceptCookies);
         document.getElementById("deny_cookies_btn").addEventListener("click", denyCookies);
         document.getElementsByName("cookies-hide-btn").forEach(element => {
@@ -85,7 +85,6 @@
     }
 
     initCookieState();
-
 </script>
 <!-- Google Tag Manager -->
 <script nonce="{{ csp_nonce() }}">(function (w, d, s, l, i) {
