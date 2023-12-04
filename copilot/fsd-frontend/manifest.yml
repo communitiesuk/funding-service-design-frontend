@@ -67,6 +67,8 @@ environments:
     deployment:
       rolling: 'recreate'
   uat:
+    http:
+      alias: ["frontend.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk", "frontenduat.access-funding.test.levellingup.gov.uk"]
     count:
       range: 2-4
       cooldown:
@@ -81,6 +83,7 @@ environments:
   production:
     http:
       alias: frontend.production.access-funding.levellingup.gov.uk
+      # alias: ["frontend.production.access-funding.test.levellingup.gov.uk", "frontend.access-funding.test.levellingup.gov.uk"] # For go live
     variables:
       COOKIE_DOMAIN: ".levellingup.gov.uk"
       AUTHENTICATOR_HOST: "https://authenticator.production.access-funding.levellingup.gov.uk"
