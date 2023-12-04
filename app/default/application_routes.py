@@ -142,6 +142,7 @@ def tasklist(application_id):
     Returns:
         function: a function which renders the tasklist template.
     """
+    current_app.logger.info(f"In tasklist for application {application_id}")
 
     application = get_application_data(application_id)
 
@@ -447,6 +448,7 @@ def section_feedback(application_id, section_id):
     existing_feedback = get_feedback(
         application_id, section_id, application.fund_id, application.round_id
     )
+    current_app.logger.info(f"Checked for existing feedback. Result: {existing_feedback}")
     if existing_feedback:
         abort(404)
 
@@ -454,6 +456,7 @@ def section_feedback(application_id, section_id):
     form.application_id.data = application_id
 
     if form.validate_on_submit():
+        current_app.logger.info("Validation successful, about to submit feedback")
         was_submitted = submit_feedback(
             application_id,
             form.more_detail.data,
@@ -462,15 +465,17 @@ def section_feedback(application_id, section_id):
             application.round_id,
             section_id,
         )
-
+        current_app.logger.info("Back in routes from submissions")
         if not was_submitted:
+            current_app.logger.info("Not submitted, sending 500")
             abort(500)
 
-        return redirect(
-            url_for(
-                "application_routes.tasklist", application_id=application_id
-            )
+        url = url_for(
+            "application_routes.tasklist", application_id=application_id
         )
+        current_app.logger.info(f"About to redirect to {url}")
+
+        return redirect(url)
 
     # # Note: If we ever allow upserts for feedback, we could use this to re-fill the form.
     # existing_feedback = get_feedback(application_id, section_id, application.fund_id, application.round_id)

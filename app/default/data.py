@@ -421,6 +421,7 @@ def get_default_round_for_fund(fund_short_name: str) -> Round:
 def submit_feedback(
     application_id, comment, rating, fund_id, round_id, section_id
 ):
+    current_app.logger.info("Constructing post_data for submit feedback")
     post_data = {
         "application_id": application_id,
         "feedback_json": {"comment": comment, "rating": rating},
@@ -430,11 +431,17 @@ def submit_feedback(
         "status": "COMPLETED",
     }
 
+    current_app.logger.info(f"Feedback post_data: {post_data}")
+
     feedback_response = requests.post(Config.FEEDBACK_ENDPOINT, json=post_data)
+    current_app.logger.info(f"Posted feedback, response code is {feedback_response.status_code}")
     if not feedback_response.ok:
+
+        current_app.logger.info("Feedback response not OK, returning None")
         return None
 
     json_response = feedback_response.json()
+    current_app.logger.info(f"Feedback response is {json_response}")
     return FeedbackSubmission.from_dict(json_response)
 
 
