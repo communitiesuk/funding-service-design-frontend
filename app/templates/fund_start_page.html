@@ -1,5 +1,3 @@
-{% from "partials/migration_banner.html" import migration_banner}
-
 {% extends "base.html" %}
 {% set pageHeading %}
 {% trans %}Start or continue an application for{% endtrans %} {{fund_title}}
@@ -8,6 +6,7 @@
     -%} {%- from "govuk_frontend_jinja/components/button/macro.html" import
     govukButton -%} {% from "partials/available_in_language.html" import available_in_language %}
 {% from "partials/round_closed_warning.html" import round_closed_warning %}
+{% from "partials/migration_banner.html" import migration_banner %}
  {% block content %}
     {% if migration_banner_enabled %}
         <div class="govuk-grid-row">
