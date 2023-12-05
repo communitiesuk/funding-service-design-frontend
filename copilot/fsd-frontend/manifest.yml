@@ -67,6 +67,8 @@ environments:
     deployment:
       rolling: 'recreate'
   uat:
+    http:
+      alias: ["frontend.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk", "frontenduat.access-funding.test.levellingup.gov.uk"]
     count:
       range: 2-4
       cooldown:
@@ -78,16 +80,17 @@ environments:
         value: 80
       requests: 30
       response_time: 2s
-  production:
+  prod:
     http:
-      alias: frontend.production.access-funding.levellingup.gov.uk
+      alias: frontend.prod.access-funding.levellingup.gov.uk
+      # alias: ["frontend.prod.access-funding.test.levellingup.gov.uk", "frontend.access-funding.test.levellingup.gov.uk"] # For go live
     variables:
       COOKIE_DOMAIN: ".levellingup.gov.uk"
-      AUTHENTICATOR_HOST: "https://authenticator.production.access-funding.levellingup.gov.uk"
-      APPLICANT_FRONTEND_HOST: "https://frontend.production.access-funding.levellingup.gov.uk"
-      ASSESSMENT_FRONTEND_HOST: "https://assessment.production.access-funding.levellingup.gov.uk"
+      AUTHENTICATOR_HOST: "https://authenticator.prod.access-funding.levellingup.gov.uk"
+      APPLICANT_FRONTEND_HOST: "https://frontend.prod.access-funding.levellingup.gov.uk"
+      ASSESSMENT_FRONTEND_HOST: "https://assessment.prod.access-funding.levellingup.gov.uk"
       FORMS_SERVICE_PUBLIC_HOST: "https://forms.${COPILOT_ENVIRONMENT_NAME}.access-funding.levellingup.gov.uk"
-
+      FLASK_ENV: production
     count:
       range: 2-4
       cooldown:
