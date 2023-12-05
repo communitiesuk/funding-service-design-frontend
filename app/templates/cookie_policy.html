@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 
 {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText -%}
+{% from "partials/migration_banner.html" import migration_banner %}
 {% set pageHeading %}Cookies{% endset %}
 {% block content %}
+
     <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    {% if migration_banner_enabled %}
+      {{migration_banner()}}
+    {% endif %}
     <h1 class="govuk-heading-l">{{pageHeading}}</h1>
     <p class="govuk-body">
         Cookies are small files saved on your phone, tablet or computer when you visit a website.

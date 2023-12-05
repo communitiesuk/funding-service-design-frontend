@@ -267,6 +267,7 @@ def tasklist(application_id):
             application_guidance=app_guidance,
             existing_feedback_map=existing_feedback_map,
             feedback_survey_data=feedback_survey_data,
+            migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
         )
 
 
@@ -367,6 +368,7 @@ def submit_application():
             fund_name=fund_data.name,
             fund_short_name=fund_data.short_name,
             round_short_name=round_data.short_name,
+            migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
         )
 
 
@@ -483,6 +485,7 @@ def section_feedback(application_id, section_id):
         section=section,
         form=form,
         application_id=application_id,
+        migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
     )
 
 
@@ -560,6 +563,7 @@ def round_feedback(application_id, page_number):
         template,
         form=form,
         application_id=application_id,
+        migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
     )
 
 
@@ -594,4 +598,5 @@ def round_feedback_intro(application_id):
     return render_template(
         "end_of_application_survey.html",
         application_id=application.id,
+        migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
     )

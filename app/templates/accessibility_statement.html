@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 {% set pageHeading %}{% trans %}Accessibility statement{% endtrans %}{% endset %}
 {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText -%}
+{% from "partial/migration_banner.html" import migration_banner %}
 
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
+            {% if migration_banner_enabled %}
+                {{migration_banner()}}
+            {% endif %}
             <h1 class="govuk-heading-xl">{{ pageHeading }}</h1>
             <p class="govuk-body">{% trans %}The Department for Levelling Up, Housing and Communities is committed to making our online services accessible to all users by meeting{% endtrans %} <a
                         href="https://www.gov.uk/guidance/accessibility-requirements-for-public-sector-websites-and-apps"
