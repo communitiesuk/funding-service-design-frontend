@@ -2,6 +2,7 @@ from app.helpers import find_fund_and_round_in_request
 from app.helpers import find_round_in_request
 from app.helpers import get_fund_and_round
 from app.models.fund import Fund
+from config import Config
 from flask import abort
 from flask import Blueprint
 from flask import current_app
@@ -19,7 +20,10 @@ content_bp = Blueprint("content_routes", __name__, template_folder="templates")
 @content_bp.route("/accessibility_statement", methods=["GET"])
 def accessibility_statement():
     current_app.logger.info("Accessibility statement page loaded.")
-    return render_template("accessibility_statement.html")
+    return render_template(
+        "accessibility_statement.html",
+        migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
+    )
 
 
 def determine_all_questions_template_name(
@@ -78,6 +82,7 @@ def all_questions(fund_short_name, round_short_name):
                 template_name,
                 fund_title=fund.name,
                 round_title=round.title,
+                migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
             )
         except TemplateNotFound:
             current_app.logger.warning(
@@ -107,13 +112,17 @@ def contact_us():
         "contact_us.html",
         round_data=round,
         fund_name=fund_name,
+        migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
     )
 
 
 @content_bp.route("/cookie_policy", methods=["GET"])
 def cookie_policy():
     current_app.logger.info("Cookie policy page loaded.")
-    return render_template("cookie_policy.html")
+    return render_template(
+        "cookie_policy.html",
+        migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
+    )
 
 
 @content_bp.route("/privacy", methods=["GET"])
