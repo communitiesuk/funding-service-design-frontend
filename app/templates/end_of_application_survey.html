@@ -24,7 +24,7 @@
                 can improve our application forms. Your responses will not be scored.{% endtrans %}</p>
 
             <a href="{{ url_for("application_routes.round_feedback", application_id=application_id, page_number=1) }}" role="button"
-               draggable="false" class="govuk-button"
+               draggable="false" class="govuk-button" data-qa="feedback_continue"
                data-module="govuk-button">
                {% trans %}Continue{% endtrans %}
             </a>
