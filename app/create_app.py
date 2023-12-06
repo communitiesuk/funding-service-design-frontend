@@ -13,6 +13,7 @@ from config import Config
 from flask import current_app
 from flask import Flask
 from flask import make_response
+from flask import render_template
 from flask import request
 from flask import url_for
 from flask_babel import Babel
@@ -82,9 +83,14 @@ def create_app() -> Flask:
     from app.default.application_routes import application_bp
     from app.default.content_routes import content_bp
     from app.default.account_routes import account_bp
-    from app.default.error_routes import not_found, internal_server_error
+    from app.default.error_routes import (
+        not_found,
+        error_503,
+        internal_server_error,
+    )
 
     flask_app.register_error_handler(404, not_found)
+    flask_app.register_error_handler(503, error_503)
     flask_app.register_error_handler(500, internal_server_error)
     flask_app.register_blueprint(default_bp)
     flask_app.register_blueprint(application_bp)
@@ -188,6 +194,19 @@ def create_app() -> Flask:
 
     health = Healthcheck(flask_app)
     health.add_check(FlaskRunningChecker())
+
+    @flask_app.before_request
+    def check_for_maintenance():
+        if flask_app.config.get("MAINTENANCE_MODE"):
+            return (
+                render_template(
+                    "maintenance.html",
+                    maintenance_end_time=flask_app.config.get(
+                        "MAINTENANCE_END_TIME"
+                    ),
+                ),
+                503,
+            )
 
     return flask_app
 
