@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-10-24 12:15+0000\n"
+"POT-Creation-Date: 2023-11-28 09:00+0000\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -119,7 +119,7 @@ msgstr "Anghytuno’n gryf"
 msgid "How easy was it to understand the eligibility criteria for this fund?"
 msgstr "Pa mor hawdd oedd deall y meini prawf cymhwysedd ar gyfer y gronfa hon?"
 
-#: app/forms/feedback_forms.py:156
+#: app/forms/feedback_forms.py:164
 msgid "Number of hours spent:"
 msgstr "Nifer yr oriau a dreuliwyd:"
 
@@ -284,6 +284,22 @@ msgstr "os oes gennych unrhyw gwestiynau."
 #, fuzzy
 msgid "Contact us if you have any questions."
 msgstr "os oes gennych unrhyw gwestiynau."
+
+#: app/templates/cookie_policy.html:130
+msgid "Do you want to accept analytics cookies?"
+msgstr "Ydych chi eisiau derbyn cwcis dadansoddeg?"
+
+#: app/templates/cookie_policy.html:143
+msgid "Yes"
+msgstr "Ydw"
+
+#: app/templates/cookie_policy.html:143
+msgid "No"
+msgstr "Nac ydw"
+
+#: app/templates/cookie_policy.html:147
+msgid "Save cookie settings"
+msgstr "Arbed gosodiadau cwcis"
 
 #: app/templates/dashboard_all.html:11
 msgid "All applications"
@@ -455,6 +471,54 @@ msgid ""
 msgstr ""
 "Peidwch ag anfon unrhyw geisadau neu atodiadau dros e-bost. Byddwn yn "
 "derbyn ceisiadau drwy'r gwasanaeth hon yn unig."
+
+#: app/templates/head.html:16
+msgid "Cookies on Access Funding"
+msgstr "Cwcis ar Gyllid Mynediad"
+
+#: app/templates/head.html:18
+msgid "We use some essential cookies to make this service work."
+msgstr "Rydym yn defnyddio rhai cwcis hanfodol i wneud i'r gwasanaeth hwn weithio."
+
+#: app/templates/head.html:19
+msgid ""
+"We'd also like to use analytics cookies so we can understand how you use "
+"the service and make improvements."
+msgstr ""
+"Hoffem ddefnyddio cwcis dadansoddeg hefyd fel y gallwn ddeall sut rydych "
+"yn defnyddio'r gwasanaeth a gwneud gwelliannau."
+
+#: app/templates/head.html:25
+msgid "Accept analytics cookies"
+msgstr "Derbyn cwcis dadansoddeg"
+
+#: app/templates/head.html:28
+msgid "Reject analytics cookies"
+msgstr "Gwrthod cwcis dadansoddeg"
+
+#: app/templates/head.html:30
+msgid "View cookies"
+msgstr "Gweld cwcis"
+
+#: app/templates/head.html:37
+msgid "You've accepted analytics cookies. You can"
+msgstr "Rydych wedi derbyn cwcis dadansoddeg. Gallwch"
+
+#: app/templates/head.html:38 app/templates/head.html:53
+msgid "change your cookie settings"
+msgstr "newid eich gosodiadau cwcis"
+
+#: app/templates/head.html:38 app/templates/head.html:53
+msgid "at any time."
+msgstr "unrhyw bryd."
+
+#: app/templates/head.html:44 app/templates/head.html:59
+msgid "Hide cookie message"
+msgstr "Cuddio'r neges ynghylch cwcis"
+
+#: app/templates/head.html:52
+msgid "You've rejected analytics cookies. You can"
+msgstr "Rydych wedi gwrthod cwcis dadansoddeg. Gallwch"
 
 #: app/templates/header.html:34
 msgid "View all applications"
@@ -649,7 +713,9 @@ msgid ""
 " This section\n"
 "                                    is optional and should take "
 "approximately 1 minute to complete."
-msgstr "Mae’n rhaid i chi gwblhau pob adran arall cyn dechrau’r arolwg adborth. Fe ddylai gymryd tua 1 funud i gwblhau’r adran hon."
+msgstr ""
+"Mae’n rhaid i chi gwblhau pob adran arall cyn dechrau’r arolwg adborth. "
+"Fe ddylai gymryd tua 1 funud i gwblhau’r adran hon."
 
 #: app/templates/tasklist.html:154
 msgid ""
@@ -657,7 +723,9 @@ msgid ""
 "survey. This section\n"
 "                                    should take approximately 1 minute to"
 " complete."
-msgstr "Mae’n rhaid i chi gwblhau pob adran arall cyn dechrau’r arolwg adborth. Fe ddylai gymryd tua 1 funud i gwblhau’r adran hon."
+msgstr ""
+"Mae’n rhaid i chi gwblhau pob adran arall cyn dechrau’r arolwg adborth. "
+"Fe ddylai gymryd tua 1 funud i gwblhau’r adran hon."
 
 #: app/templates/partials/tasklist_section.html:48
 #: app/templates/tasklist.html:165
@@ -683,7 +751,7 @@ msgstr "O restr lawn cwestiynau'r cais"
 msgid "%(fund_title)s"
 msgstr ""
 
-#: app/templates/all_questions/en/cyp_r1_all_questions_en.html:12
+#: app/templates/all_questions/en/cyp_r1_all_questions_en.html:11
 #: app/templates/all_questions/en/dpif_r2_all_questions_en.html:11
 #, python-format
 msgid "%(round_title)s"
@@ -3812,7 +3880,8 @@ msgid ""
 "You must complete all other questions in this section before giving "
 "feedback"
 msgstr ""
-"Mae’n rhaid i chi gwblhau pob adran arall cyn dechrau’r arolwg adborth. Fe ddylai gymryd tua 1 funud i gwblhau’r adran hon."
+"Mae’n rhaid i chi gwblhau pob adran arall cyn dechrau’r arolwg adborth. "
+"Fe ddylai gymryd tua 1 funud i gwblhau’r adran hon."
 
 #~ msgid "English"
 #~ msgstr "Saesneg"
