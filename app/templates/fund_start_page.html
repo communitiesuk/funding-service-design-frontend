@@ -41,9 +41,15 @@
                 <strong>{% trans %}Submission deadline: {% endtrans %}</strong> {{
                 submission_deadline|datetime_format }}
             </p>
-            {% endif %} {{ govukButton({"isStartButton": True, "href" : service_url,
-            "text": gettext("Enter your email address")}) }} {% if
-            contact_us_email_address|length %}
+            {% endif %}
+            <div data-qa="enter_your_email_address">
+            {{ govukButton({
+                "isStartButton": True,
+                "href" : service_url,
+                "text": gettext("Enter your email address")
+            }) }}
+            </div>
+            {% if contact_us_email_address|length %}
             <h2 class="govuk-heading-m">{% trans%}Get help {% endtrans %}</h2>
             <p class="govuk-body">
                 {% trans %}If you need help, email us at{% endtrans %}
