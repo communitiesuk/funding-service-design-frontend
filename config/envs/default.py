@@ -206,3 +206,5 @@ class DefaultConfig:
 
     # LRU cache settings
     LRU_CACHE_TIME = int(environ.get("LRU_CACHE_TIME", 3600))  # in seconds
+
+    MIGRATION_BANNER_ENABLED = True

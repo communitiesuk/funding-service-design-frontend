@@ -5,12 +5,20 @@
 {% from "partials/available_in_language.html" import available_in_language %}
 {% from "partials/round_closed_warning.html" import round_closed_warning %}
 {% from "partials/applications_table.html" import applications_table %}
+{% from "partials/migration_banner.html" import migration_banner %}
 
 {% extends "base.html" %}
 {% set pageHeading %}
 {% trans %}All applications{% endtrans %}
 {% endset %}
 {% block content %}
+        {% if migration_banner_enabled %}
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                    {{migration_banner()}}
+                </div>
+            </div>
+        {% endif %}
     <h1 class="govuk-heading-xl">{{ pageHeading }}</h1>
     <p class="govuk-body">
         {% set application_count=display_data["total_applications_to_display"]%}
