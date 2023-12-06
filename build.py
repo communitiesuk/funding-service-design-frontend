@@ -48,7 +48,7 @@ def build_assets():
     for file_to_move in os.listdir("./app/static/assets"):
         shutil.move("./app/static/assets/" + file_to_move, "app/static")
 
-    print("Deleting app/static/assets")
+    print("Copying css and js from static/src")
 
     # Copy css
     os.makedirs("./app/static/styles")
@@ -56,6 +56,13 @@ def build_assets():
         "static/src/styles/tasklist.css", "./app/static/styles/tasklist.css"
     )
 
+    # Copy over JS source
+    os.makedirs("./app/static/js")
+    shutil.copyfile(
+        "static/src/js/fsd_cookies.js", "./app/static/js/fsd_cookies.js"
+    )
+
+    print("Deleting temp files")
     # Deletes temp. files.
     shutil.rmtree("./app/static/assets")
     os.remove("./govuk_frontend.zip")
