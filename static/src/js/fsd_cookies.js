@@ -8,11 +8,12 @@ function readConsentCookie() {
 }
 
 function updateCookieConsent(value) {
-    const consentObject = {'analytics_storage': value};
-    gtag('consent', 'update', consentObject);
-    document.cookie = `${COOKIE_FSD_CONSENT}=${btoa(JSON.stringify(consentObject))};path=/`;
+    const consentObject = { 'analytics_storage': value };
+    const currentDomain = window.location.hostname;
+    const slice = currentDomain.includes("access-funding") ? -4 : -3;
+    const targetDomain = currentDomain.split('.').slice(slice).join('.');
+    document.cookie = `${COOKIE_FSD_CONSENT}=${btoa(JSON.stringify(consentObject))};path=` + "/" + `;domain=${targetDomain};secure;SameSite=None`;
 }
-
 function acceptCookies() {
     updateCookieConsent('granted');
     document.getElementById("cookies-choice-msg").setAttribute("hidden", "true");
