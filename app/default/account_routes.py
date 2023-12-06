@@ -198,6 +198,7 @@ def dashboard():
         fund_short_name=fund_short_name,
         round_short_name=round_short_name,
         welsh_available=welsh_available,
+        migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
     )
 
 

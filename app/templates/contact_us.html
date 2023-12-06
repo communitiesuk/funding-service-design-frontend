@@ -3,10 +3,14 @@
 {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText -%}
 {%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
 {% from "partials/contact_details.html" import contact_details %}
+{% from "partials/migration_banner.html" import migration_banner %}
 {% set pageHeading %}{% trans %}Contact us{% endtrans %}{% endset %}
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
+            {% if migration_banner_enabled %}
+                {{migration_banner()}}
+            {% endif %}
             <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
             {% if fund_name %}
                 <p class="govuk-body">{% trans %}Contact the{% endtrans %} {{fund_name}} {% trans %}if you have any questions.{% endtrans %}</p>
