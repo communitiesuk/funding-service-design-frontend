@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% from "partials/feedback_error_summary.html" import feedback_error_summary %}
-
+{% from "partials/migration_banner.html" import migration_banner %}
 
 {% block beforeContent %}
     <a href="{{ url_for("application_routes.tasklist", application_id=application_id) }}"
@@ -11,9 +11,12 @@
     {% if form.errors.get('overall_application_experience') %}
         {{  feedback_error_summary(form.errors.get('overall_application_experience')[0], "#overall_application_experience") }}
     {% endif %}
+
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-
+            {% if migration_banner_enabled %}
+                {{migration_banner()}}
+            {% endif %}
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
                     <span class="govuk-caption-l">{% trans %}Applicant feedback survey{% endtrans %}</span>
