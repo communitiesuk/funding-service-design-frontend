@@ -440,6 +440,7 @@ def section_feedback_intro(application_id, section_id):
         dashboard_url="",
         application_id=application_id,
         section=section,
+        migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
     )
 
 
