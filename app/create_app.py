@@ -185,8 +185,14 @@ def create_app() -> Flask:
     @flask_app.before_request
     def filter_all_requests():
         if flask_app.config.get("MAINTENANCE_MODE") and not (
-            request.path.endswith("js") or request.path.endswith("css")
+            request.path.endswith("js")
+            or request.path.endswith("css")
+            or request.path.endswith("/healthcheck")
         ):
+            current_app.logger.warning(
+                f"""Application is in the Maintenance mode
+                reach url: {request.url}"""
+            )
             return (
                 render_template(
                     "maintenance.html",
