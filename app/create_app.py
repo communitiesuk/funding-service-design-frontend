@@ -200,8 +200,10 @@ def create_app() -> Flask:
         if request.path == "/favicon.ico":
             return make_response("404"), 404
 
-    health = Healthcheck(flask_app)
-    health.add_check(FlaskRunningChecker())
+    # Disable health checks in maintenance mode
+    if not flask_app.config.get("MAINTENANCE_MODE"):
+        health = Healthcheck(flask_app)
+        health.add_check(FlaskRunningChecker())
 
     return flask_app
 
