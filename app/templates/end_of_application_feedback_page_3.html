@@ -14,11 +14,7 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             {% if migration_banner_enabled %}
-                <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-two-thirds">
-                        {{migration_banner()}}
-                    </div>
-                </div>
+                {{migration_banner()}}
             {% endif %}
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
