@@ -83,14 +83,9 @@ def create_app() -> Flask:
     from app.default.application_routes import application_bp
     from app.default.content_routes import content_bp
     from app.default.account_routes import account_bp
-    from app.default.error_routes import (
-        not_found,
-        error_503,
-        internal_server_error,
-    )
+    from app.default.error_routes import not_found, internal_server_error
 
     flask_app.register_error_handler(404, not_found)
-    flask_app.register_error_handler(503, error_503)
     flask_app.register_error_handler(500, internal_server_error)
     flask_app.register_blueprint(default_bp)
     flask_app.register_blueprint(application_bp)
@@ -188,16 +183,10 @@ def create_app() -> Flask:
         return response
 
     @flask_app.before_request
-    def filter_favicon_requests():
-        if request.path == "/favicon.ico":
-            return make_response("404"), 404
-
-    health = Healthcheck(flask_app)
-    health.add_check(FlaskRunningChecker())
-
-    @flask_app.before_request
-    def check_for_maintenance():
-        if flask_app.config.get("MAINTENANCE_MODE"):
+    def filter_all_requests():
+        if flask_app.config.get("MAINTENANCE_MODE") and not (
+            request.path.endswith("js") or request.path.endswith("css")
+        ):
             return (
                 render_template(
                     "maintenance.html",
@@ -207,6 +196,12 @@ def create_app() -> Flask:
                 ),
                 503,
             )
+
+        if request.path == "/favicon.ico":
+            return make_response("404"), 404
+
+    health = Healthcheck(flask_app)
+    health.add_check(FlaskRunningChecker())
 
     return flask_app
 
