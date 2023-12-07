@@ -13,6 +13,7 @@ from config import Config
 from flask import current_app
 from flask import Flask
 from flask import make_response
+from flask import render_template
 from flask import request
 from flask import url_for
 from flask_babel import Babel
@@ -182,7 +183,20 @@ def create_app() -> Flask:
         return response
 
     @flask_app.before_request
-    def filter_favicon_requests():
+    def filter_all_requests():
+        if flask_app.config.get("MAINTENANCE_MODE") and not (
+            request.path.endswith("js") or request.path.endswith("css")
+        ):
+            return (
+                render_template(
+                    "maintenance.html",
+                    maintenance_end_time=flask_app.config.get(
+                        "MAINTENANCE_END_TIME"
+                    ),
+                ),
+                503,
+            )
+
         if request.path == "/favicon.ico":
             return make_response("404"), 404
 
