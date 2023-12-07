@@ -1,3 +1,5 @@
+{% from "partials/migration_banner.html" import migration_banner %}
+
 {% extends "base.html" %}
 
 {% block beforeContent %}
@@ -6,6 +8,13 @@
 {% endblock %}
 
 {% block content %}
+    {% if migration_banner_enabled %}
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                {{migration_banner()}}
+            </div>
+        </div>
+    {% endif %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
@@ -20,7 +29,8 @@
                role="button"
                draggable="false"
                class="govuk-button"
-               data-module="govuk-button">
+               data-module="govuk-button"
+               data-qa="continue_feedback_intro">
                {% trans %}Continue{% endtrans %}
             </a>
         </div>

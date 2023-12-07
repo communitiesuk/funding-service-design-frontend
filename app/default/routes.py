@@ -54,6 +54,7 @@ def index_fund_round(fund_short_name, round_short_name):
         prospectus_link=round_data.prospectus,
         instruction_text=round_data.instructions,
         welsh_available=fund_data.welsh_available,
+        migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
     )
 
 

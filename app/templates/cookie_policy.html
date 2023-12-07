@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 
 {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText -%}
+{% from "partials/migration_banner.html" import migration_banner %}
+{%- from "govuk_frontend_jinja/components/radios/macro.html" import govukRadios %}
 {% set pageHeading %}Cookies{% endset %}
 {% block content %}
+
     <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    {% if migration_banner_enabled %}
+      {{migration_banner()}}
+    {% endif %}
     <h1 class="govuk-heading-l">{{pageHeading}}</h1>
     <p class="govuk-body">
         Cookies are small files saved on your phone, tablet or computer when you visit a website.
@@ -124,7 +130,51 @@
         </tr>
       </tbody>
     </table>
+    <div class="govuk-body" id="cookie-settings">
+      {% set translated_text %}
+        {%trans%}Do you want to accept analytics cookies?{% endtrans %}
+      {% endset %}
+      {{ govukRadios({
+        "id": "cookies-analytics",
+        "name": "cookies-analytics",
+        "fieldset": {
+        "legend": {
+            "text": translated_text,
+            "isPageHeading": false,
+            "classes": "govuk-fieldset__legend--s"
+          }
+        },
+        "items": [
+          {"value":"granted", "text":gettext("Yes")},{"value": "denied", "text":gettext("No")}
+        ]})
+      }}
+      <button class="govuk-button" data-module="govuk-button" id="cookie-settings-save">
+        {% trans %}Save cookie settings{% endtrans %}
+      </button>
+    </div>
 
   </div>
 </div>
+<script nonce="{{ csp_nonce() }}" type="text/javascript" src="{{url_for('static', filename='js/fsd_cookies.js')}}"></script>
+<script nonce="{{ csp_nonce() }}">
+
+   window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments) }
+
+  function initCookieRadios(){
+    localConsentMode = readConsentCookie();
+    if (localConsentMode != null){
+      if (localConsentMode.analytics_storage == 'granted'){
+        document.getElementById("cookies-analytics").checked = true;
+      } else {
+        document.getElementById("cookies-analytics-2").checked = true;
+      }
+    }
+
+    document.getElementById("cookie-settings-save").addEventListener("click", saveAnalyticsPrefs);
+
+  }
+
+  initCookieRadios();
+</script>
 {% endblock %}

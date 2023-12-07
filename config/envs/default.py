@@ -185,13 +185,14 @@ class DefaultConfig:
         "content_security_policy": SECURE_CSP,
         "content_security_policy_report_uri": None,
         "content_security_policy_report_only": False,
-        "content_security_policy_nonce_in": None,
+        # "content_security_policy_nonce_in": None,
         "referrer_policy": FSD_REFERRER_POLICY,
         "session_cookie_secure": True,
         "session_cookie_http_only": True,
         "session_cookie_samesite": FSD_SESSION_COOKIE_SAMESITE,
         "x_content_type_options": True,
         "x_xss_protection": True,
+        "content_security_policy_nonce_in": ["script-src"],
     }
 
     USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "False"))
@@ -209,3 +210,5 @@ class DefaultConfig:
 
     # LRU cache settings
     LRU_CACHE_TIME = int(environ.get("LRU_CACHE_TIME", 3600))  # in seconds
+
+    MIGRATION_BANNER_ENABLED = True
