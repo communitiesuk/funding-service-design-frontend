@@ -113,11 +113,3 @@ def csrf_token_expiry(error):
     stack_trace = traceback.format_exc()
     current_app.logger.error(f"{error_message}\n{stack_trace}")
     return render_template("500.html"), 500
-
-
-@application_bp.errorhandler(503)
-@content_bp.errorhandler(503)
-@default_bp.errorhandler(503)
-@account_bp.errorhandler(503)
-def error_503(error):
-    return render_template("maintenance.html"), 503
