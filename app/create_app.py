@@ -123,7 +123,9 @@ def create_app() -> Flask:
     @flask_app.context_processor
     def inject_service_name():
         fund = None
-        if request.view_args or request.args or request.form:
+        if (
+            request.view_args or request.args or request.form
+        ) and not flask_app.config.get("MAINTENANCE_MODE"):
             try:
                 fund = find_fund_in_request()
             except Exception as e:  # noqa
@@ -140,32 +142,33 @@ def create_app() -> Flask:
 
     @flask_app.context_processor
     def inject_content_urls():
-        try:
-            fund, round = find_fund_and_round_in_request()
-            if fund and round:
-                return dict(
-                    contact_us_url=url_for(
-                        "content_routes.contact_us",
-                        fund=fund.short_name,
-                        round=round.short_name,
-                    ),
-                    privacy_url=url_for(
-                        "content_routes.privacy",
-                        fund=fund.short_name,
-                        round=round.short_name,
-                    ),
-                    feedback_url=url_for(
-                        "content_routes.feedback",
-                        fund=fund.short_name,
-                        round=round.short_name,
-                    ),
+        if not flask_app.config.get("MAINTENANCE_MODE"):
+            try:
+                fund, round = find_fund_and_round_in_request()
+                if fund and round:
+                    return dict(
+                        contact_us_url=url_for(
+                            "content_routes.contact_us",
+                            fund=fund.short_name,
+                            round=round.short_name,
+                        ),
+                        privacy_url=url_for(
+                            "content_routes.privacy",
+                            fund=fund.short_name,
+                            round=round.short_name,
+                        ),
+                        feedback_url=url_for(
+                            "content_routes.feedback",
+                            fund=fund.short_name,
+                            round=round.short_name,
+                        ),
+                    )
+            except Exception as e:  # noqa
+                current_app.logger.warning(
+                    f"""Exception: {e}, occured when trying to
+                    reach url: {request.url}, with view_args:
+                    {request.view_args}, and args: {request.args}"""
                 )
-        except Exception as e:  # noqa
-            current_app.logger.warning(
-                f"""Exception: {e}, occured when trying to
-                reach url: {request.url}, with view_args:
-                {request.view_args}, and args: {request.args}"""
-            )
         return dict(
             contact_us_url=url_for("content_routes.contact_us"),
             privacy_url=url_for("content_routes.privacy"),
@@ -187,6 +190,10 @@ def create_app() -> Flask:
         if flask_app.config.get("MAINTENANCE_MODE") and not (
             request.path.endswith("js") or request.path.endswith("css")
         ):
+            current_app.logger.warning(
+                f"""Application is in the Maintenance mode
+                reach url: {request.url}"""
+            )
             return (
                 render_template(
                     "maintenance.html",
