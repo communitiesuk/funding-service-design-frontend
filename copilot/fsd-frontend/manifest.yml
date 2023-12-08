@@ -69,17 +69,7 @@ environments:
   uat:
     http:
       alias: ["frontend.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk", "frontenduat.access-funding.test.levellingup.gov.uk"]
-    count:
-      range: 2-4
-      cooldown:
-        in: 60s
-        out: 30s
-      cpu_percentage:
-        value: 70
-      memory_percentage:
-        value: 80
-      requests: 30
-      response_time: 2s
+    count: 1
   prod:
     http:
       alias: frontend.prod.access-funding.levellingup.gov.uk
