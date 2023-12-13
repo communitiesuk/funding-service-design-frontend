@@ -32,6 +32,7 @@ from flask import redirect
 from flask import render_template
 from flask import request
 from flask import url_for
+from flask import make_response
 from flask_babel import force_locale
 from flask_wtf import FlaskForm
 from fsd_utils.authentication.decorators import login_required
@@ -252,9 +253,9 @@ def tasklist(application_id):
                 lang=application.language,
             ),
         )
-
+    
     with force_locale(application.language):
-        return render_template(
+        response = make_response(render_template(
             "tasklist.html",
             application=application,
             sections=display_config,
@@ -275,7 +276,11 @@ def tasklist(application_id):
             existing_feedback_map=existing_feedback_map,
             feedback_survey_data=feedback_survey_data,
         )
+        )
+        if request.cookies.get('language') != application.language:
+            response.set_cookie('language', application.language)
 
+        return response
 
 @application_bp.route(
     "/continue_application/<application_id>", methods=["GET"]
@@ -328,6 +333,15 @@ def continue_application(application_id):
     rehydration_token = get_token_to_return_to_application(
         form_name, rehydrate_payload
     )
+
+    # # Logic to determine the language and set the cookie
+    # target_language = "cy" if get_lang() == "en" else "en"
+
+    # print(get_lang, "======================================🚗")
+
+    # # Use LanguageSelector to set the language cookie
+    # language_selector = LanguageSelector(current_app)
+    # language_selector.select_language("cy")
 
     redirect_url = Config.FORM_REHYDRATION_URL.format(
         rehydration_token=rehydration_token
