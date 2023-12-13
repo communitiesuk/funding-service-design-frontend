@@ -6,7 +6,15 @@
     -%} {%- from "govuk_frontend_jinja/components/button/macro.html" import
     govukButton -%} {% from "partials/available_in_language.html" import available_in_language %}
 {% from "partials/round_closed_warning.html" import round_closed_warning %}
+{% from "partials/migration_banner.html" import migration_banner %}
  {% block content %}
+    {% if migration_banner_enabled %}
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                {{migration_banner()}}
+            </div>
+        </div>
+    {% endif %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             {% if round_title|length %}
@@ -33,9 +41,15 @@
                 <strong>{% trans %}Submission deadline: {% endtrans %}</strong> {{
                 submission_deadline|datetime_format }}
             </p>
-            {% endif %} {{ govukButton({"isStartButton": True, "href" : service_url,
-            "text": gettext("Enter your email address")}) }} {% if
-            contact_us_email_address|length %}
+            {% endif %}
+            <div data-qa="enter_your_email_address">
+            {{ govukButton({
+                "isStartButton": True,
+                "href" : service_url,
+                "text": gettext("Enter your email address")
+            }) }}
+            </div>
+            {% if contact_us_email_address|length %}
             <h2 class="govuk-heading-m">{% trans%}Get help {% endtrans %}</h2>
             <p class="govuk-body">
                 {% trans %}If you need help, email us at{% endtrans %}
