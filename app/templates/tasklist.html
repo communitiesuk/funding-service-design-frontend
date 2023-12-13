@@ -3,13 +3,20 @@
 {% from "partials/tasklist_section.html" import tasklist_section %}
 {% from "partials/tasklist_submit.html" import tasklist_submit %}
 {% from "partials/round_closed_warning.html" import round_closed_warning %}
+{% from "partials/migration_banner.html" import migration_banner %}
 {% block beforeContent %}
     <a href="{{ dashboard_url }}" class="govuk-back-link"> {% trans %}Back to your applications{% endtrans %}</a>
 {% endblock %}
 {% set pageHeading %}{% trans %}Task List{% endtrans %}{% endset %}
 
 {% block content %}
-
+    {% if migration_banner_enabled %}
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                {{migration_banner()}}
+            </div>
+        </div>
+    {% endif %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <span class="govuk-caption-l">{{ application_meta_data["fund_name"] }} {{ application_meta_data["round_name"] }}</span>
