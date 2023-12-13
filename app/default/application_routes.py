@@ -334,15 +334,6 @@ def continue_application(application_id):
         form_name, rehydrate_payload
     )
 
-    # # Logic to determine the language and set the cookie
-    # target_language = "cy" if get_lang() == "en" else "en"
-
-    # print(get_lang, "======================================🚗")
-
-    # # Use LanguageSelector to set the language cookie
-    # language_selector = LanguageSelector(current_app)
-    # language_selector.select_language("cy")
-
     redirect_url = Config.FORM_REHYDRATION_URL.format(
         rehydration_token=rehydration_token
     )
