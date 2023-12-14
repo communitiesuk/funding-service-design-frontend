@@ -82,7 +82,7 @@ environments:
       response_time: 2s
   prod:
     http:
-      alias: ["frontend.prod.access-funding.test.levellingup.gov.uk", "frontend.access-funding.test.levellingup.gov.uk"]
+      alias: ["frontend.prod.access-funding.levellingup.gov.uk", "frontend.access-funding.levellingup.gov.uk"]
     variables:
       COOKIE_DOMAIN: ".levellingup.gov.uk"
       AUTHENTICATOR_HOST: "https://authenticator.prod.access-funding.levellingup.gov.uk"
