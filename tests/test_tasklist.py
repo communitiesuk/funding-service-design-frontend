@@ -130,5 +130,5 @@ def test_language_cookie_update(flask_test_client, mocker, mock_login):
 
     lang_index = response.headers["Set-Cookie"].find("language=")
     lang_index = lang_index + len("language=")
-    current_set_language = response.headers['Set-Cookie'][lang_index:lang_index + 2]
+    current_set_language = response.headers['Set-Cookie'][int(lang_index):int(lang_index + 2)]
     assert current_set_language == correct_language
