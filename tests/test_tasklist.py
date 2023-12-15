@@ -119,7 +119,7 @@ def test_language_cookie_update(flask_test_client, mocker, mock_login):
     correct_language = TEST_APPLICATION_STORE_DATA.get("language")
     incorrect_language = "cy"
 
-    response = flask_test_client.get()
+    response = flask_test_client.get('/')
     response.set_cookie("language", incorrect_language)
 
     response = flask_test_client.get(
@@ -130,6 +130,6 @@ def test_language_cookie_update(flask_test_client, mocker, mock_login):
 
     lang_index = response.headers['Set-Cookie'].find("language=")
     lang_index = lang_index + len("language=")
-    current_set_language = response.headers['Set-Cookie'][lang_index: lang_index + 2]
+    current_set_language = response.headers['Set-Cookie'][lang_index:lang_index + 2]
 
     assert current_set_language == correct_language
