@@ -57,6 +57,7 @@ variables:
   REDIS_INSTANCE_URI:
     from_cfn: ${COPILOT_APPLICATION_NAME}-${COPILOT_ENVIRONMENT_NAME}-MagicLinksRedisInstanceURI
   SENTRY_DSN: "https://3c6d2fd1e3824aecb3826a7d640b29a9@o1432034.ingest.sentry.io/4503897449103360"
+  MAINTENANCE_MODE: true
 
 secrets:
   RSA256_PUBLIC_KEY_BASE64: /copilot/${COPILOT_APPLICATION_NAME}/${COPILOT_ENVIRONMENT_NAME}/secrets/RSA256_PUBLIC_KEY_BASE64
@@ -68,7 +69,7 @@ environments:
       rolling: 'recreate'
   uat:
     http:
-      alias: ["frontend.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk", "frontenduat.access-funding.test.levellingup.gov.uk"]
+      alias: "frontend.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk"
     count:
       range: 2-4
       cooldown:
@@ -82,8 +83,7 @@ environments:
       response_time: 2s
   prod:
     http:
-      alias: frontend.prod.access-funding.levellingup.gov.uk
-      # alias: ["frontend.prod.access-funding.test.levellingup.gov.uk", "frontend.access-funding.test.levellingup.gov.uk"] # For go live
+      alias: ["frontend.prod.access-funding.levellingup.gov.uk", "frontend.access-funding.levellingup.gov.uk"]
     variables:
       COOKIE_DOMAIN: ".levellingup.gov.uk"
       AUTHENTICATOR_HOST: "https://authenticator.prod.access-funding.levellingup.gov.uk"
