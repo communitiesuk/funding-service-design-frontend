@@ -69,7 +69,7 @@ environments:
       rolling: 'recreate'
   uat:
     http:
-      alias: ["frontend.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk", "frontenduat.access-funding.test.levellingup.gov.uk"]
+      alias: "frontend.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk"
     count:
       range: 2-4
       cooldown:
