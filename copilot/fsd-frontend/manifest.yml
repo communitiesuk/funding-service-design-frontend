@@ -87,10 +87,10 @@ environments:
       hosted_zone: Z0686469NF3ZJTU9I02M
     variables:
       COOKIE_DOMAIN: ".levellingup.gov.uk"
-      AUTHENTICATOR_HOST: "https://authenticator.prod.access-funding.levellingup.gov.uk"
-      APPLICANT_FRONTEND_HOST: "https://frontend.prod.access-funding.levellingup.gov.uk"
-      ASSESSMENT_FRONTEND_HOST: "https://assessment.prod.access-funding.levellingup.gov.uk"
-      FORMS_SERVICE_PUBLIC_HOST: "https://forms.${COPILOT_ENVIRONMENT_NAME}.access-funding.levellingup.gov.uk"
+      AUTHENTICATOR_HOST: "https://authenticator.access-funding.levellingup.gov.uk"
+      APPLICANT_FRONTEND_HOST: "https://frontend.access-funding.levellingup.gov.uk"
+      ASSESSMENT_FRONTEND_HOST: "https://assessment.access-funding.levellingup.gov.uk"
+      FORMS_SERVICE_PUBLIC_HOST: "https://forms.access-funding.levellingup.gov.uk"
       FLASK_ENV: production
     count:
       range: 2-4
