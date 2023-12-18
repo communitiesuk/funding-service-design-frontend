@@ -83,8 +83,11 @@ environments:
       response_time: 2s
   prod:
     http:
-      alias: ["frontend.prod.access-funding.levellingup.gov.uk", "frontend.access-funding.levellingup.gov.uk"]
-      hosted_zone: Z0686469NF3ZJTU9I02M
+      alias:
+        - name: frontend.prod.access-funding.levellingup.gov.uk
+          hosted_zone: Z099557827NHZ3U2BZ9FP
+        - name: frontend.access-funding.levellingup.gov.uk
+          hosted_zone: Z0686469NF3ZJTU9I02M
     variables:
       COOKIE_DOMAIN: ".levellingup.gov.uk"
       AUTHENTICATOR_HOST: "https://authenticator.prod.access-funding.levellingup.gov.uk"
