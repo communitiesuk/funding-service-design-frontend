@@ -9,6 +9,5 @@ A repository for the Funding Service Design frontend application service.
 - ### [Application setup](docs/setup.md)
 - ### [Linked services](docs/linked_services.md)
 - ### [Run application](docs/run.md)
-- ### [Pipelines](docs/pipelines.md)
 - ### [Testing](docs/testing)
 - ### [Translations](docs/translations.md)
