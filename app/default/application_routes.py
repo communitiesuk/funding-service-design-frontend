@@ -28,7 +28,6 @@ from flask import abort
 from flask import Blueprint
 from flask import current_app
 from flask import g
-from flask import make_response
 from flask import redirect
 from flask import render_template
 from flask import request
@@ -255,34 +254,28 @@ def tasklist(application_id):
         )
 
     with force_locale(application.language):
-        response = make_response(
-            render_template(
-                "tasklist.html",
-                application=application,
-                sections=display_config,
-                application_status=get_formatted,
-                application_meta_data=application_meta_data,
-                form=form,
-                contact_us_email_address=round_data.contact_email,
-                submission_deadline=round_data.deadline,
-                is_past_submission_deadline=current_datetime_after_given_iso_string(  # noqa:E501
-                    round_data.deadline
-                ),
-                dashboard_url=url_for(
-                    "account_routes.dashboard",
-                    fund=fund_data.short_name,
-                    round=round_data.short_name,
-                ),
-                application_guidance=app_guidance,
-                existing_feedback_map=existing_feedback_map,
-                feedback_survey_data=feedback_survey_data,
-                migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
-            )
+        return render_template(
+            "tasklist.html",
+            application=application,
+            sections=display_config,
+            application_status=get_formatted,
+            application_meta_data=application_meta_data,
+            form=form,
+            contact_us_email_address=round_data.contact_email,
+            submission_deadline=round_data.deadline,
+            is_past_submission_deadline=current_datetime_after_given_iso_string(  # noqa:E501
+                round_data.deadline
+            ),
+            dashboard_url=url_for(
+                "account_routes.dashboard",
+                fund=fund_data.short_name,
+                round=round_data.short_name,
+            ),
+            application_guidance=app_guidance,
+            existing_feedback_map=existing_feedback_map,
+            feedback_survey_data=feedback_survey_data,
+            migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
         )
-        if request.cookies.get("language") != application.language:
-            response.set_cookie("language", application.language)
-
-        return response
 
 
 @application_bp.route(
