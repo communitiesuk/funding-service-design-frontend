@@ -128,7 +128,16 @@ def test_tasklist_for_submit_application_route(
 
 #     assert response.status_code == 200
 
+<<<<<<< HEAD
 #     lang_index = response.headers["Set-Cookie"].find("language=")
 #     lang_index = lang_index + len("language=")
 #     current_set_language = str(response.headers['Set-Cookie'][lang_index]) + str(response.headers['Set-Cookie'][lang_index + 1])
 #     assert current_set_language == correct_language
+=======
+    lang_index = response.headers["Set-Cookie"].find("language=")
+    lang_index = lang_index + len("language=")
+    current_set_language = str(
+        response.headers["Set-Cookie"][lang_index]
+    ) + str(response.headers["Set-Cookie"][lang_index + 1])
+    assert current_set_language == correct_language
+>>>>>>> b56b9e408c56a51d81719fa50ba1550791513cec
