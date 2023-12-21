@@ -280,7 +280,7 @@ def tasklist(application_id):
             )
         )
         if request.cookies.get("language") != application.language:
-            response.set_cookie('language', '', expires=0)
+            response.set_cookie("language", "", expires=0)
             response.set_cookie("language", application.language)
 
         return response
