@@ -39,6 +39,8 @@ from fsd_utils.authentication.decorators import login_required
 from fsd_utils.simple_utils.date_utils import (
     current_datetime_after_given_iso_string,
 )
+from datetime import datetime
+
 
 application_bp = Blueprint(
     "application_routes", __name__, template_folder="templates"
@@ -279,9 +281,12 @@ def tasklist(application_id):
                 migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
             )
         )
+
         if request.cookies.get("language") != application.language:
-            response.set_cookie('language', '', expires=0)
-            response.set_cookie("language", application.language)
+            expiry_date = datetime.now() + timedelta(days=30)
+            existing_language_cookie = request.cookies.get('language')
+            response.set_cookie('language', existing_language_cookie, expires=expiry_date)
+
 
         return response
 
