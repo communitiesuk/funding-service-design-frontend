@@ -287,8 +287,9 @@ def tasklist(application_id):
         # print(f'domain is 2::',  Config.COOKIE_DOMAIN)
 
         if request.cookies.get("language") != application.language:
-            response.set_cookie('language', application.language, domain=Config.COOKIE_DOMAIN)
-
+            response.set_cookie(
+                "language", application.language, domain=Config.COOKIE_DOMAIN
+            )
 
         return response
 
