@@ -284,8 +284,11 @@ def tasklist(application_id):
         )
 
         if request.cookies.get("language") != application.language:
-            response.set_cookie('language', application.language, domain=".test.levellingup.gov.uk")
-
+            response.set_cookie(
+                "language",
+                application.language,
+                domain=".test.levellingup.gov.uk",
+            )
 
         return response
 
