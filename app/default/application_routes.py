@@ -283,11 +283,10 @@ def tasklist(application_id):
             )
         )
 
-        # print(f'domain is::', request.host)
-        # print(f'domain is 2::',  Config.COOKIE_DOMAIN)
-
         if request.cookies.get("language") != application.language:
-            response.set_cookie('language', application.language, domain=Config.COOKIE_DOMAIN)
+            expiry_time = datetime.utcnow() + timedelta(days=30)
+            
+            response.set_cookie('language', application.language, expires=expiry_time, domain=Config.COOKIE_DOMAIN)
 
 
         return response
