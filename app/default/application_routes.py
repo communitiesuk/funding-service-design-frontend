@@ -285,9 +285,13 @@ def tasklist(application_id):
 
         if request.cookies.get("language") != application.language:
             expiry_time = datetime.utcnow() + timedelta(days=30)
-            
-            response.set_cookie('language', application.language, expires=expiry_time, domain=Config.COOKIE_DOMAIN)
 
+            response.set_cookie(
+                "language",
+                application.language,
+                expires=expiry_time,
+                domain=Config.COOKIE_DOMAIN,
+            )
 
         return response
 
