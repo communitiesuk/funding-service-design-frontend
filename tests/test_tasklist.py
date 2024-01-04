@@ -97,3 +97,41 @@ def test_tasklist_for_submit_application_route(
         },
         as_dict=False,
     )
+
+
+def test_language_cookie_update(flask_test_client, mocker, mock_login):
+    mocker.patch(
+        "app.default.application_routes.get_application_data",
+        return_value=Application.from_dict(TEST_APPLICATION_STORE_DATA),
+    )
+    mocker.patch(
+        "app.default.application_routes.determine_round_status",
+        return_value=RoundStatus(False, False, True),
+    )
+    mocker.patch(
+        "app.default.application_routes.get_application_display_config",
+        return_value=[
+            ApplicationMapping.from_dict(section)
+            for section in TEST_APPLICATION_DISPLAY_RESPONSE
+        ],
+    )
+
+    correct_language = TEST_APPLICATION_STORE_DATA.get("language")
+    incorrect_language = "cy"
+
+    response = flask_test_client.get("/")
+    response.set_cookie("language", incorrect_language)
+
+    response = flask_test_client.get(
+        "tasklist/test-application-id", follow_redirects=True
+    )
+
+    assert response.status_code == 200
+
+    lang_index = response.headers["Set-Cookie"].find("language=")
+    lang_index = lang_index + len("language=")
+    cookie_header = response.headers["Set-Cookie"]
+    current_set_language = str(cookie_header[lang_index]) + str(
+        cookie_header[lang_index + 1]
+    )
+    assert current_set_language == correct_language
