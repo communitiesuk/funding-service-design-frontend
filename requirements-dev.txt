@@ -12,7 +12,7 @@ babel==2.14.0
     # via
     #   -r requirements.txt
     #   flask-babel
-bandit==1.7.6
+bandit==1.7.4
     # via -r requirements-dev.in
 beautifulsoup4==4.12.2
     # via
@@ -240,6 +240,7 @@ pyjwt[crypto]==2.8.0
     # via
     #   -r requirements.txt
     #   funding-service-design-utils
+    #   pyjwt
 pyproject-hooks==1.0.0
     # via build
 pyscss==1.4.0
@@ -301,7 +302,6 @@ requests-mock==1.11.0
 rich==12.6.0
     # via
     #   -r requirements.txt
-    #   bandit
     #   funding-service-design-utils
 s3transfer==0.10.0
     # via
@@ -311,6 +311,7 @@ sentry-sdk[flask]==1.39.1
     # via
     #   -r requirements.txt
     #   funding-service-design-utils
+    #   sentry-sdk
 six==1.16.0
     # via
     #   -r requirements.txt
