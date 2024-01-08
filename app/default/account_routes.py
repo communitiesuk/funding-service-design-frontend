@@ -202,7 +202,13 @@ def dashboard():
     )
 
     # Change the cookie to English if welsh_available is False
-    if not welsh_available and request.cookies.get("language") != "en" and not session.get("redirected"):
+    if (
+        not welsh_available
+        and request.cookies.get("language") != "en"
+        and not session.get("redirected")
+        and applications
+    ):
+    # Your code here
         expiry_time = datetime.utcnow() + timedelta(days=30)
 
         response = redirect(
