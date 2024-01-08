@@ -12,7 +12,7 @@ babel==2.14.0
     # via
     #   -r requirements.txt
     #   flask-babel
-bandit==1.7.4
+bandit==1.7.6
     # via -r requirements-dev.in
 beautifulsoup4==4.12.2
     # via
@@ -67,12 +67,7 @@ click==8.1.7
     #   flask
     #   pip-tools
 colorama==0.4.6
-    # via
-    #   -r requirements.txt
-    #   bandit
-    #   build
-    #   click
-    #   pytest
+    # via -r requirements.txt
 commonmark==0.9.1
     # via
     #   -r requirements.txt
@@ -302,6 +297,7 @@ requests-mock==1.11.0
 rich==12.6.0
     # via
     #   -r requirements.txt
+    #   bandit
     #   funding-service-design-utils
 s3transfer==0.10.0
     # via
