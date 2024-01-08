@@ -87,7 +87,7 @@ def test_dashboard_route_search_call(
         "app.default.account_routes.build_application_data_for_display",
         return_value=TEST_DISPLAY_DATA,
     )
-    response = flask_test_client.get("/account", follow_redirects=True)
+    response = flask_test_client.get("/account", follow_redirects=False)
     assert response.status_code == 200
 
     get_apps_mock.assert_called_once_with(

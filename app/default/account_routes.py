@@ -1,3 +1,6 @@
+from datetime import datetime
+from datetime import timedelta
+
 import requests
 from app.default.data import determine_round_status
 from app.default.data import get_all_funds
@@ -12,14 +15,15 @@ from config import Config
 from flask import Blueprint
 from flask import current_app
 from flask import g
+from flask import make_response
 from flask import redirect
 from flask import render_template
 from flask import request
 from flask import url_for
+from flask import session
 from fsd_utils.authentication.decorators import login_required
 from fsd_utils.locale_selector.get_lang import get_lang
-from flask import make_response
-from datetime import datetime, timedelta
+
 
 account_bp = Blueprint("account_routes", __name__, template_folder="templates")
 
@@ -192,12 +196,36 @@ def dashboard():
     current_app.logger.info(
         f"Setting up applicant dashboard for :'{account_id}'"
     )
-    current_language = request.cookies.get("language", "en")
 
-    # Change the cookie to English if welsh_available is False and language is not already "en"
-    if not welsh_available and current_language != "en":
+    # Change the cookie to English if welsh_available is False
+    if not welsh_available and request.cookies.get("language") != "en" and not session.get("redirected"):
         expiry_time = datetime.utcnow() + timedelta(days=30)
-        response = make_response(render_template(
+
+        response = redirect(
+            url_for(
+                "account_routes.dashboard",
+                fund=fund_short_name,
+                round=round_short_name,
+            ),
+            code=200
+        )
+
+        # Use synchronous set_cookie
+        response.set_cookie(
+            "language",
+            "en",
+            expires=expiry_time,
+            domain=Config.COOKIE_DOMAIN,
+        )
+
+        # Set session variable to indicate redirect
+        session["redirected"] = True
+
+        return response
+
+    # Create the initial response without rendering the template
+    response = make_response(
+        render_template(
             template_name,
             account_id=account_id,
             display_data=display_data,
@@ -206,30 +234,13 @@ def dashboard():
             round_short_name=round_short_name,
             welsh_available=welsh_available,
             migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
-        ))
-        response.set_cookie(
-            "language",
-            "en",
-            expires=expiry_time,
-            domain=Config.COOKIE_DOMAIN,
         )
-
-        # Add JavaScript to perform a client-side redirect after setting the cookie
-        response.headers.add("Refresh", "0")
-
-        return response
-
-    # Create the initial response without rendering the template
-    return render_template(
-        template_name,
-        account_id=account_id,
-        display_data=display_data,
-        show_language_column=show_language_column,
-        fund_short_name=fund_short_name,
-        round_short_name=round_short_name,
-        welsh_available=welsh_available,
-        migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
     )
+
+    # Reset the session variable to allow future redirects
+    session.pop("redirected", None)
+
+    return response
 
 
 @account_bp.route("/account/new", methods=["POST"])
