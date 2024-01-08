@@ -197,14 +197,41 @@ def dashboard():
     )
 
     # Change the cookie to English if welsh_available is False
+    print("😎😎😎", applications)
+    print(f"welsh_available: {welsh_available}")
+    print(f"language cookie: {request.cookies.get('language')}")
+    print(f"session.redirected: {session.get('redirected')}")
+    print(f"applications: {applications}")
     if (
         not welsh_available
-        and request.cookies.get("language") != "en"
+        and request.cookies.get("language") == "cy"
         and not session.get("redirected")
         and applications
     ):
-        expiry_time = datetime.utcnow() + timedelta(days=30)
+        # Create the initial response without rendering the template
+        response = make_response(
+            render_template(
+                template_name,
+                account_id=account_id,
+                display_data=display_data,
+                show_language_column=show_language_column,
+                fund_short_name=fund_short_name,
+                round_short_name=round_short_name,
+                welsh_available=welsh_available,
+                migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
+            )
+        )
 
+        # Change the language cookie first
+        expiry_time = datetime.utcnow() + timedelta(days=30)
+        response.set_cookie(
+            "language",
+            "en",
+            expires=expiry_time,
+            domain=Config.COOKIE_DOMAIN,
+        )
+
+        # Now, perform the redirect
         response = redirect(
             url_for(
                 "account_routes.dashboard",
@@ -214,19 +241,17 @@ def dashboard():
             code=200,
         )
 
-        response.set_cookie(
-            "language",
-            "en",
-            expires=expiry_time,
-            domain=Config.COOKIE_DOMAIN,
-        )
-
         # Set session variable to indicate redirect
         session["redirected"] = True
 
         return response
 
     # Create the initial response without rendering the template
+    print("😎👍🥪", applications)
+    print(f"welsh_available: {welsh_available}")
+    print(f"language cookie: {request.cookies.get('language')}")
+    print(f"session.redirected: {session.get('redirected')}")
+    print(f"applications: {applications}")
     response = make_response(
         render_template(
             template_name,
