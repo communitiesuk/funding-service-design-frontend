@@ -1,5 +1,5 @@
 -r requirements.txt
-bandit
+bandit==1.7.4
 beautifulsoup4
 debugpy
 dparse>=0.5.2
