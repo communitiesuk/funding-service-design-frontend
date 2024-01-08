@@ -205,13 +205,6 @@ def dashboard():
     ):
         expiry_time = datetime.utcnow() + timedelta(days=30)
 
-        response.set_cookie(
-            "language",
-            "en",
-            expires=expiry_time,
-            domain=Config.COOKIE_DOMAIN,
-        )
-
         response = redirect(
             url_for(
                 "account_routes.dashboard",
@@ -219,6 +212,13 @@ def dashboard():
                 round=round_short_name,
             ),
             code=200,
+        )
+
+        response.set_cookie(
+            "language",
+            "en",
+            expires=expiry_time,
+            domain=Config.COOKIE_DOMAIN,
         )
 
         # Set session variable to indicate redirect
