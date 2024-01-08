@@ -18,6 +18,8 @@ from flask import request
 from flask import url_for
 from fsd_utils.authentication.decorators import login_required
 from fsd_utils.locale_selector.get_lang import get_lang
+from flask import make_response
+from datetime import datetime, timedelta
 
 account_bp = Blueprint("account_routes", __name__, template_folder="templates")
 
@@ -190,6 +192,34 @@ def dashboard():
     current_app.logger.info(
         f"Setting up applicant dashboard for :'{account_id}'"
     )
+    current_language = request.cookies.get("language", "en")
+
+    # Change the cookie to English if welsh_available is False and language is not already "en"
+    if not welsh_available and current_language != "en":
+        expiry_time = datetime.utcnow() + timedelta(days=30)
+        response = make_response(render_template(
+            template_name,
+            account_id=account_id,
+            display_data=display_data,
+            show_language_column=show_language_column,
+            fund_short_name=fund_short_name,
+            round_short_name=round_short_name,
+            welsh_available=welsh_available,
+            migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
+        ))
+        response.set_cookie(
+            "language",
+            "en",
+            expires=expiry_time,
+            domain=Config.COOKIE_DOMAIN,
+        )
+
+        # Add JavaScript to perform a client-side redirect after setting the cookie
+        response.headers.add("Refresh", "0")
+
+        return response
+
+    # Create the initial response without rendering the template
     return render_template(
         template_name,
         account_id=account_id,
