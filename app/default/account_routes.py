@@ -1,3 +1,6 @@
+from datetime import datetime
+from datetime import timedelta
+
 import requests
 from app.default.data import determine_round_status
 from app.default.data import get_all_funds
@@ -12,14 +15,13 @@ from config import Config
 from flask import Blueprint
 from flask import current_app
 from flask import g
+from flask import make_response
 from flask import redirect
 from flask import render_template
 from flask import request
 from flask import url_for
 from fsd_utils.authentication.decorators import login_required
 from fsd_utils.locale_selector.get_lang import get_lang
-from flask import make_response
-from datetime import datetime, timedelta
 
 account_bp = Blueprint("account_routes", __name__, template_folder="templates")
 
@@ -197,16 +199,18 @@ def dashboard():
     # Change the cookie to English if welsh_available is False and language is not already "en"
     if not welsh_available and current_language != "en":
         expiry_time = datetime.utcnow() + timedelta(days=30)
-        response = make_response(render_template(
-            template_name,
-            account_id=account_id,
-            display_data=display_data,
-            show_language_column=show_language_column,
-            fund_short_name=fund_short_name,
-            round_short_name=round_short_name,
-            welsh_available=welsh_available,
-            migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
-        ))
+        response = make_response(
+            render_template(
+                template_name,
+                account_id=account_id,
+                display_data=display_data,
+                show_language_column=show_language_column,
+                fund_short_name=fund_short_name,
+                round_short_name=round_short_name,
+                welsh_available=welsh_available,
+                migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
+            )
+        )
         response.set_cookie(
             "language",
             "en",
