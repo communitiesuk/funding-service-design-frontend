@@ -1,9 +1,6 @@
 from datetime import datetime
 from datetime import timedelta
 
-from datetime import datetime
-from datetime import timedelta
-
 import requests
 from app.default.data import determine_round_status
 from app.default.data import get_all_funds
@@ -22,12 +19,10 @@ from flask import make_response
 from flask import redirect
 from flask import render_template
 from flask import request
-from flask import url_for
 from flask import session
+from flask import url_for
 from fsd_utils.authentication.decorators import login_required
 from fsd_utils.locale_selector.get_lang import get_lang
-from flask import make_response
-from datetime import datetime, timedelta
 
 account_bp = Blueprint("account_routes", __name__, template_folder="templates")
 
@@ -202,7 +197,11 @@ def dashboard():
     )
 
     # Change the cookie to English if welsh_available is False
-    if not welsh_available and request.cookies.get("language") != "en" and not session.get("redirected"):
+    if (
+        not welsh_available
+        and request.cookies.get("language") != "en"
+        and not session.get("redirected")
+    ):
         expiry_time = datetime.utcnow() + timedelta(days=30)
 
         response = redirect(
@@ -211,7 +210,7 @@ def dashboard():
                 fund=fund_short_name,
                 round=round_short_name,
             ),
-            code=200
+            code=200,
         )
 
         # Use synchronous set_cookie
