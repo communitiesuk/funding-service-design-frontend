@@ -203,7 +203,7 @@ def dashboard():
         and not session.get("redirected")
         and applications
     ):
-    # Your code here
+        # Your code here
         expiry_time = datetime.utcnow() + timedelta(days=30)
 
         response = redirect(
