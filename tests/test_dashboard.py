@@ -306,7 +306,7 @@ def test_build_application_data_for_display(
     )
     mocker.patch(
         "app.default.account_routes.get_all_rounds_for_fund",
-        new=lambda fund_id, as_dict, ttl_hash: [
+        new=lambda fund_id, language, as_dict, ttl_hash: [
             round for round in rounds if round.fund_id == fund_id
         ],
     )

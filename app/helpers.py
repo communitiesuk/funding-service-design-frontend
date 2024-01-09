@@ -18,6 +18,7 @@ from app.models.round import Round
 from config import Config
 from flask import current_app
 from flask import request
+from fsd_utils.locale_selector.get_lang import get_lang
 
 
 @lru_cache(maxsize=1)
@@ -232,6 +233,7 @@ def get_fund(
         else (
             get_fund_data_by_short_name(
                 fund_short_name,
+                get_lang(),
                 as_dict=False,
                 ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
             )
@@ -251,7 +253,9 @@ def get_round(
 ) -> Round:
     if fund_short_name:
         fund = get_fund_data_by_short_name(
-            fund_short_name, ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME)
+            fund_short_name,
+            get_lang(),
+            ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
         )
     elif fund_id:
         fund = get_fund_data(
@@ -273,6 +277,7 @@ def get_round(
             get_round_data_by_short_names(
                 fund.short_name,
                 round_short_name,
+                get_lang(),
                 as_dict=False,
                 ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
             )
