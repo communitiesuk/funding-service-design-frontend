@@ -28,7 +28,8 @@ def get_visible_funds(visible_fund_short_name):
 
     :param visible_fund_short_name: short name to look for
     """
-    all_funds = get_all_funds(ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME))
+    all_funds = get_all_funds(get_lang(), get_ttl_hash(Config.LRU_CACHE_TIME))
+    
 
     if visible_fund_short_name:
         funds_to_show = [

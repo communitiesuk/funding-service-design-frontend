@@ -346,9 +346,9 @@ def get_account(email: str = None, account_id: str = None) -> Account | None:
 
 
 @lru_cache(maxsize=1)
-def get_all_funds(ttl_hash=None):
+def get_all_funds(language=None, ttl_hash=None):
     del ttl_hash  # Only needed for lru_cache
-    language = {"language": get_lang()}
+    language = {"language": language if language else get_lang()}
     fund_response = get_data(Config.GET_ALL_FUNDS_ENDPOINT, language)
     return fund_response
 
