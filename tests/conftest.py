@@ -155,3 +155,4 @@ def mock_get_fund_round(mocker):
         "app.default.data.get_round_data_fail_gracefully",
         return_value=TEST_ROUNDS_DATA[0],
     )
+    mocker.patch("app.default.account_routes.get_lang", return_value="en")
