@@ -1,5 +1,6 @@
 import time
 
+from app.default.data import get_all_funds
 from app.default.data import get_fund_data
 from app.default.data import get_ttl_hash
 
@@ -43,3 +44,38 @@ def test_get_fund_data_lru_cache(mocker):
         fund_id="222", language="en", ttl_hash=get_ttl_hash(seconds=2)
     )
     assert fund.name == "Testing Fund 2"
+
+
+def test_get_all_funds_cache_with_language(mocker):
+    mocker.patch(
+        "app.default.data.get_data",
+        return_value=[
+            {
+                "name": "Testing Fund",
+                "id": "222",
+            }
+        ],
+    )
+    en = "en"
+    # `get_all_funds`'s output is cached for 5 secs
+    funds = get_all_funds(language=en, ttl_hash=get_ttl_hash(seconds=300))
+    assert funds[0]["name"] == "Testing Fund"
+
+    # Now let's make another call to `get_all_funds` with modified fund data(in db) in less than 5 sec
+    mocker.patch(
+        "app.default.data.get_data",
+        return_value=[
+            {
+                "name": "Testing Fund 2",
+                "id": "222",
+            }
+        ],
+    )
+    funds = get_all_funds(language=en, ttl_hash=get_ttl_hash(seconds=300))
+    assert funds[0]["name"] == "Testing Fund"
+    # observe that fund name is still equal to cached title
+
+    # Now make another call but with a different language
+    funds = get_all_funds(language="cy", ttl_hash=get_ttl_hash(seconds=300))
+    assert funds[0]["name"] == "Testing Fund 2"
+    # observe that we now get back the new value as changing the langauge has invalidated the cache
