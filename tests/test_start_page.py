@@ -150,6 +150,7 @@ def test_start_page_closed(client, mocker, templates_rendered):
     ],
 )
 def test_get_default_round_for_fund(rounds, expected_default_id, mocker):
+    mocker.patch("app.default.data.get_lang", return_value="en")
     mocker.patch(
         "app.default.data.get_all_rounds_for_fund", return_value=rounds
     )
@@ -158,6 +159,7 @@ def test_get_default_round_for_fund(rounds, expected_default_id, mocker):
 
 
 def test_get_default_round_for_fund_no_rounds(mocker):
+    mocker.patch("app.default.data.get_lang", return_value="en")
     mocker.patch("app.default.data.get_all_rounds_for_fund", return_value=[])
     result = get_default_round_for_fund("fund")
     assert result is None

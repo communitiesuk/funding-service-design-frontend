@@ -187,7 +187,9 @@ def get_fund_data(fund_id, language=None, as_dict=False, ttl_hash=None):
 
 
 @lru_cache(maxsize=5)
-def get_fund_data_by_short_name(fund_short_name, as_dict=False, ttl_hash=None):
+def get_fund_data_by_short_name(
+    fund_short_name, language=None, as_dict=False, ttl_hash=None
+):
     del ttl_hash  # Only needed for lru_cache
     all_funds = {fund["short_name"].lower() for fund in get_all_funds()}
     if fund_short_name.lower() not in all_funds:
@@ -196,7 +198,7 @@ def get_fund_data_by_short_name(fund_short_name, as_dict=False, ttl_hash=None):
     fund_request_url = Config.GET_FUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
         fund_short_name=fund_short_name.lower()
     )
-    params = {"language": get_lang(), "use_short_name": True}
+    params = {"language": language or get_lang(), "use_short_name": True}
     fund_response = get_data_or_fail_gracefully(fund_request_url, params)
     if as_dict:
         return fund_response
@@ -242,6 +244,7 @@ def get_application_display_config(fund_id, round_id, language):
 def get_round_data_by_short_names(
     fund_short_name,
     round_short_name,
+    language=None,
     as_dict=False,
     ttl_hash=None,
 ) -> Round | dict:
@@ -249,7 +252,7 @@ def get_round_data_by_short_names(
     all_rounds = [
         rnd.short_name.lower()
         for rnd in get_all_rounds_for_fund(
-            fund_short_name, use_short_name=True
+            fund_short_name, use_short_name=True, language=get_lang()
         )
     ]
     if round_short_name.lower() not in all_rounds:
@@ -257,7 +260,7 @@ def get_round_data_by_short_names(
             f"Invalid round {round_short_name.lower()}!"
         )
         return None
-    params = {"language": get_lang(), "use_short_name": "true"}
+    params = {"language": language or get_lang(), "use_short_name": "true"}
 
     request_url = Config.GET_ROUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
         fund_short_name=fund_short_name.lower(),
@@ -277,6 +280,7 @@ def get_round_data_fail_gracefully(fund_id, round_id, use_short_name=False):
                 round_response = get_round_data_by_short_names(
                     fund_id,
                     round_id,
+                    get_lang(),
                     ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
                     as_dict=True,
                 )
@@ -284,6 +288,7 @@ def get_round_data_fail_gracefully(fund_id, round_id, use_short_name=False):
                 round_response = get_round_data(
                     fund_id,
                     round_id,
+                    get_lang(),
                     get_ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
                     as_dict=True,
                 )
@@ -345,20 +350,20 @@ def get_account(email: str = None, account_id: str = None) -> Account | None:
         return Account.from_json(response)
 
 
-@lru_cache(maxsize=1)
-def get_all_funds(ttl_hash=None):
+@lru_cache(maxsize=2)
+def get_all_funds(language=None, ttl_hash=None):
     del ttl_hash  # Only needed for lru_cache
-    language = {"language": get_lang()}
+    language = {"language": language or get_lang()}
     fund_response = get_data(Config.GET_ALL_FUNDS_ENDPOINT, language)
     return fund_response
 
 
 @lru_cache(maxsize=5)
 def get_all_rounds_for_fund(
-    fund_id, as_dict=False, use_short_name=False, ttl_hash=None
+    fund_id, language, as_dict=False, use_short_name=False, ttl_hash=None
 ):
     del ttl_hash  # Only needed for lru_cache
-    params = {"language": get_lang()}
+    params = {"language": language or get_lang()}
     if use_short_name:
         params["use_short_name"] = "true"
     rounds_response = get_data_or_fail_gracefully(
@@ -408,6 +413,7 @@ def get_default_round_for_fund(fund_short_name: str) -> Round:
     try:
         rounds = get_all_rounds_for_fund(
             fund_short_name,
+            get_lang(),
             as_dict=False,
             use_short_name=True,
             ttl_hash=get_ttl_hash(),
