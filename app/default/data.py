@@ -350,7 +350,7 @@ def get_account(email: str = None, account_id: str = None) -> Account | None:
         return Account.from_json(response)
 
 
-@lru_cache(maxsize=1)
+@lru_cache(maxsize=2)
 def get_all_funds(language=None, ttl_hash=None):
     del ttl_hash  # Only needed for lru_cache
     language = {"language": language or get_lang()}
