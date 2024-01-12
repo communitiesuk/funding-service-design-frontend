@@ -138,7 +138,6 @@ def get_language_cookie_value(response):
 def test_language_cookie_update_welsh_to_english(
     flask_test_client, mocker, mock_login, mock_applications
 ):
-
     # set language cookie to welsh
     flask_test_client.set_cookie(domain="/", key="language", value="cy")
 
@@ -163,7 +162,6 @@ def test_language_cookie_update_welsh_to_english(
 def test_language_cookie_update_english_to_welsh(
     flask_test_client, mocker, mock_login, mock_applications
 ):
-
     # set language cookie to english
     flask_test_client.set_cookie(domain="/", key="language", value="en")
 
