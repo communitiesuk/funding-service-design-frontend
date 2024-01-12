@@ -226,6 +226,7 @@ def get_fund(
     fund = (
         get_fund_data(
             fund_id,
+            get_lang(),
             as_dict=False,
             ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
         )

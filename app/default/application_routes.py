@@ -1,5 +1,3 @@
-from datetime import datetime
-from datetime import timedelta
 from functools import wraps
 from http.client import METHOD_NOT_ALLOWED
 
@@ -36,8 +34,10 @@ from flask import render_template
 from flask import request
 from flask import url_for
 from flask_babel import force_locale
+from flask_babel import gettext
 from flask_wtf import FlaskForm
 from fsd_utils.authentication.decorators import login_required
+from fsd_utils.locale_selector.set_lang import LanguageSelector
 from fsd_utils.simple_utils.date_utils import (
     current_datetime_after_given_iso_string,
 )
@@ -146,7 +146,6 @@ def tasklist(application_id):
     Returns:
         function: a function which renders the tasklist template.
     """
-
     application = get_application_data(application_id)
 
     fund_data = get_fund_data(
@@ -258,40 +257,39 @@ def tasklist(application_id):
         )
 
     with force_locale(application.language):
-        response = make_response(
-            render_template(
-                "tasklist.html",
-                application=application,
-                sections=display_config,
-                application_status=get_formatted,
-                application_meta_data=application_meta_data,
-                form=form,
-                contact_us_email_address=round_data.contact_email,
-                submission_deadline=round_data.deadline,
-                is_past_submission_deadline=current_datetime_after_given_iso_string(  # noqa:E501
-                    round_data.deadline
-                ),
-                dashboard_url=url_for(
-                    "account_routes.dashboard",
-                    fund=fund_data.short_name,
-                    round=round_data.short_name,
-                ),
-                application_guidance=app_guidance,
-                existing_feedback_map=existing_feedback_map,
-                feedback_survey_data=feedback_survey_data,
-                migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
-            )
-        )
-
+        response = make_response()
         if request.cookies.get("language") != application.language:
-            expiry_time = datetime.utcnow() + timedelta(days=30)
-
-            response.set_cookie(
-                "language",
-                application.language,
-                expires=expiry_time,
-                domain=Config.COOKIE_DOMAIN,
+            LanguageSelector.set_language_cookie(
+                application.language, response
             )
+
+        response_content = render_template(
+            "tasklist.html",
+            application=application,
+            sections=display_config,
+            application_status=get_formatted,
+            application_meta_data=application_meta_data,
+            form=form,
+            contact_us_email_address=round_data.contact_email,
+            submission_deadline=round_data.deadline,
+            is_past_submission_deadline=current_datetime_after_given_iso_string(  # noqa:E501
+                round_data.deadline
+            ),
+            dashboard_url=url_for(
+                "account_routes.dashboard",
+                fund=fund_data.short_name,
+                round=round_data.short_name,
+            ),
+            application_guidance=app_guidance,
+            existing_feedback_map=existing_feedback_map,
+            feedback_survey_data=feedback_survey_data,
+            migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
+            # Set service_title here so it uses the application language - overrides the context_processor
+            service_title=gettext("Apply for")
+            + " "
+            + fund_data.title,  # title is already translated
+        )
+        response.set_data(response_content)
 
         return response
 

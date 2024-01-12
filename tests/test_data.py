@@ -87,6 +87,14 @@ TEST_FUNDS_DATA = [
         "title": "fund for testing 2",
         "welsh_available": False,
     },
+    {
+        "id": "333",
+        "name": "Welsh Fund",
+        "description": "test test 2",
+        "short_name": "FSD2",
+        "title": "gronfa cymraeg",
+        "welsh_available": True,
+    },
 ]
 
 TEST_ROUNDS_DATA = [
