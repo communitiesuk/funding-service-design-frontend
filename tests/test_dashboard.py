@@ -8,11 +8,11 @@ from app.default.account_routes import update_applications_statuses_for_display
 from app.default.data import RoundStatus
 from app.models.application_summary import ApplicationSummary
 from bs4 import BeautifulSoup
-from tests.test_data import common_application_data
-from tests.test_data import TEST_APP_STORE_DATA
-from tests.test_data import TEST_DISPLAY_DATA
-from tests.test_data import TEST_FUNDS_DATA
-from tests.test_data import TEST_ROUNDS_DATA
+from tests.api_data.test_data import common_application_data
+from tests.api_data.test_data import TEST_APPLICATION_SUMMARIES
+from tests.api_data.test_data import TEST_DISPLAY_DATA
+from tests.api_data.test_data import TEST_FUNDS_DATA
+from tests.api_data.test_data import TEST_ROUNDS_DATA
 
 file = open("tests/api_data/endpoint_data.json")
 data = json.loads(file.read())
@@ -81,7 +81,7 @@ def test_dashboard_route_search_call(
     )
     get_apps_mock = mocker.patch(
         "app.default.account_routes.search_applications",
-        return_value=TEST_APP_STORE_DATA,
+        return_value=TEST_APPLICATION_SUMMARIES,
     )
     mocker.patch(
         "app.default.account_routes.build_application_data_for_display",
@@ -99,7 +99,7 @@ def test_dashboard_route(flask_test_client, mocker, mock_login):
 
     mocker.patch(
         "app.default.account_routes.search_applications",
-        return_value=TEST_APP_STORE_DATA,
+        return_value=TEST_APPLICATION_SUMMARIES,
     )
     mocker.patch(
         "app.default.account_routes.build_application_data_for_display",
@@ -210,7 +210,7 @@ def test_dashboard_route_no_applications(
         (
             TEST_FUNDS_DATA,
             TEST_ROUNDS_DATA,
-            TEST_APP_STORE_DATA,
+            TEST_APPLICATION_SUMMARIES,
             2,
             4,
             4,
@@ -220,7 +220,7 @@ def test_dashboard_route_no_applications(
         (
             TEST_FUNDS_DATA,
             TEST_ROUNDS_DATA[0:2],
-            TEST_APP_STORE_DATA,
+            TEST_APPLICATION_SUMMARIES,
             1,
             2,
             2,
@@ -230,7 +230,7 @@ def test_dashboard_route_no_applications(
         (
             TEST_FUNDS_DATA,
             TEST_ROUNDS_DATA,
-            TEST_APP_STORE_DATA,
+            TEST_APPLICATION_SUMMARIES,
             1,
             2,
             2,
@@ -240,7 +240,7 @@ def test_dashboard_route_no_applications(
         (
             TEST_FUNDS_DATA,
             TEST_ROUNDS_DATA[0:2],
-            TEST_APP_STORE_DATA,
+            TEST_APPLICATION_SUMMARIES,
             0,
             0,
             0,
@@ -250,7 +250,7 @@ def test_dashboard_route_no_applications(
         (
             TEST_FUNDS_DATA,
             TEST_ROUNDS_DATA,
-            TEST_APP_STORE_DATA[0:1],
+            TEST_APPLICATION_SUMMARIES[0:1],
             1,
             2,
             1,
@@ -260,7 +260,7 @@ def test_dashboard_route_no_applications(
         (
             TEST_FUNDS_DATA,
             TEST_ROUNDS_DATA,
-            TEST_APP_STORE_DATA[1:2],
+            TEST_APPLICATION_SUMMARIES[1:2],
             1,
             1,
             1,
@@ -271,7 +271,7 @@ def test_dashboard_route_no_applications(
         (
             TEST_FUNDS_DATA,
             TEST_ROUNDS_DATA[0:3],
-            TEST_APP_STORE_DATA[0:2],
+            TEST_APPLICATION_SUMMARIES[0:2],
             1,
             2,
             2,

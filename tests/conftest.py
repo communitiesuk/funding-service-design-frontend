@@ -1,4 +1,3 @@
-import json
 import multiprocessing
 import platform
 
@@ -6,8 +5,8 @@ import pytest
 from app.create_app import create_app
 from app.models.fund import Fund
 from flask import template_rendered
-from tests.test_data import TEST_FUNDS_DATA
-from tests.test_data import TEST_ROUNDS_DATA
+from tests.api_data.test_data import TEST_FUNDS_DATA
+from tests.api_data.test_data import TEST_ROUNDS_DATA
 
 if platform.system() == "Darwin":
     multiprocessing.set_start_method("fork")  # Required on macOSX
@@ -76,23 +75,6 @@ def flask_test_client():
     """
     with create_app().test_client() as test_client:
         yield test_client
-
-
-def mock_get_data(endpoint):
-    file = open("tests/api_data/endpoint_data.json")
-    data = json.loads(file.read())
-    return data[endpoint]
-
-
-@pytest.fixture()
-def mock_get_application(mocker):
-    file = open("tests/api_data/endpoint_data.json")
-    data = json.loads(file.read())  # noqa
-    # mock the function in the file it is invoked (not where it is declared)
-    mocker.patch(
-        "app.default.routes.get_data",
-        new=mock_get_data,
-    )
 
 
 @pytest.fixture(scope="function")
