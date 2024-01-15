@@ -32,18 +32,18 @@ Paketo is used to build the docker image which gets deployed to our test and pro
 
 `envs` for the `docker run` command needs to contain values for each of the following:
 
--`RSA256_PUBLIC_KEY_BASE64`
--`AUTHENTICATOR_HOST`
--`ACCOUNT_STORE_API_HOST`
--`APPLICATION_STORE_API_HOST`
--`NOTIFICATION_SERVICE_HOST`
--`APPLICANT_FRONTEND_HOST`
--`FORMS_SERVICE_PUBLIC_HOST`
--`FORMS_SERVICE_PRIVATE_HOST`
--`FUND_STORE_API_HOST`
--`SENTRY_DSN`
--`COOKIE_DOMAIN`
--`GITHUB_SHA`
+* `RSA256_PUBLIC_KEY_BASE64`
+* `AUTHENTICATOR_HOST`
+* `ACCOUNT_STORE_API_HOST`
+* `APPLICATION_STORE_API_HOST`
+* `NOTIFICATION_SERVICE_HOST`
+* `APPLICANT_FRONTEND_HOST`
+* `FORMS_SERVICE_PUBLIC_HOST`
+* `FORMS_SERVICE_PRIVATE_HOST`
+* `FUND_STORE_API_HOST`
+* `SENTRY_DSN`
+* `COOKIE_DOMAIN`
+* `GITHUB_SHA`
 
 ## Copilot
 Copilot is used for infrastructure deployment. Instructions are available [here](https://github.com/communitiesuk/funding-service-design-workflows/blob/main/readmes/python-repos-copilot.md), with the following values for the frontend:
