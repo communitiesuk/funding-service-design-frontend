@@ -1,9 +1,9 @@
 import json
 
 from app.default.data import RoundStatus
-from app.models.application import Application
 from app.models.application_display_mapping import ApplicationMapping
 from config.envs.default import DefaultConfig
+from tests.api_data.test_data import TEST_APPLICATIONS
 
 file = open("tests/api_data/endpoint_data.json")
 data = json.loads(file.read())
@@ -19,9 +19,6 @@ class TestUserValidation:
     data = json.loads(file.read())
     TEST_ID = "test_id"
     TEST_USER = "test-user"
-    TEST_APPLICATION_STORE_DATA = data[
-        f"application_store/applications/{TEST_ID}"
-    ]
     REHYDRATION_TOKEN = "test_token"
 
     def test_continue_application_correct_user(
@@ -29,9 +26,7 @@ class TestUserValidation:
     ):
         mocker.patch(
             "app.default.application_routes.get_application_data",
-            return_value=Application.from_dict(
-                self.TEST_APPLICATION_STORE_DATA
-            ),
+            return_value=TEST_APPLICATIONS[0],
         )
         mocker.patch(
             "app.default.application_routes.format_rehydrate_payload",
@@ -71,9 +66,7 @@ class TestUserValidation:
         )
         mocker.patch(
             "app.default.application_routes.get_application_data",
-            return_value=Application.from_dict(
-                self.TEST_APPLICATION_STORE_DATA
-            ),
+            return_value=TEST_APPLICATIONS[0],
         )
 
         response = flask_test_client.get(
@@ -86,9 +79,7 @@ class TestUserValidation:
     ):
         mocker.patch(
             "app.default.application_routes.get_application_data",
-            return_value=Application.from_dict(
-                self.TEST_APPLICATION_STORE_DATA
-            ),
+            return_value=TEST_APPLICATIONS[0],
         )
         mocker.patch(
             "app.default.application_routes.get_application_display_config",
@@ -107,7 +98,7 @@ class TestUserValidation:
         )
         assert 200 == response.status_code, "Incorrect status code"
         assert b"<title>Task List" in response.data
-        assert b"TEST-REF-A</dd>" in response.data
+        assert b"TEST-REF</dd>" in response.data
 
     def test_tasklist_bad_user(self, flask_test_client, mocker, monkeypatch):
         monkeypatch.setattr(
@@ -121,9 +112,7 @@ class TestUserValidation:
         )
         mocker.patch(
             "app.default.application_routes.get_application_data",
-            return_value=Application.from_dict(
-                self.TEST_APPLICATION_STORE_DATA
-            ),
+            return_value=TEST_APPLICATIONS[0],
         )
 
         response = flask_test_client.get(
@@ -134,9 +123,7 @@ class TestUserValidation:
     def test_submit_correct_user(self, flask_test_client, mocker, mock_login):
         mocker.patch(
             "app.default.application_routes.get_application_data",
-            return_value=Application.from_dict(
-                self.TEST_APPLICATION_STORE_DATA
-            ),
+            return_value=TEST_APPLICATIONS[0],
         )
         mocker.patch(
             "app.default.application_routes.determine_round_status",
@@ -169,9 +156,7 @@ class TestUserValidation:
     ):
         mocker.patch(
             "app.default.application_routes.get_application_data",
-            return_value=Application.from_dict(
-                self.TEST_APPLICATION_STORE_DATA
-            ),
+            return_value=TEST_APPLICATIONS[0],
         )
         mocker.patch(
             "app.default.application_routes.determine_round_status",
@@ -198,9 +183,7 @@ class TestUserValidation:
         )
         mocker.patch(
             "app.default.application_routes.get_application_data",
-            return_value=Application.from_dict(
-                self.TEST_APPLICATION_STORE_DATA
-            ),
+            return_value=TEST_APPLICATIONS[0],
         )
 
         response = flask_test_client.post(

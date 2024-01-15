@@ -1,7 +1,9 @@
 from datetime import datetime
 
+from app.models.application import Application
 from app.models.application_summary import ApplicationSummary
 from app.models.round import Round
+from tests.api_data.test_data_forms import COF_TEST_FORMS
 
 common_round_data = {
     "opens": "2022-09-01T00:00:01",
@@ -32,7 +34,7 @@ common_application_data = {
     "fund_id": "xxx",
     "round_id": "xxx",
 }
-TEST_APP_STORE_DATA = [
+TEST_APPLICATION_SUMMARIES = [
     ApplicationSummary.from_dict(
         {
             **common_application_data,
@@ -86,6 +88,14 @@ TEST_FUNDS_DATA = [
         "short_name": "FSD2",
         "title": "fund for testing 2",
         "welsh_available": False,
+    },
+    {
+        "id": "333",
+        "name": "Welsh Fund",
+        "description": "test test 2",
+        "short_name": "FSD2",
+        "title": "gronfa cymraeg",
+        "welsh_available": True,
     },
 ]
 
@@ -233,3 +243,169 @@ TEST_DISPLAY_DATA = {
         }
     ],
 }
+TEST_APPLICATIONS = [
+    Application.from_dict(
+        {
+            "id": "test-application-id",
+            "account_id": "test-user",
+            "date_submitted": "2022-10-11T10:01:25.216743",
+            "fund_id": "funding-service-design",
+            "last_edited": "2022-10-11T09:49:00.542371",
+            "project_name": "Project name",
+            "reference": "TEST-REF",
+            "round_id": "summer",
+            "round_name": "Round T Window T",
+            "started_at": "2022-10-11T09:43:40.632095",
+            "status": "IN_PROGRESS",
+            "language": "en",
+            "forms": COF_TEST_FORMS,
+        }
+    ),
+    Application.from_dict(
+        {
+            "id": "test-welsh-id",
+            "account_id": "test-user",
+            "date_submitted": "2022-10-11T10:01:25.216743",
+            "fund_id": "333",
+            "last_edited": "2022-10-11T09:49:00.542371",
+            "project_name": "Project name",
+            "reference": "TEST-REF",
+            "round_id": "summer",
+            "round_name": "Round T Window T",
+            "started_at": "2022-10-11T09:43:40.632095",
+            "status": "IN_PROGRESS",
+            "language": "cy",
+            "forms": COF_TEST_FORMS,
+        }
+    ),
+]
+
+SUBMITTED_APPLICATION = Application.from_dict(
+    {
+        "id": "test-application-id",
+        "account_id": "test-user",
+        "date_submitted": "2022-10-11T10:01:25.216743",
+        "fund_id": "funding-service-design",
+        "last_edited": "2022-10-11T09:49:00.542371",
+        "project_name": "Project name",
+        "reference": "TEST-REF",
+        "round_id": "summer",
+        "round_name": "Round T Window T",
+        "started_at": "2022-10-11T09:43:40.632095",
+        "status": "SUBMITTED",
+        "language": "en",
+        "forms": [],
+    }
+)
+
+NOT_STARTED_APPLICATION = Application.from_dict(
+    {
+        "id": "test_id",
+        "account_id": "test-user",
+        "status": "NOT_STARTED",
+        "fund_id": "funding-service-design",
+        "round_id": "summer",
+        "reference": "TEST-REF-A",
+        "project_name": None,
+        "date_submitted": None,
+        "started_at": "2022-05-20T14:47:12",
+        "last_edited": None,
+        "language": "en",
+        "feedback_survey_config": {
+            "has_feedback_survey": True,
+            "has_section_feedback": True,
+            "is_feedback_survey_optional": False,
+            "is_section_feedback_optional": False,
+        },
+        "forms": [
+            {
+                "name": "applicant-information",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+            {
+                "name": "asset-information",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+            {
+                "name": "community-benefits",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+            {
+                "name": "community-engagement",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+            {
+                "name": "community-representation",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+            {
+                "name": "community-use",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+            {"name": "declarations", "questions": [], "status": "NOT_STARTED"},
+            {
+                "name": "environmental-sustainability",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+            {"name": "feasibility", "questions": [], "status": "NOT_STARTED"},
+            {
+                "name": "funding-required",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+            {
+                "name": "inclusiveness-and-integration",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+            {
+                "name": "local-support",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+            {
+                "name": "organisation-information",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+            {
+                "name": "project-costs",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+            {
+                "name": "project-information",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+            {
+                "name": "project-qualification",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+            {"name": "risk", "questions": [], "status": "NOT_STARTED"},
+            {
+                "name": "skills-and-resources",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+            {
+                "name": "value-to-the-community",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+            {
+                "name": "upload-business-plan",
+                "questions": [],
+                "status": "NOT_STARTED",
+            },
+        ],
+    }
+)

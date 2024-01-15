@@ -8,9 +8,9 @@ from app.models.fund import Fund
 from bs4 import BeautifulSoup
 from flask import render_template
 from requests import HTTPError
-from tests.test_data import TEST_APP_STORE_DATA
-from tests.test_data import TEST_FUNDS_DATA
-from tests.test_data import TEST_ROUNDS_DATA
+from tests.api_data.test_data import TEST_APPLICATION_SUMMARIES
+from tests.api_data.test_data import TEST_FUNDS_DATA
+from tests.api_data.test_data import TEST_ROUNDS_DATA
 
 
 def test_dodgy_url_returns_404(flask_test_client):
@@ -188,7 +188,7 @@ def test_find_fund_in_request(
     )
     mocker.patch(
         "app.helpers.get_application_data",
-        return_value=TEST_APP_STORE_DATA[0],
+        return_value=TEST_APPLICATION_SUMMARIES[0],
     )
     request_mock = mocker.patch("app.helpers.request")
     request_mock.view_args.get = (
@@ -237,7 +237,7 @@ def test_find_round_in_request(
     )
     mocker.patch(
         "app.helpers.get_application_data",
-        return_value=TEST_APP_STORE_DATA[0],
+        return_value=TEST_APPLICATION_SUMMARIES[0],
     )
     mocker.patch(
         "app.helpers.get_round_data",
