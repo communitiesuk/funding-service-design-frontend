@@ -29,6 +29,7 @@ on:
       - '!**/README.md'
       - '!docs/**'
       - 'app/**'
+      - 'config/**'
       - 'tests/**'
       - 'requirements-dev.in'
       - 'requirements-dev.txt'
