@@ -23,7 +23,7 @@ This service depends on:
 [Python IDE Setup](https://github.com/communitiesuk/funding-service-design-workflows/blob/main/readmes/python-repos-ide-setup.md)
 
 # Translations
-Tasks to extract and update translations are available in `tasks.py`. See [here](https://github.com/communitiesuk/funding-service-design-workflows/blob/main/readmes/python-repos-translations.md) for more details.
+Tasks to extract and update translations are available in `tasks.py`. See [here](https://dluhcdigital.atlassian.net/wiki/spaces/FS/pages/79174033/How+to+update+Welsh+translations+in+Access+Funding) for more details.
 
 # Builds and Deploys
 Details on how our pipelines work and the release process is available [here](https://dluhcdigital.atlassian.net/wiki/spaces/FS/pages/73695505/How+do+we+deploy+our+code+to+prod)
