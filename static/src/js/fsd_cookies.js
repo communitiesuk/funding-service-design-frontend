@@ -13,7 +13,13 @@ function updateCookieConsent(value) {
     const slice = currentDomain.includes("access-funding") ? -4 : -3;
     const targetDomain = currentDomain.split('.').slice(slice).join('.');
     document.cookie = `${COOKIE_FSD_CONSENT}=${btoa(JSON.stringify(consentObject))};path=` + "/" + `;domain=${targetDomain};secure;SameSite=None`;
-    document.getElementById("govuk-notification-banner-id").removeAttribute("hidden");
+    
+    const notificationBanner = document.getElementById("govuk-notification-banner-id")
+    if (notificationBanner) {
+      notificationBanner.removeAttribute("hidden");
+  
+      notificationBanner.scrollIntoView();
+    }
 
 }
 function acceptCookies() {
