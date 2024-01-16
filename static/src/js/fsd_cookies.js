@@ -13,6 +13,8 @@ function updateCookieConsent(value) {
     const slice = currentDomain.includes("access-funding") ? -4 : -3;
     const targetDomain = currentDomain.split('.').slice(slice).join('.');
     document.cookie = `${COOKIE_FSD_CONSENT}=${btoa(JSON.stringify(consentObject))};path=` + "/" + `;domain=${targetDomain};secure;SameSite=None`;
+    document.getElementById("govuk-notification-banner-id").removeAttribute("hidden");
+
 }
 function acceptCookies() {
     updateCookieConsent('granted');
