@@ -17,7 +17,6 @@ function updateCookieConsent(value) {
     const notificationBanner = document.getElementById("govuk-notification-banner-id")
     if (notificationBanner) {
       notificationBanner.removeAttribute("hidden");
-  
       notificationBanner.scrollIntoView();
     }
 
