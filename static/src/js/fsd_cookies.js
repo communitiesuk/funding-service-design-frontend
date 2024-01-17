@@ -14,7 +14,7 @@ function updateCookieConsent(value) {
     const targetDomain = currentDomain.split('.').slice(slice).join('.');
     document.cookie = `${COOKIE_FSD_CONSENT}=${btoa(JSON.stringify(consentObject))};path=` + "/" + `;domain=${targetDomain};secure;SameSite=None`;
     
-    const notificationBanner = document.getElementById("govuk-notification-banner-id")
+    const notificationBanner = document.getElementById("cookie-setting-saved-banner")
     if (notificationBanner) {
       notificationBanner.removeAttribute("hidden");
       notificationBanner.scrollIntoView();
