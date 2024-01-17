@@ -1,5 +1,7 @@
 import json
 from datetime import datetime
+from unittest import mock
+from unittest.mock import ANY
 
 import pytest
 from app.default.account_routes import build_application_data_for_display
@@ -8,6 +10,7 @@ from app.default.account_routes import update_applications_statuses_for_display
 from app.default.data import RoundStatus
 from app.models.application_summary import ApplicationSummary
 from bs4 import BeautifulSoup
+from config import Config
 from tests.api_data.test_data import common_application_data
 from tests.api_data.test_data import TEST_APPLICATION_SUMMARIES
 from tests.api_data.test_data import TEST_DISPLAY_DATA
@@ -96,7 +99,6 @@ def test_dashboard_route_search_call(
 
 
 def test_dashboard_route(flask_test_client, mocker, mock_login):
-
     mocker.patch(
         "app.default.account_routes.search_applications",
         return_value=TEST_APPLICATION_SUMMARIES,
@@ -179,7 +181,6 @@ def test_submitted_dashboard_route_shows_no_application_link(
 def test_dashboard_route_no_applications(
     flask_test_client, mocker, mock_login
 ):
-
     mocker.patch(
         "app.default.account_routes.search_applications",
         return_value=[],
@@ -299,7 +300,6 @@ def test_build_application_data_for_display(
     fund_short_name,
     mocker,
 ):
-
     mocker.patch(
         "app.default.account_routes.get_all_funds",
         return_value=funds,
@@ -413,3 +413,50 @@ def test_filter_funds_by_short_name(
     )
     result = get_visible_funds(filter_value)
     assert expected_count == len(result)
+
+
+@pytest.mark.parametrize(
+    "cookie_lang,fund_supports_welsh,exp_application_lang",
+    [
+        ("en", True, "en"),
+        ("en", False, "en"),
+        ("cy", True, "cy"),
+        ("cy", False, "en"),
+    ],
+)
+def test_create_new_application(
+    flask_test_client,
+    mocker,
+    app,
+    mock_login,
+    cookie_lang,
+    fund_supports_welsh,
+    exp_application_lang,
+):
+    mock_app_store_response = mock.MagicMock()
+    mock_app_store_response.status_code = 201
+    post_request = mocker.patch(
+        "app.default.account_routes.requests.post",
+        return_value=mock_app_store_response,
+    )
+    mocker.patch(
+        "app.default.account_routes.get_lang", return_value=cookie_lang
+    )
+    mock_fund = mock.MagicMock()
+    mock_fund.welsh_available = fund_supports_welsh
+    mocker.patch("app.default.account_routes.get_fund", return_value=mock_fund)
+
+    request_mock = mocker.patch("app.default.account_routes.request")
+    request_mock.form = mock.MagicMock()
+    response = flask_test_client.post("/account/new", follow_redirects=False)
+    assert 302 == response.status_code
+    # assert the request to app store to create the application uses the expected language
+    post_request.assert_called_once_with(
+        url=f"{Config.APPLICATION_STORE_API_HOST}/applications",
+        json={
+            "account_id": "test-user",
+            "round_id": ANY,
+            "fund_id": ANY,
+            "language": exp_application_lang,
+        },
+    )

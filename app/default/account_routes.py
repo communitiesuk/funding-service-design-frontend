@@ -12,12 +12,14 @@ from config import Config
 from flask import Blueprint
 from flask import current_app
 from flask import g
+from flask import make_response
 from flask import redirect
 from flask import render_template
 from flask import request
 from flask import url_for
 from fsd_utils.authentication.decorators import login_required
 from fsd_utils.locale_selector.get_lang import get_lang
+from fsd_utils.locale_selector.set_lang import LanguageSelector
 
 account_bp = Blueprint("account_routes", __name__, template_folder="templates")
 
@@ -207,13 +209,21 @@ def dashboard():
 @login_required
 def new():
     account_id = g.account_id
+    application_language = get_lang()
+    fund_id = request.form["fund_id"]
+    # If requesting an application in welsh, ensure the fund supports it
+    if application_language == "cy":
+        fund = get_fund(fund_id=fund_id)
+        if not fund.welsh_available:
+            application_language = "en"
+
     new_application = requests.post(
         url=f"{Config.APPLICATION_STORE_API_HOST}/applications",
         json={
             "account_id": account_id,
             "round_id": request.form["round_id"],
-            "fund_id": request.form["fund_id"],
-            "language": get_lang(),
+            "fund_id": fund_id,
+            "language": application_language,
         },
     )
     new_application_json = new_application.json()
@@ -226,9 +236,15 @@ def new():
             " application: "
             + str(new_application.status_code)
         )
-    return redirect(
-        url_for(
-            "application_routes.tasklist",
-            application_id=new_application.json().get("id"),
+    response = make_response(
+        redirect(
+            url_for(
+                "application_routes.tasklist",
+                application_id=new_application.json().get("id"),
+            )
         )
     )
+    LanguageSelector.set_language_cookie(
+        locale=application_language, response=response
+    )
+    return response
