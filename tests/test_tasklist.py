@@ -10,6 +10,7 @@ from tests.api_data.test_data import TEST_APPLICATION_SUMMARIES
 from tests.api_data.test_data import TEST_APPLICATIONS
 from tests.api_data.test_data import TEST_DISPLAY_DATA
 from tests.api_data.test_data import TEST_FUNDS_DATA
+from tests.utils import get_language_cookie_value
 
 file = open("tests/api_data/endpoint_data.json")
 data = json.loads(file.read())
@@ -104,16 +105,6 @@ def test_tasklist_for_submit_application_route(
         },
         as_dict=False,
     )
-
-
-def get_language_cookie_value(response):
-    cookie_header = response.headers["Set-Cookie"]
-    lang_index = response.headers["Set-Cookie"].find("language=")
-    lang_index = lang_index + len("language=")
-    current_set_language = str(cookie_header)[
-        lang_index : lang_index + 2  # noqa: E203
-    ]
-    return current_set_language
 
 
 def test_language_cookie_update_welsh_to_english(

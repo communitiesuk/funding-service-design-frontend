@@ -7,6 +7,16 @@ from config import Config
 from flask import url_for
 
 
+def get_language_cookie_value(response):
+    cookie_header = response.headers["Set-Cookie"]
+    lang_index = response.headers["Set-Cookie"].find("language=")
+    lang_index = lang_index + len("language=")
+    current_set_language = str(cookie_header)[
+        lang_index : lang_index + 2  # noqa: E203
+    ]
+    return current_set_language
+
+
 def get_service_html_filepath(
     root_dir: str, service_dict: dict, route_rel: str
 ):
