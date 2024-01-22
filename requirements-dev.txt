@@ -369,7 +369,7 @@ webassets==2.0
     # via
     #   -r requirements.txt
     #   flask-assets
-werkzeug==3.0.1
+git+https://github.com/communitiesuk/werkzeug-dluhc.git # forked werkzeug package
     # via
     #   -r requirements.txt
     #   flask
