@@ -17,11 +17,13 @@ from flask import redirect
 from flask import render_template
 from flask import request
 from flask import url_for
+from flask_babel import force_locale
 from fsd_utils.authentication.decorators import login_required
 from fsd_utils.locale_selector.get_lang import get_lang
 from fsd_utils.locale_selector.set_lang import LanguageSelector
 
 account_bp = Blueprint("account_routes", __name__, template_folder="templates")
+TEMPLATE_SINGLE_FUND = "dashboard_single_fund.html"
 
 
 def get_visible_funds(visible_fund_short_name):
@@ -133,7 +135,7 @@ def build_application_data_for_display(
     return application_data_for_display
 
 
-def determine_show_language_column(applications):
+def determine_show_language_column(applications: ApplicationSummary):
     """
     Determine whether the language column should be visible -
     true if applications are in more than one language
@@ -148,11 +150,12 @@ def dashboard():
 
     fund_short_name = request.args.get("fund")
     round_short_name = request.args.get("round")
+    render_lang = get_lang()
 
     if fund_short_name and round_short_name:
         # find and display applications with this
         # fund and round else return 404
-        template_name = "dashboard_single_fund.html"
+        template_name = TEMPLATE_SINGLE_FUND
         fund_details, round_details = get_fund_and_round(
             fund_short_name=fund_short_name, round_short_name=round_short_name
         )
@@ -168,7 +171,7 @@ def dashboard():
         # find and display all applications across
         # this fund else return 404
 
-        template_name = "dashboard_single_fund.html"
+        template_name = TEMPLATE_SINGLE_FUND
         fund_details = get_fund(fund_short_name=fund_short_name)
         search_params = {
             "fund_id": fund_details.id,
@@ -193,16 +196,23 @@ def dashboard():
     current_app.logger.info(
         f"Setting up applicant dashboard for :'{account_id}'"
     )
-    return render_template(
-        template_name,
-        account_id=account_id,
-        display_data=display_data,
-        show_language_column=show_language_column,
-        fund_short_name=fund_short_name,
-        round_short_name=round_short_name,
-        welsh_available=welsh_available,
-        migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
-    )
+    if not welsh_available and template_name == TEMPLATE_SINGLE_FUND:
+        render_lang = "en"
+    with force_locale(render_lang):
+        response = make_response(
+            render_template(
+                template_name,
+                account_id=account_id,
+                display_data=display_data,
+                show_language_column=show_language_column,
+                fund_short_name=fund_short_name,
+                round_short_name=round_short_name,
+                welsh_available=welsh_available,
+                migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
+            )
+        )
+    LanguageSelector.set_language_cookie(locale=render_lang, response=response)
+    return response
 
 
 @account_bp.route("/account/new", methods=["POST"])

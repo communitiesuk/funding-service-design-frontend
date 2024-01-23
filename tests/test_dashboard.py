@@ -5,10 +5,12 @@ from unittest.mock import ANY
 
 import pytest
 from app.default.account_routes import build_application_data_for_display
+from app.default.account_routes import determine_show_language_column
 from app.default.account_routes import get_visible_funds
 from app.default.account_routes import update_applications_statuses_for_display
 from app.default.data import RoundStatus
 from app.models.application_summary import ApplicationSummary
+from app.models.fund import Fund
 from bs4 import BeautifulSoup
 from config import Config
 from tests.api_data.test_data import common_application_data
@@ -16,6 +18,7 @@ from tests.api_data.test_data import TEST_APPLICATION_SUMMARIES
 from tests.api_data.test_data import TEST_DISPLAY_DATA
 from tests.api_data.test_data import TEST_FUNDS_DATA
 from tests.api_data.test_data import TEST_ROUNDS_DATA
+from tests.utils import get_language_cookie_value
 
 file = open("tests/api_data/endpoint_data.json")
 data = json.loads(file.read())
@@ -95,6 +98,95 @@ def test_dashboard_route_search_call(
 
     get_apps_mock.assert_called_once_with(
         search_params=expected_search_params, as_dict=False
+    )
+
+
+@pytest.mark.parametrize(
+    "query_string,exp_template_name",
+    [
+        ("?fund=abc&round=123", "dashboard_single_fund.html"),
+        ("?fund=abc", "dashboard_single_fund.html"),
+        ("?round=123", "dashboard_all.html"),
+        ("", "dashboard_all.html"),
+    ],
+)
+def test_dashboard_template_rendered(
+    flask_test_client,
+    mock_login,
+    mocker,
+    templates_rendered,
+    query_string,
+    exp_template_name,
+):
+    mocker.patch(
+        "app.default.account_routes.search_applications",
+        return_value=TEST_APPLICATION_SUMMARIES,
+    )
+    mocker.patch(
+        "app.default.account_routes.build_application_data_for_display",
+        return_value=TEST_DISPLAY_DATA,
+    )
+
+    response = flask_test_client.get(
+        f"/account{query_string}", follow_redirects=True
+    )
+    assert response.status_code == 200
+    assert 1 == len(templates_rendered)
+    rendered_template = templates_rendered[0]
+    assert exp_template_name == rendered_template[0].name
+
+
+@pytest.mark.parametrize(
+    "query_string,fund_supports_welsh,requested_language,exp_response_language",
+    [
+        ("?fund=abc&round=123", True, "en", "en"),
+        ("?fund=abc&round=123", True, "cy", "cy"),
+        ("?fund=abc&round=123", False, "cy", "en"),
+        ("?fund=abc&round=123", False, "en", "en"),
+        ("", True, "cy", "cy"),
+        ("", True, "en", "en"),
+    ],
+)
+def test_dashboard_language(
+    flask_test_client,
+    mock_login,
+    mocker,
+    query_string,
+    fund_supports_welsh,
+    requested_language,
+    exp_response_language,
+):
+    mocker.patch(
+        "app.default.account_routes.search_applications",
+        return_value=TEST_APPLICATION_SUMMARIES,
+    )
+    mocker.patch(
+        "app.default.account_routes.build_application_data_for_display",
+        return_value=TEST_DISPLAY_DATA,
+    )
+    mocker.patch(
+        "app.default.account_routes.get_lang", return_value=requested_language
+    )
+
+    mocker.patch(
+        "app.helpers.get_fund",
+        return_value=Fund.from_dict(
+            {
+                "id": "111",
+                "name": "Test Fund",
+                "description": "test test",
+                "short_name": "FSD",
+                "title": "fund for testing",
+                "welsh_available": fund_supports_welsh,
+            },
+        ),
+    )
+    response = flask_test_client.get(
+        f"/account{query_string}", follow_redirects=True
+    )
+    assert response.status_code == 200
+    assert exp_response_language == get_language_cookie_value(
+        response=response
     )
 
 
@@ -364,15 +456,15 @@ def test_update_application_statuses(
 
 
 @pytest.mark.parametrize(
-    "applications,visible",
+    "applications,exp_visible",
     [
         (
             [
                 ApplicationSummary.from_dict(
-                    {**common_application_data, "lang": "en"}
+                    {**common_application_data, "language": "en"}
                 ),
                 ApplicationSummary.from_dict(
-                    {**common_application_data, "lang": "cy"}
+                    {**common_application_data, "language": "cy"}
                 ),
             ],
             True,
@@ -380,10 +472,21 @@ def test_update_application_statuses(
         (
             [
                 ApplicationSummary.from_dict(
-                    {**common_application_data, "lang": "cy"}
+                    {**common_application_data, "language": "cy"}
                 ),
                 ApplicationSummary.from_dict(
-                    {**common_application_data, "lang": "cy"}
+                    {**common_application_data, "language": "cy"}
+                ),
+            ],
+            False,
+        ),
+        (
+            [
+                ApplicationSummary.from_dict(
+                    {**common_application_data, "language": "en"}
+                ),
+                ApplicationSummary.from_dict(
+                    {**common_application_data, "language": "en"}
                 ),
             ],
             False,
@@ -391,8 +494,10 @@ def test_update_application_statuses(
         ([], False),
     ],
 )
-def test_determine_show_language_column(applications, visible):
-    pass
+def test_determine_show_language_column(applications, exp_visible):
+    assert exp_visible == determine_show_language_column(
+        applications=applications
+    )
 
 
 @pytest.mark.parametrize(
