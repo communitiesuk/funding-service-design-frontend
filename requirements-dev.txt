@@ -148,6 +148,8 @@ gitpython==3.1.40
     # via bandit
 govuk-frontend-jinja==2.7.0
     # via -r requirements.txt
+greenlet==3.0.3
+    # via sqlalchemy
 gunicorn==20.1.0
     # via
     #   -r requirements.txt
@@ -369,8 +371,9 @@ webassets==2.0
     # via
     #   -r requirements.txt
     #   flask-assets
-werkzeug==3.0.1
+werkzeug @ git+https://github.com/communitiesuk/werkzeug-dluhc.git
     # via
+    #   -r requirements-dev.in
     #   -r requirements.txt
     #   flask
     #   pytest-flask

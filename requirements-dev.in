@@ -13,3 +13,4 @@ pytest-mock
 requests-mock
 pip-tools>=6.13.0
 invoke>=2.2.0
+werkzeug @ git+https://github.com/communitiesuk/werkzeug-dluhc.git # forked werkzeug package
