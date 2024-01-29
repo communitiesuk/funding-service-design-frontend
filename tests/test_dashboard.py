@@ -80,8 +80,8 @@ def test_dashboard_route_search_call(
     expected_search_params,
 ):
     request_mock = mocker.patch("app.default.account_routes.request")
-    request_mock.args.get = (
-        lambda key: fund_short_name
+    request_mock.args.get = lambda key: (
+        fund_short_name
         if key == "fund"
         else (round_short_name if key == "round" else None)
     )

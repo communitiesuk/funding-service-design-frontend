@@ -91,15 +91,15 @@ def create_app() -> Flask:
     flask_app.register_blueprint(application_bp)
     flask_app.register_blueprint(content_bp)
     flask_app.register_blueprint(account_bp)
-    flask_app.jinja_env.filters[
-        "datetime_format_short_month"
-    ] = datetime_format_short_month
-    flask_app.jinja_env.filters[
-        "custom_format_datetime"
-    ] = custom_format_datetime
-    flask_app.jinja_env.filters[
-        "date_format_short_month"
-    ] = date_format_short_month
+    flask_app.jinja_env.filters["datetime_format_short_month"] = (
+        datetime_format_short_month
+    )
+    flask_app.jinja_env.filters["custom_format_datetime"] = (
+        custom_format_datetime
+    )
+    flask_app.jinja_env.filters["date_format_short_month"] = (
+        date_format_short_month
+    )
     flask_app.jinja_env.filters["datetime_format"] = datetime_format
     flask_app.jinja_env.filters["snake_case_to_human"] = snake_case_to_human
     flask_app.jinja_env.filters["kebab_case_to_human"] = kebab_case_to_human
@@ -112,12 +112,14 @@ def create_app() -> Flask:
             service_meta_author=(
                 "Department for Levelling up Housing and Communities"
             ),
-            toggle_dict={
-                feature.name: feature.is_enabled()
-                for feature in toggle_client.list()
-            }
-            if toggle_client
-            else {},
+            toggle_dict=(
+                {
+                    feature.name: feature.is_enabled()
+                    for feature in toggle_client.list()
+                }
+                if toggle_client
+                else {}
+            ),
         )
 
     @flask_app.context_processor
@@ -175,9 +177,9 @@ def create_app() -> Flask:
     @flask_app.after_request
     def after_request(response):
         if "Cache-Control" not in response.headers:
-            response.headers[
-                "Cache-Control"
-            ] = "no-cache, no-store, must-revalidate"
+            response.headers["Cache-Control"] = (
+                "no-cache, no-store, must-revalidate"
+            )
             response.headers["Pragma"] = "no-cache"
             response.headers["Expires"] = "0"
         return response

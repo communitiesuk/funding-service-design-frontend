@@ -129,9 +129,9 @@ def build_application_data_for_display(
 
         application_data_for_display["funds"].append(fund_data_for_display)
 
-    application_data_for_display[
-        "total_applications_to_display"
-    ] = count_of_applications_for_visible_rounds
+    application_data_for_display["total_applications_to_display"] = (
+        count_of_applications_for_visible_rounds
+    )
     return application_data_for_display
 
 
@@ -243,8 +243,7 @@ def new():
     ):
         raise Exception(
             "Unexpected response from application store when creating new"
-            " application: "
-            + str(new_application.status_code)
+            " application: " + str(new_application.status_code)
         )
     response = make_response(
         redirect(
