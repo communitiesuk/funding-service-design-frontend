@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-11-28 09:00+0000\n"
+"POT-Creation-Date: 2024-01-30 11:35+0000\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -19,11 +19,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.10.3\n"
 
-#: app/create_app.py:135
+#: app/create_app.py:136 app/default/application_routes.py:288
 msgid "Apply for"
 msgstr "Gwneud cais am"
 
-#: app/create_app.py:137
+#: app/create_app.py:138
 msgid "Access Funding"
 msgstr "Cael Mynediad at Gyllid"
 
@@ -35,7 +35,7 @@ msgstr "am"
 msgid "Select a score"
 msgstr "Dewiswch sgôr"
 
-#: app/forms/feedback_forms.py:28 app/templates/feedback_generic_survey.html:26
+#: app/forms/feedback_forms.py:28 app/templates/feedback_generic_survey.html:34
 msgid "How easy did you find it to complete this section?"
 msgstr "Pa mor hawdd ydoedd i chi gwblhau’r adran hon?"
 
@@ -159,7 +159,7 @@ msgstr "Yn barod i'w gyflwyno "
 msgid "Accessibility statement"
 msgstr "Datganiad Hygyrchedd"
 
-#: app/templates/accessibility_statement.html:9
+#: app/templates/accessibility_statement.html:13
 msgid ""
 "The Department for Levelling Up, Housing and Communities is committed to "
 "making our online services accessible to all users by meeting"
@@ -167,7 +167,7 @@ msgstr ""
 "Mae'r Adran Ffyniant Bro, Tai a Chymunedau yn ymrwymo i wneud ein holl "
 "wasanaethau ar-lein yn hygyrch i bob defnyddiwr trwy fodloni"
 
-#: app/templates/accessibility_statement.html:11
+#: app/templates/accessibility_statement.html:15
 msgid ""
 "The Public Sector Bodies (Websites and Mobile Applications) (No. 2) "
 "Accessibility Regulations 2018"
@@ -175,7 +175,7 @@ msgstr ""
 "Rheoliadau Hygyrchedd Cyrff Sector Cyhoeddus (Gwefannau ac Apiau Symudol)"
 " (Rhif 2) 2018"
 
-#: app/templates/accessibility_statement.html:12
+#: app/templates/accessibility_statement.html:16
 msgid ""
 "This accessibility statement applies to content on the access-"
 "funding.levellingup.gov.uk domain and the following services:"
@@ -183,20 +183,20 @@ msgstr ""
 "Mae'r datganiad hygyrchedd hwn yn berthnasol i gynnwys ar barth access-"
 "funding.levellingup.gov.uk a'r gwasanaethau canlynol:"
 
-#: app/templates/accessibility_statement.html:16
+#: app/templates/accessibility_statement.html:20
 msgid "Community Ownership Fund online application"
 msgstr "Cais ar-lein y Gronfa Perchnogaeth Gymunedol"
 
-#: app/templates/accessibility_statement.html:17
+#: app/templates/accessibility_statement.html:21
 #, fuzzy
 msgid "Night Shelter Transformation Fund online application"
 msgstr "Cais ar-lein y Gronfa Perchnogaeth Gymunedol"
 
-#: app/templates/accessibility_statement.html:21
+#: app/templates/accessibility_statement.html:25
 msgid "Compliance status"
 msgstr "Statws cydymffurfio"
 
-#: app/templates/accessibility_statement.html:22
+#: app/templates/accessibility_statement.html:26
 #, fuzzy
 msgid ""
 "The Access Funding online application website is fully compliant with the"
@@ -205,11 +205,11 @@ msgstr ""
 "Mae gwefan cais ar-lein y Gronfa Perchnogaeth Gymunedol yn cydymffurfio'n"
 " llawn â safon AA fersiwn 2.1 Canllawiau Hygyrchedd Cynnwys y We."
 
-#: app/templates/accessibility_statement.html:25
+#: app/templates/accessibility_statement.html:29
 msgid "Preparation of this accessibility statement"
 msgstr "Paratoi'r datganiad hygyrchedd hwn"
 
-#: app/templates/accessibility_statement.html:26
+#: app/templates/accessibility_statement.html:30
 msgid ""
 "This statement was prepared in November 2022 and was last updated on 7th "
 "February 2023 following an accessibility audit carried out by"
@@ -218,11 +218,11 @@ msgstr ""
 "ddiwethaf ar 7 Chwefror 2023 yn dilyn archwiliad hygyrchedd a gynhaliwyd "
 "gan"
 
-#: app/templates/accessibility_statement.html:27
+#: app/templates/accessibility_statement.html:31
 msgid "The Digital Accessibility Centre (DAC)"
 msgstr ""
 
-#: app/templates/accessibility_statement.html:28
+#: app/templates/accessibility_statement.html:32
 msgid ""
 "additional manual testing and our responses to the findings of these "
 "activities."
@@ -230,11 +230,11 @@ msgstr ""
 "profion ychwanegol a wnaed â llaw a'n hymatebion i ganfyddiadau'r "
 "gweithgareddau hyn."
 
-#: app/templates/accessibility_statement.html:29
+#: app/templates/accessibility_statement.html:33
 msgid "Feedback and contact information"
 msgstr "Adborth a gwybodaeth gyswllt"
 
-#: app/templates/accessibility_statement.html:30
+#: app/templates/accessibility_statement.html:34
 msgid ""
 "If you find any problems that are not listed on this page or you think "
 "we’re not meeting the accessibility requirements,"
@@ -242,15 +242,15 @@ msgstr ""
 "Os cewch chi unrhyw broblemau sydd heb eu rhestru ar y dudalen hon neu os"
 " ydych o'r farn nad ydym yn bodloni'r gofynion hygyrchedd,"
 
-#: app/templates/accessibility_statement.html:31
+#: app/templates/accessibility_statement.html:35
 msgid "contact us"
 msgstr "cysylltwch â ni"
 
-#: app/templates/accessibility_statement.html:32
+#: app/templates/accessibility_statement.html:36
 msgid "Enforcement procedure"
 msgstr "Gweithdrefn orfodi"
 
-#: app/templates/accessibility_statement.html:33
+#: app/templates/accessibility_statement.html:37
 msgid ""
 "The Equality and Human Rights Commission (EHRC) is responsible for "
 "enforcing the Public Sector Bodies (Websites and Mobile Applications) "
@@ -260,58 +260,58 @@ msgstr ""
 "Rheoliadau Hygyrchedd Cyrff Sector Cyhoeddus (Gwefannau ac Apiau Symudol)"
 " (Rhif 2) (y 'rheoliadau hygyrchedd')."
 
-#: app/templates/accessibility_statement.html:34
+#: app/templates/accessibility_statement.html:38
 msgid "If you’re not happy with how we respond to your complaint,"
 msgstr "Os na fyddwch yn hapus â'r ffordd rydym ni'n ymateb i'ch cwyn,"
 
-#: app/templates/accessibility_statement.html:35
+#: app/templates/accessibility_statement.html:39
 msgid "contact the Equality Advisory and Support Service (EASS)"
 msgstr "cysylltwch â'r Gwasanaeth Cynghori a Chymorth Cydraddoldeb (EASS)"
 
-#: app/templates/contact_us.html:6 app/templates/footer.html:23
+#: app/templates/contact_us.html:7 app/templates/footer.html:23
 msgid "Contact us"
 msgstr "Cysylltwch â ni"
 
-#: app/templates/contact_us.html:12
+#: app/templates/contact_us.html:16
 msgid "Contact the"
 msgstr "Cysylltwch â"
 
-#: app/templates/contact_us.html:12
+#: app/templates/contact_us.html:16
 msgid "if you have any questions."
 msgstr "os oes gennych unrhyw gwestiynau."
 
-#: app/templates/contact_us.html:14
+#: app/templates/contact_us.html:18
 #, fuzzy
 msgid "Contact us if you have any questions."
 msgstr "os oes gennych unrhyw gwestiynau."
 
-#: app/templates/cookie_policy.html:130
+#: app/templates/cookie_policy.html:147
 msgid "Do you want to accept analytics cookies?"
 msgstr "Ydych chi eisiau derbyn cwcis dadansoddeg?"
 
-#: app/templates/cookie_policy.html:143
+#: app/templates/cookie_policy.html:160
 msgid "Yes"
 msgstr "Ydw"
 
-#: app/templates/cookie_policy.html:143
+#: app/templates/cookie_policy.html:160
 msgid "No"
 msgstr "Nac ydw"
 
-#: app/templates/cookie_policy.html:147
+#: app/templates/cookie_policy.html:164
 msgid "Save cookie settings"
 msgstr "Arbed gosodiadau cwcis"
 
-#: app/templates/dashboard_all.html:11
+#: app/templates/dashboard_all.html:12
 msgid "All applications"
 msgstr "Eich ceisiadau"
 
-#: app/templates/dashboard_all.html:17
-#: app/templates/dashboard_single_fund.html:21
+#: app/templates/dashboard_all.html:25
+#: app/templates/dashboard_single_fund.html:25
 msgid "You have started"
 msgstr "Rydych wedi dechrau"
 
-#: app/templates/dashboard_all.html:17
-#: app/templates/dashboard_single_fund.html:21
+#: app/templates/dashboard_all.html:25
+#: app/templates/dashboard_single_fund.html:25
 #, python-format
 msgid " %(application_count)s application"
 msgid_plural "%(application_count)s applications"
@@ -321,63 +321,63 @@ msgstr[2] "%(application_count)s ceisiadau"
 msgstr[3] "%(application_count)s ceisiadau"
 msgstr[4] "%(application_count)s ceisiadau"
 
-#: app/templates/dashboard_all.html:17
-#: app/templates/dashboard_single_fund.html:21
+#: app/templates/dashboard_all.html:25
+#: app/templates/dashboard_single_fund.html:25
 msgid "using this email address"
 msgstr "gan ddefnyddio'r cyfeiriad e-bost hwn"
 
-#: app/templates/dashboard_single_fund.html:12
+#: app/templates/dashboard_single_fund.html:13
 msgid "Your applications for "
 msgstr "Eich ceisiadau"
 
 #: app/templates/end_of_application_feedback_page_1.html:7
 #: app/templates/end_of_application_feedback_page_2.html:7
-#: app/templates/end_of_application_feedback_page_3.html:6
-#: app/templates/end_of_application_feedback_page_4.html:6
-#: app/templates/end_of_application_survey.html:5
+#: app/templates/end_of_application_feedback_page_3.html:7
+#: app/templates/end_of_application_feedback_page_4.html:7
+#: app/templates/end_of_application_survey.html:6
 #: app/templates/feedback_generic_survey.html:7
-#: app/templates/section_feedback_intro.html:5
+#: app/templates/section_feedback_intro.html:7
 msgid "Go back to application overview"
 msgstr "Yn ôl at eich ceisiadau"
 
-#: app/templates/end_of_application_feedback_page_1.html:19
-#: app/templates/end_of_application_feedback_page_2.html:19
-#: app/templates/end_of_application_feedback_page_3.html:18
-#: app/templates/end_of_application_feedback_page_4.html:18
-#: app/templates/end_of_application_survey.html:12
-#: app/templates/tasklist.html:162 app/templates/tasklist.html:171
+#: app/templates/end_of_application_feedback_page_1.html:22
+#: app/templates/end_of_application_feedback_page_2.html:22
+#: app/templates/end_of_application_feedback_page_3.html:21
+#: app/templates/end_of_application_feedback_page_4.html:21
+#: app/templates/end_of_application_survey.html:20
+#: app/templates/tasklist.html:169 app/templates/tasklist.html:178
 msgid "Applicant feedback survey"
 msgstr "Arolwg adborth ymgeiswyr"
 
-#: app/templates/end_of_application_feedback_page_1.html:22
+#: app/templates/end_of_application_feedback_page_1.html:25
 msgid "1 of 4 questions"
 msgstr "Cwestiwn 1 o 4"
 
-#: app/templates/end_of_application_feedback_page_1.html:39
-#: app/templates/end_of_application_feedback_page_4.html:43
-#: app/templates/feedback_generic_survey.html:32
+#: app/templates/end_of_application_feedback_page_1.html:42
+#: app/templates/end_of_application_feedback_page_4.html:46
+#: app/templates/feedback_generic_survey.html:40
 msgid "Error:"
 msgstr ""
 
-#: app/templates/end_of_application_feedback_page_1.html:67
-#: app/templates/end_of_application_feedback_page_2.html:59
-#: app/templates/end_of_application_feedback_page_3.html:59
+#: app/templates/end_of_application_feedback_page_1.html:70
+#: app/templates/end_of_application_feedback_page_2.html:62
+#: app/templates/end_of_application_feedback_page_3.html:62
 msgid "Save and continue"
 msgstr "Arbed a pharhau"
 
-#: app/templates/end_of_application_feedback_page_2.html:22
+#: app/templates/end_of_application_feedback_page_2.html:25
 msgid "2 of 4 questions"
 msgstr "Cwestiwn 2 o 4"
 
-#: app/templates/end_of_application_feedback_page_3.html:21
+#: app/templates/end_of_application_feedback_page_3.html:24
 msgid "3 of 4 questions"
 msgstr "Cwestiwn 3 o 4"
 
-#: app/templates/end_of_application_feedback_page_4.html:21
+#: app/templates/end_of_application_feedback_page_4.html:24
 msgid "4 of 4 questions"
 msgstr "Cwestiwn 4 o 4"
 
-#: app/templates/end_of_application_feedback_page_4.html:32
+#: app/templates/end_of_application_feedback_page_4.html:35
 msgid ""
 "Approximately how many hours did your organisation spend preparing and "
 "working on this\n"
@@ -386,7 +386,7 @@ msgstr ""
 "Tua faint o oriau a dreuliodd eich sefydliad yn paratoi ac yn gweithio ar"
 " y cais hwn?"
 
-#: app/templates/end_of_application_feedback_page_4.html:38
+#: app/templates/end_of_application_feedback_page_4.html:41
 msgid ""
 "This includes time spent attending meetings, preparing documents and "
 "business cases, doing\n"
@@ -397,12 +397,12 @@ msgstr ""
 "dogfennau ac achosion busnes, gwneud ymchwil a choladu atebion, o "
 "adnoddau cyflogedig a gwirfoddol."
 
-#: app/templates/end_of_application_feedback_page_4.html:58
-#: app/templates/feedback_generic_survey.html:53
+#: app/templates/end_of_application_feedback_page_4.html:61
+#: app/templates/feedback_generic_survey.html:61
 msgid "Submit feedback"
 msgstr "Cyflwyno adborth"
 
-#: app/templates/end_of_application_survey.html:14
+#: app/templates/end_of_application_survey.html:22
 msgid ""
 "This section will ask about your overall experience of completing this "
 "application, so\n"
@@ -414,13 +414,13 @@ msgstr ""
 "cais hwn, fel y gallwn wella ein ffurflenni cais. Ni fydd eich ymatebion "
 "yn cael eu sgorio."
 
-#: app/templates/end_of_application_survey.html:21
-#: app/templates/section_feedback_intro.html:24
+#: app/templates/end_of_application_survey.html:29
+#: app/templates/section_feedback_intro.html:34
 msgid "Continue"
 msgstr "Parhau"
 
-#: app/templates/feedback_generic_survey.html:18
-#: app/templates/section_feedback_intro.html:12
+#: app/templates/feedback_generic_survey.html:26
+#: app/templates/section_feedback_intro.html:21
 msgid "feedback"
 msgstr "parhau"
 
@@ -440,31 +440,31 @@ msgstr "Datganiad Hygyrchedd"
 msgid "Start or continue an application for"
 msgstr "Gwneud cais am"
 
-#: app/templates/fund_start_page.html:29
+#: app/templates/fund_start_page.html:37
 msgid "Read the fund's prospectus"
 msgstr "Darllenwch brosbectws y gronfa"
 
-#: app/templates/fund_start_page.html:29
+#: app/templates/fund_start_page.html:37
 msgid "before you apply."
 msgstr "cyn i chi ymgeisio."
 
-#: app/templates/fund_start_page.html:33
+#: app/templates/fund_start_page.html:41
 msgid "Submission deadline: "
 msgstr "Dyddiad cau cyflwyno: "
 
-#: app/templates/fund_start_page.html:37
+#: app/templates/fund_start_page.html:49
 msgid "Enter your email address"
 msgstr "Nodwch eich cyfeirad e-bost"
 
-#: app/templates/fund_start_page.html:39
+#: app/templates/fund_start_page.html:53
 msgid "Get help "
 msgstr "Cael help"
 
-#: app/templates/fund_start_page.html:41
+#: app/templates/fund_start_page.html:55
 msgid "If you need help, email us at"
 msgstr "Os oes angen help arnoch chi, anfonwch e-bost atom y"
 
-#: app/templates/fund_start_page.html:45
+#: app/templates/fund_start_page.html:59
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
 "applications through this service."
@@ -537,7 +537,7 @@ msgstr "beta"
 msgid "This is a new service."
 msgstr "Mae hyn yn wasanaeth newydd - bydd eich "
 
-#: app/templates/section_feedback_intro.html:14
+#: app/templates/section_feedback_intro.html:23
 msgid ""
 "We'll ask about your experience of completing this section, so we can "
 "improve our\n"
@@ -546,33 +546,33 @@ msgstr ""
 "Byddwn yn gofyn i chi am eich profiad o gwblhau’r adran hon, fel y gallwn"
 " wella ein ffurflenni cais. Ni fydd eich ymatebion yn cael eu sgorio"
 
-#: app/templates/tasklist.html:7
+#: app/templates/tasklist.html:8
 msgid "Back to your applications"
 msgstr "Yn ôl at eich ceisiadau"
 
-#: app/templates/tasklist.html:9
+#: app/templates/tasklist.html:10
 msgid "Task List"
 msgstr ""
 
-#: app/templates/tasklist.html:20
+#: app/templates/tasklist.html:27
 msgid "Help with filling out your application"
 msgstr "Help i lenwi eich cais"
 
-#: app/templates/tasklist.html:27
+#: app/templates/tasklist.html:34
 msgid "Moving through the form"
 msgstr "Symud drwy'r ffurflen"
 
-#: app/templates/tasklist.html:30
+#: app/templates/tasklist.html:37
 msgid "This form is split into sections based on how it will be assessed."
 msgstr ""
 "Mae'r ffurflen hon wedi'i rhannu'n adrannau ar sail y modd y caiff ei "
 "hasesu."
 
-#: app/templates/tasklist.html:33
+#: app/templates/tasklist.html:40
 msgid "You do not have to complete it in order, or all at once."
 msgstr "Nid oes rhaid i chi ei llenwi mewn trefn, na'r cyfan ar unwaith."
 
-#: app/templates/tasklist.html:36
+#: app/templates/tasklist.html:43
 #, fuzzy
 msgid ""
 "When you have written something in every field in a section, the section "
@@ -585,11 +585,11 @@ msgstr ""
 " adran fel un gyflawn. Gallwch newid eich ymatebion o hyd mewn adrannau "
 "sydd wedi'u cofnodi fel rhai cyflawn."
 
-#: app/templates/tasklist.html:42
+#: app/templates/tasklist.html:49
 msgid "Saving progress and making changes"
 msgstr "Cadw cynnydd a gwneud newidiadau"
 
-#: app/templates/tasklist.html:45
+#: app/templates/tasklist.html:52
 #, fuzzy
 msgid ""
 "Your work will not save automatically. To make sure you do not lose "
@@ -602,7 +602,7 @@ msgstr ""
 "ydych chi'n colli unrhyw beth, dewiswch 'Cadw' a pharhau'n rheolaidd, a "
 "bob amser cyn i chi fynd yn ôl neu gau eich ffenestr porwr rhyngrwyd."
 
-#: app/templates/tasklist.html:50
+#: app/templates/tasklist.html:57
 #, fuzzy
 msgid ""
 "If you need to edit or revisit any sections, use the browser back\n"
@@ -611,7 +611,7 @@ msgstr ""
 "Os oes angen i chi olygu neu fynd yn ôl at unrhyw adrannau, defnyddiwch "
 "fotwm nôl y porwr."
 
-#: app/templates/tasklist.html:54
+#: app/templates/tasklist.html:61
 #, fuzzy
 msgid ""
 "You can edit your responses as many times as you like before you\n"
@@ -620,11 +620,11 @@ msgstr ""
 "Gallwch olygu'ch ymatebion gymaint o weithiau a fynnwch cyn i chi eu "
 "cyflwyno."
 
-#: app/templates/tasklist.html:59
+#: app/templates/tasklist.html:66
 msgid "Submitting your application"
 msgstr "Cyflwyno'ch cais"
 
-#: app/templates/tasklist.html:62
+#: app/templates/tasklist.html:69
 #, fuzzy
 msgid ""
 "When you have completed all sections, you'll be able to submit your\n"
@@ -633,7 +633,7 @@ msgstr ""
 "Pan fyddwch wedi llenwi'r holl adrannau, byddwch yn gallu cyflwyno'ch "
 "cais."
 
-#: app/templates/tasklist.html:66
+#: app/templates/tasklist.html:73
 #, fuzzy
 msgid ""
 "Once you have submitted your application, you'll not be able to edit, add"
@@ -643,17 +643,17 @@ msgstr ""
 "Wedi i chi gyflwyno'ch cais, ni fyddwch yn gallu golygu, ychwanegu na "
 "newid unrhyw adrannau."
 
-#: app/templates/tasklist.html:71
+#: app/templates/tasklist.html:78
 msgid "Get help"
 msgstr "Cael help"
 
-#: app/templates/tasklist.html:74
+#: app/templates/tasklist.html:81
 msgid "If you have any questions about the form or the fund, email us at"
 msgstr ""
 "Os oes unrhyw gwestiynau gennych ynglŷn â'r ffurflen neu'r gronfa, "
 "anfonwch e-bost i"
 
-#: app/templates/tasklist.html:78
+#: app/templates/tasklist.html:85
 #, fuzzy
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
@@ -663,51 +663,51 @@ msgstr ""
 "Peidwch ag anfon unrhyw geisadau neu atodiadau dros e-bost. Byddwn yn "
 "derbyn ceisiadau drwy'r gwasanaeth hon yn unig."
 
-#: app/templates/tasklist.html:83
+#: app/templates/tasklist.html:90
 msgid "How we'll use your information"
 msgstr "Sut fyddwn ni'n defnyddio eich gwybodaeth"
 
-#: app/templates/tasklist.html:86
+#: app/templates/tasklist.html:93
 msgid "Read how we'll use the information from your application in our"
 msgstr "Darllenwch sut fyddwn ni'n defnyddio'r wybodaeth o'ch cais yn ein"
 
-#: app/templates/tasklist.html:87
+#: app/templates/tasklist.html:94
 msgid "privacy notice"
 msgstr "hysbysiad preifatrwydd"
 
-#: app/templates/tasklist.html:96
+#: app/templates/tasklist.html:103
 msgid "Submission deadline:"
 msgstr "Dyddiad cau cyflwyno:"
 
-#: app/templates/tasklist.html:98
+#: app/templates/tasklist.html:105
 msgid "Reference:"
 msgstr "Cyfeirnod:"
 
-#: app/templates/tasklist.html:106
+#: app/templates/tasklist.html:113
 msgid "Status:"
 msgstr "Statws:"
 
-#: app/templates/tasklist.html:126
+#: app/templates/tasklist.html:133
 msgid "None of the sections have been completed."
 msgstr "Nid yw'r un o'r adrannau wedi'u llenwi."
 
-#: app/templates/tasklist.html:128
+#: app/templates/tasklist.html:135
 msgid "You have completed"
 msgstr "Rydych wedi cwblhau"
 
-#: app/templates/tasklist.html:129
+#: app/templates/tasklist.html:136
 msgid "of"
 msgstr "o"
 
-#: app/templates/tasklist.html:130
+#: app/templates/tasklist.html:137
 msgid "sections."
 msgstr "datganiadau"
 
-#: app/templates/tasklist.html:144
+#: app/templates/tasklist.html:151
 msgid "Applicant feedback survey (not scored)"
 msgstr "Arolwg adborth ymgeiswyr (ni fydd yn cael ei sgorio)"
 
-#: app/templates/tasklist.html:149
+#: app/templates/tasklist.html:156
 msgid ""
 "You must complete all other sections before starting the feedback survey."
 " This section\n"
@@ -717,7 +717,7 @@ msgstr ""
 "Mae’n rhaid i chi gwblhau pob adran arall cyn dechrau’r arolwg adborth. "
 "Fe ddylai gymryd tua 1 funud i gwblhau’r adran hon."
 
-#: app/templates/tasklist.html:154
+#: app/templates/tasklist.html:161
 msgid ""
 " You must complete all other sections before starting the feedback "
 "survey. This section\n"
@@ -728,14 +728,16 @@ msgstr ""
 "Fe ddylai gymryd tua 1 funud i gwblhau’r adran hon."
 
 #: app/templates/partials/tasklist_section.html:48
-#: app/templates/tasklist.html:165
+#: app/templates/tasklist.html:172
 msgid "Cannot start yet"
 msgstr "Ni ellir dechrau eto"
 
-#: app/templates/tasklist.html:191
+#: app/templates/tasklist.html:198
 msgid "Applicant feedback submitted"
 msgstr "Arolwg adborth ymgeiswyr wedi'i gyflwyno"
 
+#: app/templates/all_questions/cy/cof_r3w3_all_questions_cy.html:6
+#: app/templates/all_questions/en/cof_r3w3_all_questions_en.html:7
 #: app/templates/all_questions/en/cyp_r1_all_questions_en.html:7
 #: app/templates/all_questions/en/dpif_r2_all_questions_en.html:7
 #: app/templates/all_questions/uses_translations/cof_r2_all_questions.html:6
@@ -743,6 +745,8 @@ msgstr "Arolwg adborth ymgeiswyr wedi'i gyflwyno"
 msgid "Full list of application questions"
 msgstr "O restr lawn cwestiynau'r cais"
 
+#: app/templates/all_questions/cy/cof_r3w3_all_questions_cy.html:10
+#: app/templates/all_questions/en/cof_r3w3_all_questions_en.html:11
 #: app/templates/all_questions/en/cyp_r1_all_questions_en.html:11
 #: app/templates/all_questions/en/dpif_r2_all_questions_en.html:11
 #: app/templates/all_questions/uses_translations/cof_r2_all_questions.html:10
@@ -751,12 +755,16 @@ msgstr "O restr lawn cwestiynau'r cais"
 msgid "%(fund_title)s"
 msgstr ""
 
+#: app/templates/all_questions/cy/cof_r3w3_all_questions_cy.html:10
+#: app/templates/all_questions/en/cof_r3w3_all_questions_en.html:11
 #: app/templates/all_questions/en/cyp_r1_all_questions_en.html:11
 #: app/templates/all_questions/en/dpif_r2_all_questions_en.html:11
 #, python-format
 msgid "%(round_title)s"
 msgstr ""
 
+#: app/templates/all_questions/cy/cof_r3w3_all_questions_cy.html:15
+#: app/templates/all_questions/en/cof_r3w3_all_questions_en.html:16
 #: app/templates/all_questions/en/cyp_r1_all_questions_en.html:16
 #: app/templates/all_questions/en/dpif_r2_all_questions_en.html:16
 #: app/templates/all_questions/uses_translations/cof_r2_all_questions.html:13
@@ -3011,7 +3019,7 @@ msgstr ""
 
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:89
 msgid "Parish, town or community council"
-msgstr ""
+msgstr "Cyngor plwyf, tref neu gymuned"
 
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:105
 #, fuzzy
