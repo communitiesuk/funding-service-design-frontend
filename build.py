@@ -8,20 +8,14 @@ def build_assets():
 
     if os.path.exists("app/static"):
 
-        print(
-            "Assets already built."
-            "If you require a rebuild manually run build.build_assets"
-        )
+        print("Assets already built.If you require a rebuild manually run build.build_assets")
 
         return True
 
     # Download zips using "url"
     print("Downloading static file zip.")
 
-    url = (
-        "https://github.com/alphagov/govuk-frontend/"
-        "releases/download/v4.0.0/release-v4.0.0.zip"
-    )
+    url = "https://github.com/alphagov/govuk-frontend/releases/download/v4.0.0/release-v4.0.0.zip"
 
     # There is a known problem on Mac where one must manually
     # run the script "Install Certificates.command" found
@@ -52,15 +46,11 @@ def build_assets():
 
     # Copy css
     os.makedirs("./app/static/styles")
-    shutil.copyfile(
-        "static/src/styles/tasklist.css", "./app/static/styles/tasklist.css"
-    )
+    shutil.copyfile("static/src/styles/tasklist.css", "./app/static/styles/tasklist.css")
 
     # Copy over JS source
     os.makedirs("./app/static/js")
-    shutil.copyfile(
-        "static/src/js/fsd_cookies.js", "./app/static/js/fsd_cookies.js"
-    )
+    shutil.copyfile("static/src/js/fsd_cookies.js", "./app/static/js/fsd_cookies.js")
 
     print("Deleting temp files")
     # Deletes temp. files.

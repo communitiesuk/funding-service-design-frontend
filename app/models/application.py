@@ -32,26 +32,15 @@ class Application:
     @classmethod
     def from_dict(cls, d: dict):
         # Filter unknown fields from JSON dictionary
-        return cls(
-            **{
-                k: v
-                for k, v in d.items()
-                if k in inspect.signature(cls).parameters
-            }
-        )
+        return cls(**{k: v for k, v in d.items() if k in inspect.signature(cls).parameters})
 
     def are_forms_complete(self, form_names: list[str]):
         filtered_forms = [f for f in self.forms if f["name"] in form_names]
-        return all(
-            f["status"] == ApplicationStatus.COMPLETED.name
-            for f in filtered_forms
-        )
+        return all(f["status"] == ApplicationStatus.COMPLETED.name for f in filtered_forms)
 
     @property
     def all_forms_complete(self):
-        return all(
-            f["status"] == ApplicationStatus.COMPLETED.name for f in self.forms
-        )
+        return all(f["status"] == ApplicationStatus.COMPLETED.name for f in self.forms)
 
     def match_forms_to_state(self, display_config):
         current_app.logger.info(
@@ -88,8 +77,7 @@ class Application:
 
         for section in sections_config:
             section["all_forms_complete"] = all(
-                ApplicationStatus.COMPLETED.name == form["state"]["status"]
-                for form in section["forms"]
+                ApplicationStatus.COMPLETED.name == form["state"]["status"] for form in section["forms"]
             )
 
         return sections_config

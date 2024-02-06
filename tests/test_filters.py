@@ -14,10 +14,7 @@ def test_date_format_short_month():
 def test_datetime_format_short_month():
     a_datetime = datetime.datetime(2020, 1, 1, 12, 0, 0)
     with app.test_request_context():
-        assert (
-            filters.datetime_format_short_month(a_datetime)
-            == "01 Jan 2020 at 12:00pm"
-        )
+        assert filters.datetime_format_short_month(a_datetime) == "01 Jan 2020 at 12:00pm"
 
 
 @pytest.mark.parametrize(

@@ -10,9 +10,7 @@ class UnitTestConfig(DefaultConfig):
     SESSION_COOKIE_SECURE = False
 
     # RSA 256 KEYS
-    _test_public_key_path = (
-        DefaultConfig.FLASK_ROOT + "/tests/keys/rsa256/public.pem"
-    )
+    _test_public_key_path = DefaultConfig.FLASK_ROOT + "/tests/keys/rsa256/public.pem"
     with open(_test_public_key_path, mode="rb") as public_key_file:
         RSA256_PUBLIC_KEY = public_key_file.read()
 

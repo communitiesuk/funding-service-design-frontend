@@ -14,9 +14,7 @@ def not_eligible_page(message):
     return redirect(url_for("routes.not_eligible"))
 
 
-def minimium_money_question_page(
-    max_amount: int, success_url: str, data_hook: callable = print
-):
+def minimium_money_question_page(max_amount: int, success_url: str, data_hook: callable = print):
     """
     Returns a Flask view function which checks the eligibility
     of a fund using the gov.uk design system.
@@ -51,9 +49,7 @@ def minimium_money_question_page(
                 )
             else:
                 # ...then flash the message and redirect.
-                return not_eligible_page(
-                    f"You can apply for a maximium amount of £{max_amount}."
-                )
+                return not_eligible_page(f"You can apply for a maximium amount of £{max_amount}.")
 
         return render_template("min_funding_amount.html", form=form)
 

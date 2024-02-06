@@ -31,25 +31,19 @@ def test_old_index_redirect(client):
 
 
 def test_start_page_unknown_fund(client, mocker):
-    mocker.patch(
-        "app.default.routes.get_fund_and_round", return_value=(None, None)
-    )
+    mocker.patch("app.default.routes.get_fund_and_round", return_value=(None, None))
     result = client.get("funding-round/bad_fund/r2w2")
     assert result.status_code == 404
 
 
 def test_start_page_without_namespace(client, mocker):
-    mocker.patch(
-        "app.default.routes.get_fund_and_round", return_value=(None, None)
-    )
+    mocker.patch("app.default.routes.get_fund_and_round", return_value=(None, None))
     result = client.get("cof/r2w2")
     assert result.status_code == 404
 
 
 def test_start_page_unknown_round(client, mocker):
-    mocker.patch(
-        "app.default.routes.get_fund_and_round", return_value=(None, None)
-    )
+    mocker.patch("app.default.routes.get_fund_and_round", return_value=(None, None))
     result = client.get("/cof/bad_round_id")
     assert result.status_code == 404
 
@@ -151,9 +145,7 @@ def test_start_page_closed(client, mocker, templates_rendered):
 )
 def test_get_default_round_for_fund(rounds, expected_default_id, mocker):
     mocker.patch("app.default.data.get_lang", return_value="en")
-    mocker.patch(
-        "app.default.data.get_all_rounds_for_fund", return_value=rounds
-    )
+    mocker.patch("app.default.data.get_all_rounds_for_fund", return_value=rounds)
     result = get_default_round_for_fund("fund")
     assert result.id == expected_default_id
 
@@ -168,9 +160,7 @@ def test_get_default_round_for_fund_no_rounds(mocker):
 def test_fund_only_start_page(client, mocker):
     mocker.patch(
         "app.default.routes.get_default_round_for_fund",
-        return_value=Round(
-            id="111", deadline="", opens="", **default_round_fields
-        ),
+        return_value=Round(id="111", deadline="", opens="", **default_round_fields),
     )
     result = client.get("funding-round/cof", follow_redirects=False)
     assert result.status_code == 302
@@ -178,17 +168,13 @@ def test_fund_only_start_page(client, mocker):
 
 
 def test_fund_only_start_page_no_rounds(client, mocker):
-    mocker.patch(
-        "app.default.routes.get_default_round_for_fund", return_value=None
-    )
+    mocker.patch("app.default.routes.get_default_round_for_fund", return_value=None)
     result = client.get("/cof", follow_redirects=False)
     assert result.status_code == 404
 
 
 def test_fund_only_start_page_bad_fund(client):
-    with mock.patch(
-        "app.default.data.get_all_rounds_for_fund"
-    ) as mock_get_rounds:
+    with mock.patch("app.default.data.get_all_rounds_for_fund") as mock_get_rounds:
         mock_get_rounds.side_effect = Exception
         result = client.get("/asdf", follow_redirects=False)
         assert result.status_code == 404
