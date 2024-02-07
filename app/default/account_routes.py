@@ -36,10 +36,7 @@ def get_visible_funds(visible_fund_short_name):
 
     if visible_fund_short_name:
         funds_to_show = [
-            fund
-            for fund in all_funds
-            if fund["short_name"].casefold()
-            == visible_fund_short_name.casefold()
+            fund for fund in all_funds if fund["short_name"].casefold() == visible_fund_short_name.casefold()
         ]
     else:
         funds_to_show = all_funds
@@ -75,9 +72,7 @@ def update_applications_statuses_for_display(
     return applications
 
 
-def build_application_data_for_display(
-    applications: list[ApplicationSummary], visible_fund_short_name
-):
+def build_application_data_for_display(applications: list[ApplicationSummary], visible_fund_short_name):
     application_data_for_display = {
         "funds": [],
         "total_applications_to_display": 0,
@@ -99,17 +94,10 @@ def build_application_data_for_display(
         }
         for round in all_rounds_in_fund:
             round_status = determine_round_status(round)
-            apps_in_this_round = [
-                app for app in applications if app.round_id == round.id
-            ]
-            if round_status.not_yet_open or (
-                round_status.past_submission_deadline
-                and len(apps_in_this_round) == 0
-            ):
+            apps_in_this_round = [app for app in applications if app.round_id == round.id]
+            if round_status.not_yet_open or (round_status.past_submission_deadline and len(apps_in_this_round) == 0):
                 continue
-            apps_for_display = update_applications_statuses_for_display(
-                apps_in_this_round, round_status
-            )
+            apps_for_display = update_applications_statuses_for_display(apps_in_this_round, round_status)
             fund_data_for_display["rounds"].append(
                 {
                     "is_past_submission_deadline": round_status.past_submission_deadline,  # noqa
@@ -129,9 +117,7 @@ def build_application_data_for_display(
 
         application_data_for_display["funds"].append(fund_data_for_display)
 
-    application_data_for_display[
-        "total_applications_to_display"
-    ] = count_of_applications_for_visible_rounds
+    application_data_for_display["total_applications_to_display"] = count_of_applications_for_visible_rounds
     return application_data_for_display
 
 
@@ -184,18 +170,12 @@ def dashboard():
         search_params = {"account_id": account_id}
         welsh_available = False
 
-    applications = search_applications(
-        search_params=search_params, as_dict=False
-    )
+    applications = search_applications(search_params=search_params, as_dict=False)
 
     show_language_column = determine_show_language_column(applications)
 
-    display_data = build_application_data_for_display(
-        applications, fund_short_name
-    )
-    current_app.logger.info(
-        f"Setting up applicant dashboard for :'{account_id}'"
-    )
+    display_data = build_application_data_for_display(applications, fund_short_name)
+    current_app.logger.info(f"Setting up applicant dashboard for :'{account_id}'")
     if not welsh_available and template_name == TEMPLATE_SINGLE_FUND:
         render_lang = "en"
     with force_locale(render_lang):
@@ -238,12 +218,9 @@ def new():
     )
     new_application_json = new_application.json()
     current_app.logger.info(f"Creating new application:{new_application_json}")
-    if new_application.status_code != 201 or not new_application_json.get(
-        "id"
-    ):
+    if new_application.status_code != 201 or not new_application_json.get("id"):
         raise Exception(
-            "Unexpected response from application store when creating new"
-            " application: "
+            "Unexpected response from application store when creating new application: "
             + str(new_application.status_code)
         )
     response = make_response(
@@ -254,7 +231,5 @@ def new():
             )
         )
     )
-    LanguageSelector.set_language_cookie(
-        locale=application_language, response=response
-    )
+    LanguageSelector.set_language_cookie(locale=application_language, response=response)
     return response

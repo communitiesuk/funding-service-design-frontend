@@ -180,9 +180,7 @@ TEST_DISPLAY_DATA = {
                             "fund_id": "funding-service-design",
                             "started_at": "2020-01-01T12:03:00",
                             "project_name": None,
-                            "last_edited": datetime.strptime(
-                                "2020-01-01T12:03:00", "%Y-%m-%dT%H:%M:%S"
-                            ),
+                            "last_edited": datetime.strptime("2020-01-01T12:03:00", "%Y-%m-%dT%H:%M:%S"),
                         },
                         {
                             "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",
@@ -223,9 +221,7 @@ TEST_DISPLAY_DATA = {
                             "fund_id": "funding-service-design",
                             "started_at": "2020-01-01T12:03:00",
                             "project_name": None,
-                            "last_edited": datetime.strptime(
-                                "2020-01-01T12:03:00", "%Y-%m-%dT%H:%M:%S"
-                            ),
+                            "last_edited": datetime.strptime("2020-01-01T12:03:00", "%Y-%m-%dT%H:%M:%S"),
                         },
                         {
                             "id": "ed221ac8-5d4d-42dd-ab66-6cbcca8fe257",

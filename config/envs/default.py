@@ -19,9 +19,7 @@ class DefaultConfig:
     SESSION_COOKIE_SECURE = True
     WTF_CSRF_TIME_LIMIT = CommonConfig.WTF_CSRF_TIME_LIMIT
     MAINTENANCE_MODE = strtobool(getenv("MAINTENANCE_MODE", "False"))
-    MAINTENANCE_END_TIME = getenv(
-        "MAINTENANCE_END_TIME", "18 December 2023 at 03:00pm"
-    )
+    MAINTENANCE_END_TIME = getenv("MAINTENANCE_END_TIME", "18 December 2023 at 03:00pm")
 
     STATIC_FOLDER = "static"
     TEMPLATES_FOLDER = "templates"
@@ -33,9 +31,7 @@ class DefaultConfig:
     AUTHENTICATOR_HOST = environ.get("AUTHENTICATOR_HOST", "authenticator")
     ENTER_APPLICATION_URL = AUTHENTICATOR_HOST + "/service/magic-links/new"
     MAGIC_LINK_URL = (
-        AUTHENTICATOR_HOST
-        + "/service/magic-links/new?"
-        + "fund={fund_short_name}&round={round_short_name}"
+        AUTHENTICATOR_HOST + "/service/magic-links/new?" + "fund={fund_short_name}&round={round_short_name}"
     )
     SESSION_COOKIE_DOMAIN = environ.get("SESSION_COOKIE_DOMAIN")
     COOKIE_DOMAIN = environ.get("COOKIE_DOMAIN", None)
@@ -46,87 +42,47 @@ class DefaultConfig:
         RSA256_PUBLIC_KEY = base64.b64decode(RSA256_PUBLIC_KEY_BASE64).decode()
 
     # APIs Config
-    TEST_APPLICATION_STORE_API_HOST = (
-        CommonConfig.TEST_APPLICATION_STORE_API_HOST
-    )
+    TEST_APPLICATION_STORE_API_HOST = CommonConfig.TEST_APPLICATION_STORE_API_HOST
     TEST_FUND_STORE_API_HOST = CommonConfig.TEST_FUND_STORE_API_HOST
     TEST_ACCOUNT_STORE_API_HOST = CommonConfig.TEST_ACCOUNT_STORE_API_HOST
 
-    ACCOUNT_STORE_API_HOST = environ.get(
-        "ACCOUNT_STORE_API_HOST", TEST_ACCOUNT_STORE_API_HOST
-    )
+    ACCOUNT_STORE_API_HOST = environ.get("ACCOUNT_STORE_API_HOST", TEST_ACCOUNT_STORE_API_HOST)
     ACCOUNTS_ENDPOINT = "/accounts"
-    APPLICATION_STORE_API_HOST = environ.get(
-        "APPLICATION_STORE_API_HOST", TEST_APPLICATION_STORE_API_HOST
-    )
-    GET_APPLICATION_ENDPOINT = (
-        APPLICATION_STORE_API_HOST + "/applications/{application_id}"
-    )
+    APPLICATION_STORE_API_HOST = environ.get("APPLICATION_STORE_API_HOST", TEST_APPLICATION_STORE_API_HOST)
+    GET_APPLICATION_ENDPOINT = APPLICATION_STORE_API_HOST + "/applications/{application_id}"
     SEARCH_APPLICATIONS_ENDPOINT = (
-        APPLICATION_STORE_API_HOST
-        + "/applications?order_by=last_edited&order_rev=1&{search_params}"
+        APPLICATION_STORE_API_HOST + "/applications?order_by=last_edited&order_rev=1&{search_params}"
     )
     GET_APPLICATIONS_FOR_ACCOUNT_ENDPOINT = (
-        APPLICATION_STORE_API_HOST
-        + "/applications?account_id={account_id}"
-        + "&order_by=last_edited&order_rev=1"
+        APPLICATION_STORE_API_HOST + "/applications?account_id={account_id}" + "&order_by=last_edited&order_rev=1"
     )
-    UPDATE_APPLICATION_FORM_ENDPOINT = (
-        APPLICATION_STORE_API_HOST + "/applications/forms"
-    )
-    SUBMIT_APPLICATION_ENDPOINT = (
-        APPLICATION_STORE_API_HOST + "/applications/{application_id}/submit"
-    )
+    UPDATE_APPLICATION_FORM_ENDPOINT = APPLICATION_STORE_API_HOST + "/applications/forms"
+    SUBMIT_APPLICATION_ENDPOINT = APPLICATION_STORE_API_HOST + "/applications/{application_id}/submit"
     FEEDBACK_ENDPOINT = APPLICATION_STORE_API_HOST + "/application/feedback"
-    END_OF_APP_SURVEY_FEEDBACK_ENDPOINT = (
-        APPLICATION_STORE_API_HOST
-        + "/application/end_of_application_survey_data"
-    )
-    FUND_STORE_API_HOST = environ.get(
-        "FUND_STORE_API_HOST", TEST_FUND_STORE_API_HOST
-    )
+    END_OF_APP_SURVEY_FEEDBACK_ENDPOINT = APPLICATION_STORE_API_HOST + "/application/end_of_application_survey_data"
+    FUND_STORE_API_HOST = environ.get("FUND_STORE_API_HOST", TEST_FUND_STORE_API_HOST)
     GET_ALL_FUNDS_ENDPOINT = FUND_STORE_API_HOST + "/funds"
     GET_FUND_DATA_ENDPOINT = FUND_STORE_API_HOST + "/funds/{fund_id}"
-    GET_ALL_ROUNDS_FOR_FUND_ENDPOINT = (
-        FUND_STORE_API_HOST + "/funds/{fund_id}/rounds"
-    )
-    GET_ROUND_DATA_FOR_FUND_ENDPOINT = (
-        FUND_STORE_API_HOST + "/funds/{fund_id}/rounds/{round_id}"
-    )
-    GET_FUND_DATA_BY_SHORT_NAME_ENDPOINT = (
-        FUND_STORE_API_HOST + "/funds/{fund_short_name}"
-    )
-    GET_ROUND_DATA_BY_SHORT_NAME_ENDPOINT = (
-        FUND_STORE_API_HOST
-        + "/funds/{fund_short_name}/rounds/{round_short_name}"
-    )
+    GET_ALL_ROUNDS_FOR_FUND_ENDPOINT = FUND_STORE_API_HOST + "/funds/{fund_id}/rounds"
+    GET_ROUND_DATA_FOR_FUND_ENDPOINT = FUND_STORE_API_HOST + "/funds/{fund_id}/rounds/{round_id}"
+    GET_FUND_DATA_BY_SHORT_NAME_ENDPOINT = FUND_STORE_API_HOST + "/funds/{fund_short_name}"
+    GET_ROUND_DATA_BY_SHORT_NAME_ENDPOINT = FUND_STORE_API_HOST + "/funds/{fund_short_name}/rounds/{round_short_name}"
 
     GET_APPLICATION_DISPLAY_FOR_FUND_ENDPOINT = (
-        FUND_STORE_API_HOST
-        + "/funds/{fund_id}/rounds/{round_id}/sections/application?language={language}"
+        FUND_STORE_API_HOST + "/funds/{fund_id}/rounds/{round_id}/sections/application?language={language}"
     )
 
     FORMS_TEST_HOST = "http://localhost:3009"
-    FORMS_SERVICE_NAME = environ.get(
-        "FORMS_SERVICE_NAME", "xgov_forms_service"
-    )
-    FORMS_SERVICE_PUBLIC_HOST = environ.get(
-        "FORMS_SERVICE_PUBLIC_HOST", FORMS_TEST_HOST
-    )
-    FORMS_SERVICE_PREVIEW_HOST = environ.get(
-        "FORMS_SERVICE_PREVIEW_HOST", FORMS_TEST_HOST
-    )
+    FORMS_SERVICE_NAME = environ.get("FORMS_SERVICE_NAME", "xgov_forms_service")
+    FORMS_SERVICE_PUBLIC_HOST = environ.get("FORMS_SERVICE_PUBLIC_HOST", FORMS_TEST_HOST)
+    FORMS_SERVICE_PREVIEW_HOST = environ.get("FORMS_SERVICE_PREVIEW_HOST", FORMS_TEST_HOST)
     FORMS_SERVICE_JSONS_PATH = "form_jsons"
 
     FORMS_SERVICE_PRIVATE_HOST = getenv("FORMS_SERVICE_PRIVATE_HOST")
 
-    FORM_GET_REHYDRATION_TOKEN_URL = (
-        FORMS_SERVICE_PRIVATE_HOST or FORMS_SERVICE_PUBLIC_HOST
-    ) + "/session/{form_name}"
+    FORM_GET_REHYDRATION_TOKEN_URL = (FORMS_SERVICE_PRIVATE_HOST or FORMS_SERVICE_PUBLIC_HOST) + "/session/{form_name}"
 
-    FORM_REHYDRATION_URL = (
-        FORMS_SERVICE_PRIVATE_HOST or FORMS_SERVICE_PUBLIC_HOST
-    ) + "/session/{rehydration_token}"
+    FORM_REHYDRATION_URL = (FORMS_SERVICE_PRIVATE_HOST or FORMS_SERVICE_PUBLIC_HOST) + "/session/{rehydration_token}"
 
     # Content Security Policy
     SECURE_CSP = {
@@ -199,9 +155,7 @@ class DefaultConfig:
 
     # GOV.UK PaaS
     if environ.get("VCAP_SERVICES"):
-        VCAP_SERVICES = VcapServices.from_env_json(
-            environ.get("VCAP_SERVICES")
-        )
+        VCAP_SERVICES = VcapServices.from_env_json(environ.get("VCAP_SERVICES"))
 
     # Redis Feature Toggle Configuration
     REDIS_INSTANCE_URI = getenv("REDIS_INSTANCE_URI", "redis://localhost:6379")

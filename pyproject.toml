@@ -6,7 +6,7 @@ authors = ["Evoco Digital Services"]
 license = "MIT License"
 
 [tool.black]
-line-length = 79
+line-length = 120
 experimental-string-processing = 1
 
 [tool.djlint]
@@ -18,3 +18,8 @@ max_line_length=1000        # high limit, we don't want line breaks for translat
 max_attribute_length=1000   # ^^^
 exclude=".venv,venv"
 profile="jinja2"
+
+
+[tool.flake8]
+max-line-length = 120
+count = true

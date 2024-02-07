@@ -22,9 +22,7 @@ class FeedbackSubmission:
     @classmethod
     def from_dict(cls, data: Dict):
         feedback_data = data["feedback"]
-        feedback = FeedbackDetails(
-            comment=feedback_data["comment"], rating=feedback_data["rating"]
-        )
+        feedback = FeedbackDetails(comment=feedback_data["comment"], rating=feedback_data["rating"])
 
         return cls(
             application_id=data["application_id"],

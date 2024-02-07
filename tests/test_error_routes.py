@@ -107,9 +107,7 @@ def test_unauthorised_error(client, mocker):
         "app.default.error_routes.get_round_data_fail_gracefully",
         return_value=default_round_data,
     )
-    response = client.get(
-        "unauthorised_error?fund=test_fund&round=bad_round_id"
-    )
+    response = client.get("unauthorised_error?fund=test_fund&round=bad_round_id")
     assert response.status_code == 404
     soup = BeautifulSoup(response.data, "html.parser")
     assert "test@example.com" in soup.find("li").text
@@ -124,9 +122,7 @@ def test_unauthorised_error_with_bad_fund_n_round(client, mocker):
         "app.default.error_routes.get_default_round_for_fund",
         return_value=None,
     )
-    response = client.get(
-        "unauthorised_error?fund=bad_fund&round=bad_round_id"
-    )
+    response = client.get("unauthorised_error?fund=bad_fund&round=bad_round_id")
     assert response.status_code == 404
     soup = BeautifulSoup(response.data, "html.parser")
     assert "fsd.support@levellingup.gov.uk" in soup.find("li").text

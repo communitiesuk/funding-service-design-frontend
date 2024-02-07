@@ -20,27 +20,19 @@ from fsd_utils.authentication.decorators import login_requested
 @default_bp.errorhandler(404)
 @account_bp.errorhandler(404)
 def not_found(error):
-    current_app.logger.warning(
-        f"Encountered 404 against url {request.path}: {error}"
-    )
+    current_app.logger.warning(f"Encountered 404 against url {request.path}: {error}")
     fund_short_name = request.args.get("fund") or (
         request.view_args.get("fund_short_name") if request.view_args else None
     )
     round_short_name = request.args.get("round") or (
-        request.view_args.get("round_short_name")
-        if request.view_args
-        else None
+        request.view_args.get("round_short_name") if request.view_args else None
     )
-    round_data = get_round_data_fail_gracefully(
-        fund_short_name, round_short_name, True
-    )
+    round_data = get_round_data_fail_gracefully(fund_short_name, round_short_name, True)
     # use default round if incorrect round name is provided
     if fund_short_name and not round_data.id:
         round_data = get_default_round_for_fund(fund_short_name) or round_data
         if not round_data.id:
-            current_app.logger.warning(
-                f"Invalid fund_short_name '{fund_short_name}' provided."
-            )
+            current_app.logger.warning(f"Invalid fund_short_name '{fund_short_name}' provided.")
         else:
             current_app.logger.warning(
                 f"Invalid round_short_name '{round_short_name}' provided."
@@ -78,20 +70,14 @@ def unauthorised_error(error):
         request.view_args.get("fund_short_name") if request.view_args else None
     )
     round_short_name = request.args.get("round") or (
-        request.view_args.get("round_short_name")
-        if request.view_args
-        else None
+        request.view_args.get("round_short_name") if request.view_args else None
     )
-    round_data = get_round_data_fail_gracefully(
-        fund_short_name, round_short_name, True
-    )
+    round_data = get_round_data_fail_gracefully(fund_short_name, round_short_name, True)
     # use default round if incorrect round name is provided
     if fund_short_name and not round_data.id:
         round_data = get_default_round_for_fund(fund_short_name) or round_data
         if not round_data.id:
-            current_app.logger.warning(
-                f"Invalid fund_short_name '{fund_short_name}' provided."
-            )
+            current_app.logger.warning(f"Invalid fund_short_name '{fund_short_name}' provided.")
         else:
             current_app.logger.warning(
                 f"Invalid round_short_name '{round_short_name}' provided."

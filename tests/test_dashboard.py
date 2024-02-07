@@ -23,22 +23,16 @@ from tests.utils import get_language_cookie_value
 file = open("tests/api_data/endpoint_data.json")
 data = json.loads(file.read())
 TEST_APPLICATION_STORE_JSON = data[
-    "application_store/applications?account_id="
-    + "test-user&order_by=last_edited&order_rev=1"
+    "application_store/applications?account_id=" + "test-user&order_by=last_edited&order_rev=1"
 ]
 
-TEST_SUBMITTED_APPLICATION_STORE_DATA = data[
-    "http://application_store/applications?account_id=test-user-2"
-]
+TEST_SUBMITTED_APPLICATION_STORE_DATA = data["http://application_store/applications?account_id=test-user-2"]
 
 
 def test_serialise_application_summary():
     application_list = TEST_APPLICATION_STORE_JSON
 
-    applications = [
-        ApplicationSummary.from_dict(application)
-        for application in application_list
-    ]
+    applications = [ApplicationSummary.from_dict(application) for application in application_list]
     assert len(applications) == 3
     assert isinstance(applications[0].started_at, datetime)
     assert str(applications[0].started_at.tzinfo) == "Europe/London"
@@ -81,9 +75,7 @@ def test_dashboard_route_search_call(
 ):
     request_mock = mocker.patch("app.default.account_routes.request")
     request_mock.args.get = (
-        lambda key: fund_short_name
-        if key == "fund"
-        else (round_short_name if key == "round" else None)
+        lambda key: fund_short_name if key == "fund" else (round_short_name if key == "round" else None)
     )
     get_apps_mock = mocker.patch(
         "app.default.account_routes.search_applications",
@@ -96,9 +88,7 @@ def test_dashboard_route_search_call(
     response = flask_test_client.get("/account", follow_redirects=True)
     assert response.status_code == 200
 
-    get_apps_mock.assert_called_once_with(
-        search_params=expected_search_params, as_dict=False
-    )
+    get_apps_mock.assert_called_once_with(search_params=expected_search_params, as_dict=False)
 
 
 @pytest.mark.parametrize(
@@ -127,9 +117,7 @@ def test_dashboard_template_rendered(
         return_value=TEST_DISPLAY_DATA,
     )
 
-    response = flask_test_client.get(
-        f"/account{query_string}", follow_redirects=True
-    )
+    response = flask_test_client.get(f"/account{query_string}", follow_redirects=True)
     assert response.status_code == 200
     assert 1 == len(templates_rendered)
     rendered_template = templates_rendered[0]
@@ -164,9 +152,7 @@ def test_dashboard_language(
         "app.default.account_routes.build_application_data_for_display",
         return_value=TEST_DISPLAY_DATA,
     )
-    mocker.patch(
-        "app.default.account_routes.get_lang", return_value=requested_language
-    )
+    mocker.patch("app.default.account_routes.get_lang", return_value=requested_language)
 
     mocker.patch(
         "app.helpers.get_fund",
@@ -181,13 +167,9 @@ def test_dashboard_language(
             },
         ),
     )
-    response = flask_test_client.get(
-        f"/account{query_string}", follow_redirects=True
-    )
+    response = flask_test_client.get(f"/account{query_string}", follow_redirects=True)
     assert response.status_code == 200
-    assert exp_response_language == get_language_cookie_value(
-        response=response
-    )
+    assert exp_response_language == get_language_cookie_value(response=response)
 
 
 def test_dashboard_route(flask_test_client, mocker, mock_login):
@@ -199,9 +181,7 @@ def test_dashboard_route(flask_test_client, mocker, mock_login):
         "app.default.account_routes.build_application_data_for_display",
         return_value=TEST_DISPLAY_DATA,
     )
-    response = flask_test_client.get(
-        "/account?fund=COF&round=R2W3", follow_redirects=True
-    )
+    response = flask_test_client.get("/account?fund=COF&round=R2W3", follow_redirects=True)
     assert response.status_code == 200
 
     soup = BeautifulSoup(response.data, "html.parser")
@@ -213,9 +193,7 @@ def test_dashboard_route(flask_test_client, mocker, mock_login):
         len(
             soup.find_all(
                 "h2",
-                string=lambda text: "Window closed - Test Fund "
-                + "Round 2 Window 2"
-                in text,
+                string=lambda text: "Window closed - Test Fund " + "Round 2 Window 2" in text,
             )
         )
         == 1
@@ -224,35 +202,14 @@ def test_dashboard_route(flask_test_client, mocker, mock_login):
         len(
             soup.find_all(
                 "h2",
-                string=lambda text: "Window closed - Community Ownership Fund "
-                + "Round 2 Window 2"
-                in text,
+                string=lambda text: "Window closed - Community Ownership Fund " + "Round 2 Window 2" in text,
             )
         )
         == 0
     )
-    assert (
-        len(
-            soup.find_all("span", class_="govuk-caption-m", string="Test Fund")
-        )
-        == 2
-    )
-    assert (
-        len(
-            soup.find_all(
-                "h2", string=lambda text: "Round 2 Window 2" == str.strip(text)
-            )
-        )
-        == 1
-    )
-    assert (
-        len(
-            soup.find_all(
-                "h2", string=lambda text: "Round 2 Window 2" == str.strip(text)
-            )
-        )
-        == 1
-    )
+    assert len(soup.find_all("span", class_="govuk-caption-m", string="Test Fund")) == 2
+    assert len(soup.find_all("h2", string=lambda text: "Round 2 Window 2" == str.strip(text))) == 1
+    assert len(soup.find_all("h2", string=lambda text: "Round 2 Window 2" == str.strip(text))) == 1
 
 
 @pytest.mark.skip(reason="Logic covered in build data for display")
@@ -270,9 +227,7 @@ def test_submitted_dashboard_route_shows_no_application_link(
     assert b"Submitted" in response.data
 
 
-def test_dashboard_route_no_applications(
-    flask_test_client, mocker, mock_login
-):
+def test_dashboard_route_no_applications(flask_test_client, mocker, mock_login):
     mocker.patch(
         "app.default.account_routes.search_applications",
         return_value=[],
@@ -281,23 +236,18 @@ def test_dashboard_route_no_applications(
     response = flask_test_client.get("/account", follow_redirects=True)
     assert response.status_code == 200
 
-    assert (
-        b"""<h1 class="govuk-heading-xl">All applications</h1>"""
-        in response.data
-    )
+    assert b"""<h1 class="govuk-heading-xl">All applications</h1>""" in response.data
     assert (
         b"""<p class="govuk-body">\nYou have started&nbsp;0 applications&nbsp;using this email address.\n"""  # noqa
         in response.data
     )
     assert (
-        b"""class="govuk-link govuk-link">View applications from all rounds/windows</a></p>"""  # noqa
-        in response.data
+        b"""class="govuk-link govuk-link">View applications from all rounds/windows</a></p>""" in response.data  # noqa
     )
 
 
 @pytest.mark.parametrize(
-    "funds,rounds,applications,expected_fund_count,expected_round_count,"
-    "expected_app_count, fund_short_name",
+    "funds,rounds,applications,expected_fund_count,expected_round_count,expected_app_count, fund_short_name",
     [
         # No filters, 2 funds with 2 rounds each
         (
@@ -398,60 +348,43 @@ def test_build_application_data_for_display(
     )
     mocker.patch(
         "app.default.account_routes.get_all_rounds_for_fund",
-        new=lambda fund_id, language, as_dict, ttl_hash: [
-            round for round in rounds if round.fund_id == fund_id
-        ],
+        new=lambda fund_id, language, as_dict, ttl_hash: [round for round in rounds if round.fund_id == fund_id],
     )
 
     result = build_application_data_for_display(applications, fund_short_name)
 
     assert result["total_applications_to_display"] == expected_app_count
     assert len(result["funds"]) == expected_fund_count
-    assert (
-        sum(len(fund["rounds"]) for fund in result["funds"])
-        == expected_round_count
-    )
+    assert sum(len(fund["rounds"]) for fund in result["funds"]) == expected_round_count
 
 
 @pytest.mark.parametrize(
     "application,round_status,expected_status",
     [
         (
-            ApplicationSummary.from_dict(
-                {**common_application_data, "status": "IN_PROGRESS"}
-            ),
+            ApplicationSummary.from_dict({**common_application_data, "status": "IN_PROGRESS"}),
             RoundStatus(False, False, True),
             "IN_PROGRESS",
         ),
         (
-            ApplicationSummary.from_dict(
-                {**common_application_data, "status": "COMPLETED"}
-            ),
+            ApplicationSummary.from_dict({**common_application_data, "status": "COMPLETED"}),
             RoundStatus(False, False, True),
             "READY_TO_SUBMIT",
         ),
         (
-            ApplicationSummary.from_dict(
-                {**common_application_data, "status": "COMPLETED"}
-            ),
+            ApplicationSummary.from_dict({**common_application_data, "status": "COMPLETED"}),
             RoundStatus(True, False, False),
             "NOT_SUBMITTED",
         ),
         (
-            ApplicationSummary.from_dict(
-                {**common_application_data, "status": "IN_PROGRESS"}
-            ),
+            ApplicationSummary.from_dict({**common_application_data, "status": "IN_PROGRESS"}),
             RoundStatus(True, False, False),
             "NOT_SUBMITTED",
         ),
     ],
 )
-def test_update_application_statuses(
-    application, round_status, expected_status
-):
-    result = update_applications_statuses_for_display(
-        [application], round_status
-    )
+def test_update_application_statuses(application, round_status, expected_status):
+    result = update_applications_statuses_for_display([application], round_status)
     assert result[0].status == expected_status
 
 
@@ -460,34 +393,22 @@ def test_update_application_statuses(
     [
         (
             [
-                ApplicationSummary.from_dict(
-                    {**common_application_data, "language": "en"}
-                ),
-                ApplicationSummary.from_dict(
-                    {**common_application_data, "language": "cy"}
-                ),
+                ApplicationSummary.from_dict({**common_application_data, "language": "en"}),
+                ApplicationSummary.from_dict({**common_application_data, "language": "cy"}),
             ],
             True,
         ),
         (
             [
-                ApplicationSummary.from_dict(
-                    {**common_application_data, "language": "cy"}
-                ),
-                ApplicationSummary.from_dict(
-                    {**common_application_data, "language": "cy"}
-                ),
+                ApplicationSummary.from_dict({**common_application_data, "language": "cy"}),
+                ApplicationSummary.from_dict({**common_application_data, "language": "cy"}),
             ],
             False,
         ),
         (
             [
-                ApplicationSummary.from_dict(
-                    {**common_application_data, "language": "en"}
-                ),
-                ApplicationSummary.from_dict(
-                    {**common_application_data, "language": "en"}
-                ),
+                ApplicationSummary.from_dict({**common_application_data, "language": "en"}),
+                ApplicationSummary.from_dict({**common_application_data, "language": "en"}),
             ],
             False,
         ),
@@ -495,9 +416,7 @@ def test_update_application_statuses(
     ],
 )
 def test_determine_show_language_column(applications, exp_visible):
-    assert exp_visible == determine_show_language_column(
-        applications=applications
-    )
+    assert exp_visible == determine_show_language_column(applications=applications)
 
 
 @pytest.mark.parametrize(
@@ -510,12 +429,8 @@ def test_determine_show_language_column(applications, exp_visible):
         ([{"short_name": "ABC"}, {"short_name": "DEF"}], "abc", 1),
     ],
 )
-def test_filter_funds_by_short_name(
-    funds, filter_value, expected_count, mocker
-):
-    mocker.patch(
-        "app.default.account_routes.get_all_funds", return_value=funds
-    )
+def test_filter_funds_by_short_name(funds, filter_value, expected_count, mocker):
+    mocker.patch("app.default.account_routes.get_all_funds", return_value=funds)
     result = get_visible_funds(filter_value)
     assert expected_count == len(result)
 
@@ -544,9 +459,7 @@ def test_create_new_application(
         "app.default.account_routes.requests.post",
         return_value=mock_app_store_response,
     )
-    mocker.patch(
-        "app.default.account_routes.get_lang", return_value=cookie_lang
-    )
+    mocker.patch("app.default.account_routes.get_lang", return_value=cookie_lang)
     mock_fund = mock.MagicMock()
     mock_fund.welsh_available = fund_supports_welsh
     mocker.patch("app.default.account_routes.get_fund", return_value=mock_fund)

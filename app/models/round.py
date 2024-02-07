@@ -14,13 +14,7 @@ class FeedbackSurveyConfig:
     @classmethod
     def from_dict(cls, d: dict):
         # Filter unknown fields from JSON dictionary
-        return cls(
-            **{
-                k: v
-                for k, v in d.items()
-                if k in inspect.signature(cls).parameters
-            }
-        )
+        return cls(**{k: v for k, v in d.items() if k in inspect.signature(cls).parameters})
 
 
 @dataclass
@@ -48,19 +42,11 @@ class Round:
 
     def __post_init__(self):
         if isinstance(self.feedback_survey_config, dict):
-            self.feedback_survey_config = FeedbackSurveyConfig.from_dict(
-                self.feedback_survey_config
-            )
+            self.feedback_survey_config = FeedbackSurveyConfig.from_dict(self.feedback_survey_config)
         elif self.feedback_survey_config is None:
             self.feedback_survey_config = FeedbackSurveyConfig()
 
     @classmethod
     def from_dict(cls, d: dict):
         # Filter unknown fields from JSON dictionary
-        return cls(
-            **{
-                k: v
-                for k, v in d.items()
-                if k in inspect.signature(cls).parameters
-            }
-        )
+        return cls(**{k: v for k, v in d.items() if k in inspect.signature(cls).parameters})

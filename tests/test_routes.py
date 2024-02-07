@@ -46,9 +46,7 @@ def test_page_footer_includes_correct_title_and_link_text(flask_test_client):
 
 def test_get_round_data_fail_gracefully(app, mocker):
     mocker.patch("app.default.data.get_lang", return_value="en")
-    with mock.patch(
-        "app.default.data.get_data"
-    ) as get_data_mock, app.app_context():
+    with mock.patch("app.default.data.get_data") as get_data_mock, app.app_context():
         get_data_mock.side_effect = HTTPError()
         round_data = get_round_data_fail_gracefully("cof", "r2w2")
         assert round_data.id == ""
@@ -191,9 +189,7 @@ def test_find_fund_in_request(
         return_value=TEST_APPLICATION_SUMMARIES[0],
     )
     request_mock = mocker.patch("app.helpers.request")
-    request_mock.view_args.get = (
-        lambda key: view_args_value if key == key_name else None
-    )
+    request_mock.view_args.get = lambda key: view_args_value if key == key_name else None
     request_mock.args.get = lambda key: args_value if key == key_name else None
     request_mock.form.get = lambda key: form_value if key == key_name else None
     with app.app_context():
@@ -248,9 +244,7 @@ def test_find_round_in_request(
         return_value=TEST_ROUNDS_DATA[3],
     )
     request_mock = mocker.patch("app.helpers.request")
-    request_mock.view_args.get = (
-        lambda key: view_args_value if key == key_name else None
-    )
+    request_mock.view_args.get = lambda key: view_args_value if key == key_name else None
     request_mock.args.get = lambda key: args_value if key == key_name else None
     request_mock.form.get = lambda key: form_value if key == key_name else None
     with app.app_context():

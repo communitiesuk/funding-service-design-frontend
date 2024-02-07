@@ -8,10 +8,7 @@ from tests.api_data.test_data import TEST_APPLICATIONS
 file = open("tests/api_data/endpoint_data.json")
 data = json.loads(file.read())
 
-TEST_APPLICATION_DISPLAY_RESPONSE = data[
-    "fund_store/funds/funding-service-design/"
-    "rounds/summer/sections/application"
-]
+TEST_APPLICATION_DISPLAY_RESPONSE = data["fund_store/funds/funding-service-design/rounds/summer/sections/application"]
 
 
 class TestUserValidation:
@@ -21,9 +18,7 @@ class TestUserValidation:
     TEST_USER = "test-user"
     REHYDRATION_TOKEN = "test_token"
 
-    def test_continue_application_correct_user(
-        self, flask_test_client, mocker, mock_login
-    ):
+    def test_continue_application_correct_user(self, flask_test_client, mocker, mock_login):
         mocker.patch(
             "app.default.application_routes.get_application_data",
             return_value=TEST_APPLICATIONS[0],
@@ -33,28 +28,19 @@ class TestUserValidation:
             return_value="rehydrate_payload",
         )
         mocker.patch(
-            "app.default.application_routes."
-            "get_token_to_return_to_application",
+            "app.default.application_routes.get_token_to_return_to_application",
             return_value=self.REHYDRATION_TOKEN,
         )
         mocker.patch(
             "app.default.application_routes.determine_round_status",
             return_value=RoundStatus(False, False, True),
         )
-        expected_redirect_url = DefaultConfig.FORM_REHYDRATION_URL.format(
-            rehydration_token=self.REHYDRATION_TOKEN
-        )
-        response = flask_test_client.get(
-            f"/continue_application/{self.TEST_ID}", follow_redirects=False
-        )
+        expected_redirect_url = DefaultConfig.FORM_REHYDRATION_URL.format(rehydration_token=self.REHYDRATION_TOKEN)
+        response = flask_test_client.get(f"/continue_application/{self.TEST_ID}", follow_redirects=False)
         assert 302 == response.status_code, "Incorrect status code"
-        assert (
-            expected_redirect_url == response.location
-        ), "Incorrect redirect url"
+        assert expected_redirect_url == response.location, "Incorrect redirect url"
 
-    def test_continue_application_bad_user(
-        self, flask_test_client, mocker, monkeypatch
-    ):
+    def test_continue_application_bad_user(self, flask_test_client, mocker, monkeypatch):
         monkeypatch.setattr(
             "fsd_utils.authentication.decorators._check_access_token",
             lambda return_app: {
@@ -69,33 +55,24 @@ class TestUserValidation:
             return_value=TEST_APPLICATIONS[0],
         )
 
-        response = flask_test_client.get(
-            f"/continue_application/{self.TEST_ID}", follow_redirects=False
-        )
+        response = flask_test_client.get(f"/continue_application/{self.TEST_ID}", follow_redirects=False)
         assert 401 == response.status_code, "Incorrect status code"
 
-    def test_tasklist_correct_user(
-        self, flask_test_client, mocker, mock_login
-    ):
+    def test_tasklist_correct_user(self, flask_test_client, mocker, mock_login):
         mocker.patch(
             "app.default.application_routes.get_application_data",
             return_value=TEST_APPLICATIONS[0],
         )
         mocker.patch(
             "app.default.application_routes.get_application_display_config",
-            return_value=[
-                ApplicationMapping.from_dict(section)
-                for section in TEST_APPLICATION_DISPLAY_RESPONSE
-            ],
+            return_value=[ApplicationMapping.from_dict(section) for section in TEST_APPLICATION_DISPLAY_RESPONSE],
         )
         mocker.patch(
             "app.default.application_routes.determine_round_status",
             return_value=RoundStatus(False, False, True),
         )
 
-        response = flask_test_client.get(
-            f"/tasklist/{self.TEST_ID}", follow_redirects=False
-        )
+        response = flask_test_client.get(f"/tasklist/{self.TEST_ID}", follow_redirects=False)
         assert 200 == response.status_code, "Incorrect status code"
         assert b"<title>Task List" in response.data
         assert b"TEST-REF</dd>" in response.data
@@ -115,9 +92,7 @@ class TestUserValidation:
             return_value=TEST_APPLICATIONS[0],
         )
 
-        response = flask_test_client.get(
-            f"/tasklist/{self.TEST_ID}", follow_redirects=False
-        )
+        response = flask_test_client.get(f"/tasklist/{self.TEST_ID}", follow_redirects=False)
         assert 401 == response.status_code, "Incorrect status code"
 
     def test_submit_correct_user(self, flask_test_client, mocker, mock_login):
@@ -130,8 +105,7 @@ class TestUserValidation:
             return_value=RoundStatus(False, False, True),
         )
         mocker.patch(
-            "app.default.application_routes."
-            + "format_payload_and_submit_application",
+            "app.default.application_routes." + "format_payload_and_submit_application",
             return_value={
                 "id": self.TEST_ID,
                 "email": "test@test.com",
@@ -146,14 +120,9 @@ class TestUserValidation:
         )
         assert 200 == response.status_code, "Incorrect status code"
         assert b"Application complete" in response.data
-        assert (
-            b"Your reference number<br><strong>ABC-123</strong>"
-            in response.data
-        )
+        assert b"Your reference number<br><strong>ABC-123</strong>" in response.data
 
-    def test_submit_correct_user_bad_dates(
-        self, flask_test_client, mocker, mock_login
-    ):
+    def test_submit_correct_user_bad_dates(self, flask_test_client, mocker, mock_login):
         mocker.patch(
             "app.default.application_routes.get_application_data",
             return_value=TEST_APPLICATIONS[0],
