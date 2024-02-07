@@ -92,7 +92,7 @@ dnspython==2.4.2
     #   email-validator
 dparse==0.6.3
     # via -r requirements-dev.in
-email-validator==1.2.1
+email-validator==2.1.0.post1
     # via -r requirements.txt
 exceptiongroup==1.2.0
     # via pytest
@@ -153,7 +153,9 @@ gitpython==3.1.40
 govuk-frontend-jinja==2.7.0
     # via -r requirements.txt
 greenlet==3.0.3
-    # via sqlalchemy
+    # via
+    #   -r requirements.txt
+    #   sqlalchemy
 gunicorn==20.1.0
     # via
     #   -r requirements.txt
