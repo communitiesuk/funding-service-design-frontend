@@ -43,9 +43,7 @@ from fsd_utils.simple_utils.date_utils import (
 )
 
 
-application_bp = Blueprint(
-    "application_routes", __name__, template_folder="templates"
-)
+application_bp = Blueprint("application_routes", __name__, template_folder="templates")
 
 
 # TODO Move the following method into utils, but will need access to DB
@@ -79,8 +77,7 @@ def verify_application_owner_local(f):
         else:
             abort(
                 401,
-                f"User {current_user} attempted to access application"
-                f" {application_id}, owned by {application_owner}",
+                f"User {current_user} attempted to access application {application_id}, owned by {application_owner}",
             )
 
     return decorator
@@ -124,8 +121,7 @@ def verify_round_open(f):
             return f(*args, **kwargs)
         else:
             current_app.logger.info(
-                f"User {g.account_id} tried to update application"
-                f" {application_id} outside of the round being open"
+                f"User {g.account_id} tried to update application {application_id} outside of the round being open"
             )
             return redirect(url_for("account_routes.dashboard"))
 
@@ -183,10 +179,7 @@ def tasklist(application_id):
     # note that individual section feedback COULD be independent of round feedback survey.
     # which is why this is not under a conditional round_data.feedback_survey_config.
     if round_data.feedback_survey_config.has_section_feedback:
-        (
-            current_feedback_list,
-            existing_feedback_map,
-        ) = get_section_feedback_data(
+        (current_feedback_list, existing_feedback_map,) = get_section_feedback_data(
             application,
             section_display_config,
         )
@@ -222,16 +215,12 @@ def tasklist(application_id):
         + sum(
             1
             for s in section_display_config
-            if (
-                s.requires_feedback
-                and round_data.feedback_survey_config.has_section_feedback
-            )
+            if (s.requires_feedback and round_data.feedback_survey_config.has_section_feedback)
         ),
         "number_of_completed_forms": len(
             list(
                 filter(
-                    lambda form: form["status"]
-                    == ApplicationStatus.COMPLETED.name,
+                    lambda form: form["status"] == ApplicationStatus.COMPLETED.name,
                     application.forms,
                 )
             )
@@ -259,9 +248,7 @@ def tasklist(application_id):
     with force_locale(application.language):
         response = make_response()
         if request.cookies.get("language") != application.language:
-            LanguageSelector.set_language_cookie(
-                application.language, response
-            )
+            LanguageSelector.set_language_cookie(application.language, response)
 
         response_content = render_template(
             "tasklist.html",
@@ -272,9 +259,7 @@ def tasklist(application_id):
             form=form,
             contact_us_email_address=round_data.contact_email,
             submission_deadline=round_data.deadline,
-            is_past_submission_deadline=current_datetime_after_given_iso_string(  # noqa:E501
-                round_data.deadline
-            ),
+            is_past_submission_deadline=current_datetime_after_given_iso_string(round_data.deadline),  # noqa:E501
             dashboard_url=url_for(
                 "account_routes.dashboard",
                 fund=fund_data.short_name,
@@ -285,18 +270,14 @@ def tasklist(application_id):
             feedback_survey_data=feedback_survey_data,
             migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
             # Set service_title here so it uses the application language - overrides the context_processor
-            service_title=gettext("Apply for")
-            + " "
-            + fund_data.title,  # title is already translated
+            service_title=gettext("Apply for") + " " + fund_data.title,  # title is already translated
         )
         response.set_data(response_content)
 
         return response
 
 
-@application_bp.route(
-    "/continue_application/<application_id>", methods=["GET"]
-)
+@application_bp.route("/continue_application/<application_id>", methods=["GET"])
 @login_required
 @verify_application_owner_local
 @verify_round_open
@@ -317,20 +298,11 @@ def continue_application(application_id):
     """
     args = request.args
     form_name = args.get("form_name")
-    return_url = (
-        request.host_url
-        + url_for(
-            "application_routes.tasklist", application_id=application_id
-        )[1:]
-    )
-    current_app.logger.info(
-        f"Url the form runner should return to '{return_url}'."
-    )
+    return_url = request.host_url + url_for("application_routes.tasklist", application_id=application_id)[1:]
+    current_app.logger.info(f"Url the form runner should return to '{return_url}'.")
 
     application = get_application_data(application_id)
-    round = get_round(
-        fund_id=application.fund_id, round_id=application.round_id
-    )
+    round = get_round(fund_id=application.fund_id, round_id=application.round_id)
 
     form_data = application.get_form_data(application, form_name)
 
@@ -342,17 +314,11 @@ def continue_application(application_id):
         round.mark_as_complete_enabled,
     )
 
-    rehydration_token = get_token_to_return_to_application(
-        form_name, rehydrate_payload
-    )
+    rehydration_token = get_token_to_return_to_application(form_name, rehydrate_payload)
 
-    redirect_url = Config.FORM_REHYDRATION_URL.format(
-        rehydration_token=rehydration_token
-    )
+    redirect_url = Config.FORM_REHYDRATION_URL.format(rehydration_token=rehydration_token)
     if Config.FORMS_SERVICE_PRIVATE_HOST:
-        redirect_url = redirect_url.replace(
-            Config.FORMS_SERVICE_PRIVATE_HOST, Config.FORMS_SERVICE_PUBLIC_HOST
-        )
+        redirect_url = redirect_url.replace(Config.FORMS_SERVICE_PRIVATE_HOST, Config.FORMS_SERVICE_PUBLIC_HOST)
     current_app.logger.info("redirecting to form runner")
     return redirect(redirect_url)
 
@@ -398,18 +364,13 @@ def submit_application():
 def format_payload_and_submit_application(application_id):
     payload = {"application_id": application_id}
     submission_response = requests.post(
-        Config.SUBMIT_APPLICATION_ENDPOINT.format(
-            application_id=application_id
-        ),
+        Config.SUBMIT_APPLICATION_ENDPOINT.format(application_id=application_id),
         json=payload,
     )
     submitted = submission_response.json()
-    if submission_response.status_code != 201 or not submitted.get(
-        "reference"
-    ):
+    if submission_response.status_code != 201 or not submitted.get("reference"):
         raise Exception(
-            "Unexpected response from application store when submitting"
-            " application: "
+            "Unexpected response from application store when submitting application: "
             + str(application_id)
             + "application-store-response: "
             + str(submission_response)
@@ -426,31 +387,23 @@ def retrieve_section_or_abort(application_id, section_id):
         language=application.language,
     )
 
-    matching_sections = [
-        s for s in section_config if str(s.section_id) == section_id
-    ]
+    matching_sections = [s for s in section_config if str(s.section_id) == section_id]
     if not matching_sections:
         abort(404)
 
     section, *_ = matching_sections
-    if not application.are_forms_complete(
-        [c.form_name for c in section.children]
-    ):
+    if not application.are_forms_complete([c.form_name for c in section.children]):
         abort(404)
 
     return application, section
 
 
-@application_bp.route(
-    "/feedback/<application_id>/section/<section_id>/intro", methods=["GET"]
-)
+@application_bp.route("/feedback/<application_id>/section/<section_id>/intro", methods=["GET"])
 @login_required
 @verify_application_owner_local
 @verify_round_open
 def section_feedback_intro(application_id, section_id):
-    application, section = retrieve_section_or_abort(
-        application_id, section_id
-    )
+    application, section = retrieve_section_or_abort(application_id, section_id)
     return render_template(
         "section_feedback_intro.html",
         dashboard_url="",
@@ -460,19 +413,13 @@ def section_feedback_intro(application_id, section_id):
     )
 
 
-@application_bp.route(
-    "/feedback/<application_id>/section/<section_id>", methods=["GET", "POST"]
-)
+@application_bp.route("/feedback/<application_id>/section/<section_id>", methods=["GET", "POST"])
 @login_required
 @verify_application_owner_local
 @verify_round_open
 def section_feedback(application_id, section_id):
-    application, section = retrieve_section_or_abort(
-        application_id, section_id
-    )
-    existing_feedback = get_feedback(
-        application_id, section_id, application.fund_id, application.round_id
-    )
+    application, section = retrieve_section_or_abort(application_id, section_id)
+    existing_feedback = get_feedback(application_id, section_id, application.fund_id, application.round_id)
     if existing_feedback:
         abort(404)
 
@@ -492,11 +439,7 @@ def section_feedback(application_id, section_id):
         if not was_submitted:
             abort(500)
 
-        return redirect(
-            url_for(
-                "application_routes.tasklist", application_id=application_id
-            )
-        )
+        return redirect(url_for("application_routes.tasklist", application_id=application_id))
 
     # # Note: If we ever allow upserts for feedback, we could use this to re-fill the form.
     # existing_feedback = get_feedback(application_id, section_id, application.fund_id, application.round_id)
@@ -513,9 +456,7 @@ def section_feedback(application_id, section_id):
     )
 
 
-@application_bp.route(
-    "/feedback/<application_id>/page/<page_number>", methods=["GET", "POST"]
-)
+@application_bp.route("/feedback/<application_id>/page/<page_number>", methods=["GET", "POST"])
 @login_required
 @verify_application_owner_local
 @verify_round_open
@@ -532,15 +473,9 @@ def round_feedback(application_id, page_number):
         abort(404)
 
     if page_number == "END":
-        return redirect(
-            url_for(
-                "application_routes.tasklist", application_id=application_id
-            )
-        )
+        return redirect(url_for("application_routes.tasklist", application_id=application_id))
 
-    form_template_tuple = (
-        END_OF_APPLICATION_FEEDBACK_SURVEY_PAGE_NUMBER_MAP.get(page_number)
-    )
+    form_template_tuple = END_OF_APPLICATION_FEEDBACK_SURVEY_PAGE_NUMBER_MAP.get(page_number)
     if not form_template_tuple:
         abort(404)
 
@@ -549,17 +484,10 @@ def round_feedback(application_id, page_number):
     form.application_id.data = application_id
 
     existing_survey_data_map = {
-        page_number: get_survey_data(application_id, page_number)
-        for page_number in ["1", "2", "3", "4"]
+        page_number: get_survey_data(application_id, page_number) for page_number in ["1", "2", "3", "4"]
     }
-    if all(
-        existing_survey_data_map.values()
-    ):  # if user has already submitted data redirect them to tasklist
-        return redirect(
-            url_for(
-                "application_routes.tasklist", application_id=application_id
-            )
-        )
+    if all(existing_survey_data_map.values()):  # if user has already submitted data redirect them to tasklist
+        return redirect(url_for("application_routes.tasklist", application_id=application_id))
 
     if form.validate_on_submit():
         posted_survey_data = post_survey_data(
@@ -609,15 +537,10 @@ def round_feedback_intro(application_id):
         abort(404)
 
     existing_survey_data_map = {
-        page_number: get_survey_data(application_id, page_number)
-        for page_number in ["1", "2", "3", "4"]
+        page_number: get_survey_data(application_id, page_number) for page_number in ["1", "2", "3", "4"]
     }
     if all(existing_survey_data_map.values()):
-        return redirect(
-            url_for(
-                "application_routes.tasklist", application_id=application_id
-            )
-        )
+        return redirect(url_for("application_routes.tasklist", application_id=application_id))
 
     return render_template(
         "end_of_application_survey.html",

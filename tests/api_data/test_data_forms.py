@@ -44,18 +44,14 @@ COF_TEST_FORMS = [
                     {
                         "answer": ["fight-climate-change"],
                         "key": "CDwTrG",
-                        "title": (
-                            "What policy aims will your project deliver"
-                            " against?"
-                        ),
+                        "title": "What policy aims will your project deliver against?",
                         "type": "list",
                     },
                     {
                         "answer": "asd",
                         "key": "kxgWTy",
                         "title": (
-                            "Who in the community uses the asset, or has used"
-                            " it in the past, and who benefits from it?"
+                            "Who in the community uses the asset, or has used it in the past, and who benefits from it?"
                         ),
                         "type": "text",
                     },
@@ -71,10 +67,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": "asd",
                         "key": "qsZLjZ",
-                        "title": (
-                            "Why will the asset be lost without community"
-                            " intervention?"
-                        ),
+                        "title": "Why will the asset be lost without community intervention?",
                         "type": "text",
                     },
                 ],
@@ -92,18 +85,13 @@ COF_TEST_FORMS = [
                     {
                         "answer": "qwe",
                         "key": "ieRCkI",
-                        "title": (
-                            "Tell us about the feasibility studies you have"
-                            " carried out for your project"
-                        ),
+                        "title": "Tell us about the feasibility studies you have carried out for your project",
                         "type": "text",
                     },
                     {
                         "answer": False,
                         "key": "aAeszH",
-                        "title": (
-                            "Do you need to do any further feasibility work?"
-                        ),
+                        "title": "Do you need to do any further feasibility work?",
                         "type": "list",
                     },
                 ],
@@ -158,10 +146,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": False,
                         "key": "CBIWnt",
-                        "title": (
-                            "Do you have experience of managing a community"
-                            " asset?"
-                        ),
+                        "title": "Do you have experience of managing a community asset?",
                         "type": "list",
                     }
                 ],
@@ -173,10 +158,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": False,
                         "key": "vKnMPG",
-                        "title": (
-                            "Do you have any plans to recruit people to help"
-                            " you manage the asset?"
-                        ),
+                        "title": "Do you have any plans to recruit people to help you manage the asset?",
                         "type": "list",
                     }
                 ],
@@ -224,9 +206,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": "er",
                         "key": "oOPUXI",
-                        "title": (
-                            "Tell us about your local community as a whole"
-                        ),
+                        "title": "Tell us about your local community as a whole",
                         "type": "text",
                     },
                     {
@@ -253,10 +233,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": False,
                         "key": "KqoaJL",
-                        "title": (
-                            "Are you confident there is local support for your"
-                            " project?"
-                        ),
+                        "title": "Are you confident there is local support for your project?",
                         "type": "list",
                     }
                 ],
@@ -274,10 +251,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": "asd",
                         "key": "CvVZJv",
-                        "title": (
-                            "Tell us how you have considered the environmental"
-                            " sustainability of your project"
-                        ),
+                        "title": "Tell us how you have considered the environmental sustainability of your project",
                         "type": "text",
                     }
                 ],
@@ -295,10 +269,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": False,
                         "key": "HvxXPI",
-                        "title": (
-                            "Does your project meet the definition of a"
-                            " subsidy?"
-                        ),
+                        "title": "Does your project meet the definition of a subsidy?",
                         "type": "list",
                     }
                 ],
@@ -399,35 +370,25 @@ COF_TEST_FORMS = [
                     {
                         "answer": "ikoj",
                         "key": "btTtIb",
-                        "title": (
-                            "Tell us about your organisation's main activities"
-                        ),
+                        "title": "Tell us about your organisation's main activities",
                         "type": "text",
                     },
                     {
                         "answer": None,
                         "key": "SkocDi",
-                        "title": (
-                            "Tell us about your organisation's main activities"
-                            " - Activity 2 "
-                        ),
+                        "title": "Tell us about your organisation's main activities - Activity 2 ",
                         "type": "text",
                     },
                     {
                         "answer": None,
                         "key": "CNeeiC",
-                        "title": (
-                            "Tell us about your organisation's main activities"
-                            " - Activity 3 "
-                        ),
+                        "title": "Tell us about your organisation's main activities - Activity 3 ",
                         "type": "text",
                     },
                     {
                         "answer": False,
                         "key": "BBlCko",
-                        "title": (
-                            "Have you delivered projects like this before?"
-                        ),
+                        "title": "Have you delivered projects like this before?",
                         "type": "list",
                     },
                 ],
@@ -463,10 +424,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": False,
                         "key": "DwfHtk",
-                        "title": (
-                            "Is your organisation a trading subsidiary of a"
-                            " parent company?"
-                        ),
+                        "title": "Is your organisation a trading subsidiary of a parent company?",
                         "type": "list",
                     }
                 ],
@@ -476,9 +434,7 @@ COF_TEST_FORMS = [
             {
                 "fields": [
                     {
-                        "answer": (
-                            "Test Address, None, Testville, None, T12 2re"
-                        ),
+                        "answer": "Test Address, None, Testville, None, T12 2re",
                         "key": "ZQolYb",
                         "title": "Organisation address",
                         "type": "text",
@@ -486,10 +442,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": False,
                         "key": "zsoLdf",
-                        "title": (
-                            "Is your correspondence address different to the"
-                            " organisation address?"
-                        ),
+                        "title": "Is your correspondence address different to the organisation address?",
                         "type": "list",
                     },
                     {
@@ -501,17 +454,13 @@ COF_TEST_FORMS = [
                     {
                         "answer": None,
                         "key": "FcdKlB",
-                        "title": (
-                            "Website and social media - Link or username 2"
-                        ),
+                        "title": "Website and social media - Link or username 2",
                         "type": "text",
                     },
                     {
                         "answer": None,
                         "key": "BzxgDA",
-                        "title": (
-                            "Website and social media - Link or username 3"
-                        ),
+                        "title": "Website and social media - Link or username 3",
                         "type": "text",
                     },
                 ],
@@ -523,10 +472,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": False,
                         "key": "hnLurH",
-                        "title": (
-                            "Is your application a joint bid in partnership"
-                            " with other organisations?"
-                        ),
+                        "title": "Is your application a joint bid in partnership with other organisations?",
                         "type": "list",
                     }
                 ],
@@ -544,10 +490,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": False,
                         "key": "gScdbf",
-                        "title": (
-                            "Have you been given funding through the Community"
-                            " Ownership Fund before?"
-                        ),
+                        "title": "Have you been given funding through the Community Ownership Fund before?",
                         "type": "list",
                     }
                 ],
@@ -584,10 +527,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": "uy",
                         "key": "GCjCse",
-                        "title": (
-                            "Give a brief summary of your project, including"
-                            " what you hope to achieve"
-                        ),
+                        "title": "Give a brief summary of your project, including what you hope to achieve",
                         "type": "text",
                     },
                 ],
@@ -597,9 +537,7 @@ COF_TEST_FORMS = [
             {
                 "fields": [
                     {
-                        "answer": (
-                            "Test Address, None, Testville, None, T12 2re"
-                        ),
+                        "answer": "Test Address, None, Testville, None, T12 2re",
                         "key": "yEmHpp",
                         "title": "Address of the community asset",
                         "type": "text",
@@ -673,9 +611,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": False,
                         "key": "gkulUE",
-                        "title": (
-                            "Have you already completed the purchase or lease?"
-                        ),
+                        "title": "Have you already completed the purchase or lease?",
                         "type": "list",
                     }
                 ],
@@ -721,10 +657,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": False,
                         "key": "hvzzWB",
-                        "title": (
-                            "Is this a registered Asset of Community Value"
-                            " (ACV)?"
-                        ),
+                        "title": "Is this a registered Asset of Community Value (ACV)?",
                         "type": "list",
                     }
                 ],
@@ -736,10 +669,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": False,
                         "key": "VwxiGn",
-                        "title": (
-                            "Is the asset listed for disposal, or part of a"
-                            " Community Asset Transfer?"
-                        ),
+                        "title": "Is the asset listed for disposal, or part of a Community Asset Transfer?",
                         "type": "list",
                     }
                 ],
@@ -781,9 +711,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": False,
                         "key": "NWTKzQ",
-                        "title": (
-                            "Do you need to add revenue costs? (optional)"
-                        ),
+                        "title": "Do you need to add revenue costs? (optional)",
                         "type": "list",
                     }
                 ],
@@ -807,10 +735,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": False,
                         "key": "RvbwSX",
-                        "title": (
-                            "Do you have any match funding identified but not"
-                            " yet secured?"
-                        ),
+                        "title": "Do you have any match funding identified but not yet secured?",
                         "type": "list",
                     }
                 ],
@@ -840,10 +765,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": "re3",
                         "key": "SrtVAs",
-                        "title": (
-                            "Describe the planned activities or services that"
-                            " will take place at the asset"
-                        ),
+                        "title": "Describe the planned activities or services that will take place at the asset",
                         "type": "text",
                     },
                     {
@@ -859,18 +781,14 @@ COF_TEST_FORMS = [
                         "answer": "er",
                         "key": "KuhSWw",
                         "title": (
-                            "Tell us how you'll make your project accessible"
-                            " and inclusive to everyone in the community"
+                            "Tell us how you'll make your project accessible and inclusive to everyone in the community"
                         ),
                         "type": "text",
                     },
                     {
                         "answer": "er",
                         "key": "bkJsiO",
-                        "title": (
-                            "Describe how the project will bring people"
-                            " together from all over the community"
-                        ),
+                        "title": "Describe how the project will bring people together from all over the community",
                         "type": "text",
                     },
                 ],
@@ -888,10 +806,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": ["delivering-positive"],
                         "key": "QjJtbs",
-                        "title": (
-                            "What community benefits do you expect to deliver"
-                            " with this project? "
-                        ),
+                        "title": "What community benefits do you expect to deliver with this project? ",
                         "type": "list",
                     },
                     {
@@ -907,19 +822,13 @@ COF_TEST_FORMS = [
                     {
                         "answer": "er",
                         "key": "kYjJFy",
-                        "title": (
-                            "Explain how you plan to sustain, and potentially"
-                            " expand, these benefits over time"
-                        ),
+                        "title": "Explain how you plan to sustain, and potentially expand, these benefits over time",
                         "type": "text",
                     },
                     {
                         "answer": "er",
                         "key": "UbjYqE",
-                        "title": (
-                            "Tell us how you'll make sure the whole community"
-                            " benefits from the asset"
-                        ),
+                        "title": "Tell us how you'll make sure the whole community benefits from the asset",
                         "type": "text",
                     },
                 ],
@@ -948,9 +857,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": False,
                         "key": "JCACTy",
-                        "title": (
-                            "Have you done any fundraising in the community?"
-                        ),
+                        "title": "Have you done any fundraising in the community?",
                         "type": "list",
                     },
                 ],
@@ -962,10 +869,7 @@ COF_TEST_FORMS = [
                     {
                         "answer": "asd",
                         "key": "NZKHOp",
-                        "title": (
-                            "Tell us how your project supports any wider local"
-                            " plans"
-                        ),
+                        "title": "Tell us how your project supports any wider local plans",
                         "type": "text",
                     }
                 ],
@@ -989,19 +893,13 @@ COF_TEST_FORMS = [
                     {
                         "answer": "er",
                         "key": "yMCivI",
-                        "title": (
-                            "Tell us about your governance and membership"
-                            " structures"
-                        ),
+                        "title": "Tell us about your governance and membership structures",
                         "type": "text",
                     },
                     {
                         "answer": "er",
                         "key": "NUZOvS",
-                        "title": (
-                            "Explain how you'll consider the views of the"
-                            " community in the running of the asset"
-                        ),
+                        "title": "Explain how you'll consider the views of the community in the running of the asset",
                         "type": "text",
                     },
                 ],
@@ -1019,19 +917,13 @@ COF_TEST_FORMS = [
                     {
                         "answer": "we",
                         "key": "WDDkVB",
-                        "title": (
-                            "Summarise your cash flow for the running of the"
-                            " asset"
-                        ),
+                        "title": "Summarise your cash flow for the running of the asset",
                         "type": "text",
                     },
                     {
                         "answer": False,
                         "key": "oaIntA",
-                        "title": (
-                            "If successful, will you use your funding in the"
-                            " next 12 months?"
-                        ),
+                        "title": "If successful, will you use your funding in the next 12 months?",
                         "type": "list",
                     },
                 ],

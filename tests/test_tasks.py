@@ -13,22 +13,16 @@ from tasks import fix_trans_tags
             "\n\n {% trans %}Random String Example{% endtrans %} \n\n",
         ),
         pytest.param(
-            "<html>{% trans %}\n\n Random\nString\tExample \n\n{% endtrans"
-            " %}</html>",
-            "<html>\n\n {% trans %}Random String Example{% endtrans %}"
-            " \n\n</html>",
+            "<html>{% trans %}\n\n Random\nString\tExample \n\n{% endtrans %}</html>",
+            "<html>\n\n {% trans %}Random String Example{% endtrans %} \n\n</html>",
         ),
         pytest.param(
-            "\n{% trans %}\nNew\nline\n{% endtrans"
-            " %}\n{%trans%}\nA\ntab\t{%endtrans%}",
-            "\n\n{% trans %}New line{% endtrans %}\n\n\n{%trans%}A"
-            " tab{%endtrans%}\t",
+            "\n{% trans %}\nNew\nline\n{% endtrans %}\n{%trans%}\nA\ntab\t{%endtrans%}",
+            "\n\n{% trans %}New line{% endtrans %}\n\n\n{%trans%}A tab{%endtrans%}\t",
         ),
     ],
 )
-def test_remove_whitespace_newlines_from_trans_tags_file(
-    tmpdir, input, expected
-):
+def test_remove_whitespace_newlines_from_trans_tags_file(tmpdir, input, expected):
     c = MockContext(run=Result("Darwin\n"))
 
     f = tmpdir.join("f.html")

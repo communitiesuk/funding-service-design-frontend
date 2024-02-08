@@ -7,8 +7,7 @@ from werkzeug import test
 
 
 @pytest.mark.parametrize(
-    "fund_short_name, round_short_name, is_welsh_available, lang,"
-    " exp_template_name",
+    "fund_short_name, round_short_name, is_welsh_available, lang, exp_template_name",
     [
         (
             "cof",
@@ -63,17 +62,13 @@ def test_determine_template_name(
 ):
     mock_fund = mock.MagicMock()
     mock_fund.configure_mock(welsh_available=is_welsh_available)
-    result = determine_all_questions_template_name(
-        fund_short_name, round_short_name, lang, mock_fund
-    )
+    result = determine_all_questions_template_name(fund_short_name, round_short_name, lang, mock_fund)
     assert result == exp_template_name
 
 
 def test_all_questions_page_from_short_name(flask_test_client, mocker):
 
-    response: test.TestResponse = flask_test_client.get(
-        "/all_questions/COF/R2W3?lang=en"
-    )
+    response: test.TestResponse = flask_test_client.get("/all_questions/COF/R2W3?lang=en")
     assert response.status_code == 200
     soup = BeautifulSoup(response.data, "html.parser")
     assert soup.find("h1").text == "Full list of application questions"
