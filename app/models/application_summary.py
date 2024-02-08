@@ -20,25 +20,13 @@ class ApplicationSummary:
     last_edited: Optional[datetime] = None
 
     def __post_init__(self):
-        self.started_at = datetime.fromisoformat(self.started_at).astimezone(
-            timezone("Europe/London")
-        )
+        self.started_at = datetime.fromisoformat(self.started_at).astimezone(timezone("Europe/London"))
         self.last_edited = (
-            datetime.fromisoformat(self.last_edited).astimezone(
-                timezone("Europe/London")
-            )
-            if self.last_edited
-            else None
+            datetime.fromisoformat(self.last_edited).astimezone(timezone("Europe/London")) if self.last_edited else None
         )
         self.language = get_formatted(self.language)
 
     @classmethod
     def from_dict(cls, d: dict):
         # Filter unknown fields from JSON dictionary
-        return cls(
-            **{
-                k: v
-                for k, v in d.items()
-                if k in inspect.signature(cls).parameters
-            }
-        )
+        return cls(**{k: v for k, v in d.items() if k in inspect.signature(cls).parameters})

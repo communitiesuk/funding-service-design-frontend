@@ -56,9 +56,7 @@ def create_app() -> Flask:
     flask_app.jinja_loader = ChoiceLoader(
         [
             PackageLoader("app"),
-            PrefixLoader(
-                {"govuk_frontend_jinja": PackageLoader("govuk_frontend_jinja")}
-            ),
+            PrefixLoader({"govuk_frontend_jinja": PackageLoader("govuk_frontend_jinja")}),
         ]
     )
 
@@ -91,15 +89,9 @@ def create_app() -> Flask:
     flask_app.register_blueprint(application_bp)
     flask_app.register_blueprint(content_bp)
     flask_app.register_blueprint(account_bp)
-    flask_app.jinja_env.filters[
-        "datetime_format_short_month"
-    ] = datetime_format_short_month
-    flask_app.jinja_env.filters[
-        "custom_format_datetime"
-    ] = custom_format_datetime
-    flask_app.jinja_env.filters[
-        "date_format_short_month"
-    ] = date_format_short_month
+    flask_app.jinja_env.filters["datetime_format_short_month"] = datetime_format_short_month
+    flask_app.jinja_env.filters["custom_format_datetime"] = custom_format_datetime
+    flask_app.jinja_env.filters["date_format_short_month"] = date_format_short_month
     flask_app.jinja_env.filters["datetime_format"] = datetime_format
     flask_app.jinja_env.filters["snake_case_to_human"] = snake_case_to_human
     flask_app.jinja_env.filters["kebab_case_to_human"] = kebab_case_to_human
@@ -109,13 +101,8 @@ def create_app() -> Flask:
     def inject_global_constants():
         return dict(
             stage="beta",
-            service_meta_author=(
-                "Department for Levelling up Housing and Communities"
-            ),
-            toggle_dict={
-                feature.name: feature.is_enabled()
-                for feature in toggle_client.list()
-            }
+            service_meta_author="Department for Levelling up Housing and Communities",
+            toggle_dict={feature.name: feature.is_enabled() for feature in toggle_client.list()}
             if toggle_client
             else {},
         )
@@ -175,9 +162,7 @@ def create_app() -> Flask:
     @flask_app.after_request
     def after_request(response):
         if "Cache-Control" not in response.headers:
-            response.headers[
-                "Cache-Control"
-            ] = "no-cache, no-store, must-revalidate"
+            response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
             response.headers["Pragma"] = "no-cache"
             response.headers["Expires"] = "0"
         return response
@@ -185,9 +170,7 @@ def create_app() -> Flask:
     @flask_app.before_request
     def filter_all_requests():
         if flask_app.config.get("MAINTENANCE_MODE") and not (
-            request.path.endswith("js")
-            or request.path.endswith("css")
-            or request.path.endswith("/healthcheck")
+            request.path.endswith("js") or request.path.endswith("css") or request.path.endswith("/healthcheck")
         ):
             current_app.logger.warning(
                 f"""Application is in the Maintenance mode
@@ -196,9 +179,7 @@ def create_app() -> Flask:
             return (
                 render_template(
                     "maintenance.html",
-                    maintenance_end_time=flask_app.config.get(
-                        "MAINTENANCE_END_TIME"
-                    ),
+                    maintenance_end_time=flask_app.config.get("MAINTENANCE_END_TIME"),
                 ),
                 503,
             )

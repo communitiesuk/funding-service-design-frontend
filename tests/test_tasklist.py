@@ -17,10 +17,7 @@ data = json.loads(file.read())
 TEST_APPLICATION_EN = TEST_APPLICATIONS[0]
 TEST_APPLICATION_CY = TEST_APPLICATIONS[1]
 
-TEST_APPLICATION_DISPLAY_RESPONSE = data[
-    "fund_store/funds/funding-service-design/"
-    "rounds/summer/sections/application"
-]
+TEST_APPLICATION_DISPLAY_RESPONSE = data["fund_store/funds/funding-service-design/rounds/summer/sections/application"]
 
 
 @pytest.fixture
@@ -35,47 +32,34 @@ def mock_applications(mocker):
     )
     mocker.patch(
         "app.default.application_routes.get_application_display_config",
-        return_value=[
-            ApplicationMapping.from_dict(section)
-            for section in TEST_APPLICATION_DISPLAY_RESPONSE
-        ],
+        return_value=[ApplicationMapping.from_dict(section) for section in TEST_APPLICATION_DISPLAY_RESPONSE],
     )
 
 
-def test_tasklist_route(
-    flask_test_client, mocker, mock_login, mock_applications
-):
+def test_tasklist_route(flask_test_client, mocker, mock_login, mock_applications):
     mocker.patch(
         "app.default.application_routes.get_application_data",
         return_value=TEST_APPLICATION_EN,
     )
-    response = flask_test_client.get(
-        "tasklist/test-application-id", follow_redirects=True
-    )
+    response = flask_test_client.get("tasklist/test-application-id", follow_redirects=True)
     assert response.status_code == 200
     assert b"Help with filling out your application" in response.data
     assert b"Test Section 1" in response.data
     assert b"Risk" in response.data
 
 
-def test_tasklist_route_after_deadline(
-    flask_test_client, mocker, mock_login, mock_applications
-):
+def test_tasklist_route_after_deadline(flask_test_client, mocker, mock_login, mock_applications):
 
     mocker.patch(
         "app.default.application_routes.determine_round_status",
         return_value=RoundStatus(True, False, False),
     )
-    response = flask_test_client.get(
-        "tasklist/test-application-id", follow_redirects=False
-    )
+    response = flask_test_client.get("tasklist/test-application-id", follow_redirects=False)
     assert response.status_code == 302
     assert "/account" == response.location
 
 
-def test_tasklist_for_submit_application_route(
-    flask_test_client, mocker, mock_login
-):
+def test_tasklist_for_submit_application_route(flask_test_client, mocker, mock_login):
     mocker.patch(
         "app.default.application_routes.get_application_data",
         return_value=SUBMITTED_APPLICATION,
@@ -93,9 +77,7 @@ def test_tasklist_for_submit_application_route(
         "app.default.account_routes.build_application_data_for_display",
         return_value=TEST_DISPLAY_DATA,
     )
-    response = flask_test_client.get(
-        "tasklist/test-application-submit", follow_redirects=True
-    )
+    response = flask_test_client.get("tasklist/test-application-submit", follow_redirects=True)
     assert response.status_code == 200
     get_apps_mock.assert_called_once_with(
         search_params={
@@ -107,16 +89,12 @@ def test_tasklist_for_submit_application_route(
     )
 
 
-def test_language_cookie_update_welsh_to_english(
-    flask_test_client, mocker, mock_login, mock_applications
-):
+def test_language_cookie_update_welsh_to_english(flask_test_client, mocker, mock_login, mock_applications):
     # set language cookie to welsh
     flask_test_client.set_cookie(domain="/", key="language", value="cy")
 
     # request an english application
-    response = flask_test_client.get(
-        "tasklist/test-application-id", follow_redirects=True
-    )
+    response = flask_test_client.get("tasklist/test-application-id", follow_redirects=True)
 
     # check cookie has been set to english
     assert response.status_code == 200
@@ -125,15 +103,10 @@ def test_language_cookie_update_welsh_to_english(
     assert current_set_language == "en"
 
     soup = BeautifulSoup(response.data, "html.parser")
-    assert (
-        soup.find("span", class_="app-service-name").text
-        == "Apply for fund for testing"
-    )
+    assert soup.find("span", class_="app-service-name").text == "Apply for fund for testing"
 
 
-def test_language_cookie_update_english_to_welsh(
-    flask_test_client, mocker, mock_login, mock_applications
-):
+def test_language_cookie_update_english_to_welsh(flask_test_client, mocker, mock_login, mock_applications):
     # set language cookie to english
     flask_test_client.set_cookie(domain="/", key="language", value="en")
 
@@ -149,9 +122,7 @@ def test_language_cookie_update_english_to_welsh(
     )
 
     # request a welsh application
-    response = flask_test_client.get(
-        "tasklist/test-welsh-id", follow_redirects=True
-    )
+    response = flask_test_client.get("tasklist/test-welsh-id", follow_redirects=True)
 
     # check cookie has been set to welsh
     assert response.status_code == 200
@@ -160,7 +131,4 @@ def test_language_cookie_update_english_to_welsh(
     assert current_set_language == "cy"
 
     soup = BeautifulSoup(response.data, "html.parser")
-    assert (
-        soup.find("span", class_="app-service-name").text
-        == "Gwneud cais am gronfa cymraeg"
-    )
+    assert soup.find("span", class_="app-service-name").text == "Gwneud cais am gronfa cymraeg"

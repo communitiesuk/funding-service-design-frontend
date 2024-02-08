@@ -31,9 +31,7 @@ def get_ttl_hash(seconds=300) -> int:
     return round(time.time() / seconds)
 
 
-RoundStatus = namedtuple(
-    "RoundStatus", "past_submission_deadline not_yet_open is_open"
-)
+RoundStatus = namedtuple("RoundStatus", "past_submission_deadline not_yet_open is_open")
 
 
 def get_data(endpoint: str, params: dict = None):
@@ -63,9 +61,7 @@ def get_data(endpoint: str, params: dict = None):
         if response_code != 200:
             return abort(response_code)
     if data is None:
-        current_app.logger.error(
-            f"Data request failed, unable to recover: {endpoint}"
-        )
+        current_app.logger.error(f"Data request failed, unable to recover: {endpoint}")
         return abort(500)
     return data
 
@@ -97,13 +93,9 @@ def get_data_or_fail_gracefully(endpoint: str, params: dict = None):
         current_app.logger.info(f"Fetching data from '{endpoint}'.")
         response_status, data = get_remote_data_force_return(endpoint)
     if (data is None) or (response_status in [404, 500]):
-        current_app.logger.warning(
-            f"Data request failed, unable to recover: {endpoint}"
-        )
+        current_app.logger.warning(f"Data request failed, unable to recover: {endpoint}")
         current_app.logger.warning(f"Data retrieved: {data}")
-        current_app.logger.warning(
-            f"Service response status code: {response_status}"
-        )
+        current_app.logger.warning(f"Service response status code: {response_status}")
         return abort(404)
     return data
 
@@ -114,10 +106,7 @@ def get_remote_data(endpoint):
         data = response.json()
         return data, 200
     else:
-        current_app.logger.warning(
-            "GET remote data call was unsuccessful with status code:"
-            f" {response.status_code}."
-        )
+        current_app.logger.warning(f"GET remote data call was unsuccessful with status code: {response.status_code}.")
         return None, response.status_code
 
 
@@ -129,9 +118,7 @@ def get_remote_data_force_return(endpoint):
 
 
 def get_local_data(endpoint: str):
-    api_data_json = os.path.join(
-        Config.FLASK_ROOT, "tests", "api_data", "endpoint_data.json"
-    )
+    api_data_json = os.path.join(Config.FLASK_ROOT, "tests", "api_data", "endpoint_data.json")
     with open(api_data_json) as json_file:
         api_data = json.load(json_file)
     if endpoint in api_data:
@@ -144,9 +131,7 @@ def get_local_data(endpoint: str):
 
 
 def get_application_data(application_id, as_dict=False):
-    application_request_url = Config.GET_APPLICATION_ENDPOINT.format(
-        application_id=application_id
-    )
+    application_request_url = Config.GET_APPLICATION_ENDPOINT.format(application_id=application_id)
     application_response = get_data(application_request_url)
     if not as_dict:
         return Application.from_dict(application_response)
@@ -155,23 +140,16 @@ def get_application_data(application_id, as_dict=False):
 
 
 def search_applications(search_params: dict, as_dict=False):
-    application_request_url = Config.SEARCH_APPLICATIONS_ENDPOINT.format(
-        search_params=urlencode(search_params)
-    )
+    application_request_url = Config.SEARCH_APPLICATIONS_ENDPOINT.format(search_params=urlencode(search_params))
     application_response = get_data(application_request_url)
     if as_dict:
         return application_response
     else:
-        return [
-            ApplicationSummary.from_dict(application)
-            for application in application_response
-        ]
+        return [ApplicationSummary.from_dict(application) for application in application_response]
 
 
 def get_applications_for_account(account_id, as_dict=False):
-    return search_applications(
-        search_params={"account_id": account_id}, as_dict=as_dict
-    )
+    return search_applications(search_params={"account_id": account_id}, as_dict=as_dict)
 
 
 @lru_cache(maxsize=5)
@@ -187,17 +165,13 @@ def get_fund_data(fund_id, language=None, as_dict=False, ttl_hash=None):
 
 
 @lru_cache(maxsize=5)
-def get_fund_data_by_short_name(
-    fund_short_name, language=None, as_dict=False, ttl_hash=None
-):
+def get_fund_data_by_short_name(fund_short_name, language=None, as_dict=False, ttl_hash=None):
     del ttl_hash  # Only needed for lru_cache
     all_funds = {fund["short_name"].lower() for fund in get_all_funds()}
     if fund_short_name.lower() not in all_funds:
         current_app.logger.warning(f"Invalid fund {fund_short_name.lower()}!")
         abort(404)
-    fund_request_url = Config.GET_FUND_DATA_BY_SHORT_NAME_ENDPOINT.format(
-        fund_short_name=fund_short_name.lower()
-    )
+    fund_request_url = Config.GET_FUND_DATA_BY_SHORT_NAME_ENDPOINT.format(fund_short_name=fund_short_name.lower())
     params = {"language": language or get_lang(), "use_short_name": True}
     fund_response = get_data_or_fail_gracefully(fund_request_url, params)
     if as_dict:
@@ -207,14 +181,10 @@ def get_fund_data_by_short_name(
 
 
 @lru_cache(maxsize=5)
-def get_round_data(
-    fund_id, round_id, language=None, as_dict=False, ttl_hash=None
-):
+def get_round_data(fund_id, round_id, language=None, as_dict=False, ttl_hash=None):
     del ttl_hash  # Only needed for lru_cache
     language = {"language": language or get_lang()}
-    round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(
-        fund_id=fund_id, round_id=round_id
-    )
+    round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(fund_id=fund_id, round_id=round_id)
     round_response = get_data(round_request_url, language)
     if as_dict:
         return round_response
@@ -223,21 +193,14 @@ def get_round_data(
 
 
 def get_application_display_config(fund_id, round_id, language):
-    application_display_request_url = (
-        Config.GET_APPLICATION_DISPLAY_FOR_FUND_ENDPOINT.format(
-            fund_id=fund_id, round_id=round_id, language=language
-        )
+    application_display_request_url = Config.GET_APPLICATION_DISPLAY_FOR_FUND_ENDPOINT.format(
+        fund_id=fund_id, round_id=round_id, language=language
     )
     application_display_response = get_data(application_display_request_url)
     try:
-        return [
-            ApplicationMapping.from_dict(section)
-            for section in application_display_response
-        ]
+        return [ApplicationMapping.from_dict(section) for section in application_display_response]
     except Exception as e:
-        raise ValueError(
-            f"Failed to create ApplicationMapping instance: {str(e)}"
-        )
+        raise ValueError(f"Failed to create ApplicationMapping instance: {str(e)}")
 
 
 @lru_cache(maxsize=5)
@@ -251,14 +214,10 @@ def get_round_data_by_short_names(
     del ttl_hash  # Only needed for lru_cache
     all_rounds = [
         rnd.short_name.lower()
-        for rnd in get_all_rounds_for_fund(
-            fund_short_name, use_short_name=True, language=get_lang()
-        )
+        for rnd in get_all_rounds_for_fund(fund_short_name, use_short_name=True, language=get_lang())
     ]
     if round_short_name.lower() not in all_rounds:
-        current_app.logger.warning(
-            f"Invalid round {round_short_name.lower()}!"
-        )
+        current_app.logger.warning(f"Invalid round {round_short_name.lower()}!")
         return None
     params = {"language": language or get_lang(), "use_short_name": "true"}
 
@@ -295,8 +254,7 @@ def get_round_data_fail_gracefully(fund_id, round_id, use_short_name=False):
             return Round.from_dict(round_response)
     except:  # noqa
         current_app.logger.warning(
-            f"Failed to retrieve round using fund_id {fund_id}, round_id"
-            f" {round_id}, use_short_name={use_short_name}"
+            f"Failed to retrieve round using fund_id {fund_id}, round_id {round_id}, use_short_name={use_short_name}"
         )
     # return valid Round object with no values so we know we've
     # failed and can handle in templates appropriately
@@ -359,17 +317,13 @@ def get_all_funds(language=None, ttl_hash=None):
 
 
 @lru_cache(maxsize=5)
-def get_all_rounds_for_fund(
-    fund_id, language, as_dict=False, use_short_name=False, ttl_hash=None
-):
+def get_all_rounds_for_fund(fund_id, language, as_dict=False, use_short_name=False, ttl_hash=None):
     del ttl_hash  # Only needed for lru_cache
     params = {"language": language or get_lang()}
     if use_short_name:
         params["use_short_name"] = "true"
     rounds_response = get_data_or_fail_gracefully(
-        Config.GET_ALL_ROUNDS_FOR_FUND_ENDPOINT.format(
-            fund_id=fund_id.lower()
-        ),
+        Config.GET_ALL_ROUNDS_FOR_FUND_ENDPOINT.format(fund_id=fund_id.lower()),
         params,
     )
     if as_dict:
@@ -380,9 +334,7 @@ def get_all_rounds_for_fund(
 
 def determine_round_status(round: Round):
     round_status = RoundStatus(
-        past_submission_deadline=current_datetime_after_given_iso_string(
-            round.deadline
-        ),
+        past_submission_deadline=current_datetime_after_given_iso_string(round.deadline),
         not_yet_open=current_datetime_before_given_iso_string(round.opens),
         is_open=current_datetime_after_given_iso_string(round.opens)
         and current_datetime_before_given_iso_string(round.deadline),
@@ -403,9 +355,7 @@ def get_latest_open_or_closed_round(rounds: List[Round]) -> Round:
         latest_open_round = max(open_rounds, key=lambda r: r.deadline)
         return latest_open_round
     else:  # if no open round is found then return recently closed round
-        all_rounds_by_closed = sorted(
-            rounds, key=lambda r: r.deadline, reverse=True
-        )
+        all_rounds_by_closed = sorted(rounds, key=lambda r: r.deadline, reverse=True)
         return all_rounds_by_closed[0]
 
 
@@ -424,9 +374,7 @@ def get_default_round_for_fund(fund_short_name: str) -> Round:
         return None
 
 
-def submit_feedback(
-    application_id, comment, rating, fund_id, round_id, section_id
-):
+def submit_feedback(application_id, comment, rating, fund_id, round_id, section_id):
     post_data = {
         "application_id": application_id,
         "feedback_json": {"comment": comment, "rating": rating},
@@ -456,14 +404,10 @@ def get_feedback(application_id, section_id, fund_id, round_id):
     if feedback_response.ok:
         return FeedbackSubmission.from_dict(feedback_response.json())
 
-    current_app.logger.info(
-        f"No feedback found for {application_id} section {section_id}"
-    )
+    current_app.logger.info(f"No feedback found for {application_id} section {section_id}")
 
 
-def post_survey_data(
-    application_id, fund_id, round_id, page_number, form_data_dict
-):
+def post_survey_data(application_id, fund_id, round_id, page_number, form_data_dict):
     post_data = {
         "application_id": application_id,
         "data": form_data_dict,
@@ -472,9 +416,7 @@ def post_survey_data(
         "round_id": round_id,
     }
 
-    survey_response = requests.post(
-        Config.END_OF_APP_SURVEY_FEEDBACK_ENDPOINT, json=post_data
-    )
+    survey_response = requests.post(Config.END_OF_APP_SURVEY_FEEDBACK_ENDPOINT, json=post_data)
     if not survey_response.ok:
         return None
 
@@ -488,8 +430,6 @@ def get_survey_data(application_id, page_number):
         "page_number": page_number,
     }
 
-    survey_response = requests.get(
-        Config.END_OF_APP_SURVEY_FEEDBACK_ENDPOINT, params
-    )
+    survey_response = requests.get(Config.END_OF_APP_SURVEY_FEEDBACK_ENDPOINT, params)
     if survey_response.ok:
         return EndOfApplicationSurveyData.from_dict(survey_response.json())
