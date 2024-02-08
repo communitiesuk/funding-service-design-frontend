@@ -149,7 +149,9 @@ funding-service-design-utils==2.0.35
 govuk-frontend-jinja==2.7.0
     # via -r requirements.txt
 greenlet==3.0.3
-    # via sqlalchemy
+    # via
+    #   -r requirements.txt
+    #   sqlalchemy
 gunicorn==20.1.0
     # via
     #   -r requirements.txt
@@ -276,7 +278,7 @@ python-json-logger==2.0.7
     # via
     #   -r requirements.txt
     #   funding-service-design-utils
-python-slugify==6.1.2
+python-slugify==8.0.3
     # via -r requirements.txt
 pytz==2023.3.post1
     # via
