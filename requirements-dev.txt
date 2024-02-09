@@ -16,8 +16,6 @@ babel==2.14.0
     # via
     #   -r requirements.txt
     #   flask-babel
-bandit==1.7.7
-    # via -r requirements-dev.in
 beautifulsoup4==4.12.2
     # via
     #   -r requirements-dev.in
@@ -286,7 +284,6 @@ pytz==2023.3.post1
 pyyaml==6.0.1
     # via
     #   -r requirements.txt
-    #   bandit
     #   funding-service-design-utils
     #   pre-commit
 redis==4.6.0
@@ -305,7 +302,6 @@ requests-mock==1.11.0
 rich==12.6.0
     # via
     #   -r requirements.txt
-    #   bandit
     #   funding-service-design-utils
 s3transfer==0.10.0
     # via
@@ -339,8 +335,6 @@ sqlalchemy-utils==0.41.1
     # via
     #   -r requirements.txt
     #   funding-service-design-utils
-stevedore==5.1.0
-    # via bandit
 text-unidecode==1.3
     # via
     #   -r requirements.txt
