@@ -19,8 +19,13 @@
     {% endif %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <span class="govuk-caption-l">{{ application_meta_data["fund_name"] }} {{ application_meta_data["round_name"] }}</span>
-            <h1 class="govuk-heading-xl">Application for {{ application_meta_data["fund_title"] }}</h1>
+            {% if fund_short_name|upper in ("COF-EOI",) %}
+                <span class="govuk-caption-l">{{ application_meta_data["fund_name"] }} </span>
+                <h1 class="govuk-heading-xl"> {{ application_meta_data["fund_title"] | capitalize }} </h1>
+            {% else %}
+                <span class="govuk-caption-l">{{ application_meta_data["fund_name"] }} {{ application_meta_data["round_name"] }}</span>
+                <h1 class="govuk-heading-xl">Application for {{ application_meta_data["fund_title"] }}</h1>
+            {% endif %}
             <details class="govuk-details" data-module="govuk-details">
                 <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
@@ -65,14 +70,25 @@
                     <h2 class="govuk-heading govuk-heading-s">
                         {% trans %}Submitting your application{% endtrans %}
                     </h2>
-                    <p class="govuk-body">
-                        {% trans %}When you have completed all sections, you'll be able to submit your
-                            application.{% endtrans %}
-                    </p>
-                    <p class="govuk-body">
-                        {% trans %}Once you have submitted your application, you'll not be able to edit, add or change
-                            any sections.{% endtrans %}
-                    </p>
+                    {% if fund_short_name|upper in ("COF-EOI",) %}
+                        <p class="govuk-body">
+                            {% trans %}When you have completed all sections, you'll be able to submit your
+                                expression of interest.{% endtrans %}
+                        </p>
+                        <p class="govuk-body">
+                            {% trans %}Once you have submitted your expression of interest, you'll not be able to edit, add or change
+                                any sections.{% endtrans %}
+                        </p>
+                    {% else %}
+                        <p class="govuk-body">
+                            {% trans %}When you have completed all sections, you'll be able to submit your
+                                application.{% endtrans %}
+                        </p>
+                        <p class="govuk-body">
+                            {% trans %}Once you have submitted your application, you'll not be able to edit, add or change
+                                any sections.{% endtrans %}
+                        </p>
+                    {% endif %}
 
                     <h2 class="govuk-heading govuk-heading-s">
                         {% trans %}Get help{% endtrans %}

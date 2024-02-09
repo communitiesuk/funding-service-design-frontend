@@ -252,6 +252,7 @@ def tasklist(application_id):
 
         response_content = render_template(
             "tasklist.html",
+            fund_short_name=fund_data.short_name,
             application=application,
             sections=display_config,
             application_status=get_formatted,
