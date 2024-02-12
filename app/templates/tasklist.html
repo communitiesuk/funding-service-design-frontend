@@ -132,8 +132,10 @@
                 {{ round_closed_warning(fund_name, round_title, submission_deadline) }}
             {% endif %}
             <dl>
-                <dt class="govuk-heading-s dl-inline">{% trans %}Submission deadline:{% endtrans %}</dt>
-                <dd class="govuk-body govuk-!-margin-bottom-2"> {{ submission_deadline|datetime_format }}</dd>
+                {% if fund_short_name|upper not in ("COF-EOI",) %}
+                    <dt class="govuk-heading-s dl-inline">{% trans %}Submission deadline:{% endtrans %}</dt>
+                    <dd class="govuk-body govuk-!-margin-bottom-2"> {{ submission_deadline|datetime_format }}</dd>
+                {% endif %}
                 <dt class="govuk-heading-s dl-inline">{% trans %}Reference:{% endtrans %}</dt>
                 <dd class="govuk-body govuk-!-margin-bottom-2"> {{ application["reference"] }}</dd>
 
