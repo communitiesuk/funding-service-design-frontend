@@ -93,14 +93,30 @@
                     <h2 class="govuk-heading govuk-heading-s">
                         {% trans %}Get help{% endtrans %}
                     </h2>
-                    <p class="govuk-body">
-                        {% trans %}If you have any questions about the form or the fund, email us at{% endtrans %} <a
-                            class="govuk-link"
-                            href="mailto:{{ contact_us_email_address }}">{{ contact_us_email_address }}</a>.
-                    </p>
-                    <p>{% trans %}Do not send any applications or attachments by email. We'll only accept applications
-                        through this service.{% endtrans %}</p>
+                    {% if fund_short_name|upper in ("COF-EOI",) %}
+                        <p class="govuk-body">
+                            {% trans %}General support is now available to applicants via the{% endtrans %}
+                            <a class="govuk-link" href="https://mycommunity.org.uk/">{% trans %} My Community website,{% endtrans %}</a>
+                            {% trans %} which includes an enquiry form as well as a range of helpful documents and webinars.{% endtrans %}
+                        </p>
 
+                        <p class="govuk-body">
+                            {% trans %}For queries relating to technical issues when using our online application tools, please  {% endtrans %}
+                            <a class="govuk-link" href="mailto:{{ contact_us_email_address }}">{% trans %}email FSD Support.{% endtrans %}</a>
+                        </p>
+
+                        <p class="govuk-body">
+                            {% trans %}Do not send any applications or attachments by email. We'll only accept expressions of interest through this service.{% endtrans %}
+                        </p>
+                    {% else %}
+                        <p class="govuk-body">
+                            {% trans %}If you have any questions about the form or the fund, email us at{% endtrans %} <a
+                                class="govuk-link"
+                                href="mailto:{{ contact_us_email_address }}">{{ contact_us_email_address }}</a>.
+                        </p>
+                        <p>{% trans %}Do not send any applications or attachments by email. We'll only accept applications
+                            through this service.{% endtrans %}</p>
+                    {% endif %}
 
                     <h2 class="govuk-heading govuk-heading-s">
                         {% trans %}How we'll use your information{% endtrans %}
