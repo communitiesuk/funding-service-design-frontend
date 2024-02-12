@@ -40,6 +40,7 @@ def index_fund_round(fund_short_name, round_short_name):
         "fund_start_page.html",
         service_url=Config.MAGIC_LINK_URL.format(fund_short_name=fund_short_name, round_short_name=round_short_name),
         fund_name=fund_data.name,
+        fund_short_name=fund_short_name,
         fund_title=fund_data.title,
         round_title=round_data.title,
         submission_deadline=round_data.deadline,
