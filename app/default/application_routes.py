@@ -353,7 +353,7 @@ def submit_application():
             eoi_results = get_application_eoi_response(application)
             return render_template(
                 "eoi_submitted.html",
-                eoi_pass=eoi_results["decision"] == Eoi_Decision.PASS,
+                eoi_pass=eoi_results["decision"] in [Eoi_Decision.PASS, Eoi_Decision.PASS_WITH_CAVEATS],
                 fund_name=fund_data.name,
                 round_name=round_data.title,
                 fund_short_name=fund_data.short_name,
