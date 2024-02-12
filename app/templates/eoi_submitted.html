@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% from "partials/migration_banner.html" import migration_banner %}
+{%- from "govuk_frontend_jinja/components/notification-banner/macro.html" import govukNotificationBanner -%}
+
+{% block content %}
+{% if migration_banner_enabled %}
+  {{migration_banner()}}
+{% endif %}
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper" id="main-content" role="main">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <p class="govuk-caption-m">{{ fund_name }} - {{ round_name }} </p>
+          {% if eoi_pass %}
+              {{ govukNotificationBanner({
+                  'html': '<p class="govuk-body">You will receive an email shortly with guidance on what to do before you apply. Please consider the content of this email carefully before beginning a full application.</p>'
+              })}}
+
+            <h1 class="govuk-heading-l">You are likely to meet the requirements for the Community Ownership Fund</h1>
+            <p class="govuk-body">Based on the answers you have given, you are likely to meet the eligibility requirements for the Community Ownership Fund.</p>
+            <p class="govuk-body">However, you may need to take some actions before you're ready to complete an application.</p>
+            <p class="govuk-body">You will also receive a link to apply by email if/when an application window is open.</p>
+          {% else %}
+            <h1 class="govuk-heading-l">You do not meet the requirements for the Community Ownership Fund</h1>
+            <p class="govuk-body">Thank you for your interest in the Community Ownership Fund (COF).</p>
+            <p class="govuk-body">Unfortunately, you do not meet the minimum requirements to apply for funding. This is because you have not met one or more of the following criteria:</p>
+            <p class="govuk-body">Your organisation must
+              <ul class="govuk-list govuk-list--bullet">
+                <li>be based in the UK</li>
+                <li>not be subject to any insolvency claims</li>
+                <li>intend to receive the funding and run the asset</li>
+              </ul>
+            </p>
+            <p class="govuk-body">Your asset must
+              <ul class="govuk-list govuk-list--bullet">
+                <li>be based in the UK</li>
+                <li>be at risk</li>
+                <li>have had prior community use or significance</li>
+                <li>have at least 15 years on the lease, if a leasehold building</li>
+              </ul>
+            </p>
+            <p class="govuk-body">You must
+              <ul class="govuk-list govuk-list--bullet">
+                <li>apply for up to £2 million in capital funding from COF</li>
+                <li>be able to secure at least 20% match funding from other sources (or 10% in exceptional cases)</li>
+              </ul>
+            </p>
+            <p class="govuk-body"> <a class="govuk-link" href="{{round_prospectus}}">You can find more information about eligibility requirements in the COF prospectus.</a></p>
+
+          {% endif %}
+        </div>
+      </div>
+    </main>
+  </div>
+
+  {% endblock %}

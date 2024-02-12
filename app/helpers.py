@@ -11,6 +11,7 @@ from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
 from app.default.data import get_round_data
 from app.default.data import get_round_data_by_short_names
+from app.default.data import get_round_eoi_schema
 from app.default.data import get_survey_data
 from app.default.data import get_ttl_hash
 from app.models.fund import Fund
@@ -18,6 +19,7 @@ from app.models.round import Round
 from config import Config
 from flask import current_app
 from flask import request
+from fsd_utils import evaluate_eoi_response
 from fsd_utils.locale_selector.get_lang import get_lang
 
 
@@ -332,3 +334,11 @@ def get_section_feedback_data(application, section_display_config):
         existing_feedback_map.get(s.section_id) for s in section_display_config if s.requires_feedback
     ]
     return current_feedback_list, existing_feedback_map
+
+
+def get_application_eoi_response(application):
+    eoi_schema = get_round_eoi_schema(
+        application.fund_id, application.round_id, ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME)
+    )
+    result = evaluate_eoi_response(eoi_schema, application.forms)
+    return result
