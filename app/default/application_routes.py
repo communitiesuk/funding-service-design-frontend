@@ -18,6 +18,7 @@ from app.forms.feedback_forms import (
     END_OF_APPLICATION_FEEDBACK_SURVEY_PAGE_NUMBER_MAP,
 )
 from app.helpers import format_rehydrate_payload
+from app.helpers import get_application_eoi_response
 from app.helpers import get_feedback_survey_data
 from app.helpers import get_round
 from app.helpers import get_section_feedback_data
@@ -36,6 +37,7 @@ from flask import url_for
 from flask_babel import force_locale
 from flask_babel import gettext
 from flask_wtf import FlaskForm
+from fsd_utils import Eoi_Decision
 from fsd_utils.authentication.decorators import login_required
 from fsd_utils.locale_selector.set_lang import LanguageSelector
 from fsd_utils.simple_utils.date_utils import (
@@ -346,20 +348,35 @@ def submit_application():
     )
     submitted = format_payload_and_submit_application(application_id)
 
-    application_id = submitted.get("id")
-    application_reference = submitted.get("reference")
-    application_email = submitted.get("email")
     with force_locale(application.language):
-        return render_template(
-            "application_submitted.html",
-            application_id=application_id,
-            application_reference=application_reference,
-            application_email=application_email,
-            fund_name=fund_data.name,
-            fund_short_name=fund_data.short_name,
-            round_short_name=round_data.short_name,
-            migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
-        )
+        if fund_data.short_name in ("COF-EOI",):
+            eoi_results = get_application_eoi_response(application)
+            return render_template(
+                "eoi_submitted.html",
+                eoi_pass=eoi_results["decision"] in [Eoi_Decision.PASS, Eoi_Decision.PASS_WITH_CAVEATS],
+                fund_name=fund_data.name,
+                round_name=round_data.title,
+                fund_short_name=fund_data.short_name,
+                round_short_name=round_data.short_name,
+                round_prospectus=round_data.prospectus,
+                migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
+            )
+
+        else:
+            application_id = submitted.get("id")
+            application_reference = submitted.get("reference")
+            application_email = submitted.get("email")
+
+            return render_template(
+                "application_submitted.html",
+                application_id=application_id,
+                application_reference=application_reference,
+                application_email=application_email,
+                fund_name=fund_data.name,
+                fund_short_name=fund_data.short_name,
+                round_short_name=round_data.short_name,
+                migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
+            )
 
 
 def format_payload_and_submit_application(application_id):
