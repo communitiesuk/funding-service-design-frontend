@@ -43,7 +43,11 @@
             </p>
             <p class="govuk-body">
                 <a class="govuk-link" href="{{prospectus_link}}">
+                {% if fund_short_name|upper in ("COF-EOI",) %}
+                    {% trans %}Read the fund's prospectus{% endtrans %}</a> {% trans %}before you start.{% endtrans %}
+                {% else %}
                     {% trans %}Read the fund's prospectus{% endtrans %}</a> {% trans %}before you apply.{% endtrans %}
+                {% endif %}
             </p>
             {% if submission_deadline|length and fund_short_name|upper not in ("COF-EOI",)  %}
             <p class="govuk-body">

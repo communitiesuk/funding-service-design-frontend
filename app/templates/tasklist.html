@@ -20,7 +20,7 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             {% if fund_short_name|upper in ("COF-EOI",) %}
-                <span class="govuk-caption-l">{{ application_meta_data["fund_name"] }} </span>
+                <span class="govuk-caption-l">{{ application_meta_data["fund_name"] }} - {{ application_meta_data["round_name"] }} </span>
                 <h1 class="govuk-heading-xl"> {{ application_meta_data["fund_title"] | capitalize }} </h1>
             {% else %}
                 <span class="govuk-caption-l">{{ application_meta_data["fund_name"] }} {{ application_meta_data["round_name"] }}</span>
