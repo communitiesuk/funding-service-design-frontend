@@ -354,7 +354,7 @@ def submit_application():
             return render_template(
                 "eoi_submitted.html",
                 eoi_pass=eoi_results["decision"] in [Eoi_Decision.PASS, Eoi_Decision.PASS_WITH_CAVEATS],
-                caveats=[],
+                caveats=eoi_results["caveats"],
                 fund_name=fund_data.name,
                 round_name=round_data.title,
                 fund_short_name=fund_data.short_name,
