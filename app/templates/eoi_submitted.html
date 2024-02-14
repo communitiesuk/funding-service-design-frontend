@@ -22,6 +22,16 @@
             <p class="govuk-body">Based on the answers you have given, you are likely to meet the eligibility requirements for the Community Ownership Fund.</p>
             <p class="govuk-body">However, you may need to take some actions before you're ready to complete an application.</p>
             <p class="govuk-body">You will also receive a link to apply by email if/when an application window is open.</p>
+
+            {% if caveats %}
+              <h2 class="govuk-heading-m"> Caveats </h2>
+              <ul class="govuk-list govuk-list--bullet">
+              {% for caveat in caveats %}
+                <li>{{caveat}}</li>
+              {% endfor %}
+              </ul>
+            {% endif %}
+
           {% else %}
             <h1 class="govuk-heading-l">You do not meet the requirements for the Community Ownership Fund</h1>
             <p class="govuk-body">Thank you for your interest in the Community Ownership Fund (COF).</p>

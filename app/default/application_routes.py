@@ -346,7 +346,7 @@ def submit_application():
         as_dict=False,
         ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
     )
-    submitted = format_payload_and_submit_application(application_id)
+    # submitted = format_payload_and_submit_application(application_id)
 
     with force_locale(application.language):
         if fund_data.short_name in ("COF-EOI",):
@@ -354,6 +354,7 @@ def submit_application():
             return render_template(
                 "eoi_submitted.html",
                 eoi_pass=eoi_results["decision"] in [Eoi_Decision.PASS, Eoi_Decision.PASS_WITH_CAVEATS],
+                caveats=[],
                 fund_name=fund_data.name,
                 round_name=round_data.title,
                 fund_short_name=fund_data.short_name,
@@ -363,6 +364,7 @@ def submit_application():
             )
 
         else:
+            submitted = format_payload_and_submit_application(application_id)
             application_id = submitted.get("id")
             application_reference = submitted.get("reference")
             application_email = submitted.get("email")
