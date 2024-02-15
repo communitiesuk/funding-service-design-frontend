@@ -433,12 +433,3 @@ def get_survey_data(application_id, page_number):
     survey_response = requests.get(Config.END_OF_APP_SURVEY_FEEDBACK_ENDPOINT, params)
     if survey_response.ok:
         return EndOfApplicationSurveyData.from_dict(survey_response.json())
-
-
-@lru_cache(maxsize=5)
-def get_round_eoi_schema(fund_id, round_id, language=None, ttl_hash=None):
-    del ttl_hash  # Only needed for lru_cache
-    language = {"language": language or get_lang()}
-    round_request_url = Config.GET_ROUND_EOI_SCHEMA_ENDPOINT.format(fund_id=fund_id, round_id=round_id)
-    round_response = get_data(round_request_url, language)
-    return round_response

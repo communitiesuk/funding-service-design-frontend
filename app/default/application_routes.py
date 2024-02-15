@@ -18,7 +18,6 @@ from app.forms.feedback_forms import (
     END_OF_APPLICATION_FEEDBACK_SURVEY_PAGE_NUMBER_MAP,
 )
 from app.helpers import format_rehydrate_payload
-from app.helpers import get_application_eoi_response
 from app.helpers import get_feedback_survey_data
 from app.helpers import get_round
 from app.helpers import get_section_feedback_data
@@ -350,10 +349,10 @@ def submit_application():
 
     with force_locale(application.language):
         if fund_data.short_name in ("COF-EOI",):
-            eoi_results = get_application_eoi_response(application)
+            eoi_decision = submitted.get("eoi_decision")
             return render_template(
                 "eoi_submitted.html",
-                eoi_pass=eoi_results["decision"] in [Eoi_Decision.PASS, Eoi_Decision.PASS_WITH_CAVEATS],
+                eoi_pass=Eoi_Decision(eoi_decision) in [Eoi_Decision.PASS, Eoi_Decision.PASS_WITH_CAVEATS],
                 fund_name=fund_data.name,
                 round_name=round_data.title,
                 fund_short_name=fund_data.short_name,
