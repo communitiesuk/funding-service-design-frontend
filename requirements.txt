@@ -38,7 +38,7 @@ click==8.1.7
     # via flask
 commonmark==0.9.1
     # via rich
-cryptography==41.0.7
+cryptography==42.0.4
     # via pyjwt
 cssmin==0.2.0
     # via -r requirements.in
