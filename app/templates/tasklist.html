@@ -45,26 +45,20 @@
                         {% trans %}You do not have to complete it in order, or all at once.{% endtrans %}
                     </p>
                     <p class="govuk-body">
-                        {% trans %}When you have written something in every field in a section, the section will be
-                            marked as complete. You can still change your responses in sections that are marked as
-                            complete.{% endtrans %}
+                        {% trans %}When you have written something in every field in a section, the section will be marked as complete. You can still change your responses in sections that are marked as complete.{% endtrans %}
                     </p>
 
                     <h2 class="govuk-heading govuk-heading-s">
                         {% trans %}Saving progress and making changes{% endtrans %}
                     </h2>
                     <p class="govuk-body">
-                        {% trans %}Your work will not save automatically. To make sure you do not lose anything, select
-                            Save and continue regularly, and always before you go back or close your internet browser
-                            window.{% endtrans %}
+                        {% trans %}Your work will not save automatically. To make sure you do not lose anything, select Save and continue regularly, and always before you go back or close your internet browser window.{% endtrans %}
                     </p>
                     <p class="govuk-body">
-                        {% trans %}If you need to edit or revisit any sections, use the browser back
-                            button.{% endtrans %}
+                        {% trans %}If you need to edit or revisit any sections, use the browser back button.{% endtrans %}
                     </p>
                     <p class="govuk-body">
-                        {% trans %}You can edit your responses as many times as you like before you
-                            submit.{% endtrans %}
+                        {% trans %}You can edit your responses as many times as you like before you submit.{% endtrans %}
                     </p>
 
                     <h2 class="govuk-heading govuk-heading-s">
@@ -72,21 +66,17 @@
                     </h2>
                     {% if fund_short_name|upper in ("COF-EOI",) %}
                         <p class="govuk-body">
-                            {% trans %}When you have completed all sections, you'll be able to submit your
-                                expression of interest.{% endtrans %}
+                            {% trans %}When you have completed all sections, you'll be able to submit your expression of interest.{% endtrans %}
                         </p>
                         <p class="govuk-body">
-                            {% trans %}Once you have submitted your expression of interest, you'll not be able to edit, add or change
-                                any sections.{% endtrans %}
+                            {% trans %}Once you have submitted your expression of interest, you'll not be able to edit, add or change any sections.{% endtrans %}
                         </p>
                     {% else %}
                         <p class="govuk-body">
-                            {% trans %}When you have completed all sections, you'll be able to submit your
-                                application.{% endtrans %}
+                            {% trans %}When you have completed all sections, you'll be able to submit your application.{% endtrans %}
                         </p>
                         <p class="govuk-body">
-                            {% trans %}Once you have submitted your application, you'll not be able to edit, add or change
-                                any sections.{% endtrans %}
+                            {% trans %}Once you have submitted your application, you'll not be able to edit, add or change any sections.{% endtrans %}
                         </p>
                     {% endif %}
 
@@ -96,12 +86,12 @@
                     {% if fund_short_name|upper in ("COF-EOI",) %}
                         <p class="govuk-body">
                             {% trans %}General support is now available to applicants via the{% endtrans %}
-                            <a class="govuk-link" href="https://mycommunity.org.uk/">{% trans %} My Community website,{% endtrans %}</a>
-                            {% trans %} which includes an enquiry form as well as a range of helpful documents and webinars.{% endtrans %}
+                            <a class="govuk-link" href="https://mycommunity.org.uk/"> {% trans %}My Community website,{% endtrans %}</a>
+                             {% trans %}which includes an enquiry form as well as a range of helpful documents and webinars.{% endtrans %}
                         </p>
 
                         <p class="govuk-body">
-                            {% trans %}For queries relating to technical issues when using our online application tools, please  {% endtrans %}
+                            {% trans %}For queries relating to technical issues when using our online application tools, please{% endtrans %}
                             <a class="govuk-link" href="mailto:{{ contact_us_email_address }}">{% trans %}email FSD Support.{% endtrans %}</a>
                         </p>
 
@@ -114,8 +104,7 @@
                                 class="govuk-link"
                                 href="mailto:{{ contact_us_email_address }}">{{ contact_us_email_address }}</a>.
                         </p>
-                        <p>{% trans %}Do not send any applications or attachments by email. We'll only accept applications
-                            through this service.{% endtrans %}</p>
+                        <p>{% trans %}Do not send any applications or attachments by email. We'll only accept applications through this service.{% endtrans %}</p>
                     {% endif %}
 
                     <h2 class="govuk-heading govuk-heading-s">
@@ -187,13 +176,11 @@
                         {% if not feedback_survey_data.completed %}
                             {% if feedback_survey_data.is_feedback_survey_optional %}
                                 <p class="govuk-body">
-                                    {% trans %}You must complete all other sections before starting the feedback survey. This section
-                                    is optional and should take approximately 1 minute to complete.{% endtrans %}
+                                    {% trans %}You must complete all other sections before starting the feedback survey. This section is optional and should take approximately 1 minute to complete.{% endtrans %}
                                 </p>
                             {% else %}
                                 <p class="govuk-body">
-                                    {% trans %} You must complete all other sections before starting the feedback survey. This section
-                                    should take approximately 1 minute to complete.{% endtrans %}
+                                     {% trans %}You must complete all other sections before starting the feedback survey. This section should take approximately 1 minute to complete.{% endtrans %}
                                 </p>
                             {% endif %}
                             <ul class="app-task-list__items">
