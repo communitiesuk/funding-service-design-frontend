@@ -359,6 +359,7 @@ def submit_application():
                 round_short_name=round_data.short_name,
                 round_prospectus=round_data.prospectus,
                 migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
+                application_reference=application.reference,
             )
 
         else:
