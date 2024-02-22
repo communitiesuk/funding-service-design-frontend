@@ -8,8 +8,6 @@
 {% if migration_banner_enabled %}
 {{migration_banner()}}
 {% endif %}
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper" id="main-content" role="main">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         {% if eoi_pass %}
@@ -28,6 +26,7 @@
           </p>
           <p class="govuk-body">{% trans %}You will also receive a link to apply by email if/when an application window is open.{% endtrans %}</p>
         {% else %}
+        <p class="govuk-caption-m">{{ fund_name }}</p>
         <h1 class="govuk-heading-l">{% trans %}You do not meet the requirements for the Community Ownership Fund{% endtrans %}</h1>
         <p class="govuk-body">{% trans %}Thank you for your interest in the Community Ownership Fund (COF).{% endtrans %}</p>
         <p class="govuk-body">{% trans %}Unfortunately, you do not meet the minimum requirements to apply for funding. This is because you have not met one or more of the following criteria:{% endtrans %}</p>
@@ -57,7 +56,6 @@
       {% endif %}
       </div>
     </div>
-  </main>
-</div>
+
 
 {% endblock %}
