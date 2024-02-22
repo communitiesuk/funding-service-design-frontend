@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-02-21 14:34+0000\n"
+"POT-Creation-Date: 2024-02-22 10:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -250,7 +250,7 @@ msgid "Application complete"
 msgstr ""
 
 #: app/templates/application_submitted.html:18
-#: app/templates/eoi_submitted.html:20
+#: app/templates/eoi_submitted.html:21
 msgid "Your reference number"
 msgstr ""
 
@@ -259,7 +259,7 @@ msgid "We have sent you a confirmation email and a copy of your answers to"
 msgstr ""
 
 #: app/templates/application_submitted.html:24
-#: app/templates/eoi_submitted.html:25
+#: app/templates/eoi_submitted.html:26
 msgid "What happens next"
 msgstr ""
 
@@ -418,23 +418,90 @@ msgstr ""
 msgid "Continue"
 msgstr ""
 
-#: app/templates/eoi_submitted.html:24
+#: app/templates/eoi_submitted.html:25
 msgid ""
 "You will receive an email shortly that will tell you the outcome of your "
 "expression of interest and if there are any actions you need to take "
 "before you're ready to apply."
 msgstr ""
 
-#: app/templates/eoi_submitted.html:26
+#: app/templates/eoi_submitted.html:27
 msgid ""
 "Please consider the content of the email carefully before beginning a "
 "full application."
 msgstr ""
 
-#: app/templates/eoi_submitted.html:28
+#: app/templates/eoi_submitted.html:29
 msgid ""
 "You will also receive a link to apply by email if/when an application "
 "window is open."
+msgstr ""
+
+#: app/templates/eoi_submitted.html:31
+msgid "You do not meet the requirements for the Community Ownership Fund"
+msgstr ""
+
+#: app/templates/eoi_submitted.html:32
+msgid "Thank you for your interest in the Community Ownership Fund (COF)."
+msgstr ""
+
+#: app/templates/eoi_submitted.html:33
+msgid ""
+"Unfortunately, you do not meet the minimum requirements to apply for "
+"funding. This is because you have not met one or more of the following "
+"criteria:"
+msgstr ""
+
+#: app/templates/eoi_submitted.html:34
+msgid "Your organisation must"
+msgstr ""
+
+#: app/templates/eoi_submitted.html:36 app/templates/eoi_submitted.html:43
+msgid "be based in the UK"
+msgstr ""
+
+#: app/templates/eoi_submitted.html:37
+msgid "not be subject to any insolvency claim"
+msgstr ""
+
+#: app/templates/eoi_submitted.html:38
+msgid "intend to receive the funding and run the asset"
+msgstr ""
+
+#: app/templates/eoi_submitted.html:41
+msgid "Your asset must"
+msgstr ""
+
+#: app/templates/eoi_submitted.html:44
+msgid "be at risk"
+msgstr ""
+
+#: app/templates/eoi_submitted.html:45
+msgid "have had prior community use or significance"
+msgstr ""
+
+#: app/templates/eoi_submitted.html:46
+msgid "have at least 15 years on the lease, if a leasehold building"
+msgstr ""
+
+#: app/templates/eoi_submitted.html:49
+msgid "You must"
+msgstr ""
+
+#: app/templates/eoi_submitted.html:51
+msgid "apply for up to &pound;2 million in capital funding from COF"
+msgstr ""
+
+#: app/templates/eoi_submitted.html:52
+msgid ""
+"be able to secure at least 20&percnt; match funding from other sources "
+"(or 10&percnt; in exceptional cases)"
+msgstr ""
+
+#: app/templates/eoi_submitted.html:55
+msgid ""
+"You can find more information about eligibility requirements in the COF "
+"prospectus."
 msgstr ""
 
 #: app/templates/feedback_generic_survey.html:26
@@ -911,6 +978,7 @@ msgstr ""
 
 #: app/templates/all_questions/uses_translations/cof_r2_all_questions.html:47
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:41
+#: app/templates/partials/applications_table.html:72
 msgid "Organisation name"
 msgstr ""
 
