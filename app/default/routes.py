@@ -15,9 +15,6 @@ default_bp = Blueprint("routes", __name__, template_folder="templates")
 
 @default_bp.route("/")
 def index():
-    """
-    Redirects from the old landing page to the new one at /cof/r2w3
-    """
     return abort(404)
 
 
@@ -25,10 +22,6 @@ def index():
 def index_fund_round(fund_short_name, round_short_name):
     current_app.logger.info(f"In fund-round start page {fund_short_name} {round_short_name}")
 
-    # fund_data = get_fund_data_by_short_name(fund_short_name, as_dict=False)
-    # round_data = get_round_data_by_short_names(
-    #     fund_short_name, round_short_name
-    # )
     fund_data, round_data = get_fund_and_round(fund_short_name=fund_short_name, round_short_name=round_short_name)
     if not fund_data or not round_data:
         abort(404)
