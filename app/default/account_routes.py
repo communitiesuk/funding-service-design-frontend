@@ -72,7 +72,9 @@ def update_applications_statuses_for_display(
     return applications
 
 
-def build_application_data_for_display(applications: list[ApplicationSummary], visible_fund_short_name):
+def build_application_data_for_display(
+    applications: list[ApplicationSummary], visible_fund_short_name, visible_round_short_name
+):
     application_data_for_display = {
         "funds": [],
         "total_applications_to_display": 0,
@@ -93,6 +95,9 @@ def build_application_data_for_display(applications: list[ApplicationSummary], v
             "rounds": [],
         }
         for round in all_rounds_in_fund:
+            if visible_round_short_name:
+                if round.short_name.casefold() != visible_round_short_name.casefold():
+                    continue
             round_status = determine_round_status(round)
             apps_in_this_round = [app for app in applications if app.round_id == round.id]
             if round_status.not_yet_open or (round_status.past_submission_deadline and len(apps_in_this_round) == 0):
@@ -134,8 +139,8 @@ def determine_show_language_column(applications: ApplicationSummary):
 def dashboard():
     account_id = g.account_id
 
-    fund_short_name = request.args.get("fund")
-    round_short_name = request.args.get("round")
+    fund_short_name = request.args.get("fund", None)
+    round_short_name = request.args.get("round", None)
     render_lang = get_lang()
 
     if fund_short_name and round_short_name:
@@ -174,7 +179,7 @@ def dashboard():
 
     show_language_column = determine_show_language_column(applications)
 
-    display_data = build_application_data_for_display(applications, fund_short_name)
+    display_data = build_application_data_for_display(applications, fund_short_name, round_short_name)
     current_app.logger.info(f"Setting up applicant dashboard for :'{account_id}'")
     if not welsh_available and template_name == TEMPLATE_SINGLE_FUND:
         render_lang = "en"
