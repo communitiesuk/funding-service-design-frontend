@@ -1,0 +1,538 @@
+
+{% extends "base.html" %}
+{%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText -%}
+{%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
+
+{% from "partials/file-formats.html" import file_formats %}
+{% set pageHeading %}{% trans %}Full list of application questions{% endtrans %}{% endset %}
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <span class="govuk-caption-l">{% trans %}{{fund_title}}{% endtrans %} {% trans %}{{round_title}}{% endtrans %}
+        </span>
+        <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
+<div class="govuk-!-margin-bottom-8">
+  <h2 class="govuk-heading-m ">
+    {% trans %}Table of contents{% endtrans %}
+  </h2>
+  <ol class="govuk-list govuk-list--number">
+    <li>
+      <a class="govuk-link" href="#mynegi-diddordeb">
+        Mynegi diddordeb
+      </a>
+    </li>
+  </ol>
+  <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
+  <h2 class="govuk-heading-l" id="mynegi-diddordeb">
+    1. Mynegi diddordeb
+  </h2>
+  <h3 class="govuk-heading-m">
+    1.1. Manylion y sefydliad
+  </h3>
+  <h4 class="govuk-heading-s">
+    1.1.1. Enwau'r sefydliad
+  </h4>
+  <p class="govuk-body">
+    Enwau'r sefydliad
+  </p>
+  <p class="govuk-body">
+    Mae'n rhaid i hwn gyfateb i enw cyfreithiol cofrestredig eich sefydliad.
+  </p>
+  <p class="govuk-body">
+    A oes gan eich sefydliad unrhyw enwau amgen?
+  </p>
+  <p class="govuk-body">
+    Os 'Ydy', ewch i <strong>1.1.1.2</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    1.1.1.2. Enwau amgen eich sefydliad
+  </h4>
+  <p class="govuk-body">
+    Enw amgen 1
+  </p>
+  <p class="govuk-body">
+    Enw amgen 2
+  </p>
+  <p class="govuk-body">
+    Enw amgen 3
+  </p>
+  <h4 class="govuk-heading-s">
+    1.1.2. Cyfeiriad y sefydliad
+  </h4>
+  <h4 class="govuk-heading-s">
+    1.1.3. Sut y caiff eich sefydliad ei ddosbarthu
+  </h4>
+  <p class="govuk-body">
+    Dewiswch un opsiwn
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Sefydliad corfforedig elusennol
+    </li>
+    <li class="">
+      Cydweithrediaeth (er enghraifft, cymdeithas budd cymunedol)
+    </li>
+    <li class="">
+      Cwmni buddiannau cymunedol
+    </li>
+    <li class="">
+      Cwmni cyfyngedig drwy warant
+    </li>
+    <li class="">
+      Sefydliad corfforedig elusennol yn yr Alban
+    </li>
+    <li class="">
+      Cynghorau plwyf, tref a chymuned
+    </li>
+    <li class="">
+      Porthladd ymddiriedolaeth
+    </li>
+    <li class="">
+      Ddim yn gorfforedig eto
+    </li>
+  </ul>
+  <h4 class="govuk-heading-s">
+    1.1.4. A yw eich sefydliad yn destun unrhyw gamau ansolfedd?
+  </h4>
+  <h3 class="govuk-heading-m">
+    1.2. Ynglŷn â'ch ased
+  </h3>
+  <h4 class="govuk-heading-s">
+    1.2.1. A yw eich sefydliad yn bwriadu cael y cyllid a rhedeg y prosiect?
+  </h4>
+  <p class="govuk-body">
+    Rydym yn disgwyl i sefydliadau sy'n gwneud cais am gyllid o'r Gronfa Perchnogaeth Gymunedol reoli'r gwaith o redeg yr ased o ddydd i ddydd. Bydd hyn yn ein helpu i wybod y gall y sefydliad sy'n gwneud y cais redeg busnes cynaliadwy yn nwylo'r gymuned.
+  </p>
+  <h4 class="govuk-heading-s">
+    1.2.2. Y math o ased
+  </h4>
+  <p class="govuk-body">
+    Dewiswch y brif ffordd y caiff yr ased ei ddefnyddio. Er enghraifft, os mai theatr ydyw sydd â chaffi hefyd, dewiswch 'theatr'.
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Canolfan gymunedol
+    </li>
+    <li class="">
+      Sinema
+    </li>
+    <li class="">
+      Oriel
+    </li>
+    <li class="">
+      Amgueddfa
+    </li>
+    <li class="">
+      Lleoliad cerddoriaeth
+    </li>
+    <li class="">
+      Parc
+    </li>
+    <li class="">
+      Adeilad swyddfa bost
+    </li>
+    <li class="">
+      Tafarn
+    </li>
+    <li class="">
+      Siop
+    </li>
+    <li class="">
+      Cyfleuster chwaraeon neu hamdden
+    </li>
+    <li class="">
+      Theatr
+    </li>
+    <li class="">
+      Arall
+    </li>
+  </ul>
+  <h4 class="govuk-heading-s">
+    1.2.3. A yw'r ased yn y DU?
+  </h4>
+  <h4 class="govuk-heading-s">
+    1.2.4. Cyfeiriad yr ased
+  </h4>
+  <p class="govuk-body">
+    Enw'r ased
+  </p>
+  <h4 class="govuk-heading-s">
+    1.2.5. A yw'r ased mewn perygl?
+  </h4>
+  <p class="govuk-body">
+    Mae hyn yn golygu bod perygl y bydd y gymuned yn colli'r ased o ganlyniad i:
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      benderfyniad i gau neu les yn dod i ben
+    </li>
+    <li class="">
+      esgeulustod neu gyflwr adfeiliedig
+    </li>
+    <li class="">
+      model busnes cyfredol anghynaliadwy
+    </li>
+    <li class="">
+      ar werth
+    </li>
+    <li class="">
+      wedi'i restru i'w waredu
+    </li>
+    <li class="">
+      yn rhan o broses trosglwyddo asedau cymunedol
+    </li>
+  </ul>
+  <p class="govuk-body">
+    Os 'Ydy', ewch i <strong>1.2.5.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    1.2.5.1. Beth yw'r perygl i'r ased?
+  </h4>
+  <p class="govuk-body">
+    Dewiswch bob un sy'n berthnasol
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Penderfyniad i gau neu les yn dod i ben
+    </li>
+    <li class="">
+      Esgeulustod neu gyflwr adfeiliedig
+    </li>
+    <li class="">
+      Model busnes cyfredol anghynaliadwy
+    </li>
+    <li class="">
+      Gwerthu
+    </li>
+    <li class="">
+      Wedi'i restru i'w waredu
+    </li>
+    <li class="">
+      Rhan o broses trosglwyddo asedau cymunedol
+    </li>
+  </ul>
+  <h4 class="govuk-heading-s">
+    1.2.6. A yw'r ased erioed wedi cael ei ddefnyddio gan y gymuned neu wedi bod yn arwyddocaol iddi?
+  </h4>
+  <p class="govuk-body">
+    Gallai defnydd/arwyddocâd cymunedol ymwneud â'r canlynol (ond heb fod yn gyfyngedig iddynt):
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      canolfannau cymunedol
+    </li>
+    <li class="">
+      siopau
+    </li>
+    <li class="">
+      cyfleusterau chwaraeon a hamdden
+    </li>
+    <li class="">
+      tafarndai a bwytai
+    </li>
+    <li class="">
+      adeiladau diwylliannol
+    </li>
+    <li class="">
+      adeiladau treftadaeth
+    </li>
+  </ul>
+  <p class="govuk-body">
+    Gallai'r ased fod wedi cael ei ddefnyddio gan y gymuned unrhyw bryd.
+  </p>
+  <p class="govuk-body">
+    Hyd yn oed os ydych yn bwriadu adleoli neu ailadeiladu asedau a ddefnyddiwyd gan y gymuned yn flaenorol, dewiswch 'ydy'.
+  </p>
+  <h4 class="govuk-heading-s">
+    1.2.7. A ydych eisoes yn berchen ar yr ased?
+  </h4>
+  <p class="govuk-body">
+    Os 'Nac ydy', ewch i <strong>1.2.7.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    1.2.7.1. A yw'r ased yn perthyn i awdurdod cyhoeddus?
+  </h4>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Ydy, cyngor tref, plwyf neu gymuned
+    </li>
+    <li class="">
+      Ydy, math arall o awdurdod cyhoeddus
+    </li>
+    <li class="">
+      Nac ydy, nid yw'n perthyn i awdurdod cyhoeddus
+    </li>
+  </ul>
+  <h4 class="govuk-heading-s">
+    1.2.7.2. Dewiswch yr opsiwn sy'n cynrychioli'r cam rydych wedi'i gyrraedd yn y broses o brynu'r ased yn y ffordd orau
+  </h4>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Ddim yn gwybod pwy yw'r perchennog
+    </li>
+    <li class="">
+      Yn gwybod pwy yw'r perchennog ond heb gysylltu
+    </li>
+    <li class="">
+      Trafodaethau ar gam cynnar
+    </li>
+    <li class="">
+      Trafodaethau ar gam datblygedig
+    </li>
+  </ul>
+  <h3 class="govuk-heading-m">
+    1.3. Eich cais am gyllid
+  </h3>
+  <h4 class="govuk-heading-s">
+    1.3.1. At ba ddiben ydych chi'n bwriadu defnyddio cyllid o'r Gronfa Perchnogaeth Gymunedol?
+  </h4>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Prynu lesddaliad
+    </li>
+    <li class="">
+      Adnewyddu lesddaliad
+    </li>
+    <li class="">
+      Prynu rhydd-ddaliad
+    </li>
+    <li class="">
+      Adnewyddu rhydd-ddaliad
+    </li>
+  </ul>
+  <p class="govuk-body">
+    Os 'Prynu lesddaliad', ewch i <strong>1.3.1.1</strong>
+  </p>
+  <p class="govuk-body">
+    Os 'Prynu rhydd-ddaliad', ewch i <strong>1.3.2</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    1.3.1.1. A fydd gan y lesddaliad o leiaf 15 mlynedd pan fydd eich sefydliad yn cyflwyno cais llawn?
+  </h4>
+  <h4 class="govuk-heading-s">
+    1.3.2. Faint o gyllid cyfalaf ydych chi'n gwneud cais amdano o'r Gronfa Perchnogaeth Gymunedol?
+  </h4>
+  <p class="govuk-body">
+    Costau cyfalaf yw costau prynu neu lesio'ch ased a thalu am waith adnewyddu. Gallwch wneud cais am hyd at £2 filiwn (
+  </p>
+  <p class="govuk-body">
+    £2000000
+  </p>
+  <p class="govuk-body">
+    ) mewn costau cyfalaf o'r Gronfa Perchnogaeth Gymunedol.
+  </p>
+  <p class="govuk-body">
+    Enter the amount using only numerals, for example, 1500000
+  </p>
+  <h4 class="govuk-heading-s">
+    1.3.3. A ydych yn bwriadu gwneud cais am unrhyw gyllid refeniw?
+  </h4>
+  <p class="govuk-body">
+    Mae costau refeniw yn cyfrannu at weithredu'r ased pan fyddwch yn berchen arno. Gallai hyn gynnwys costau cyffredinol, gan gynnwys ar gyfer:
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      cyfleustodau
+    </li>
+    <li class="">
+      staffio
+    </li>
+  </ul>
+  <p class="govuk-body">
+    Gallwch wneud cais am hyd at 20% o'ch cais am gyllid cyfalaf, neu £50,000, pa un bynnag yw'r lleiaf.
+  </p>
+  <h4 class="govuk-heading-s">
+    1.3.4. A ydych yn bwriadu sicrhau arian cyfatebol? (naill ai fel arian parod neu mewn nwyddau neu wasanaethau)
+  </h4>
+  <p class="govuk-body">
+    Ystyr arian cyfatebol yw arian a ddarperir gennych chi neu gyllidwr arall. Gall hyn fod ar ffurf arian parod neu drwy roi nwyddau neu wasanaethau er enghraifft.
+  </p>
+  <p class="govuk-body">
+    Os 'Ydy', ewch i <strong>1.3.4.2</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    1.3.4.1. A yw eich prosiect yn cynnwys elfen dai?
+  </h4>
+  <h4 class="govuk-heading-s">
+    1.3.4.2. A fydd angen caniatâd cynllunio ar gyfer eich prosiect?
+  </h4>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Oes
+    </li>
+    <li class="">
+      Nac oes
+    </li>
+    <li class="">
+      Ddim yn siŵr
+    </li>
+  </ul>
+  <p class="govuk-body">
+    Os 'Oes', ewch i <strong>1.3.4.2.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    1.3.4.2. O ble rydych yn bwriadu cael arian cyfatebol?
+  </h4>
+  <p class="govuk-body">
+    Gweler Adran 9 o brosbectws y Gronfa Perchnogaeth Gymunedol i gael manylion am ofynion arian cyfatebol a mathau cymwys o arian cyfatebol
+  </p>
+  <p class="govuk-body">
+    .
+  </p>
+  <p class="govuk-body">
+    Gall hyn gynnwys mewn nwyddau neu wasanaethau ac arian cyfatebol fel arian parod.
+  </p>
+  <p class="govuk-body">
+    Dewiswch bob un sy'n berthnasol
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Rhoi gwasanaethau proffesiynol
+    </li>
+    <li class="">
+      Rhoi nwyddau
+    </li>
+    <li class="">
+      Gostyngiad ar rydd-ddaliad/lesddaliad
+    </li>
+    <li class="">
+      Codi arian yn eich cymuned
+    </li>
+    <li class="">
+      Eich adnoddau ariannol eich hun
+    </li>
+    <li class="">
+      Cyrff cyhoeddus
+    </li>
+    <li class="">
+      Gweinyddiaethau datganoledig
+    </li>
+    <li class="">
+      Elusennau neu ymddiriedolaethau
+    </li>
+    <li class="">
+      Cyllidwyr y Loteri Genedlaethol
+    </li>
+    <li class="">
+      Cyfranddaliadau cymunedol
+    </li>
+    <li class="">
+      Buddsoddwyr cymunedol
+    </li>
+    <li class="">
+      Benthycwyr eraill
+    </li>
+    <li class="">
+      Ddim yn siŵr
+    </li>
+  </ul>
+  <p class="govuk-body">
+    Os 'Ddim yn siŵr', ewch i <strong>1.3.4.1</strong>
+  </p>
+  <h4 class="govuk-heading-s">
+    1.3.4.2.1. Pa gam ydych chi wedi'i gyrraedd yn y broses o sicrhau caniatâd cynllunio?
+  </h4>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Heb ddechrau eto
+    </li>
+    <li class="">
+      Cam cynnar
+    </li>
+    <li class="">
+      Cam hwyr
+    </li>
+    <li class="">
+      Eisoes wedi'i sicrhau
+    </li>
+  </ul>
+  <h4 class="govuk-heading-s">
+    1.3.4.2.1. Pa gynnydd ydych chi wedi'i wneud i sicrhau'r arian hwn?
+  </h4>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Heb gysylltu ag unrhyw gyllidwyr eto
+    </li>
+    <li class="">
+      Wedi cysylltu â rhai cyllidwyr ond heb sicrhau cyllid eto
+    </li>
+    <li class="">
+      Wedi cysylltu â'r holl gyllidwyr ond heb sicrhau cyllid eto
+    </li>
+    <li class="">
+      Wedi sicrhau rhywfaint o arian cyfatebol
+    </li>
+    <li class="">
+      Wedi sicrhau'r holl arian cyfatebol
+    </li>
+  </ul>
+  <h3 class="govuk-heading-m">
+    1.4. Darparwr cymorth datblygu
+  </h3>
+  <h4 class="govuk-heading-s">
+    1.4.1. A hoffech i'r darparwr cymorth datblygu gysylltu â chi, os ydych yn gymwys i gael cymorth manwl?
+  </h4>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Rwy'n cytuno y gellir cysylltu â mi os wyf yn gymwys
+    </li>
+    <li class="">
+      Nid wyf am i neb gysylltu â mi
+    </li>
+  </ul>
+  <h4 class="govuk-heading-s">
+    1.4.2. Beth yw'r prif bethau y mae angen cymorth arnoch gyda nhw er mwyn cyflwyno cais da i'r Gronfa Perchnogaeth Gymunedol yn eich barn chi?
+  </h4>
+  <p class="govuk-body">
+    Dewiswch bob un sy'n berthnasol
+  </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Ysgrifennu cynllun busnes
+    </li>
+    <li class="">
+      Technegol
+    </li>
+    <li class="">
+      Rhagolwg ariannol
+    </li>
+    <li class="">
+      Cyfreithiol
+    </li>
+    <li class="">
+      Tai
+    </li>
+    <li class="">
+      Cymorth llywodraethu
+    </li>
+  </ul>
+  <h4 class="govuk-heading-s">
+    1.4.3. Disgrifiwch eich prosiect a'i nodau
+  </h4>
+  <p class="govuk-body">
+    (Max 250 words)
+  </p>
+  <h4 class="govuk-heading-s">
+    1.4.4. Manylion y prif unigolyn cyswllt
+  </h4>
+  <p class="govuk-body">
+    Enw'r prif unigolyn cyswllt
+  </p>
+  <p class="govuk-body">
+    Cyfeiriad e-bost y prif unigolyn cyswllt
+  </p>
+  <p class="govuk-body">
+    Rhif ffôn y prif unigolyn cyswllt
+  </p>
+  <h3 class="govuk-heading-m">
+    1.5. Datganiad
+  </h3>
+  <ul class="govuk-list govuk-list--bullet">
+    <li class="">
+      Cadarnhaf fod y wybodaeth rwyf wedi'i darparu yn gywir
+    </li>
+  </ul>
+</div>
+    </div>
+</div>
+{% endblock %}
