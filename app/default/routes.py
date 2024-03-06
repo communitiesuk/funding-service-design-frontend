@@ -2,7 +2,6 @@ from app.default.data import determine_round_status
 from app.default.data import get_default_round_for_fund
 from app.helpers import get_all_fund_short_names
 from app.helpers import get_fund_and_round
-from app.models.round import Round
 from config import Config
 from flask import abort
 from flask import Blueprint
@@ -58,7 +57,7 @@ def index_fund_only(fund_short_name):
     return (
         render_template(
             "404.html",
-            round_data=Round("", [], "", "", "", "", "", "", "", "", {}, {}),
+            round_data={},
         ),
         404,
     )
