@@ -721,73 +721,55 @@ msgid "You do not have to complete it in order, or all at once."
 msgstr "Nid oes rhaid i chi ei llenwi mewn trefn, na'r cyfan ar unwaith."
 
 #: app/templates/tasklist.html:50
-#, fuzzy
+
 msgid ""
 "When you have written something in every field in a section, the section "
-"will be marked\n"
-"                    as complete. You can still change your responses in "
+"will be marked as complete. You can still change your responses in "
 "sections that are marked as complete."
 msgstr ""
-"Pan fyddwch wedi ysgrifennu rhywbeth ym mhob maes mewn adran, cofnodir yr"
-" adran fel un gyflawn. Gallwch newid eich ymatebion o hyd mewn adrannau "
-"sydd wedi'u cofnodi fel rhai cyflawn."
+"Pan fyddwch wedi ysgrifennu rhywbeth ym mhob maes mewn adran, nodir bod yr adran wedi'i chwblhau.  Gallwch newid eich ymatebion mewn adrannau sydd wedi'u cwblhau o hyd. "
 
 #: app/templates/tasklist.html:56
 msgid "Saving progress and making changes"
 msgstr "Cadw cynnydd a gwneud newidiadau"
 
 #: app/templates/tasklist.html:59
-#, fuzzy
 msgid ""
 "Your work will not save automatically. To make sure you do not lose "
-"anything, select Save\n"
-"                    and continue regularly, and always before you go back"
+"anything, select Save and continue regularly, and always before you go back"
 " or close your internet browser window."
 msgstr ""
-"Ni fydd eich gwaith yn cael ei gadw'n awtomatig. I wneud yn siŵr nad "
-"ydych chi'n colli unrhyw beth, dewiswch 'Cadw' a pharhau'n rheolaidd, a "
-"bob amser cyn i chi fynd yn ôl neu gau eich ffenestr porwr rhyngrwyd."
+"Ni chaiff eich gwaith ei gadw'n awtomatig. I wneud yn siŵr nad ydych yn colli unrhyw beth, cliciwch ar Cadw a pharhau yn rheolaidd, a chofiwch wneud hyn bob tro cyn i chi fynd yn ôl neu cyn i chi gau ffenestr eich porwr gwe."
 
 #: app/templates/tasklist.html:64
-#, fuzzy
 msgid "If you need to edit or revisit any sections, use the browser back button."
 msgstr ""
-"Os oes angen i chi olygu neu fynd yn ôl at unrhyw adrannau, defnyddiwch "
-"fotwm nôl y porwr."
+"Os bydd angen i chi olygu neu ailedrych ar unrhyw adrannau, defnyddiwch y botwm 'yn ôl' ar y porwr."
 
 #: app/templates/tasklist.html:67
-#, fuzzy
 msgid "You can edit your responses as many times as you like before you submit."
 msgstr ""
-"Gallwch olygu'ch ymatebion gymaint o weithiau a fynnwch cyn i chi eu "
-"cyflwyno."
+"Cewch olygu eich ymatebion gynifer o weithiau ag y dymunwch cyn cyflwyno'r cais."
 
 #: app/templates/tasklist.html:71
 msgid "Submitting your application"
 msgstr "Cyflwyno'ch cais"
 
 #: app/templates/tasklist.html:75
-#, fuzzy
 msgid ""
 "When you have completed all sections, you'll be able to submit your "
-"expression of\n"
-"                    interest."
+"expression of interest."
 msgstr ""
-"Pan fyddwch wedi llenwi'r holl adrannau, byddwch yn gallu cyflwyno'ch "
-"cais."
+"Pan fyddwch wedi cwblhau pob adran, gallwch gyflwyno eich datganiad o ddiddordeb. "
 
 #: app/templates/tasklist.html:79
-#, fuzzy
 msgid ""
 "Once you have submitted your expression of interest, you'll not be able "
-"to edit, add or\n"
-"                    change any sections."
+"to edit, add or change any sections."
 msgstr ""
-"Wedi i chi gyflwyno'ch cais, ni fyddwch yn gallu golygu, ychwanegu na "
-"newid unrhyw adrannau."
+"Unwaith y byddwch wedi cyflwyno eich datganiad o ddiddordeb, ni fyddwch yn gallu golygu unrhyw adrannau, ychwanegu atynt na'u newid."
 
 #: app/templates/tasklist.html:84
-#, fuzzy
 msgid ""
 "When you have completed all sections, you'll be able to submit your "
 "application."
@@ -810,40 +792,35 @@ msgid "Get help"
 msgstr "Cael help"
 
 #: app/templates/tasklist.html:98
-msgid "General support is now available to applicants via the"
-msgstr ""
+msgid "General support is now available to applicants via the "
+msgstr "Mae cymorth cyffredinol bellach ar gael i ymgeiswyr drwy "
 
 #: app/templates/tasklist.html:99
-#, fuzzy
-msgid "My Community website,"
-msgstr "Defnydd cymunedol"
+msgid "My Community website"
+msgstr "wefan My Community"
 
 #: app/templates/tasklist.html:101
 msgid ""
-"which includes an enquiry form as well as a range of helpful documents "
+", which includes an enquiry form as well as a range of helpful documents "
 "and webinars."
-msgstr ""
+msgstr ", ac mae'n cynnwys ffurflen ymholiadau yn ogystal ag amrywiaeth o ddogfennau a gweminarau defnyddiol."
 
 #: app/templates/tasklist.html:106
 msgid ""
 "For queries relating to technical issues when using our online "
-"application tools,\n"
-"                    please"
-msgstr ""
+"application tools, please"
+msgstr "Ar gyfer ymholiadau sy'n ymwneud â materion technegol wrth ddefnyddio ein hadnoddau gwneud cais ar-lein,"
 
 #: app/templates/tasklist.html:108
-msgid "email FSD Support."
-msgstr ""
+msgid "email FSD Support"
+msgstr "e-bostiwch FSD Support"
 
 #: app/templates/tasklist.html:113
-#, fuzzy
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
-"expressions of\n"
-"                    interest through this service."
+"expressions of interest through this service."
 msgstr ""
-"Peidwch ag anfon unrhyw geisadau neu atodiadau dros e-bost. Byddwn yn "
-"derbyn ceisiadau drwy'r gwasanaeth hon yn unig."
+"Peidiwch ag anfon unrhyw geisiadau nac atodiadau drwy e-bost. Dim ond drwy'r gwasanaeth hwn y byddwn yn derbyn ceisiadau.
 
 #: app/templates/tasklist.html:118
 msgid "If you have any questions about the form or the fund, email us at"
@@ -4099,9 +4076,8 @@ msgstr ""
 "Fe ddylai gymryd tua 1 funud i gwblhau’r adran hon."
 
 #: app/templates/partials/tasklist_submit.html:7
-#, fuzzy
 msgid "All sections complete"
-msgstr "Cyfeirnod y cais"
+msgstr "Pob adran wedi ei chwblhau"
 
 #: app/templates/partials/tasklist_submit.html:9
 msgid "You can submit your application when you are ready."
