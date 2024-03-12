@@ -247,37 +247,37 @@ msgstr ""
 #: app/templates/application_submitted.html:4
 #: app/templates/eoi_submitted.html:6
 msgid "Application complete"
-msgstr ""
+msgstr "Cais wedi'i gwblhau"
 
 #: app/templates/application_submitted.html:18
 #: app/templates/eoi_submitted.html:19
 msgid "Your reference number"
-msgstr ""
+msgstr "Eich rhif cyfeirnod"
 
 #: app/templates/application_submitted.html:22
 msgid "We have sent you a confirmation email and a copy of your answers to"
-msgstr ""
+msgstr "Rydym wedi anfon e-bost cadarnhau a chopi o'ch atebion i "
 
 #: app/templates/application_submitted.html:24
 #: app/templates/eoi_submitted.html:24
 msgid "What happens next"
-msgstr ""
+msgstr "Beth fydd yn digwydd nesaf"
 
 #: app/templates/application_submitted.html:27
 msgid "Your application to the"
-msgstr ""
+msgstr "Mae eich cais i'r "
 
 #: app/templates/application_submitted.html:27
 msgid "has been submitted."
-msgstr ""
+msgstr "wedi cael ei gyflwyno."
 
 #: app/templates/application_submitted.html:30
 msgid "We'll email you to let you know whether you have been successful."
-msgstr ""
+msgstr "Byddwn yn anfon e-bost i roi gwybod i chi a ydych wedi bod yn llwyddiannus. "
 
 #: app/templates/application_submitted.html:33
 msgid "Return to your applications page."
-msgstr ""
+msgstr "Dychwelyd i'r dudalen ceisiadau. "
 
 #: app/templates/contact_us.html:7 app/templates/footer.html:23
 msgid "Contact us"
@@ -424,26 +424,32 @@ msgid ""
 "expression of interest and if there are any actions you need to take "
 "before you're ready to apply."
 msgstr ""
+"Byddwch yn derbyn e-bost yn fuan a fydd yn rhoi gwybod i chi am ganlyniad eich "
+"datganiad o ddiddordeb ac os oes unrhyw gamau y mae angen i chi eu cymryd "
+"cyn eich bod yn barod i wneud cais."
 
 #: app/templates/eoi_submitted.html:25
 msgid ""
 "Please consider the content of the email carefully before beginning a "
 "full application."
 msgstr ""
+"Ystyriwch gynnwys yr e-bost yn ofalus cyn dechrau cais llawn."
 
 #: app/templates/eoi_submitted.html:27
 msgid ""
 "You will also receive a link to apply by email if/when an application "
 "window is open."
 msgstr ""
+"Byddwch hefyd yn derbyn dolen i wneud cais drwy e-bost os bydd/pan fydd "
+"cyfnod gwneud cais ar agor."
 
 #: app/templates/eoi_submitted.html:30
 msgid "You do not meet the requirements for the Community Ownership Fund"
-msgstr ""
+msgstr "Nid ydych yn bodloni'r gofynion ar gyfer y Gronfa Perchnogaeth Gymunedol"
 
 #: app/templates/eoi_submitted.html:31
 msgid "Thank you for your interest in the Community Ownership Fund (COF)."
-msgstr ""
+msgstr "Diolch am eich diddordeb yn y Gronfa Perchnogaeth Gymunedol (COF)."
 
 #: app/templates/eoi_submitted.html:32
 msgid ""
@@ -451,58 +457,65 @@ msgid ""
 "funding. This is because you have not met one or more of the following "
 "criteria:"
 msgstr ""
+"Yn anffodus, nid ydych yn bodloni'r gofynion sylfaenol i wneud cais am gyllid. "
+"Y rheswm dros hyn yw nad ydych wedi bodloni un neu fwy o'r meini prawf canlynol:"
 
 #: app/templates/eoi_submitted.html:33
+#, fuzzy
 msgid "Your organisation must"
-msgstr ""
+msgstr "Rhaid i'ch sefydliad"
 
 #: app/templates/eoi_submitted.html:35 app/templates/eoi_submitted.html:42
 msgid "be based in the UK"
-msgstr ""
+msgstr "fod wedi'i leoli yn y DU"
 
 #: app/templates/eoi_submitted.html:36
 msgid "not be subject to any insolvency claim"
-msgstr ""
+msgstr "peidio â bod yn destun unrhyw hawliad ansolfedd"
 
 #: app/templates/eoi_submitted.html:37
 msgid "intend to receive the funding and run the asset"
-msgstr ""
+msgstr "bwriadu derbyn y cyllid a rhedeg yr ased"
 
 #: app/templates/eoi_submitted.html:40
 msgid "Your asset must"
-msgstr ""
+msgstr "Rhaid i'ch ased"
 
 #: app/templates/eoi_submitted.html:43
 msgid "be at risk"
-msgstr ""
+msgstr "bod mewn perygl"
 
 #: app/templates/eoi_submitted.html:44
 msgid "have had prior community use or significance"
-msgstr ""
+msgstr "bod wedi cael ei ddefnyddio gan y gymuned yn flaenorol neu fod yn arwyddocaol iddi"
 
 #: app/templates/eoi_submitted.html:45
 msgid "have at least 15 years on the lease, if a leasehold building"
-msgstr ""
+msgstr "bod â 15 mlynedd ar y les o leiaf, os yw'n adeilad lesddaliad"
 
 #: app/templates/eoi_submitted.html:48
 msgid "You must"
-msgstr ""
+msgstr "Rhaid i chi"
 
 #: app/templates/eoi_submitted.html:50
 msgid "apply for up to &pound;2 million in capital funding from COF"
-msgstr ""
+msgstr "wneud cais am hyd at £2 filiwn mewn cyllid cyfalaf o COF"
 
 #: app/templates/eoi_submitted.html:51
 msgid ""
 "be able to secure at least 20&percnt; match funding from other sources "
 "(or 10&percnt; in exceptional cases)"
 msgstr ""
+"gallu sicrhau o leiaf 20&percnt; o arian cyfatebol o ffynonellau eraill "
+"(neu 10&percnt; mewn achosion eithriadol)"
 
 #: app/templates/eoi_submitted.html:54
 msgid ""
 "You can find more information about eligibility requirements in the COF "
 "prospectus."
 msgstr ""
+"Ceir rhagor o wybodaeth am y gofynion cymhwystra ym mhrosbectws y "
+"Gronfa Perchnogaeth Gymunedol."
 
 #: app/templates/feedback_generic_survey.html:26
 #: app/templates/section_feedback_intro.html:21
