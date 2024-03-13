@@ -11,6 +11,7 @@ from flask import render_template
 from flask import request
 from flask import url_for
 from fsd_utils.authentication.decorators import login_requested
+from fsd_utils.authentication.decorators import login_required
 from fsd_utils.locale_selector.get_lang import get_lang
 from jinja2.exceptions import TemplateNotFound
 
@@ -54,6 +55,7 @@ def determine_all_questions_template_name(fund_short_name: str, round_short_name
 
 
 @content_bp.route("/all_questions/<fund_short_name>/<round_short_name>", methods=["GET"])
+@login_required
 def all_questions(fund_short_name, round_short_name):
     current_app.logger.info(f"All questions page loaded for fund {fund_short_name} round {round_short_name}.")
     fund, round = get_fund_and_round(fund_short_name=fund_short_name, round_short_name=round_short_name)
