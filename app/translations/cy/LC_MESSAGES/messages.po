@@ -270,13 +270,11 @@ msgstr "cysylltwch â'r Gwasanaeth Cynghori a Chymorth Cydraddoldeb (EASS)"
 
 #: app/templates/application_submitted.html:4
 #: app/templates/eoi_submitted.html:6
-#, fuzzy
 msgid "Application complete"
 msgstr "Cyfeirnod y cais"
 
 #: app/templates/application_submitted.html:18
 #: app/templates/eoi_submitted.html:19
-#, fuzzy
 msgid "Your reference number"
 msgstr "Eich rhif traciwr unigryw"
 
@@ -465,32 +463,34 @@ msgid ""
 "expression of interest and if there are any actions you need to take "
 "before you're ready to apply."
 msgstr ""
+"Byddwch yn cael e-bost yn fuan a fydd yn rhoi gwybod i chi beth"
+"yw canlyniad eich datganiad o ddiddordeb ac a oes unrhyw gamau y mae ang"
+"en i chi eu cymryd cyn y byddwch yn barod i wneud cais. "
 
 #: app/templates/eoi_submitted.html:25
 msgid ""
 "Please consider the content of the email carefully before beginning a "
 "full application."
 msgstr ""
+"Ystyriwch gynnwys yr e-bost yn ofalus cyn dechrau cais llawn. "
 
 #: app/templates/eoi_submitted.html:27
 msgid ""
 "You will also receive a link to apply by email if/when an application "
 "window is open."
 msgstr ""
+"Byddwch hefyd yn cael dolen i wneud cais drwy e-bost os bydd/pan fydd "
+"cyfnod gwneud cais ar agor."
 
 #: app/templates/eoi_submitted.html:30
-#, fuzzy
 msgid "You do not meet the requirements for the Community Ownership Fund"
 msgstr ""
-"Dyma'r swm yr ydych yn ymgeisio amdano ar gyfer y Gronfa Perchnogaeth "
-"Gymunedol"
+"Nid ydych yn bodloni'r gofynion ar gyfer y Gronfa Perchnogaeth Gymunedol."
 
 #: app/templates/eoi_submitted.html:31
-#, fuzzy
 msgid "Thank you for your interest in the Community Ownership Fund (COF)."
 msgstr ""
-"A ydych chi wedi derbyn cyllid drwy'r Gronfa Perchnogaeth Gymunedol o'r "
-"blaen?"
+"Diolch am eich diddordeb yn y Gronfa Perchnogaeth Gymunedol (COF)."
 
 #: app/templates/eoi_submitted.html:32
 msgid ""
@@ -498,63 +498,67 @@ msgid ""
 "funding. This is because you have not met one or more of the following "
 "criteria:"
 msgstr ""
+"Yn anffodus, nid ydych yn bodloni'r gofynion sylfaenol i wneud cais "
+"am gyllid. Y rheswm dros hyn yw nad ydych wedi bodloni un neu fwy o'r "
+"meini prawf canlynol:"
 
 #: app/templates/eoi_submitted.html:33
-#, fuzzy
 msgid "Your organisation must"
 msgstr "Cyflwyno'ch cais"
 
 #: app/templates/eoi_submitted.html:35 app/templates/eoi_submitted.html:42
 msgid "be based in the UK"
-msgstr ""
+msgstr "fod wedi'i leoli yn y DU"
 
 #: app/templates/eoi_submitted.html:36
 msgid "not be subject to any insolvency claim"
-msgstr ""
+msgstr "peidio â bod yn destun unrhyw hawliad ansolfedd"
 
 #: app/templates/eoi_submitted.html:37
 msgid "intend to receive the funding and run the asset"
-msgstr ""
+msgstr "bwriadu cael y cyllid a rhedeg yr ased"
 
 #: app/templates/eoi_submitted.html:40
 msgid "Your asset must"
-msgstr ""
+msgstr "Rhaid i'ch ased"
 
 #: app/templates/eoi_submitted.html:43
 msgid "be at risk"
-msgstr ""
+msgstr "bod mewn perygl"
 
 #: app/templates/eoi_submitted.html:44
 msgid "have had prior community use or significance"
-msgstr ""
+msgstr "bod wedi cael ei ddefnyddio gan y gymuned yn flaenorol neu fod yn arwyddocaol iddi"
 
 #: app/templates/eoi_submitted.html:45
 msgid "have at least 15 years on the lease, if a leasehold building"
-msgstr ""
+msgstr "bod â 15 mlynedd ar y les o leiaf, os yw'n adeilad lesddaliad"
 
 #: app/templates/eoi_submitted.html:48
 msgid "You must"
-msgstr ""
+msgstr "Rhaid i chi"
 
 #: app/templates/eoi_submitted.html:50
 msgid "apply for up to &pound;2 million in capital funding from COF"
 msgstr ""
+"gwneud cais am hyd at &pound;2 filiwn mewn costau cyfalaf o'r Gronfa "
+"Perchnogaeth Gymunedol"
 
 #: app/templates/eoi_submitted.html:51
 msgid ""
 "be able to secure at least 20&percnt; match funding from other sources "
 "(or 10&percnt; in exceptional cases)"
 msgstr ""
+"gallu sicrhau o leiaf 20&percnt; y cant o arian cyfatebol o ffynonellau"
+" eraill (neu 10&percnt; y cant mewn achosion eithriadol) "
 
 #: app/templates/eoi_submitted.html:54
-#, fuzzy
 msgid ""
 "You can find more information about eligibility requirements in the COF "
 "prospectus."
 msgstr ""
-"Gallwch gael mwy o wybodaeth ynglŷn â phryd y mae rheolau cymorth "
-"gwladwriaethol yn gymwys yng Ngogledd Iwerddon yng nghanllawiau'r "
-"llywodraeth"
+"Ceir rhagor o wybodaeth am y gofynion cymhwystra ym mhrosbectws y "
+"Gronfa Perchnogaeth Gymunedol."
 
 #: app/templates/feedback_generic_survey.html:26
 #: app/templates/section_feedback_intro.html:21
@@ -820,7 +824,8 @@ msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
 "expressions of interest through this service."
 msgstr ""
-"Peidiwch ag anfon unrhyw geisiadau nac atodiadau drwy e-bost. Dim ond drwy'r gwasanaeth hwn y byddwn yn derbyn ceisiadau.
+"Peidiwch ag anfon unrhyw geisiadau nac atodiadau drwy e-bost. Dim ond drwy'r "
+"gwasanaeth hwn y byddwn yn derbyn ceisiadau."
 
 #: app/templates/tasklist.html:118
 msgid "If you have any questions about the form or the fund, email us at"
