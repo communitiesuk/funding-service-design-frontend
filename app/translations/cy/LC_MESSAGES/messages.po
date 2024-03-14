@@ -285,7 +285,7 @@ msgstr ""
 #: app/templates/application_submitted.html:24
 #: app/templates/eoi_submitted.html:24
 msgid "What happens next"
-msgstr ""
+msgstr "Beth sy'n digwydd nesaf"
 
 #: app/templates/application_submitted.html:27
 #, fuzzy
