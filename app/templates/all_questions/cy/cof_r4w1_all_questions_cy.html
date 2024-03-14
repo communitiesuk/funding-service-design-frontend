@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 {%- from 'govuk_frontend_jinja/components/inset-text/macro.html' import govukInsetText -%}
 {%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
@@ -52,13 +53,13 @@
     1.1.1. Enwau'r sefydliad
   </h4>
   <p class="govuk-body">
-    Eich rhif traciwr unigryw
+    Cyfeirnod eich ffurflen mynegi diddordeb (EOI).
   </p>
   <p class="govuk-body">
-    Roedd hwn wedi'i gynnwys yn y llythyr yr anfonom i gadarnhau eich datganiad o ddiddordeb llwyddiannus.
+    Cafodd hyn ei gynnwys yn yr e-bost a anfonwyd atoch i gadarnhau eich EOI llwyddiannus.
   </p>
   <p class="govuk-body">
-    Er enghraifft, ANON-###-###-####
+    Er Enghraifft, 'COF-EOI-##-#####'
   </p>
   <p class="govuk-body">
     Enw'r sefydliad
@@ -191,6 +192,9 @@
       Cyngor plwyf, tref neu gymuned
     </li>
     <li class="">
+      Porthladd ymddiriedolaeth
+    </li>
+    <li class="">
       Arall
     </li>
   </ul>
@@ -204,7 +208,7 @@
     Os 'Sefydliad corfforedig elusennol (CIO)', ewch i <strong>1.1.3.3</strong>
   </p>
   <p class="govuk-body">
-    Os 'Parish, town or community council', ewch i <strong>1.1.4</strong>
+    Os 'Cyngor plwyf, tref neu gymuned', ewch i <strong>1.1.4</strong>
   </p>
   <h4 class="govuk-heading-s">
     1.1.3.1. Sut mae eich sefydliad yn cael ei ddosbarthu
@@ -431,8 +435,7 @@
     Dewiswch enw sy'n disgrifio'ch prosiect. Er enghraifft, enw eich ased, neu gysylltiad Ã¢ lleoliad eich ased.
   </p>
   <p class="govuk-body">
-    Dywedwch wrthym sut mae'r ased yn cael ei ddefnyddio ar hyn o bryd, neu sut mae wedi'i ddefnyddio'n flaenorol, a pham mae'n
-bwysig i'r gymuned
+    Dywedwch wrthym sut mae'r ased yn cael ei ddefnyddio ar hyn o bryd, neu sut mae wedi'i ddefnyddio'n flaenorol, a pham mae'n bwysig i'r gymuned
   </p>
   <p class="govuk-body">
     Os yw eisoes wedi'i golli i'r gymuned, dywedwch wrthym sut y'i defnyddiwyd cyn cau.
@@ -546,9 +549,6 @@ bwysig i'r gymuned
   <p class="govuk-body">
     Os 'Eisoes yn eiddo i'w sefydliad', ewch i <strong>2.2.2.1</strong>
   </p>
-  <p class="govuk-body">
-    Os 'Eisoes wedi'i llogi gan eich sefydliad', ewch i <strong>2.2.2.3</strong>
-  </p>
   <h4 class="govuk-heading-s">
     2.2.2.1. Perygl cau
   </h4>
@@ -583,6 +583,15 @@ bwysig i'r gymuned
   </p>
   <p class="govuk-body">
     Dylai fod yn ffeil unigol nid yn fwy na 10MB mewn fformat derbyniol (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
+  </p>
+  <h4 class="govuk-heading-s">
+    2.2.2.2.1. Telerau eich llynedd
+  </h4>
+  <p class="govuk-body">
+    Disgrifiwch telerau eich llynedd os ydych wedi rhentu'r eiddo
+  </p>
+  <p class="govuk-body">
+    Er enghraifft, hyd y llogi, amodau'r llogi neu agweddau toriadau
   </p>
   <h4 class="govuk-heading-s">
     2.2.2.2.2. Pwy sy'n meddu ar yr eiddo
@@ -621,15 +630,6 @@ bwysig i'r gymuned
     Er enghraifft, 27 3 2007
   </p>
   <h4 class="govuk-heading-s">
-    2.2.2.3. Telerau eich llynedd
-  </h4>
-  <p class="govuk-body">
-    Disgrifiwch telerau eich llynedd os ydych wedi rhentu'r eiddo
-  </p>
-  <p class="govuk-body">
-    Er enghraifft, hyd y llogi, amodau'r llogi neu agweddau toriadau
-  </p>
-  <h4 class="govuk-heading-s">
     2.2.2.3. Perchenogaeth gyhoeddus
   </h4>
   <p class="govuk-body">
@@ -640,19 +640,6 @@ bwysig i'r gymuned
   </p>
   <p class="govuk-body">
     Os 'Nac ydy', ewch i <strong>2.2.2.4</strong>
-  </p>
-  <h4 class="govuk-heading-s">
-    2.2.2.3. Lanlwythwch gwerthiant arÃ¢d eiddo neu gytundeb i fenthyg
-  </h4>
-  <p class="govuk-body">
-    Lanlwythwch dystiolaeth sy'n profi bod yr eiddo eisoes yn cael ei denantio gan eich sefydliad.
-  </p>
-  <p class="govuk-body">
-    Gall hyn fod yn gopi o'ch cytundeb tenantiaeth, neu enghreifftiau o delerau a chytundebau cytunedig, sy'n dangos 15 mlynedd
-o tenanit gyda thoriadau rhesymol.
-  </p>
-  <p class="govuk-body">
-    Dylai fod yn ffeil unigol nid yn fwy na 10MB mewn fformat derbyniol (jpg, jpeg, png, pdf, txt, doc, docx, odt, csv, xls, xlsx, ods).
   </p>
   <h4 class="govuk-heading-s">
     2.2.2.3.1. Manylion ac hysbysiadau perchenogaeth cyhoeddus
@@ -774,10 +761,10 @@ o tenanit gyda thoriadau rhesymol.
     A yw'ch ased yn wahanol i'r hyn sydd ar gael yn lleol?
   </p>
   <p class="govuk-body">
-    Os 'Ydy', ewch i <strong>2.2.2.6.2</strong>
+    Os 'Ydy', ewch i <strong>2.2.2.6.1.1</strong>
   </p>
   <h4 class="govuk-heading-s">
-    2.2.2.6.2. Darparu gwasanaeth lleol
+    2.2.2.6.1.1. Darparu gwasanaeth lleol
   </h4>
   <p class="govuk-body">
     Dywedwch wrthym sut mae'r agwedd fasnachol yn ymwneud Ã¢'r gwasanaethau eraill rydych chi'n eu darparu
@@ -786,7 +773,7 @@ o tenanit gyda thoriadau rhesymol.
     (Max 500 words)
   </p>
   <h4 class="govuk-heading-s">
-    2.2.2.7. Darparu gwasanaeth lleol
+    2.2.2.6.2. Darparu gwasanaeth lleol
   </h4>
   <p class="govuk-body">
     Pa mor hygyrch yw'r ased neu'r gwasanaeth agosaf?
@@ -798,7 +785,7 @@ o tenanit gyda thoriadau rhesymol.
     (Max 500 words)
   </p>
   <h4 class="govuk-heading-s">
-    2.2.2.8. Darparu gwasanaeth lleol
+    2.2.2.7. Darparu gwasanaeth lleol
   </h4>
   <p class="govuk-body">
     A yw rhan o'ch prosiect yn cynnwys agwedd fasnachol?
@@ -807,10 +794,10 @@ o tenanit gyda thoriadau rhesymol.
     Er enghraifft, canolfan gymunedol sydd Ã¢ chaffi cymunedol yn gysylltiedig sy'n helpu i gymorthdalu gweithgareddau'r ganolfan
   </p>
   <p class="govuk-body">
-    Os 'Ydy', ewch i <strong>2.2.2.8.1</strong>
+    Os 'Ydy', ewch i <strong>2.2.2.7.1</strong>
   </p>
   <h4 class="govuk-heading-s">
-    2.2.2.8.1. Darparu gwasanaeth lleol
+    2.2.2.7.1. Darparu gwasanaeth lleol
   </h4>
   <p class="govuk-body">
     Dywedwch wrthym sut mae'r agwedd fasnachol yn ymwneud Ã¢'r gwasanaethau eraill rydych chi'n eu darparu
@@ -1046,7 +1033,7 @@ o tenanit gyda thoriadau rhesymol.
     4. Achos rheoli
   </h2>
   <h3 class="govuk-heading-m">
-    4.1. Cyllido angenrheidiol
+    4.1. Cyllid sydd ei angen
   </h3>
   <h4 class="govuk-heading-s">
     4.1.1. Cais cyllido cyfalaf
@@ -1062,8 +1049,7 @@ o tenanit gyda thoriadau rhesymol.
   </p>
   <ul class="govuk-list govuk-list--bullet">
     <li class="">
-      Rydych am brynu ased cymunedol sy'n costio £2,500,000. Gallwch wneud cais am £2m o COF, a rhaid i chi godi'r gweddill o
-£500,000 o ffynonellau eraill.
+      Rydych am brynu ased cymunedol sy'n costio £2,500,000. Gallwch wneud cais am £2m o COF, a rhaid i chi godi'r gweddill o £500,000 o ffynonellau eraill.
     </li>
     <li class="">
       Rydych am brynu ased cymunedol sy'n costio £250,000. Gallwch wneud cais am £200,000 o COF, a rhaid i chi godi'r gweddill o £50,000 o ffynonellau eraill.
@@ -1111,7 +1097,7 @@ o tenanit gyda thoriadau rhesymol.
     Gallwch ddefnyddio eich cynllun busnes i ddarparu gwybodaeth sy'n cefnogi eich atebion.
   </p>
   <p class="govuk-body">
-    Costau cyfalaf
+    You can add multiple costau cyfalaf
   </p>
   <p class="govuk-body">
     Disgrifiwch y gost
@@ -1205,7 +1191,7 @@ o tenanit gyda thoriadau rhesymol.
     </li>
   </ul>
   <p class="govuk-body">
-    cyllid cydweddu wedi'i sicrhau
+    You can add multiple cyllid cydweddu wedi'i sicrhau
   </p>
   <p class="govuk-body">
     Ffynhonnell gyllid wedi'i sicrhau
@@ -1252,7 +1238,7 @@ o tenanit gyda thoriadau rhesymol.
     </li>
   </ul>
   <p class="govuk-body">
-    cyllid cydweddu heb ei sicrhau
+    You can add multiple cyllid cydweddu heb ei sicrhau
   </p>
   <p class="govuk-body">
     Ffynhonnell cyllid cydweddu heb ei sicrhau
@@ -1320,7 +1306,7 @@ Gallwch ddefnyddio eich cynllun busnes i:
     </li>
   </ul>
   <p class="govuk-body">
-    costau refeniw (dewisol)
+    You can add multiple costau refeniw (dewisol)
   </p>
   <p class="govuk-body">
     Disgrifiwch y gost
@@ -1613,8 +1599,7 @@ tystiolaeth ategol o sut y byddwch yn rheoli perfformiad a risgiau. Er enghraiff
     5.1.1. Cytuno i'r cadarnhad terfynol
   </h4>
   <p class="govuk-body">
-    Cadarnhewch eich bod wedi ystyried goblygiadau rheoli cymhorthdal a chymorth gwladwriaethol ar gyfer eich prosiect, a bod y
-wybodaeth rydych wedi'i rhoi i ni yn gywir
+    Cadarnhewch eich bod wedi ystyried goblygiadau rheoli cymhorthdal a chymorth gwladwriaethol ar gyfer eich prosiect, a bod y wybodaeth rydych wedi'i rhoi i ni yn gywir
   </p>
   <p class="govuk-body">
     Cadarnhewch eich bod wedi ystyried pobl Ã¢ nodweddion gwarchodedig drwy gydol proses cynllunio'ch prosiect
