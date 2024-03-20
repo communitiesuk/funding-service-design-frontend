@@ -45,7 +45,7 @@ on:
 
 jobs:
   setup:
-    uses: communitiesuk/funding-service-design-workflows/.github/workflows/determine-jobs.yml@main
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/determine-jobs.yml@fs-4291-feature-branch-dev
     with:
       environment: ${{ inputs.environment }}
 
