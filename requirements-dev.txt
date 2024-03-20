@@ -21,7 +21,7 @@ beautifulsoup4==4.12.2
     #   -r requirements-dev.in
     #   -r requirements.txt
     #   funding-service-design-utils
-black==23.12.1
+black==24.3.0
     # via -r requirements-dev.in
 blinker==1.7.0
     # via
@@ -241,7 +241,6 @@ pyjwt[crypto]==2.8.0
     # via
     #   -r requirements.txt
     #   funding-service-design-utils
-    #   pyjwt
 pyproject-hooks==1.0.0
     # via build
 pyscss==1.4.0
@@ -311,7 +310,6 @@ sentry-sdk[flask]==1.39.1
     # via
     #   -r requirements.txt
     #   funding-service-design-utils
-    #   sentry-sdk
 six==1.16.0
     # via
     #   -r requirements.txt
