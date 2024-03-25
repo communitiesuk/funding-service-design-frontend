@@ -261,6 +261,7 @@ def tasklist(application_id):
             form=form,
             contact_us_email_address=round_data.contact_email,
             submission_deadline=round_data.deadline,
+            is_expression_of_interest=round_data.is_expression_of_interest,
             is_past_submission_deadline=current_datetime_after_given_iso_string(round_data.deadline),  # noqa:E501
             dashboard_url=url_for(
                 "account_routes.dashboard",
@@ -348,7 +349,7 @@ def submit_application():
     submitted = format_payload_and_submit_application(application_id)
 
     with force_locale(application.language):
-        if fund_data.short_name in ("COF-EOI",):
+        if round_data.is_expression_of_interest:
             eoi_decision = submitted.get("eoi_decision")
             return render_template(
                 "eoi_submitted.html",
