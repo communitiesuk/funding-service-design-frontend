@@ -20,6 +20,7 @@ common_round_data = {
     "feedback_link": "http://feedback.com",
     "application_guidance": "",
     "mark_as_complete_enabled": False,
+    "is_expression_of_interest": False,
 }
 common_application_data = {
     "account_id": "test-user",
