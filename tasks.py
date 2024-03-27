@@ -8,9 +8,7 @@ _VALID_JINJA_EXTENSIONS = (".html", ".jinja", ".jinja2", ".j2")
 
 
 def _remove_whitespace_newlines_from_trans_tags(file, content: str):
-    matches = re.findall(
-        r"({%\s*trans\s*%}(.|[\S\s]*?){%\s*endtrans\s*%})", content
-    )
+    matches = re.findall(r"({%\s*trans\s*%}(.|[\S\s]*?){%\s*endtrans\s*%})", content)
 
     content_replaced = content
     for outer, center in matches:
@@ -22,9 +20,7 @@ def _remove_whitespace_newlines_from_trans_tags(file, content: str):
         lwhitespace = center[: len(center) - len(center.lstrip())]
 
         outer_replaced_whitespace = lwhitespace + outer_replaced + rwhitespace
-        content_replaced = content_replaced.replace(
-            outer, outer_replaced_whitespace
-        )
+        content_replaced = content_replaced.replace(outer, outer_replaced_whitespace)
 
     if content != content_replaced:
         with open(file, "w") as f:
@@ -39,8 +35,7 @@ def _remove_whitespace_newlines_from_trans_tags(file, content: str):
 def _find_missing_translations(file, content: str):
     matches = list(
         re.findall(
-            r"(msgid (?:\".*\"\n)+)(?=msgstr"
-            r" \"\"(?!\n\")\n*(?=\n|msgid|\"\"))",
+            r"(msgid (?:\".*\"\n)+)(?=msgstr" r" \"\"(?!\n\")\n*(?=\n|msgid|\"\"))",
             content,
         )
     )

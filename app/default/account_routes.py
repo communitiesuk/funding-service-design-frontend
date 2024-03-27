@@ -12,14 +12,18 @@ from config import Config
 from flask import Blueprint
 from flask import current_app
 from flask import g
+from flask import make_response
 from flask import redirect
 from flask import render_template
 from flask import request
 from flask import url_for
+from flask_babel import force_locale
 from fsd_utils.authentication.decorators import login_required
 from fsd_utils.locale_selector.get_lang import get_lang
+from fsd_utils.locale_selector.set_lang import LanguageSelector
 
 account_bp = Blueprint("account_routes", __name__, template_folder="templates")
+TEMPLATE_SINGLE_FUND = "dashboard_single_fund.html"
 
 
 def get_visible_funds(visible_fund_short_name):
@@ -28,14 +32,11 @@ def get_visible_funds(visible_fund_short_name):
 
     :param visible_fund_short_name: short name to look for
     """
-    all_funds = get_all_funds(ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME))
+    all_funds = get_all_funds(get_lang(), get_ttl_hash(Config.LRU_CACHE_TIME))
 
     if visible_fund_short_name:
         funds_to_show = [
-            fund
-            for fund in all_funds
-            if fund["short_name"].casefold()
-            == visible_fund_short_name.casefold()
+            fund for fund in all_funds if fund["short_name"].casefold() == visible_fund_short_name.casefold()
         ]
     else:
         funds_to_show = all_funds
@@ -72,7 +73,7 @@ def update_applications_statuses_for_display(
 
 
 def build_application_data_for_display(
-    applications: list[ApplicationSummary], visible_fund_short_name
+    applications: list[ApplicationSummary], visible_fund_short_name, visible_round_short_name
 ):
     application_data_for_display = {
         "funds": [],
@@ -85,6 +86,7 @@ def build_application_data_for_display(
         fund_id = fund["id"]
         all_rounds_in_fund = get_all_rounds_for_fund(
             fund_id,
+            language=get_lang(),
             as_dict=False,
             ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
         )
@@ -93,18 +95,14 @@ def build_application_data_for_display(
             "rounds": [],
         }
         for round in all_rounds_in_fund:
+            if visible_round_short_name:
+                if round.short_name.casefold() != visible_round_short_name.casefold():
+                    continue
             round_status = determine_round_status(round)
-            apps_in_this_round = [
-                app for app in applications if app.round_id == round.id
-            ]
-            if round_status.not_yet_open or (
-                round_status.past_submission_deadline
-                and len(apps_in_this_round) == 0
-            ):
+            apps_in_this_round = [app for app in applications if app.round_id == round.id]
+            if round_status.not_yet_open or (round_status.past_submission_deadline and len(apps_in_this_round) == 0):
                 continue
-            apps_for_display = update_applications_statuses_for_display(
-                apps_in_this_round, round_status
-            )
+            apps_for_display = update_applications_statuses_for_display(apps_in_this_round, round_status)
             fund_data_for_display["rounds"].append(
                 {
                     "is_past_submission_deadline": round_status.past_submission_deadline,  # noqa
@@ -124,13 +122,11 @@ def build_application_data_for_display(
 
         application_data_for_display["funds"].append(fund_data_for_display)
 
-    application_data_for_display[
-        "total_applications_to_display"
-    ] = count_of_applications_for_visible_rounds
+    application_data_for_display["total_applications_to_display"] = count_of_applications_for_visible_rounds
     return application_data_for_display
 
 
-def determine_show_language_column(applications):
+def determine_show_language_column(applications: ApplicationSummary):
     """
     Determine whether the language column should be visible -
     true if applications are in more than one language
@@ -143,13 +139,14 @@ def determine_show_language_column(applications):
 def dashboard():
     account_id = g.account_id
 
-    fund_short_name = request.args.get("fund")
-    round_short_name = request.args.get("round")
+    fund_short_name = request.args.get("fund", None)
+    round_short_name = request.args.get("round", None)
+    render_lang = get_lang()
 
     if fund_short_name and round_short_name:
         # find and display applications with this
         # fund and round else return 404
-        template_name = "dashboard_single_fund.html"
+        template_name = TEMPLATE_SINGLE_FUND
         fund_details, round_details = get_fund_and_round(
             fund_short_name=fund_short_name, round_short_name=round_short_name
         )
@@ -165,7 +162,7 @@ def dashboard():
         # find and display all applications across
         # this fund else return 404
 
-        template_name = "dashboard_single_fund.html"
+        template_name = TEMPLATE_SINGLE_FUND
         fund_details = get_fund(fund_short_name=fund_short_name)
         search_params = {
             "fund_id": fund_details.id,
@@ -178,56 +175,66 @@ def dashboard():
         search_params = {"account_id": account_id}
         welsh_available = False
 
-    applications = search_applications(
-        search_params=search_params, as_dict=False
-    )
+    applications = search_applications(search_params=search_params, as_dict=False)
 
     show_language_column = determine_show_language_column(applications)
 
-    display_data = build_application_data_for_display(
-        applications, fund_short_name
-    )
-    current_app.logger.info(
-        f"Setting up applicant dashboard for :'{account_id}'"
-    )
-    return render_template(
-        template_name,
-        account_id=account_id,
-        display_data=display_data,
-        show_language_column=show_language_column,
-        fund_short_name=fund_short_name,
-        round_short_name=round_short_name,
-        welsh_available=welsh_available,
-        migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
-    )
+    display_data = build_application_data_for_display(applications, fund_short_name, round_short_name)
+    current_app.logger.info(f"Setting up applicant dashboard for :'{account_id}'")
+    if not welsh_available and template_name == TEMPLATE_SINGLE_FUND:
+        render_lang = "en"
+    with force_locale(render_lang):
+        response = make_response(
+            render_template(
+                template_name,
+                account_id=account_id,
+                display_data=display_data,
+                show_language_column=show_language_column,
+                fund_short_name=fund_short_name,
+                round_short_name=round_short_name,
+                welsh_available=welsh_available,
+                migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
+            )
+        )
+    LanguageSelector.set_language_cookie(locale=render_lang, response=response)
+    return response
 
 
 @account_bp.route("/account/new", methods=["POST"])
 @login_required
 def new():
     account_id = g.account_id
+    application_language = get_lang()
+    fund_id = request.form["fund_id"]
+    # If requesting an application in welsh, ensure the fund supports it
+    if application_language == "cy":
+        fund = get_fund(fund_id=fund_id)
+        if not fund.welsh_available:
+            application_language = "en"
+
     new_application = requests.post(
         url=f"{Config.APPLICATION_STORE_API_HOST}/applications",
         json={
             "account_id": account_id,
             "round_id": request.form["round_id"],
-            "fund_id": request.form["fund_id"],
-            "language": get_lang(),
+            "fund_id": fund_id,
+            "language": application_language,
         },
     )
     new_application_json = new_application.json()
     current_app.logger.info(f"Creating new application:{new_application_json}")
-    if new_application.status_code != 201 or not new_application_json.get(
-        "id"
-    ):
+    if new_application.status_code != 201 or not new_application_json.get("id"):
         raise Exception(
-            "Unexpected response from application store when creating new"
-            " application: "
+            "Unexpected response from application store when creating new application: "
             + str(new_application.status_code)
         )
-    return redirect(
-        url_for(
-            "application_routes.tasklist",
-            application_id=new_application.json().get("id"),
+    response = make_response(
+        redirect(
+            url_for(
+                "application_routes.tasklist",
+                application_id=new_application.json().get("id"),
+            )
         )
     )
+    LanguageSelector.set_language_cookie(locale=application_language, response=response)
+    return response

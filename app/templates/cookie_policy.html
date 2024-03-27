@@ -11,6 +11,18 @@
     {% if migration_banner_enabled %}
       {{migration_banner()}}
     {% endif %}
+
+    <div id="cookie-setting-saved-banner" class="govuk-notification-banner govuk-notification-banner--success js-cookies-page-success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" hidden>
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Success
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <p class="govuk-notification-banner__heading">Your cookie settings were saved</p>
+      </div>
+    </div>
+
     <h1 class="govuk-heading-l">{{pageHeading}}</h1>
     <p class="govuk-body">
         Cookies are small files saved on your phone, tablet or computer when you visit a website.
@@ -172,6 +184,7 @@
     }
 
     document.getElementById("cookie-settings-save").addEventListener("click", saveAnalyticsPrefs);
+
 
   }
 
