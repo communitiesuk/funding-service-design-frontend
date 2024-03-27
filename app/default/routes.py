@@ -2,7 +2,6 @@ from app.default.data import determine_round_status
 from app.default.data import get_default_round_for_fund
 from app.helpers import get_all_fund_short_names
 from app.helpers import get_fund_and_round
-from app.models.round import Round
 from config import Config
 from flask import abort
 from flask import Blueprint
@@ -43,6 +42,7 @@ def index_fund_round(fund_short_name, round_short_name):
         instruction_text=round_data.instructions,
         welsh_available=fund_data.welsh_available,
         migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
+        is_expression_of_interest=round_data.is_expression_of_interest,
     )
 
 
@@ -58,7 +58,7 @@ def index_fund_only(fund_short_name):
     return (
         render_template(
             "404.html",
-            round_data=Round("", [], "", "", "", "", "", "", "", "", {}, {}),
+            round_data={},
         ),
         404,
     )

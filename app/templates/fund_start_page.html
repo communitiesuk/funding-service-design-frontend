@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% set pageHeading %}
 
-{% if fund_short_name|upper in ("COF-EOI",) %}
+{% if is_expression_of_interest %}
     {% trans %}Start or continue an {% endtrans %} {{fund_title}}
 {% else %}
     {% trans %}Start or continue an application for{% endtrans %} {{fund_title}}
@@ -23,7 +23,7 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             {% if round_title|length %}
-                {% if fund_short_name|upper in ("COF-EOI",) %}
+                {% if is_expression_of_interest %}
                     <span class="govuk-caption-l"> {{fund_name}} - {{ round_title }}</span>
                 {% else %}
                     <span class="govuk-caption-l"> {{fund_name}} {{ round_title }}</span>
@@ -43,13 +43,13 @@
             </p>
             <p class="govuk-body">
                 <a class="govuk-link" href="{{prospectus_link}}">
-                {% if fund_short_name|upper in ("COF-EOI",) %}
+                {% if is_expression_of_interest %}
                     {% trans %}Read the fund's prospectus{% endtrans %}</a> {% trans %}before you start.{% endtrans %}
                 {% else %}
                     {% trans %}Read the fund's prospectus{% endtrans %}</a> {% trans %}before you apply.{% endtrans %}
                 {% endif %}
             </p>
-            {% if submission_deadline|length and fund_short_name|upper not in ("COF-EOI",)  %}
+            {% if submission_deadline|length and not is_expression_of_interest  %}
             <p class="govuk-body">
                 <strong>{% trans %}Submission deadline: {% endtrans %}</strong> {{
                 submission_deadline|datetime_format }}
