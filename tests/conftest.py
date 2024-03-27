@@ -1,4 +1,3 @@
-import json
 import multiprocessing
 import platform
 
@@ -6,8 +5,8 @@ import pytest
 from app.create_app import create_app
 from app.models.fund import Fund
 from flask import template_rendered
-from tests.test_data import TEST_FUNDS_DATA
-from tests.test_data import TEST_ROUNDS_DATA
+from tests.api_data.test_data import TEST_FUNDS_DATA
+from tests.api_data.test_data import TEST_ROUNDS_DATA
 
 if platform.system() == "Darwin":
     multiprocessing.set_start_method("fork")  # Required on macOSX
@@ -68,31 +67,14 @@ def app():
 
 
 @pytest.fixture()
-def flask_test_client():
+def flask_test_client(app):
     """
     Creates the test client we will be using to test the responses
     from our app, this is a test fixture.
     :return: A flask test client.
     """
-    with create_app().test_client() as test_client:
+    with app.test_client() as test_client:
         yield test_client
-
-
-def mock_get_data(endpoint):
-    file = open("tests/api_data/endpoint_data.json")
-    data = json.loads(file.read())
-    return data[endpoint]
-
-
-@pytest.fixture()
-def mock_get_application(mocker):
-    file = open("tests/api_data/endpoint_data.json")
-    data = json.loads(file.read())  # noqa
-    # mock the function in the file it is invoked (not where it is declared)
-    mocker.patch(
-        "app.default.routes.get_data",
-        new=mock_get_data,
-    )
 
 
 @pytest.fixture(scope="function")
@@ -155,3 +137,4 @@ def mock_get_fund_round(mocker):
         "app.default.data.get_round_data_fail_gracefully",
         return_value=TEST_ROUNDS_DATA[0],
     )
+    mocker.patch("app.default.account_routes.get_lang", return_value="en")

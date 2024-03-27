@@ -24,7 +24,6 @@
         {% set application_count=display_data["total_applications_to_display"]%}
         {% trans %}You have started{% endtrans %}&nbsp;{% trans count=application_count%} {{application_count}} application{% pluralize %}{{application_count}} applications{% endtrans %}&nbsp;{% trans %}using this email address{% endtrans %}.
     </p>
-{{available_in_language(inset=False, warn=True, welsh_available=welsh_available)}}
 
 <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
     {% for fund in display_data["funds"] %}
@@ -44,7 +43,7 @@
                         {% if round["is_past_submission_deadline"] %}
                             {{ round_closed_warning(fund["fund_data"]["name"], round["round_details"]["title"], round["round_details"]["deadline"]) }}
                         {% endif %}
-                            {{ applications_table(round["applications"], round["is_past_submission_deadline"], show_language_column) }}
+                            {{ applications_table(round["applications"], round["is_past_submission_deadline"], show_language_column, fund["fund_data"]["short_name"]) }}
                             <p class="govuk-body"><a href="{{url_for('account_routes.dashboard', fund=fund['fund_data']['short_name'])}}" class="govuk-link govuk-link">View applications from all rounds/windows</a></p>
                     {% endif %}
                 {% endfor %}

@@ -13,6 +13,13 @@ function updateCookieConsent(value) {
     const slice = currentDomain.includes("access-funding") ? -4 : -3;
     const targetDomain = currentDomain.split('.').slice(slice).join('.');
     document.cookie = `${COOKIE_FSD_CONSENT}=${btoa(JSON.stringify(consentObject))};path=` + "/" + `;domain=${targetDomain};secure;SameSite=None`;
+
+    const notificationBanner = document.getElementById("cookie-setting-saved-banner")
+    if (notificationBanner) {
+      notificationBanner.removeAttribute("hidden");
+      notificationBanner.scrollIntoView();
+    }
+
 }
 function acceptCookies() {
     updateCookieConsent('granted');

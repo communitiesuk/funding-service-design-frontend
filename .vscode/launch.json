@@ -77,7 +77,7 @@
         "-c",
         "pytest.ini",
         "-k",
-        "test_tasklist_for_submit_application_route" // modify this accordingly
+        "test_language_cookie_update_welsh_to_english" // modify this accordingly
       ],
       "justMyCode": false
     }

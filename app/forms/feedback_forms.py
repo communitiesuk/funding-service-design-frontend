@@ -19,15 +19,11 @@ class DefaultSectionFeedbackForm(ApplicationFlaskForm):
         label="How easy did you find it to complete this section?",
         validators=[InputRequired(message=gettext("Select a score"))],
     )
-    more_detail = TextAreaField(
-        label="Explain why you chose this score (optional)"
-    )
+    more_detail = TextAreaField(label="Explain why you chose this score (optional)")
 
     def __init__(self, *args, **kwargs):
         super(DefaultSectionFeedbackForm, self).__init__(*args, **kwargs)
-        self.experience.label.text = gettext(
-            "How easy did you find it to complete this section?"
-        )
+        self.experience.label.text = gettext("How easy did you find it to complete this section?")
         self.experience.choices = [
             ("very easy", gettext("Very easy")),
             ("easy", gettext("Easy")),
@@ -38,9 +34,7 @@ class DefaultSectionFeedbackForm(ApplicationFlaskForm):
             ("difficult", gettext("Difficult")),
             ("very difficult", gettext("Very difficult")),
         ]
-        self.more_detail.label.text = gettext(
-            "Explain why you chose this score (optional)"
-        )
+        self.more_detail.label.text = gettext("Explain why you chose this score (optional)")
 
     @property
     def as_dict(self):
@@ -58,11 +52,7 @@ class EndOfApplicationPageForm(ApplicationFlaskForm):
                 field.data = data.get(field_name)
 
     def as_dict(self):
-        return {
-            field_name: field.data
-            for field_name, field in self._fields.items()
-            if field_name != "application_id"
-        }
+        return {field_name: field.data for field_name, field in self._fields.items() if field_name != "application_id"}
 
 
 class EndOfApplicationPage1Form(EndOfApplicationPageForm):
@@ -70,15 +60,11 @@ class EndOfApplicationPage1Form(EndOfApplicationPageForm):
         label="How was your overall application experience?",
         validators=[InputRequired(message="Select a score")],
     )
-    more_detail = TextAreaField(
-        label="Explain why you chose this score (optional)"
-    )
+    more_detail = TextAreaField(label="Explain why you chose this score (optional)")
 
     def __init__(self, *args, **kwargs):
         super(EndOfApplicationPage1Form, self).__init__(*args, **kwargs)
-        self.overall_application_experience.label.text = gettext(
-            "How was your overall application experience?"
-        )
+        self.overall_application_experience.label.text = gettext("How was your overall application experience?")
         self.overall_application_experience.choices = [
             ("very good", gettext("Very good")),
             ("good", gettext("Good")),
@@ -86,9 +72,7 @@ class EndOfApplicationPage1Form(EndOfApplicationPageForm):
             ("poor", gettext("Poor")),
             ("very poor", gettext("Very poor")),
         ]
-        self.more_detail.label.text = gettext(
-            "Explain why you chose this score (optional)"
-        )
+        self.more_detail.label.text = gettext("Explain why you chose this score (optional)")
 
 
 class EndOfApplicationPage2Form(EndOfApplicationPageForm):
@@ -120,18 +104,14 @@ class EndOfApplicationPage2Form(EndOfApplicationPageForm):
 
 class EndOfApplicationPage3Form(EndOfApplicationPageForm):
     understand_eligibility_criteria = RadioField(
-        label=(
-            "How easy was it to understand the eligibility criteria for this"
-            " fund?"
-        ),
+        label="How easy was it to understand the eligibility criteria for this fund?",
         validators=[DataRequired(message="Select a score")],
     )
 
     def __init__(self, *args, **kwargs):
         super(EndOfApplicationPage3Form, self).__init__(*args, **kwargs)
         self.understand_eligibility_criteria.label.text = gettext(
-            "How easy was it to understand the eligibility criteria for this"
-            " fund?"
+            "How easy was it to understand the eligibility criteria for this fund?"
         )
         self.understand_eligibility_criteria.choices = [
             ("very easy", gettext("Very easy")),
@@ -149,12 +129,7 @@ class EndOfApplicationPage4Form(EndOfApplicationPageForm):
     hours_spent = FloatField(
         label="Number of hours spent:",
         validators=[
-            DataRequired(
-                message=(
-                    "Enter a number only. The number must be at least 0.5 or"
-                    " greater."
-                )
-            ),
+            DataRequired(message="Enter a number only. The number must be at least 0.5 or greater."),
             NumberRange(min=0.5),
         ],
     )

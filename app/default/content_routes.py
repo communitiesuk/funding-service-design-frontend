@@ -26,9 +26,7 @@ def accessibility_statement():
     )
 
 
-def determine_all_questions_template_name(
-    fund_short_name: str, round_short_name: str, lang: str, fund: Fund
-):
+def determine_all_questions_template_name(fund_short_name: str, round_short_name: str, lang: str, fund: Fund):
 
     # Allow for COF R2 and R3 to use the old mechanism for translating all questions into welsh - the template
     # for these rounds contains translation tags to build the page on the fly.
@@ -42,14 +40,10 @@ def determine_all_questions_template_name(
         "r3w2",
     ]:
         # In cof rounds, the different windows have the same questions
-        all_questions_prefix = (
-            f"{fund_short_name.lower()}_{round_short_name.lower()[0:2]}"
-        )
+        all_questions_prefix = f"{fund_short_name.lower()}_{round_short_name.lower()[0:2]}"
         template_name = f"all_questions/uses_translations/{all_questions_prefix}_all_questions.html"
     else:
-        all_questions_prefix = (
-            f"{fund_short_name.lower()}_{round_short_name.lower()}"
-        )
+        all_questions_prefix = f"{fund_short_name.lower()}_{round_short_name.lower()}"
         # If in welsh mode but there isn't welsh, default to english
         if (not fund.welsh_available) and lang != "en":
             template_name = f"all_questions/en/{all_questions_prefix}_all_questions_en.html"
@@ -59,24 +53,15 @@ def determine_all_questions_template_name(
     return template_name
 
 
-@content_bp.route(
-    "/all_questions/<fund_short_name>/<round_short_name>", methods=["GET"]
-)
+@content_bp.route("/all_questions/<fund_short_name>/<round_short_name>", methods=["GET"])
 def all_questions(fund_short_name, round_short_name):
-    current_app.logger.info(
-        f"All questions page loaded for fund {fund_short_name} round"
-        f" {round_short_name}."
-    )
-    fund, round = get_fund_and_round(
-        fund_short_name=fund_short_name, round_short_name=round_short_name
-    )
+    current_app.logger.info(f"All questions page loaded for fund {fund_short_name} round {round_short_name}.")
+    fund, round = get_fund_and_round(fund_short_name=fund_short_name, round_short_name=round_short_name)
 
     if fund and round:
         lang = get_lang()
 
-        template_name = determine_all_questions_template_name(
-            fund_short_name, round_short_name, lang, fund
-        )
+        template_name = determine_all_questions_template_name(fund_short_name, round_short_name, lang, fund)
         try:
             return render_template(
                 template_name,
@@ -85,10 +70,7 @@ def all_questions(fund_short_name, round_short_name):
                 migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
             )
         except TemplateNotFound:
-            current_app.logger.warning(
-                "No all questions page found for"
-                f" {fund_short_name}:{round_short_name}"
-            )
+            current_app.logger.warning(f"No all questions page found for {fund_short_name}:{round_short_name}")
     return abort(404)
 
 
@@ -130,15 +112,10 @@ def privacy():
     privacy_notice_url = None
     fund, round = find_fund_and_round_in_request()
 
-    privacy_notice_url = (
-        getattr(round, "privacy_notice", None) if round else None
-    )
+    privacy_notice_url = getattr(round, "privacy_notice", None) if round else None
 
     if privacy_notice_url:
-        current_app.logger.info(
-            f"Privacy notice loading for fund {fund.short_name} round"
-            f" {round.short_name}."
-        )
+        current_app.logger.info(f"Privacy notice loading for fund {fund.short_name} round {round.short_name}.")
         return redirect(privacy_notice_url)
 
     return abort(404)

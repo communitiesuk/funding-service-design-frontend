@@ -10,13 +10,7 @@ class Form:
 
     @staticmethod
     def from_dict(d: dict):
-        return Form(
-            **{
-                k: v
-                for k, v in d.items()
-                if k in inspect.signature(Form).parameters
-            }
-        )
+        return Form(**{k: v for k, v in d.items() if k in inspect.signature(Form).parameters})
 
 
 @dataclass
@@ -32,11 +26,7 @@ class ApplicationMapping:
         children_data = d.pop("children", [])
         children = [Form.from_dict(child) for child in children_data]
         return ApplicationMapping(
-            **{
-                k: v
-                for k, v in d.items()
-                if k in inspect.signature(ApplicationMapping).parameters
-            },
+            **{k: v for k, v in d.items() if k in inspect.signature(ApplicationMapping).parameters},
             children=children,
             section_id=d.get("id"),
         )
