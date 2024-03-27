@@ -38,6 +38,6 @@ email-validator==1.2.1
 #-----------------------------------
 #   Optional
 #-----------------------------------
-python-slugify==6.1.2
+python-slugify==8.0.4
 
 #Jinja2
