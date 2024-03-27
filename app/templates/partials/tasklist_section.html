@@ -61,9 +61,11 @@
                     {{ derive_status_tag("NOT_STARTED", application_meta_data, application_status) }}
                 {% endif %}
             </li>
+            <li>
             {% if not section.all_forms_complete %}
                 <p class="govuk-hint">{% trans %}You must complete all other questions in this section before giving feedback{% endtrans %}</p>
             {% endif %}
+            </li>
         {% endif %}
     </ul>
   </li>

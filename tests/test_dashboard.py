@@ -75,7 +75,7 @@ def test_dashboard_route_search_call(
 ):
     request_mock = mocker.patch("app.default.account_routes.request")
     request_mock.args.get = (
-        lambda key: fund_short_name if key == "fund" else (round_short_name if key == "round" else None)
+        lambda key, default: fund_short_name if key == "fund" else (round_short_name if key == "round" else default)
     )
     get_apps_mock = mocker.patch(
         "app.default.account_routes.search_applications",
@@ -247,7 +247,8 @@ def test_dashboard_route_no_applications(flask_test_client, mocker, mock_login):
 
 
 @pytest.mark.parametrize(
-    "funds,rounds,applications,expected_fund_count,expected_round_count,expected_app_count, fund_short_name",
+    "funds,rounds,applications,expected_fund_count,expected_round_count,expected_app_count,"
+    " fund_short_name,round_short_name",
     [
         # No filters, 2 funds with 2 rounds each
         (
@@ -257,6 +258,7 @@ def test_dashboard_route_no_applications(flask_test_client, mocker, mock_login):
             2,
             4,
             4,
+            None,
             None,
         ),
         # No fund filter, one fund with no rounds one fund with 2 rounds
@@ -268,6 +270,7 @@ def test_dashboard_route_no_applications(flask_test_client, mocker, mock_login):
             2,
             2,
             None,
+            None,
         ),
         # Filter to fund with open rounds
         (
@@ -278,6 +281,7 @@ def test_dashboard_route_no_applications(flask_test_client, mocker, mock_login):
             2,
             2,
             "FSD",
+            None,
         ),
         # Filter to fund with no rounds
         (
@@ -288,6 +292,7 @@ def test_dashboard_route_no_applications(flask_test_client, mocker, mock_login):
             0,
             0,
             "FSD2",
+            None,
         ),
         # 1 app in closed round, 0 in open round
         (
@@ -298,6 +303,29 @@ def test_dashboard_route_no_applications(flask_test_client, mocker, mock_login):
             2,
             1,
             "FSD",
+            None,
+        ),
+        # 1 app in closed round, 0 in open round - filter to closed round
+        (
+            TEST_FUNDS_DATA,
+            TEST_ROUNDS_DATA,
+            TEST_APPLICATION_SUMMARIES[0:1],
+            1,
+            1,
+            1,
+            "FSD",
+            "r2w2",
+        ),
+        # 1 app in closed round, 0 in open round - filter to open round
+        (
+            TEST_FUNDS_DATA,
+            TEST_ROUNDS_DATA,
+            TEST_APPLICATION_SUMMARIES[0:1],
+            1,
+            1,
+            0,
+            "FSD",
+            "r2w3",
         ),
         # 1 app in open round, 0 in closed round
         (
@@ -308,6 +336,7 @@ def test_dashboard_route_no_applications(flask_test_client, mocker, mock_login):
             1,
             1,
             "FSD",
+            None,
         ),
         # 1 fund with 2 rounds and 2 apps, 1 fund with 1 closed round and no
         # apps
@@ -319,6 +348,7 @@ def test_dashboard_route_no_applications(flask_test_client, mocker, mock_login):
             2,
             2,
             None,
+            None,
         ),
         # 1 open round, 0 applications
         (
@@ -328,6 +358,7 @@ def test_dashboard_route_no_applications(flask_test_client, mocker, mock_login):
             1,
             1,
             0,
+            None,
             None,
         ),
     ],
@@ -340,6 +371,7 @@ def test_build_application_data_for_display(
     expected_round_count,
     expected_app_count,
     fund_short_name,
+    round_short_name,
     mocker,
 ):
     mocker.patch(
@@ -351,7 +383,7 @@ def test_build_application_data_for_display(
         new=lambda fund_id, language, as_dict, ttl_hash: [round for round in rounds if round.fund_id == fund_id],
     )
 
-    result = build_application_data_for_display(applications, fund_short_name)
+    result = build_application_data_for_display(applications, fund_short_name, round_short_name)
 
     assert result["total_applications_to_display"] == expected_app_count
     assert len(result["funds"]) == expected_fund_count
