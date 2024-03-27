@@ -19,7 +19,7 @@
 {% endif %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        {% if fund_short_name|upper in ("COF-EOI",) %}
+        {% if is_expression_of_interest %}
         <span class="govuk-caption-l">{{ application_meta_data["fund_name"] }} </span>
         <h1 class="govuk-heading-xl"> {{ application_meta_data["fund_title"]| replace("expression", "Expression") }}
         </h1>
@@ -67,7 +67,7 @@
                 <h2 class="govuk-heading govuk-heading-s">
                     {% trans %}Submitting your application{% endtrans %}
                 </h2>
-                {% if fund_short_name|upper in ("COF-EOI",) %}
+                {% if is_expression_of_interest %}
                 <p class="govuk-body">
                     {% trans %}When you have completed all sections, you'll be able to submit your expression of interest.{% endtrans %}
                 </p>
@@ -87,7 +87,7 @@
                 <h2 class="govuk-heading govuk-heading-s">
                     {% trans %}Get help{% endtrans %}
                 </h2>
-                {% if fund_short_name|upper in ("COF-EOI",) %}
+                {% if is_expression_of_interest %}
                 <p class="govuk-body">
                     {% trans %}General support is now available to applicants via the {% endtrans %}
                     <a class="govuk-link" href="https://mycommunity.org.uk/">{% trans %}My Community website{% endtrans %}</a>
@@ -127,7 +127,7 @@
         {{ round_closed_warning(fund_name, round_title, submission_deadline) }}
         {% endif %}
         <dl>
-            {% if fund_short_name|upper not in ("COF-EOI",) %}
+            {% if is_expression_of_interest %}
                 <dt class="govuk-heading-s dl-inline">{% trans %}Submission deadline:{% endtrans %}</dt>
                 <dd class="govuk-body govuk-!-margin-bottom-2"> {{ submission_deadline|datetime_format }}</dd>
             {% endif %}

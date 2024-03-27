@@ -38,6 +38,7 @@ class Round:
     project_name_field_id: str
     application_guidance: str
     mark_as_complete_enabled: bool = False
+    is_expression_of_interest: bool = False
     feedback_survey_config: FeedbackSurveyConfig = None
 
     def __post_init__(self):
