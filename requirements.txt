@@ -74,7 +74,7 @@ flask-sqlalchemy==3.1.1
     # via
     #   flask-migrate
     #   funding-service-design-utils
-flask-talisman==0.8.1
+flask-talisman==1.1.0
     # via -r requirements.in
 flask-wtf==1.2.1
     # via -r requirements.in
@@ -161,7 +161,6 @@ sentry-sdk[flask]==1.39.1
     # via funding-service-design-utils
 six==1.16.0
     # via
-    #   flask-talisman
     #   pyscss
     #   python-consul
     #   python-dateutil
