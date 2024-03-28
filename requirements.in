@@ -33,7 +33,7 @@ Flask-Babel>=2.0.0
 #   Forms
 #-----------------------------------
 Flask-WTF==1.2.1
-email-validator==1.2.1
+email-validator==2.1.1
 
 #-----------------------------------
 #   Optional

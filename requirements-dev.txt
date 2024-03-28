@@ -90,7 +90,7 @@ dnspython==2.4.2
     #   email-validator
 dparse==0.6.3
     # via -r requirements-dev.in
-email-validator==1.2.1
+email-validator==2.1.1
     # via -r requirements.txt
 exceptiongroup==1.2.0
     # via pytest
