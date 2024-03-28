@@ -19,6 +19,8 @@ jobs:
   tag-to-release:
     if: ${{ github.actor != 'dependabot[bot]' }}
     uses: communitiesuk/funding-service-design-workflows/.github/workflows/tag-to-release.yml@main
+    with:
+      build_static_assets: true
   paketo_build:
     needs: tag-to-release
     permissions:
@@ -26,3 +28,6 @@ jobs:
     uses: communitiesuk/funding-service-design-workflows/.github/workflows/package.yml@main
     with:
       version_to_build: ${{ needs.tag-to-release.outputs.new_tag }}
+      owner: ${{ github.repository_owner }}
+      application: funding-service-design-frontend
+      assets_required: true
