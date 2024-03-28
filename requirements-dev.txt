@@ -21,7 +21,7 @@ beautifulsoup4==4.12.2
     #   -r requirements-dev.in
     #   -r requirements.txt
     #   funding-service-design-utils
-black==23.12.1
+black==24.3.0
     # via -r requirements-dev.in
 blinker==1.7.0
     # via
