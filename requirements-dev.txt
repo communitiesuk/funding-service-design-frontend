@@ -113,7 +113,7 @@ flask==2.3.3
     #   funding-service-design-utils
     #   pytest-flask
     #   sentry-sdk
-flask-assets==2.0
+flask-assets==2.1.0
     # via -r requirements.txt
 flask-babel==2.0.0
     # via
