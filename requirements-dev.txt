@@ -211,7 +211,7 @@ packaging==23.2
     #   pytest
 pathspec==0.12.1
     # via black
-pip-tools==7.3.0
+pip-tools==7.4.1
     # via -r requirements-dev.in
 platformdirs==4.1.0
     # via
@@ -242,7 +242,9 @@ pyjwt[crypto]==2.8.0
     #   -r requirements.txt
     #   funding-service-design-utils
 pyproject-hooks==1.0.0
-    # via build
+    # via
+    #   build
+    #   pip-tools
 pyscss==1.4.0
     # via -r requirements.txt
 pytest==7.4.4
