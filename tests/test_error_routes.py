@@ -13,6 +13,7 @@ empty_round_data = Round(
     prospectus="",
     privacy_notice="",
     instructions="",
+    contact_us_banner="",
     contact_email="",
     contact_phone="",
     contact_textphone="",
