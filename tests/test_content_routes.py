@@ -52,10 +52,7 @@ def test_contact_us(flask_test_client, url, expected_email, expected_title):
     )
     assert (
         len(
-            soup.find_all(
-                "p",
-                string=lambda text: expected_title in text if text else False,
-            )
+            soup.find_all("p", string=lambda text: expected_title in text if text else False)
         )
         == 1
     )

@@ -269,6 +269,7 @@ def get_round_data_fail_gracefully(fund_id, round_id, use_short_name=False):
         prospectus="",
         privacy_notice="",
         instructions="",
+        contact_us_banner="",
         contact_email="",
         contact_phone="",
         contact_textphone="",
