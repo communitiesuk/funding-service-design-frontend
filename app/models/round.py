@@ -29,6 +29,7 @@ class Round:
     prospectus: str
     privacy_notice: str
     instructions: str
+    contact_us_banner: str
     contact_email: str
     contact_phone: str
     contact_textphone: str
