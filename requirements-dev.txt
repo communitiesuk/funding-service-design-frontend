@@ -84,7 +84,7 @@ deepdiff==6.7.1
     # via -r requirements-dev.in
 distlib==0.3.8
     # via virtualenv
-dnspython==2.4.2
+dnspython==2.6.1
     # via
     #   -r requirements.txt
     #   email-validator
