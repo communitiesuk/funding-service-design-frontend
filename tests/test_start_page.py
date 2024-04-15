@@ -14,7 +14,6 @@ default_round_fields = {
     "prospectus": "",
     "privacy_notice": "",
     "instructions": "",
-    "contact_us_banner": "",
     "contact_email": "test@example.com",
     "contact_phone": "123456789",
     "contact_textphone": "123456789",

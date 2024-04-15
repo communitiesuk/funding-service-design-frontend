@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-04-08 11:46+0100\n"
+"POT-Creation-Date: 2024-03-06 12:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.14.0\n"
 
-#: app/create_app.py:123 app/default/application_routes.py:276
+#: app/create_app.py:123 app/default/application_routes.py:275
 msgid "Apply for"
 msgstr ""
 
@@ -247,56 +247,52 @@ msgstr ""
 #: app/templates/application_submitted.html:4
 #: app/templates/eoi_submitted.html:6
 msgid "Application complete"
-msgstr ""
+msgstr "Cais wedi'i gwblhau"
 
 #: app/templates/application_submitted.html:18
 #: app/templates/eoi_submitted.html:19
 msgid "Your reference number"
-msgstr ""
+msgstr "Eich rhif cyfeirnod"
 
 #: app/templates/application_submitted.html:22
 msgid "We have sent you a confirmation email and a copy of your answers to"
-msgstr ""
+msgstr "Rydym wedi anfon e-bost cadarnhau a chopi o'ch atebion i "
 
 #: app/templates/application_submitted.html:24
 #: app/templates/eoi_submitted.html:24
 msgid "What happens next"
-msgstr ""
+msgstr "Beth fydd yn digwydd nesaf"
 
 #: app/templates/application_submitted.html:27
 msgid "Your application to the"
-msgstr ""
+msgstr "Mae eich cais i'r "
 
 #: app/templates/application_submitted.html:27
 msgid "has been submitted."
-msgstr ""
+msgstr "wedi cael ei gyflwyno."
 
 #: app/templates/application_submitted.html:30
 msgid "We'll email you to let you know whether you have been successful."
-msgstr ""
+msgstr "Byddwn yn anfon e-bost i roi gwybod i chi a ydych wedi bod yn llwyddiannus. "
 
 #: app/templates/application_submitted.html:33
 msgid "Return to your applications page."
-msgstr ""
+msgstr "Dychwelyd i'r dudalen ceisiadau. "
 
-#: app/templates/contact_us.html:7
-msgid "Get help with your application"
+#: app/templates/contact_us.html:7 app/templates/footer.html:23
+msgid "Contact us"
 msgstr ""
 
 #: app/templates/contact_us.html:16
-msgid "Contact "
+msgid "Contact the"
+msgstr ""
+
+#: app/templates/contact_us.html:16
+msgid "if you have any questions."
 msgstr ""
 
 #: app/templates/contact_us.html:18
-msgid "Contact page"
-msgstr ""
-
-#: app/templates/contact_us.html:26
-msgid "Contact the "
-msgstr ""
-
-#: app/templates/contact_us.html:27
-msgid "if you have any questions"
+msgid "Contact us if you have any questions."
 msgstr ""
 
 #: app/templates/cookie_policy.html:147
@@ -356,7 +352,7 @@ msgstr ""
 #: app/templates/end_of_application_feedback_page_3.html:21
 #: app/templates/end_of_application_feedback_page_4.html:21
 #: app/templates/end_of_application_survey.html:20
-#: app/templates/tasklist.html:198 app/templates/tasklist.html:207
+#: app/templates/tasklist.html:210 app/templates/tasklist.html:219
 msgid "Applicant feedback survey"
 msgstr ""
 
@@ -457,6 +453,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/eoi_submitted.html:33
+#, fuzzy
 msgid "Your organisation must"
 msgstr ""
 
@@ -525,10 +522,6 @@ msgstr ""
 msgid "Accessibility Statement"
 msgstr ""
 
-#: app/templates/footer.html:23
-msgid "Contact us"
-msgstr ""
-
 #: app/templates/fund_start_page.html:5
 msgid "Start or continue an "
 msgstr ""
@@ -565,7 +558,8 @@ msgstr ""
 msgid "If you need help, email us at"
 msgstr ""
 
-#: app/templates/fund_start_page.html:72 app/templates/tasklist.html:113
+#: app/templates/fund_start_page.html:72
+#: app/templates/partials/contact_details.html:17
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
 "applications through this service."
@@ -667,164 +661,180 @@ msgstr ""
 #: app/templates/tasklist.html:50
 msgid ""
 "When you have written something in every field in a section, the section "
-"will be marked as complete. You can still change your responses in "
+"will be marked\n"
+"                    as complete. You can still change your responses in "
 "sections that are marked as complete."
 msgstr ""
 
-#: app/templates/tasklist.html:54
+#: app/templates/tasklist.html:56
 msgid "Saving progress and making changes"
 msgstr ""
 
-#: app/templates/tasklist.html:57
+#: app/templates/tasklist.html:59
 msgid ""
 "Your work will not save automatically. To make sure you do not lose "
-"anything, select Save and continue regularly, and always before you go "
-"back or close your internet browser window."
-msgstr ""
-
-#: app/templates/tasklist.html:61
-msgid "If you need to edit or revisit any sections, use the browser back button."
+"anything, select Save\n"
+"                    and continue regularly, and always before you go back"
+" or close your internet browser window."
 msgstr ""
 
 #: app/templates/tasklist.html:64
+msgid "If you need to edit or revisit any sections, use the browser back button."
+msgstr ""
+
+#: app/templates/tasklist.html:67
 msgid "You can edit your responses as many times as you like before you submit."
 msgstr ""
 
-#: app/templates/tasklist.html:68
+#: app/templates/tasklist.html:71
 msgid "Submitting your application"
-msgstr ""
-
-#: app/templates/tasklist.html:72
-msgid ""
-"When you have completed all sections, you'll be able to submit your "
-"expression of interest."
 msgstr ""
 
 #: app/templates/tasklist.html:75
 msgid ""
-"Once you have submitted your expression of interest, you'll not be able "
-"to edit, add or change any sections."
+"When you have completed all sections, you'll be able to submit your "
+"expression of\n"
+"                    interest."
 msgstr ""
 
 #: app/templates/tasklist.html:79
+msgid ""
+"Once you have submitted your expression of interest, you'll not be able "
+"to edit, add or\n"
+"                    change any sections."
+msgstr ""
+
+#: app/templates/tasklist.html:84
 msgid ""
 "When you have completed all sections, you'll be able to submit your "
 "application."
 msgstr ""
 
-#: app/templates/tasklist.html:83
+#: app/templates/tasklist.html:88
 msgid ""
 "Once you have submitted your application, you'll not be able to edit, add"
-" or change any sections."
-msgstr ""
-
-#: app/templates/tasklist.html:88
-msgid "Get help"
-msgstr ""
-
-#: app/templates/tasklist.html:92
-msgid "General support is now available to applicants via the "
-msgstr ""
-
-#: app/templates/tasklist.html:93
-msgid "My Community website"
+" or change any\n"
+"                    sections."
 msgstr ""
 
 #: app/templates/tasklist.html:94
-msgid ""
-", which includes an enquiry form as well as a range of helpful documents "
-"and webinars."
+msgid "Get help"
+msgstr ""
+
+#: app/templates/tasklist.html:98
+msgid "General support is now available to applicants via the"
 msgstr ""
 
 #: app/templates/tasklist.html:99
+msgid "My Community website,"
+msgstr ""
+
+#: app/templates/tasklist.html:101
+msgid ""
+"which includes an enquiry form as well as a range of helpful documents "
+"and webinars."
+msgstr ""
+
+#: app/templates/tasklist.html:106
 msgid ""
 "For queries relating to technical issues when using our online "
-"application tools, please"
+"application tools,\n"
+"                    please"
 msgstr ""
 
-#: app/templates/tasklist.html:100
-msgid "email FSD Support"
+#: app/templates/tasklist.html:108
+msgid "email FSD Support."
 msgstr ""
 
-#: app/templates/tasklist.html:105
+#: app/templates/tasklist.html:113
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
-"expressions of interest through this service."
+"expressions of\n"
+"                    interest through this service."
 msgstr ""
 
-#: app/templates/tasklist.html:109
+#: app/templates/tasklist.html:118
 msgid "If you have any questions about the form or the fund, email us at"
 msgstr ""
 
-#: app/templates/tasklist.html:117
+#: app/templates/tasklist.html:122
+msgid ""
+"Do not send any applications or attachments by email. We'll only accept "
+"applications\n"
+"                    through this service."
+msgstr ""
+
+#: app/templates/tasklist.html:127
 msgid "How we'll use your information"
 msgstr ""
 
-#: app/templates/tasklist.html:120
+#: app/templates/tasklist.html:130
 msgid "Read how we'll use the information from your application in our"
 msgstr ""
 
-#: app/templates/tasklist.html:121
+#: app/templates/tasklist.html:131
 msgid "privacy notice"
 msgstr ""
 
-#: app/templates/tasklist.html:131
+#: app/templates/tasklist.html:141
 msgid "Submission deadline:"
 msgstr ""
 
-#: app/templates/tasklist.html:135
+#: app/templates/tasklist.html:145
 msgid "Reference:"
 msgstr ""
 
-#: app/templates/tasklist.html:143
+#: app/templates/tasklist.html:153
 msgid "Status:"
 msgstr ""
 
-#: app/templates/tasklist.html:163
+#: app/templates/tasklist.html:173
 msgid "None of the sections have been completed."
 msgstr ""
 
-#: app/templates/tasklist.html:165
+#: app/templates/tasklist.html:175
 msgid "You have completed"
 msgstr ""
 
-#: app/templates/tasklist.html:166
+#: app/templates/tasklist.html:176
 msgid "of"
 msgstr ""
 
-#: app/templates/tasklist.html:167
+#: app/templates/tasklist.html:177
 msgid "sections."
 msgstr ""
 
-#: app/templates/tasklist.html:182
+#: app/templates/tasklist.html:192
 msgid "Applicant feedback survey (not scored)"
 msgstr ""
 
-#: app/templates/tasklist.html:187
+#: app/templates/tasklist.html:197
 msgid ""
 "You must complete all other sections before starting the feedback survey."
-" This section is optional and should take approximately 1 minute to "
+" This section is\n"
+"                    optional and should take approximately 1 minute to "
 "complete."
 msgstr ""
 
-#: app/templates/tasklist.html:191
+#: app/templates/tasklist.html:202
 msgid ""
 "You must complete all other sections before starting the feedback survey."
-" This section should take approximately 1 minute to complete."
+" This section\n"
+"                    should take approximately 1 minute to complete."
 msgstr ""
 
 #: app/templates/partials/tasklist_section.html:48
-#: app/templates/tasklist.html:201
+#: app/templates/tasklist.html:213
 msgid "Cannot start yet"
 msgstr ""
 
-#: app/templates/tasklist.html:227
+#: app/templates/tasklist.html:239
 msgid "Applicant feedback submitted"
 msgstr ""
 
 #: app/templates/all_questions/cy/cof-eoi_r1_all_questions_cy.html:7
 #: app/templates/all_questions/cy/cof_r3w3_all_questions_cy.html:6
-#: app/templates/all_questions/cy/cof_r4w1_all_questions_cy.html:7
+#: app/templates/all_questions/cy/cof_r4w1_all_questions_cy.html:6
 #: app/templates/all_questions/en/cof-eoi_r1_all_questions_en.html:7
 #: app/templates/all_questions/en/cof_r3w3_all_questions_en.html:7
 #: app/templates/all_questions/en/cof_r4w1_all_questions_en.html:7
@@ -837,7 +847,7 @@ msgstr ""
 
 #: app/templates/all_questions/cy/cof-eoi_r1_all_questions_cy.html:11
 #: app/templates/all_questions/cy/cof_r3w3_all_questions_cy.html:10
-#: app/templates/all_questions/cy/cof_r4w1_all_questions_cy.html:11
+#: app/templates/all_questions/cy/cof_r4w1_all_questions_cy.html:10
 #: app/templates/all_questions/en/cof-eoi_r1_all_questions_en.html:11
 #: app/templates/all_questions/en/cof_r3w3_all_questions_en.html:11
 #: app/templates/all_questions/en/cof_r4w1_all_questions_en.html:11
@@ -851,7 +861,7 @@ msgstr ""
 
 #: app/templates/all_questions/cy/cof-eoi_r1_all_questions_cy.html:11
 #: app/templates/all_questions/cy/cof_r3w3_all_questions_cy.html:10
-#: app/templates/all_questions/cy/cof_r4w1_all_questions_cy.html:11
+#: app/templates/all_questions/cy/cof_r4w1_all_questions_cy.html:10
 #: app/templates/all_questions/en/cof-eoi_r1_all_questions_en.html:11
 #: app/templates/all_questions/en/cof_r3w3_all_questions_en.html:11
 #: app/templates/all_questions/en/cof_r4w1_all_questions_en.html:11
@@ -863,7 +873,7 @@ msgstr ""
 
 #: app/templates/all_questions/cy/cof-eoi_r1_all_questions_cy.html:16
 #: app/templates/all_questions/cy/cof_r3w3_all_questions_cy.html:15
-#: app/templates/all_questions/cy/cof_r4w1_all_questions_cy.html:16
+#: app/templates/all_questions/cy/cof_r4w1_all_questions_cy.html:15
 #: app/templates/all_questions/en/cof-eoi_r1_all_questions_en.html:16
 #: app/templates/all_questions/en/cof_r3w3_all_questions_en.html:16
 #: app/templates/all_questions/en/cof_r4w1_all_questions_en.html:16
@@ -3590,49 +3600,57 @@ msgstr ""
 msgid "You cannot change the language of an existing application."
 msgstr ""
 
-#: app/templates/partials/contact_details.html:4
+#: app/templates/partials/contact_details.html:3
 msgid "Email"
 msgstr ""
 
-#: app/templates/partials/contact_details.html:12
-#: app/templates/partials/contact_details.html:38
-#: app/templates/partials/contact_details.html:48
+#: app/templates/partials/contact_details.html:11
+#: app/templates/partials/contact_details.html:45
+#: app/templates/partials/contact_details.html:55
 msgid "except public holidays"
 msgstr ""
 
 #: app/templates/partials/contact_details.html:16
+msgid "We will respond to policy and general queries by email."
+msgstr ""
+
+#: app/templates/partials/contact_details.html:20
 msgid "Arrange a callback"
 msgstr ""
 
-#: app/templates/partials/contact_details.html:18
-msgid "To help us call you back quickly, email us at"
-msgstr ""
-
-#: app/templates/partials/contact_details.html:21
-msgid "and tell us"
+#: app/templates/partials/contact_details.html:22
+msgid "If you need support filling in the form, we can help you over the phone."
 msgstr ""
 
 #: app/templates/partials/contact_details.html:25
-msgid "that this is a callback request in the subject of your email"
-msgstr ""
-
-#: app/templates/partials/contact_details.html:26
-msgid "what you need help with"
-msgstr ""
-
-#: app/templates/partials/contact_details.html:27
-msgid "your phone number"
+msgid "To help us call you back quickly, email us at"
 msgstr ""
 
 #: app/templates/partials/contact_details.html:28
-msgid "when to call you"
+msgid "and tell us"
 msgstr ""
 
 #: app/templates/partials/contact_details.html:32
+msgid "that this is a callback request in the subject of your email"
+msgstr ""
+
+#: app/templates/partials/contact_details.html:33
+msgid "what you need help with"
+msgstr ""
+
+#: app/templates/partials/contact_details.html:34
+msgid "your phone number"
+msgstr ""
+
+#: app/templates/partials/contact_details.html:35
+msgid "when to call you"
+msgstr ""
+
+#: app/templates/partials/contact_details.html:39
 msgid "Telephone"
 msgstr ""
 
-#: app/templates/partials/contact_details.html:43
+#: app/templates/partials/contact_details.html:50
 msgid "Textphone"
 msgstr ""
 

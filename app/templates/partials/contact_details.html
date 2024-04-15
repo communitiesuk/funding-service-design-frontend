@@ -1,5 +1,4 @@
 {% macro contact_details(contact_us_email_address, contact_us_phone, contact_us_text_phone, opening_days, opening_time) %}
-
     {% if contact_us_email_address %}
         <h3 class="govuk-heading-s">{% trans %}Email{% endtrans %}</h3>
         <ul class="govuk-list">
@@ -9,11 +8,19 @@
                 </a>
             </li>
             <li>
-                {{ opening_time }}: {{ opening_days }} ({% trans %}except public holidays{% endtrans %})
+                {{ opening_days }}: {{ opening_time }} ({% trans %}except public holidays{% endtrans %})
             </li>
         </ul>
 
-        <h2 class="govuk-heading-s">{% trans %}Arrange a callback{% endtrans %}</h2>
+        <div class="govuk-inset-text">
+            <p>{% trans %}We will respond to policy and general queries by email.{% endtrans %}</p>
+            <p>{% trans %}Do not send any applications or attachments by email. We'll only accept applications through this service.{% endtrans %}</p>
+        </div>
+
+        <h2 class="govuk-heading-m">{% trans %}Arrange a callback{% endtrans %}</h2>
+        <p class="govuk-body">
+            {% trans %}If you need support filling in the form, we can help you over the phone.{% endtrans %}
+        </p>
         <p class="govuk-body">
             {% trans %}To help us call you back quickly, email us at{% endtrans %}
             <a class="govuk-link" href="mailto:{{ contact_us_email_address }}">
@@ -35,7 +42,7 @@
                 {{ contact_us_phone }}
             </li>
             <li>
-                {{ opening_time }}: {{ opening_days }} ({% trans %}except public holidays{% endtrans %})
+                {{ opening_days }}: {{ opening_time }} ({% trans %}except public holidays{% endtrans %})
             </li>
         </ul>
     {% endif %}
@@ -45,7 +52,7 @@
                 <li>{{ contact_us_text_phone }}
             </li>
             <li>
-                {{ opening_time }}: {{ opening_days }} ({% trans %}except public holidays{% endtrans %})
+                {{ opening_days }}: {{ opening_time }} ({% trans %}except public holidays{% endtrans %})
             </li>
         </ul>
     {% endif %}

@@ -8,7 +8,6 @@ from tests.api_data.test_data_forms import COF_TEST_FORMS
 common_round_data = {
     "opens": "2022-09-01T00:00:01",
     "assessment_deadline": "2030-03-20T00:00:01",
-    "contact_us_banner": "",
     "contact_email": "test@example.com",
     "contact_phone": "123456789",
     "contact_textphone": "123456789",
