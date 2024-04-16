@@ -11,7 +11,7 @@ class TestConfig(DefaultConfig):
     RSA256_PUBLIC_KEY = base64.b64decode(environ.get("RSA256_PUBLIC_KEY_BASE64")).decode()
 
     # Redis Feature Toggle Configuration
-    REDIS_INSTANCE_NAME = "funding-service-magic-links-test"
+    REDIS_INSTANCE_NAME = "pre-award-redis-test"
 
     if not hasattr(DefaultConfig, "VCAP_SERVICES"):
         REDIS_INSTANCE_URI = environ.get("REDIS_INSTANCE_URI", "redis://localhost:6379")

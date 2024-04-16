@@ -13,7 +13,7 @@ class DevConfig(DefaultConfig):
     SESSION_COOKIE_DOMAIN = getenv("SESSION_COOKIE_DOMAIN")
 
     # Redis Feature Toggle Configuration
-    REDIS_INSTANCE_NAME = "funding-service-magic-links-dev"
+    REDIS_INSTANCE_NAME = "pre-award-redis-dev"
 
     if not hasattr(DefaultConfig, "VCAP_SERVICES"):
         REDIS_INSTANCE_URI = getenv("REDIS_INSTANCE_URI", "redis://localhost:6379")

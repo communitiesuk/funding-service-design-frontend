@@ -10,7 +10,7 @@ from fsd_utils import configclass
 class ProductionConfig(DefaultConfig):
 
     # Redis Feature Toggle Configuration
-    REDIS_INSTANCE_NAME = "funding-service-magic-links"
+    REDIS_INSTANCE_NAME = "pre-award-redis"
 
     if not hasattr(DefaultConfig, "VCAP_SERVICES"):
         REDIS_INSTANCE_URI = environ.get("REDIS_INSTANCE_URI", "redis://localhost:6379")
