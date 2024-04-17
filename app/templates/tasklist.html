@@ -127,7 +127,7 @@
         {{ round_closed_warning(fund_name, round_title, submission_deadline) }}
         {% endif %}
         <dl>
-            {% if is_expression_of_interest %}
+            {% if not is_expression_of_interest %}
                 <dt class="govuk-heading-s dl-inline">{% trans %}Submission deadline:{% endtrans %}</dt>
                 <dd class="govuk-body govuk-!-margin-bottom-2"> {{ submission_deadline|datetime_format }}</dd>
             {% endif %}
