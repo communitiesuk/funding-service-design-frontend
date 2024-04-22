@@ -30,7 +30,7 @@
 
             {% if round_data %}
                 {{ contact_details(
-                            round_data.contact_email,
+                            round_data.contact_email if not round_data.contact_us_banner else "fsd.support@levellingup.gov.uk",
                             round_data.contact_phone,
                             round_data.contact_phone,
                             round_data.support_days,

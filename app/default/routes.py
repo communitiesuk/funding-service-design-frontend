@@ -33,6 +33,7 @@ def index_fund_round(fund_short_name, round_short_name):
         service_url=Config.MAGIC_LINK_URL.format(fund_short_name=fund_short_name, round_short_name=round_short_name),
         fund_name=fund_data.name,
         fund_short_name=fund_short_name,
+        round_short_name=round_data.short_name,
         fund_title=fund_data.title,
         round_title=round_data.title,
         submission_deadline=round_data.deadline,
@@ -43,6 +44,7 @@ def index_fund_round(fund_short_name, round_short_name):
         welsh_available=fund_data.welsh_available,
         migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
         is_expression_of_interest=round_data.is_expression_of_interest,
+        link_to_contact_us_page=round_data.reference_contact_page_over_email,
     )
 
 
