@@ -1,31 +1,17 @@
 LOOKUPS = {
-    "about-your-organisation": "About your organisation",
-    "organisation-name": "Organisation name",
-    "organisation-single-name": "Organisation name",
-    "organisation-address": "Registered organisation address",
-    "organisation-main-purpose": "Purpose and activities",
-    "organisation-web-links": "Website and social media",
+    "application_name": "Application name",
     "organisation_information": "Organisation information",
-    "organisation-charitable-objects": "What are your organisation’s charitable objects?",
-    "ns-membership-organisations": "Which membership organisations are you a member of?",
-    "ns-org-name": "Organisation information",
-    "your_organisation": "Your organisation",
+    "applicant_information": "Applicant information",
+    "joint_applicant": "Joint application",
     "unscored": "Unscored",
-    "general_information": "General information",
-    "org_info_ns": "Organisation information",
-    "activities": "Activities",
     "declarations": "Declarations",
-    "lead-contact-details-and-auth-signatory": "Lead contact details",
-    "annual-turnover": "What is your organisation's annual turnover?",
+    "project_costs": "Project costs",
+    "total_expected_cost": "Total expected cost",
+    "refurbishment costs": "Refurbishment costs",
+    "auction_costs": "Auction costs",
+    "about_your_project": "About your project",
+    "vacant_property_details": "Vacant property details",
+    "designated_area_details": "Designated area details",
+    "milestones": "Project milestones",
 }
-LISTS = {
-    "list_ns_membership_organisations": {
-        "type": "string",
-        "items": [
-            {"text": "Homeless Link", "value": "homeless-link"},
-            {"text": "Housing Justice", "value": "housing-justice"},
-            {"text": "Both", "value": "both"},
-            {"text": "None", "value": "none"},
-        ],
-    }
-}
+LISTS = {}

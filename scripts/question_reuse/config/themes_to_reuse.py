@@ -1,26 +1,35 @@
 THEMES_TO_REUSE = {
-    "general_information": {
+    "application_name": {
         "answers": [
-            "reuse-organisation-name",
-            "reuse-organisation-address",
-            "reuse_organisation_other_names_yes_no",
-            "reuse-alt-org-name-1",
-            "reuse-alt-org-name-2",
-            "reuse-alt-org-name-3",
-            "reuse-organisation-website-social-media-links",
+            "qbBtUh",
         ]
     },
-    "activities": {"answers": ["reuse-organisation-main-purpose"]},
-    "org_info_ns": {
+    "organisation_information": {
         "answers": [
-            "reuse-organisation-name",
-            "reuse-organisation-address",
-            "reuse-english-region",
-            "reuse-organisation-main-purpose",
-            "reuse-charitable-objects",
-            "reuse-annual-turnover-23",
-            "reuse-annual-turnover-22",
-            "ns-membership-organisations"
+            "WLddBt",
+            "okHmBB",
+            "bQOXTi",
+            "phaosT",
         ]
+    },
+    "applicant_information": {
+        "answers": ["OkKkMd", "Lwkcam", "XfiUqN", "DlZjvr"]
+    },
+    "joint_applicant": {"answers": ["luWnQp", "cVDqxW", "CyfqVo", "EvfEzH"]},
+    "declarations": {"answers": {"QUaOGq"}},
+    "total_expected_cost": {
+        "answers": {"lfXuaP", "OBXEXZ", "KSQYyb", "QveKZm", "pyCINJ"}
+    },
+    "refurbishment_costs": {"answers": {"pfEHzn", "SMwXcK", "xUgKLI"}},
+    "auction_costs": {"answers": {"kNlEvn", "QXHlgU"}},
+    "other_costs": {"answers": {"uJIluf", "kRiNuO"}},
+    "vacant_property_details": {
+        "answers": {"dwLpZU", "rFpLZQ", "NnOqGc", "qYtKIg", "ndpQJk", "vAvGTE"}
+    },
+    "designated_area_details": {
+        "answers": {"frDgtU", "fmWgiF", "boXxzj", "eBpXPM"}
+    },
+    "milestones": {
+        "answers": {"yvpmIv", "gzJqwe", "ihfalZ", "fIkkRN", "VoAANy", "KFjxBs"}
     },
 }

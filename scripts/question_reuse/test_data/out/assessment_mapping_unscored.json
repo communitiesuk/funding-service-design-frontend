@@ -5,42 +5,140 @@
             "name": "Unscored",
             "sub_criteria": [
                 {
+                    "id": "application_name",
+                    "name": "Application name",
+                    "themes": [
+                        {
+                            "id": "application_name",
+                            "name": "Application name",
+                            "answers": [
+                                {
+                                    "field_id": "qbBtUh",
+                                    "form_name": "name-your-application-hsra",
+                                    "field_type": "TextField",
+                                    "presentation_type": "text",
+                                    "question": "What would you like to name you application?"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
                     "id": "organisation_information",
                     "name": "Organisation information",
                     "themes": [
                         {
-                            "id": "general_information",
-                            "name": "General information",
+                            "id": "organisation_information",
+                            "name": "Organisation information",
                             "answers": [
                                 {
-                                    "field_id": "reuse-organisation-name",
-                                    "form_name": "org-info-3",
+                                    "field_id": "WLddBt",
+                                    "form_name": "organisation-information-hsra",
                                     "field_type": "TextField",
                                     "presentation_type": "text",
-                                    "question": "Organisation name"
+                                    "question": "Which local authority are you applying from?"
                                 },
                                 {
-                                    "field_id": "reuse-organisation-address",
-                                    "form_name": "org-info-3",
-                                    "field_type": "UkAddressField",
-                                    "presentation_type": "address",
-                                    "question": "Organisation address"
+                                    "field_id": "okHmBB",
+                                    "form_name": "organisation-information-hsra",
+                                    "field_type": "TextField",
+                                    "presentation_type": "text",
+                                    "question": "Full name"
                                 },
                                 {
-                                    "field_id": "reuse_organisation_other_names_yes_no",
-                                    "form_name": "org-info-3",
+                                    "field_id": "bQOXTi",
+                                    "form_name": "organisation-information-hsra",
+                                    "field_type": "EmailAddressField",
+                                    "presentation_type": "text",
+                                    "question": "Email address"
+                                },
+                                {
+                                    "field_id": "phaosT",
+                                    "form_name": "organisation-information-hsra",
+                                    "field_type": "TelephoneNumberField",
+                                    "presentation_type": "text",
+                                    "question": "Telephone number"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "applicant_information",
+                    "name": "Applicant information",
+                    "themes": [
+                        {
+                            "id": "applicant_information",
+                            "name": "Applicant information",
+                            "answers": [
+                                {
+                                    "field_id": "OkKkMd",
+                                    "form_name": "applicant-information-hsra",
+                                    "field_type": "TextField",
+                                    "presentation_type": "text",
+                                    "question": "Full name"
+                                },
+                                {
+                                    "field_id": "Lwkcam",
+                                    "form_name": "applicant-information-hsra",
+                                    "field_type": "TextField",
+                                    "presentation_type": "text",
+                                    "question": "Job title"
+                                },
+                                {
+                                    "field_id": "XfiUqN",
+                                    "form_name": "applicant-information-hsra",
+                                    "field_type": "EmailAddressField",
+                                    "presentation_type": "text",
+                                    "question": "Email address"
+                                },
+                                {
+                                    "field_id": "DlZjvr",
+                                    "form_name": "applicant-information-hsra",
+                                    "field_type": "TelephoneNumberField",
+                                    "presentation_type": "text",
+                                    "question": "Telephone number"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "joint_applicant",
+                    "name": "Joint application",
+                    "themes": [
+                        {
+                            "id": "joint_applicant",
+                            "name": "Joint application",
+                            "answers": [
+                                {
+                                    "field_id": "luWnQp",
+                                    "form_name": "joint-applicant-hsra",
                                     "field_type": "YesNoField",
                                     "presentation_type": "text",
-                                    "question": "Does your organisation use any other names?"
+                                    "question": "Are you making a joint application with another local authority?"
                                 },
-                                null
-                            ]
-                        },
-                        {
-                            "id": "activities",
-                            "name": "Activities",
-                            "answers": [
-                                null
+                                {
+                                    "field_id": "cVDqxW",
+                                    "form_name": "joint-applicant-hsra",
+                                    "field_type": "TextField",
+                                    "presentation_type": "text",
+                                    "question": "Which local authority are you applying with?"
+                                },
+                                {
+                                    "field_id": "CyfqVo",
+                                    "form_name": "joint-applicant-hsra",
+                                    "field_type": "TextField",
+                                    "presentation_type": "text",
+                                    "question": "Full name"
+                                },
+                                {
+                                    "field_id": "EvfEzH",
+                                    "form_name": "joint-applicant-hsra",
+                                    "field_type": "EmailAddressField",
+                                    "presentation_type": "text",
+                                    "question": "Email address"
+                                }
                             ]
                         }
                     ]
@@ -50,7 +148,48 @@
         {
             "id": "declarations",
             "name": "Declarations",
-            "sub_criteria": []
+            "sub_criteria": [
+                {
+                    "id": "organisation_information",
+                    "name": "Organisation information",
+                    "themes": [
+                        {
+                            "id": "organisation_information",
+                            "name": "Organisation information",
+                            "answers": [
+                                {
+                                    "field_id": "WLddBt",
+                                    "form_name": "organisation-information-hsra",
+                                    "field_type": "TextField",
+                                    "presentation_type": "text",
+                                    "question": "Which local authority are you applying from?"
+                                },
+                                {
+                                    "field_id": "okHmBB",
+                                    "form_name": "organisation-information-hsra",
+                                    "field_type": "TextField",
+                                    "presentation_type": "text",
+                                    "question": "Full name"
+                                },
+                                {
+                                    "field_id": "bQOXTi",
+                                    "form_name": "organisation-information-hsra",
+                                    "field_type": "EmailAddressField",
+                                    "presentation_type": "text",
+                                    "question": "Email address"
+                                },
+                                {
+                                    "field_id": "phaosT",
+                                    "form_name": "organisation-information-hsra",
+                                    "field_type": "TelephoneNumberField",
+                                    "presentation_type": "text",
+                                    "question": "Telephone number"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "scored_sections": []

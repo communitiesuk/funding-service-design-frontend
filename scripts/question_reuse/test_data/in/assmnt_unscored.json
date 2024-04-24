@@ -4,18 +4,89 @@
             "id": "unscored",
             "subcriteria": [
                 {
+                    "id": "application_name",
+                    "themes": [
+                        "application_name"
+                    ]
+                },
+                {
                     "id": "organisation_information",
                     "themes": [
-                        "general_information",
-                        "activities"
+                        "organisation_information"
+                    ]
+                },
+                {
+                    "id": "applicant_information",
+                    "themes": [
+                        "applicant_information"
+                    ]
+                },
+                {
+                    "id": "joint_applicant",
+                    "themes": [
+                        "joint_applicant"
                     ]
                 }
             ]
         },
         {
             "id": "declarations",
-            "subcriteria": []
+            "subcriteria": [
+                {
+                    "id": "declarations",
+                    "themes": [
+                        "declarations"
+                    ]
+                }
+            ]
         }
     ],
-    "scored_sections": []
+    "scored_sections": [
+        {
+            "id": "project_costs",
+            "subcriteria": [
+                {
+                    "id": "total_expected_cost",
+                    "themes": [
+                        "total_expected_cost"
+                    ]
+                },
+                {
+                    "id": "refurbishment_costs",
+                    "themes": [
+                        "refurbishment_costs"
+                    ]
+                },
+                {
+                    "id": "auction_costs",
+                    "themes": [
+                        "auction_costs"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "about_your_project",
+            "subcriteria": [
+                {
+                    "id": "vacant_property_details",
+                    "themes": [
+                        "vacant_property_details"
+                    ]
+                },
+                {
+                    "id": "designated_area_details",
+                    "themes": [
+                        "designated_area_details"
+                    ]
+                },
+                {
+                    "id": "designated_area_details",
+                    "themes": [
+                        "designated_area_details"
+                    ]
+                }
+            ]
+        }
+    ]
 }
