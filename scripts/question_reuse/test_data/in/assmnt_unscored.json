@@ -62,6 +62,12 @@
                     "themes": [
                         "auction_costs"
                     ]
+                },
+                {
+                    "id": "other_costs",
+                    "themes": [
+                        "other_costs"
+                    ]
                 }
             ]
         },
@@ -81,9 +87,9 @@
                     ]
                 },
                 {
-                    "id": "designated_area_details",
+                    "id": "milestones",
                     "themes": [
-                        "designated_area_details"
+                        "milestones"
                     ]
                 }
             ]
