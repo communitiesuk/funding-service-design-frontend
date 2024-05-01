@@ -29,6 +29,7 @@ class Round:
     prospectus: str
     privacy_notice: str
     instructions: str
+    contact_us_banner: str
     contact_email: str
     contact_phone: str
     contact_textphone: str
@@ -39,6 +40,7 @@ class Round:
     application_guidance: str
     mark_as_complete_enabled: bool = False
     is_expression_of_interest: bool = False
+    reference_contact_page_over_email: bool = False
     feedback_survey_config: FeedbackSurveyConfig = None
 
     def __post_init__(self):
