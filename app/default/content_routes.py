@@ -17,6 +17,12 @@ from jinja2.exceptions import TemplateNotFound
 content_bp = Blueprint("content_routes", __name__, template_folder="templates")
 
 
+@content_bp.route("/eligibility_result", methods=["GET"])
+def eligiblity_result():
+    eligiblity_result = request.args.get("result")
+    return render_template("eligibility_result.html", eligiblity_result=eligiblity_result)
+
+
 @content_bp.route("/accessibility_statement", methods=["GET"])
 def accessibility_statement():
     current_app.logger.info("Accessibility statement page loaded.")
