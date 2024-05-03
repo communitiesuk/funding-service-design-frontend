@@ -70,6 +70,7 @@ def format_rehydrate_payload(
     returnUrl,
     form_name,
     markAsCompleteEnabled: bool,
+    callback_url=Config.UPDATE_APPLICATION_FORM_ENDPOINT,
 ):
     """
     Returns information in a JSON format that provides the
@@ -113,7 +114,6 @@ def format_rehydrate_payload(
         f" {markAsCompleteEnabled}."
     )
     formatted_data = {}
-    callback_url = Config.UPDATE_APPLICATION_FORM_ENDPOINT
 
     formatted_data["options"] = {
         "callbackUrl": callback_url,
@@ -121,7 +121,7 @@ def format_rehydrate_payload(
         "returnUrl": returnUrl,
         "markAsCompleteComponent": markAsCompleteEnabled,
     }
-    formatted_data["questions"] = extract_subset_of_data_from_application(form_data, "questions")
+    formatted_data["questions"] = extract_subset_of_data_from_application(form_data, "questions") if form_data else None
     formatted_data["metadata"] = {}
     formatted_data["metadata"]["application_id"] = application_id
     formatted_data["metadata"]["form_session_identifier"] = application_id

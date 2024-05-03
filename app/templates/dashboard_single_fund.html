@@ -40,6 +40,20 @@ Your applications
                 {% endif %}
                     {{ applications_table(round["applications"], round["is_past_submission_deadline"], show_language_column, fund["fund_data"]["short_name"]) }}
                 {% if not round["is_past_submission_deadline"] %}
+                    {% if round["round_details"]["has_eligibility"]%}
+                    <form method="POST" action="{{ url_for('eligibility_routes.launch_eligibility', fund_id=fund['fund_data']['id'], round_id=round['round_details']['id']) }}" >
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="account_id" value="{{ account_id }}">
+                        <input type="hidden" name="fund_id" value="{{ fund['fund_data']['id'] }}">
+                        <input type="hidden" name="round_id" value="{{ round['round_details']['id'] }}">
+
+                        {{ govukButton({
+                            'text': gettext('Check eligibility'),
+                            'classes': 'govuk-button--secondary'
+                        }) }}
+                    </form>
+
+                    {% endif %}
                     {{ startApplicationButton(form, url_for('account_routes.new'), fund_id=fund["fund_data"]["id"], round_id=round["round_details"]["id"], existing_applications_count=round["applications"]|count) }}
                 {% endif %}
             {% endif %}
