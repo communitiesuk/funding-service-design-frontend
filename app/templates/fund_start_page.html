@@ -66,7 +66,11 @@
             <h2 class="govuk-heading-m">{% trans%}Get help {% endtrans %}</h2>
                 {% if link_to_contact_us_page %}
                 <p class="govuk-body">
-                    If you have questions about the form or the fund,
+                    {% if round_short_name == "R4W2" or fund_short_name == "cof-eoi" %}
+                        If you need help,
+                    {% else %}
+                        If you have questions about the form or the fund,
+                    {% endif %}
                     <a class="govuk-link" href="{{
                         url_for(
                             "content_routes.contact_us",

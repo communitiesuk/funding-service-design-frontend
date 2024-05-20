@@ -106,11 +106,22 @@
                 </p>
                 {% else %}
                 <p class="govuk-body">
-                    {% trans %}If you have any questions about the form or the fund, email us at{% endtrans %} <a
-                        class="govuk-link" href="mailto:{{ contact_us_email_address }}">{{ contact_us_email_address
-                        }}</a>.
-                </p>
-                <p>{% trans %}Do not send any applications or attachments by email. We'll only accept applications through this service.{% endtrans %}</p>
+                    {% if round_short_name == "R4W2" %}
+                        If you need help,
+                        <a class="govuk-link" href="{{
+                            url_for(
+                                "content_routes.contact_us",
+                                fund=fund_short_name,
+                                round=round_short_name
+                            )
+                        }}">contact us.</a>
+                    {% else %}
+                        {% trans %}If you have any questions about the form or the fund, email us at{% endtrans %} <a
+                            class="govuk-link" href="mailto:{{ contact_us_email_address }}">{{ contact_us_email_address
+                            }}</a>.
+                    {% endif %}
+                        </p>
+                        <p>{% trans %}Do not send any applications or attachments by email. We'll only accept applications through this service.{% endtrans %}</p>
                 {% endif %}
 
                 <h2 class="govuk-heading govuk-heading-s">

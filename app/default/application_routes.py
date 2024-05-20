@@ -271,6 +271,7 @@ def tasklist(application_id):
             application_guidance=app_guidance,
             existing_feedback_map=existing_feedback_map,
             feedback_survey_data=feedback_survey_data,
+            round_short_name=round_data.short_name,
             migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
             # Set service_title here so it uses the application language - overrides the context_processor
             service_title=gettext("Apply for") + " " + fund_data.title,  # title is already translated
