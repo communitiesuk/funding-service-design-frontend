@@ -28,6 +28,10 @@ def index_fund_round(fund_short_name, round_short_name):
     if round_status.not_yet_open:
         abort(404)
 
+    show_contact_us = False
+    if round_data.short_name == "R4W2" or fund_short_name == "cof-eoi":
+        show_contact_us = True
+
     return render_template(
         "fund_start_page.html",
         service_url=Config.MAGIC_LINK_URL.format(fund_short_name=fund_short_name, round_short_name=round_short_name),
@@ -45,6 +49,7 @@ def index_fund_round(fund_short_name, round_short_name):
         migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
         is_expression_of_interest=round_data.is_expression_of_interest,
         link_to_contact_us_page=round_data.reference_contact_page_over_email,
+        show_contact_us=show_contact_us,
     )
 
 
