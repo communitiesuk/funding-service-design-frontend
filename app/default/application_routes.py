@@ -246,6 +246,10 @@ def tasklist(application_id):
             ),
         )
 
+    show_contact_us = False
+    if round_data.short_name == "R4W2":
+        show_contact_us = True
+
     with force_locale(application.language):
         response = make_response()
         if request.cookies.get("language") != application.language:
@@ -271,7 +275,7 @@ def tasklist(application_id):
             application_guidance=app_guidance,
             existing_feedback_map=existing_feedback_map,
             feedback_survey_data=feedback_survey_data,
-            round_short_name=round_data.short_name,
+            show_contact_us=show_contact_us,
             migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
             # Set service_title here so it uses the application language - overrides the context_processor
             service_title=gettext("Apply for") + " " + fund_data.title,  # title is already translated
