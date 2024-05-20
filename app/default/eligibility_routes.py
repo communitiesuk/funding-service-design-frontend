@@ -14,7 +14,7 @@ from flask import url_for
 eligibility_bp = Blueprint("eligibility_routes", __name__, template_folder="templates")
 
 
-def get_fund_and_round_short_name(fund_id,round_id):
+def get_fund_and_round_short_name(fund_id, round_id):
     fund_data = get_fund_data(
         fund_id=fund_id,
         language="en",
