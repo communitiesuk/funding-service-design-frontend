@@ -86,7 +86,7 @@ govuk-frontend-jinja==2.7.0
     # via -r requirements.in
 greenlet==3.0.3
     # via sqlalchemy
-gunicorn==22.0.0
+gunicorn==20.1.0
     # via funding-service-design-utils
 idna==3.6
     # via
