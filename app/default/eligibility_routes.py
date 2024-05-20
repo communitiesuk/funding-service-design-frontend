@@ -1,3 +1,6 @@
+from app.default.data import get_fund_data
+from app.default.data import get_round_data
+from app.default.data import get_ttl_hash
 from app.helpers import format_rehydrate_payload
 from app.helpers import get_token_to_return_to_application
 from config import Config
@@ -11,9 +14,29 @@ from flask import url_for
 eligibility_bp = Blueprint("eligibility_routes", __name__, template_folder="templates")
 
 
+def get_fund_and_round_short_name(fund_id,round_id):
+    fund_data = get_fund_data(
+        fund_id=fund_id,
+        language="en",
+        as_dict=False,
+        ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+    )
+    round_data = get_round_data(
+        fund_id,
+        round_id,
+        as_dict=False,
+        ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+    )
+    return fund_data.short_name.lower(), round_data.short_name.lower()
+
+
 @eligibility_bp.route("/eligibility_result", methods=["GET"])
 def eligiblity_result():
-    eligiblity_result = request.args.get("result")
+    current_app.logger.info(f"Eligibility launch result")
+    try:
+        eligiblity_result = request.args.get("result")
+    except Exception as e:
+        current_app.logger.info(f"exception launch result")
     return render_template("eligibility_result.html", eligiblity_result=eligiblity_result)
 
 
@@ -21,9 +44,10 @@ def eligiblity_result():
 def launch_eligibility(fund_id, round_id):
     # TODO do something with the fund and round id here to find out what the form name should be
     # It should be stored as part of the eligibility_config json in the round
-    form_name = "hsra-r1-eligibility"
+    fund_name, round_name = get_fund_and_round_short_name(fund_id, round_id)
+    form_name = f"{fund_name}-{round_name}-eligibility"
 
-    current_app.logger.info(f"Eligibility launch request for fund {fund_id} round {round_id}")
+    current_app.logger.info(f"Eligibility launch request for fund {fund_name} round {round_name}")
     return_url = request.host_url + url_for("eligibility_routes.eligiblity_result", result=True)
     current_app.logger.info(f"Url the form runner should return to '{return_url}'.")
 
@@ -36,8 +60,8 @@ def launch_eligibility(fund_id, round_id):
         application_id=None,
         returnUrl=return_url,
         form_name=form_name,
-        markAsCompleteEnabled=False,  # assume we don't have it for eligibility
-        callback_url=Config.UPDATE_ELIGIBILITY_RESULT_ENDPOINT,
+        markAsCompleteEnabled=False  # assume we don't have it for eligibility
+        # callback_url=Config.UPDATE_ELIGIBILITY_RESULT_ENDPOINT,
     )
 
     rehydration_token = get_token_to_return_to_application(form_name, rehydrate_payload)
