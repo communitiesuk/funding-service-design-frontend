@@ -84,7 +84,7 @@ deepdiff==6.7.1
     # via -r requirements-dev.in
 distlib==0.3.8
     # via virtualenv
-dnspython==2.4.2
+dnspython==2.6.1
     # via
     #   -r requirements.txt
     #   email-validator
@@ -152,7 +152,7 @@ gunicorn==20.1.0
     #   funding-service-design-utils
 identify==2.5.33
     # via pre-commit
-idna==3.6
+idna==3.7
     # via
     #   -r requirements.txt
     #   email-validator
@@ -287,7 +287,7 @@ redis==4.6.0
     #   -r requirements.txt
     #   flask-redis
     #   flipper-client
-requests==2.31.0
+requests==2.32.0
     # via
     #   -r requirements.txt
     #   funding-service-design-utils
