@@ -64,9 +64,14 @@ secrets:
 
 # You can override any of the values defined above by environment.
 environments:
+  dev:
+    count:
+      spot: 1
   test:
     deployment:
       rolling: 'recreate'
+    count:
+      spot: 2
   uat:
     http:
       alias: "frontend.${COPILOT_ENVIRONMENT_NAME}.access-funding.test.levellingup.gov.uk"
