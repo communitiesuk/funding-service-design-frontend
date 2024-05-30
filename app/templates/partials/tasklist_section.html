@@ -5,10 +5,10 @@
 
   <span class="app-task-list__tag" id="read-declaration-status">
     {% if status_value == not_started_status %}
-      <strong class="govuk-tag not-started-tag">
+    {# djlint:off #}<strong class="govuk-tag not-started-tag">{# djlint:on #}
         {{ application_status("NOT_STARTED") }}
     {% elif status_value == in_progress_status %}
-      <strong class="govuk-tag in-progress-tag-new">
+    {# djlint:off #}<strong class="govuk-tag in-progress-tag-new">{# djlint:on #}
         {{ application_status("IN_PROGRESS") }}
     {% elif status_value == completed_status %}
       {{ application_status("COMPLETED") }}
@@ -18,22 +18,21 @@
   </span>
 {% endmacro %}
 
-
 {% macro tasklist_section(section, application_meta_data, application_status, index, existing_feedback_map) %}
 <li>
     <h2 class="app-task-list__section">
-      {{section["section_title"]}}
+      {{ section["section_title"] }}
     </h2>
     {% if section["section_weighting"] %}
-    <p class="govuk-body">{% trans %}This section is worth{% endtrans %} <b>{{section["section_weighting"]}}</b>% {% trans %}of the assessment criteria{% endtrans %}.</p>
+    <p class="govuk-body">{% trans %}This section is worth{% endtrans %} <b>{{ section["section_weighting"] }}</b>% {% trans %}of the assessment criteria{% endtrans %}.</p>
     {% endif %}
 
     <ul class="app-task-list__items">
       {% for form in section["forms"] %}
       <li class="app-task-list__item task-list__new-design">
         <span class="app-task-list__task-name">
-          <a class="govuk-body govuk-link govuk-link--no-visited-state" href="{{url_for("application_routes.continue_application", application_id=application_meta_data["application_id"], form_name=form["form_name"])}}">
-            {{form["form_title"]}}
+          <a class="govuk-body govuk-link govuk-link--no-visited-state" href="{{ url_for("application_routes.continue_application", application_id=application_meta_data["application_id"], form_name=form["form_name"]) }}">
+            {{ form["form_title"] }}
           </a>
         </span>
         {{ derive_status_tag(form["state"]["status"], application_meta_data, application_status) }}
@@ -52,12 +51,14 @@
                     {% trans %}Feedback on this section submitted{% endtrans %} {{ feedback_value.date_submitted | custom_format_datetime }}
                     {{ derive_status_tag(feedback_value.status, application_meta_data, application_status) }}
                 {% else %}
+                    {# djlint:off #}
                     <a class="govuk-body govuk-link govuk-link--no-visited-state"
                        href="{{ url_for("application_routes.section_feedback_intro",
                                application_id=application_meta_data["application_id"],
                                section_id=section.section_id) }}">
                     {% trans %}Feedback on this section (not scored){% endtrans %}
                     </a>
+                    {# djlint:on #}
                     {{ derive_status_tag("NOT_STARTED", application_meta_data, application_status) }}
                 {% endif %}
             </li>

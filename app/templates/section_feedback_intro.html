@@ -5,13 +5,13 @@
 {% block beforeContent %}
     <a href="{{ url_for("application_routes.tasklist", application_id=application_id) }}"
        class="govuk-back-link">{% trans %}Go back to application overview{% endtrans %}</a>
-{% endblock %}
+{% endblock beforeContent %}
 
 {% block content %}
     {% if migration_banner_enabled %}
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                {{migration_banner()}}
+                {{ migration_banner() }}
             </div>
         </div>
     {% endif %}
@@ -32,7 +32,7 @@
                data-module="govuk-button"
                data-qa="continue_feedback_intro">
                {% trans %}Continue{% endtrans %}
-            </a>
+            {# djlint:off #}</a>{# djlint:on #}
         </div>
     </div>
-{% endblock %}
+{% endblock content %}

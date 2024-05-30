@@ -195,3 +195,16 @@ dt.dl-inline + dd {
   margin-left: 0em;
   clear:right;
 }
+
+.header-pointer-events-none {
+  pointer-events: none;
+}
+
+.display-none-visibility-hidden {
+  display:none;
+  visibility:hidden;
+}
+
+.max-width-none {
+  max-width: none;
+}

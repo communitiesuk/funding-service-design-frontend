@@ -7,33 +7,33 @@
 {% block content %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-            <span class="govuk-caption-l">{% trans %}{{fund_title}}{% endtrans %} {{round_title}}</span>
-            <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
+            <span class="govuk-caption-l">{% trans %}{{ fund_title }}{% endtrans %} {{ round_title }}</span>
+            <h1 class="govuk-heading-xl">{{ pageHeading }}</h1>
             <div class="govuk-!-margin-bottom-8">
                 <h2 class="govuk-heading-m ">{% trans %}Table of contents{% endtrans %}</h2>
                 <ol class="govuk-list govuk-list--number">
                     <li>
-                        <a class="govuk-link" href="#{% trans %}about-organisation{% endtrans %}">{% trans %}About your organisation{% endtrans %}</a>
+                        <a class="govuk-link" href="#{%- trans -%}about-organisation{%- endtrans -%}">{% trans %}About your organisation{% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}about-project{% endtrans %}">{% trans %}About your project{% endtrans %}</a>
+                        <a class="govuk-link" href="#{%- trans -%}about-project{%- endtrans -%}">{% trans %}About your project{% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}strategic-case{% endtrans %}">{% trans %}Strategic case{% endtrans %}</a>
+                        <a class="govuk-link" href="#{%- trans -%}strategic-case{%- endtrans -%}">{% trans %}Strategic case{% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}management-case{% endtrans %}">{% trans %}Management case{% endtrans %}</a>
+                        <a class="govuk-link" href="#{%- trans -%}management-case{%- endtrans -%}">{% trans %}Management case{% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}subsidy-control{% endtrans %}">{% trans %}Subsidy control and state aid{% endtrans %}</a>
+                        <a class="govuk-link" href="#{%- trans -%}subsidy-control{%- endtrans -%}">{% trans %}Subsidy control and state aid{% endtrans %}</a>
                     </li>
                     <li>
-                        <a class="govuk-link" href="#{% trans %}declarations{% endtrans %}">{% trans %}Declarations{% endtrans %}</a>
+                        <a class="govuk-link" href="#{%- trans -%}declarations{%- endtrans -%}">{% trans %}Declarations{% endtrans %}</a>
                     </li>
                 </ol>
             </div>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l " id="{% trans %}about-organisation{% endtrans %}">1. {% trans %}About your organisation{% endtrans %}</h2>
+            <h2 class="govuk-heading-l " id="{%- trans -%}about-organisation{%- endtrans -%}">1. {% trans %}About your organisation{% endtrans %}</h2>
             <h3 class="govuk-heading-m ">1.1. {% trans %}Organisation information{% endtrans %}</h3>
             <h4 class="govuk-heading-s  ">1.1.1. {% trans %}Your unique tracker number{% endtrans %}</h4>
             <p class="govuk-body">{% trans %}This was included in the letter we sent to confirm your successful expression of interest.{% endtrans %}</p>
@@ -207,7 +207,7 @@
                 1.2.4. {% trans %}Lead contact telephone number{% endtrans %}
             </h4>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l " id="{% trans %}about-project{% endtrans %}">
+            <h2 class="govuk-heading-l " id="{%- trans -%}about-project{%- endtrans -%}">
                 2. {% trans %}About your project{% endtrans %}
             </h2>
             <h3 class="govuk-heading-m ">
@@ -491,7 +491,7 @@
                 2.2.4. {% trans %}Is this a registered Asset of Community Value (ACV)?{% endtrans %}
             </h4>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l " id="{% trans %}strategic-case{% endtrans %}">
+            <h2 class="govuk-heading-l " id="{%- trans -%}strategic-case{%- endtrans -%}">
                 3. {% trans %}Strategic case{% endtrans %}
             </h2>
             <p class="govuk-body-l">
@@ -657,7 +657,7 @@
                 </li>
             </ul>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l " id="{% trans %}management-case{% endtrans %}">
+            <h2 class="govuk-heading-l " id="{%- trans -%}management-case{%- endtrans -%}">
                 4. {% trans %}Management case{% endtrans %}
             </h2>
             <p class="govuk-body-l">
@@ -673,10 +673,10 @@
                 {% trans %}Capital costs are the costs of buying or leasing your asset and paying for refurbishment.{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}Community Ownership Fund (COF) will fund up to 80&percnt; of your capital costs, up to a maximum of £2 million.{% endtrans %}
+                {% trans %}Community Ownership Fund (COF) will fund up to 80{# djlint:off #}{# djlint:off #}&percnt;{# djlint:on #}{# djlint:on #} of your capital costs, up to a maximum of £2 million.{% endtrans %}
             </p>
             <p class="govuk-body">
-                {% trans %}At least 20&percnt; of the total capital costs of your project must be covered by other sources (match funding). For example:{% endtrans %}
+                {% trans %}At least 20{# djlint:off #}{# djlint:off #}&percnt;{# djlint:on #}{# djlint:on #} of the total capital costs of your project must be covered by other sources (match funding). For example:{% endtrans %}
             </p>
             <ul class="govuk-list govuk-list--bullet">
                 <li>
@@ -687,7 +687,7 @@
                 </li>
             </ul>
             <p class="govuk-body">
-                {% trans %}(In exceptional circumstances, you may only need to secure 10&percnt; in match funding. Your development support provider will have already confirmed this with you if you're eligible.){% endtrans %}
+                {% trans %}(In exceptional circumstances, you may only need to secure 10{# djlint:off #}{# djlint:off #}&percnt;{# djlint:on #}{# djlint:on #} in match funding. Your development support provider will have already confirmed this with you if you're eligible.){% endtrans %}
             </p>
             <p class="govuk-body">
                 {% trans %}If successful, you must spend all the funding within 12 months.{% endtrans %}
@@ -824,7 +824,7 @@
                 </li>
             </ul>
             <p class="govuk-body">
-                {% trans %}Remember, you can apply for up to fifty thousand pounds (£50,000) of your revenue costs (no more than 20&percnt; of your capital funding).{% endtrans %}
+                {% trans %}Remember, you can apply for up to fifty thousand pounds (£50,000) of your revenue costs (no more than 20{# djlint:off #}{# djlint:off #}&percnt;{# djlint:on #}{# djlint:on #} of your capital funding).{% endtrans %}
             </p>
             <p class="govuk-body">
                 {% trans %}You can use your business plan to provide any information that supports your answers{% endtrans %}
@@ -853,7 +853,7 @@
                 </li>
             </ul>
             <p class="govuk-body">
-                {% trans %}Remember, you can apply for up to £50,000 of your revenue costs (no more than 20&percnt; of your capital funding).{% endtrans %}
+                {% trans %}Remember, you can apply for up to £50,000 of your revenue costs (no more than 20{# djlint:off #}{# djlint:off #}&percnt;{# djlint:on #}{# djlint:on #} of your capital funding).{% endtrans %}
             </p>
             <p class="govuk-body">
                 {% trans %}You can use your business plan to:{% endtrans %}
@@ -1164,7 +1164,7 @@
                     </ul>
                 </li>
             </ul>
-            <h2 class="govuk-heading-l  " id="{% trans %}subsidy-control{% endtrans %}">
+            <h2 class="govuk-heading-l  " id="{%- trans -%}subsidy-control{%- endtrans -%}">
                 5. {% trans %}Subsidy control and state aid{% endtrans %}
             </h2>
             <h3 class="govuk-heading-m ">
@@ -1198,7 +1198,7 @@
                 {% trans %}You can find more information about when state aid rules apply in Northern Ireland in the government guidance.{% endtrans %}
             </p>
             <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-            <h2 class="govuk-heading-l  " id="{% trans %}declarations{% endtrans %}">
+            <h2 class="govuk-heading-l  " id="{%- trans -%}declarations{%- endtrans -%}">
                 6. {% trans %}Check declarations{% endtrans %}
             </h2>
             <h3 class="govuk-heading-m ">
@@ -1221,4 +1221,4 @@
             </h4>
         </div>
     </div>
-{% endblock %}
+{% endblock content %}

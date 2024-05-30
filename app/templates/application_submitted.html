@@ -4,7 +4,7 @@ import govukButton -%}
 {% set pageHeading %}{% trans %}Application complete{% endtrans %}{% endset %}
 {% block content %}
 {% if migration_banner_enabled %}
-  {{migration_banner()}}
+  {{ migration_banner() }}
 {% endif %}
   <div class="govuk-width-container">
     <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
@@ -12,14 +12,14 @@ import govukButton -%}
         <div class="govuk-grid-column-two-thirds">
           <div class="govuk-panel govuk-panel--confirmation">
             <h1 class="govuk-panel__title">
-              {{pageHeading}}
+              {{ pageHeading }}
             </h1>
             <div class="govuk-panel__body">
-              {% trans %}Your reference number{% endtrans %}<br><strong>{{application_reference}}</strong>
+              {% trans %}Your reference number{% endtrans %}<br><strong>{{ application_reference }}</strong>
             </div>
           </div>
 
-          <p class="govuk-body">{% trans %}We have sent you a confirmation email and a copy of your answers to{% endtrans %}&nbsp;<strong>{{application_email}}</strong></p>
+          <p class="govuk-body">{% trans %}We have sent you a confirmation email and a copy of your answers to{% endtrans %}&nbsp;<strong>{{ application_email }}</strong></p>
 
           <h2 class="govuk-heading-m">{% trans %}What happens next{% endtrans %}</h2>
 
@@ -29,7 +29,7 @@ import govukButton -%}
 
             <p class="govuk-body">{% trans %}We'll email you to let you know whether you have been successful.{% endtrans %}</p>
 
-          <a href="{{url_for('account_routes.dashboard', fund=fund_short_name, round=round_short_name)}}" >
+          <a href="{{ url_for('account_routes.dashboard', fund=fund_short_name, round=round_short_name) }}" >
             <p class="govuk-body">{% trans %}Return to your applications page.{% endtrans %}</p>
           </a>
         </div>
@@ -37,4 +37,4 @@ import govukButton -%}
     </main>
   </div>
 
-  {% endblock %}
+  {% endblock content %}
