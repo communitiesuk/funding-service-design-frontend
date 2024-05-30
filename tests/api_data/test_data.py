@@ -22,6 +22,7 @@ common_round_data = {
     "application_guidance": "",
     "mark_as_complete_enabled": False,
     "is_expression_of_interest": False,
+    "eligibility_config": {"has_eligibility": True},
 }
 common_application_data = {
     "account_id": "test-user",
