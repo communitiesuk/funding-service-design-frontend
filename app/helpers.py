@@ -71,6 +71,9 @@ def format_rehydrate_payload(
     form_name,
     markAsCompleteEnabled: bool,
     callback_url=Config.UPDATE_APPLICATION_FORM_ENDPOINT,
+    fund_name=None,
+    round_name=None,
+    has_eligibility=False,
 ):
     """
     Returns information in a JSON format that provides the
@@ -126,6 +129,10 @@ def format_rehydrate_payload(
     formatted_data["metadata"]["application_id"] = application_id
     formatted_data["metadata"]["form_session_identifier"] = application_id
     formatted_data["metadata"]["form_name"] = form_name
+    formatted_data["metadata"]["fund_name"] = fund_name
+    formatted_data["metadata"]["round_name"] = round_name
+    formatted_data["metadata"]["has_eligibility"] = has_eligibility
+
     return formatted_data
 
 

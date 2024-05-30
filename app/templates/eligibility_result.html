@@ -1,15 +1,17 @@
+{% from "partials/start-application-button.html" import startApplicationButton %}
+{% from "govuk_frontend_jinja/components/back-link/macro.html" import govukBackLink %}
 {% extends "base.html" %}
 
-{% set pageHeading %}{% trans %}Eligibility Response{% endtrans %}{% endset %}
-
+{% set pageHeading %}{% trans %}You can now apply for this funding{% endtrans %}{% endset %}
+{% block beforeContent %}  {{ govukBackLink({ "href": backLink, "text": "Back to your applications"}) }} {% endblock %}
 {% block content %}
-<div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
 
-        <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
-        <p class="govuk-body">This is a placeholder eligibility results page</p>
-        <p class="govuk-body">You result is {{ eligiblity_result }}</p>
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
+            <p class="govuk-body">Based on your answers, you can apply for funding to cover the cost of delivering a high street rental auction.</p>
+            {{ startApplicationButton(form, url_for('account_routes.new'), fund_id=fund_id, round_id=round_id, eligibility_confirm=True, existing_applications_count=0) }}
+        </div>
     </div>
-</div>
 
 {% endblock %}
