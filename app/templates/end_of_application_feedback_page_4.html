@@ -5,16 +5,18 @@
 {% block beforeContent %}
     <a href="{{ url_for("application_routes.tasklist", application_id=application_id) }}"
        class="govuk-back-link">{% trans %}Go back to application overview{% endtrans %}</a>
-{% endblock %}
+{% endblock beforeContent %}
 
 {% block content %}
     {% if form.errors.get('hours_spent') %}
-        {{  feedback_error_summary(form.errors.get('hours_spent')[0], "#hours_spent") }}
+        {{ feedback_error_summary(form.errors.get('hours_spent')[0], "#hours_spent") }}
     {% endif %}
+    {# djlint:off #}
     <div class="govuk-grid-row">
+    {# djlint:on #}
         <div class="govuk-grid-column-two-thirds">
             {% if migration_banner_enabled %}
-                {{migration_banner()}}
+                {{ migration_banner() }}
             {% endif %}
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
@@ -36,17 +38,17 @@
                                 application?{% endtrans %}
                             </h1>
                         </legend>
-                        <div class="govuk-form-group  {% if form.errors.get('hours_spent') %} govuk-form-group--error {% endif %}" id="hours_spent">
+                        <div class="govuk-form-group  {% if form.errors.get('hours_spent') %} govuk-form-group--error {% endif -%}" id="hours_spent">
                             <div class="govuk-hint">
                                 {% trans %}This includes time spent attending meetings, preparing documents and business cases, doing
                                 research and collating answers, from both paid and volunteer resources.{% endtrans %}
                         </div>
                         {% if form.errors.get('hours_spent') %}
                             <p id="hours-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">{% trans %}Error:{% endtrans %}</span> {{form.errors.get('hours_spent')[0]}}
+                                <span class="govuk-visually-hidden">{% trans %}Error:{% endtrans %}</span> {{ form.errors.get('hours_spent')[0] }}
                             </p>
                         {% endif %}
-                        <div id="" class="govuk-label govuk-label--s">
+                        <div class="govuk-label govuk-label--s">
                         <label for="hours-spent" class="govuk-label govuk-label--s">
                             {{ form.hours_spent.label }}
                         </label>
@@ -65,4 +67,4 @@
         </div>
 
     </div>
-{% endblock %}
+{% endblock content %}
