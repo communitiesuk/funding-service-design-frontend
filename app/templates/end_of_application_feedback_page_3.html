@@ -5,16 +5,16 @@
 {% block beforeContent %}
     <a href="{{ url_for("application_routes.tasklist", application_id=application_id) }}"
        class="govuk-back-link">{% trans %}Go back to application overview{% endtrans %}</a>
-{% endblock %}
+{% endblock beforeContent %}
 
 {% block content %}
     {% if form.errors.get('understand_eligibility_criteria') %}
-        {{  feedback_error_summary(form.errors.get('understand_eligibility_criteria')[0], "#understand_eligibility_criteria") }}
+        {{ feedback_error_summary(form.errors.get('understand_eligibility_criteria')[0], "#understand_eligibility_criteria") }}
     {% endif %}
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             {% if migration_banner_enabled %}
-                {{migration_banner()}}
+                {{ migration_banner() }}
             {% endif %}
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
@@ -35,10 +35,10 @@
                                 {{ form.understand_eligibility_criteria.label }}
                             </h1>
                         </legend>
-                        <div class="govuk-radios {% if form.errors.get('understand_eligibility_criteria') %} govuk-form-group--error {% endif %}" data-module="govuk-radios" id="understand_eligibility_criteria">
+                        <div class="govuk-radios {% if form.errors.get('understand_eligibility_criteria') %} govuk-form-group--error {% endif -%}" data-module="govuk-radios" id="understand_eligibility_criteria">
                             {% if form.errors.get('understand_eligibility_criteria') %}
                             <p id="experience-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> {{form.errors.get('understand_eligibility_criteria')[0]}}
+                                <span class="govuk-visually-hidden">Error:</span> {{ form.errors.get('understand_eligibility_criteria')[0] }}
                             </p>
                             {% endif %}
                             {% for choice_value, choice_label in form.understand_eligibility_criteria.choices %}
@@ -66,4 +66,4 @@
         </div>
 
     </div>
-{% endblock %}
+{% endblock content %}

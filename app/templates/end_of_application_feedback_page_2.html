@@ -5,17 +5,17 @@
 {% block beforeContent %}
     <a href="{{ url_for("application_routes.tasklist", application_id=application_id) }}"
        class="govuk-back-link">{% trans %}Go back to application overview{% endtrans %}</a>
-{% endblock %}
+{% endblock beforeContent %}
 
 {% block content %}
     {% if form.errors.get('demonstrate_why_org_funding') %}
-        {{  feedback_error_summary(form.errors.get('demonstrate_why_org_funding')[0], "#demonstrate_why_org_funding") }}
+        {{ feedback_error_summary(form.errors.get('demonstrate_why_org_funding')[0], "#demonstrate_why_org_funding") }}
     {% endif %}
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             {% if migration_banner_enabled %}
-                {{migration_banner()}}
+                {{ migration_banner() }}
             {% endif %}
             <div class="govuk-grid-row">
                 <div class="govuk-grid-column-two-thirds">
@@ -36,10 +36,10 @@
                                 {{ form.demonstrate_why_org_funding.label }}
                             </h1>
                         </legend>
-                        <div class="govuk-radios {% if form.errors.get('demonstrate_why_org_funding') %} govuk-form-group--error {% endif %}" data-module="govuk-radios" id="demonstrate_why_org_funding">
+                        <div class="govuk-radios {% if form.errors.get('demonstrate_why_org_funding') %} govuk-form-group--error {% endif -%}" data-module="govuk-radios" id="demonstrate_why_org_funding">
                             {% if form.errors.get('demonstrate_why_org_funding') %}
                             <p id="experience-error" class="govuk-error-message">
-                                <span class="govuk-visually-hidden">Error:</span> {{form.errors.get('demonstrate_why_org_funding')[0]}}
+                                <span class="govuk-visually-hidden">Error:</span> {{ form.errors.get('demonstrate_why_org_funding')[0] }}
                             </p>
                             {% endif %}
                             {% for choice_value, choice_label in form.demonstrate_why_org_funding.choices %}
@@ -63,8 +63,7 @@
                 </div>
             </form>
 
-
         </div>
 
     </div>
-{% endblock %}
+{% endblock content %}

@@ -9,7 +9,7 @@
     <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     {% if migration_banner_enabled %}
-      {{migration_banner()}}
+      {{ migration_banner() }}
     {% endif %}
 
     <div id="cookie-setting-saved-banner" class="govuk-notification-banner govuk-notification-banner--success js-cookies-page-success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" hidden>
@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <h1 class="govuk-heading-l">{{pageHeading}}</h1>
+    <h1 class="govuk-heading-l">{{ pageHeading }}</h1>
     <p class="govuk-body">
         Cookies are small files saved on your phone, tablet or computer when you visit a website.
     </p>
@@ -144,7 +144,7 @@
     </table>
     <div class="govuk-body" id="cookie-settings">
       {% set translated_text %}
-        {%trans%}Do you want to accept analytics cookies?{% endtrans %}
+        {% trans %}Do you want to accept analytics cookies?{% endtrans %}
       {% endset %}
       {{ govukRadios({
         "id": "cookies-analytics",
@@ -159,7 +159,7 @@
         "items": [
           {"value":"granted", "text":gettext("Yes")},{"value": "denied", "text":gettext("No")}
         ]})
-      }}
+    }}
       <button class="govuk-button" data-module="govuk-button" id="cookie-settings-save">
         {% trans %}Save cookie settings{% endtrans %}
       </button>
@@ -167,7 +167,7 @@
 
   </div>
 </div>
-<script nonce="{{ csp_nonce() }}" type="text/javascript" src="{{url_for('static', filename='js/fsd_cookies.js')}}"></script>
+<script nonce="{{ csp_nonce() }}" type="text/javascript" src="{{ url_for('static', filename='js/fsd_cookies.js') }}"></script>
 <script nonce="{{ csp_nonce() }}">
 
    window.dataLayer = window.dataLayer || [];
@@ -190,4 +190,4 @@
 
   initCookieRadios();
 </script>
-{% endblock %}
+{% endblock content %}

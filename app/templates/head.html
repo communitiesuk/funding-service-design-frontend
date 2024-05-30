@@ -27,7 +27,7 @@
             <button type="button" class="govuk-button" data-module="govuk-button" id="deny_cookies_btn">
                 {% trans %}Reject analytics cookies{% endtrans %}
             </button>
-            <a class="govuk-link" href="{{url_for('content_routes.cookie_policy')}}">{% trans %}View cookies{% endtrans %}</a>
+            <a class="govuk-link" href="{{ url_for('content_routes.cookie_policy') }}">{% trans %}View cookies{% endtrans %}</a>
         </div>
     </div>
     <div class="govuk-cookie-banner__message govuk-width-container" role="alert" id="cookies-accepted-msg" hidden>
@@ -35,7 +35,7 @@
             <div class="govuk-grid-column-two-thirds">
                 <div class="govuk-cookie-banner__content">
                     <p class="govuk-body">{% trans %}You've accepted analytics cookies. You can{% endtrans %} <a class="govuk-link"
-                            href="{{url_for('content_routes.cookie_policy')}}">{% trans %}change your cookie settings{% endtrans %}</a> {% trans %}at any time.{% endtrans %}</p>
+                            href="{{ url_for('content_routes.cookie_policy') }}">{% trans %}change your cookie settings{% endtrans %}</a> {% trans %}at any time.{% endtrans %}</p>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
             <div class="govuk-grid-column-two-thirds">
                 <div class="govuk-cookie-banner__content">
                     <p class="govuk-body">{% trans %}You've rejected analytics cookies. You can{% endtrans %} <a class="govuk-link"
-                            href="{{url_for('content_routes.cookie_policy')}}">{% trans %}change your cookie settings{% endtrans %}</a> {% trans %}at any time.{% endtrans %}</p>
+                            href="{{ url_for('content_routes.cookie_policy') }}">{% trans %}change your cookie settings{% endtrans %}</a> {% trans %}at any time.{% endtrans %}</p>
                 </div>
             </div>
         </div>
@@ -61,8 +61,8 @@
         </div>
     </div>
 </div>
-{% endblock %}
-<script nonce="{{ csp_nonce() }}" type="text/javascript" src="{{url_for('static', filename='js/fsd_cookies.js')}}"></script>
+{% endblock bodyStart %}
+<script nonce="{{ csp_nonce() }}" type="text/javascript" src="{{ url_for('static', filename='js/fsd_cookies.js') }}"></script>
 <script nonce="{{ csp_nonce() }}">
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments) }

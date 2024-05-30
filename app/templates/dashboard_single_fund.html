@@ -9,24 +9,23 @@
 
 {% extends "base.html" %}
 {% set pageHeading %}
-{%  if display_data["funds"] %}
-{% trans %}Your applications for {% endtrans %} {{display_data["funds"][0]["fund_data"]["name"]}}
+{% if display_data["funds"] %}
+{% trans %}Your applications for {% endtrans %} {{ display_data["funds"][0]["fund_data"]["name"] }}
 {% else %}
 Your applications
 {% endif %}
 {% endset %}
 {% block content %}
 {% if migration_banner_enabled %}
-    {{migration_banner()}}
+    {{ migration_banner() }}
 {% endif %}
     <h1 class="govuk-heading-xl">{{ pageHeading }}</h1>
     <p class="govuk-body">
-        {% set application_count=display_data["total_applications_to_display"]%}
-        {% trans %}You have started{% endtrans %}&nbsp;{% trans count=application_count%} {{application_count}} application{% pluralize %}{{application_count}} applications{% endtrans %}&nbsp;{% trans %}using this email address{% endtrans %}.
+        {% set application_count=display_data["total_applications_to_display"] %}
+        {% trans %}You have started{% endtrans %}&nbsp;{% trans count=application_count %} {{ application_count }} application{% pluralize %}{{ application_count }} applications{% endtrans %}&nbsp;{% trans %}using this email address{% endtrans %}.
     </p>
 
-    {{available_in_language(inset=False, warn=True, welsh_available=welsh_available)}}
-
+    {{ available_in_language(inset=False, warn=True, welsh_available=welsh_available) }}
 
     {% for fund in display_data["funds"] %}
         {% for round in fund["rounds"] %}
@@ -47,4 +46,4 @@ Your applications
 
     {% endfor %}
 
-{% endblock %}
+{% endblock content %}
