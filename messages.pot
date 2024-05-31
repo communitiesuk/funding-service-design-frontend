@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-04-08 11:46+0100\n"
+"POT-Creation-Date: 2024-05-31 12:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.14.0\n"
 
-#: app/create_app.py:123 app/default/application_routes.py:276
+#: app/create_app.py:123 app/default/application_routes.py:281
 msgid "Apply for"
 msgstr ""
 
@@ -173,74 +173,74 @@ msgid ""
 "funding.levellingup.gov.uk domain and the following services:"
 msgstr ""
 
-#: app/templates/accessibility_statement.html:20
+#: app/templates/accessibility_statement.html:19
 msgid "Community Ownership Fund online application"
 msgstr ""
 
-#: app/templates/accessibility_statement.html:21
+#: app/templates/accessibility_statement.html:20
 msgid "Night Shelter Transformation Fund online application"
 msgstr ""
 
-#: app/templates/accessibility_statement.html:25
+#: app/templates/accessibility_statement.html:24
 msgid "Compliance status"
 msgstr ""
 
-#: app/templates/accessibility_statement.html:26
+#: app/templates/accessibility_statement.html:25
 msgid ""
 "The Access Funding online application website is fully compliant with the"
 " Web Content Accessibility Guidelines version 2.1 AA standard."
 msgstr ""
 
-#: app/templates/accessibility_statement.html:29
+#: app/templates/accessibility_statement.html:27
 msgid "Preparation of this accessibility statement"
 msgstr ""
 
-#: app/templates/accessibility_statement.html:30
+#: app/templates/accessibility_statement.html:28
 msgid ""
 "This statement was prepared in November 2022 and was last updated on 7th "
 "February 2023 following an accessibility audit carried out by"
 msgstr ""
 
-#: app/templates/accessibility_statement.html:31
+#: app/templates/accessibility_statement.html:29
 msgid "The Digital Accessibility Centre (DAC)"
 msgstr ""
 
-#: app/templates/accessibility_statement.html:32
+#: app/templates/accessibility_statement.html:30
 msgid ""
 "additional manual testing and our responses to the findings of these "
 "activities."
 msgstr ""
 
-#: app/templates/accessibility_statement.html:33
+#: app/templates/accessibility_statement.html:31
 msgid "Feedback and contact information"
 msgstr ""
 
-#: app/templates/accessibility_statement.html:34
+#: app/templates/accessibility_statement.html:32
 msgid ""
 "If you find any problems that are not listed on this page or you think "
 "we’re not meeting the accessibility requirements,"
 msgstr ""
 
-#: app/templates/accessibility_statement.html:35
+#: app/templates/accessibility_statement.html:33
 msgid "contact us"
 msgstr ""
 
-#: app/templates/accessibility_statement.html:36
+#: app/templates/accessibility_statement.html:34
 msgid "Enforcement procedure"
 msgstr ""
 
-#: app/templates/accessibility_statement.html:37
+#: app/templates/accessibility_statement.html:35
 msgid ""
 "The Equality and Human Rights Commission (EHRC) is responsible for "
 "enforcing the Public Sector Bodies (Websites and Mobile Applications) "
 "(No. 2) Accessibility Regulations 2018 (the ‘accessibility regulations’)."
 msgstr ""
 
-#: app/templates/accessibility_statement.html:38
+#: app/templates/accessibility_statement.html:36
 msgid "If you’re not happy with how we respond to your complaint,"
 msgstr ""
 
-#: app/templates/accessibility_statement.html:39
+#: app/templates/accessibility_statement.html:37
 msgid "contact the Equality Advisory and Support Service (EASS)"
 msgstr ""
 
@@ -284,7 +284,7 @@ msgid "Get help with your application"
 msgstr ""
 
 #: app/templates/contact_us.html:16
-msgid "Contact "
+msgid "Contact"
 msgstr ""
 
 #: app/templates/contact_us.html:18
@@ -292,11 +292,15 @@ msgid "Contact page"
 msgstr ""
 
 #: app/templates/contact_us.html:26
-msgid "Contact the "
+msgid "Contact the"
 msgstr ""
 
-#: app/templates/contact_us.html:27
+#: app/templates/contact_us.html:26
 msgid "if you have any questions"
+msgstr ""
+
+#: app/templates/contact_us.html:28
+msgid "Contact us if you have any questions"
 msgstr ""
 
 #: app/templates/cookie_policy.html:147
@@ -338,7 +342,7 @@ msgid "using this email address"
 msgstr ""
 
 #: app/templates/dashboard_single_fund.html:13
-msgid "Your applications for "
+msgid "Your applications for"
 msgstr ""
 
 #: app/templates/end_of_application_feedback_page_1.html:7
@@ -354,9 +358,9 @@ msgstr ""
 #: app/templates/end_of_application_feedback_page_1.html:22
 #: app/templates/end_of_application_feedback_page_2.html:22
 #: app/templates/end_of_application_feedback_page_3.html:21
-#: app/templates/end_of_application_feedback_page_4.html:21
+#: app/templates/end_of_application_feedback_page_4.html:23
 #: app/templates/end_of_application_survey.html:20
-#: app/templates/tasklist.html:198 app/templates/tasklist.html:207
+#: app/templates/tasklist.html:209 app/templates/tasklist.html:218
 msgid "Applicant feedback survey"
 msgstr ""
 
@@ -384,23 +388,21 @@ msgstr ""
 msgid "3 of 4 questions"
 msgstr ""
 
-#: app/templates/end_of_application_feedback_page_4.html:24
+#: app/templates/end_of_application_feedback_page_4.html:26
 msgid "4 of 4 questions"
 msgstr ""
 
-#: app/templates/end_of_application_feedback_page_4.html:35
+#: app/templates/end_of_application_feedback_page_4.html:37
 msgid ""
 "Approximately how many hours did your organisation spend preparing and "
-"working on this\n"
-"                                application?"
+"working on this application?"
 msgstr ""
 
-#: app/templates/end_of_application_feedback_page_4.html:41
+#: app/templates/end_of_application_feedback_page_4.html:42
 msgid ""
 "This includes time spent attending meetings, preparing documents and "
-"business cases, doing\n"
-"                                research and collating answers, from both"
-" paid and volunteer resources."
+"business cases, doing research and collating answers, from both paid and "
+"volunteer resources."
 msgstr ""
 
 #: app/templates/end_of_application_feedback_page_4.html:61
@@ -411,14 +413,12 @@ msgstr ""
 #: app/templates/end_of_application_survey.html:22
 msgid ""
 "This section will ask about your overall experience of completing this "
-"application, so\n"
-"                we\n"
-"                can improve our application forms. Your responses will "
-"not be scored."
+"application, so we can improve our application forms. Your responses will"
+" not be scored."
 msgstr ""
 
-#: app/templates/end_of_application_survey.html:29
-#: app/templates/section_feedback_intro.html:34
+#: app/templates/end_of_application_survey.html:27
+#: app/templates/section_feedback_intro.html:33
 msgid "Continue"
 msgstr ""
 
@@ -530,7 +530,7 @@ msgid "Contact us"
 msgstr ""
 
 #: app/templates/fund_start_page.html:5
-msgid "Start or continue an "
+msgid "Start or continue an"
 msgstr ""
 
 #: app/templates/fund_start_page.html:7
@@ -549,23 +549,31 @@ msgstr ""
 msgid "before you apply."
 msgstr ""
 
-#: app/templates/fund_start_page.html:54
-msgid "Submission deadline: "
+#: app/templates/fund_start_page.html:54 app/templates/tasklist.html:142
+msgid "Submission deadline:"
 msgstr ""
 
 #: app/templates/fund_start_page.html:62
 msgid "Enter your email address"
 msgstr ""
 
-#: app/templates/fund_start_page.html:66
-msgid "Get help "
+#: app/templates/fund_start_page.html:66 app/templates/tasklist.html:88
+msgid "Get help"
 msgstr ""
 
-#: app/templates/fund_start_page.html:68
+#: app/templates/fund_start_page.html:70 app/templates/tasklist.html:110
+msgid "If you need help,"
+msgstr ""
+
+#: app/templates/fund_start_page.html:80 app/templates/tasklist.html:117
+msgid "contact us."
+msgstr ""
+
+#: app/templates/fund_start_page.html:84
 msgid "If you need help, email us at"
 msgstr ""
 
-#: app/templates/fund_start_page.html:72 app/templates/tasklist.html:113
+#: app/templates/fund_start_page.html:89 app/templates/tasklist.html:124
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
 "applications through this service."
@@ -636,8 +644,7 @@ msgstr ""
 #: app/templates/section_feedback_intro.html:23
 msgid ""
 "We'll ask about your experience of completing this section, so we can "
-"improve our\n"
-"                application forms. Your responses will not be scored."
+"improve our application forms. Your responses will not be scored."
 msgstr ""
 
 #: app/templates/tasklist.html:8
@@ -646,6 +653,10 @@ msgstr ""
 
 #: app/templates/tasklist.html:10
 msgid "Task List"
+msgstr ""
+
+#: app/templates/tasklist.html:29
+msgid "Application for"
 msgstr ""
 
 #: app/templates/tasklist.html:34
@@ -718,12 +729,8 @@ msgid ""
 " or change any sections."
 msgstr ""
 
-#: app/templates/tasklist.html:88
-msgid "Get help"
-msgstr ""
-
 #: app/templates/tasklist.html:92
-msgid "General support is now available to applicants via the "
+msgid "General support is now available to applicants via the"
 msgstr ""
 
 #: app/templates/tasklist.html:93
@@ -752,123 +759,131 @@ msgid ""
 "expressions of interest through this service."
 msgstr ""
 
-#: app/templates/tasklist.html:109
+#: app/templates/tasklist.html:119
 msgid "If you have any questions about the form or the fund, email us at"
 msgstr ""
 
-#: app/templates/tasklist.html:117
+#: app/templates/tasklist.html:128
 msgid "How we'll use your information"
 msgstr ""
 
-#: app/templates/tasklist.html:120
+#: app/templates/tasklist.html:131
 msgid "Read how we'll use the information from your application in our"
 msgstr ""
 
-#: app/templates/tasklist.html:121
+#: app/templates/tasklist.html:132
 msgid "privacy notice"
 msgstr ""
 
-#: app/templates/tasklist.html:131
-msgid "Submission deadline:"
-msgstr ""
-
-#: app/templates/tasklist.html:135
+#: app/templates/tasklist.html:146
 msgid "Reference:"
 msgstr ""
 
-#: app/templates/tasklist.html:143
+#: app/templates/tasklist.html:154
 msgid "Status:"
 msgstr ""
 
-#: app/templates/tasklist.html:163
+#: app/templates/tasklist.html:174
 msgid "None of the sections have been completed."
 msgstr ""
 
-#: app/templates/tasklist.html:165
+#: app/templates/tasklist.html:176
 msgid "You have completed"
 msgstr ""
 
-#: app/templates/tasklist.html:166
+#: app/templates/tasklist.html:177
 msgid "of"
 msgstr ""
 
-#: app/templates/tasklist.html:167
+#: app/templates/tasklist.html:178
 msgid "sections."
 msgstr ""
 
-#: app/templates/tasklist.html:182
+#: app/templates/tasklist.html:193
 msgid "Applicant feedback survey (not scored)"
 msgstr ""
 
-#: app/templates/tasklist.html:187
+#: app/templates/tasklist.html:198
 msgid ""
 "You must complete all other sections before starting the feedback survey."
 " This section is optional and should take approximately 1 minute to "
 "complete."
 msgstr ""
 
-#: app/templates/tasklist.html:191
+#: app/templates/tasklist.html:202
 msgid ""
 "You must complete all other sections before starting the feedback survey."
 " This section should take approximately 1 minute to complete."
 msgstr ""
 
-#: app/templates/partials/tasklist_section.html:48
-#: app/templates/tasklist.html:201
+#: app/templates/partials/tasklist_section.html:47
+#: app/templates/tasklist.html:212
 msgid "Cannot start yet"
 msgstr ""
 
-#: app/templates/tasklist.html:227
+#: app/templates/tasklist.html:238
 msgid "Applicant feedback submitted"
 msgstr ""
 
-#: app/templates/all_questions/cy/cof-eoi_r1_all_questions_cy.html:7
+#: app/templates/all_questions/cy/cof-eoi_r1_all_questions_cy.html:6
 #: app/templates/all_questions/cy/cof_r3w3_all_questions_cy.html:6
 #: app/templates/all_questions/cy/cof_r4w1_all_questions_cy.html:7
+#: app/templates/all_questions/cy/cof_r4w2_all_questions_cy.html:7
 #: app/templates/all_questions/en/cof-eoi_r1_all_questions_en.html:7
 #: app/templates/all_questions/en/cof_r3w3_all_questions_en.html:7
 #: app/templates/all_questions/en/cof_r4w1_all_questions_en.html:7
+#: app/templates/all_questions/en/cof_r4w2_all_questions_en.html:7
 #: app/templates/all_questions/en/cyp_r1_all_questions_en.html:7
 #: app/templates/all_questions/en/dpif_r2_all_questions_en.html:7
+#: app/templates/all_questions/en/hsra_r1_all_questions_en.html:7
 #: app/templates/all_questions/uses_translations/cof_r2_all_questions.html:6
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:6
 msgid "Full list of application questions"
 msgstr ""
 
-#: app/templates/all_questions/cy/cof-eoi_r1_all_questions_cy.html:11
+#: app/templates/all_questions/cy/cof-eoi_r1_all_questions_cy.html:10
 #: app/templates/all_questions/cy/cof_r3w3_all_questions_cy.html:10
 #: app/templates/all_questions/cy/cof_r4w1_all_questions_cy.html:11
+#: app/templates/all_questions/cy/cof_r4w2_all_questions_cy.html:11
 #: app/templates/all_questions/en/cof-eoi_r1_all_questions_en.html:11
 #: app/templates/all_questions/en/cof_r3w3_all_questions_en.html:11
 #: app/templates/all_questions/en/cof_r4w1_all_questions_en.html:11
+#: app/templates/all_questions/en/cof_r4w2_all_questions_en.html:11
 #: app/templates/all_questions/en/cyp_r1_all_questions_en.html:11
 #: app/templates/all_questions/en/dpif_r2_all_questions_en.html:11
+#: app/templates/all_questions/en/hsra_r1_all_questions_en.html:11
 #: app/templates/all_questions/uses_translations/cof_r2_all_questions.html:10
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:10
 #, python-format
 msgid "%(fund_title)s"
 msgstr ""
 
-#: app/templates/all_questions/cy/cof-eoi_r1_all_questions_cy.html:11
+#: app/templates/all_questions/cy/cof-eoi_r1_all_questions_cy.html:10
 #: app/templates/all_questions/cy/cof_r3w3_all_questions_cy.html:10
 #: app/templates/all_questions/cy/cof_r4w1_all_questions_cy.html:11
+#: app/templates/all_questions/cy/cof_r4w2_all_questions_cy.html:11
 #: app/templates/all_questions/en/cof-eoi_r1_all_questions_en.html:11
 #: app/templates/all_questions/en/cof_r3w3_all_questions_en.html:11
 #: app/templates/all_questions/en/cof_r4w1_all_questions_en.html:11
+#: app/templates/all_questions/en/cof_r4w2_all_questions_en.html:11
 #: app/templates/all_questions/en/cyp_r1_all_questions_en.html:11
 #: app/templates/all_questions/en/dpif_r2_all_questions_en.html:11
+#: app/templates/all_questions/en/hsra_r1_all_questions_en.html:11
 #, python-format
 msgid "%(round_title)s"
 msgstr ""
 
-#: app/templates/all_questions/cy/cof-eoi_r1_all_questions_cy.html:16
+#: app/templates/all_questions/cy/cof-eoi_r1_all_questions_cy.html:15
 #: app/templates/all_questions/cy/cof_r3w3_all_questions_cy.html:15
 #: app/templates/all_questions/cy/cof_r4w1_all_questions_cy.html:16
+#: app/templates/all_questions/cy/cof_r4w2_all_questions_cy.html:16
 #: app/templates/all_questions/en/cof-eoi_r1_all_questions_en.html:16
 #: app/templates/all_questions/en/cof_r3w3_all_questions_en.html:16
 #: app/templates/all_questions/en/cof_r4w1_all_questions_en.html:16
+#: app/templates/all_questions/en/cof_r4w2_all_questions_en.html:16
 #: app/templates/all_questions/en/cyp_r1_all_questions_en.html:16
 #: app/templates/all_questions/en/dpif_r2_all_questions_en.html:16
+#: app/templates/all_questions/en/hsra_r1_all_questions_en.html:16
 #: app/templates/all_questions/uses_translations/cof_r2_all_questions.html:13
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:13
 msgid "Table of contents"
@@ -1747,7 +1762,7 @@ msgstr ""
 #: app/templates/all_questions/uses_translations/cof_r2_all_questions.html:1256
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:498
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:664
-#: app/templates/partials/tasklist_section.html:28
+#: app/templates/partials/tasklist_section.html:27
 msgid "This section is worth"
 msgstr ""
 
@@ -2782,6 +2797,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/all_questions/uses_translations/cof_r2_all_questions.html:1246
+#: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:631
 msgid "Tell us how you'll make sure the whole community benefits from the asset"
 msgstr ""
 
@@ -2955,7 +2971,7 @@ msgid "If 'other', go to"
 msgstr ""
 
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:335
-msgid "Type of asset "
+msgid "Type of asset"
 msgstr ""
 
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:335
@@ -2987,7 +3003,7 @@ msgid "If ‘already leased by the organisation’ go to "
 msgstr ""
 
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:367
-msgid " Upload asset valuation or lease agreement"
+msgid "Upload asset valuation or lease agreement"
 msgstr ""
 
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:370
@@ -3207,17 +3223,13 @@ msgid ""
 msgstr ""
 
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:625
-msgid " Explain how you plan to deliver and sustain these benefits over time"
+msgid "Explain how you plan to deliver and sustain these benefits over time"
 msgstr ""
 
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:628
 msgid ""
 "Include the key milestones you intend to meet in order to deliver these "
 "benefits"
-msgstr ""
-
-#: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:631
-msgid " Tell us how you'll make sure the whole community benefits from the asset"
 msgstr ""
 
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:634
@@ -3397,7 +3409,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:914
-msgid "Describe the feasibility work you still need to complete "
+msgid "Describe the feasibility work you still need to complete"
 msgstr ""
 
 #: app/templates/all_questions/uses_translations/cof_r3_all_questions.html:917
@@ -3595,44 +3607,16 @@ msgid "Email"
 msgstr ""
 
 #: app/templates/partials/contact_details.html:12
-#: app/templates/partials/contact_details.html:38
-#: app/templates/partials/contact_details.html:48
+#: app/templates/partials/contact_details.html:24
+#: app/templates/partials/contact_details.html:34
 msgid "except public holidays"
 msgstr ""
 
-#: app/templates/partials/contact_details.html:16
-msgid "Arrange a callback"
-msgstr ""
-
 #: app/templates/partials/contact_details.html:18
-msgid "To help us call you back quickly, email us at"
-msgstr ""
-
-#: app/templates/partials/contact_details.html:21
-msgid "and tell us"
-msgstr ""
-
-#: app/templates/partials/contact_details.html:25
-msgid "that this is a callback request in the subject of your email"
-msgstr ""
-
-#: app/templates/partials/contact_details.html:26
-msgid "what you need help with"
-msgstr ""
-
-#: app/templates/partials/contact_details.html:27
-msgid "your phone number"
-msgstr ""
-
-#: app/templates/partials/contact_details.html:28
-msgid "when to call you"
-msgstr ""
-
-#: app/templates/partials/contact_details.html:32
 msgid "Telephone"
 msgstr ""
 
-#: app/templates/partials/contact_details.html:43
+#: app/templates/partials/contact_details.html:29
 msgid "Textphone"
 msgstr ""
 
@@ -3640,20 +3624,20 @@ msgstr ""
 msgid "Start new application"
 msgstr ""
 
-#: app/templates/partials/tasklist_section.html:28
+#: app/templates/partials/tasklist_section.html:27
 msgid "of the assessment criteria"
 msgstr ""
 
-#: app/templates/partials/tasklist_section.html:45
+#: app/templates/partials/tasklist_section.html:44
 #: app/templates/partials/tasklist_section.html:59
 msgid "Feedback on this section (not scored)"
 msgstr ""
 
-#: app/templates/partials/tasklist_section.html:52
+#: app/templates/partials/tasklist_section.html:51
 msgid "Feedback on this section submitted"
 msgstr ""
 
-#: app/templates/partials/tasklist_section.html:66
+#: app/templates/partials/tasklist_section.html:67
 msgid ""
 "You must complete all other questions in this section before giving "
 "feedback"
