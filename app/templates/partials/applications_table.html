@@ -14,13 +14,13 @@
 				complete-tag
 			{% endif %}
 		{% else %}
-			{%  if application.status == 'SUBMITTED' %}
+			{% if application.status == 'SUBMITTED' %}
 				complete-tag
-			{%  elif application.status == 'NOT_STARTED' %}
+			{% elif application.status == 'NOT_STARTED' %}
 				not-started-tag
-			{%  elif application.status == 'IN_PROGRESS' %}
+			{% elif application.status == 'IN_PROGRESS' %}
 				in-progress-tag-new
-			{%  elif application.status == 'READY_TO_SUBMIT' %}
+			{% elif application.status == 'READY_TO_SUBMIT' %}
 				in-progress-tag-new
 			{% endif %}
 		{% endif %}
@@ -48,15 +48,15 @@
                     }
                 ] %}
 		{% if show_language_column %}
-			{%set language = row.append(
+			{% set language = row.append(
                 {
                     'text': application.language
                 })
         %}
 		{% endif %}
 
-        {% if not is_past_submission_deadline%}
-            {%set action = row.append(
+        {% if not is_past_submission_deadline %}
+            {% set action = row.append(
                 {
                     'html': application_link
                 })
@@ -80,18 +80,18 @@
                 {
                     'text': gettext('Application Reference')
                 },
-            ]%}
+            ] %}
 
     {% if show_language_column %}
-		{%set app = application_headings.append(
+		{% set app = application_headings.append(
             {
             'text': gettext('Language')
             })
         %}
 	{% endif %}
 
-	{% if not is_past_submission_deadline%}
-		{%set app = application_headings.append(
+	{% if not is_past_submission_deadline %}
+		{% set app = application_headings.append(
             {
             'text': gettext('Action')
             })
@@ -103,5 +103,5 @@
             'head': application_headings,
             'rows': ns.rows
             })
-        }}
+      }}
 {% endmacro %}

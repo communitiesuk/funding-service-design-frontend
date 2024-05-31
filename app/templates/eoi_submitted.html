@@ -6,17 +6,17 @@
 {% set pageHeading %}{% trans %}Application complete{% endtrans %}{% endset %}
 {% block content %}
 {% if migration_banner_enabled %}
-{{migration_banner()}}
+{{ migration_banner() }}
 {% endif %}
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         {% if eoi_pass %}
           <div class="govuk-panel govuk-panel--confirmation">
             <h1 class="govuk-panel__title">
-              {{pageHeading}}
+              {{ pageHeading }}
             </h1>
             <div class="govuk-panel__body">
-              {% trans %}Your reference number{% endtrans %}<br><strong>{{application_reference}}</strong>
+              {% trans %}Your reference number{% endtrans %}<br><strong>{{ application_reference }}</strong>
             </div>
           </div>
           <p class="govuk-caption-m">{{ fund_name }}</p>
@@ -47,15 +47,14 @@
         </p>
         <p class="govuk-body">{% trans %}You must{% endtrans %}
           <ul class="govuk-list govuk-list--bullet">
-            <li>{% trans %}apply for up to &pound;2 million in capital funding from COF{% endtrans %}</li>
-            <li>{% trans %}be able to secure at least 20&percnt; match funding from other sources (or 10&percnt; in exceptional cases){% endtrans %}</li>
+            <li>{% trans %}apply for up to {# djlint:off #}&pound;{# djlint:on #}2 million in capital funding from COF{% endtrans %}</li>
+            <li>{% trans %}be able to secure at least 20{# djlint:off #}&percnt;{# djlint:on #} match funding from other sources (or 10{# djlint:off #}&percnt;{# djlint:on #} in exceptional cases){% endtrans %}</li>
           </ul>
         </p>
-        <p class="govuk-body"> <a class="govuk-link" href="{{round_prospectus}}">{% trans %}You can find more information about eligibility requirements in the COF prospectus.{% endtrans %}</a></p>
+        <p class="govuk-body"> <a class="govuk-link" href="{{ round_prospectus }}">{% trans %}You can find more information about eligibility requirements in the COF prospectus.{% endtrans %}</a></p>
 
       {% endif %}
       </div>
     </div>
 
-
-{% endblock %}
+{% endblock content %}

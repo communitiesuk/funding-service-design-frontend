@@ -36,7 +36,7 @@ from flask import url_for
 from flask_babel import force_locale
 from flask_babel import gettext
 from flask_wtf import FlaskForm
-from fsd_utils import Eoi_Decision
+from fsd_utils import Decision
 from fsd_utils.authentication.decorators import login_required
 from fsd_utils.locale_selector.set_lang import LanguageSelector
 from fsd_utils.simple_utils.date_utils import (
@@ -246,6 +246,10 @@ def tasklist(application_id):
             ),
         )
 
+    show_contact_us = False
+    if round_data.short_name == "R4W2":
+        show_contact_us = True
+
     with force_locale(application.language):
         response = make_response()
         if request.cookies.get("language") != application.language:
@@ -271,6 +275,7 @@ def tasklist(application_id):
             application_guidance=app_guidance,
             existing_feedback_map=existing_feedback_map,
             feedback_survey_data=feedback_survey_data,
+            show_contact_us=show_contact_us,
             migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
             # Set service_title here so it uses the application language - overrides the context_processor
             service_title=gettext("Apply for") + " " + fund_data.title,  # title is already translated
@@ -353,7 +358,7 @@ def submit_application():
             eoi_decision = submitted.get("eoi_decision")
             return render_template(
                 "eoi_submitted.html",
-                eoi_pass=Eoi_Decision(eoi_decision) in [Eoi_Decision.PASS, Eoi_Decision.PASS_WITH_CAVEATS],
+                eoi_pass=Decision(eoi_decision) in [Decision.PASS, Decision.PASS_WITH_CAVEATS],
                 fund_name=fund_data.name,
                 round_name=round_data.title,
                 fund_short_name=fund_data.short_name,
