@@ -34,7 +34,6 @@ def launch_eligibility(fund_id, round_id):
 
     current_app.logger.info(f"Url the form runner should return to '{return_url}'.")
 
-
     rehydrate_payload = format_rehydrate_payload(
         form_data={"questions": []},
         application_id=None,
