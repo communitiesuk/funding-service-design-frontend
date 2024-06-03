@@ -12,8 +12,8 @@ from app.default.data import get_fund_data
 from app.default.data import get_research_survey_from_store
 from app.default.data import get_round_data
 from app.default.data import get_ttl_hash
-from app.default.data import post_feedback_survey_from_store
-from app.default.data import post_research_survey_from_store
+from app.default.data import post_feedback_survey_to_store
+from app.default.data import post_research_survey_to_store
 from app.default.data import submit_feedback
 from app.forms.feedback import DefaultSectionFeedbackForm
 from app.forms.feedback import (
@@ -534,7 +534,7 @@ def round_feedback(application_id, page_number):
         return redirect(url_for("application_routes.tasklist", application_id=application_id))
 
     if form.validate_on_submit():
-        posted_survey_data = post_feedback_survey_from_store(
+        posted_survey_data = post_feedback_survey_to_store(
             application_id,
             application.fund_id,
             application.round_id,
@@ -613,7 +613,7 @@ def round_research_intro(application_id):
     form = ResearchOptForm()
     form.application_id.data = application_id
     if form.validate_on_submit():
-        posted_research_survey_data = post_research_survey_from_store(
+        posted_research_survey_data = post_research_survey_to_store(
             application_id,
             application.fund_id,
             application.round_id,
@@ -670,7 +670,7 @@ def round_research_contact_details(application_id):
     form.application_id.data = application_id
 
     if form.validate_on_submit():
-        posted_research_survey_data = post_research_survey_from_store(
+        posted_research_survey_data = post_research_survey_to_store(
             application_id,
             application.fund_id,
             application.round_id,
