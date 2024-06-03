@@ -13,7 +13,7 @@
             {% endif %}
 
             {% if fund_name %}
-                <p class="govuk-caption-l">{% trans %}Contact {% endtrans %}{{ fund_name }}</p>
+                <p class="govuk-caption-l">{% trans %}Contact{% endtrans %} {{ fund_name }}</p>
             {% else %}
                 <p class="govuk-caption-l">{% trans %}Contact page{% endtrans %}</p>
             {% endif %}
@@ -23,7 +23,7 @@
             {% if round_data.contact_us_banner %}
                 {{ round_data.contact_us_banner | safe }}
             {% elif fund_name %}
-                <p class="govuk-body">{% trans %}Contact the {% endtrans %}{{ fund_name }} {% trans %}if you have any questions{% endtrans %}.</p>
+                <p class="govuk-body">{% trans %}Contact the{% endtrans %} {{ fund_name }} {% trans %}if you have any questions{% endtrans %}.</p>
             {% else %}
                 <p class="govuk-body">{% trans %}Contact us if you have any questions{% endtrans %}.</p>
             {% endif %}

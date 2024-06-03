@@ -10,7 +10,7 @@
 {% extends "base.html" %}
 {% set pageHeading %}
 {% if display_data["funds"] %}
-{% trans %}Your applications for {% endtrans %} {{ display_data["funds"][0]["fund_data"]["name"] }}
+{% trans %}Your applications for{% endtrans %}  {{ display_data["funds"][0]["fund_data"]["name"] }}
 {% else %}
 Your applications
 {% endif %}

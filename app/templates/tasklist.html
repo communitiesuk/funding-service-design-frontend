@@ -25,8 +25,8 @@
         </h1>
         {% else %}
         <span class="govuk-caption-l">{{ application_meta_data["fund_name"] }} {{ application_meta_data["round_name"]
-          }}</span>
-        <h1 class="govuk-heading-xl">Application for {{ application_meta_data["fund_title"] }}</h1>
+            }}</span>
+        <h1 class="govuk-heading-xl">{% trans %}Application for{% endtrans %} {{ application_meta_data["fund_title"] }}</h1>
         {% endif %}
         <details class="govuk-details" data-module="govuk-details">
             <summary class="govuk-details__summary">
@@ -89,7 +89,7 @@
                 </h2>
                 {% if is_expression_of_interest %}
                 <p class="govuk-body">
-                    {% trans %}General support is now available to applicants via the {% endtrans %}
+                    {% trans %}General support is now available to applicants via the{% endtrans %}
                     <a class="govuk-link" href="https://mycommunity.org.uk/">{% trans %}My Community website{% endtrans %}</a>
                     {% trans %}, which includes an enquiry form as well as a range of helpful documents and webinars.{%
                     endtrans %}
@@ -107,14 +107,14 @@
                 {% else %}
                 <p class="govuk-body">
                     {% if show_contact_us %}
-                        If you need help,
+                    {% trans %}If you need help,{% endtrans %}
                         <a class="govuk-link" href="{{
                             url_for(
                                 "content_routes.contact_us",
                                 fund=fund_short_name,
                                 round=round_short_name
                             )
-                      }}">contact us.</a>
+                        }}">{% trans %}contact us.{% endtrans %}</a>
                     {% else %}
                         {% trans %}If you have any questions about the form or the fund, email us at{% endtrans %} <a
                             class="govuk-link" href="mailto:{{ contact_us_email_address }}">{{ contact_us_email_address

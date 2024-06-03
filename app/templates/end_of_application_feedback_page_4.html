@@ -34,14 +34,12 @@
                     <fieldset class="govuk-fieldset">
                         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                             <h1 class="govuk-fieldset__heading">
-                                {% trans %}Approximately how many hours did your organisation spend preparing and working on this
-                                application?{% endtrans %}
+                                {% trans %}Approximately how many hours did your organisation spend preparing and working on this application?{% endtrans %}
                             </h1>
                         </legend>
                         <div class="govuk-form-group  {% if form.errors.get('hours_spent') %} govuk-form-group--error {% endif -%}" id="hours_spent">
                             <div class="govuk-hint">
-                                {% trans %}This includes time spent attending meetings, preparing documents and business cases, doing
-                                research and collating answers, from both paid and volunteer resources.{% endtrans %}
+                                {% trans %}This includes time spent attending meetings, preparing documents and business cases, doing research and collating answers, from both paid and volunteer resources.{% endtrans %}
                         </div>
                         {% if form.errors.get('hours_spent') %}
                             <p id="hours-error" class="govuk-error-message">
