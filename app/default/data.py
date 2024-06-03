@@ -14,6 +14,7 @@ from app.models.application_summary import ApplicationSummary
 from app.models.feedback import EndOfApplicationSurveyData
 from app.models.feedback import FeedbackSubmission
 from app.models.fund import Fund
+from app.models.research import ResearchSurveyData
 from app.models.round import Round
 from config import Config
 from flask import abort
@@ -408,7 +409,7 @@ def get_feedback(application_id, section_id, fund_id, round_id):
     current_app.logger.info(f"No feedback found for {application_id} section {section_id}")
 
 
-def post_survey_data(application_id, fund_id, round_id, page_number, form_data_dict):
+def post_feedback_survey_from_store(application_id, fund_id, round_id, page_number, form_data_dict):
     post_data = {
         "application_id": application_id,
         "data": form_data_dict,
@@ -425,7 +426,7 @@ def post_survey_data(application_id, fund_id, round_id, page_number, form_data_d
     return EndOfApplicationSurveyData.from_dict(json_response)
 
 
-def get_survey_data(application_id, page_number):
+def get_feedback_survey_from_store(application_id, page_number):
     params = {
         "application_id": application_id,
         "page_number": page_number,
@@ -434,3 +435,86 @@ def get_survey_data(application_id, page_number):
     survey_response = requests.get(Config.END_OF_APP_SURVEY_FEEDBACK_ENDPOINT, params)
     if survey_response.ok:
         return EndOfApplicationSurveyData.from_dict(survey_response.json())
+
+
+def post_research_survey_from_store(application_id, fund_id, round_id, form_data_dict):
+    post_data = {
+        "application_id": application_id,
+        "data": form_data_dict,
+        "fund_id": fund_id,
+        "round_id": round_id,
+    }
+
+    survey_response = requests.post(Config.RESEARCH_SURVEY_ENDPOINT, json=post_data)
+    if not survey_response.ok:
+        return None
+
+    json_response = survey_response.json()
+    return ResearchSurveyData.from_dict(json_response)
+
+    # import pickle, datetime
+    # try:
+    #     f = open('dump.pkl', 'rb')
+    #     data = pickle.load(f)
+    #     data.update({
+    #     "application_id": application_id,
+    #     "date_submitted": datetime.datetime.now(), #"2024-05-16 11:02:45.232",
+    #     "fund_id": fund_id,
+    #     "id": "1",
+    #     "round_id": round_id
+    #     })
+    #     data["data"].update(form_data_dict)
+    #     f.close()
+    # except FileNotFoundError:
+    #     data = {
+    #     "application_id": application_id,
+    #     "date_submitted": datetime.datetime.now(), #"2024-05-16 11:02:45.232",
+    #     "fund_id": fund_id,
+    #     "id": "1",
+    #     "round_id": round_id,
+    #     "data" : form_data_dict
+    #     }
+
+    # with open('dump.pkl', 'wb') as f:
+    #     pickle.dump(data, f)
+
+    # return ResearchSurveyData.from_dict(data)
+
+
+def get_research_survey_from_store(application_id):
+    params = {
+        "application_id": application_id,
+    }
+
+    survey_response = requests.get(Config.RESEARCH_SURVEY_ENDPOINT, params)
+    if not survey_response.ok:
+        return None
+
+    json_response = survey_response.json()
+    return ResearchSurveyData.from_dict(json_response)
+
+    # import pickle
+    # try:
+    #     f = open('dump.pkl', 'rb')
+    #     data = pickle.load(f)
+    #     f.close()
+    # except FileNotFoundError:
+    #     data = {
+    #     "application_id": "87df86ff-36d2-47e1-80d0-f971b7327295",
+    #     "data": {},
+    #     "date_submitted": None,
+    #     "fund_id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
+    #     "id": "8",
+    #     "round_id": "27ab26c2-e58e-4bfe-917d-64be10d16496"
+    # }
+
+    # return ResearchSurveyData.from_dict(data) if data else None
+
+    # return ResearchSurveyData.from_dict({
+    #     "application_id": "87df86ff-36d2-47e1-80d0-f971b7327295",
+    #     "data": {},#{"hello" : "goodbye"},
+    #     "date_submitted": None, #"2024-05-16 11:02:45.232",
+    #     "fund_id": "47aef2f5-3fcb-4d45-acb5-f0152b5f03c4",
+    #     "id": "8",
+    #     "round_id": "27ab26c2-e58e-4bfe-917d-64be10d16496"
+    # })

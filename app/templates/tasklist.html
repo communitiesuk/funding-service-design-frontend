@@ -245,6 +245,66 @@
                 {% endif %}
             </li>
             {% endif %}
+            {% if research_survey_data %}
+            <li>
+                <h2 class="app-task-list__section">
+                    {{ research_survey_data.number }}{% trans %}Applicant research survey (not scored){% endtrans %}
+                </h2>
+                {% if not research_survey_data.completed %}
+                    {% if research_survey_data.is_research_survey_optional %}
+                    <p class="govuk-body">
+                        {% trans %}You must complete all other sections before starting the research survey. This section is optional and should take approximately 1 minute to complete.{% endtrans %}
+                    </p>
+                    {% else %}
+                    <p class="govuk-body">
+                        {% trans %}You must complete all other sections before starting the research survey. This section should take approximately 1 minute to complete.{% endtrans %}
+                    </p>
+                    {% endif %}
+                    <ul class="app-task-list__items">
+                        <li class="app-task-list__item task-list__new-design">
+                            {% if not research_survey_data.available %}
+                            <span class="app-task-list__task-name">
+                                {% trans %}Applicant research survey{% endtrans %}
+                            </span>
+                            <span class="govuk-tag not-started-tag app-task-list__tag">
+                                {% trans %}Cannot start yet{% endtrans %}
+                            </span>
+                            {% else %}
+                            <span class="app-task-list__task-name">
+                                <a class="govuk-link" href="{{ url_for("application_routes.round_research_intro",
+                                    application_id=application.id) }}">
+                                    {% trans %}Applicant research survey{% endtrans %}
+                                </a>
+                            </span>
+                                {% if research_survey_data.started %}
+                                    <span class="govuk-tag in-progress-tag-new app-task-list__tag">
+                                        {{ application_status("IN_PROGRESS") }}
+                                    </span>
+                                {% else %}
+                                    <span class="govuk-tag not-started-tag app-task-list__tag">
+                                        {{ application_status("NOT_STARTED") }}
+                                    </span>
+                                {% endif %}
+                            {% endif %}
+                        </li>
+                    </ul>
+                {% else %}
+                <ul class="app-task-list__items">
+                    <li class="app-task-list__item task-list__new-design">
+                        <span class="app-task-list__task-name">
+                            <a class="govuk-link" href="{{ url_for("application_routes.round_research_intro",
+                            application_id=application.id) }}">
+                            {% trans %}Applicant research survey{% endtrans %}
+                            </a>
+                        </span>
+                        <span class="govuk-tag complete-tag app-task-list__tag">
+                            {{ application_status("COMPLETED") }}
+                        </span>
+                    </li>
+                </ul>
+                {% endif %}
+            </li>
+            {% endif %}
         </ol>
     </div>
 </div>

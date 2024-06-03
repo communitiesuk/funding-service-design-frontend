@@ -10,6 +10,8 @@ class FeedbackSurveyConfig:
     is_feedback_survey_optional: bool = True
     has_section_feedback: bool = False
     is_section_feedback_optional: bool = True
+    has_research_survey: bool = False
+    is_research_survey_optional: bool = True
 
     @classmethod
     def from_dict(cls, d: dict):

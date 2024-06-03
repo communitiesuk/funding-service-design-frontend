@@ -31,63 +31,63 @@ msgstr "Cael Mynediad at Gyllid"
 msgid "at"
 msgstr "am"
 
-#: app/forms/feedback_forms.py:20
+#: app/forms/feedback.py:20
 msgid "Select a score"
 msgstr "Dewiswch sgôr"
 
-#: app/forms/feedback_forms.py:26 app/templates/feedback_generic_survey.html:34
+#: app/forms/feedback.py:26 app/templates/feedback_generic_survey.html:34
 msgid "How easy did you find it to complete this section?"
 msgstr "Pa mor hawdd ydoedd i chi gwblhau’r adran hon?"
 
-#: app/forms/feedback_forms.py:28 app/forms/feedback_forms.py:117
+#: app/forms/feedback.py:28 app/forms/feedback.py:117
 msgid "Very easy"
 msgstr "Hawdd iawn"
 
-#: app/forms/feedback_forms.py:29 app/forms/feedback_forms.py:118
+#: app/forms/feedback.py:29 app/forms/feedback.py:118
 msgid "Easy"
 msgstr "Hawdd"
 
-#: app/forms/feedback_forms.py:32 app/forms/feedback_forms.py:121
+#: app/forms/feedback.py:32 app/forms/feedback.py:121
 msgid "Neither easy nor difficult"
 msgstr "Ddim yn hawdd nac yn anodd"
 
-#: app/forms/feedback_forms.py:34 app/forms/feedback_forms.py:123
+#: app/forms/feedback.py:34 app/forms/feedback.py:123
 msgid "Difficult"
 msgstr "Anodd"
 
-#: app/forms/feedback_forms.py:35 app/forms/feedback_forms.py:124
+#: app/forms/feedback.py:35 app/forms/feedback.py:124
 msgid "Very difficult"
 msgstr "Anodd iawn"
 
-#: app/forms/feedback_forms.py:37 app/forms/feedback_forms.py:75
+#: app/forms/feedback.py:37 app/forms/feedback.py:75
 msgid "Explain why you chose this score (optional)"
 msgstr "Esboniwch pam y dewisoch y sgôr hon (dewisol)"
 
-#: app/forms/feedback_forms.py:67
+#: app/forms/feedback.py:67
 msgid "How was your overall application experience?"
 msgstr "Yn ôl at eich ceisiadau"
 
-#: app/forms/feedback_forms.py:69
+#: app/forms/feedback.py:69
 msgid "Very good"
 msgstr "Da iawn"
 
-#: app/forms/feedback_forms.py:70
+#: app/forms/feedback.py:70
 msgid "Good"
 msgstr "Da"
 
-#: app/forms/feedback_forms.py:71
+#: app/forms/feedback.py:71
 msgid "Average"
 msgstr "Cyffredin"
 
-#: app/forms/feedback_forms.py:72
+#: app/forms/feedback.py:72
 msgid "Poor"
 msgstr "Gwael"
 
-#: app/forms/feedback_forms.py:73
+#: app/forms/feedback.py:73
 msgid "Very poor"
 msgstr "Gwael iawn"
 
-#: app/forms/feedback_forms.py:89
+#: app/forms/feedback.py:89
 msgid ""
 "To what extent do you agree that this application form allowed you to "
 "demonstrate why your organization should receive funding?"
@@ -95,31 +95,31 @@ msgstr ""
 "I ba raddau ydych chi’n cytuno bod y ffurflen gais hon wedi caniatáu i "
 "chi ddangos pam y dylai eich sefydliad gael cyllid?"
 
-#: app/forms/feedback_forms.py:94
+#: app/forms/feedback.py:94
 msgid "Strongly agree"
 msgstr "Cytuno’n gryf"
 
-#: app/forms/feedback_forms.py:95
+#: app/forms/feedback.py:95
 msgid "Agree"
 msgstr "Cytuno"
 
-#: app/forms/feedback_forms.py:98
+#: app/forms/feedback.py:98
 msgid "Neither agree nor disagree"
 msgstr "Ddim yn cytuno nac yn anghytuno"
 
-#: app/forms/feedback_forms.py:100
+#: app/forms/feedback.py:100
 msgid "Disagree"
 msgstr "Anghytuno"
 
-#: app/forms/feedback_forms.py:101
+#: app/forms/feedback.py:101
 msgid "Strongly disagree"
 msgstr "Anghytuno’n gryf"
 
-#: app/forms/feedback_forms.py:113
+#: app/forms/feedback.py:113
 msgid "How easy was it to understand the eligibility criteria for this fund?"
 msgstr "Pa mor hawdd oedd deall y meini prawf cymhwysedd ar gyfer y gronfa hon?"
 
-#: app/forms/feedback_forms.py:139
+#: app/forms/feedback.py:139
 msgid "Number of hours spent:"
 msgstr "Nifer yr oriau a dreuliwyd:"
 
