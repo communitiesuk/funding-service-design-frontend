@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-05-31 12:44+0100\n"
+"POT-Creation-Date: 2024-06-03 15:42+0100\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.14.0\n"
 
-#: app/create_app.py:123 app/default/application_routes.py:281
+#: app/create_app.py:123 app/default/application_routes.py:301
 msgid "Apply for"
 msgstr "Gwneud cais am"
 
@@ -31,63 +31,63 @@ msgstr "Cael Mynediad at Gyllid"
 msgid "at"
 msgstr "am"
 
-#: app/forms/feedback.py:20
+#: app/forms/feedback.py:15
 msgid "Select a score"
 msgstr "Dewiswch sgôr"
 
-#: app/forms/feedback.py:26 app/templates/feedback_generic_survey.html:34
+#: app/forms/feedback.py:21 app/templates/feedback_generic_survey.html:34
 msgid "How easy did you find it to complete this section?"
 msgstr "Pa mor hawdd ydoedd i chi gwblhau’r adran hon?"
 
-#: app/forms/feedback.py:28 app/forms/feedback.py:117
+#: app/forms/feedback.py:23 app/forms/feedback.py:102
 msgid "Very easy"
 msgstr "Hawdd iawn"
 
-#: app/forms/feedback.py:29 app/forms/feedback.py:118
+#: app/forms/feedback.py:24 app/forms/feedback.py:103
 msgid "Easy"
 msgstr "Hawdd"
 
-#: app/forms/feedback.py:32 app/forms/feedback.py:121
+#: app/forms/feedback.py:27 app/forms/feedback.py:106
 msgid "Neither easy nor difficult"
 msgstr "Ddim yn hawdd nac yn anodd"
 
-#: app/forms/feedback.py:34 app/forms/feedback.py:123
+#: app/forms/feedback.py:29 app/forms/feedback.py:108
 msgid "Difficult"
 msgstr "Anodd"
 
-#: app/forms/feedback.py:35 app/forms/feedback.py:124
+#: app/forms/feedback.py:30 app/forms/feedback.py:109
 msgid "Very difficult"
 msgstr "Anodd iawn"
 
-#: app/forms/feedback.py:37 app/forms/feedback.py:75
+#: app/forms/feedback.py:32 app/forms/feedback.py:60
 msgid "Explain why you chose this score (optional)"
 msgstr "Esboniwch pam y dewisoch y sgôr hon (dewisol)"
 
-#: app/forms/feedback.py:67
+#: app/forms/feedback.py:52
 msgid "How was your overall application experience?"
 msgstr "Yn ôl at eich ceisiadau"
 
-#: app/forms/feedback.py:69
+#: app/forms/feedback.py:54
 msgid "Very good"
 msgstr "Da iawn"
 
-#: app/forms/feedback.py:70
+#: app/forms/feedback.py:55
 msgid "Good"
 msgstr "Da"
 
-#: app/forms/feedback.py:71
+#: app/forms/feedback.py:56
 msgid "Average"
 msgstr "Cyffredin"
 
-#: app/forms/feedback.py:72
+#: app/forms/feedback.py:57
 msgid "Poor"
 msgstr "Gwael"
 
-#: app/forms/feedback.py:73
+#: app/forms/feedback.py:58
 msgid "Very poor"
 msgstr "Gwael iawn"
 
-#: app/forms/feedback.py:89
+#: app/forms/feedback.py:74
 msgid ""
 "To what extent do you agree that this application form allowed you to "
 "demonstrate why your organization should receive funding?"
@@ -95,33 +95,41 @@ msgstr ""
 "I ba raddau ydych chi’n cytuno bod y ffurflen gais hon wedi caniatáu i "
 "chi ddangos pam y dylai eich sefydliad gael cyllid?"
 
-#: app/forms/feedback.py:94
+#: app/forms/feedback.py:79
 msgid "Strongly agree"
 msgstr "Cytuno’n gryf"
 
-#: app/forms/feedback.py:95
+#: app/forms/feedback.py:80
 msgid "Agree"
 msgstr "Cytuno"
 
-#: app/forms/feedback.py:98
+#: app/forms/feedback.py:83
 msgid "Neither agree nor disagree"
 msgstr "Ddim yn cytuno nac yn anghytuno"
 
-#: app/forms/feedback.py:100
+#: app/forms/feedback.py:85
 msgid "Disagree"
 msgstr "Anghytuno"
 
-#: app/forms/feedback.py:101
+#: app/forms/feedback.py:86
 msgid "Strongly disagree"
 msgstr "Anghytuno’n gryf"
 
-#: app/forms/feedback.py:113
+#: app/forms/feedback.py:98
 msgid "How easy was it to understand the eligibility criteria for this fund?"
 msgstr "Pa mor hawdd oedd deall y meini prawf cymhwysedd ar gyfer y gronfa hon?"
 
-#: app/forms/feedback.py:139
+#: app/forms/feedback.py:124
 msgid "Number of hours spent:"
 msgstr "Nifer yr oriau a dreuliwyd:"
+
+#: app/forms/research.py:17
+msgid "I agree to be contacted for research purposes"
+msgstr "Rwy'n cytuno i chi gysylltu â mi at ddibenion ymchwil"
+
+#: app/forms/research.py:18
+msgid "I do not want to be contacted for research purposes"
+msgstr "Nid wyf eisiau i chi gysylltu â mi at ddibenion ymchwil"
 
 #: app/models/language.py:5
 msgid "English"
@@ -384,6 +392,8 @@ msgstr "Eich ceisiadau yn"
 #: app/templates/end_of_application_feedback_page_4.html:7
 #: app/templates/end_of_application_survey.html:6
 #: app/templates/feedback_generic_survey.html:7
+#: app/templates/research_contact_details.html:6
+#: app/templates/research_opt_in.html:6
 #: app/templates/section_feedback_intro.html:7
 msgid "Go back to application overview"
 msgstr "Yn ôl at eich ceisiadau"
@@ -404,12 +414,16 @@ msgstr "Cwestiwn 1 o 4"
 #: app/templates/end_of_application_feedback_page_1.html:42
 #: app/templates/end_of_application_feedback_page_4.html:46
 #: app/templates/feedback_generic_survey.html:40
+#: app/templates/research_contact_details.html:29
+#: app/templates/research_contact_details.html:41
+#: app/templates/research_opt_in.html:42
 msgid "Error:"
-msgstr ""
+msgstr "Gwall:"
 
 #: app/templates/end_of_application_feedback_page_1.html:70
 #: app/templates/end_of_application_feedback_page_2.html:62
 #: app/templates/end_of_application_feedback_page_3.html:62
+#: app/templates/research_opt_in.html:63
 msgid "Save and continue"
 msgstr "Arbed a pharhau"
 
@@ -705,6 +719,82 @@ msgstr "beta"
 msgid "This is a new service."
 msgstr "Gwasanaeth newydd yw hwn."
 
+#: app/templates/research_contact_details.html:19
+msgid "Who should we contact for research purposes?"
+msgstr "Gyda phwy y dylem gysylltu at ddibenion ymchwil?"
+
+#: app/templates/research_contact_details.html:21
+msgid ""
+"These do not need to be the same contact details you used on your "
+"application. Anyone involved in the application process can take part in "
+"research."
+msgstr ""
+"Nid oes angen i'r manylion cyswllt hyn fod yr un rhai ag y defnyddioch yn"
+" eich cais. Gall unrhyw un sy'n ymwneud â'r broses ymgeisio gymryd rhan "
+"mewn ymchwil."
+
+#: app/templates/research_contact_details.html:33
+msgid "Full name"
+msgstr "Enw llawn"
+
+#: app/templates/research_contact_details.html:45
+msgid "Email address"
+msgstr "Cyfeiriad e-bost"
+
+#: app/templates/research_contact_details.html:51
+msgid "Submit"
+msgstr "Gyflwyno"
+
+#: app/templates/research_opt_in.html:19
+msgid "Help us improve the application process"
+msgstr "Helpwch ni i wella'r broses ymgeisio"
+
+#: app/templates/research_opt_in.html:21
+msgid ""
+"We need your help to make applications easier to understand and use for "
+"everyone applying for funding from the Department of Levelling Up, "
+"Housing and Communities."
+msgstr ""
+"Mae arnom angen eich cymorth i wneud ceisiadau'n haws eu deall a'u "
+"defnyddio gan bawb sy'n gwneud cais am gyllid gan yr Adran Ffyniant Bro, "
+"Tai a Chymunedau."
+
+#: app/templates/research_opt_in.html:23
+msgid "If you opt in to take part in research, you might be asked to:"
+msgstr "Os dewiswch gymryd rhan mewn ymchwil, efallai y gofynnir i chi:"
+
+#: app/templates/research_opt_in.html:25
+msgid ""
+"answer some questions about your experiences of the application process "
+"in an email"
+msgstr ""
+"ateb rhai cwestiynau am eich profiadau o'r broses ymgeisio mewn neges "
+"e-bost"
+
+#: app/templates/research_opt_in.html:26
+msgid "talk to a researcher about your experiences over a video call"
+msgstr "siarad ag ymchwilydd am eich profiadau trwy alwad fideo"
+
+#: app/templates/research_opt_in.html:27
+msgid ""
+"try out new application tool features and tell us whether they are easy "
+"to use"
+msgstr ""
+"rhoi cynnig ar nodweddion offer ymgeisio newydd a dweud wrthym a ydynt yn"
+" hawdd eu defnyddio"
+
+#: app/templates/research_opt_in.html:30
+msgid "Taking part in research will not affect the outcomes of your application."
+msgstr "Ni fydd cymryd rhan mewn ymchwil yn effeithio ar ganlyniadau eich cais."
+
+#: app/templates/research_opt_in.html:32
+msgid ""
+"You can always say no to an invite, and can withdraw your consent to be "
+"contacted or to use your data at any time. To do so, please contact us at "
+msgstr ""
+"Gallwch wrthod gwahoddiad, a gallwch dynnu'ch caniatâd i gysylltu â chi neu ddefnyddio'ch data yn ôl unrhyw bryd."
+"I wneud hynny, cysylltwch â ni yma "
+
 #: app/templates/section_feedback_intro.html:23
 #, fuzzy
 msgid ""
@@ -917,13 +1007,43 @@ msgstr ""
 "Dylai'r adran hon gymryd tua munud i'w chwblhau."
 
 #: app/templates/partials/tasklist_section.html:47
-#: app/templates/tasklist.html:212
+#: app/templates/tasklist.html:212 app/templates/tasklist.html:270
 msgid "Cannot start yet"
 msgstr "Ni ellir dechrau eto"
 
 #: app/templates/tasklist.html:238
 msgid "Applicant feedback submitted"
 msgstr "Arolwg adborth ymgeiswyr wedi'i gyflwyno"
+
+#: app/templates/tasklist.html:251
+#, fuzzy
+msgid "Applicant research survey (not scored)"
+msgstr "Arolwg adborth ymgeiswyr (ni fydd yn cael ei sgorio)"
+
+#: app/templates/tasklist.html:256
+#, fuzzy
+msgid ""
+"You must complete all other sections before starting the research survey."
+" This section is optional and should take approximately 1 minute to "
+"complete."
+msgstr ""
+"Mae’n rhaid i chi gwblhau pob adran arall cyn dechrau’r arolwg adborth. "
+"Fe ddylai gymryd tua 1 funud i gwblhau’r adran hon."
+
+#: app/templates/tasklist.html:260
+#, fuzzy
+msgid ""
+"You must complete all other sections before starting the research survey."
+" This section should take approximately 1 minute to complete."
+msgstr ""
+"Mae’n rhaid i chi gwblhau pob adran arall cyn dechrau’r arolwg adborth. "
+"Dylai'r adran hon gymryd tua munud i'w chwblhau."
+
+#: app/templates/tasklist.html:267 app/templates/tasklist.html:276
+#: app/templates/tasklist.html:297
+#, fuzzy
+msgid "Applicant research survey"
+msgstr "Arolwg adborth ymgeiswyr"
 
 #: app/templates/all_questions/cy/cof-eoi_r1_all_questions_cy.html:6
 #: app/templates/all_questions/cy/cof_r3w3_all_questions_cy.html:6

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-05-31 12:44+0100\n"
+"POT-Creation-Date: 2024-06-03 15:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.14.0\n"
 
-#: app/create_app.py:123 app/default/application_routes.py:281
+#: app/create_app.py:123 app/default/application_routes.py:301
 msgid "Apply for"
 msgstr ""
 
@@ -29,94 +29,102 @@ msgstr ""
 msgid "at"
 msgstr ""
 
-#: app/forms/feedback_forms.py:20
+#: app/forms/feedback.py:15
 msgid "Select a score"
 msgstr ""
 
-#: app/forms/feedback_forms.py:26 app/templates/feedback_generic_survey.html:34
+#: app/forms/feedback.py:21 app/templates/feedback_generic_survey.html:34
 msgid "How easy did you find it to complete this section?"
 msgstr ""
 
-#: app/forms/feedback_forms.py:28 app/forms/feedback_forms.py:117
+#: app/forms/feedback.py:23 app/forms/feedback.py:102
 msgid "Very easy"
 msgstr ""
 
-#: app/forms/feedback_forms.py:29 app/forms/feedback_forms.py:118
+#: app/forms/feedback.py:24 app/forms/feedback.py:103
 msgid "Easy"
 msgstr ""
 
-#: app/forms/feedback_forms.py:32 app/forms/feedback_forms.py:121
+#: app/forms/feedback.py:27 app/forms/feedback.py:106
 msgid "Neither easy nor difficult"
 msgstr ""
 
-#: app/forms/feedback_forms.py:34 app/forms/feedback_forms.py:123
+#: app/forms/feedback.py:29 app/forms/feedback.py:108
 msgid "Difficult"
 msgstr ""
 
-#: app/forms/feedback_forms.py:35 app/forms/feedback_forms.py:124
+#: app/forms/feedback.py:30 app/forms/feedback.py:109
 msgid "Very difficult"
 msgstr ""
 
-#: app/forms/feedback_forms.py:37 app/forms/feedback_forms.py:75
+#: app/forms/feedback.py:32 app/forms/feedback.py:60
 msgid "Explain why you chose this score (optional)"
 msgstr ""
 
-#: app/forms/feedback_forms.py:67
+#: app/forms/feedback.py:52
 msgid "How was your overall application experience?"
 msgstr ""
 
-#: app/forms/feedback_forms.py:69
+#: app/forms/feedback.py:54
 msgid "Very good"
 msgstr ""
 
-#: app/forms/feedback_forms.py:70
+#: app/forms/feedback.py:55
 msgid "Good"
 msgstr ""
 
-#: app/forms/feedback_forms.py:71
+#: app/forms/feedback.py:56
 msgid "Average"
 msgstr ""
 
-#: app/forms/feedback_forms.py:72
+#: app/forms/feedback.py:57
 msgid "Poor"
 msgstr ""
 
-#: app/forms/feedback_forms.py:73
+#: app/forms/feedback.py:58
 msgid "Very poor"
 msgstr ""
 
-#: app/forms/feedback_forms.py:89
+#: app/forms/feedback.py:74
 msgid ""
 "To what extent do you agree that this application form allowed you to "
 "demonstrate why your organization should receive funding?"
 msgstr ""
 
-#: app/forms/feedback_forms.py:94
+#: app/forms/feedback.py:79
 msgid "Strongly agree"
 msgstr ""
 
-#: app/forms/feedback_forms.py:95
+#: app/forms/feedback.py:80
 msgid "Agree"
 msgstr ""
 
-#: app/forms/feedback_forms.py:98
+#: app/forms/feedback.py:83
 msgid "Neither agree nor disagree"
 msgstr ""
 
-#: app/forms/feedback_forms.py:100
+#: app/forms/feedback.py:85
 msgid "Disagree"
 msgstr ""
 
-#: app/forms/feedback_forms.py:101
+#: app/forms/feedback.py:86
 msgid "Strongly disagree"
 msgstr ""
 
-#: app/forms/feedback_forms.py:113
+#: app/forms/feedback.py:98
 msgid "How easy was it to understand the eligibility criteria for this fund?"
 msgstr ""
 
-#: app/forms/feedback_forms.py:139
+#: app/forms/feedback.py:124
 msgid "Number of hours spent:"
+msgstr ""
+
+#: app/forms/research.py:17
+msgid "I agree to be contacted for research purposes"
+msgstr ""
+
+#: app/forms/research.py:18
+msgid "I do not want to be contacted for research purposes"
 msgstr ""
 
 #: app/models/language.py:5
@@ -351,6 +359,8 @@ msgstr ""
 #: app/templates/end_of_application_feedback_page_4.html:7
 #: app/templates/end_of_application_survey.html:6
 #: app/templates/feedback_generic_survey.html:7
+#: app/templates/research_contact_details.html:6
+#: app/templates/research_opt_in.html:6
 #: app/templates/section_feedback_intro.html:7
 msgid "Go back to application overview"
 msgstr ""
@@ -371,12 +381,16 @@ msgstr ""
 #: app/templates/end_of_application_feedback_page_1.html:42
 #: app/templates/end_of_application_feedback_page_4.html:46
 #: app/templates/feedback_generic_survey.html:40
+#: app/templates/research_contact_details.html:29
+#: app/templates/research_contact_details.html:41
+#: app/templates/research_opt_in.html:42
 msgid "Error:"
 msgstr ""
 
 #: app/templates/end_of_application_feedback_page_1.html:70
 #: app/templates/end_of_application_feedback_page_2.html:62
 #: app/templates/end_of_application_feedback_page_3.html:62
+#: app/templates/research_opt_in.html:63
 msgid "Save and continue"
 msgstr ""
 
@@ -641,6 +655,71 @@ msgstr ""
 msgid "This is a new service."
 msgstr ""
 
+#: app/templates/research_contact_details.html:19
+msgid "Who should we contact for research purposes?"
+msgstr ""
+
+#: app/templates/research_contact_details.html:21
+msgid ""
+"These do not need to be the same contact details you used on your "
+"application. Anyone involved in the application process can take part in "
+"research."
+msgstr ""
+
+#: app/templates/research_contact_details.html:33
+msgid "Full name"
+msgstr ""
+
+#: app/templates/research_contact_details.html:45
+msgid "Email address"
+msgstr ""
+
+#: app/templates/research_contact_details.html:51
+msgid "Submit"
+msgstr ""
+
+#: app/templates/research_opt_in.html:19
+msgid "Help us improve the application process"
+msgstr ""
+
+#: app/templates/research_opt_in.html:21
+msgid ""
+"We need your help to make applications easier to understand and use for "
+"everyone applying for funding from the Department of Levelling Up, "
+"Housing and Communities."
+msgstr ""
+
+#: app/templates/research_opt_in.html:23
+msgid "If you opt in to take part in research, you might be asked to:"
+msgstr ""
+
+#: app/templates/research_opt_in.html:25
+msgid ""
+"answer some questions about your experiences of the application process "
+"in an email"
+msgstr ""
+
+#: app/templates/research_opt_in.html:26
+msgid "talk to a researcher about your experiences over a video call"
+msgstr ""
+
+#: app/templates/research_opt_in.html:27
+msgid ""
+"try out new application tool features and tell us whether they are easy "
+"to use"
+msgstr ""
+
+#: app/templates/research_opt_in.html:30
+msgid "Taking part in research will not affect the outcomes of your application."
+msgstr ""
+
+#: app/templates/research_opt_in.html:32
+msgid ""
+"You can always say no to an invite, and can withdraw your consent to be "
+"contacted or to use your data at any time. To do so, please contact us at"
+" "
+msgstr ""
+
 #: app/templates/section_feedback_intro.html:23
 msgid ""
 "We'll ask about your experience of completing this section, so we can "
@@ -817,12 +896,34 @@ msgid ""
 msgstr ""
 
 #: app/templates/partials/tasklist_section.html:47
-#: app/templates/tasklist.html:212
+#: app/templates/tasklist.html:212 app/templates/tasklist.html:270
 msgid "Cannot start yet"
 msgstr ""
 
 #: app/templates/tasklist.html:238
 msgid "Applicant feedback submitted"
+msgstr ""
+
+#: app/templates/tasklist.html:251
+msgid "Applicant research survey (not scored)"
+msgstr ""
+
+#: app/templates/tasklist.html:256
+msgid ""
+"You must complete all other sections before starting the research survey."
+" This section is optional and should take approximately 1 minute to "
+"complete."
+msgstr ""
+
+#: app/templates/tasklist.html:260
+msgid ""
+"You must complete all other sections before starting the research survey."
+" This section should take approximately 1 minute to complete."
+msgstr ""
+
+#: app/templates/tasklist.html:267 app/templates/tasklist.html:276
+#: app/templates/tasklist.html:297
+msgid "Applicant research survey"
 msgstr ""
 
 #: app/templates/all_questions/cy/cof-eoi_r1_all_questions_cy.html:6
