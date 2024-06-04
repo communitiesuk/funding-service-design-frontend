@@ -20,6 +20,7 @@ Your applications
     {{ migration_banner() }}
 {% endif %}
     <h1 class="govuk-heading-xl">{{ pageHeading }}</h1>
+
     <p class="govuk-body">
         {% set application_count=display_data["total_applications_to_display"] %}
         {% trans %}You have started{% endtrans %}&nbsp;{% trans count=application_count %} {{ application_count }} application{% pluralize %}{{ application_count }} applications{% endtrans %}&nbsp;{% trans %}using this email address{% endtrans %}.
@@ -34,6 +35,12 @@ Your applications
                 <h2 class="govuk-heading-l">
                     {{ round["round_details"]["title"] }}
                 </h2>
+                {% if submission_deadline|length %}
+                <p class="govuk-body">
+                    {% trans %}Deadline for applications: {% endtrans %} {{
+                    submission_deadline|datetime_format }}
+                </p>
+                {% endif %}
                 {% if round["is_past_submission_deadline"] %}
                     {{ round_closed_warning(fund["fund_data"]["name"], round["round_details"]["title"], round["round_details"]["deadline"]) }}
                 {% endif %}
