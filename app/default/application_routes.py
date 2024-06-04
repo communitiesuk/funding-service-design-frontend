@@ -627,13 +627,12 @@ def round_research_intro(application_id):
                     application_id=application_id,
                 )
             )
-        else:
-            return redirect(
-                url_for(
-                    "application_routes.tasklist",
-                    application_id=application_id,
-                )
+        return redirect(
+            url_for(
+                "application_routes.tasklist",
+                application_id=application_id,
             )
+        )
 
     if survey_data := get_research_survey_from_store(application_id):
         form.back_fill_data(survey_data.data)
