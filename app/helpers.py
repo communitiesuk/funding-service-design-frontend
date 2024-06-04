@@ -7,11 +7,12 @@ from app.default.data import get_all_funds
 from app.default.data import get_application_data
 from app.default.data import get_default_round_for_fund
 from app.default.data import get_feedback
+from app.default.data import get_feedback_survey_from_store
 from app.default.data import get_fund_data
 from app.default.data import get_fund_data_by_short_name
+from app.default.data import get_research_survey_from_store
 from app.default.data import get_round_data
 from app.default.data import get_round_data_by_short_names
-from app.default.data import get_survey_data
 from app.default.data import get_ttl_hash
 from app.models.fund import Fund
 from app.models.round import Round
@@ -88,7 +89,7 @@ def format_rehydrate_payload(
 
 
     Returns:
-        formatted_data (dict):
+    formatted_data (dict):
         formatted application data to rehydrate
             the xgov-form-runner
         formatted_data = {
@@ -279,23 +280,52 @@ def get_round(
     return round
 
 
-def get_feedback_survey_data(
-    application,
-    application_id,
-    current_feedback_list,
-    section_display_config,
-    is_feedback_survey_optional,
-):
-
-    # we grab the number from the last section i.e "6. Foobar" then increment it to get "7. " for feedback.
+def get_next_section_number(section_display_config):
+    # we grab the number from the last section i.e "6. Foobar" then increment it to get "7.
     last_section_title = section_display_config[-1].title
     number = None
     if re.search(r"\b(\d+)\.", last_section_title):
         number = int(re.search(r"\b(\d+)\.", last_section_title).group(1)) + 1
 
+    return number
+
+
+def get_research_survey_data(
+    application,
+    application_id,
+    number,
+    is_research_survey_optional,
+):
+    research_survey_available = application.all_forms_complete  # and all(current_feedback_list)
+    existing_research_survey = get_research_survey_from_store(application_id=application_id)
+    survey_has_been_completed = False
+    if existing_research_survey and (opt_in := existing_research_survey.data.get("research_opt_in")):
+        if opt_in == "disagree" or (
+            existing_research_survey.data.get("contact_name") and existing_research_survey.data.get("contact_email")
+        ):
+            survey_has_been_completed = True
+
+    research_survey_data = {
+        "number": f"{number}. " if number else "",
+        "available": research_survey_available,
+        "completed": survey_has_been_completed,
+        "started": True if existing_research_survey and existing_research_survey.date_submitted else False,
+        "is_research_survey_optional": is_research_survey_optional,
+    }
+
+    return research_survey_data
+
+
+def get_feedback_survey_data(
+    application,
+    application_id,
+    number,
+    current_feedback_list,
+    is_feedback_survey_optional,
+):
     round_feedback_available = application.all_forms_complete and all(current_feedback_list)
     existing_survey_data_map = {
-        page_number: get_survey_data(application_id, page_number) for page_number in ["1", "2", "3", "4"]
+        page_number: get_feedback_survey_from_store(application_id, page_number) for page_number in ["1", "2", "3", "4"]
     }
 
     survey_has_been_completed = all(existing_survey_data_map.values())

@@ -14,6 +14,7 @@ from app.models.application_summary import ApplicationSummary
 from app.models.feedback import EndOfApplicationSurveyData
 from app.models.feedback import FeedbackSubmission
 from app.models.fund import Fund
+from app.models.research import ResearchSurveyData
 from app.models.round import Round
 from config import Config
 from flask import abort
@@ -408,7 +409,7 @@ def get_feedback(application_id, section_id, fund_id, round_id):
     current_app.logger.info(f"No feedback found for {application_id} section {section_id}")
 
 
-def post_survey_data(application_id, fund_id, round_id, page_number, form_data_dict):
+def post_feedback_survey_to_store(application_id, fund_id, round_id, page_number, form_data_dict):
     post_data = {
         "application_id": application_id,
         "data": form_data_dict,
@@ -425,7 +426,7 @@ def post_survey_data(application_id, fund_id, round_id, page_number, form_data_d
     return EndOfApplicationSurveyData.from_dict(json_response)
 
 
-def get_survey_data(application_id, page_number):
+def get_feedback_survey_from_store(application_id, page_number):
     params = {
         "application_id": application_id,
         "page_number": page_number,
@@ -434,3 +435,32 @@ def get_survey_data(application_id, page_number):
     survey_response = requests.get(Config.END_OF_APP_SURVEY_FEEDBACK_ENDPOINT, params)
     if survey_response.ok:
         return EndOfApplicationSurveyData.from_dict(survey_response.json())
+
+
+def post_research_survey_to_store(application_id, fund_id, round_id, form_data_dict):
+    post_data = {
+        "application_id": application_id,
+        "data": form_data_dict,
+        "fund_id": fund_id,
+        "round_id": round_id,
+    }
+
+    survey_response = requests.post(Config.RESEARCH_SURVEY_ENDPOINT, json=post_data)
+    if not survey_response.ok:
+        return None
+
+    json_response = survey_response.json()
+    return ResearchSurveyData.from_dict(json_response)
+
+
+def get_research_survey_from_store(application_id):
+    params = {
+        "application_id": application_id,
+    }
+
+    survey_response = requests.get(Config.RESEARCH_SURVEY_ENDPOINT, params)
+    if not survey_response.ok:
+        return None
+
+    json_response = survey_response.json()
+    return ResearchSurveyData.from_dict(json_response)
