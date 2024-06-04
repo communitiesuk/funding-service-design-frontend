@@ -25,8 +25,8 @@
         </h1>
         {% else %}
         <span class="govuk-caption-l">{{ application_meta_data["fund_name"] }} {{ application_meta_data["round_name"]
-          }}</span>
-        <h1 class="govuk-heading-xl">Application for {{ application_meta_data["fund_title"] }}</h1>
+            }}</span>
+        <h1 class="govuk-heading-xl">{% trans %}Application for{% endtrans %} {{ application_meta_data["fund_title"] }}</h1>
         {% endif %}
         <details class="govuk-details" data-module="govuk-details">
             <summary class="govuk-details__summary">
@@ -89,7 +89,7 @@
                 </h2>
                 {% if is_expression_of_interest %}
                 <p class="govuk-body">
-                    {% trans %}General support is now available to applicants via the {% endtrans %}
+                    {% trans %}General support is now available to applicants via the{% endtrans %}
                     <a class="govuk-link" href="https://mycommunity.org.uk/">{% trans %}My Community website{% endtrans %}</a>
                     {% trans %}, which includes an enquiry form as well as a range of helpful documents and webinars.{%
                     endtrans %}
@@ -107,14 +107,14 @@
                 {% else %}
                 <p class="govuk-body">
                     {% if show_contact_us %}
-                        If you need help,
+                    {% trans %}If you need help,{% endtrans %}
                         <a class="govuk-link" href="{{
                             url_for(
                                 "content_routes.contact_us",
                                 fund=fund_short_name,
                                 round=round_short_name
                             )
-                      }}">contact us.</a>
+                        }}">{% trans %}contact us.{% endtrans %}</a>
                     {% else %}
                         {% trans %}If you have any questions about the form or the fund, email us at{% endtrans %} <a
                             class="govuk-link" href="mailto:{{ contact_us_email_address }}">{{ contact_us_email_address
@@ -236,6 +236,66 @@
                     <li class="app-task-list__item task-list__new-design">
                         <span class="app-task-list__task-name">
                             {% trans %}Applicant feedback submitted{% endtrans %} {{ feedback_survey_data.submitted }}
+                        </span>
+                        <span class="govuk-tag complete-tag app-task-list__tag">
+                            {{ application_status("COMPLETED") }}
+                        </span>
+                    </li>
+                </ul>
+                {% endif %}
+            </li>
+            {% endif %}
+            {% if research_survey_data %}
+            <li>
+                <h2 class="app-task-list__section">
+                    {{ research_survey_data.number }}{% trans %}Applicant research survey (not scored){% endtrans %}
+                </h2>
+                {% if not research_survey_data.completed %}
+                    {% if research_survey_data.is_research_survey_optional %}
+                    <p class="govuk-body">
+                        {% trans %}You must complete all other sections before starting the research survey. This section is optional and should take approximately 1 minute to complete.{% endtrans %}
+                    </p>
+                    {% else %}
+                    <p class="govuk-body">
+                        {% trans %}You must complete all other sections before starting the research survey. This section should take approximately 1 minute to complete.{% endtrans %}
+                    </p>
+                    {% endif %}
+                    <ul class="app-task-list__items">
+                        <li class="app-task-list__item task-list__new-design">
+                            {% if not research_survey_data.available %}
+                            <span class="app-task-list__task-name">
+                                {% trans %}Applicant research survey{% endtrans %}
+                            </span>
+                            <span class="govuk-tag not-started-tag app-task-list__tag">
+                                {% trans %}Cannot start yet{% endtrans %}
+                            </span>
+                            {% else %}
+                            <span class="app-task-list__task-name">
+                                <a class="govuk-link" href="{{ url_for("application_routes.round_research_intro",
+                                    application_id=application.id) }}">
+                                    {% trans %}Applicant research survey{% endtrans %}
+                                </a>
+                            </span>
+                                {% if research_survey_data.started %}
+                                    <span class="govuk-tag in-progress-tag-new app-task-list__tag">
+                                        {{ application_status("IN_PROGRESS") }}
+                                    </span>
+                                {% else %}
+                                    <span class="govuk-tag not-started-tag app-task-list__tag">
+                                        {{ application_status("NOT_STARTED") }}
+                                    </span>
+                                {% endif %}
+                            {% endif %}
+                        </li>
+                    </ul>
+                {% else %}
+                <ul class="app-task-list__items">
+                    <li class="app-task-list__item task-list__new-design">
+                        <span class="app-task-list__task-name">
+                            <a class="govuk-link" href="{{ url_for("application_routes.round_research_intro",
+                            application_id=application.id) }}">
+                            {% trans %}Applicant research survey{% endtrans %}
+                            </a>
                         </span>
                         <span class="govuk-tag complete-tag app-task-list__tag">
                             {{ application_status("COMPLETED") }}

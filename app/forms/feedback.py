@@ -1,17 +1,12 @@
+from app.forms.base import ApplicationFlaskForm
+from app.forms.base import PrepopulatedForm
 from flask_babel import gettext
-from flask_wtf import FlaskForm
 from wtforms import FloatField
-from wtforms import HiddenField
 from wtforms import RadioField
 from wtforms import TextAreaField
 from wtforms.validators import DataRequired
 from wtforms.validators import InputRequired
 from wtforms.validators import NumberRange
-
-
-# Always has an application_id, as it's required by @verify_application_owner_local on POST requests.
-class ApplicationFlaskForm(FlaskForm):
-    application_id = HiddenField()
 
 
 class DefaultSectionFeedbackForm(ApplicationFlaskForm):
@@ -45,17 +40,7 @@ class DefaultSectionFeedbackForm(ApplicationFlaskForm):
         }
 
 
-class EndOfApplicationPageForm(ApplicationFlaskForm):
-    def back_fill_data(self, data: dict):
-        for field_name, field in self._fields.items():
-            if field_name != "application_id":
-                field.data = data.get(field_name)
-
-    def as_dict(self):
-        return {field_name: field.data for field_name, field in self._fields.items() if field_name != "application_id"}
-
-
-class EndOfApplicationPage1Form(EndOfApplicationPageForm):
+class EndOfApplicationPage1Form(PrepopulatedForm):
     overall_application_experience = RadioField(
         label="How was your overall application experience?",
         validators=[InputRequired(message="Select a score")],
@@ -75,7 +60,7 @@ class EndOfApplicationPage1Form(EndOfApplicationPageForm):
         self.more_detail.label.text = gettext("Explain why you chose this score (optional)")
 
 
-class EndOfApplicationPage2Form(EndOfApplicationPageForm):
+class EndOfApplicationPage2Form(PrepopulatedForm):
     demonstrate_why_org_funding = RadioField(
         label=(
             "To what extent do you agree that this application form allowed"
@@ -102,7 +87,7 @@ class EndOfApplicationPage2Form(EndOfApplicationPageForm):
         ]
 
 
-class EndOfApplicationPage3Form(EndOfApplicationPageForm):
+class EndOfApplicationPage3Form(PrepopulatedForm):
     understand_eligibility_criteria = RadioField(
         label="How easy was it to understand the eligibility criteria for this fund?",
         validators=[DataRequired(message="Select a score")],
@@ -125,7 +110,7 @@ class EndOfApplicationPage3Form(EndOfApplicationPageForm):
         ]
 
 
-class EndOfApplicationPage4Form(EndOfApplicationPageForm):
+class EndOfApplicationPage4Form(PrepopulatedForm):
     hours_spent = FloatField(
         label="Number of hours spent:",
         validators=[

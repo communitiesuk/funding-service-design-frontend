@@ -2,7 +2,7 @@
 {% set pageHeading %}
 
 {% if is_expression_of_interest %}
-    {% trans %}Start or continue an {% endtrans %} {{ fund_title }}
+    {% trans %}Start or continue an{% endtrans %}  {{ fund_title }}
 {% else %}
     {% trans %}Start or continue an application for{% endtrans %} {{ fund_title }}
 {% endif %}
@@ -51,7 +51,7 @@
             </p>
             {% if submission_deadline|length and not is_expression_of_interest %}
             <p class="govuk-body">
-                <strong>{% trans %}Submission deadline: {% endtrans %}</strong> {{
+                <strong>{% trans %}Submission deadline:{% endtrans %} </strong> {{
                 submission_deadline|datetime_format }}
             </p>
             {% endif %}
@@ -63,11 +63,11 @@
             }) }}
             </div>
             {% if contact_us_email_address|length %}
-            <h2 class="govuk-heading-m">{% trans %}Get help {% endtrans %}</h2>
+            <h2 class="govuk-heading-m">{% trans %}Get help{% endtrans %} </h2>
                 {% if link_to_contact_us_page %}
                 <p class="govuk-body">
                     {% if show_contact_us %}
-                        If you need help,
+                    {% trans %}If you need help,{% endtrans %}
                     {% else %}
                         If you have questions about the form or the fund,
                     {% endif %}
@@ -77,7 +77,7 @@
                             fund=fund_short_name,
                             round=round_short_name
                         )
-                  }}">contact us.</a>
+                    }}">{% trans %}contact us.{% endtrans %}</a>
                 </p>
                 {% else %}
                 <p class="govuk-body">

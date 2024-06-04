@@ -60,6 +60,8 @@ class DefaultConfig:
     SUBMIT_APPLICATION_ENDPOINT = APPLICATION_STORE_API_HOST + "/applications/{application_id}/submit"
     FEEDBACK_ENDPOINT = APPLICATION_STORE_API_HOST + "/application/feedback"
     END_OF_APP_SURVEY_FEEDBACK_ENDPOINT = APPLICATION_STORE_API_HOST + "/application/end_of_application_survey_data"
+    RESEARCH_SURVEY_ENDPOINT = APPLICATION_STORE_API_HOST + "/application/research"
+
     FUND_STORE_API_HOST = environ.get("FUND_STORE_API_HOST", TEST_FUND_STORE_API_HOST)
     GET_ALL_FUNDS_ENDPOINT = FUND_STORE_API_HOST + "/funds"
     GET_FUND_DATA_ENDPOINT = FUND_STORE_API_HOST + "/funds/{fund_id}"
