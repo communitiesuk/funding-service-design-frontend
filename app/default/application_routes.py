@@ -638,9 +638,6 @@ def round_research_intro(application_id):
     if survey_data := get_research_survey_from_store(application_id):
         form.back_fill_data(survey_data.data)
 
-    # if research_survey_data["completed"]:
-    #     return redirect(url_for("application_routes.tasklist", application_id=application_id))
-
     return render_template(
         "research_opt_in.html",
         application_id=application.id,
