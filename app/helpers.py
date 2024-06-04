@@ -70,6 +70,7 @@ def format_rehydrate_payload(
     returnUrl,
     form_name,
     markAsCompleteEnabled: bool,
+    read_only: bool = False,
 ):
     """
     Returns information in a JSON format that provides the
@@ -126,6 +127,7 @@ def format_rehydrate_payload(
     formatted_data["metadata"]["application_id"] = application_id
     formatted_data["metadata"]["form_session_identifier"] = application_id
     formatted_data["metadata"]["form_name"] = form_name
+    formatted_data["metadata"]["read_only"] = read_only
     return formatted_data
 
 

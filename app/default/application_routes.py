@@ -285,6 +285,34 @@ def tasklist(application_id):
         return response
 
 
+@application_bp.route("/view_application/<application_id>", methods=["GET"])
+@login_required
+@verify_application_owner_local
+@verify_round_open
+def view_application(application_id):
+    args = request.args
+    form_name = args.get("form_name")
+    return_url = request.host_url + url_for("application_routes.tasklist", application_id=application_id)[1:]
+    current_app.logger.info(f"Url the form runner should return to '{return_url}'.")
+
+    application = get_application_data(application_id)
+    round = get_round(fund_id=application.fund_id, round_id=application.round_id)
+
+    form_data = application.get_form_data(application, form_name)
+
+    rehydrate_payload = format_rehydrate_payload(
+        form_data, application_id, return_url, form_name, round.mark_as_complete_enabled, read_only=True
+    )
+
+    rehydration_token = get_token_to_return_to_application(form_name, rehydrate_payload)
+
+    redirect_url = Config.FORM_REHYDRATION_URL.format(rehydration_token=rehydration_token)
+    if Config.FORMS_SERVICE_PRIVATE_HOST:
+        redirect_url = redirect_url.replace(Config.FORMS_SERVICE_PRIVATE_HOST, Config.FORMS_SERVICE_PUBLIC_HOST)
+    current_app.logger.info("redirecting to form runner")
+    return redirect(redirect_url)
+
+
 @application_bp.route("/continue_application/<application_id>", methods=["GET"])
 @login_required
 @verify_application_owner_local
