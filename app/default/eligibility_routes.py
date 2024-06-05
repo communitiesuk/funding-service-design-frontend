@@ -18,7 +18,9 @@ def eligiblity_result(fund_name, round_name):
     return_url = request.host_url + url_for("account_routes.dashboard", fund=fund_name, round=round_name)
     fund, round = get_fund_and_round(fund_short_name=fund_name, round_short_name=round_name)
     current_app.logger.info(f"Eligibility return url: {return_url}")
-    return render_template("eligibility_result.html", fund_id=round.fund_id, round_id=round.id, backLink=return_url)
+    return render_template(
+        "eligibility_result.html", fund_id=round.fund_id, round_id=round.id, fund_title=fund.title, backLink=return_url
+    )
 
 
 @eligibility_bp.route("/launch-eligibility/<fund_id>/<round_id>", methods=["POST"])

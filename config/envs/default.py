@@ -57,7 +57,6 @@ class DefaultConfig:
         APPLICATION_STORE_API_HOST + "/applications?account_id={account_id}" + "&order_by=last_edited&order_rev=1"
     )
     UPDATE_APPLICATION_FORM_ENDPOINT = APPLICATION_STORE_API_HOST + "/applications/forms"
-    UPDATE_ELIGIBILITY_RESULT_ENDPOINT = APPLICATION_STORE_API_HOST + "/eligibility"
     SUBMIT_APPLICATION_ENDPOINT = APPLICATION_STORE_API_HOST + "/applications/{application_id}/submit"
     FEEDBACK_ENDPOINT = APPLICATION_STORE_API_HOST + "/application/feedback"
     END_OF_APP_SURVEY_FEEDBACK_ENDPOINT = APPLICATION_STORE_API_HOST + "/application/end_of_application_survey_data"
