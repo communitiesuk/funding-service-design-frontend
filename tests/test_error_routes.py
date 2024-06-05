@@ -57,6 +57,7 @@ def test_404(client, mocker):
     assert response.status_code == 404
     soup = BeautifulSoup(response.data, "html.parser")
     assert "test@example.com" in soup.find("li").text
+    assert 0 == 1
 
 
 def test_404_with_bad_fund(client, mocker):

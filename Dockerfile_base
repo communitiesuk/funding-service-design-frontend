@@ -1,0 +1,31 @@
+# This section will be in a separate Dockerfile, not in each repo
+FROM python:3.10-bullseye as base
+
+WORKDIR /app
+
+COPY base-requirements.txt base-requirements.txt
+
+RUN python3 -m pip install --upgrade pip && pip install -r base-requirements.txt
+# ################################################################################
+
+# This section will be pulled out into a separate file for each repo
+
+FROM base as frontend
+WORKDIR /app
+COPY requirements.txt requirements.txt
+RUN python3 -m pip install --upgrade pip && pip install -r requirements.txt
+
+# TODO change the below so test files etc aren't copied in for prod
+COPY . .
+
+FROM frontend as dev
+
+WORKDIR /app
+COPY base-requirements-dev.txt base-requirements-dev.txt
+RUN python3 -m pip install --upgrade pip && pip install -r base-requirements-dev.txt
+
+FROM dev as run-dev
+
+EXPOSE 8080
+
+CMD ["flask", "run", "--port", "8080", "--host", "0.0.0.0"]
