@@ -1019,7 +1019,7 @@ msgstr "Arolwg adborth ymgeiswyr wedi'i gyflwyno"
 
 #: app/templates/tasklist.html:251
 msgid "Applicant research survey (not scored)"
-msgstr "arolwg ymchwil ymgeiswyr (ni fydd yn cael ei sgorio)"
+msgstr "Arolwg ymchwil ymgeiswyr (ni fydd yn cael ei sgorio)"
 
 #: app/templates/tasklist.html:256
 msgid ""
