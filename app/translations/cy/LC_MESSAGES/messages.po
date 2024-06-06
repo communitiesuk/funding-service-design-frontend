@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-05 14:56+0100\n"
+"POT-Creation-Date: 2024-06-06 09:35+0100\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -380,7 +380,7 @@ msgstr "Eich ceisiadau yn"
 
 #: app/templates/eligibility_result.html:4
 msgid "You can now apply for this funding"
-msgstr ""
+msgstr "Gallwch nawr wneud cais am y cyllid hwn"
 
 #: app/templates/eligibility_result.html:6 app/templates/tasklist.html:8
 msgid "Back to your applications"
@@ -388,7 +388,7 @@ msgstr "Yn ôl at eich ceisiadau"
 
 #: app/templates/eligibility_result.html:13
 msgid "Based on your answers, you can apply for "
-msgstr ""
+msgstr "Yn seiliedig ar eich atebion, gallwch wneud cais am"
 
 #: app/templates/eligibility_result.html:13
 #, python-format
@@ -4046,7 +4046,7 @@ msgstr "Ffôn testun"
 
 #: app/templates/partials/eligibility-check-button.html:11
 msgid "Check eligibility"
-msgstr ""
+msgstr "Gwirio cymhwysedd"
 
 #: app/templates/partials/start-application-button.html:11
 msgid "Start new application"
@@ -4456,3 +4456,4 @@ msgstr "Cyflwyno'ch cais"
 
 #~ msgid "when to call you"
 #~ msgstr "pa bryd y gallai ddigwydd"
+
