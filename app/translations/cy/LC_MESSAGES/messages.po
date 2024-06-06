@@ -4583,4 +4583,3 @@ msgstr "Cyflwyno'ch cais"
 
 #~ msgid "when to call you"
 #~ msgstr "pa bryd y gallai ddigwydd"
-
