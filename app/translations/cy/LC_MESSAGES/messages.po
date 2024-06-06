@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-06 09:51+0100\n"
+"POT-Creation-Date: 2024-06-06 13:43+0100\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -402,11 +402,6 @@ msgstr "Yn ôl at eich ceisiadau"
 #: app/templates/eligibility_result.html:13
 msgid "Based on your answers, you can apply for "
 msgstr "Yn seiliedig ar eich atebion, gallwch wneud cais am"
-
-#: app/templates/eligibility_result.html:13
-#, python-format
-msgid "%(fund_title)s "
-msgstr ""
 
 #: app/templates/end_of_application_feedback_page_1.html:7
 #: app/templates/end_of_application_feedback_page_2.html:7
@@ -1036,12 +1031,10 @@ msgid "Applicant feedback submitted"
 msgstr "Arolwg adborth ymgeiswyr wedi'i gyflwyno"
 
 #: app/templates/tasklist.html:251
-#, fuzzy
 msgid "Applicant research survey (not scored)"
-msgstr "Arolwg adborth ymgeiswyr (ni fydd yn cael ei sgorio)"
+msgstr "Arolwg ymchwil ymgeiswyr (ni fydd yn cael ei sgorio)"
 
 #: app/templates/tasklist.html:256
-#, fuzzy
 msgid ""
 "You must complete all other sections before starting the research survey."
 " This section is optional and should take approximately 1 minute to "
@@ -1051,7 +1044,6 @@ msgstr ""
 "Fe ddylai gymryd tua 1 funud i gwblhau’r adran hon."
 
 #: app/templates/tasklist.html:260
-#, fuzzy
 msgid ""
 "You must complete all other sections before starting the research survey."
 " This section should take approximately 1 minute to complete."
@@ -1061,9 +1053,8 @@ msgstr ""
 
 #: app/templates/tasklist.html:267 app/templates/tasklist.html:276
 #: app/templates/tasklist.html:297
-#, fuzzy
 msgid "Applicant research survey"
-msgstr "Arolwg adborth ymgeiswyr"
+msgstr "Arolwg ymchwil ymgeiswyr"
 
 #: app/templates/all_questions/cy/cof-eoi_r1_all_questions_cy.html:6
 #: app/templates/all_questions/cy/cof_r3w3_all_questions_cy.html:6
@@ -4583,3 +4574,4 @@ msgstr "Cyflwyno'ch cais"
 
 #~ msgid "when to call you"
 #~ msgstr "pa bryd y gallai ddigwydd"
+

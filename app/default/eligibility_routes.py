@@ -14,6 +14,7 @@ eligibility_bp = Blueprint("eligibility_routes", __name__, template_folder="temp
 
 @eligibility_bp.route("/eligibility-result/<fund_name>/<round_name>", methods=["GET"])
 def eligiblity_result(fund_name, round_name):
+    """ Render the eligibility result page """
     current_app.logger.info(f"Eligibility launch result: {fund_name} {round_name}")
     return_url = request.host_url + url_for("account_routes.dashboard", fund=fund_name, round=round_name)
     fund, round = get_fund_and_round(fund_short_name=fund_name, round_short_name=round_name)
@@ -25,6 +26,7 @@ def eligiblity_result(fund_name, round_name):
 
 @eligibility_bp.route("/launch-eligibility/<fund_id>/<round_id>", methods=["POST"])
 def launch_eligibility(fund_id, round_id):
+    """ Launch eligibility page/form """
     fund_details, round_details = get_fund_and_round(fund_id=fund_id, round_id=round_id)
     fund_name = fund_details.short_name.lower()
     round_name = round_details.short_name.lower()
