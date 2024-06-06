@@ -790,10 +790,12 @@ msgstr "Ni fydd cymryd rhan mewn ymchwil yn effeithio ar ganlyniadau eich cais."
 #: app/templates/research_opt_in.html:32
 msgid ""
 "You can always say no to an invite, and can withdraw your consent to be "
-"contacted or to use your data at any time. To do so, please contact us at "
+"contacted or to use your data at any time. To do so, please contact us at"
+" "
 msgstr ""
-"Gallwch wrthod gwahoddiad, a gallwch dynnu'ch caniatâd i gysylltu â chi neu ddefnyddio'ch data yn ôl unrhyw bryd."
-"I wneud hynny, cysylltwch â ni yma "
+"Gallwch wrthod gwahoddiad, a gallwch dynnu'ch caniatâd i gysylltu â chi "
+"neu ddefnyddio'ch data yn ôl unrhyw bryd.I wneud hynny, cysylltwch â ni "
+"yma "
 
 #: app/templates/section_feedback_intro.html:23
 #, fuzzy
@@ -1016,12 +1018,10 @@ msgid "Applicant feedback submitted"
 msgstr "Arolwg adborth ymgeiswyr wedi'i gyflwyno"
 
 #: app/templates/tasklist.html:251
-#, fuzzy
 msgid "Applicant research survey (not scored)"
-msgstr "Arolwg adborth ymgeiswyr (ni fydd yn cael ei sgorio)"
+msgstr "Arolwg ymchwil ymgeiswyr (ni fydd yn cael ei sgorio)"
 
 #: app/templates/tasklist.html:256
-#, fuzzy
 msgid ""
 "You must complete all other sections before starting the research survey."
 " This section is optional and should take approximately 1 minute to "
@@ -1031,7 +1031,6 @@ msgstr ""
 "Fe ddylai gymryd tua 1 funud i gwblhau’r adran hon."
 
 #: app/templates/tasklist.html:260
-#, fuzzy
 msgid ""
 "You must complete all other sections before starting the research survey."
 " This section should take approximately 1 minute to complete."
@@ -1041,9 +1040,8 @@ msgstr ""
 
 #: app/templates/tasklist.html:267 app/templates/tasklist.html:276
 #: app/templates/tasklist.html:297
-#, fuzzy
 msgid "Applicant research survey"
-msgstr "Arolwg adborth ymgeiswyr"
+msgstr "Arolwg ymchwil ymgeiswyr"
 
 #: app/templates/all_questions/cy/cof-eoi_r1_all_questions_cy.html:6
 #: app/templates/all_questions/cy/cof_r3w3_all_questions_cy.html:6
