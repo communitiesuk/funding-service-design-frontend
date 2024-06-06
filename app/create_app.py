@@ -81,6 +81,7 @@ def create_app() -> Flask:
     from app.default.application_routes import application_bp
     from app.default.content_routes import content_bp
     from app.default.account_routes import account_bp
+    from app.default.eligibility_routes import eligibility_bp
     from app.default.error_routes import not_found, internal_server_error
 
     flask_app.register_error_handler(404, not_found)
@@ -88,6 +89,7 @@ def create_app() -> Flask:
     flask_app.register_blueprint(default_bp)
     flask_app.register_blueprint(application_bp)
     flask_app.register_blueprint(content_bp)
+    flask_app.register_blueprint(eligibility_bp)
     flask_app.register_blueprint(account_bp)
     flask_app.jinja_env.filters["datetime_format_short_month"] = datetime_format_short_month
     flask_app.jinja_env.filters["custom_format_datetime"] = custom_format_datetime

@@ -44,6 +44,7 @@ class Round:
     is_expression_of_interest: bool = False
     reference_contact_page_over_email: bool = False
     feedback_survey_config: FeedbackSurveyConfig = None
+    has_eligibility: bool = False
 
     def __post_init__(self):
         if isinstance(self.feedback_survey_config, dict):
@@ -54,4 +55,7 @@ class Round:
     @classmethod
     def from_dict(cls, d: dict):
         # Filter unknown fields from JSON dictionary
-        return cls(**{k: v for k, v in d.items() if k in inspect.signature(cls).parameters})
+        return cls(
+            **{k: v for k, v in d.items() if k in inspect.signature(cls).parameters},
+            has_eligibility=d["eligibility_config"]["has_eligibility"],
+        )

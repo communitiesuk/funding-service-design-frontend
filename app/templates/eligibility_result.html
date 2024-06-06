@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% set pageHeading %}{% trans %}Eligibility Response{% endtrans %}{% endset %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-xl">{{pageHeading}}</h1>
+        <p class="govuk-body">This is a placeholder eligibility results page</p>
+        <p class="govuk-body">You result is {{ eligiblity_result }}</p>
+    </div>
+</div>
+
+{% endblock %}
