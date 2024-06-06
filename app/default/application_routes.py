@@ -7,18 +7,24 @@ from app.default.data import determine_round_status
 from app.default.data import get_application_data
 from app.default.data import get_application_display_config
 from app.default.data import get_feedback
+from app.default.data import get_feedback_survey_from_store
 from app.default.data import get_fund_data
+from app.default.data import get_research_survey_from_store
 from app.default.data import get_round_data
-from app.default.data import get_survey_data
 from app.default.data import get_ttl_hash
-from app.default.data import post_survey_data
+from app.default.data import post_feedback_survey_to_store
+from app.default.data import post_research_survey_to_store
 from app.default.data import submit_feedback
-from app.forms.feedback_forms import DefaultSectionFeedbackForm
-from app.forms.feedback_forms import (
+from app.forms.feedback import DefaultSectionFeedbackForm
+from app.forms.feedback import (
     END_OF_APPLICATION_FEEDBACK_SURVEY_PAGE_NUMBER_MAP,
 )
+from app.forms.research import ResearchContactDetailsForm
+from app.forms.research import ResearchOptForm
 from app.helpers import format_rehydrate_payload
 from app.helpers import get_feedback_survey_data
+from app.helpers import get_next_section_number
+from app.helpers import get_research_survey_data
 from app.helpers import get_round
 from app.helpers import get_section_feedback_data
 from app.helpers import get_token_to_return_to_application
@@ -188,15 +194,28 @@ def tasklist(application_id):
         current_feedback_list = []
         existing_feedback_map = {}
 
+    number = get_next_section_number(section_display_config)
+
     feedback_survey_data = (
         get_feedback_survey_data(
             application,
             application_id,
+            number,
             current_feedback_list,
-            section_display_config,
             round_data.feedback_survey_config.is_feedback_survey_optional,
         )
         if round_data.feedback_survey_config.has_feedback_survey
+        else None
+    )
+
+    research_survey_data = (
+        get_research_survey_data(
+            application,
+            application_id,
+            number + 1,
+            round_data.feedback_survey_config.is_research_survey_optional,
+        )
+        if round_data.feedback_survey_config.has_research_survey
         else None
     )
 
@@ -276,6 +295,7 @@ def tasklist(application_id):
             existing_feedback_map=existing_feedback_map,
             feedback_survey_data=feedback_survey_data,
             show_contact_us=show_contact_us,
+            research_survey_data=research_survey_data,
             migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
             # Set service_title here so it uses the application language - overrides the context_processor
             service_title=gettext("Apply for") + " " + fund_data.title,  # title is already translated
@@ -508,13 +528,13 @@ def round_feedback(application_id, page_number):
     form.application_id.data = application_id
 
     existing_survey_data_map = {
-        page_number: get_survey_data(application_id, page_number) for page_number in ["1", "2", "3", "4"]
+        page_number: get_feedback_survey_from_store(application_id, page_number) for page_number in ["1", "2", "3", "4"]
     }
     if all(existing_survey_data_map.values()):  # if user has already submitted data redirect them to tasklist
         return redirect(url_for("application_routes.tasklist", application_id=application_id))
 
     if form.validate_on_submit():
-        posted_survey_data = post_survey_data(
+        posted_survey_data = post_feedback_survey_to_store(
             application_id,
             application.fund_id,
             application.round_id,
@@ -561,7 +581,7 @@ def round_feedback_intro(application_id):
         abort(404)
 
     existing_survey_data_map = {
-        page_number: get_survey_data(application_id, page_number) for page_number in ["1", "2", "3", "4"]
+        page_number: get_feedback_survey_from_store(application_id, page_number) for page_number in ["1", "2", "3", "4"]
     }
     if all(existing_survey_data_map.values()):
         return redirect(url_for("application_routes.tasklist", application_id=application_id))
@@ -569,5 +589,104 @@ def round_feedback_intro(application_id):
     return render_template(
         "end_of_application_survey.html",
         application_id=application.id,
+        migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
+    )
+
+
+@application_bp.route("/feedback/<application_id>/research/intro", methods=["GET", "POST"])
+@login_required
+@verify_application_owner_local
+@verify_round_open
+def round_research_intro(application_id):
+    application = get_application_data(application_id=application_id)
+    round_data = get_round_data(
+        fund_id=application.fund_id,
+        round_id=application.round_id,
+        language=application.language,
+        as_dict=False,
+        ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+    )
+
+    if not round_data.feedback_survey_config.has_research_survey:
+        abort(404)
+
+    form = ResearchOptForm()
+    form.application_id.data = application_id
+    if form.validate_on_submit():
+        posted_research_survey_data = post_research_survey_to_store(
+            application_id,
+            application.fund_id,
+            application.round_id,
+            form.as_dict(),
+        )
+
+        if posted_research_survey_data.data["research_opt_in"] == "agree":
+            return redirect(
+                url_for(
+                    "application_routes.round_research_contact_details",
+                    application_id=application_id,
+                )
+            )
+        return redirect(
+            url_for(
+                "application_routes.tasklist",
+                application_id=application_id,
+            )
+        )
+
+    if survey_data := get_research_survey_from_store(application_id):
+        form.back_fill_data(survey_data.data)
+
+    return render_template(
+        "research_opt_in.html",
+        application_id=application.id,
+        form=form,
+        migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
+    )
+
+
+@application_bp.route("/feedback/<application_id>/research/details", methods=["GET", "POST"])
+@login_required
+@verify_application_owner_local
+@verify_round_open
+def round_research_contact_details(application_id):
+    application = get_application_data(application_id=application_id)
+    round_data = get_round_data(
+        fund_id=application.fund_id,
+        round_id=application.round_id,
+        language=application.language,
+        as_dict=False,
+        ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+    )
+
+    if not round_data.feedback_survey_config.has_research_survey:
+        abort(404)
+
+    form = ResearchContactDetailsForm()
+    form.application_id.data = application_id
+
+    if form.validate_on_submit():
+        posted_research_survey_data = post_research_survey_to_store(
+            application_id,
+            application.fund_id,
+            application.round_id,
+            form.as_dict(),
+        )
+
+        if posted_research_survey_data:
+            return redirect(
+                url_for(
+                    "application_routes.tasklist",
+                    application_id=application_id,
+                )
+            )
+
+    if survey_data := get_research_survey_from_store(application_id):
+        form.back_fill_data(survey_data.data)
+
+    return render_template(
+        "research_contact_details.html",
+        application_id=application_id,
+        form=form,
         migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
     )
