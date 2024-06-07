@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-03 15:42+0100\n"
+"POT-Creation-Date: 2024-06-06 13:43+0100\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -19,11 +19,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.14.0\n"
 
-#: app/create_app.py:123 app/default/application_routes.py:301
+#: app/create_app.py:125 app/default/application_routes.py:301
 msgid "Apply for"
 msgstr "Gwneud cais am"
 
-#: app/create_app.py:125
+#: app/create_app.py:127
 msgid "Access Funding"
 msgstr "Cael Mynediad at Gyllid"
 
@@ -362,12 +362,12 @@ msgid "All applications"
 msgstr "Eich ceisiadau"
 
 #: app/templates/dashboard_all.html:25
-#: app/templates/dashboard_single_fund.html:25
+#: app/templates/dashboard_single_fund.html:27
 msgid "You have started"
 msgstr "Rydych wedi dechrau"
 
 #: app/templates/dashboard_all.html:25
-#: app/templates/dashboard_single_fund.html:25
+#: app/templates/dashboard_single_fund.html:27
 #, python-format
 msgid " %(application_count)s application"
 msgid_plural "%(application_count)s applications"
@@ -378,13 +378,30 @@ msgstr[3] "%(application_count)s ceisiadau"
 msgstr[4] "%(application_count)s ceisiadau"
 
 #: app/templates/dashboard_all.html:25
-#: app/templates/dashboard_single_fund.html:25
+#: app/templates/dashboard_single_fund.html:27
 msgid "using this email address"
 msgstr "gan ddefnyddio'r cyfeiriad e-bost hwn"
 
-#: app/templates/dashboard_single_fund.html:13
+#: app/templates/dashboard_single_fund.html:14
 msgid "Your applications for"
 msgstr "Eich ceisiadau yn"
+
+#: app/templates/dashboard_single_fund.html:41
+#, fuzzy
+msgid "Deadline for applications: "
+msgstr "Eich ceisiadau"
+
+#: app/templates/eligibility_result.html:4
+msgid "You can now apply for this funding"
+msgstr "Gallwch nawr wneud cais am y cyllid hwn"
+
+#: app/templates/eligibility_result.html:6 app/templates/tasklist.html:8
+msgid "Back to your applications"
+msgstr "Yn ôl at eich ceisiadau"
+
+#: app/templates/eligibility_result.html:13
+msgid "Based on your answers, you can apply for "
+msgstr "Yn seiliedig ar eich atebion, gallwch wneud cais am"
 
 #: app/templates/end_of_application_feedback_page_1.html:7
 #: app/templates/end_of_application_feedback_page_2.html:7
@@ -805,10 +822,6 @@ msgid ""
 msgstr ""
 "Byddwn yn gofyn i chi am eich profiad o gwblhau’r adran hon, fel y gallwn"
 " wella ein ffurflenni cais. Ni fydd eich ymatebion yn cael eu sgorio"
-
-#: app/templates/tasklist.html:8
-msgid "Back to your applications"
-msgstr "Yn ôl at eich ceisiadau"
 
 #: app/templates/tasklist.html:10
 msgid "Task List"
@@ -4088,6 +4101,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/partials/applications_table.html:30
+#: app/templates/partials/start-application-button.html:11
 msgid "Continue application"
 msgstr "Parhau gyda'r cais"
 
@@ -4147,6 +4161,10 @@ msgstr "Ffôn"
 #: app/templates/partials/contact_details.html:29
 msgid "Textphone"
 msgstr "Ffôn testun"
+
+#: app/templates/partials/eligibility-check-button.html:11
+msgid "Check eligibility"
+msgstr "Gwirio cymhwysedd"
 
 #: app/templates/partials/start-application-button.html:11
 msgid "Start new application"

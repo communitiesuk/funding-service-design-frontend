@@ -2,6 +2,7 @@
 {%- from "govuk_frontend_jinja/components/table/macro.html" import govukTable -%}
 {%- from "govuk_frontend_jinja/components/button/macro.html" import govukButton -%}
 {% from "partials/start-application-button.html" import startApplicationButton %}
+{% from "partials/eligibility-check-button.html" import eligibilityCheckButton %}
 {% from "partials/available_in_language.html" import available_in_language %}
 {% from "partials/round_closed_warning.html" import round_closed_warning %}
 {% from "partials/applications_table.html" import applications_table %}
@@ -46,7 +47,11 @@ Your applications
                 {% endif %}
                     {{ applications_table(round["applications"], round["is_past_submission_deadline"], show_language_column, fund["fund_data"]["short_name"]) }}
                 {% if not round["is_past_submission_deadline"] %}
-                    {{ startApplicationButton(form, url_for('account_routes.new'), fund_id=fund["fund_data"]["id"], round_id=round["round_details"]["id"], existing_applications_count=round["applications"]|count) }}
+                    {% if round["round_details"]["has_eligibility"] %}
+                        {{ eligibilityCheckButton(form, url_for('eligibility_routes.launch_eligibility', fund_id=fund["fund_data"]["id"], round_id=round["round_details"]["id"])) }}
+                    {% else %}
+                        {{ startApplicationButton(form, url_for('account_routes.new'), fund_id=fund["fund_data"]["id"], round_id=round["round_details"]["id"], eligibility_confirm=False, existing_applications_count=round["applications"]|count) }}
+                    {% endif %}
                 {% endif %}
             {% endif %}
         {% endfor %}
