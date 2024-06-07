@@ -1,9 +1,0 @@
-# This section will be in a separate Dockerfile, not in each repo
-FROM python:3.10-bullseye as base
-
-WORKDIR /app
-
-COPY base-requirements.txt base-requirements.txt
-
-RUN python3 -m pip install --upgrade pip && pip install -r base-requirements.txt
-# ################################################################################

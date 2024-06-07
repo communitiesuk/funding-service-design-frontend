@@ -1,0 +1,6 @@
+#-----------------------------------
+#   Frontend
+#-----------------------------------
+govuk-frontend-jinja==2.7.0
+flask-wtf
+flask-talisman

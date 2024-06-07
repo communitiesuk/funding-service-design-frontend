@@ -1,0 +1,15 @@
+services:
+  fsd-frontend:
+    # image: ghcr.io/srh-sloan/base:latest
+    build:
+      context: ./src
+      target: frontend-dev
+    volumes:
+      - .:/workspace/src:cached
+    command: sleep infinity
+    environment:
+      - REDIS_INSTANCE_URI=redis://redis-data:6379
+  redis-data:
+    image: redis
+    ports:
+      - 6379:6379
