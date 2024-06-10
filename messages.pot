@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-06 13:43+0100\n"
+"POT-Creation-Date: 2024-06-09 11:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -357,21 +357,16 @@ msgstr ""
 msgid "Deadline for applications: "
 msgstr ""
 
-#: app/templates/eligibility_result.html:4
-msgid "You can now apply for this funding"
+#: app/templates/eligibility_result.html:5
+msgid "You can apply for this funding"
 msgstr ""
 
-#: app/templates/eligibility_result.html:6 app/templates/tasklist.html:8
+#: app/templates/eligibility_result.html:7 app/templates/tasklist.html:8
 msgid "Back to your applications"
 msgstr ""
 
-#: app/templates/eligibility_result.html:13
+#: app/templates/eligibility_result.html:14
 msgid "Based on your answers, you can apply for "
-msgstr ""
-
-#: app/templates/eligibility_result.html:13
-#, python-format
-msgid "%(fund_title)s "
 msgstr ""
 
 #: app/templates/end_of_application_feedback_page_1.html:7

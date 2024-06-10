@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-06 13:43+0100\n"
+"POT-Creation-Date: 2024-06-09 11:56+0100\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -391,15 +391,15 @@ msgstr "Eich ceisiadau yn"
 msgid "Deadline for applications: "
 msgstr "Eich ceisiadau"
 
-#: app/templates/eligibility_result.html:4
-msgid "You can now apply for this funding"
-msgstr "Gallwch nawr wneud cais am y cyllid hwn"
+#: app/templates/eligibility_result.html:5
+msgid "You can apply for this funding"
+msgstr "Gallwch wneud cais am y cyllid hwn"
 
-#: app/templates/eligibility_result.html:6 app/templates/tasklist.html:8
+#: app/templates/eligibility_result.html:7 app/templates/tasklist.html:8
 msgid "Back to your applications"
 msgstr "Yn ôl at eich ceisiadau"
 
-#: app/templates/eligibility_result.html:13
+#: app/templates/eligibility_result.html:14
 msgid "Based on your answers, you can apply for "
 msgstr "Yn seiliedig ar eich atebion, gallwch wneud cais am"
 

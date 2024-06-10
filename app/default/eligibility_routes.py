@@ -8,16 +8,19 @@ from flask import redirect
 from flask import render_template
 from flask import request
 from flask import url_for
+from fsd_utils.authentication.decorators import login_required
+
 
 eligibility_bp = Blueprint("eligibility_routes", __name__, template_folder="templates")
 
 
-@eligibility_bp.route("/eligibility-result/<fund_name>/<round_name>", methods=["GET"])
-def eligiblity_result(fund_name, round_name):
+@eligibility_bp.route("/eligibility-result/<fund_short_name>/<round_name>", methods=["GET"])
+@login_required
+def eligiblity_result(fund_short_name, round_name):
     """Render the eligibility result page"""
-    current_app.logger.info(f"Eligibility launch result: {fund_name} {round_name}")
-    return_url = request.host_url + url_for("account_routes.dashboard", fund=fund_name, round=round_name)
-    fund, round = get_fund_and_round(fund_short_name=fund_name, round_short_name=round_name)
+    current_app.logger.info(f"Eligibility launch result: {fund_short_name} {round_name}")
+    return_url = request.host_url + url_for("account_routes.dashboard", fund=fund_short_name, round=round_name)
+    fund, round = get_fund_and_round(fund_short_name=fund_short_name, round_short_name=round_name)
     current_app.logger.info(f"Eligibility return url: {return_url}")
     return render_template(
         "eligibility_result.html", fund_id=round.fund_id, round_id=round.id, fund_title=fund.title, backLink=return_url
@@ -25,6 +28,7 @@ def eligiblity_result(fund_name, round_name):
 
 
 @eligibility_bp.route("/launch-eligibility/<fund_id>/<round_id>", methods=["POST"])
+@login_required
 def launch_eligibility(fund_id, round_id):
     """Launch eligibility page/form"""
     fund_details, round_details = get_fund_and_round(fund_id=fund_id, round_id=round_id)
