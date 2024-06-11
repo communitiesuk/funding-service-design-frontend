@@ -1,0 +1,4 @@
+services:
+  redis-data-frontend:
+    ports:
+      - 6380:6379

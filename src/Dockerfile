@@ -6,6 +6,7 @@
 
 FROM ghcr.io/srh-sloan/fsd-base-dev:latest as frontend-dev
 
+RUN apt-get update && apt-get install -y redis-tools
 WORKDIR /app
 
 COPY . .
