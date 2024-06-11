@@ -2,10 +2,10 @@ services:
   fsd-frontend:
     # image: ghcr.io/srh-sloan/base:latest
     build:
-      context: ./src
+      context: .
       target: frontend-dev
     volumes:
-      - .:/workspace/src:cached
+      - .:/frontend:cached
     command: sleep infinity
     depends_on:
       - redis-data-frontend

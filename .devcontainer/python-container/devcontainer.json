@@ -6,7 +6,7 @@
     ],
     "service": "fsd-frontend",
     "shutdownAction": "none",
-    "workspaceFolder": "/workspace/src",
+    "workspaceFolder": "/frontend",
     "customizations": {
         "vscode": {
             "extensions": [

@@ -77,7 +77,7 @@
         "-c",
         "pytest.ini",
         "-k",
-        "test_language_cookie_update_welsh_to_english" // modify this accordingly
+        "test_contact_us" // modify this accordingly
       ],
       "justMyCode": false
     }
