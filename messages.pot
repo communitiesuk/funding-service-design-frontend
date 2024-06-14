@@ -8,7 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2024-06-07 11:08+0100\n"
+=======
+"POT-Creation-Date: 2024-06-09 11:56+0100\n"
+>>>>>>> 2233816c1f3616eb87235cd7295b80fa9b7b48bf
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +21,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.14.0\n"
 
-#: app/create_app.py:123 app/default/application_routes.py:301
+#: app/create_app.py:125 app/default/application_routes.py:301
 msgid "Apply for"
 msgstr ""
 
-#: app/create_app.py:125
+#: app/create_app.py:127
 msgid "Access Funding"
 msgstr ""
 
@@ -332,12 +336,20 @@ msgid "All applications"
 msgstr ""
 
 #: app/templates/dashboard_all.html:25
+<<<<<<< HEAD
 #: app/templates/dashboard_single_fund.html:26
+=======
+#: app/templates/dashboard_single_fund.html:27
+>>>>>>> 2233816c1f3616eb87235cd7295b80fa9b7b48bf
 msgid "You have started"
 msgstr ""
 
 #: app/templates/dashboard_all.html:25
+<<<<<<< HEAD
 #: app/templates/dashboard_single_fund.html:26
+=======
+#: app/templates/dashboard_single_fund.html:27
+>>>>>>> 2233816c1f3616eb87235cd7295b80fa9b7b48bf
 #, python-format
 msgid " %(application_count)s application"
 msgid_plural "%(application_count)s applications"
@@ -345,18 +357,41 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: app/templates/dashboard_all.html:25
+<<<<<<< HEAD
 #: app/templates/dashboard_single_fund.html:26
+=======
+#: app/templates/dashboard_single_fund.html:27
+>>>>>>> 2233816c1f3616eb87235cd7295b80fa9b7b48bf
 msgid "using this email address"
 msgstr ""
 
-#: app/templates/dashboard_single_fund.html:13
+#: app/templates/dashboard_single_fund.html:14
 msgid "Your applications for"
 msgstr ""
 
+<<<<<<< HEAD
 #: app/templates/dashboard_single_fund.html:40
 msgid "Deadline for applications: "
 msgstr ""
 
+=======
+#: app/templates/dashboard_single_fund.html:41
+msgid "Deadline for applications: "
+msgstr ""
+
+#: app/templates/eligibility_result.html:5
+msgid "You can apply for this funding"
+msgstr ""
+
+#: app/templates/eligibility_result.html:7 app/templates/tasklist.html:8
+msgid "Back to your applications"
+msgstr ""
+
+#: app/templates/eligibility_result.html:14
+msgid "Based on your answers, you can apply for "
+msgstr ""
+
+>>>>>>> 2233816c1f3616eb87235cd7295b80fa9b7b48bf
 #: app/templates/end_of_application_feedback_page_1.html:7
 #: app/templates/end_of_application_feedback_page_2.html:7
 #: app/templates/end_of_application_feedback_page_3.html:7
@@ -728,10 +763,6 @@ msgstr ""
 msgid ""
 "We'll ask about your experience of completing this section, so we can "
 "improve our application forms. Your responses will not be scored."
-msgstr ""
-
-#: app/templates/tasklist.html:8
-msgid "Back to your applications"
 msgstr ""
 
 #: app/templates/tasklist.html:10
@@ -3669,6 +3700,7 @@ msgid ""
 msgstr ""
 
 #: app/templates/partials/applications_table.html:30
+#: app/templates/partials/start-application-button.html:11
 msgid "Continue application"
 msgstr ""
 
@@ -3723,6 +3755,10 @@ msgstr ""
 
 #: app/templates/partials/contact_details.html:29
 msgid "Textphone"
+msgstr ""
+
+#: app/templates/partials/eligibility-check-button.html:11
+msgid "Check eligibility"
 msgstr ""
 
 #: app/templates/partials/start-application-button.html:11
