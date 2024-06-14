@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-09 11:56+0100\n"
+"POT-Creation-Date: 2024-06-14 17:23+0100\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -387,9 +387,8 @@ msgid "Your applications for"
 msgstr "Eich ceisiadau yn"
 
 #: app/templates/dashboard_single_fund.html:41
-#, fuzzy
 msgid "Deadline for applications: "
-msgstr "Eich ceisiadau"
+msgstr "Dyddiad cau ar gyfer ceisiadau: "
 
 #: app/templates/eligibility_result.html:5
 msgid "You can apply for this funding"
@@ -402,6 +401,11 @@ msgstr "Yn ôl at eich ceisiadau"
 #: app/templates/eligibility_result.html:14
 msgid "Based on your answers, you can apply for "
 msgstr "Yn seiliedig ar eich atebion, gallwch wneud cais am"
+
+#: app/templates/eligibility_result.html:14
+#, python-format
+msgid "%(fund_title)s "
+msgstr ""
 
 #: app/templates/end_of_application_feedback_page_1.html:7
 #: app/templates/end_of_application_feedback_page_2.html:7

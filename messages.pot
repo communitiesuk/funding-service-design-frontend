@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-09 11:56+0100\n"
+"POT-Creation-Date: 2024-06-14 17:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -367,6 +367,11 @@ msgstr ""
 
 #: app/templates/eligibility_result.html:14
 msgid "Based on your answers, you can apply for "
+msgstr ""
+
+#: app/templates/eligibility_result.html:14
+#, python-format
+msgid "%(fund_title)s "
 msgstr ""
 
 #: app/templates/end_of_application_feedback_page_1.html:7

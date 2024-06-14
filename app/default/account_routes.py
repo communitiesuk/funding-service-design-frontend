@@ -142,7 +142,6 @@ def dashboard():
     fund_short_name = request.args.get("fund", None)
     round_short_name = request.args.get("round", None)
     render_lang = get_lang()
-    submission_deadline = ""
     if fund_short_name and round_short_name:
         # find and display applications with this
         # fund and round else return 404
@@ -150,7 +149,6 @@ def dashboard():
         fund_details, round_details = get_fund_and_round(
             fund_short_name=fund_short_name, round_short_name=round_short_name
         )
-        submission_deadline = round_details.deadline
         welsh_available = fund_details.welsh_available
         search_params = {
             "fund_id": round_details.fund_id,
@@ -194,7 +192,6 @@ def dashboard():
                 round_short_name=round_short_name,
                 welsh_available=welsh_available,
                 migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
-                submission_deadline=submission_deadline,
             )
         )
     LanguageSelector.set_language_cookie(locale=render_lang, response=response)
