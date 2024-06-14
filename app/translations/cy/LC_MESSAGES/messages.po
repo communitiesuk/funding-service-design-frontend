@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-03 15:42+0100\n"
+"POT-Creation-Date: 2024-06-07 11:08+0100\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -362,12 +362,12 @@ msgid "All applications"
 msgstr "Eich ceisiadau"
 
 #: app/templates/dashboard_all.html:25
-#: app/templates/dashboard_single_fund.html:25
+#: app/templates/dashboard_single_fund.html:26
 msgid "You have started"
 msgstr "Rydych wedi dechrau"
 
 #: app/templates/dashboard_all.html:25
-#: app/templates/dashboard_single_fund.html:25
+#: app/templates/dashboard_single_fund.html:26
 #, python-format
 msgid " %(application_count)s application"
 msgid_plural "%(application_count)s applications"
@@ -378,13 +378,17 @@ msgstr[3] "%(application_count)s ceisiadau"
 msgstr[4] "%(application_count)s ceisiadau"
 
 #: app/templates/dashboard_all.html:25
-#: app/templates/dashboard_single_fund.html:25
+#: app/templates/dashboard_single_fund.html:26
 msgid "using this email address"
 msgstr "gan ddefnyddio'r cyfeiriad e-bost hwn"
 
 #: app/templates/dashboard_single_fund.html:13
 msgid "Your applications for"
 msgstr "Eich ceisiadau yn"
+
+#: app/templates/dashboard_single_fund.html:40
+msgid "Deadline for applications: "
+msgstr "Dyddiad cau ar gyfer ceisiadau: "
 
 #: app/templates/end_of_application_feedback_page_1.html:7
 #: app/templates/end_of_application_feedback_page_2.html:7

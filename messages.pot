@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-03 15:42+0100\n"
+"POT-Creation-Date: 2024-06-07 11:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -332,12 +332,12 @@ msgid "All applications"
 msgstr ""
 
 #: app/templates/dashboard_all.html:25
-#: app/templates/dashboard_single_fund.html:25
+#: app/templates/dashboard_single_fund.html:26
 msgid "You have started"
 msgstr ""
 
 #: app/templates/dashboard_all.html:25
-#: app/templates/dashboard_single_fund.html:25
+#: app/templates/dashboard_single_fund.html:26
 #, python-format
 msgid " %(application_count)s application"
 msgid_plural "%(application_count)s applications"
@@ -345,12 +345,16 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: app/templates/dashboard_all.html:25
-#: app/templates/dashboard_single_fund.html:25
+#: app/templates/dashboard_single_fund.html:26
 msgid "using this email address"
 msgstr ""
 
 #: app/templates/dashboard_single_fund.html:13
 msgid "Your applications for"
+msgstr ""
+
+#: app/templates/dashboard_single_fund.html:40
+msgid "Deadline for applications: "
 msgstr ""
 
 #: app/templates/end_of_application_feedback_page_1.html:7
