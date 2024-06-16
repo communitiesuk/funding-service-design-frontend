@@ -1,13 +1,14 @@
 #-----------------------------------
 #   FSD Utils
 #-----------------------------------
-funding-service-design-utils>=2.0.48,<2.1.0
-requests
+#funding-service-design-utils>=2.0.48,<2.1.0
+funding-service-design-utils @ git+https://github.com/communitiesuk/funding-service-design-utils.git@update-software-versions#egg=funding-service-design-utils
+requests==2.32.3
 
 #-----------------------------------
 #   Flask Version
 #-----------------------------------
-Flask==2.3.3
+Flask==3.0.3
 
 #-----------------------------------
 #   Security
@@ -17,12 +18,12 @@ flask-talisman==1.1.0
 #-----------------------------------
 #   Static Assets
 #-----------------------------------
-Flask-Assets==2.0
-Flask-Compress==1.14
+Flask-Assets==2.1.0
+Flask-Compress==1.15
 cssmin==0.2.0
 pyScss==1.4.0
 jsmin==3.0.1
-govuk-frontend-jinja==2.7.0
+govuk-frontend-jinja==3.1.0
 
 #-----------------------------------
 #   i18n
