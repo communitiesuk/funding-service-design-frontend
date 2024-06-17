@@ -131,6 +131,14 @@ msgstr "Rwy'n cytuno i chi gysylltu â mi at ddibenion ymchwil"
 msgid "I do not want to be contacted for research purposes"
 msgstr "Nid wyf eisiau i chi gysylltu â mi at ddibenion ymchwil"
 
+#: app/forms/research.py:24
+msgid "Name of contact is required"
+msgstr "Mae angen enw’r cyswllt"
+
+#: app/forms/research.py:23
+msgid "Contact email address is required"
+msgstr "Mae angen cyfeiriad e-bost y cyswllt"
+
 #: app/models/language.py:5
 msgid "English"
 msgstr "Saesneg"
