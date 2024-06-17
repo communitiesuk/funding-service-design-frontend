@@ -1,5 +1,6 @@
 name: Deploy to Gov PaaS
 
+disabled: True
 on:
   workflow_dispatch:
     inputs:
@@ -23,6 +24,8 @@ on:
   push:
     paths-ignore:
       - '**/README.md'
+    branches-ignore:
+      - 'fs-3541-question-reuse'
 
 jobs:
   test_and_deploy:
