@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='jquery-ui.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='jquery-ui.theme.min.css') }}">
+<!--[if gt IE 8]><!--><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='govuk-frontend-4.0.0.min.css') }}" /><!--<![endif]-->
+<script src="{{ url_for('static', filename='jquery-3.7.1.min.js') }}"> </script>
+<script src="{{ url_for('static', filename='jquery-ui.min.js') }}"> </script>
+<style>
+    #available, #selected {
+        float:left;
+    }
+    #sortable1, #sortable2 {
+        border: 1px solid #eee;
+        min-height: 20px;
+        list-style-type: none;
+        margin: 0;
+        padding: 5px 0 0 0;
+        margin-right: 10px;
+        border-color: #000;
+      }
+      #sortable1 {
+        min-width: 100px;
+      }
+      #sortable1 li, #sortable2 li {
+        margin: 0 5px 5px 5px;
+        padding: 5px;
+        font-size: 1.2em;
+      }
+</style>
+<script>
+        $(document).ready(function(){
+    });
+      $( function() {
+        $( "#sortable1, #sortable2" ).sortable({
+          connectWith: ".connectedSortable",
+          stop: function (event, ui){
+            $("#selected_pages").append("<option selected value='" + ui.item[0].textContent + "' />")
+          },
+        }).disableSelection();
+      } );
+</script>
+<body class="ui-widget">
+  <div class="govuk-width-container">
+  <div id="available" class="govuk-grid-column-one-third">
+    <h2 class="govuk-heading-m">Available Pages</h2>
+    <ul id="sortable1" class="connectedSortable">
+      {% for page in available_pages.keys() %}<li class="ui-state-default">{{ page }}</li>{% endfor %}
+    </ul>
+  </div>
+  <div id="selected" class="govuk-form-group govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-m">Selected Pages</h2>
+    <form method="POST" action="{{ url_for("question_bank.generate_form") }}">
+      <label for="form_title" class="govuk-label">Form Title</label>
+      <input name="form_title" class="govuk-input" value="about-your-organisation" />
+      <p class="govuk-body">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <select multiple hidden name="selected_pages" id="selected_pages" class="govuk-select"></select>
+        <ul id="sortable2" class="connectedSortable">
+        </ul>
+        <button type="submit" class="govuk-button">Generate Form</button>
+      </p>
+    </form>
+  </div></div></div>
+</body>

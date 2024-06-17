@@ -83,6 +83,7 @@ def create_app() -> Flask:
     from app.default.content_routes import content_bp
     from app.default.account_routes import account_bp
     from app.default.error_routes import not_found, internal_server_error
+    from app.default.question_bank import qb_bp
 
     flask_app.register_error_handler(404, not_found)
     flask_app.register_error_handler(500, internal_server_error)
@@ -90,6 +91,7 @@ def create_app() -> Flask:
     flask_app.register_blueprint(application_bp)
     flask_app.register_blueprint(content_bp)
     flask_app.register_blueprint(account_bp)
+    flask_app.register_blueprint(qb_bp)
     flask_app.jinja_env.filters[
         "datetime_format_short_month"
     ] = datetime_format_short_month

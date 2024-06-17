@@ -27,7 +27,6 @@
       "module": "flask",
       "args": [
         "run",
-        "--no-debugger"
       ],
       "jinja": true,
       "justMyCode": true

@@ -1,4 +1,5 @@
 import copy
+import datetime
 import json
 import os
 
@@ -6,9 +7,9 @@ import click
 from scripts.question_reuse.config.components_to_reuse import (
     COMPONENTS_TO_REUSE,
 )
-from scripts.question_reuse.config.lookups import LOOKUPS, LISTS
+from scripts.question_reuse.config.lookups import LISTS
+from scripts.question_reuse.config.lookups import LOOKUPS
 from scripts.question_reuse.config.pages_to_reuse import PAGES_TO_REUSE
-import datetime
 from scripts.question_reuse.config.sub_pages_to_reuse import SUB_PAGES_TO_REUSE
 
 BASIC_FORM_STRUCTURE = {
@@ -161,10 +162,9 @@ def build_lists(form_json: dict) -> dict:
         for component in page["components"]:
             if "list" in component:
                 list = copy.deepcopy(LISTS[component["list"]])
-                list.update({
-                    "name": component["list"],
-                    "title": component["title"]
-                })
+                list.update(
+                    {"name": component["list"], "title": component["title"]}
+                )
                 form_json["lists"].append(list)
 
     return form_json
@@ -177,7 +177,7 @@ def build_form_json(input_json: dict) -> dict:
     start_page = copy.deepcopy(BASIC_PAGE_STRUCTURE)
     start_page.update(
         {
-            "title": LOOKUPS[input_json["title"]],
+            "title": LOOKUPS.get(input_json["title"], input_json["title"]),
             "path": f"/intro-{input_json['title']}",
             "controller": "./pages/start.js",
             "next": [{"path": f"/{input_json['pages'][0]}"}],
