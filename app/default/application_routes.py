@@ -212,7 +212,7 @@ def tasklist(application_id):
         get_research_survey_data(
             application,
             application_id,
-            number + 1,
+            (number + 1) if feedback_survey_data else number,
             round_data.feedback_survey_config.is_research_survey_optional,
         )
         if round_data.feedback_survey_config.has_research_survey
