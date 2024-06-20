@@ -84,11 +84,10 @@ def string_to_datetime(value: str) -> datetime:
 
 
 def datetime_format_full_month(value: datetime) -> str:
-    if value:
-        formatted_date = format_datetime(value, format="dd MMMM yyyy ")
-        formatted_date += gettext("at")
-        formatted_date += format_datetime(value, format=" h:mm", rebase=False)
-        formatted_date += format_datetime(value, "a", rebase=False).lower()
-        return formatted_date
-    else:
+    if not value:
         return ""
+    formatted_date = format_datetime(value, format="dd MMMM yyyy ")
+    formatted_date += gettext("at")
+    formatted_date += format_datetime(value, format=" h:mm", rebase=False)
+    formatted_date += format_datetime(value, "a", rebase=False).lower()
+    return formatted_date
