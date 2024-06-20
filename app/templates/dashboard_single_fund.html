@@ -38,7 +38,7 @@ Your applications
                 </h2>
                 {% if round["round_details"]["deadline"]|length %}
                 <p class="govuk-body">
-                    {% trans %}Deadline for applications: {% endtrans %} {{ round["round_details"]["deadline"]|datetime_format }}
+                    {% trans %}Deadline for applications: {% endtrans %} {{ round["round_details"]["deadline"]|string_to_datetime|datetime_format_full_month }}
                 </p>
                 {% endif %}
                 {% if round["is_past_submission_deadline"] %}

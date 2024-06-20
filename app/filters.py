@@ -77,3 +77,17 @@ def kebab_case_to_human(word: str) -> str | None:
 def status_translation(value: str):
     if value:
         return get_formatted(value)
+
+
+def string_to_datetime(value: str) -> datetime:
+    return datetime.strptime(value, "%Y-%m-%dT%H:%M:%S")
+
+
+def datetime_format_full_month(value: datetime) -> str:
+    if not value:
+        return ""
+    formatted_date = format_datetime(value, format="dd MMMM yyyy ")
+    formatted_date += gettext("at")
+    formatted_date += format_datetime(value, format=" h:mm", rebase=False)
+    formatted_date += format_datetime(value, "a", rebase=False).lower()
+    return formatted_date
