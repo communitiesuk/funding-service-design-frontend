@@ -52,7 +52,8 @@
             {% if submission_deadline|length and not is_expression_of_interest %}
             <p class="govuk-body">
                 <strong>{% trans %}Submission deadline:{% endtrans %} </strong> {{
-                submission_deadline|datetime_format }}
+                submission_deadline|def datetime_format_full_month(value: datetime) -> str:
+            }}
             </p>
             {% endif %}
             <div data-qa="enter_your_email_address">
