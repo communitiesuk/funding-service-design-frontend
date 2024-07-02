@@ -58,7 +58,9 @@ def datetime_format(value: str) -> str:
     else:
         time_str = parsed.strftime("%I:%M%p").lstrip("0").lower()
 
-    formatted_date = parsed.strftime("%d %B %Y at ") + time_str
+    formatted_date = parsed.strftime("%d %B %Y ")
+    formatted_date += gettext("at")
+    formatted_date += " " + time_str
     return formatted_date
 
 
