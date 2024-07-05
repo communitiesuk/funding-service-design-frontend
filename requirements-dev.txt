@@ -47,7 +47,7 @@ cachetools==5.3.2
     # via
     #   -r requirements.txt
     #   flipper-client
-certifi==2023.11.17
+certifi==2024.7.4
     # via
     #   -r requirements.txt
     #   requests
@@ -146,6 +146,10 @@ funding-service-design-utils==2.0.52
     # via -r requirements.txt
 govuk-frontend-jinja==2.7.0
     # via -r requirements.txt
+greenlet==3.0.3
+    # via
+    #   -r requirements.txt
+    #   sqlalchemy
 gunicorn==20.1.0
     # via
     #   -r requirements.txt
@@ -237,7 +241,6 @@ pyjwt[crypto]==2.8.0
     # via
     #   -r requirements.txt
     #   funding-service-design-utils
-    #   pyjwt
 pyproject-hooks==1.0.0
     # via build
 pyscss==1.4.0
@@ -307,7 +310,6 @@ sentry-sdk[flask]==1.39.1
     # via
     #   -r requirements.txt
     #   funding-service-design-utils
-    #   sentry-sdk
 six==1.16.0
     # via
     #   -r requirements.txt
