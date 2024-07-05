@@ -48,7 +48,7 @@
                         </strong>
                     </span>{% elif existing_feedback_map.get(section.section_id) %}
                     {% set feedback_value = existing_feedback_map.get(section.section_id) %}
-                    {% trans %}Feedback on this section submitted{% endtrans %} {{ feedback_value.date_submitted | custom_format_datetime }}
+                    {% trans %}Feedback on this section submitted{% endtrans %}
                     {{ derive_status_tag(feedback_value.status, application_meta_data, application_status) }}
                 {% else %}
                     {# djlint:off #}
