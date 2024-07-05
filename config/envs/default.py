@@ -4,7 +4,6 @@ from os import environ
 from os import getenv
 from pathlib import Path
 
-from config.utils import VcapServices
 from distutils.util import strtobool
 from fsd_utils import CommonConfig
 from fsd_utils import configclass
@@ -121,11 +120,7 @@ class DefaultConfig:
     SAMEORIGIN = "SAMEORIGIN"
     ALLOW_FROM = "ALLOW-FROM"
     ONE_YEAR_IN_SECS = 31556926
-
-    if environ.get("VCAP_SERVICES"):
-        FORCE_HTTPS = True
-    else:
-        FORCE_HTTPS = False
+    FORCE_HTTPS = False
 
     TALISMAN_SETTINGS = {
         "feature_policy": FSD_FEATURE_POLICY,
@@ -154,10 +149,6 @@ class DefaultConfig:
     }
 
     USE_LOCAL_DATA = strtobool(getenv("USE_LOCAL_DATA", "False"))
-
-    # GOV.UK PaaS
-    if environ.get("VCAP_SERVICES"):
-        VCAP_SERVICES = VcapServices.from_env_json(environ.get("VCAP_SERVICES"))
 
     # Redis Feature Toggle Configuration
     REDIS_INSTANCE_URI = getenv("REDIS_INSTANCE_URI", "redis://localhost:6379")
