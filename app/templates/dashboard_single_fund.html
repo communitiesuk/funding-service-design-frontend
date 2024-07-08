@@ -49,7 +49,7 @@ Your applications
                     {% if round["round_details"]["has_eligibility"] %}
                         {{ eligibilityCheckButton(form, url_for('eligibility_routes.launch_eligibility', fund_id=fund["fund_data"]["id"], round_id=round["round_details"]["id"])) }}
                     {% else %}
-                        {{ startApplicationButton(form, url_for('account_routes.new'), fund_id=fund["fund_data"]["id"], round_id=round["round_details"]["id"], eligibility_confirm=False, existing_applications_count=round["applications"]|count) }}
+                        {{ startApplicationButton(form, url_for('account_routes.new'), fund_id=fund["fund_data"]["id"], round_id=round["round_details"]["id"], eligibility_confirm=False, existing_applications_count=round["applications"]|count,fund_info='start_application_'+ fund["fund_data"]["short_name"] + '_' +round["round_details"]["short_name"]) }}
                     {% endif %}
                 {% endif %}
             {% endif %}
