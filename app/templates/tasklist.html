@@ -140,7 +140,7 @@
         <dl>
             {% if not is_expression_of_interest %}
                 <dt class="govuk-heading-s dl-inline">{% trans %}Submission deadline:{% endtrans %}</dt>
-                <dd class="govuk-body govuk-!-margin-bottom-2"> {{ submission_deadline|datetime_format }}</dd>
+                <dd class="govuk-body govuk-!-margin-bottom-2"> {{ submission_deadline|string_to_datetime|datetime_format_full_month }}</dd>
             {% endif %}
 
             <dt class="govuk-heading-s dl-inline">{% trans %}Reference:{% endtrans %}</dt>

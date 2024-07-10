@@ -1,5 +1,6 @@
 from app.forms.base import PrepopulatedForm
 from flask_babel import gettext
+from flask_babel import lazy_gettext
 from wtforms import RadioField
 from wtforms import StringField
 from wtforms.validators import Email
@@ -20,7 +21,7 @@ class ResearchOptForm(PrepopulatedForm):
 
 
 class ResearchContactDetailsForm(PrepopulatedForm):
-    contact_name = StringField(label="Full name", validators=[InputRequired(message="Name of contact is required")])
-    contact_email = StringField(
-        label="Email", validators=[InputRequired(message="Contact email address is required"), Email()]
-    )
+    contact_email_input_message = lazy_gettext("Contact email address is required")
+    contact_name_input_message = lazy_gettext("Name of contact is required")
+    contact_name = StringField(label="Full name", validators=[InputRequired(message=contact_name_input_message)])
+    contact_email = StringField(label="Email", validators=[InputRequired(message=contact_email_input_message), Email()])

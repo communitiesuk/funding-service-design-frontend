@@ -1,7 +1,8 @@
-{% from "partials/start-application-button.html" import startApplicationButton %}
 {% extends "base.html" %}
 
-{% set pageHeading %}{% trans %}You can now apply for this funding{% endtrans %}{% endset %}
+{% from "partials/start-application-button.html" import startApplicationButton %}
+
+{% set pageHeading %}{% trans %}You can apply for this funding{% endtrans %}{% endset %}
 {% block beforeContent %}
     <a href="{{ backLink }}" class="govuk-back-link"> {% trans %}Back to your applications{% endtrans %}</a>
 {% endblock beforeContent %}

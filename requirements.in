@@ -1,8 +1,7 @@
 #-----------------------------------
 #   FSD Utils
 #-----------------------------------
-#funding-service-design-utils>=2.0.48,<2.1.0
-funding-service-design-utils @ git+https://github.com/communitiesuk/funding-service-design-utils.git@update-software-versions#egg=funding-service-design-utils
+funding-service-design-utils>=2.0.48,<=4.0.0
 requests==2.32.3
 
 #-----------------------------------

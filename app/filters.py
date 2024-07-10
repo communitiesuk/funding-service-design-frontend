@@ -58,7 +58,9 @@ def datetime_format(value: str) -> str:
     else:
         time_str = parsed.strftime("%I:%M%p").lstrip("0").lower()
 
-    formatted_date = parsed.strftime("%d %B %Y at ") + time_str
+    formatted_date = parsed.strftime("%d %B %Y ")
+    formatted_date += gettext("at")
+    formatted_date += " " + time_str
     return formatted_date
 
 
@@ -77,3 +79,17 @@ def kebab_case_to_human(word: str) -> str | None:
 def status_translation(value: str):
     if value:
         return get_formatted(value)
+
+
+def string_to_datetime(value: str) -> datetime:
+    return datetime.strptime(value, "%Y-%m-%dT%H:%M:%S")
+
+
+def datetime_format_full_month(value: datetime) -> str:
+    if not value:
+        return ""
+    formatted_date = format_datetime(value, format="dd MMMM yyyy ")
+    formatted_date += gettext("at")
+    formatted_date += format_datetime(value, format=" h:mm", rebase=False)
+    formatted_date += format_datetime(value, "a", rebase=False).lower()
+    return formatted_date
