@@ -28,6 +28,26 @@
             }}</span>
         <h1 class="govuk-heading-xl">{% trans %}Application for{% endtrans %} {{ application_meta_data["fund_title"] }}</h1>
         {% endif %}
+
+
+        {% if application["status"] == application_meta_data["submitted_status"] %}
+            <div class="govuk-grid-row .assessment-alert">
+                <div class="assessment-alert govuk-!-margin-bottom-8">
+                    <h2 class="assessment-alert__heading govuk-heading-l govuk-!-margin-top-4">{% trans %}Application submitted{% endtrans %}</h2>
+                    <p class="govuk-body">{% trans %}You have submitted your application, you cannot change your answers.{% endtrans %}</p>
+                    <p class="govuk-body">{% trans %}Window closed{% endtrans %} {{ submission_deadline|string_to_datetime|datetime_format_full_month }}</p>
+
+                    <dl>
+                        <dt class="govuk-heading-s dl-inline">{% trans %}Status:{% endtrans %}</dt>
+                        <dd class="govuk-body govuk-!-margin-bottom-2"> Submitted on {{ application_submitted_at|datetime_format_full_month }}</dd>
+
+                        <dt class="govuk-heading-s dl-inline">{% trans %}Reference:{% endtrans %}</dt>
+                        <dd class="govuk-body govuk-!-margin-bottom-2"> {{ application["reference"] }}</dd>
+                    </dl>
+                </div>
+            </div>
+
+        {% else %}
         <details class="govuk-details" data-module="govuk-details">
             <summary class="govuk-details__summary">
                 <span class="govuk-details__summary-text">
@@ -134,6 +154,7 @@
 
             </div>
         </details>
+
         {% if is_past_submission_deadline %}
         {{ round_closed_warning(fund_name, round_title, submission_deadline) }}
         {% endif %}
@@ -182,9 +203,11 @@
         </dl>
         {% endif %}
 
+        {% endif %}
+
         <ol class="app-task-list">
             {% for section in sections %}
-            {{ tasklist_section(section, application_meta_data, application_status, loop.index, existing_feedback_map)
+            {{ tasklist_section(section, application_meta_data, application_status, loop.index, existing_feedback_map, application)
           }}
             {% endfor %}
             {% if feedback_survey_data %}

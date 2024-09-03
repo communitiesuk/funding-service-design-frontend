@@ -1,3 +1,4 @@
+from datetime import datetime
 from functools import wraps
 from http.client import METHOD_NOT_ALLOWED
 
@@ -48,6 +49,7 @@ from fsd_utils.locale_selector.set_lang import LanguageSelector
 from fsd_utils.simple_utils.date_utils import (
     current_datetime_after_given_iso_string,
 )
+from pytz import timezone
 
 
 application_bp = Blueprint("application_routes", __name__, template_folder="templates")
@@ -138,7 +140,7 @@ def verify_round_open(f):
 @application_bp.route("/tasklist/<application_id>", methods=["GET"])
 @login_required
 @verify_application_owner_local
-@verify_round_open
+# @verify_round_open
 def tasklist(application_id):
     """
     Returns a Flask function which constructs a tasklist for an application id.
@@ -164,16 +166,6 @@ def tasklist(application_id):
         as_dict=False,
         ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
     )
-
-    if application.status == ApplicationStatus.SUBMITTED.name:
-        with force_locale(application.language):
-            return redirect(
-                url_for(
-                    "account_routes.dashboard",
-                    fund=fund_data.short_name,
-                    round=round_data.short_name,
-                )
-            )
 
     # Create tasklist display config
     section_display_config = get_application_display_config(
@@ -286,6 +278,12 @@ def tasklist(application_id):
             submission_deadline=round_data.deadline,
             is_expression_of_interest=round_data.is_expression_of_interest,
             is_past_submission_deadline=current_datetime_after_given_iso_string(round_data.deadline),  # noqa:E501
+            # note I suspect this is what some of the utils are here do -- could avoid doing it myself
+            application_submitted_at=datetime.fromisoformat(application.date_submitted).astimezone(
+                timezone("Europe/London")
+            )
+            if (application.date_submitted and application.date_submitted != "null")
+            else None,
             dashboard_url=url_for(
                 "account_routes.dashboard",
                 fund=fund_data.short_name,
@@ -308,7 +306,6 @@ def tasklist(application_id):
 @application_bp.route("/continue_application/<application_id>", methods=["GET"])
 @login_required
 @verify_application_owner_local
-@verify_round_open
 def continue_application(application_id):
     """
     Returns a Flask function to return to an active application form.
@@ -332,6 +329,8 @@ def continue_application(application_id):
     application = get_application_data(application_id)
     round = get_round(fund_id=application.fund_id, round_id=application.round_id)
 
+    round_status = determine_round_status(round)
+
     form_data = application.get_form_data(application, form_name)
 
     rehydrate_payload = format_rehydrate_payload(
@@ -340,6 +339,7 @@ def continue_application(application_id):
         return_url,
         form_name,
         round.mark_as_complete_enabled,
+        is_read_only_summary=application.status == ApplicationStatus.SUBMITTED.name or not round_status.is_open,
     )
 
     rehydration_token = get_token_to_return_to_application(form_name, rehydrate_payload)
