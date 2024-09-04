@@ -26,13 +26,10 @@
 		{% endif %}
 		{% endset %}
 
-
-        {% if application.status == 'SUBMITTED' %}
-
-		{% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('application_routes.tasklist', application_id=application.id), "View application") %}
-
-        {% elif not application.status == 'SUBMITTED' and not is_past_submission_deadline %}
+        {% if not application.status == 'SUBMITTED' and not is_past_submission_deadline %}
 			{% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('application_routes.tasklist', application_id=application.id), gettext('Continue application')) %}
+        {% else %}
+		    {% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('application_routes.tasklist', application_id=application.id), "View application") %}
 		{% endif %}
 
 		{% set row = [

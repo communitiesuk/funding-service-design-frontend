@@ -1,4 +1,3 @@
-from datetime import datetime
 from functools import wraps
 from http.client import METHOD_NOT_ALLOWED
 
@@ -49,8 +48,6 @@ from fsd_utils.locale_selector.set_lang import LanguageSelector
 from fsd_utils.simple_utils.date_utils import (
     current_datetime_after_given_iso_string,
 )
-from pytz import timezone
-
 
 application_bp = Blueprint("application_routes", __name__, template_folder="templates")
 
@@ -140,7 +137,6 @@ def verify_round_open(f):
 @application_bp.route("/tasklist/<application_id>", methods=["GET"])
 @login_required
 @verify_application_owner_local
-# @verify_round_open
 def tasklist(application_id):
     """
     Returns a Flask function which constructs a tasklist for an application id.
@@ -278,12 +274,6 @@ def tasklist(application_id):
             submission_deadline=round_data.deadline,
             is_expression_of_interest=round_data.is_expression_of_interest,
             is_past_submission_deadline=current_datetime_after_given_iso_string(round_data.deadline),  # noqa:E501
-            # note I suspect this is what some of the utils are here do -- could avoid doing it myself
-            application_submitted_at=datetime.fromisoformat(application.date_submitted).astimezone(
-                timezone("Europe/London")
-            )
-            if (application.date_submitted and application.date_submitted != "null")
-            else None,
             dashboard_url=url_for(
                 "account_routes.dashboard",
                 fund=fund_data.short_name,
