@@ -1,4 +1,3 @@
-<!-- I'd prefer to not pass everything for the application in here -->
 {% macro derive_status_tag(status_value, application_meta_data, application_status) %}
   {% set not_started_status = application_meta_data["not_started_status"] %}
   {% set in_progress_status = application_meta_data["in_progress_status"] %}
@@ -19,7 +18,7 @@
   </span>
 {% endmacro %}
 
-{% macro tasklist_section(section, application_meta_data, application_status, index, existing_feedback_map, application) %}
+{% macro tasklist_section(section, application_meta_data, application_status, index, existing_feedback_map) %}
 <li>
     <h2 class="app-task-list__section">
       {{ section["section_title"] }}

@@ -6,9 +6,7 @@ from app.models.application_display_mapping import ApplicationMapping
 from app.models.fund import Fund
 from bs4 import BeautifulSoup
 from tests.api_data.test_data import SUBMITTED_APPLICATION
-from tests.api_data.test_data import TEST_APPLICATION_SUMMARIES
 from tests.api_data.test_data import TEST_APPLICATIONS
-from tests.api_data.test_data import TEST_DISPLAY_DATA
 from tests.api_data.test_data import TEST_FUNDS_DATA
 from tests.utils import get_language_cookie_value
 
