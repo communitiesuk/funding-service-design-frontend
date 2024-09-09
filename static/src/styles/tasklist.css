@@ -224,5 +224,5 @@ dt.dl-inline + dd {
 
 .signout_button:hover {
   text-decoration: underline;
-  text-decoration-thickness: 3px; /* Adjust the thickness as needed */
+  text-decoration-thickness: 3px;
 }
