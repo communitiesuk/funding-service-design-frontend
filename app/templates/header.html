@@ -34,9 +34,14 @@
                     <a class="govuk-header__link" href="{{ url_for('account_routes.dashboard')}}">{% trans %}View all applications{% endtrans %}</a>
                 </li>
                 {% endif %}
-                    <li class="govuk-header__navigation-item">
-                        <a class="govuk-header__link" href="{{ g.logout_url }}">{% trans %}Sign out{% endtrans %}</a>
-                    </li>
+                <li class="govuk-header__navigation-item">
+                    <form method="post" action="{{ g.logout_url }}">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <button type="submit" class="govuk-header__link signout_button">
+                            {% trans %}Sign out{% endtrans %}
+                        </button>
+                    </form>
+                </li>
               </ul>
             </nav>
             {% endif %}
