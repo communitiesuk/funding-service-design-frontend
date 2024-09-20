@@ -13,7 +13,7 @@ from fsd_utils import configclass
 class DefaultConfig:
     # Application Config
     FLASK_ENV = environ.get("FLASK_ENV", "development")
-    SECRET_KEY = environ.get("SECRET_KEY", "dev")
+    SECRET_KEY = CommonConfig.SECRET_KEY
     SESSION_COOKIE_NAME = environ.get("SESSION_COOKIE_NAME", "session_cookie")
     SESSION_COOKIE_SECURE = True
     WTF_CSRF_TIME_LIMIT = CommonConfig.WTF_CSRF_TIME_LIMIT
