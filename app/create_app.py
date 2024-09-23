@@ -9,7 +9,6 @@ from app.filters import kebab_case_to_human
 from app.filters import snake_case_to_human
 from app.filters import status_translation
 from app.filters import string_to_datetime
-from app.filters import string_to_datetime_ms
 from app.helpers import find_fund_and_round_in_request
 from app.helpers import find_fund_in_request
 from config import Config
@@ -97,7 +96,6 @@ def create_app() -> Flask:
     flask_app.jinja_env.filters["datetime_format_short_month"] = datetime_format_short_month
     flask_app.jinja_env.filters["datetime_format_full_month"] = datetime_format_full_month
     flask_app.jinja_env.filters["string_to_datetime"] = string_to_datetime
-    flask_app.jinja_env.filters["string_to_datetime_ms"] = string_to_datetime_ms
     flask_app.jinja_env.filters["custom_format_datetime"] = custom_format_datetime
     flask_app.jinja_env.filters["date_format_short_month"] = date_format_short_month
     flask_app.jinja_env.filters["datetime_format"] = datetime_format

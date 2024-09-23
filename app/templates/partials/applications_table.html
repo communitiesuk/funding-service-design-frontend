@@ -26,10 +26,8 @@
 		{% endif %}
 		{% endset %}
 
-        {% if not application.status == 'SUBMITTED' and not is_past_submission_deadline %}
+		{% if not application.status == 'SUBMITTED' and not is_past_submission_deadline %}
 			{% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('application_routes.tasklist', application_id=application.id), gettext('Continue application')) %}
-        {% else %}
-		    {% set application_link = '<a class="govuk-link" href="{}">{}</a>'.format(url_for('application_routes.tasklist', application_id=application.id), "View application") %}
 		{% endif %}
 
 		{% set row = [
@@ -57,11 +55,13 @@
         %}
 		{% endif %}
 
-        {% set action = row.append(
-            {
-                'html': application_link
-            })
+        {% if not is_past_submission_deadline %}
+            {% set action = row.append(
+                {
+                    'html': application_link
+                })
         %}
+        {% endif %}
 
 		{% set rows = ns.rows.append(row)%}
 
@@ -90,11 +90,13 @@
         %}
 	{% endif %}
 
-    {% set app = application_headings.append(
-        {
-        'text': gettext('Action')
-        })
-    %}
+	{% if not is_past_submission_deadline %}
+		{% set app = application_headings.append(
+            {
+            'text': gettext('Action')
+            })
+        %}
+	{% endif %}
 
 	{{
             govukTable({
