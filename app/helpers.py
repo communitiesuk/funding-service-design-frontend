@@ -75,6 +75,7 @@ def format_rehydrate_payload(
     fund_name=None,
     round_name=None,
     has_eligibility=False,
+    is_read_only_summary=False,
 ):
     """
     Returns information in a JSON format that provides the
@@ -133,6 +134,10 @@ def format_rehydrate_payload(
     formatted_data["metadata"]["fund_name"] = fund_name
     formatted_data["metadata"]["round_name"] = round_name
     formatted_data["metadata"]["has_eligibility"] = has_eligibility
+
+    if is_read_only_summary:
+        formatted_data["options"]["redirectPath"] = "/summary"
+        formatted_data["metadata"]["is_read_only_summary"] = True
 
     return formatted_data
 
