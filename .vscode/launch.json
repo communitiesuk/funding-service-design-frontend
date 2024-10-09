@@ -27,8 +27,20 @@
       "module": "flask",
       "args": [
         "run",
-        "--no-debugger"
+        "--no-debugger",
+        "--port=3008",
+        "--host=0.0.0.0"
       ],
+      "env": {
+        "PYTHONUNBUFFERED":"1",
+        "APPLICATION_STORE_API_HOST":"http://localhost:3002",
+        "AUTHENTICATOR_HOST":"http://localhost:3004",
+        "FLASK_ENV":"development",
+        "FORMS_SERVICE_PUBLIC_HOST":"http://localhost:3009",
+        "FUND_STORE_API_HOST":"http://localhost:3001",
+        "REDIS_INSTANCE_URI":"redis://localhost:6379",
+        "USE_LOCAL_DATA":"False"
+      },
       "jinja": true,
       "justMyCode": true
     },
