@@ -369,6 +369,10 @@ def continue_application(application_id):
     args = request.args
     form_name = args.get("form_name")
     return_url = request.host_url + url_for("application_routes.tasklist", application_id=application_id)[1:]
+    round_close_notification_url = (
+        request.host_url
+        + url_for("application_routes.fund_round_close_notification", application_id=application_id)[1:]
+    )
     current_app.logger.info(f"Url the form runner should return to '{return_url}'.")
 
     application = get_application_data(application_id)
@@ -377,11 +381,12 @@ def continue_application(application_id):
     form_data = application.get_form_data(application, form_name)
 
     rehydrate_payload = format_rehydrate_payload(
-        form_data,
-        application_id,
-        return_url,
-        form_name,
-        round.mark_as_complete_enabled,
+        form_data=form_data,
+        application_id=application_id,
+        returnUrl=return_url,
+        round_close_notification_url=round_close_notification_url,
+        form_name=form_name,
+        markAsCompleteEnabled=round.mark_as_complete_enabled,
     )
 
     rehydration_token = get_token_to_return_to_application(form_name, rehydrate_payload)

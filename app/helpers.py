@@ -69,6 +69,7 @@ def format_rehydrate_payload(
     form_data,
     application_id,
     returnUrl,
+    round_close_notification_url,
     form_name,
     markAsCompleteEnabled: bool,
     callback_url=Config.UPDATE_APPLICATION_FORM_ENDPOINT,
@@ -133,6 +134,8 @@ def format_rehydrate_payload(
     formatted_data["metadata"]["fund_name"] = fund_name
     formatted_data["metadata"]["round_name"] = round_name
     formatted_data["metadata"]["has_eligibility"] = has_eligibility
+    if round_close_notification_url is not None:
+        formatted_data["metadata"]["round_close_notification_url"] = round_close_notification_url
 
     return formatted_data
 
