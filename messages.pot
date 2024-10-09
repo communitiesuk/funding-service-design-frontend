@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-14 17:23+0100\n"
+"POT-Creation-Date: 2024-10-08 15:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.14.0\n"
 
-#: app/create_app.py:125 app/default/application_routes.py:301
+#: app/create_app.py:129 app/default/application_routes.py:301
 msgid "Apply for"
 msgstr ""
 
-#: app/create_app.py:127
+#: app/create_app.py:131
 msgid "Access Funding"
 msgstr ""
 
-#: app/filters.py:15
+#: app/filters.py:15 app/filters.py:62 app/filters.py:92
 msgid "at"
 msgstr ""
 
@@ -119,11 +119,11 @@ msgstr ""
 msgid "Number of hours spent:"
 msgstr ""
 
-#: app/forms/research.py:17
+#: app/forms/research.py:18
 msgid "I agree to be contacted for research purposes"
 msgstr ""
 
-#: app/forms/research.py:18
+#: app/forms/research.py:19
 msgid "I do not want to be contacted for research purposes"
 msgstr ""
 
@@ -157,6 +157,22 @@ msgstr ""
 
 #: app/models/statuses.py:12
 msgid "Ready to Submit"
+msgstr ""
+
+#: app/templates/500.html:3
+msgid "Sorry, there is a problem with the service"
+msgstr ""
+
+#: app/templates/500.html:9
+msgid "Try again later."
+msgstr ""
+
+#: app/templates/500.html:12 app/templates/footer.html:23
+msgid "Contact us"
+msgstr ""
+
+#: app/templates/500.html:12
+msgid "if you have any questions."
 msgstr ""
 
 #: app/templates/accessibility_statement.html:2
@@ -560,10 +576,6 @@ msgstr ""
 msgid "Accessibility Statement"
 msgstr ""
 
-#: app/templates/footer.html:23
-msgid "Contact us"
-msgstr ""
-
 #: app/templates/fund_start_page.html:5
 msgid "Start or continue an"
 msgstr ""
@@ -664,15 +676,15 @@ msgstr ""
 msgid "View all applications"
 msgstr ""
 
-#: app/templates/header.html:38
+#: app/templates/header.html:41
 msgid "Sign out"
 msgstr ""
 
-#: app/templates/header.html:50
+#: app/templates/header.html:55
 msgid "beta"
 msgstr ""
 
-#: app/templates/header.html:52
+#: app/templates/header.html:57
 msgid "This is a new service."
 msgstr ""
 
@@ -3741,6 +3753,38 @@ msgstr ""
 
 #: app/templates/partials/eligibility-check-button.html:11
 msgid "Check eligibility"
+msgstr ""
+
+#: app/templates/partials/round_closed_warning.html:6
+msgid "Important"
+msgstr ""
+
+#: app/templates/partials/round_closed_warning.html:12
+#: app/templates/partials/round_closed_warning.html:20
+msgid "Window closed"
+msgstr ""
+
+#: app/templates/partials/round_closed_warning.html:14
+#: app/templates/partials/round_closed_warning.html:22
+msgid "Closed"
+msgstr ""
+
+#: app/templates/partials/round_closed_warning.html:15
+msgid ""
+"We have now entered a pre-election period. There will be no further "
+"Community Ownership\n"
+"            Fund announcements at this time."
+msgstr ""
+
+#: app/templates/partials/round_closed_warning.html:17
+msgid "You can no longer submit applications in this window."
+msgstr ""
+
+#: app/templates/partials/round_closed_warning.html:23
+msgid ""
+"You can no longer submit applications in this window. Any you had in "
+"progress will be\n"
+"            emailed to you."
 msgstr ""
 
 #: app/templates/partials/start-application-button.html:11

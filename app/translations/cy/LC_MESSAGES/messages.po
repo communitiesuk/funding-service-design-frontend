@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-06-14 17:23+0100\n"
+"POT-Creation-Date: 2024-10-08 15:29+0100\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -19,15 +19,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.14.0\n"
 
-#: app/create_app.py:125 app/default/application_routes.py:301
+#: app/create_app.py:129 app/default/application_routes.py:301
 msgid "Apply for"
 msgstr "Gwneud cais am"
 
-#: app/create_app.py:127
+#: app/create_app.py:131
 msgid "Access Funding"
 msgstr "Cael Mynediad at Gyllid"
 
-#: app/filters.py:15
+#: app/filters.py:15 app/filters.py:62 app/filters.py:92
 msgid "at"
 msgstr "am"
 
@@ -123,21 +123,13 @@ msgstr "Pa mor hawdd oedd deall y meini prawf cymhwysedd ar gyfer y gronfa hon?"
 msgid "Number of hours spent:"
 msgstr "Nifer yr oriau a dreuliwyd:"
 
-#: app/forms/research.py:17
+#: app/forms/research.py:18
 msgid "I agree to be contacted for research purposes"
 msgstr "Rwy'n cytuno i chi gysylltu â mi at ddibenion ymchwil"
 
-#: app/forms/research.py:18
+#: app/forms/research.py:19
 msgid "I do not want to be contacted for research purposes"
 msgstr "Nid wyf eisiau i chi gysylltu â mi at ddibenion ymchwil"
-
-#: app/forms/research.py:24
-msgid "Name of contact is required"
-msgstr "Mae angen enw’r cyswllt"
-
-#: app/forms/research.py:23
-msgid "Contact email address is required"
-msgstr "Mae angen cyfeiriad e-bost y cyswllt"
 
 #: app/models/language.py:5
 msgid "English"
@@ -170,6 +162,22 @@ msgstr "Heb Gyflwyno"
 #: app/models/statuses.py:12
 msgid "Ready to Submit"
 msgstr "Yn barod i'w gyflwyno "
+
+#: app/templates/500.html:3
+msgid "Sorry, there is a problem with the service"
+msgstr "Mae problem gyda'r gwasanaeth"
+
+#: app/templates/500.html:9
+msgid "Try again later."
+msgstr "Ceisiwch eto nes ymlaen."
+
+#: app/templates/500.html:12 app/templates/footer.html:23
+msgid "Contact us"
+msgstr "Cysylltwch â "
+
+#: app/templates/500.html:12
+msgid "if you have any questions."
+msgstr "os oes gennych unrhyw gwestiynau."
 
 #: app/templates/accessibility_statement.html:2
 msgid "Accessibility statement"
@@ -628,10 +636,6 @@ msgstr "Cwcis"
 msgid "Accessibility Statement"
 msgstr "Datganiad Hygyrchedd"
 
-#: app/templates/footer.html:23
-msgid "Contact us"
-msgstr "Cysylltwch â ni"
-
 #: app/templates/fund_start_page.html:5
 msgid "Start or continue an"
 msgstr "Gwneud cais am"
@@ -736,15 +740,15 @@ msgstr "Rydych wedi gwrthod cwcis dadansoddeg. Gallwch"
 msgid "View all applications"
 msgstr "Eich ceisiadau"
 
-#: app/templates/header.html:38
+#: app/templates/header.html:41
 msgid "Sign out"
 msgstr "Allgofnodi"
 
-#: app/templates/header.html:50
+#: app/templates/header.html:55
 msgid "beta"
 msgstr "beta"
 
-#: app/templates/header.html:52
+#: app/templates/header.html:57
 msgid "This is a new service."
 msgstr "Gwasanaeth newydd yw hwn."
 
@@ -4178,6 +4182,40 @@ msgstr "Ffôn testun"
 msgid "Check eligibility"
 msgstr "Gwirio cymhwysedd"
 
+#: app/templates/partials/round_closed_warning.html:6
+msgid "Important"
+msgstr "Pwysig"
+
+#: app/templates/partials/round_closed_warning.html:12
+#: app/templates/partials/round_closed_warning.html:20
+msgid "Window closed"
+msgstr "Ffenestr ar gau"
+
+#: app/templates/partials/round_closed_warning.html:14
+#: app/templates/partials/round_closed_warning.html:22
+msgid "Closed"
+msgstr "Ar gau"
+
+#: app/templates/partials/round_closed_warning.html:15
+msgid ""
+"We have now entered a pre-election period. There will be no further "
+"Community Ownership\n"
+"            Fund announcements at this time."
+msgstr ""
+
+#: app/templates/partials/round_closed_warning.html:17
+msgid "You can no longer submit applications in this window."
+msgstr "Ni allwch gyflwyno ceisiadau yn y ffenestr hon mwyach."
+
+#: app/templates/partials/round_closed_warning.html:23
+msgid ""
+"You can no longer submit applications in this window. Any you had in "
+"progress will be\n"
+"            emailed to you."
+msgstr ""
+"Ni allwch gyflwyno ceisiadau yn y ffenestr hon mwyach. Bydd unrhyw un "
+"oedd gennych ar y gweill yn cael ei e-bostio atoch."
+
 #: app/templates/partials/start-application-button.html:11
 msgid "Start new application"
 msgstr "Dechrau cais newydd"
@@ -4586,3 +4624,9 @@ msgstr "Cyflwyno'ch cais"
 
 #~ msgid "when to call you"
 #~ msgstr "pa bryd y gallai ddigwydd"
+
+#~ msgid "Name of contact is required"
+#~ msgstr "Mae angen enw’r cyswllt"
+
+#~ msgid "Contact email address is required"
+#~ msgstr "Mae angen cyfeiriad e-bost y cyswllt"
