@@ -42,11 +42,11 @@
                 {{ instruction_text|safe }}
             </p>
             <p class="govuk-body">
-                <a class="govuk-link" href="{{ prospectus_link }}">
+                <a class="govuk-link" href="{{ prospectus_link }}">{% trans %}Read the fund's prospectus{% endtrans %}</a>
                 {% if is_expression_of_interest %}
-                    {% trans %}Read the fund's prospectus{% endtrans %}</a> {% trans %}before you start.{% endtrans %}
+                     {% trans %}before you start.{% endtrans %}
                 {% else %}
-                    {% trans %}Read the fund's prospectus{% endtrans %}</a> {% trans %}before you apply.{% endtrans %}
+                     {% trans %}before you apply.{% endtrans %}
                 {% endif %}
             </p>
             {% if submission_deadline|length and not is_expression_of_interest %}
@@ -66,18 +66,13 @@
             <h2 class="govuk-heading-m">{% trans %}Get help{% endtrans %} </h2>
                 {% if link_to_contact_us_page %}
                 <p class="govuk-body">
-                    {% if show_contact_us %}
-                    {% trans %}If you need help,{% endtrans %}
-                    {% else %}
-                        If you have questions about the form or the fund,
-                    {% endif %}
+                    {% trans %}If you have questions about the form or the fund,{% endtrans %}
                     <a class="govuk-link" href="{{
                         url_for(
-                            "content_routes.contact_us",
+                            'content_routes.contact_us',
                             fund=fund_short_name,
                             round=round_short_name
-                        )
-                    }}">{% trans %}contact us.{% endtrans %}</a>
+                        )}}">{% trans %}contact us.{% endtrans %}</a>
                 </p>
                 {% else %}
                 <p class="govuk-body">

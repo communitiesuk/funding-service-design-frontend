@@ -22,5 +22,5 @@ class DevelopmentConfig(DefaultConfig):
             RSA256_PUBLIC_KEY = public_key_file.read()
 
     # LRU cache settings
-    LRU_CACHE_TIME = 30  # in seconds
+    LRU_CACHE_TIME = 1  # in seconds
     SECRET_KEY = "dev"  # pragma: allowlist secret
