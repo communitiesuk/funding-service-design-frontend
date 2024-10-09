@@ -1,4 +1,3 @@
-from datetime import datetime
 from functools import wraps
 from http.client import METHOD_NOT_ALLOWED
 
@@ -151,10 +150,10 @@ def fund_round_close_notification(application_id):
     round_data = get_round_data_without_cache(
         fund_id=application.fund_id, round_id=application.round_id, language=application.language
     )
-    deadline = datetime.strptime(round_data.deadline, "%Y-%m-%dT%H:%M:%S")
+    round_status = determine_round_status(round_data)
     # added this check sometimes if url forcefully change we should not show this notification unless if
     # there is a round close
-    if datetime.now() > deadline:
+    if round_status.past_submission_deadline:
         return render_template(
             "fund-round-notification.html",
             application_id=application_id,
