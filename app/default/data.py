@@ -193,6 +193,13 @@ def get_round_data(fund_id, round_id, language=None, as_dict=False, ttl_hash=Non
         return Round.from_dict(round_response)
 
 
+def get_round_data_without_cache(fund_id, round_id, language=None):
+    language = {"language": language or get_lang()}
+    round_request_url = Config.GET_ROUND_DATA_FOR_FUND_ENDPOINT.format(fund_id=fund_id, round_id=round_id)
+    round_response = get_data(round_request_url, language)
+    return Round.from_dict(round_response)
+
+
 def get_application_display_config(fund_id, round_id, language):
     application_display_request_url = Config.GET_APPLICATION_DISPLAY_FOR_FUND_ENDPOINT.format(
         fund_id=fund_id, round_id=round_id, language=language
