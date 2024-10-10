@@ -694,6 +694,10 @@ msgstr "Nodwch eich cyfeirad e-bost"
 msgid "Get help"
 msgstr "Cael help"
 
+#: app/templates/fund_start_page.html:69
+msgid "If you have questions about the form or the fund,"
+msgstr ""
+"Os oes unrhyw gwestiynau gennych ynglŷn â'r ffurflen neu'r gronfa, "
 
 #: app/templates/fund_start_page.html:75 app/templates/tasklist.html:117
 msgid "contact us."
