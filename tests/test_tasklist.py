@@ -6,9 +6,7 @@ from app.models.application_display_mapping import ApplicationMapping
 from app.models.fund import Fund
 from bs4 import BeautifulSoup
 from tests.api_data.test_data import SUBMITTED_APPLICATION
-from tests.api_data.test_data import TEST_APPLICATION_SUMMARIES
 from tests.api_data.test_data import TEST_APPLICATIONS
-from tests.api_data.test_data import TEST_DISPLAY_DATA
 from tests.api_data.test_data import TEST_FUNDS_DATA
 from tests.utils import get_language_cookie_value
 
@@ -55,38 +53,19 @@ def test_tasklist_route_after_deadline(flask_test_client, mocker, mock_login, mo
         return_value=RoundStatus(True, False, False),
     )
     response = flask_test_client.get("tasklist/test-application-id", follow_redirects=False)
-    assert response.status_code == 302
-    assert "/account" == response.location
+    assert response.status_code == 200
+    assert b"Window closed - " in response.data
+    assert b"You can no longer submit applications in this window." in response.data
 
 
-def test_tasklist_for_submit_application_route(flask_test_client, mocker, mock_login):
+def test_tasklist_for_submit_application_route(flask_test_client, mocker, mock_login, mock_applications):
     mocker.patch(
         "app.default.application_routes.get_application_data",
         return_value=SUBMITTED_APPLICATION,
     )
-    mocker.patch(
-        "app.default.application_routes.determine_round_status",
-        return_value=RoundStatus(False, False, True),
-    )
-
-    get_apps_mock = mocker.patch(
-        "app.default.account_routes.search_applications",
-        return_value=TEST_APPLICATION_SUMMARIES,
-    )
-    mocker.patch(
-        "app.default.account_routes.build_application_data_for_display",
-        return_value=TEST_DISPLAY_DATA,
-    )
-    response = flask_test_client.get("tasklist/test-application-submit", follow_redirects=True)
+    response = flask_test_client.get("tasklist/test-application-id", follow_redirects=False)
     assert response.status_code == 200
-    get_apps_mock.assert_called_once_with(
-        search_params={
-            "account_id": "test-user",
-            "fund_id": "111",
-            "round_id": "fsd-r2w2",
-        },
-        as_dict=False,
-    )
+    assert b"You have submitted your application, you cannot change your answers." in response.data
 
 
 def test_language_cookie_update_welsh_to_english(flask_test_client, mocker, mock_login, mock_applications):
