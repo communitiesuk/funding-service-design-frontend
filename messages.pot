@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-08 15:29+0100\n"
+"POT-Creation-Date: 2024-10-09 17:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.14.0\n"
 
-#: app/create_app.py:129 app/default/application_routes.py:301
+#: app/create_app.py:129 app/default/application_routes.py:343
 msgid "Apply for"
 msgstr ""
 
@@ -574,6 +574,32 @@ msgstr ""
 
 #: app/templates/footer.html:19
 msgid "Accessibility Statement"
+msgstr ""
+
+#: app/templates/fund-round-notification.html:5
+msgid "Round closed"
+msgstr ""
+
+#: app/templates/fund-round-notification.html:17
+msgid "This application is now closed"
+msgstr ""
+
+#: app/templates/fund-round-notification.html:20
+msgid "The deadline to apply for this fund has now passed."
+msgstr ""
+
+#: app/templates/fund-round-notification.html:23
+msgid ""
+"You can still view your application, but you can no longer add new "
+"information."
+msgstr ""
+
+#: app/templates/fund-round-notification.html:25
+msgid "View application"
+msgstr ""
+
+#: app/templates/fund-round-notification.html:29
+msgid "Back to all applications"
 msgstr ""
 
 #: app/templates/fund_start_page.html:5

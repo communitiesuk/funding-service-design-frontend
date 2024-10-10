@@ -11,6 +11,7 @@ from app.default.data import get_feedback_survey_from_store
 from app.default.data import get_fund_data
 from app.default.data import get_research_survey_from_store
 from app.default.data import get_round_data
+from app.default.data import get_round_data_without_cache
 from app.default.data import get_ttl_hash
 from app.default.data import post_feedback_survey_to_store
 from app.default.data import post_research_survey_to_store
@@ -133,6 +134,46 @@ def verify_round_open(f):
             return redirect(url_for("account_routes.dashboard"))
 
     return decorator
+
+
+@application_bp.route("/fund-round/notification/<application_id>", methods=["GET", "POST"])
+@login_required
+@verify_application_owner_local
+def fund_round_close_notification(application_id):
+    application = get_application_data(application_id=application_id)
+    fund_data = get_fund_data(
+        fund_id=application.fund_id,
+        language=application.language,
+        as_dict=False,
+        ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME),
+    )
+    round_data = get_round_data_without_cache(
+        fund_id=application.fund_id, round_id=application.round_id, language=application.language
+    )
+    round_status = determine_round_status(round_data)
+    # added this check sometimes if url forcefully change we should not show this notification unless if
+    # there is a round close
+    if round_status.past_submission_deadline:
+        return render_template(
+            "fund-round-notification.html",
+            application_id=application_id,
+            application_view_url=url_for(
+                "application_routes.tasklist",
+                application_id=application_id,
+            ),
+            dashboard_url=url_for(
+                "account_routes.dashboard",
+                fund=fund_data.short_name,
+                round=round_data.short_name,
+            ),
+            migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
+        )
+    return redirect(
+        url_for(
+            "application_routes.tasklist",
+            application_id=application_id,
+        )
+    )
 
 
 @application_bp.route("/tasklist/<application_id>", methods=["GET"])
@@ -327,6 +368,10 @@ def continue_application(application_id):
     args = request.args
     form_name = args.get("form_name")
     return_url = request.host_url + url_for("application_routes.tasklist", application_id=application_id)[1:]
+    round_close_notification_url = (
+        request.host_url
+        + url_for("application_routes.fund_round_close_notification", application_id=application_id)[1:]
+    )
     current_app.logger.info(f"Url the form runner should return to '{return_url}'.")
 
     application = get_application_data(application_id)
@@ -335,11 +380,12 @@ def continue_application(application_id):
     form_data = application.get_form_data(application, form_name)
 
     rehydrate_payload = format_rehydrate_payload(
-        form_data,
-        application_id,
-        return_url,
-        form_name,
-        round.mark_as_complete_enabled,
+        form_data=form_data,
+        application_id=application_id,
+        returnUrl=return_url,
+        round_close_notification_url=round_close_notification_url,
+        form_name=form_name,
+        markAsCompleteEnabled=round.mark_as_complete_enabled,
     )
 
     rehydration_token = get_token_to_return_to_application(form_name, rehydrate_payload)
