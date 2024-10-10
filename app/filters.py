@@ -85,6 +85,10 @@ def string_to_datetime(value: str) -> datetime:
     return datetime.strptime(value, "%Y-%m-%dT%H:%M:%S")
 
 
+def string_to_datetime_ms(value: str) -> datetime:
+    return datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+
+
 def datetime_format_full_month(value: datetime) -> str:
     if not value:
         return ""
