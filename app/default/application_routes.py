@@ -380,9 +380,9 @@ def continue_application(application_id):
         form_data=form_data,
         application_id=application_id,
         returnUrl=return_url,
-        round_close_notification_url=round_close_notification_url,
         form_name=form_name,
         markAsCompleteEnabled=round.mark_as_complete_enabled,
+        round_close_notification_url=round_close_notification_url,
     )
 
     rehydration_token = get_token_to_return_to_application(form_name, rehydrate_payload)

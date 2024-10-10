@@ -69,13 +69,13 @@ def format_rehydrate_payload(
     form_data,
     application_id,
     returnUrl,
-    round_close_notification_url,
     form_name,
     markAsCompleteEnabled: bool,
     callback_url=Config.UPDATE_APPLICATION_FORM_ENDPOINT,
     fund_name=None,
     round_name=None,
     has_eligibility=False,
+    round_close_notification_url=None,
 ):
     """
     Returns information in a JSON format that provides the
