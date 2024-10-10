@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-09 17:48+0100\n"
+"POT-Creation-Date: 2024-10-10 09:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.14.0\n"
 
-#: app/create_app.py:129 app/default/application_routes.py:343
+#: app/create_app.py:129 app/default/application_routes.py:339
 msgid "Apply for"
 msgstr ""
 
@@ -610,7 +610,7 @@ msgstr ""
 msgid "Start or continue an application for"
 msgstr ""
 
-#: app/templates/fund_start_page.html:47 app/templates/fund_start_page.html:49
+#: app/templates/fund_start_page.html:45
 msgid "Read the fund's prospectus"
 msgstr ""
 
@@ -634,19 +634,19 @@ msgstr ""
 msgid "Get help"
 msgstr ""
 
-#: app/templates/fund_start_page.html:70 app/templates/tasklist.html:110
-msgid "If you need help,"
+#: app/templates/fund_start_page.html:69
+msgid "If you have questions about the form or the fund,"
 msgstr ""
 
-#: app/templates/fund_start_page.html:80 app/templates/tasklist.html:117
+#: app/templates/fund_start_page.html:75 app/templates/tasklist.html:117
 msgid "contact us."
 msgstr ""
 
-#: app/templates/fund_start_page.html:84
+#: app/templates/fund_start_page.html:79
 msgid "If you need help, email us at"
 msgstr ""
 
-#: app/templates/fund_start_page.html:89 app/templates/tasklist.html:124
+#: app/templates/fund_start_page.html:84 app/templates/tasklist.html:124
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
 "applications through this service."
@@ -891,6 +891,10 @@ msgstr ""
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
 "expressions of interest through this service."
+msgstr ""
+
+#: app/templates/tasklist.html:110
+msgid "If you have any questions about the form or the fund, "
 msgstr ""
 
 #: app/templates/tasklist.html:119

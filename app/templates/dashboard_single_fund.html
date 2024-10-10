@@ -44,7 +44,7 @@ Your applications
                 {% if round["is_past_submission_deadline"] %}
                     {{ round_closed_warning(fund["fund_data"]["name"], round["round_details"]["title"], round["round_details"]["deadline"]) }}
                 {% endif %}
-                    {{ applications_table(round["applications"], round["is_past_submission_deadline"], show_language_column, fund["fund_data"]["short_name"]) }}
+                    {{ applications_table(round["applications"], round["is_past_submission_deadline"], show_language_column, fund["fund_data"]["short_name"], round["round_details"]["is_expression_of_interest"]) }}
                 {% if not round["is_past_submission_deadline"] %}
                     {% if round["round_details"]["has_eligibility"] %}
                         {{ eligibilityCheckButton(form, url_for('eligibility_routes.launch_eligibility', fund_id=fund["fund_data"]["id"], round_id=round["round_details"]["id"])) }}

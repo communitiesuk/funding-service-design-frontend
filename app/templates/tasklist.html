@@ -68,46 +68,29 @@
                     {% trans %}Submitting your application{% endtrans %}
                 </h2>
                 {% if is_expression_of_interest %}
-                <p class="govuk-body">
-                    {% trans %}When you have completed all sections, you'll be able to submit your expression of interest.{% endtrans %}
-                </p>
-                <p class="govuk-body">
-                    {% trans %}Once you have submitted your expression of interest, you'll not be able to edit, add or change any sections.{% endtrans %}
-                </p>
+                    <p class="govuk-body">
+                        {% trans %}When you have completed all sections, you'll be able to submit your expression of interest.{% endtrans %}
+                    </p>
+                    <p class="govuk-body">
+                        {% trans %}Once you have submitted your expression of interest, you'll not be able to edit, add or change any sections.{% endtrans %}
+                    </p>
                 {% else %}
-                <p class="govuk-body">
-                    {% trans %}When you have completed all sections, you'll be able to submit your application.{%
-                    endtrans %}
-                </p>
-                <p class="govuk-body">
-                    {% trans %}Once you have submitted your application, you'll not be able to edit, add or change any sections.{% endtrans %}
-                </p>
+                    <p class="govuk-body">
+                        {% trans %}When you have completed all sections, you'll be able to submit your application.{%
+                        endtrans %}
+                    </p>
+                    <p class="govuk-body">
+                        {% trans %}Once you have submitted your application, you'll not be able to edit, add or change any sections.{% endtrans %}
+                    </p>
                 {% endif %}
 
                 <h2 class="govuk-heading govuk-heading-s">
                     {% trans %}Get help{% endtrans %}
                 </h2>
-                {% if is_expression_of_interest %}
-                <p class="govuk-body">
-                    {% trans %}General support is now available to applicants via the{% endtrans %}
-                    <a class="govuk-link" href="https://mycommunity.org.uk/">{% trans %}My Community website{% endtrans %}</a>
-                    {% trans %}, which includes an enquiry form as well as a range of helpful documents and webinars.{%
-                    endtrans %}
-                </p>
 
                 <p class="govuk-body">
-                    {% trans %}For queries relating to technical issues when using our online application tools, please{% endtrans %}
-                    <a class="govuk-link" href="mailto:fsd.support@levellingup.gov.uk">{% trans %}email FSD Support{%
-                        endtrans %}</a>.
-                </p>
-
-                <p class="govuk-body">
-                    {% trans %}Do not send any applications or attachments by email. We'll only accept expressions of interest through this service.{% endtrans %}
-                </p>
-                {% else %}
-                <p class="govuk-body">
-                    {% if show_contact_us %}
-                    {% trans %}If you need help,{% endtrans %}
+                    {% if link_to_contact_us_page %}
+                    {% trans %}If you have any questions about the form or the fund, {% endtrans %}
                         <a class="govuk-link" href="{{
                             url_for(
                                 "content_routes.contact_us",
@@ -122,7 +105,6 @@
                     {% endif %}
                         </p>
                         <p>{% trans %}Do not send any applications or attachments by email. We'll only accept applications through this service.{% endtrans %}</p>
-                {% endif %}
 
                 <h2 class="govuk-heading govuk-heading-s">
                     {% trans %}How we'll use your information{% endtrans %}

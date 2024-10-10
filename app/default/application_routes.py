@@ -306,10 +306,6 @@ def tasklist(application_id):
             ),
         )
 
-    show_contact_us = False
-    if round_data.short_name == "R4W2":
-        show_contact_us = True
-
     with force_locale(application.language):
         response = make_response()
         if request.cookies.get("language") != application.language:
@@ -318,6 +314,7 @@ def tasklist(application_id):
         response_content = render_template(
             "tasklist.html",
             fund_short_name=fund_data.short_name,
+            round_short_name=round_data.short_name,
             application=application,
             sections=display_config,
             application_status=get_formatted,
@@ -335,7 +332,7 @@ def tasklist(application_id):
             application_guidance=app_guidance,
             existing_feedback_map=existing_feedback_map,
             feedback_survey_data=feedback_survey_data,
-            show_contact_us=show_contact_us,
+            link_to_contact_us_page=round_data.reference_contact_page_over_email,
             research_survey_data=research_survey_data,
             migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
             # Set service_title here so it uses the application language - overrides the context_processor
