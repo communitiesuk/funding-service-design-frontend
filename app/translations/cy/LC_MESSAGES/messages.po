@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-10 09:10+0100\n"
+"POT-Creation-Date: 2024-10-08 15:29+0100\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.14.0\n"
 
-#: app/create_app.py:129 app/default/application_routes.py:339
+#: app/create_app.py:129 app/default/application_routes.py:301
 msgid "Apply for"
 msgstr "Gwneud cais am"
 
@@ -304,7 +304,7 @@ msgstr "Eich rhif traciwr unigryw"
 
 #: app/templates/application_submitted.html:22
 msgid "We have sent you a confirmation email and a copy of your answers to"
-msgstr ""
+msgstr "Rydym wedi anfon  neges e-bost i gadarnhau a chopi o'ch atebion at"
 
 #: app/templates/application_submitted.html:24
 #: app/templates/eoi_submitted.html:24
@@ -312,23 +312,20 @@ msgid "What happens next"
 msgstr "Beth sy'n digwydd nesaf"
 
 #: app/templates/application_submitted.html:27
-#, fuzzy
 msgid "Your application to the"
-msgstr "Eich ceisiadau"
+msgstr "Mae eich cais i'r"
 
 #: app/templates/application_submitted.html:27
-#, fuzzy
 msgid "has been submitted."
-msgstr "Heb Gyflwyno"
+msgstr "wedi'i gyflwyno."
 
 #: app/templates/application_submitted.html:30
 msgid "We'll email you to let you know whether you have been successful."
-msgstr ""
+msgstr "Byddwn yn anfon neges e-bost atoch i roi gwybod a fuoch chi'n llwyddiannus."
 
 #: app/templates/application_submitted.html:33
-#, fuzzy
 msgid "Return to your applications page."
-msgstr "Yn ôl at eich ceisiadau"
+msgstr "Dychwelyd i'ch tudalen geisiadau."
 
 #: app/templates/contact_us.html:7
 msgid "Get help with your application"
@@ -636,32 +633,6 @@ msgstr "Cwcis"
 msgid "Accessibility Statement"
 msgstr "Datganiad Hygyrchedd"
 
-#: app/templates/fund-round-notification.html:5
-msgid "Round closed"
-msgstr ""
-
-#: app/templates/fund-round-notification.html:17
-msgid "This application is now closed"
-msgstr ""
-
-#: app/templates/fund-round-notification.html:20
-msgid "The deadline to apply for this fund has now passed."
-msgstr ""
-
-#: app/templates/fund-round-notification.html:23
-msgid ""
-"You can still view your application, but you can no longer add new "
-"information."
-msgstr ""
-
-#: app/templates/fund-round-notification.html:25
-msgid "View application"
-msgstr ""
-
-#: app/templates/fund-round-notification.html:29
-msgid "Back to all applications"
-msgstr ""
-
 #: app/templates/fund_start_page.html:5
 msgid "Start or continue an"
 msgstr "Gwneud cais am"
@@ -670,7 +641,7 @@ msgstr "Gwneud cais am"
 msgid "Start or continue an application for"
 msgstr "Gwneud cais am"
 
-#: app/templates/fund_start_page.html:45
+#: app/templates/fund_start_page.html:47 app/templates/fund_start_page.html:49
 msgid "Read the fund's prospectus"
 msgstr "Darllenwch brosbectws y gronfa"
 
@@ -694,20 +665,19 @@ msgstr "Nodwch eich cyfeirad e-bost"
 msgid "Get help"
 msgstr "Cael help"
 
-#: app/templates/fund_start_page.html:69
-msgid "If you have questions about the form or the fund,"
-msgstr ""
-"Os oes unrhyw gwestiynau gennych ynglŷn â'r ffurflen neu'r gronfa, "
+#: app/templates/fund_start_page.html:70 app/templates/tasklist.html:110
+msgid "If you need help,"
+msgstr "Os oes angen help arnoch chi,"
 
-#: app/templates/fund_start_page.html:75 app/templates/tasklist.html:117
+#: app/templates/fund_start_page.html:80 app/templates/tasklist.html:117
 msgid "contact us."
 msgstr "cysylltwch â ni."
 
-#: app/templates/fund_start_page.html:79
+#: app/templates/fund_start_page.html:84
 msgid "If you need help, email us at"
 msgstr "Os oes angen help arnoch chi, anfonwch e-bost atom y"
 
-#: app/templates/fund_start_page.html:84 app/templates/tasklist.html:124
+#: app/templates/fund_start_page.html:89 app/templates/tasklist.html:124
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
 "applications through this service."
@@ -1000,11 +970,6 @@ msgid ""
 msgstr ""
 "Peidiwch ag anfon unrhyw geisiadau nac atodiadau drwy e-bost. Dim ond "
 "drwy'r gwasanaeth hwn y byddwn yn derbyn ceisiadau."
-
-#: app/templates/tasklist.html:110
-msgid "If you have any questions about the form or the fund, "
-msgstr ""
-"Os oes unrhyw gwestiynau gennych ynglŷn â'r ffurflen neu'r gronfa, "
 
 #: app/templates/tasklist.html:119
 msgid "If you have any questions about the form or the fund, email us at"
@@ -4662,6 +4627,3 @@ msgstr "Cyflwyno'ch cais"
 
 #~ msgid "Contact email address is required"
 #~ msgstr "Mae angen cyfeiriad e-bost y cyswllt"
-
-#~ msgid "If you need help,"
-#~ msgstr "Os oes angen help arnoch chi,"
