@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-10 09:10+0100\n"
+"POT-Creation-Date: 2024-10-10 12:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -407,7 +407,7 @@ msgstr ""
 #: app/templates/end_of_application_feedback_page_3.html:21
 #: app/templates/end_of_application_feedback_page_4.html:23
 #: app/templates/end_of_application_survey.html:20
-#: app/templates/tasklist.html:209 app/templates/tasklist.html:218
+#: app/templates/tasklist.html:191 app/templates/tasklist.html:200
 msgid "Applicant feedback survey"
 msgstr ""
 
@@ -622,7 +622,7 @@ msgstr ""
 msgid "before you apply."
 msgstr ""
 
-#: app/templates/fund_start_page.html:54 app/templates/tasklist.html:142
+#: app/templates/fund_start_page.html:54 app/templates/tasklist.html:124
 msgid "Submission deadline:"
 msgstr ""
 
@@ -638,7 +638,7 @@ msgstr ""
 msgid "If you have questions about the form or the fund,"
 msgstr ""
 
-#: app/templates/fund_start_page.html:75 app/templates/tasklist.html:117
+#: app/templates/fund_start_page.html:75 app/templates/tasklist.html:100
 msgid "contact us."
 msgstr ""
 
@@ -646,7 +646,7 @@ msgstr ""
 msgid "If you need help, email us at"
 msgstr ""
 
-#: app/templates/fund_start_page.html:84 app/templates/tasklist.html:124
+#: app/templates/fund_start_page.html:84 app/templates/tasklist.html:107
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
 "applications through this service."
@@ -863,125 +863,95 @@ msgid ""
 " or change any sections."
 msgstr ""
 
-#: app/templates/tasklist.html:92
-msgid "General support is now available to applicants via the"
-msgstr ""
-
 #: app/templates/tasklist.html:93
-msgid "My Community website"
-msgstr ""
-
-#: app/templates/tasklist.html:94
-msgid ""
-", which includes an enquiry form as well as a range of helpful documents "
-"and webinars."
-msgstr ""
-
-#: app/templates/tasklist.html:99
-msgid ""
-"For queries relating to technical issues when using our online "
-"application tools, please"
-msgstr ""
-
-#: app/templates/tasklist.html:100
-msgid "email FSD Support"
-msgstr ""
-
-#: app/templates/tasklist.html:105
-msgid ""
-"Do not send any applications or attachments by email. We'll only accept "
-"expressions of interest through this service."
-msgstr ""
-
-#: app/templates/tasklist.html:110
 msgid "If you have any questions about the form or the fund, "
 msgstr ""
 
-#: app/templates/tasklist.html:119
+#: app/templates/tasklist.html:102
 msgid "If you have any questions about the form or the fund, email us at"
 msgstr ""
 
-#: app/templates/tasklist.html:128
+#: app/templates/tasklist.html:110
 msgid "How we'll use your information"
 msgstr ""
 
-#: app/templates/tasklist.html:131
+#: app/templates/tasklist.html:113
 msgid "Read how we'll use the information from your application in our"
 msgstr ""
 
-#: app/templates/tasklist.html:132
+#: app/templates/tasklist.html:114
 msgid "privacy notice"
 msgstr ""
 
-#: app/templates/tasklist.html:146
+#: app/templates/tasklist.html:128
 msgid "Reference:"
 msgstr ""
 
-#: app/templates/tasklist.html:154
+#: app/templates/tasklist.html:136
 msgid "Status:"
 msgstr ""
 
-#: app/templates/tasklist.html:174
+#: app/templates/tasklist.html:156
 msgid "None of the sections have been completed."
 msgstr ""
 
-#: app/templates/tasklist.html:176
+#: app/templates/tasklist.html:158
 msgid "You have completed"
 msgstr ""
 
-#: app/templates/tasklist.html:177
+#: app/templates/tasklist.html:159
 msgid "of"
 msgstr ""
 
-#: app/templates/tasklist.html:178
+#: app/templates/tasklist.html:160
 msgid "sections."
 msgstr ""
 
-#: app/templates/tasklist.html:193
+#: app/templates/tasklist.html:175
 msgid "Applicant feedback survey (not scored)"
 msgstr ""
 
-#: app/templates/tasklist.html:198
+#: app/templates/tasklist.html:180
 msgid ""
 "You must complete all other sections before starting the feedback survey."
 " This section is optional and should take approximately 1 minute to "
 "complete."
 msgstr ""
 
-#: app/templates/tasklist.html:202
+#: app/templates/tasklist.html:184
 msgid ""
 "You must complete all other sections before starting the feedback survey."
 " This section should take approximately 1 minute to complete."
 msgstr ""
 
 #: app/templates/partials/tasklist_section.html:47
-#: app/templates/tasklist.html:212 app/templates/tasklist.html:270
+#: app/templates/tasklist.html:194 app/templates/tasklist.html:252
 msgid "Cannot start yet"
 msgstr ""
 
-#: app/templates/tasklist.html:238
+#: app/templates/tasklist.html:220
 msgid "Applicant feedback submitted"
 msgstr ""
 
-#: app/templates/tasklist.html:251
+#: app/templates/tasklist.html:233
 msgid "Applicant research survey (not scored)"
 msgstr ""
 
-#: app/templates/tasklist.html:256
+#: app/templates/tasklist.html:238
 msgid ""
 "You must complete all other sections before starting the research survey."
 " This section is optional and should take approximately 1 minute to "
 "complete."
 msgstr ""
 
-#: app/templates/tasklist.html:260
+#: app/templates/tasklist.html:242
 msgid ""
 "You must complete all other sections before starting the research survey."
 " This section should take approximately 1 minute to complete."
 msgstr ""
 
-#: app/templates/tasklist.html:267 app/templates/tasklist.html:276
-#: app/templates/tasklist.html:297
+#: app/templates/tasklist.html:249 app/templates/tasklist.html:258
+#: app/templates/tasklist.html:279
 msgid "Applicant research survey"
 msgstr ""
 
