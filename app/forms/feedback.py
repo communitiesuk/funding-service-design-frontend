@@ -10,11 +10,8 @@ from wtforms.validators import NumberRange
 
 
 class DefaultSectionFeedbackForm(ApplicationFlaskForm):
-    experience = RadioField(
-        label="How easy did you find it to complete this section?",
-        validators=[InputRequired(message=gettext("Select a score"))],
-    )
-    more_detail = TextAreaField(label="Explain why you chose this score (optional)")
+    experience = RadioField()
+    more_detail = TextAreaField()
 
     def __init__(self, *args, **kwargs):
         super(DefaultSectionFeedbackForm, self).__init__(*args, **kwargs)
@@ -30,6 +27,7 @@ class DefaultSectionFeedbackForm(ApplicationFlaskForm):
             ("very difficult", gettext("Very difficult")),
         ]
         self.more_detail.label.text = gettext("Explain why you chose this score (optional)")
+        self.experience.validators = [InputRequired(message=gettext("Select a score"))]
 
     @property
     def as_dict(self):
@@ -41,11 +39,8 @@ class DefaultSectionFeedbackForm(ApplicationFlaskForm):
 
 
 class EndOfApplicationPage1Form(PrepopulatedForm):
-    overall_application_experience = RadioField(
-        label="How was your overall application experience?",
-        validators=[InputRequired(message="Select a score")],
-    )
-    more_detail = TextAreaField(label="Explain why you chose this score (optional)")
+    overall_application_experience = RadioField()
+    more_detail = TextAreaField()
 
     def __init__(self, *args, **kwargs):
         super(EndOfApplicationPage1Form, self).__init__(*args, **kwargs)
@@ -58,16 +53,11 @@ class EndOfApplicationPage1Form(PrepopulatedForm):
             ("very poor", gettext("Very poor")),
         ]
         self.more_detail.label.text = gettext("Explain why you chose this score (optional)")
+        self.overall_application_experience.validators = [InputRequired(message=gettext("Select a score"))]
 
 
 class EndOfApplicationPage2Form(PrepopulatedForm):
-    demonstrate_why_org_funding = RadioField(
-        label=(
-            "To what extent do you agree that this application form allowed"
-            " you to demonstrate why your organization should receive funding?"
-        ),
-        validators=[InputRequired(message="Select a score")],
-    )
+    demonstrate_why_org_funding = RadioField()
 
     def __init__(self, *args, **kwargs):
         super(EndOfApplicationPage2Form, self).__init__(*args, **kwargs)
@@ -85,13 +75,11 @@ class EndOfApplicationPage2Form(PrepopulatedForm):
             ("disagree", gettext("Disagree")),
             ("strongly disagree", gettext("Strongly disagree")),
         ]
+        self.demonstrate_why_org_funding.validators = [InputRequired(message=gettext("Select a score"))]
 
 
 class EndOfApplicationPage3Form(PrepopulatedForm):
-    understand_eligibility_criteria = RadioField(
-        label="How easy was it to understand the eligibility criteria for this fund?",
-        validators=[DataRequired(message="Select a score")],
-    )
+    understand_eligibility_criteria = RadioField()
 
     def __init__(self, *args, **kwargs):
         super(EndOfApplicationPage3Form, self).__init__(*args, **kwargs)
@@ -108,20 +96,19 @@ class EndOfApplicationPage3Form(PrepopulatedForm):
             ("difficult", gettext("Difficult")),
             ("very difficult", gettext("Very difficult")),
         ]
+        self.understand_eligibility_criteria.validators = [InputRequired(message=gettext("Select a score"))]
 
 
 class EndOfApplicationPage4Form(PrepopulatedForm):
-    hours_spent = FloatField(
-        label="Number of hours spent:",
-        validators=[
-            DataRequired(message="Enter a number only. The number must be at least 0.5 or greater."),
-            NumberRange(min=0.5),
-        ],
-    )
+    hours_spent = FloatField()
 
     def __init__(self, *args, **kwargs):
         super(EndOfApplicationPage4Form, self).__init__(*args, **kwargs)
         self.hours_spent.label.text = gettext("Number of hours spent:")
+        self.hours_spent.validators = [
+            DataRequired(message=gettext("Enter a number only. The number must be at least 0.5 or greater.")),
+            NumberRange(min=0.5),
+        ]
 
 
 END_OF_APPLICATION_FEEDBACK_SURVEY_PAGE_NUMBER_MAP = {
