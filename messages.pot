@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-15 14:40+0100\n"
+"POT-Creation-Date: 2024-10-16 11:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,93 +29,93 @@ msgstr ""
 msgid "at"
 msgstr ""
 
-#: app/forms/feedback.py:15
-msgid "Select a score"
-msgstr ""
-
-#: app/forms/feedback.py:21 app/templates/feedback_generic_survey.html:34
+#: app/forms/feedback.py:24 app/templates/feedback_generic_survey.html:34
 msgid "How easy did you find it to complete this section?"
 msgstr ""
 
-#: app/forms/feedback.py:23 app/forms/feedback.py:102
+#: app/forms/feedback.py:26 app/forms/feedback.py:107
 msgid "Very easy"
 msgstr ""
 
-#: app/forms/feedback.py:24 app/forms/feedback.py:103
+#: app/forms/feedback.py:27 app/forms/feedback.py:108
 msgid "Easy"
 msgstr ""
 
-#: app/forms/feedback.py:27 app/forms/feedback.py:106
+#: app/forms/feedback.py:30 app/forms/feedback.py:111
 msgid "Neither easy nor difficult"
 msgstr ""
 
-#: app/forms/feedback.py:29 app/forms/feedback.py:108
+#: app/forms/feedback.py:32 app/forms/feedback.py:113
 msgid "Difficult"
 msgstr ""
 
-#: app/forms/feedback.py:30 app/forms/feedback.py:109
+#: app/forms/feedback.py:33 app/forms/feedback.py:114
 msgid "Very difficult"
 msgstr ""
 
-#: app/forms/feedback.py:32 app/forms/feedback.py:60
+#: app/forms/feedback.py:35 app/forms/feedback.py:37 app/forms/feedback.py:65
 msgid "Explain why you chose this score (optional)"
 msgstr ""
 
-#: app/forms/feedback.py:52
-msgid "How was your overall application experience?"
-msgstr ""
-
-#: app/forms/feedback.py:54
-msgid "Very good"
-msgstr ""
-
-#: app/forms/feedback.py:55
-msgid "Good"
-msgstr ""
-
-#: app/forms/feedback.py:56
-msgid "Average"
+#: app/forms/feedback.py:36
+msgid "Select a score"
 msgstr ""
 
 #: app/forms/feedback.py:57
+msgid "How was your overall application experience?"
+msgstr ""
+
+#: app/forms/feedback.py:59
+msgid "Very good"
+msgstr ""
+
+#: app/forms/feedback.py:60
+msgid "Good"
+msgstr ""
+
+#: app/forms/feedback.py:61
+msgid "Average"
+msgstr ""
+
+#: app/forms/feedback.py:62
 msgid "Poor"
 msgstr ""
 
-#: app/forms/feedback.py:58
+#: app/forms/feedback.py:63
 msgid "Very poor"
 msgstr ""
 
-#: app/forms/feedback.py:74
+#: app/forms/feedback.py:79
 msgid ""
 "To what extent do you agree that this application form allowed you to "
 "demonstrate why your organization should receive funding?"
 msgstr ""
 
-#: app/forms/feedback.py:79
+#: app/forms/feedback.py:84
 msgid "Strongly agree"
 msgstr ""
 
-#: app/forms/feedback.py:80
+#: app/forms/feedback.py:85
 msgid "Agree"
 msgstr ""
 
-#: app/forms/feedback.py:83
+#: app/forms/feedback.py:88
 msgid "Neither agree nor disagree"
 msgstr ""
 
-#: app/forms/feedback.py:85
+#: app/forms/feedback.py:90
 msgid "Disagree"
 msgstr ""
 
-#: app/forms/feedback.py:86
+#: app/forms/feedback.py:91
 msgid "Strongly disagree"
 msgstr ""
 
-#: app/forms/feedback.py:98
+#: app/forms/feedback.py:103
 msgid "How easy was it to understand the eligibility criteria for this fund?"
 msgstr ""
 
-#: app/forms/feedback.py:124
+#: app/forms/feedback.py:129
 msgid "Number of hours spent:"
 msgstr ""
 
@@ -3753,6 +3753,10 @@ msgstr ""
 
 #: app/templates/partials/eligibility-check-button.html:11
 msgid "Check eligibility"
+msgstr ""
+
+#: app/templates/partials/feedback_error_summary.html:5
+msgid "There is a problem"
 msgstr ""
 
 #: app/templates/partials/round_closed_warning.html:6
