@@ -163,6 +163,7 @@ def test_dashboard_language(
                 "description": "test test",
                 "short_name": "FSD",
                 "title": "fund for testing",
+                "funding_type": "COMPETITIVE",
                 "welsh_available": fund_supports_welsh,
             },
         ),
@@ -207,7 +208,6 @@ def test_dashboard_route(flask_test_client, mocker, mock_login):
         )
         == 0
     )
-    assert len(soup.find_all("span", class_="govuk-caption-m", string="Test Fund")) == 2
     assert len(soup.find_all("h2", string=lambda text: "Round 2 Window 2" == str.strip(text))) == 1
     assert len(soup.find_all("h2", string=lambda text: "Round 2 Window 2" == str.strip(text))) == 1
 

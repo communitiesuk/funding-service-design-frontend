@@ -13,6 +13,7 @@ def test_get_fund_data_lru_cache(mocker):
         "welsh_available": True,
         "title": "Test Fund by ID",
         "id": "222",
+        "funding_type": "COMPETITIVE",
     }
     mocker.patch(
         "app.default.data.get_data",

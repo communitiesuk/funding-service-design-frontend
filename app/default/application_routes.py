@@ -264,6 +264,7 @@ def tasklist(application_id):
     application_meta_data = {
         "application_id": application_id,
         "fund_name": fund_data.name,
+        "funding_type": fund_data.funding_type,
         "fund_title": fund_data.title,
         "round_name": round_data.title,
         "application_guidance": round_data.application_guidance,
