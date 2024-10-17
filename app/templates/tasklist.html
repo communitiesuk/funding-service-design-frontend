@@ -20,7 +20,12 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         {% if is_expression_of_interest %}
-        <span class="govuk-caption-l">{{ application_meta_data["fund_name"] }} </span>
+        <span class="govuk-caption-l">
+            {{ application_meta_data["fund_name"] }}
+            {% if application_meta_data["funding_type"] == "EOI" %}
+                ({% trans %}Expression of interest{% endtrans %})
+            {% endif %}
+        </span>
         <h1 class="govuk-heading-xl"> {{ application_meta_data["fund_title"]| replace("expression", "Expression") }}
         </h1>
         {% else %}

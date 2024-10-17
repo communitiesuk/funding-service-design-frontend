@@ -32,6 +32,9 @@
                 <h2 class="govuk-accordion__section-heading">
                     <span class="govuk-accordion__section-button" id="funds-heading-{{ fund['fund_data']['short_name'] }}">
                         {{ fund["fund_data"]["name"] }}
+                        {% if fund["fund_data"]["funding_type"] == "EOI" %}
+                            ({% trans %}Expression of interest{% endtrans %})
+                        {% endif %}
                     </span>
                 </h2>
             </div>
