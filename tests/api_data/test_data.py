@@ -83,6 +83,7 @@ TEST_FUNDS_DATA = [
         "short_name": "FSD",
         "title": "fund for testing",
         "welsh_available": True,
+        "funding_type": "COMPETITIVE",
     },
     {
         "id": "222",
@@ -91,6 +92,7 @@ TEST_FUNDS_DATA = [
         "short_name": "FSD2",
         "title": "fund for testing 2",
         "welsh_available": False,
+        "funding_type": "COMPETITIVE",
     },
     {
         "id": "333",
@@ -99,6 +101,7 @@ TEST_FUNDS_DATA = [
         "short_name": "FSD2",
         "title": "gronfa cymraeg",
         "welsh_available": True,
+        "funding_type": "COMPETITIVE",
     },
 ]
 
@@ -154,6 +157,7 @@ TEST_DISPLAY_DATA = {
                 "name": "Test Fund",
                 "description": "test test",
                 "short_name": "FSD",
+                "funding_type": "COMPETITIVE",
             },
             "rounds": [
                 {
