@@ -17,12 +17,12 @@ from bs4 import BeautifulSoup
         ),
         (
             "/contact_us?fund=bad&round=bad",
-            "fsd.support@levellingup.gov.uk",
+            "fundingservice.support@communities.gov.uk",
             "Contact us if you have any questions.",
         ),
         (
             "/contact_us",
-            "fsd.support@levellingup.gov.uk",
+            "fundingservice.support@communities.gov.uk",
             "Contact us if you have any questions.",
         ),
     ],
