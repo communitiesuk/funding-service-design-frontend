@@ -71,7 +71,7 @@ def test_404_with_bad_fund(client, mocker):
     response = client.get("not_found?fund=bad_fund&round=r2w2")
     assert response.status_code == 404
     soup = BeautifulSoup(response.data, "html.parser")
-    assert "fsd.support@levellingup.gov.uk" in soup.find("li").text
+    assert "fundingservice.support@communities.gov.uk" in soup.find("li").text
 
 
 def test_404_with_bad_round(client, mocker):
@@ -101,7 +101,7 @@ def test_404_with_bad_fund_n_round(client, mocker):
     response = client.get("not_found?fund=bad_fund&round=bad_round_id")
     assert response.status_code == 404
     soup = BeautifulSoup(response.data, "html.parser")
-    assert "fsd.support@levellingup.gov.uk" in soup.find("li").text
+    assert "fundingservice.support@communities.gov.uk" in soup.find("li").text
 
 
 def test_unauthorised_error(client, mocker):
@@ -127,4 +127,4 @@ def test_unauthorised_error_with_bad_fund_n_round(client, mocker):
     response = client.get("unauthorised_error?fund=bad_fund&round=bad_round_id")
     assert response.status_code == 404
     soup = BeautifulSoup(response.data, "html.parser")
-    assert "fsd.support@levellingup.gov.uk" in soup.find("li").text
+    assert "fundingservice.support@communities.gov.uk" in soup.find("li").text
