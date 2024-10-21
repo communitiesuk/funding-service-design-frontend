@@ -21,26 +21,8 @@ from fsd_utils.authentication.decorators import login_requested
 @account_bp.errorhandler(404)
 def not_found(error):
     current_app.logger.warning(f"Encountered 404 against url {request.path}: {error}")
-    fund_short_name = request.args.get("fund") or (
-        request.view_args.get("fund_short_name") if request.view_args else None
-    )
-    round_short_name = request.args.get("round") or (
-        request.view_args.get("round_short_name") if request.view_args else None
-    )
-    round_data = get_round_data_fail_gracefully(fund_short_name, round_short_name, True)
-    # use default round if incorrect round name is provided
-    if fund_short_name and not round_data.id:
-        round_data = get_default_round_for_fund(fund_short_name) or round_data
-        if not round_data.id:
-            current_app.logger.warning(f"Invalid fund_short_name '{fund_short_name}' provided.")
-        else:
-            current_app.logger.warning(
-                f"Invalid round_short_name '{round_short_name}' provided."
-                f" Using default '{round_data.short_name}' round for"
-                f" {fund_short_name}."
-            )
 
-    return render_template("404.html", round_data=round_data), 404
+    return render_template("404.html", is_error=True), 404
 
 
 @application_bp.errorhandler(500)

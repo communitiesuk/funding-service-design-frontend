@@ -79,12 +79,12 @@ def create_app() -> Flask:
 
     Compress(flask_app)
 
-    from app.default.routes import default_bp
+    from app.default.account_routes import account_bp
     from app.default.application_routes import application_bp
     from app.default.content_routes import content_bp
-    from app.default.account_routes import account_bp
     from app.default.eligibility_routes import eligibility_bp
-    from app.default.error_routes import not_found, internal_server_error
+    from app.default.error_routes import internal_server_error, not_found
+    from app.default.routes import default_bp
 
     flask_app.register_error_handler(404, not_found)
     flask_app.register_error_handler(500, internal_server_error)
@@ -114,22 +114,26 @@ def create_app() -> Flask:
         )
 
     @flask_app.context_processor
-    def inject_service_name():
-        fund = None
-        if request.view_args or request.args or request.form:
-            try:
-                fund = find_fund_in_request()
-            except Exception as e:  # noqa
-                current_app.logger.warning(
-                    f"""Exception: {e}, occured when trying to
-                    reach url: {request.url}, with view_args:
-                    {request.view_args}, and args: {request.args}"""
-                )
-        if fund:
-            service_title = gettext("Apply for") + " " + fund.title
-        else:
-            service_title = gettext("Access Funding")
-        return dict(service_title=service_title)
+    def utility_processor():
+        def inject_service_name():
+            fund = None
+            if request.view_args or request.args or request.form:
+                try:
+                    fund = find_fund_in_request()
+                except Exception as e:  # noqa
+                    current_app.logger.warning(
+                        f"""Exception: {e}, occured when trying to
+                        reach url: {request.url}, with view_args:
+                        {request.view_args}, and args: {request.args}"""
+                    )
+            if fund:
+                service_title = gettext("Apply for") + " " + fund.title
+            else:
+                service_title = gettext("Access Funding")
+
+            return service_title
+
+        return dict(service_title=inject_service_name())
 
     @flask_app.context_processor
     def inject_content_urls():
