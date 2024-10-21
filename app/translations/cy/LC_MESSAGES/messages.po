@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-08 15:29+0100\n"
+"POT-Creation-Date: 2024-10-16 11:26+0100\n"
 "PO-Revision-Date: 2022-10-25 16:55+0100\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: cy\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.14.0\n"
 
-#: app/create_app.py:129 app/default/application_routes.py:301
+#: app/create_app.py:129 app/default/application_routes.py:339
 msgid "Apply for"
 msgstr "Gwneud cais am"
 
@@ -31,63 +31,63 @@ msgstr "Cael Mynediad at Gyllid"
 msgid "at"
 msgstr "am"
 
-#: app/forms/feedback.py:15
-msgid "Select a score"
-msgstr "Dewiswch sgôr"
-
-#: app/forms/feedback.py:21 app/templates/feedback_generic_survey.html:34
+#: app/forms/feedback.py:24 app/templates/feedback_generic_survey.html:34
 msgid "How easy did you find it to complete this section?"
 msgstr "Pa mor hawdd ydoedd i chi gwblhau’r adran hon?"
 
-#: app/forms/feedback.py:23 app/forms/feedback.py:102
+#: app/forms/feedback.py:26 app/forms/feedback.py:107
 msgid "Very easy"
 msgstr "Hawdd iawn"
 
-#: app/forms/feedback.py:24 app/forms/feedback.py:103
+#: app/forms/feedback.py:27 app/forms/feedback.py:108
 msgid "Easy"
 msgstr "Hawdd"
 
-#: app/forms/feedback.py:27 app/forms/feedback.py:106
+#: app/forms/feedback.py:30 app/forms/feedback.py:111
 msgid "Neither easy nor difficult"
 msgstr "Ddim yn hawdd nac yn anodd"
 
-#: app/forms/feedback.py:29 app/forms/feedback.py:108
+#: app/forms/feedback.py:32 app/forms/feedback.py:113
 msgid "Difficult"
 msgstr "Anodd"
 
-#: app/forms/feedback.py:30 app/forms/feedback.py:109
+#: app/forms/feedback.py:33 app/forms/feedback.py:114
 msgid "Very difficult"
 msgstr "Anodd iawn"
 
-#: app/forms/feedback.py:32 app/forms/feedback.py:60
+#: app/forms/feedback.py:35 app/forms/feedback.py:37 app/forms/feedback.py:65
 msgid "Explain why you chose this score (optional)"
 msgstr "Esboniwch pam y dewisoch y sgôr hon (dewisol)"
 
-#: app/forms/feedback.py:52
+#: app/forms/feedback.py:36
+msgid "Select a score"
+msgstr "Dewiswch sgôr"
+
+#: app/forms/feedback.py:57
 msgid "How was your overall application experience?"
 msgstr "Yn ôl at eich ceisiadau"
 
-#: app/forms/feedback.py:54
+#: app/forms/feedback.py:59
 msgid "Very good"
 msgstr "Da iawn"
 
-#: app/forms/feedback.py:55
+#: app/forms/feedback.py:60
 msgid "Good"
 msgstr "Da"
 
-#: app/forms/feedback.py:56
+#: app/forms/feedback.py:61
 msgid "Average"
 msgstr "Cyffredin"
 
-#: app/forms/feedback.py:57
+#: app/forms/feedback.py:62
 msgid "Poor"
 msgstr "Gwael"
 
-#: app/forms/feedback.py:58
+#: app/forms/feedback.py:63
 msgid "Very poor"
 msgstr "Gwael iawn"
 
-#: app/forms/feedback.py:74
+#: app/forms/feedback.py:79
 msgid ""
 "To what extent do you agree that this application form allowed you to "
 "demonstrate why your organization should receive funding?"
@@ -95,31 +95,31 @@ msgstr ""
 "I ba raddau ydych chi’n cytuno bod y ffurflen gais hon wedi caniatáu i "
 "chi ddangos pam y dylai eich sefydliad gael cyllid?"
 
-#: app/forms/feedback.py:79
+#: app/forms/feedback.py:84
 msgid "Strongly agree"
 msgstr "Cytuno’n gryf"
 
-#: app/forms/feedback.py:80
+#: app/forms/feedback.py:85
 msgid "Agree"
 msgstr "Cytuno"
 
-#: app/forms/feedback.py:83
+#: app/forms/feedback.py:88
 msgid "Neither agree nor disagree"
 msgstr "Ddim yn cytuno nac yn anghytuno"
 
-#: app/forms/feedback.py:85
+#: app/forms/feedback.py:90
 msgid "Disagree"
 msgstr "Anghytuno"
 
-#: app/forms/feedback.py:86
+#: app/forms/feedback.py:91
 msgid "Strongly disagree"
 msgstr "Anghytuno’n gryf"
 
-#: app/forms/feedback.py:98
+#: app/forms/feedback.py:103
 msgid "How easy was it to understand the eligibility criteria for this fund?"
 msgstr "Pa mor hawdd oedd deall y meini prawf cymhwysedd ar gyfer y gronfa hon?"
 
-#: app/forms/feedback.py:124
+#: app/forms/feedback.py:129
 msgid "Number of hours spent:"
 msgstr "Nifer yr oriau a dreuliwyd:"
 
@@ -321,7 +321,9 @@ msgstr "wedi'i gyflwyno."
 
 #: app/templates/application_submitted.html:30
 msgid "We'll email you to let you know whether you have been successful."
-msgstr "Byddwn yn anfon neges e-bost atoch i roi gwybod a fuoch chi'n llwyddiannus."
+msgstr ""
+"Byddwn yn anfon neges e-bost atoch i roi gwybod a fuoch chi'n "
+"llwyddiannus."
 
 #: app/templates/application_submitted.html:33
 msgid "Return to your applications page."
@@ -437,7 +439,7 @@ msgstr "Yn ôl at eich ceisiadau"
 #: app/templates/end_of_application_feedback_page_3.html:21
 #: app/templates/end_of_application_feedback_page_4.html:23
 #: app/templates/end_of_application_survey.html:20
-#: app/templates/tasklist.html:209 app/templates/tasklist.html:218
+#: app/templates/tasklist.html:191 app/templates/tasklist.html:200
 msgid "Applicant feedback survey"
 msgstr "Arolwg adborth ymgeiswyr"
 
@@ -633,6 +635,32 @@ msgstr "Cwcis"
 msgid "Accessibility Statement"
 msgstr "Datganiad Hygyrchedd"
 
+#: app/templates/fund-round-notification.html:5
+msgid "Round closed"
+msgstr ""
+
+#: app/templates/fund-round-notification.html:17
+msgid "This application is now closed"
+msgstr ""
+
+#: app/templates/fund-round-notification.html:20
+msgid "The deadline to apply for this fund has now passed."
+msgstr ""
+
+#: app/templates/fund-round-notification.html:23
+msgid ""
+"You can still view your application, but you can no longer add new "
+"information."
+msgstr ""
+
+#: app/templates/fund-round-notification.html:25
+msgid "View application"
+msgstr ""
+
+#: app/templates/fund-round-notification.html:29
+msgid "Back to all applications"
+msgstr ""
+
 #: app/templates/fund_start_page.html:5
 msgid "Start or continue an"
 msgstr "Gwneud cais am"
@@ -641,7 +669,7 @@ msgstr "Gwneud cais am"
 msgid "Start or continue an application for"
 msgstr "Gwneud cais am"
 
-#: app/templates/fund_start_page.html:47 app/templates/fund_start_page.html:49
+#: app/templates/fund_start_page.html:45
 msgid "Read the fund's prospectus"
 msgstr "Darllenwch brosbectws y gronfa"
 
@@ -653,7 +681,7 @@ msgstr "cyn dechrau."
 msgid "before you apply."
 msgstr "cyn i chi ymgeisio."
 
-#: app/templates/fund_start_page.html:54 app/templates/tasklist.html:142
+#: app/templates/fund_start_page.html:54 app/templates/tasklist.html:124
 msgid "Submission deadline:"
 msgstr "Dyddiad cau cyflwyno:"
 
@@ -665,19 +693,19 @@ msgstr "Nodwch eich cyfeirad e-bost"
 msgid "Get help"
 msgstr "Cael help"
 
-#: app/templates/fund_start_page.html:70 app/templates/tasklist.html:110
-msgid "If you need help,"
-msgstr "Os oes angen help arnoch chi,"
+#: app/templates/fund_start_page.html:69
+msgid "If you have questions about the form or the fund,"
+msgstr "Os oes gennych unrhyw gwestiynau ynglŷn â'r ffurflen neu'r gronfa,"
 
-#: app/templates/fund_start_page.html:80 app/templates/tasklist.html:117
+#: app/templates/fund_start_page.html:75 app/templates/tasklist.html:100
 msgid "contact us."
 msgstr "cysylltwch â ni."
 
-#: app/templates/fund_start_page.html:84
+#: app/templates/fund_start_page.html:79
 msgid "If you need help, email us at"
 msgstr "Os oes angen help arnoch chi, anfonwch e-bost atom y"
 
-#: app/templates/fund_start_page.html:89 app/templates/tasklist.html:124
+#: app/templates/fund_start_page.html:84 app/templates/tasklist.html:107
 msgid ""
 "Do not send any applications or attachments by email. We'll only accept "
 "applications through this service."
@@ -935,89 +963,57 @@ msgstr ""
 "Ar ôl i chi gyflwyno eich cais, ni fyddwch chi'n gallu golygu, ychwanegu "
 "na newid unrhyw adrannau."
 
-#: app/templates/tasklist.html:92
-msgid "General support is now available to applicants via the"
-msgstr "Mae cymorth cyffredinol bellach ar gael i ymgeiswyr drwy "
-
 #: app/templates/tasklist.html:93
-msgid "My Community website"
-msgstr "wefan My Community"
+msgid "If you have any questions about the form or the fund, "
+msgstr "Os oes unrhyw gwestiynau gennych ynglŷn â'r ffurflen neu'r gronfa, "
 
-#: app/templates/tasklist.html:94
-msgid ""
-", which includes an enquiry form as well as a range of helpful documents "
-"and webinars."
-msgstr ""
-", ac mae'n cynnwys ffurflen ymholiadau yn ogystal ag amrywiaeth o "
-"ddogfennau a gweminarau defnyddiol."
-
-#: app/templates/tasklist.html:99
-msgid ""
-"For queries relating to technical issues when using our online "
-"application tools, please"
-msgstr ""
-"Ar gyfer ymholiadau sy'n ymwneud â materion technegol wrth ddefnyddio ein"
-" hadnoddau gwneud cais ar-lein,"
-
-#: app/templates/tasklist.html:100
-msgid "email FSD Support"
-msgstr "e-bostiwch FSD Support"
-
-#: app/templates/tasklist.html:105
-msgid ""
-"Do not send any applications or attachments by email. We'll only accept "
-"expressions of interest through this service."
-msgstr ""
-"Peidiwch ag anfon unrhyw geisiadau nac atodiadau drwy e-bost. Dim ond "
-"drwy'r gwasanaeth hwn y byddwn yn derbyn ceisiadau."
-
-#: app/templates/tasklist.html:119
+#: app/templates/tasklist.html:102
 msgid "If you have any questions about the form or the fund, email us at"
 msgstr ""
 "Os oes unrhyw gwestiynau gennych ynglŷn â'r ffurflen neu'r gronfa, "
 "anfonwch e-bost i"
 
-#: app/templates/tasklist.html:128
+#: app/templates/tasklist.html:110
 msgid "How we'll use your information"
 msgstr "Sut fyddwn ni'n defnyddio eich gwybodaeth"
 
-#: app/templates/tasklist.html:131
+#: app/templates/tasklist.html:113
 msgid "Read how we'll use the information from your application in our"
 msgstr "Darllenwch sut fyddwn ni'n defnyddio'r wybodaeth o'ch cais yn ein"
 
-#: app/templates/tasklist.html:132
+#: app/templates/tasklist.html:114
 msgid "privacy notice"
 msgstr "hysbysiad preifatrwydd"
 
-#: app/templates/tasklist.html:146
+#: app/templates/tasklist.html:128
 msgid "Reference:"
 msgstr "Cyfeirnod:"
 
-#: app/templates/tasklist.html:154
+#: app/templates/tasklist.html:136
 msgid "Status:"
 msgstr "Statws:"
 
-#: app/templates/tasklist.html:174
+#: app/templates/tasklist.html:156
 msgid "None of the sections have been completed."
 msgstr "Nid yw'r un o'r adrannau wedi'u llenwi."
 
-#: app/templates/tasklist.html:176
+#: app/templates/tasklist.html:158
 msgid "You have completed"
 msgstr "Rydych wedi cwblhau"
 
-#: app/templates/tasklist.html:177
+#: app/templates/tasklist.html:159
 msgid "of"
 msgstr "o"
 
-#: app/templates/tasklist.html:178
+#: app/templates/tasklist.html:160
 msgid "sections."
 msgstr "datganiadau"
 
-#: app/templates/tasklist.html:193
+#: app/templates/tasklist.html:175
 msgid "Applicant feedback survey (not scored)"
 msgstr "Arolwg adborth ymgeiswyr (ni fydd yn cael ei sgorio)"
 
-#: app/templates/tasklist.html:198
+#: app/templates/tasklist.html:180
 msgid ""
 "You must complete all other sections before starting the feedback survey."
 " This section is optional and should take approximately 1 minute to "
@@ -1026,7 +1022,7 @@ msgstr ""
 "Mae’n rhaid i chi gwblhau pob adran arall cyn dechrau’r arolwg adborth. "
 "Fe ddylai gymryd tua 1 funud i gwblhau’r adran hon."
 
-#: app/templates/tasklist.html:202
+#: app/templates/tasklist.html:184
 msgid ""
 "You must complete all other sections before starting the feedback survey."
 " This section should take approximately 1 minute to complete."
@@ -1035,19 +1031,19 @@ msgstr ""
 "Dylai'r adran hon gymryd tua munud i'w chwblhau."
 
 #: app/templates/partials/tasklist_section.html:47
-#: app/templates/tasklist.html:212 app/templates/tasklist.html:270
+#: app/templates/tasklist.html:194 app/templates/tasklist.html:252
 msgid "Cannot start yet"
 msgstr "Ni ellir dechrau eto"
 
-#: app/templates/tasklist.html:238
+#: app/templates/tasklist.html:220
 msgid "Applicant feedback submitted"
 msgstr "Arolwg adborth ymgeiswyr wedi'i gyflwyno"
 
-#: app/templates/tasklist.html:251
+#: app/templates/tasklist.html:233
 msgid "Applicant research survey (not scored)"
 msgstr "Arolwg ymchwil ymgeiswyr (ni fydd yn cael ei sgorio)"
 
-#: app/templates/tasklist.html:256
+#: app/templates/tasklist.html:238
 msgid ""
 "You must complete all other sections before starting the research survey."
 " This section is optional and should take approximately 1 minute to "
@@ -1056,7 +1052,7 @@ msgstr ""
 "Mae’n rhaid i chi gwblhau pob adran arall cyn dechrau’r arolwg adborth. "
 "Fe ddylai gymryd tua 1 funud i gwblhau’r adran hon."
 
-#: app/templates/tasklist.html:260
+#: app/templates/tasklist.html:242
 msgid ""
 "You must complete all other sections before starting the research survey."
 " This section should take approximately 1 minute to complete."
@@ -1064,8 +1060,8 @@ msgstr ""
 "Mae’n rhaid i chi gwblhau pob adran arall cyn dechrau’r arolwg adborth. "
 "Dylai'r adran hon gymryd tua munud i'w chwblhau."
 
-#: app/templates/tasklist.html:267 app/templates/tasklist.html:276
-#: app/templates/tasklist.html:297
+#: app/templates/tasklist.html:249 app/templates/tasklist.html:258
+#: app/templates/tasklist.html:279
 msgid "Applicant research survey"
 msgstr "Arolwg ymchwil ymgeiswyr"
 
@@ -4179,6 +4175,10 @@ msgstr "Ffôn testun"
 msgid "Check eligibility"
 msgstr "Gwirio cymhwysedd"
 
+#: app/templates/partials/feedback_error_summary.html:5
+msgid "There is a problem"
+msgstr "Mae problem"
+
 #: app/templates/partials/round_closed_warning.html:6
 msgid "Important"
 msgstr "Pwysig"
@@ -4556,6 +4556,9 @@ msgstr "Cyflwyno'ch cais"
 #~ " when using our online application "
 #~ "tools, please"
 #~ msgstr ""
+#~ "Ar gyfer ymholiadau sy'n ymwneud â "
+#~ "materion technegol wrth ddefnyddio ein "
+#~ "hadnoddau gwneud cais ar-lein,"
 
 #~ msgid "Contact us if you have any questions."
 #~ msgstr "os oes gennych unrhyw gwestiynau."
@@ -4627,3 +4630,35 @@ msgstr "Cyflwyno'ch cais"
 
 #~ msgid "Contact email address is required"
 #~ msgstr "Mae angen cyfeiriad e-bost y cyswllt"
+
+#~ msgid "If you need help,"
+#~ msgstr "Os oes angen help arnoch chi,"
+
+#~ msgid "General support is now available to applicants via the"
+#~ msgstr "Mae cymorth cyffredinol bellach ar gael i ymgeiswyr drwy "
+
+#~ msgid "My Community website"
+#~ msgstr "wefan My Community"
+
+#~ msgid ""
+#~ ", which includes an enquiry form "
+#~ "as well as a range of helpful "
+#~ "documents and webinars."
+#~ msgstr ""
+#~ ", ac mae'n cynnwys ffurflen ymholiadau"
+#~ " yn ogystal ag amrywiaeth o "
+#~ "ddogfennau a gweminarau defnyddiol."
+
+#~ msgid "email FSD Support"
+#~ msgstr "e-bostiwch FSD Support"
+
+#~ msgid ""
+#~ "Do not send any applications or "
+#~ "attachments by email. We'll only accept"
+#~ " expressions of interest through this "
+#~ "service."
+#~ msgstr ""
+#~ "Peidiwch ag anfon unrhyw geisiadau nac"
+#~ " atodiadau drwy e-bost. Dim ond "
+#~ "drwy'r gwasanaeth hwn y byddwn yn "
+#~ "derbyn ceisiadau."
