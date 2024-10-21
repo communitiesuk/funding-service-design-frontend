@@ -1,4 +1,5 @@
 import json
+from copy import deepcopy
 from datetime import datetime
 from unittest import mock
 from unittest.mock import ANY
@@ -129,7 +130,7 @@ def test_dashboard_eoi_suffix(
     mock_login,
     mocker,
 ):
-    eoi_data = TEST_DISPLAY_DATA.copy()
+    eoi_data = deepcopy(TEST_DISPLAY_DATA)
     eoi_data["funds"][0]["fund_data"]["funding_type"] = "EOI"
     mocker.patch(
         "app.default.account_routes.search_applications",
@@ -141,7 +142,7 @@ def test_dashboard_eoi_suffix(
 
     assert response.status_code == 200
     soup = BeautifulSoup(response.data, "html.parser")
-    assert "(Expression of interest)" in soup.find("h2", class_="govuk-accordion__section-heading").get_text()
+    assert "Expression of interest" in soup.find("h2", class_="govuk-accordion__section-heading").get_text()
 
 
 @pytest.mark.parametrize(

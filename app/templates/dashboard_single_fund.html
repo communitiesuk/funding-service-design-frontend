@@ -14,7 +14,7 @@
 {% set fund = display_data["funds"][0] %}
 {% trans %}Your applications for{% endtrans %}  {{ fund["fund_data"]["name"] }}
 {% if fund["fund_data"]["funding_type"] == "EOI" %}
-    ({% trans %}Expression of interest{% endtrans %})
+    &nbsp;-&nbsp;{% trans %}Expression of interest{% endtrans %}
 {% endif %}
 {% else %}
 Your applications
@@ -39,7 +39,7 @@ Your applications
                 <span class="govuk-caption-m">
                     {{ fund["fund_data"]["name"] }}
                     {% if fund["fund_data"]["funding_type"] == "EOI" %}
-                        ({% trans %}Expression of interest{% endtrans %})
+                        &nbsp;-&nbsp;{% trans %}Expression of interest{% endtrans %}
                     {% endif %}
                 </span>
                 <h2 class="govuk-heading-l">

@@ -64,7 +64,7 @@ def all_questions(fund_short_name, round_short_name):
 
         template_name = determine_all_questions_template_name(fund_short_name, round_short_name, lang, fund)
         try:
-            fund_title = fund.name + (f"({gettext('Expression of interest')})" if fund.funding_type == "EOI" else "")
+            fund_title = fund.name + (f" - {gettext('Expression of interest')}" if fund.funding_type == "EOI" else "")
             return render_template(
                 template_name,
                 fund_title=fund_title,
