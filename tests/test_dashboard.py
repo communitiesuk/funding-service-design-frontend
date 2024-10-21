@@ -124,6 +124,26 @@ def test_dashboard_template_rendered(
     assert exp_template_name == rendered_template[0].name
 
 
+def test_dashboard_eoi_suffix(
+    flask_test_client,
+    mock_login,
+    mocker,
+):
+    eoi_data = TEST_DISPLAY_DATA.copy()
+    eoi_data["funds"][0]["fund_data"]["funding_type"] = "EOI"
+    mocker.patch(
+        "app.default.account_routes.search_applications",
+        return_value=TEST_APPLICATION_SUMMARIES,
+    )
+    mocker.patch("app.default.account_routes.build_application_data_for_display", return_value=eoi_data)
+
+    response = flask_test_client.get("/account", follow_redirects=True)
+
+    assert response.status_code == 200
+    soup = BeautifulSoup(response.data, "html.parser")
+    assert "(Expression of interest)" in soup.find("h2", class_="govuk-accordion__section-heading").get_text()
+
+
 @pytest.mark.parametrize(
     "query_string,fund_supports_welsh,requested_language,exp_response_language",
     [
@@ -208,6 +228,7 @@ def test_dashboard_route(flask_test_client, mocker, mock_login):
         )
         == 0
     )
+    assert len(soup.find_all("span", class_="govuk-caption-m", string=lambda text: "Test Fund" == str.strip(text))) == 2
     assert len(soup.find_all("h2", string=lambda text: "Round 2 Window 2" == str.strip(text))) == 1
     assert len(soup.find_all("h2", string=lambda text: "Round 2 Window 2" == str.strip(text))) == 1
 
