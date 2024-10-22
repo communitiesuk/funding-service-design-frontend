@@ -20,8 +20,6 @@ from fsd_utils.authentication.decorators import login_requested
 @default_bp.errorhandler(404)
 @account_bp.errorhandler(404)
 def not_found(error):
-    current_app.logger.warning(f"Encountered 404 against url {request.path}: {error}")
-
     return render_template("404.html", is_error=True), 404
 
 

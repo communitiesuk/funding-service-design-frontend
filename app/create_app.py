@@ -115,7 +115,7 @@ def create_app() -> Flask:
 
     @flask_app.context_processor
     def utility_processor():
-        def inject_service_name():
+        def _get_service_title():
             fund = None
             if request.view_args or request.args or request.form:
                 try:
@@ -126,14 +126,13 @@ def create_app() -> Flask:
                         reach url: {request.url}, with view_args:
                         {request.view_args}, and args: {request.args}"""
                     )
+
             if fund:
-                service_title = gettext("Apply for") + " " + fund.title
-            else:
-                service_title = gettext("Access Funding")
+                return gettext("Apply for") + " " + fund.title
 
-            return service_title
+            return gettext("Access Funding")
 
-        return dict(service_title=inject_service_name())
+        return dict(get_service_title=_get_service_title)
 
     @flask_app.context_processor
     def inject_content_urls():
