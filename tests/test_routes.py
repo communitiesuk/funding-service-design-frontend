@@ -57,6 +57,7 @@ fund_args = {
     "short_name": "",
     "description": "",
     "welsh_available": True,
+    "funding_type": "COMPETITIVE",
 }
 short_name_fund = Fund(**fund_args, title="Test Fund by short name", id="111")
 id_fund = Fund(**fund_args, title="Test Fund by ID", id="222")

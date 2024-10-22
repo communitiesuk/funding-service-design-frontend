@@ -10,6 +10,7 @@ from flask import redirect
 from flask import render_template
 from flask import request
 from flask import url_for
+from flask_babel import gettext
 from fsd_utils.authentication.decorators import login_requested
 from fsd_utils.locale_selector.get_lang import get_lang
 from jinja2.exceptions import TemplateNotFound
@@ -63,9 +64,10 @@ def all_questions(fund_short_name, round_short_name):
 
         template_name = determine_all_questions_template_name(fund_short_name, round_short_name, lang, fund)
         try:
+            fund_title = fund.name + (f" - {gettext('Expression of interest')}" if fund.funding_type == "EOI" else "")
             return render_template(
                 template_name,
-                fund_title=fund.name,
+                fund_title=fund_title,
                 round_title=round.title,
                 migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
             )

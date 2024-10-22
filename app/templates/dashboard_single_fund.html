@@ -11,7 +11,11 @@
 {% extends "base.html" %}
 {% set pageHeading %}
 {% if display_data["funds"] %}
-{% trans %}Your applications for{% endtrans %}  {{ display_data["funds"][0]["fund_data"]["name"] }}
+{% set fund = display_data["funds"][0] %}
+{% trans %}Your applications for{% endtrans %}  {{ fund["fund_data"]["name"] }}
+{% if fund["fund_data"]["funding_type"] == "EOI" %}
+    &nbsp;-&nbsp;{% trans %}Expression of interest{% endtrans %}
+{% endif %}
 {% else %}
 Your applications
 {% endif %}
@@ -32,7 +36,12 @@ Your applications
     {% for fund in display_data["funds"] %}
         {% for round in fund["rounds"] %}
             {% if not round["is_not_yet_open"] %}
-                <span class="govuk-caption-m">{{ fund["fund_data"]["name"] }}</span>
+                <span class="govuk-caption-m">
+                    {{ fund["fund_data"]["name"] }}
+                    {% if fund["fund_data"]["funding_type"] == "EOI" %}
+                        &nbsp;-&nbsp;{% trans %}Expression of interest{% endtrans %}
+                    {% endif %}
+                </span>
                 <h2 class="govuk-heading-l">
                     {{ round["round_details"]["title"] }}
                 </h2>

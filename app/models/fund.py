@@ -6,6 +6,7 @@ from dataclasses import dataclass
 class Fund:
     id: str
     name: str
+    funding_type: str
     short_name: str
     description: str
     title: str
