@@ -12,25 +12,15 @@
             <p class="govuk-body">If you pasted the web address, check you copied the entire address.</p>
             <p class="govuk-body">If the web address is correct or you selected a link or a button, contact
                 us to speak to an adviser.</p>
-            {% if round_data.contact_email or round_data.contact_phone or round_data.support_days or round_data.support_times %}
-                {{ contact_details(
-                            round_data.contact_email,
-                            round_data.contact_phone,
-                            round_data.contact_phone,
-                            round_data.support_days,
-                            round_data.support_times
-                     )
-                }}
-            {% else %}
-                {{ contact_details(
-                    "fundingservice.support@communities.gov.uk",
-                    "",
-                    "",
-                    "9am to 5pm",
-                    "Monday to Friday"
-                    )
-                }}
-            {% endif %}
+
+            {{ contact_details(
+                "fundingservice.support@communities.gov.uk",
+                "",
+                "",
+                "9am to 5pm",
+                "Monday to Friday"
+                )
+            }}
         </div>
     </div>
 {% endblock content %}

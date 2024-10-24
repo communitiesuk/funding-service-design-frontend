@@ -133,7 +133,7 @@ def test_inject_service_name_simpler(
     with app.app_context():
         render_template("fund_start_page.html")
     assert len(templates_rendered) == 1
-    assert templates_rendered[0][1]["service_title"] == expected_title
+    assert templates_rendered[0][1]["get_service_title"]() == expected_title
 
 
 default_fund = None
@@ -175,7 +175,6 @@ def test_find_fund_in_request(
     app,
     mocker,
 ):
-
     mocker.patch("app.helpers.get_all_fund_short_names", return_value=["TEST"])
     mocker.patch(
         "app.helpers.get_fund_data_by_short_name",
