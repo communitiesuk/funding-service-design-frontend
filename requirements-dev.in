@@ -4,7 +4,7 @@ debugpy
 dparse>=0.5.2
 black
 deepdiff
-pre-commit
+pre-commit~=4.0.0
 pytest
 pytest-env
 pytest-flask
