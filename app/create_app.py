@@ -122,9 +122,11 @@ def create_app() -> Flask:
                     fund = find_fund_in_request()
                 except Exception as e:  # noqa
                     current_app.logger.warning(
-                        f"""Exception: {e}, occured when trying to
-                        reach url: {request.url}, with view_args:
-                        {request.view_args}, and args: {request.args}"""
+                        "Exception: %s, occured when trying to reach url: %s, with view_args: %s, and args: %s",
+                        e,
+                        request.url,
+                        request.view_args,
+                        request.args,
                     )
 
             if fund:
@@ -158,9 +160,11 @@ def create_app() -> Flask:
                 )
         except Exception as e:  # noqa
             current_app.logger.warning(
-                f"""Exception: {e}, occured when trying to
-                reach url: {request.url}, with view_args:
-                {request.view_args}, and args: {request.args}"""
+                "Exception: %s, occured when trying to reach url: %s, with view_args: %s, and args: %s",
+                e,
+                request.url,
+                request.view_args,
+                request.args,
             )
         return dict(
             contact_us_url=url_for("content_routes.contact_us"),
