@@ -2,6 +2,7 @@ import json
 
 from app.default.data import RoundStatus
 from app.models.application_display_mapping import ApplicationMapping
+from bs4 import BeautifulSoup
 from config.envs.default import DefaultConfig
 from tests.api_data.test_data import TEST_APPLICATIONS
 
@@ -58,6 +59,10 @@ class TestUserValidation:
         response = flask_test_client.get(f"/continue_application/{self.TEST_ID}", follow_redirects=False)
         assert 401 == response.status_code, "Incorrect status code"
 
+        soup = BeautifulSoup(response.data, "html.parser")
+        assert "Sorry, there is a problem with the service" in soup.find("h1")
+        assert any("Try again later." in p for p in soup.find_all("p", class_="govuk-body"))
+
     def test_tasklist_correct_user(self, flask_test_client, mocker, mock_login):
         mocker.patch(
             "app.default.application_routes.get_application_data",
@@ -94,6 +99,10 @@ class TestUserValidation:
 
         response = flask_test_client.get(f"/tasklist/{self.TEST_ID}", follow_redirects=False)
         assert 401 == response.status_code, "Incorrect status code"
+
+        soup = BeautifulSoup(response.data, "html.parser")
+        assert "Sorry, there is a problem with the service" in soup.find("h1")
+        assert any("Try again later." in p for p in soup.find_all("p", class_="govuk-body"))
 
     def test_submit_correct_user(self, flask_test_client, mocker, mock_login):
         mocker.patch(
@@ -161,3 +170,7 @@ class TestUserValidation:
             follow_redirects=False,
         )
         assert 401 == response.status_code, "Incorrect status code"
+
+        soup = BeautifulSoup(response.data, "html.parser")
+        assert "Sorry, there is a problem with the service" in soup.find("h1")
+        assert any("Try again later." in p for p in soup.find_all("p", class_="govuk-body"))
