@@ -32,7 +32,7 @@ def internal_server_error(error):
     error_message = f"Encountered 500: {error}"
     stack_trace = traceback.format_exc()
     current_app.logger.error(f"{error_message}\n{stack_trace}")
-    return render_template("500.html"), 500
+    return render_template("500.html", is_error=True), 500
 
 
 @default_bp.errorhandler(401)
@@ -40,7 +40,7 @@ def internal_server_error(error):
 @content_bp.errorhandler(401)
 @account_bp.errorhandler(401)
 def unauthorised_error(error):
-    return render_template("500.html"), 401
+    return render_template("500.html", is_error=True), 401
 
 
 @default_bp.errorhandler(CSRFError)
@@ -54,4 +54,4 @@ def csrf_token_expiry(error):
     error_message = f"Encountered 500: {error}"
     stack_trace = traceback.format_exc()
     current_app.logger.error(f"{error_message}\n{stack_trace}")
-    return render_template("500.html"), 500
+    return render_template("500.html", is_error=True), 500
