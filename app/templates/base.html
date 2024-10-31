@@ -1,8 +1,9 @@
 {% extends "govuk_frontend_jinja/template.html" %}
 
 {% set assetPath = url_for('static', filename='').rstrip('/') %}
+{% set title = gettext("Access Funding") if is_error else service_title or get_service_title() %}
 
-{% block pageTitle %}{{ [pageHeading, service_title]|join(' - ') if pageHeading else service_title }}{% endblock pageTitle %}
+{% block pageTitle %}{{ [pageHeading, title]|join(' - ') if pageHeading else title }}{% endblock pageTitle %}
 
 {% block head %}
   {% include "head.html" %}
