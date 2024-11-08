@@ -18,7 +18,7 @@ class DefaultConfig:
     SESSION_COOKIE_SECURE = True
     WTF_CSRF_TIME_LIMIT = CommonConfig.WTF_CSRF_TIME_LIMIT
     MAINTENANCE_MODE = strtobool(getenv("MAINTENANCE_MODE", "False"))
-    MAINTENANCE_END_TIME = getenv("MAINTENANCE_END_TIME", "18 December 2023 at 03:00pm")
+    MAINTENANCE_END_TIME = getenv("MAINTENANCE_END_TIME", "soon")
 
     STATIC_FOLDER = "static"
     TEMPLATES_FOLDER = "templates"
