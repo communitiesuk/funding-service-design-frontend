@@ -56,7 +56,6 @@ dev = [
     "dparse>=0.5.2",
     "flake8-pyproject>=1.2.3",
     "invoke>=2.2.0",
-    "pip-tools>=6.13.0",
     "pre-commit~=4.0.0",
     "pytest>=8.2.1",
     "pytest-env>=1.1.3",
