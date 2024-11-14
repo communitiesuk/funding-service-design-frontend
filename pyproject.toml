@@ -48,7 +48,7 @@ count = true
 dev = [
     "beautifulsoup4>=4.12.3",
     "black>=24.3.0",
-    "debugpy>=1.8.0",
+    "debugpy==1.8.8",
     "deepdiff>=6.7.1",
     "dparse>=0.5.2",
     "flake8-pyproject>=1.2.3",
