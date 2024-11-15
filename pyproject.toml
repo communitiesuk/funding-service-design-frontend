@@ -18,7 +18,7 @@ dependencies = [
     "funding-service-design-utils[toggles]>=5.0.8",
     "govuk-frontend-jinja==2.7.0",
     "jsmin==3.0.1",
-    "pyscss==1.4.0",
+    "pyscss>=1.4.0",
     "python-slugify==8.0.4",
     "requests>=2.32.3",
 ]
