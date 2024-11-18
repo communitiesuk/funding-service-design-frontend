@@ -371,6 +371,15 @@ wheels = [
 ]
 
 [[package]]
+name = "enum34"
+version = "1.1.10"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/11/c4/2da1f4952ba476677a42f25cd32ab8aaf0e1c0d0e00b89822b835c7e654c/enum34-1.1.10.tar.gz", hash = "sha256:cce6a7477ed816bd2542d03d53db9f0db935dd013b70f336a95c73979289f248", size = 28187 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/63/f6/ccb1c83687756aeabbf3ca0f213508fcfb03883ff200d201b3a4c60cedcc/enum34-1.1.10-py3-none-any.whl", hash = "sha256:c3858660960c984d6ab0ebad691265180da2b43f07e061c0f8dca9ef3cffd328", size = 11224 },
+]
+
+[[package]]
 name = "exceptiongroup"
 version = "1.2.0"
 source = { registry = "https://pypi.org/simple" }
@@ -596,33 +605,33 @@ requires-dist = [
     { name = "email-validator", specifier = "==2.1.1" },
     { name = "flask", specifier = "==2.3.3" },
     { name = "flask-assets", specifier = "==2.0" },
-    { name = "flask-babel", specifier = ">=2.0.0" },
+    { name = "flask-babel", specifier = "==2.0.0" },
     { name = "flask-compress", specifier = "==1.14" },
     { name = "flask-talisman", specifier = "==1.1.0" },
     { name = "flask-wtf", specifier = "==1.2.1" },
-    { name = "funding-service-design-utils", extras = ["toggles"], specifier = ">=5.0.8" },
+    { name = "funding-service-design-utils", extras = ["toggles"], specifier = "==5.1.1" },
     { name = "govuk-frontend-jinja", specifier = "==2.7.0" },
     { name = "jsmin", specifier = "==3.0.1" },
-    { name = "pyscss", specifier = ">=1.4.0" },
+    { name = "pyscss", specifier = "==1.4.0" },
     { name = "python-slugify", specifier = "==8.0.4" },
-    { name = "requests", specifier = ">=2.32.3" },
+    { name = "requests", specifier = "==2.32.3" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "beautifulsoup4", specifier = ">=4.12.3" },
-    { name = "black", specifier = ">=24.3.0" },
+    { name = "beautifulsoup4", specifier = "==4.12.3" },
+    { name = "black", specifier = "==24.3.0" },
     { name = "debugpy", specifier = "==1.8.8" },
-    { name = "deepdiff", specifier = ">=6.7.1" },
-    { name = "dparse", specifier = ">=0.5.2" },
-    { name = "flake8-pyproject", specifier = ">=1.2.3" },
-    { name = "invoke", specifier = ">=2.2.0" },
-    { name = "pre-commit", specifier = "~=4.0.0" },
-    { name = "pytest", specifier = ">=8.2.1" },
-    { name = "pytest-env", specifier = ">=1.1.3" },
-    { name = "pytest-flask", specifier = ">=1.3.0" },
-    { name = "pytest-mock", specifier = ">=3.12.0" },
-    { name = "requests-mock", specifier = ">=1.11.0" },
+    { name = "deepdiff", specifier = "==6.7.1" },
+    { name = "dparse", specifier = "==0.6.3" },
+    { name = "flake8-pyproject", specifier = "==1.2.3" },
+    { name = "invoke", specifier = "==2.2.0" },
+    { name = "pre-commit", specifier = "==4.0.1" },
+    { name = "pytest", specifier = "==8.2.1" },
+    { name = "pytest-env", specifier = "==1.1.3" },
+    { name = "pytest-flask", specifier = "==1.3.0" },
+    { name = "pytest-mock", specifier = "==3.12.0" },
+    { name = "requests-mock", specifier = "==1.11.0" },
 ]
 
 [[package]]
@@ -850,6 +859,18 @@ wheels = [
 ]
 
 [[package]]
+name = "pathlib2"
+version = "2.3.7.post1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "six" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/31/51/99caf463dc7c18eb18dad1fffe465a3cf3ee50ac3d1dccbd1781336fe9c7/pathlib2-2.3.7.post1.tar.gz", hash = "sha256:9fe0edad898b83c0c3e199c842b27ed216645d2e177757b2dd67384d4113c641", size = 211190 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/09/eb/4af4bcd5b8731366b676192675221c5324394a580dfae469d498313b5c4a/pathlib2-2.3.7.post1-py2.py3-none-any.whl", hash = "sha256:5266a0fd000452f1b3467d782f079a4343c63aaa119221fbdc4e39577489ca5b", size = 18027 },
+]
+
+[[package]]
 name = "pathspec"
 version = "0.12.1"
 source = { registry = "https://pypi.org/simple" }
@@ -956,6 +977,8 @@ name = "pyscss"
 version = "1.4.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
+    { name = "enum34" },
+    { name = "pathlib2" },
     { name = "six" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/92/30/64c818fd317e03138f98ca67800edb6a916f59fc07b3d7e535e84c3c333a/pyScss-1.4.0.tar.gz", hash = "sha256:8f35521ffe36afa8b34c7d6f3195088a7057c185c2b8f15ee459ab19748669ff", size = 122100 }
