@@ -269,8 +269,10 @@ def test_dashboard_route_no_applications(flask_test_client, mocker, mock_login):
 
 
 @pytest.mark.parametrize(
-    "funds,rounds,applications,expected_fund_count,expected_round_count,expected_app_count,"
-    " fund_short_name,round_short_name",
+    (
+        "funds,rounds,applications,expected_fund_count,expected_round_count,expected_app_count,"
+        " fund_short_name,round_short_name"
+    ),
     [
         # No filters, 2 funds with 2 rounds each
         (
