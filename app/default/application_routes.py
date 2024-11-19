@@ -17,9 +17,7 @@ from app.default.data import post_feedback_survey_to_store
 from app.default.data import post_research_survey_to_store
 from app.default.data import submit_feedback
 from app.forms.feedback import DefaultSectionFeedbackForm
-from app.forms.feedback import (
-    END_OF_APPLICATION_FEEDBACK_SURVEY_PAGE_NUMBER_MAP,
-)
+from app.forms.feedback import END_OF_APPLICATION_FEEDBACK_SURVEY_PAGE_NUMBER_MAP
 from app.forms.research import ResearchContactDetailsForm
 from app.forms.research import ResearchOptForm
 from app.helpers import format_rehydrate_payload
@@ -50,7 +48,6 @@ from fsd_utils.locale_selector.set_lang import LanguageSelector
 from fsd_utils.simple_utils.date_utils import (
     current_datetime_after_given_iso_string,
 )
-
 
 application_bp = Blueprint("application_routes", __name__, template_folder="templates")
 
@@ -279,6 +276,7 @@ def tasklist(application_id):
         "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
         "completed_status": ApplicationStatus.COMPLETED.name,
         "submitted_status": ApplicationStatus.SUBMITTED.name,
+        "changes_requested_status": ApplicationStatus.CHANGES_REQUESTED.name,
         "has_section_feedback": round_data.feedback_survey_config.has_section_feedback,
         "number_of_forms": len(application.forms)
         + sum(
@@ -393,6 +391,7 @@ def continue_application(application_id):
         round_close_notification_url=round_close_notification_url,
         fund_name=fund.short_name,
         round_name=round.short_name,
+        feedback_message=form_data["feedback_message"],
     )
 
     rehydration_token = get_token_to_return_to_application(form_name, rehydrate_payload)

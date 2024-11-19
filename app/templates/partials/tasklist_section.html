@@ -5,16 +5,22 @@
 
   <span class="app-task-list__tag" id="read-declaration-status">
     {% if status_value == not_started_status %}
-    {# djlint:off #}<strong class="govuk-tag not-started-tag">{# djlint:on #}
+      <strong class="govuk-tag not-started-tag">
         {{ application_status("NOT_STARTED") }}
+      </strong>
     {% elif status_value == in_progress_status %}
-    {# djlint:off #}<strong class="govuk-tag in-progress-tag-new">{# djlint:on #}
+      <strong class="govuk-tag in-progress-tag-new">
         {{ application_status("IN_PROGRESS") }}
+      </strong>
     {% elif status_value == completed_status %}
-      {{ application_status("COMPLETED") }}
       <strong class="govuk-tag complete-tag">
+        {{ application_status("COMPLETED") }}
+      </strong>
+    {% elif status_value == application_meta_data["changes_requested_status"] %}
+      <strong class="govuk-tag govuk-tag--orange">
+        {{ application_status("CHANGES_REQUESTED") }}
+      </strong>
     {% endif %}
-    </strong>
   </span>
 {% endmacro %}
 

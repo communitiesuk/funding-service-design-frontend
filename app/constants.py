@@ -7,3 +7,4 @@ class ApplicationStatus(Enum):
     IN_PROGRESS = auto()
     COMPLETED = auto()
     SUBMITTED = auto()
+    CHANGES_REQUESTED = auto()
