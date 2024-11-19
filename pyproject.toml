@@ -5,7 +5,7 @@ description = "The funding service design frontend for the DLUHC."
 authors = ["Evoco Digital Services"]
 license = "MIT License"
 
-requires-python = ">=3.10, <3.11"
+requires-python = "~=3.10.0"
 dependencies = [
     "cssmin==0.2.0",
     "email-validator==2.1.1",
