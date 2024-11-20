@@ -29,19 +29,6 @@ on:
         type: boolean
         description: Run e2e tests (application)
   push:
-    # Ignore README markdown and the docs folder
-    # Only automatically deploy when something in the app or tests folder has changed
-    paths:
-      - '!**/README.md'
-      - '!docs/**'
-      - 'app/**'
-      - 'config/**'
-      - 'tests/**'
-      - 'requirements-dev.in'
-      - 'requirements-dev.txt'
-      - 'requirements.in'
-      - 'requirements.txt'
-      - '.github/workflows/copilot_deploy.yml'
 
 jobs:
   setup:
