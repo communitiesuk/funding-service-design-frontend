@@ -24,9 +24,9 @@ from app.forms.research import ResearchContactDetailsForm
 from app.forms.research import ResearchOptForm
 from app.helpers import format_rehydrate_payload
 from app.helpers import get_feedback_survey_data
+from app.helpers import get_fund_and_round
 from app.helpers import get_next_section_number
 from app.helpers import get_research_survey_data
-from app.helpers import get_round
 from app.helpers import get_section_feedback_data
 from app.helpers import get_token_to_return_to_application
 from app.models.statuses import get_formatted
@@ -373,7 +373,7 @@ def continue_application(application_id):
     current_app.logger.info(f"Url the form runner should return to '{return_url}'.")
 
     application = get_application_data(application_id)
-    round = get_round(fund_id=application.fund_id, round_id=application.round_id)
+    fund, round = get_fund_and_round(fund_id=application.fund_id, round_id=application.round_id)
 
     form_data = application.get_form_data(application, form_name)
 
@@ -384,6 +384,8 @@ def continue_application(application_id):
         form_name=form_name,
         markAsCompleteEnabled=round.mark_as_complete_enabled,
         round_close_notification_url=round_close_notification_url,
+        fund_name=fund.short_name,
+        round_name=round.short_name,
     )
 
     rehydration_token = get_token_to_return_to_application(form_name, rehydrate_payload)
