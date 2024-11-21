@@ -2,22 +2,23 @@
   {% set not_started_status = application_meta_data["not_started_status"] %}
   {% set in_progress_status = application_meta_data["in_progress_status"] %}
   {% set completed_status = application_meta_data["completed_status"] %}
+  {% set changes_requested = application_meta_data["changes_requested"] %}
 
   <span class="app-task-list__tag" id="read-declaration-status">
     {% if status_value == not_started_status %}
-      <strong class="govuk-tag not-started-tag">
+      <strong class="govuk-tag govuk-tag--grey">
         {{ application_status("NOT_STARTED") }}
       </strong>
     {% elif status_value == in_progress_status %}
-      <strong class="govuk-tag in-progress-tag-new">
+      <strong class="govuk-tag govuk-tag--blue">
         {{ application_status("IN_PROGRESS") }}
       </strong>
     {% elif status_value == completed_status %}
-      <strong class="govuk-tag complete-tag">
+      <strong class="govuk-tag govuk-tag--green">
         {{ application_status("COMPLETED") }}
       </strong>
-    {% else %}
-      <strong class="govuk-tag in-progress-tag">
+    {% elif status_value == changes_requested %}
+      <strong class="govuk-tag govuk-tag--red">
         {{ application_status("CHANGES_REQUESTED") }}
       </strong>
     {% endif %}

@@ -272,6 +272,7 @@ def tasklist(application_id):
         "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
         "completed_status": ApplicationStatus.COMPLETED.name,
         "submitted_status": ApplicationStatus.SUBMITTED.name,
+        "changes_requested": ApplicationStatus.CHANGES_REQUESTED.name,
         "has_section_feedback": round_data.feedback_survey_config.has_section_feedback,
         "number_of_forms": len(application.forms)
         + sum(

@@ -143,18 +143,24 @@
             {% set completed_count = application_meta_data["number_of_completed_forms"] %}
             {% set in_progress_count = application_meta_data["number_of_in_progress_forms"] %}
             {% set form_count = application_meta_data["number_of_forms"] %}
-            {% if application["status"] == application_meta_data["not_started_status"] %}
-            {# djlint:off #}<dd class="govuk-tag not-started-tag govuk-!-margin-bottom-2">{# djlint:on #}
-                {{ application_status("NOT_STARTED") }}
-                {% elif application["status"] == application_meta_data["in_progress_status"] %}
-            {# djlint:off #}<dd class="govuk-tag in-progress-tag-new govuk-!-margin-bottom-2">{# djlint:on #}
-                {{ application_status("IN_PROGRESS") }}
-                {% elif application["status"] == application_meta_data["completed_status"] %}
-            <dd class="govuk-tag complete-tag govuk-!-margin-bottom-2">
-                {{ application_status("COMPLETED") }}
-                {% endif %}
 
-            </dd>
+            {% if application["status"] == application_meta_data["not_started_status"] %}
+                <dd class="govuk-tag not-started-tag govuk-!-margin-bottom-2">
+                    {{ application_status("NOT_STARTED") }}
+                </dd>
+            {% elif application["status"] == application_meta_data["in_progress_status"] %}
+                <dd class="govuk-tag in-progress-tag-new govuk-!-margin-bottom-2">{# djlint:on #}
+                    {{ application_status("IN_PROGRESS") }}
+                </dd>
+            {% elif application["status"] == application_meta_data["completed_status"] %}
+                <dd class="govuk-tag govuk-tag--green govuk-!-margin-bottom-2">
+                    {{ application_status("COMPLETED") }}
+                </dd>
+            {% elif application["status"] %}
+                <dd class="govuk-tag govuk-tag--red govuk-!-margin-bottom-2">
+                    {{ application_status("CHANGES_REQUIRED") }}
+                </dd>
+            {% endif %}
         </dl>
         <p class="govuk-body govuk-!-margin-bottom-7">
             {% if application_meta_data["number_of_completed_forms"] == 0 %}

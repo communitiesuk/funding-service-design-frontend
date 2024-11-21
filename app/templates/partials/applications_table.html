@@ -17,11 +17,13 @@
 			{% if application.status == 'SUBMITTED' %}
 				complete-tag
 			{% elif application.status == 'NOT_STARTED' %}
-				not-started-tag
+				govuk-tag--grey
 			{% elif application.status == 'IN_PROGRESS' %}
-				in-progress-tag-new
+				govuk-tag--blue
 			{% elif application.status == 'READY_TO_SUBMIT' %}
-				in-progress-tag-new
+				govuk-tag--yellow
+            {% elif application.status == 'CHANGES_REQUESTED' %}
+				govuk-tag--red
 			{% endif %}
 		{% endif %}
 		{% endset %}
