@@ -37,7 +37,7 @@ jobs:
       environment: ${{ inputs.environment }}
 
   pre_deploy_tests:
-    uses: communitiesuk/funding-service-design-workflows/.github/workflows/pre-deploy.yml@main
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/pre-deploy.yml@fix/renovate-pyscss
     with:
       postgres_unit_testing: false
 
