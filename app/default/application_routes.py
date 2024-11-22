@@ -24,10 +24,10 @@ from app.forms.research import ResearchContactDetailsForm
 from app.forms.research import ResearchOptForm
 from app.helpers import format_rehydrate_payload
 from app.helpers import get_feedback_survey_data
+from app.helpers import get_fund
 from app.helpers import get_fund_and_round
 from app.helpers import get_next_section_number
 from app.helpers import get_research_survey_data
-from app.helpers import get_fund
 from app.helpers import get_section_feedback_data
 from app.helpers import get_token_to_return_to_application
 from app.models.statuses import get_formatted
