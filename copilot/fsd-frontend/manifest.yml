@@ -85,8 +85,6 @@ environments:
         path: /healthcheck
         port: 8080
   test:
-    deployment:
-      rolling: 'recreate'
     count:
       spot: 2
     sidecars:
