@@ -16,8 +16,8 @@
       <strong class="govuk-tag complete-tag">
         {{ application_status("COMPLETED") }}
       </strong>
-    {% else %}
-      <strong class="govuk-tag in-progress-tag">
+    {% elif status_value == application_meta_data["changes_requested_status"] %}
+      <strong class="govuk-tag govuk-tag--orange">
         {{ application_status("CHANGES_REQUESTED") }}
       </strong>
     {% endif %}

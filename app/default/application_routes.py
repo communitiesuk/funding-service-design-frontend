@@ -272,6 +272,7 @@ def tasklist(application_id):
         "in_progress_status": ApplicationStatus.IN_PROGRESS.name,
         "completed_status": ApplicationStatus.COMPLETED.name,
         "submitted_status": ApplicationStatus.SUBMITTED.name,
+        "changes_requested_status": ApplicationStatus.CHANGES_REQUESTED.name,
         "has_section_feedback": round_data.feedback_survey_config.has_section_feedback,
         "number_of_forms": len(application.forms)
         + sum(
@@ -384,6 +385,7 @@ def continue_application(application_id):
         form_name=form_name,
         markAsCompleteEnabled=round.mark_as_complete_enabled,
         round_close_notification_url=round_close_notification_url,
+        feedback_message=form_data["feedback_message"],
     )
 
     rehydration_token = get_token_to_return_to_application(form_name, rehydrate_payload)

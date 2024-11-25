@@ -10,6 +10,7 @@
 {% set pageHeading %}{% trans %}Task List{% endtrans %}{% endset %}
 
 {% block content %}
+
 {% if migration_banner_enabled %}
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -144,13 +145,16 @@
             {% set in_progress_count = application_meta_data["number_of_in_progress_forms"] %}
             {% set form_count = application_meta_data["number_of_forms"] %}
             {% if application["status"] == application_meta_data["not_started_status"] %}
-            {# djlint:off #}<dd class="govuk-tag not-started-tag govuk-!-margin-bottom-2">{# djlint:on #}
+            {# djlint:off #}<dd class="govuk-tag not-started-tag govuk-!-margin-bottom-2" style="text-transform: none;">{# djlint:on #}
                 {{ application_status("NOT_STARTED") }}
                 {% elif application["status"] == application_meta_data["in_progress_status"] %}
-            {# djlint:off #}<dd class="govuk-tag in-progress-tag-new govuk-!-margin-bottom-2">{# djlint:on #}
+            {# djlint:off #}<dd class="govuk-tag in-progress-tag-new govuk-!-margin-bottom-2" style="text-transform: none;">{# djlint:on #}
                 {{ application_status("IN_PROGRESS") }}
+                {% elif application["status"] == application_meta_data["changes_requested_status"] %}
+            {# djlint:off #}<dd class="govuk-tag govuk-tag--orange govuk-!-margin-bottom-2" style="text-transform: none!important;">{# djlint:on #}
+                {{ application_status("CHANGES_REQUESTED") }}
                 {% elif application["status"] == application_meta_data["completed_status"] %}
-            <dd class="govuk-tag complete-tag govuk-!-margin-bottom-2">
+            <dd class="govuk-tag complete-tag govuk-!-margin-bottom-2" style="text-transform: none;">
                 {{ application_status("COMPLETED") }}
                 {% endif %}
 

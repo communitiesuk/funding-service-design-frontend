@@ -20,7 +20,9 @@
 				not-started-tag
 			{% elif application.status == 'IN_PROGRESS' %}
 				in-progress-tag-new
-			{% elif application.status == 'READY_TO_SUBMIT' %}
+			{% elif application.status == 'CHANGES_REQUESTED' %}
+                govuk-tag--orange
+            {% elif application.status == 'READY_TO_SUBMIT' %}
 				in-progress-tag-new
 			{% endif %}
 		{% endif %}
@@ -35,10 +37,13 @@
                         'text': application.project_name if application.project_name else gettext('Untitled project')
                     },
                     {
-                        'text':  govukTag({
+                        'html':  govukTag({
                             'text': application.status|status_translation ,
-                            'classes': status_class
-                        })
+                            'classes': status_class,
+                        }),
+                        'attributes': {
+                            'style': 'white-space: nowrap!important;'
+                        }
                     },
                     {
                         'html': application.last_edited|datetime_format_full_month if application.last_edited != None
