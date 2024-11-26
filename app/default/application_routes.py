@@ -24,6 +24,7 @@ from app.forms.research import ResearchContactDetailsForm
 from app.forms.research import ResearchOptForm
 from app.helpers import format_rehydrate_payload
 from app.helpers import get_feedback_survey_data
+from app.helpers import get_fund
 from app.helpers import get_fund_and_round
 from app.helpers import get_next_section_number
 from app.helpers import get_research_survey_data
@@ -106,8 +107,11 @@ def verify_round_open(f):
 
     @wraps(f)
     def decorator(*args, **kwargs):
+        redirect_to_fund = False
+
         if request.method == "POST":
             application_id = request.form["application_id"]
+            redirect_to_fund = request.form.get("redirect_to_fund", False)
         elif request.method == "GET":
             application_id = kwargs["application_id"]
         else:
@@ -131,6 +135,9 @@ def verify_round_open(f):
             current_app.logger.info(
                 f"User {g.account_id} tried to update application {application_id} outside of the round being open"
             )
+            if redirect_to_fund is not False:
+                fund = get_fund(fund_id=application.fund_id)
+                return redirect(url_for("account_routes.dashboard", fund=fund.short_name, round=round_data.short_name))
             return redirect(url_for("account_routes.dashboard"))
 
     return decorator
