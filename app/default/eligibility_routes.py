@@ -14,10 +14,12 @@ from fsd_utils.authentication.decorators import login_required
 eligibility_bp = Blueprint("eligibility_routes", __name__, template_folder="templates")
 
 
-@eligibility_bp.route("/eligibility-result/<fund_short_name>/<round_name>", methods=["GET"])
+@eligibility_bp.route("/eligibility-result", methods=["GET"])
 @login_required
-def eligiblity_result(fund_short_name, round_name):
+def eligiblity_result():
     """Render the eligibility result page"""
+    fund_short_name = request.args.get("fund_name")
+    round_name = request.args.get("round_name")
     current_app.logger.info(f"Eligibility launch result: {fund_short_name} {round_name}")
     return_url = request.host_url + url_for("account_routes.dashboard", fund=fund_short_name, round=round_name)
     fund, round = get_fund_and_round(fund_short_name=fund_short_name, round_short_name=round_name)
