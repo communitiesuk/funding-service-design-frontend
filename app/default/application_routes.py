@@ -391,7 +391,7 @@ def continue_application(application_id):
         round_close_notification_url=round_close_notification_url,
         fund_name=fund.short_name,
         round_name=round.short_name,
-        feedback_message=form_data["feedback_message"],
+        feedback_message=form_data.get("feedback_message") if form_data else None,
     )
 
     rehydration_token = get_token_to_return_to_application(form_name, rehydrate_payload)
