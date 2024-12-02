@@ -234,7 +234,10 @@ def tasklist(application_id):
     # note that individual section feedback COULD be independent of round feedback survey.
     # which is why this is not under a conditional round_data.feedback_survey_config.
     if round_data.feedback_survey_config.has_section_feedback:
-        (current_feedback_list, existing_feedback_map,) = get_section_feedback_data(
+        (
+            current_feedback_list,
+            existing_feedback_map,
+        ) = get_section_feedback_data(
             application,
             section_display_config,
         )
