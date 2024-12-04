@@ -142,6 +142,11 @@ def create_app() -> Flask:
             fund, round = find_fund_and_round_in_request()
             if fund and round:
                 return dict(
+                    accessibility_statement_url=url_for(
+                        "content_routes.accessibility_statement",
+                        fund=fund.short_name,
+                        round=round.short_name,
+                    ),
                     contact_us_url=url_for(
                         "content_routes.contact_us",
                         fund=fund.short_name,
@@ -167,6 +172,7 @@ def create_app() -> Flask:
                 request.args,
             )
         return dict(
+            accessibility_statement_url=url_for("content_routes.accessibility_statement"),
             contact_us_url=url_for("content_routes.contact_us"),
             privacy_url=url_for("content_routes.privacy"),
             feedback_url=url_for("content_routes.feedback"),

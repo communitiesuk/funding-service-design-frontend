@@ -20,9 +20,13 @@ content_bp = Blueprint("content_routes", __name__, template_folder="templates")
 
 @content_bp.route("/accessibility_statement", methods=["GET"])
 def accessibility_statement():
+    fund, round = find_fund_and_round_in_request()
+    fund_name = fund.name if fund else None
     current_app.logger.info("Accessibility statement page loaded.")
     return render_template(
         "accessibility_statement.html",
+        round_data=round,
+        fund_name=fund_name,
         migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
     )
 
