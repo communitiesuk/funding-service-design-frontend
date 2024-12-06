@@ -32,12 +32,12 @@ on:
 
 jobs:
   setup:
-    uses: communitiesuk/funding-service-design-workflows/.github/workflows/determine-jobs.yml@main
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/determine-jobs.yml@bau/db-migrate-using-paketo-image
     with:
       environment: ${{ inputs.environment }}
 
   pre_deploy_tests:
-    uses: communitiesuk/funding-service-design-workflows/.github/workflows/pre-deploy.yml@main
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/pre-deploy.yml@bau/db-migrate-using-paketo-image
     with:
       postgres_unit_testing: false
 
@@ -45,7 +45,7 @@ jobs:
     needs: [ setup ]
     permissions:
       packages: write
-    uses: communitiesuk/funding-service-design-workflows/.github/workflows/package.yml@main
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/package.yml@bau/db-migrate-using-paketo-image
     with:
       version_to_build: sha-${{ github.sha }}
       owner: ${{ github.repository_owner }}
@@ -55,7 +55,7 @@ jobs:
   dev_deploy:
     needs: [ pre_deploy_tests, paketo_build, setup ]
     if: ${{ contains(fromJSON(needs.setup.outputs.jobs_to_run), 'dev') }}
-    uses: communitiesuk/funding-service-design-workflows/.github/workflows/standard-deploy.yml@main
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/standard-deploy.yml@bau/db-migrate-using-paketo-image
     secrets:
       AWS_ACCOUNT: ${{ secrets.AWS_ACCOUNT }}
     with:
@@ -74,7 +74,7 @@ jobs:
       FS_BASIC_AUTH_USERNAME: ${{ secrets.FS_BASIC_AUTH_USERNAME }}
       FS_BASIC_AUTH_PASSWORD: ${{ secrets.FS_BASIC_AUTH_PASSWORD }}
       AWS_ACCOUNT: ${{ secrets.AWS_ACCOUNT }}
-    uses: communitiesuk/funding-service-design-workflows/.github/workflows/post-deploy.yml@main
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/post-deploy.yml@bau/db-migrate-using-paketo-image
     with:
       run_performance_tests: ${{ inputs.run_performance_tests || true }}
       run_e2e_tests_assessment: ${{ inputs.run_e2e_tests_assessment || false }}
@@ -85,7 +85,7 @@ jobs:
   test_deploy:
     needs: [ dev_deploy, post_dev_deploy_tests, paketo_build, setup ]
     if: ${{ always() && contains(fromJSON(needs.setup.outputs.jobs_to_run), 'test') && (! contains(needs.*.result, 'failure') ) && (! contains(needs.*.result, 'cancelled') )}}
-    uses: communitiesuk/funding-service-design-workflows/.github/workflows/standard-deploy.yml@main
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/standard-deploy.yml@bau/db-migrate-using-paketo-image
     secrets:
       AWS_ACCOUNT: ${{ secrets.AWS_ACCOUNT }}
     with:
@@ -105,7 +105,7 @@ jobs:
       FS_BASIC_AUTH_USERNAME: ${{ secrets.FS_BASIC_AUTH_USERNAME }}
       FS_BASIC_AUTH_PASSWORD: ${{ secrets.FS_BASIC_AUTH_PASSWORD }}
       AWS_ACCOUNT: ${{ secrets.AWS_ACCOUNT }}
-    uses: communitiesuk/funding-service-design-workflows/.github/workflows/post-deploy.yml@main
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/post-deploy.yml@bau/db-migrate-using-paketo-image
     with:
       run_performance_tests: ${{ inputs.run_performance_tests || false }}
       run_e2e_tests_assessment: ${{ inputs.run_e2e_tests_assessment || false }}
@@ -116,7 +116,7 @@ jobs:
   uat_deploy:
     needs: [ dev_deploy, post_dev_deploy_tests, test_deploy, post_test_deploy_tests, paketo_build, setup ]
     if: ${{ always() && contains(fromJSON(needs.setup.outputs.jobs_to_run), 'uat') && (! contains(needs.*.result, 'failure') ) && (! contains(needs.*.result, 'cancelled') )}}
-    uses: communitiesuk/funding-service-design-workflows/.github/workflows/standard-deploy.yml@main
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/standard-deploy.yml@bau/db-migrate-using-paketo-image
     secrets:
       AWS_ACCOUNT: ${{ secrets.AWS_ACCOUNT }}
     with:
@@ -136,7 +136,7 @@ jobs:
       FS_BASIC_AUTH_USERNAME: ${{ secrets.FS_BASIC_AUTH_USERNAME }}
       FS_BASIC_AUTH_PASSWORD: ${{ secrets.FS_BASIC_AUTH_PASSWORD }}
       AWS_ACCOUNT: ${{ secrets.AWS_ACCOUNT }}
-    uses: communitiesuk/funding-service-design-workflows/.github/workflows/post-deploy.yml@main
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/post-deploy.yml@bau/db-migrate-using-paketo-image
     with:
       run_performance_tests: ${{ inputs.run_performance_tests || false }}
       run_e2e_tests_assessment: ${{ inputs.run_e2e_tests_assessment || false }}
@@ -147,7 +147,7 @@ jobs:
   prod_deploy:
     needs: [ dev_deploy, post_dev_deploy_tests, test_deploy, post_test_deploy_tests, uat_deploy, post_uat_deploy_tests, paketo_build, setup ]
     if: ${{ always() && contains(fromJSON(needs.setup.outputs.jobs_to_run), 'prod') && (! contains(needs.*.result, 'failure') ) && (! contains(needs.*.result, 'cancelled') )}}
-    uses: communitiesuk/funding-service-design-workflows/.github/workflows/standard-deploy.yml@main
+    uses: communitiesuk/funding-service-design-workflows/.github/workflows/standard-deploy.yml@bau/db-migrate-using-paketo-image
     secrets:
       AWS_ACCOUNT: ${{ secrets.AWS_ACCOUNT }}
     with:
