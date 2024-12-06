@@ -28,7 +28,7 @@ from app.helpers import find_fund_and_round_in_request, find_fund_in_request
 from config import Config
 
 
-def create_app() -> Flask:
+def create_app() -> Flask:  # noqa: C901
     init_sentry()
 
     flask_app = Flask(__name__, static_url_path="/assets")
