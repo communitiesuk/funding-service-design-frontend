@@ -1,26 +1,20 @@
 import requests
-from app.default.data import determine_round_status
-from app.default.data import get_all_funds
-from app.default.data import get_all_rounds_for_fund
-from app.default.data import RoundStatus
-from app.default.data import search_applications
-from app.helpers import get_fund
-from app.helpers import get_fund_and_round
-from app.helpers import get_ttl_hash
-from app.models.application_summary import ApplicationSummary
-from config import Config
-from flask import Blueprint
-from flask import current_app
-from flask import g
-from flask import make_response
-from flask import redirect
-from flask import render_template
-from flask import request
-from flask import url_for
+from flask import Blueprint, current_app, g, make_response, redirect, render_template, request, url_for
 from flask_babel import force_locale
 from fsd_utils.authentication.decorators import login_required
 from fsd_utils.locale_selector.get_lang import get_lang
 from fsd_utils.locale_selector.set_lang import LanguageSelector
+
+from app.default.data import (
+    RoundStatus,
+    determine_round_status,
+    get_all_funds,
+    get_all_rounds_for_fund,
+    search_applications,
+)
+from app.helpers import get_fund, get_fund_and_round, get_ttl_hash
+from app.models.application_summary import ApplicationSummary
+from config import Config
 
 account_bp = Blueprint("account_routes", __name__, template_folder="templates")
 TEMPLATE_SINGLE_FUND = "dashboard_single_fund.html"

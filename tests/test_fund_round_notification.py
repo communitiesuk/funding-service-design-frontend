@@ -1,6 +1,6 @@
 import pytest
-from tests.api_data.test_data import TEST_APPLICATIONS
-from tests.api_data.test_data import TEST_ROUNDS_DATA
+
+from tests.api_data.test_data import TEST_APPLICATIONS, TEST_ROUNDS_DATA
 
 TEST_APPLICATION_EN = TEST_APPLICATIONS[0]
 TEST_APPLICATION_CY = TEST_APPLICATIONS[1]

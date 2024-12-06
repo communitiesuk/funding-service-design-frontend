@@ -1,19 +1,12 @@
-from app.helpers import find_fund_and_round_in_request
-from app.helpers import find_round_in_request
-from app.helpers import get_fund_and_round
-from app.models.fund import Fund
-from config import Config
-from flask import abort
-from flask import Blueprint
-from flask import current_app
-from flask import redirect
-from flask import render_template
-from flask import request
-from flask import url_for
+from flask import Blueprint, abort, current_app, redirect, render_template, request, url_for
 from flask_babel import gettext
 from fsd_utils.authentication.decorators import login_requested
 from fsd_utils.locale_selector.get_lang import get_lang
 from jinja2.exceptions import TemplateNotFound
+
+from app.helpers import find_fund_and_round_in_request, find_round_in_request, get_fund_and_round
+from app.models.fund import Fund
+from config import Config
 
 content_bp = Blueprint("content_routes", __name__, template_folder="templates")
 
@@ -32,7 +25,6 @@ def accessibility_statement():
 
 
 def determine_all_questions_template_name(fund_short_name: str, round_short_name: str, lang: str, fund: Fund):
-
     # Allow for COF R2 and R3 to use the old mechanism for translating all questions into welsh - the template
     # for these rounds contains translation tags to build the page on the fly.
     # All future rounds that need welsh all questions will have them generated from the form json so should

@@ -7,25 +7,22 @@ from typing import List
 from urllib.parse import urlencode
 
 import requests
+from flask import abort, current_app
+from fsd_utils.locale_selector.get_lang import get_lang
+from fsd_utils.simple_utils.date_utils import (
+    current_datetime_after_given_iso_string,
+    current_datetime_before_given_iso_string,
+)
+
 from app.models.account import Account
 from app.models.application import Application
 from app.models.application_display_mapping import ApplicationMapping
 from app.models.application_summary import ApplicationSummary
-from app.models.feedback import EndOfApplicationSurveyData
-from app.models.feedback import FeedbackSubmission
+from app.models.feedback import EndOfApplicationSurveyData, FeedbackSubmission
 from app.models.fund import Fund
 from app.models.research import ResearchSurveyData
 from app.models.round import Round
 from config import Config
-from flask import abort
-from flask import current_app
-from fsd_utils.locale_selector.get_lang import get_lang
-from fsd_utils.simple_utils.date_utils import (
-    current_datetime_after_given_iso_string,
-)
-from fsd_utils.simple_utils.date_utils import (
-    current_datetime_before_given_iso_string,
-)
 
 
 def get_ttl_hash(seconds=300) -> int:

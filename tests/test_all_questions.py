@@ -1,9 +1,10 @@
 from unittest import mock
 
 import pytest
-from app.default.content_routes import determine_all_questions_template_name
 from bs4 import BeautifulSoup
 from werkzeug import test
+
+from app.default.content_routes import determine_all_questions_template_name
 
 
 @pytest.mark.parametrize(
@@ -67,7 +68,6 @@ def test_determine_template_name(
 
 
 def test_all_questions_page_from_short_name(flask_test_client, mocker):
-
     response: test.TestResponse = flask_test_client.get("/all_questions/COF/R2W3?lang=en")
     assert response.status_code == 200
     soup = BeautifulSoup(response.data, "html.parser")

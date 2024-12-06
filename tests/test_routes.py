@@ -1,16 +1,14 @@
 from unittest import mock
 
 import pytest
-from app.default.data import get_round_data_fail_gracefully
-from app.helpers import find_fund_in_request
-from app.helpers import find_round_in_request
-from app.models.fund import Fund
 from bs4 import BeautifulSoup
 from flask import render_template
 from requests import HTTPError
-from tests.api_data.test_data import TEST_APPLICATION_SUMMARIES
-from tests.api_data.test_data import TEST_FUNDS_DATA
-from tests.api_data.test_data import TEST_ROUNDS_DATA
+
+from app.default.data import get_round_data_fail_gracefully
+from app.helpers import find_fund_in_request, find_round_in_request
+from app.models.fund import Fund
+from tests.api_data.test_data import TEST_APPLICATION_SUMMARIES, TEST_FUNDS_DATA, TEST_ROUNDS_DATA
 
 
 def test_dodgy_url_returns_404(flask_test_client):
