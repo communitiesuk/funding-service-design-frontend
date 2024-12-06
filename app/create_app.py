@@ -108,9 +108,9 @@ def create_app() -> Flask:
         return dict(
             stage="beta",
             service_meta_author="Department for Levelling up Housing and Communities",
-            toggle_dict={feature.name: feature.is_enabled() for feature in toggle_client.list()}
-            if toggle_client
-            else {},
+            toggle_dict=(
+                {feature.name: feature.is_enabled() for feature in toggle_client.list()} if toggle_client else {}
+            ),
         )
 
     @flask_app.context_processor
