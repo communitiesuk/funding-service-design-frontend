@@ -52,7 +52,10 @@ def determine_all_questions_template_name(fund_short_name: str, round_short_name
 
 @content_bp.route("/all_questions/<fund_short_name>/<round_short_name>", methods=["GET"])
 def all_questions(fund_short_name, round_short_name):
-    current_app.logger.info(f"All questions page loaded for fund {fund_short_name} round {round_short_name}.")
+    current_app.logger.info(
+        "All questions page loaded for fund {fund_short_name} round {round_short_name}.",
+        extra=dict(fund_short_name=fund_short_name, round_short_name=round_short_name),
+    )
     fund, round = get_fund_and_round(fund_short_name=fund_short_name, round_short_name=round_short_name)
 
     if fund and round:
@@ -68,7 +71,10 @@ def all_questions(fund_short_name, round_short_name):
                 migration_banner_enabled=Config.MIGRATION_BANNER_ENABLED,
             )
         except TemplateNotFound:
-            current_app.logger.warning(f"No all questions page found for {fund_short_name}:{round_short_name}")
+            current_app.logger.warning(
+                "No all questions page found for {fund_short_name}:{round_short_name}",
+                extra=dict(fund_short_name=fund_short_name, round_short_name=round_short_name),
+            )
     return abort(404)
 
 
@@ -113,7 +119,10 @@ def privacy():
     privacy_notice_url = getattr(round, "privacy_notice", None) if round else None
 
     if privacy_notice_url:
-        current_app.logger.info(f"Privacy notice loading for fund {fund.short_name} round {round.short_name}.")
+        current_app.logger.info(
+            "Privacy notice loading for fund {fund_short_name} round {round_short_name}.",
+            extra=dict(fund_short_name=fund.short_name, round_short_name=round.short_name),
+        )
         return redirect(privacy_notice_url)
 
     return abort(404)

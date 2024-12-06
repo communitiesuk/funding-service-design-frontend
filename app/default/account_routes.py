@@ -172,7 +172,7 @@ def dashboard():
     show_language_column = determine_show_language_column(applications)
 
     display_data = build_application_data_for_display(applications, fund_short_name, round_short_name)
-    current_app.logger.info(f"Setting up applicant dashboard for :'{account_id}'")
+    current_app.logger.info("Setting up applicant dashboard for :'{account_id}'", extra=dict(account_id=account_id))
     if not welsh_available and template_name == TEMPLATE_SINGLE_FUND:
         render_lang = "en"
     with force_locale(render_lang):
@@ -214,7 +214,9 @@ def new():
         },
     )
     new_application_json = new_application.json()
-    current_app.logger.info(f"Creating new application:{new_application_json}")
+    current_app.logger.info(
+        "Creating new application:{new_application_json}", extra=dict(new_application_json=new_application_json)
+    )
     if new_application.status_code != 201 or not new_application_json.get("id"):
         raise Exception(
             "Unexpected response from application store when creating new application: "

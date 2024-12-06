@@ -1,5 +1,3 @@
-import traceback
-
 from flask import current_app, g, redirect, render_template
 from flask_wtf.csrf import CSRFError
 from fsd_utils.authentication.decorators import login_requested
@@ -27,9 +25,7 @@ def not_found(error):
 @application_bp.errorhandler(Exception)
 @content_bp.errorhandler(Exception)
 def internal_server_error(error):
-    error_message = f"Encountered 500: {error}"
-    stack_trace = traceback.format_exc()
-    current_app.logger.error(f"{error_message}\n{stack_trace}")
+    current_app.logger.exception("Encountered 500: {error}", extra=dict(error=str(error)))
     return render_template("500.html", is_error=True), 500
 
 
@@ -49,7 +45,5 @@ def unauthorised_error(error):
 def csrf_token_expiry(error):
     if not g.account_id:
         return redirect(g.logout_url)
-    error_message = f"Encountered 500: {error}"
-    stack_trace = traceback.format_exc()
-    current_app.logger.error(f"{error_message}\n{stack_trace}")
+    current_app.logger.exception("Encountered 500: {error}", extra=dict(error=str(error)))
     return render_template("500.html", is_error=True), 500
