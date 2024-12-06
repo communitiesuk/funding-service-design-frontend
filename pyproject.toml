@@ -23,10 +23,6 @@ dependencies = [
     "pyscss==1.4.0",
 ]
 
-[tool.black]
-line-length = 120
-experimental-string-processing = 1
-
 [tool.djlint]
 # run with : `djlint path/to/file.html --reformat --format-css --format-js`
 #   this is deliberately commented out.  we don't want to format these tags as
@@ -37,21 +33,39 @@ max_attribute_length=1000   # ^^^
 exclude=".venv,venv"
 profile="jinja2"
 
+[tool.ruff]
+line-length = 120
 
-[tool.flake8]
-max-line-length = 120
-count = true
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle
+    "W",  # pycodestyle
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C90",  # mccabe cyclomatic complexity
+    "G",  # flake8-logging-format
+]
+ignore = []
+exclude = [
+    "db/migrations/versions/",
+    "venv*",
+    ".venv*",
+    "__pycache__",
+    "fund_store/config/fund_loader_config/FAB/"
+]
+mccabe.max-complexity = 12
 
 [tool.uv]
 
 [dependency-groups]
 dev = [
     "beautifulsoup4==4.12.3",
-    "black==24.3.0",
     "debugpy==1.8.9",
     "deepdiff==6.7.1",
     "dparse==0.6.4",
-    "flake8-pyproject==1.2.3",
     "invoke==2.2.0",
     "pre-commit==4.0.1",
     "pytest==8.2.1",
@@ -59,4 +73,5 @@ dev = [
     "pytest-flask==1.3.0",
     "pytest-mock==3.12.0",
     "requests-mock==1.11.0",
+    "ruff>=0.8.2",
 ]
