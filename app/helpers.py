@@ -32,7 +32,8 @@ def get_all_fund_short_names(ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME)):
 
 def get_token_to_return_to_application(form_name: str, rehydrate_payload):
     current_app.logger.info(
-        f"obtaining session rehydration token for application id: {rehydrate_payload['metadata']['application_id']}."
+        "obtaining session rehydration token for application id: {application_id}.",
+        extra=dict(application_id=rehydrate_payload["metadata"]["application_id"]),
     )
     res = requests.post(
         Config.FORM_GET_REHYDRATION_TOKEN_URL.format(form_name=form_name),
@@ -116,9 +117,11 @@ def format_rehydrate_payload(
     """
 
     current_app.logger.info(
-        "constructing session rehydration payload for application"
-        f" id:{application_id}, markAsCompleteEnabled:"
-        f" {markAsCompleteEnabled}."
+        (
+            "constructing session rehydration payload for application id:{application_id}, "
+            "markAsCompleteEnabled: {markAsCompleteEnabled}."
+        ),
+        extra=dict(application_id=application_id, markAsCompleteEnabled=markAsCompleteEnabled),
     )
     formatted_data = {}
 
