@@ -210,7 +210,7 @@ def get_application_display_config(fund_id, round_id, language):
     try:
         return [ApplicationMapping.from_dict(section) for section in application_display_response]
     except Exception as e:
-        raise ValueError(f"Failed to create ApplicationMapping instance: {str(e)}")
+        raise ValueError("Failed to create ApplicationMapping instance") from e
 
 
 @lru_cache(maxsize=5)
