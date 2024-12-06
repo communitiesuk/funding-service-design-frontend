@@ -1,15 +1,18 @@
 import json
 
 import pytest
+from bs4 import BeautifulSoup
+
 from app.default.data import RoundStatus
 from app.models.application_display_mapping import ApplicationMapping
 from app.models.fund import Fund
-from bs4 import BeautifulSoup
-from tests.api_data.test_data import SUBMITTED_APPLICATION
-from tests.api_data.test_data import TEST_APPLICATION_SUMMARIES
-from tests.api_data.test_data import TEST_APPLICATIONS
-from tests.api_data.test_data import TEST_DISPLAY_DATA
-from tests.api_data.test_data import TEST_FUNDS_DATA
+from tests.api_data.test_data import (
+    SUBMITTED_APPLICATION,
+    TEST_APPLICATION_SUMMARIES,
+    TEST_APPLICATIONS,
+    TEST_DISPLAY_DATA,
+    TEST_FUNDS_DATA,
+)
 from tests.utils import get_language_cookie_value
 
 file = open("tests/api_data/endpoint_data.json")
@@ -49,7 +52,6 @@ def test_tasklist_route(flask_test_client, mocker, mock_login, mock_applications
 
 
 def test_tasklist_route_after_deadline(flask_test_client, mocker, mock_login, mock_applications):
-
     mocker.patch(
         "app.default.application_routes.determine_round_status",
         return_value=RoundStatus(True, False, False),

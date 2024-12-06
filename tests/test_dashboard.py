@@ -5,20 +5,25 @@ from unittest import mock
 from unittest.mock import ANY
 
 import pytest
-from app.default.account_routes import build_application_data_for_display
-from app.default.account_routes import determine_show_language_column
-from app.default.account_routes import get_visible_funds
-from app.default.account_routes import update_applications_statuses_for_display
+from bs4 import BeautifulSoup
+
+from app.default.account_routes import (
+    build_application_data_for_display,
+    determine_show_language_column,
+    get_visible_funds,
+    update_applications_statuses_for_display,
+)
 from app.default.data import RoundStatus
 from app.models.application_summary import ApplicationSummary
 from app.models.fund import Fund
-from bs4 import BeautifulSoup
 from config import Config
-from tests.api_data.test_data import common_application_data
-from tests.api_data.test_data import TEST_APPLICATION_SUMMARIES
-from tests.api_data.test_data import TEST_DISPLAY_DATA
-from tests.api_data.test_data import TEST_FUNDS_DATA
-from tests.api_data.test_data import TEST_ROUNDS_DATA
+from tests.api_data.test_data import (
+    TEST_APPLICATION_SUMMARIES,
+    TEST_DISPLAY_DATA,
+    TEST_FUNDS_DATA,
+    TEST_ROUNDS_DATA,
+    common_application_data,
+)
 from tests.utils import get_language_cookie_value
 
 file = open("tests/api_data/endpoint_data.json")

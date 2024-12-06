@@ -1,26 +1,20 @@
 import requests
-from app.default.data import determine_round_status
-from app.default.data import get_all_funds
-from app.default.data import get_all_rounds_for_fund
-from app.default.data import RoundStatus
-from app.default.data import search_applications
-from app.helpers import get_fund
-from app.helpers import get_fund_and_round
-from app.helpers import get_ttl_hash
-from app.models.application_summary import ApplicationSummary
-from config import Config
-from flask import Blueprint
-from flask import current_app
-from flask import g
-from flask import make_response
-from flask import redirect
-from flask import render_template
-from flask import request
-from flask import url_for
+from flask import Blueprint, current_app, g, make_response, redirect, render_template, request, url_for
 from flask_babel import force_locale
 from fsd_utils.authentication.decorators import login_required
 from fsd_utils.locale_selector.get_lang import get_lang
 from fsd_utils.locale_selector.set_lang import LanguageSelector
+
+from app.default.data import (
+    RoundStatus,
+    determine_round_status,
+    get_all_funds,
+    get_all_rounds_for_fund,
+    search_applications,
+)
+from app.helpers import get_fund, get_fund_and_round, get_ttl_hash
+from app.models.application_summary import ApplicationSummary
+from config import Config
 
 account_bp = Blueprint("account_routes", __name__, template_folder="templates")
 TEMPLATE_SINGLE_FUND = "dashboard_single_fund.html"
@@ -178,7 +172,7 @@ def dashboard():
     show_language_column = determine_show_language_column(applications)
 
     display_data = build_application_data_for_display(applications, fund_short_name, round_short_name)
-    current_app.logger.info(f"Setting up applicant dashboard for :'{account_id}'")
+    current_app.logger.info("Setting up applicant dashboard for :'{account_id}'", extra=dict(account_id=account_id))
     if not welsh_available and template_name == TEMPLATE_SINGLE_FUND:
         render_lang = "en"
     with force_locale(render_lang):
@@ -220,7 +214,9 @@ def new():
         },
     )
     new_application_json = new_application.json()
-    current_app.logger.info(f"Creating new application:{new_application_json}")
+    current_app.logger.info(
+        "Creating new application:{new_application_json}", extra=dict(new_application_json=new_application_json)
+    )
     if new_application.status_code != 201 or not new_application_json.get("id"):
         raise Exception(
             "Unexpected response from application store when creating new application: "

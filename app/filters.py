@@ -1,8 +1,8 @@
 from datetime import datetime
 
+from flask_babel import format_datetime, gettext
+
 from app.models.statuses import get_formatted
-from flask_babel import format_datetime
-from flask_babel import gettext
 
 
 def date_format_short_month(value: datetime, format="dd MMM yyyy"):

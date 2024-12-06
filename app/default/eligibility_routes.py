@@ -1,15 +1,8 @@
-from app.helpers import format_rehydrate_payload
-from app.helpers import get_fund_and_round
-from app.helpers import get_token_to_return_to_application
-from config import Config
-from flask import Blueprint
-from flask import current_app
-from flask import redirect
-from flask import render_template
-from flask import request
-from flask import url_for
+from flask import Blueprint, current_app, redirect, render_template, request, url_for
 from fsd_utils.authentication.decorators import login_required
 
+from app.helpers import format_rehydrate_payload, get_fund_and_round, get_token_to_return_to_application
+from config import Config
 
 eligibility_bp = Blueprint("eligibility_routes", __name__, template_folder="templates")
 
@@ -24,10 +17,13 @@ def eligiblity_result(fund_short_name, round_name):
     if redirect_to_eligible_round:
         round_name = redirect_to_eligible_round
 
-    current_app.logger.info(f"Eligibility launch result: {fund_short_name} {round_name}")
+    current_app.logger.info(
+        "Eligibility launch result: {fund_short_name} {round_name}",
+        extra=dict(fund_short_name=fund_short_name, round_name=round_name),
+    )
     return_url = request.host_url + url_for("account_routes.dashboard", fund=fund_short_name, round=round_name)
     fund, round = get_fund_and_round(fund_short_name=fund_short_name, round_short_name=round_name)
-    current_app.logger.info(f"Eligibility return url: {return_url}")
+    current_app.logger.info("Eligibility return url: {return_url}", extra=dict(return_url=return_url))
     return render_template(
         "eligibility_result.html", fund_id=round.fund_id, round_id=round.id, fund_title=fund.title, backLink=return_url
     )
@@ -42,11 +38,14 @@ def launch_eligibility(fund_id, round_id):
     round_name = round_details.short_name.lower()
     form_name = f"{fund_name}-{round_name}-eligibility"
 
-    current_app.logger.info(f"Eligibility launch request for fund {fund_name} round {round_name}")
+    current_app.logger.info(
+        "Eligibility launch request for fund {fund_name} round {round_name}",
+        extra=dict(fund_name=fund_name, round_name=round_name),
+    )
 
     return_url = request.host_url + url_for("account_routes.dashboard", fund=fund_name, round=round_name)
 
-    current_app.logger.info(f"Url the form runner should return to '{return_url}'.")
+    current_app.logger.info("Url the form runner should return to '{return_url}'.", extra=dict(return_url=return_url))
 
     rehydrate_payload = format_rehydrate_payload(
         form_data={"questions": []},

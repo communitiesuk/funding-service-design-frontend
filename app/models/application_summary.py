@@ -3,8 +3,9 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 
-from app.models.language import get_formatted
 from pytz import timezone
+
+from app.models.language import get_formatted
 
 
 @dataclass

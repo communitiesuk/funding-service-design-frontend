@@ -1,12 +1,8 @@
-from app.forms.base import ApplicationFlaskForm
-from app.forms.base import PrepopulatedForm
 from flask_babel import gettext
-from wtforms import FloatField
-from wtforms import RadioField
-from wtforms import TextAreaField
-from wtforms.validators import DataRequired
-from wtforms.validators import InputRequired
-from wtforms.validators import NumberRange
+from wtforms import FloatField, RadioField, TextAreaField
+from wtforms.validators import DataRequired, InputRequired, NumberRange
+
+from app.forms.base import ApplicationFlaskForm, PrepopulatedForm
 
 
 class DefaultSectionFeedbackForm(ApplicationFlaskForm):

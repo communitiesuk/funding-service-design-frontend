@@ -1,7 +1,8 @@
 import datetime
 
-import app.filters as filters
 import pytest
+
+import app.filters as filters
 from app import app
 
 

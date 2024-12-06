@@ -1,10 +1,12 @@
 """Flask Local Development Environment Configuration."""
+
 import logging
+from distutils.util import strtobool
 from os import getenv
 
-from config.envs.default import DefaultConfig
-from distutils.util import strtobool
 from fsd_utils import configclass
+
+from config.envs.default import DefaultConfig
 
 
 @configclass
