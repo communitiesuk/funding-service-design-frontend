@@ -1,13 +1,8 @@
-from app.default.data import determine_round_status
-from app.default.data import get_default_round_for_fund
-from app.helpers import get_all_fund_short_names
-from app.helpers import get_fund_and_round
+from flask import Blueprint, abort, current_app, redirect, render_template
+
+from app.default.data import determine_round_status, get_default_round_for_fund
+from app.helpers import get_all_fund_short_names, get_fund_and_round
 from config import Config
-from flask import abort
-from flask import Blueprint
-from flask import current_app
-from flask import redirect
-from flask import render_template
 
 default_bp = Blueprint("routes", __name__, template_folder="templates")
 

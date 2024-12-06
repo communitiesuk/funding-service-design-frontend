@@ -1,8 +1,7 @@
 import pytest
-from invoke import MockContext
-from invoke import Result
-from tasks import find_missing_trans
-from tasks import fix_trans_tags
+from invoke import MockContext, Result
+
+from tasks import find_missing_trans, fix_trans_tags
 
 
 @pytest.mark.parametrize(
@@ -86,8 +85,7 @@ def test_find_missing_trans(tmpdir, capsys):
 
     stdoutput = capsys.readouterr().out
     assert (
-        stdoutput
-        == f"Missing translations in {f.strpath}:\n  A missing translation\n "
+        stdoutput == f"Missing translations in {f.strpath}:\n  A missing translation\n "
         " Another missing translation\n  A third missing translation, that"
         " spans multiple lines.  We want to capture all of its content.\n "
         " A fourth missing translation, that spans multiple lines.  We"

@@ -1,15 +1,13 @@
 import traceback
 
+from flask import current_app, g, redirect, render_template
+from flask_wtf.csrf import CSRFError
+from fsd_utils.authentication.decorators import login_requested
+
 from app.default.account_routes import account_bp
 from app.default.application_routes import application_bp
 from app.default.content_routes import content_bp
 from app.default.routes import default_bp
-from flask import current_app
-from flask import g
-from flask import redirect
-from flask import render_template
-from flask_wtf.csrf import CSRFError
-from fsd_utils.authentication.decorators import login_requested
 
 
 @application_bp.errorhandler(404)

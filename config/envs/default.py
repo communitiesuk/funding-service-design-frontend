@@ -1,12 +1,11 @@
 """Flask configuration."""
+
 import base64
-from os import environ
-from os import getenv
+from distutils.util import strtobool
+from os import environ, getenv
 from pathlib import Path
 
-from distutils.util import strtobool
-from fsd_utils import CommonConfig
-from fsd_utils import configclass
+from fsd_utils import CommonConfig, configclass
 
 
 @configclass

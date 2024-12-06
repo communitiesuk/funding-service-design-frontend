@@ -3,23 +3,25 @@ from datetime import datetime
 from functools import lru_cache
 
 import requests
-from app.default.data import get_all_funds
-from app.default.data import get_application_data
-from app.default.data import get_default_round_for_fund
-from app.default.data import get_feedback
-from app.default.data import get_feedback_survey_from_store
-from app.default.data import get_fund_data
-from app.default.data import get_fund_data_by_short_name
-from app.default.data import get_research_survey_from_store
-from app.default.data import get_round_data
-from app.default.data import get_round_data_by_short_names
-from app.default.data import get_ttl_hash
+from flask import current_app, request
+from fsd_utils.locale_selector.get_lang import get_lang
+
+from app.default.data import (
+    get_all_funds,
+    get_application_data,
+    get_default_round_for_fund,
+    get_feedback,
+    get_feedback_survey_from_store,
+    get_fund_data,
+    get_fund_data_by_short_name,
+    get_research_survey_from_store,
+    get_round_data,
+    get_round_data_by_short_names,
+    get_ttl_hash,
+)
 from app.models.fund import Fund
 from app.models.round import Round
 from config import Config
-from flask import current_app
-from flask import request
-from fsd_utils.locale_selector.get_lang import get_lang
 
 
 @lru_cache(maxsize=1)

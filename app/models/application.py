@@ -3,9 +3,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import List
 
+from flask import current_app
+
 from app.constants import ApplicationStatus
 from app.models.application_parts.form import Form
-from flask import current_app
 
 
 @dataclass
