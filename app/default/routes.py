@@ -1,6 +1,6 @@
 from flask import Blueprint, abort, current_app, redirect, render_template
 
-from app.default.data import determine_round_status, get_default_round_for_fund
+from app.default.data import determine_round_status, get_default_round_for_fund, get_ttl_hash
 from app.helpers import get_all_fund_short_names, get_fund_and_round
 from config import Config
 
@@ -48,7 +48,7 @@ def index_fund_round(fund_short_name, round_short_name):
 
 @default_bp.route("/funding-round/<fund_short_name>")
 def index_fund_only(fund_short_name):
-    if str.upper(fund_short_name) in get_all_fund_short_names():
+    if str.upper(fund_short_name) in get_all_fund_short_names(get_ttl_hash(Config.LRU_CACHE_TIME)):
         current_app.logger.info(
             "In fund-only start page route for {fund_short_name}", extra=dict(fund_short_name=fund_short_name)
         )

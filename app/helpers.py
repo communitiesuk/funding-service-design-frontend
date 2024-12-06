@@ -25,7 +25,7 @@ from config import Config
 
 
 @lru_cache(maxsize=1)
-def get_all_fund_short_names(ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME)):
+def get_all_fund_short_names(ttl_hash):
     del ttl_hash  # only needed for lru_cache
     return [str.upper(fund["short_name"]) for fund in get_all_funds()]
 
@@ -181,7 +181,7 @@ def find_fund_id_in_request():
 def find_fund_short_name_in_request():
     if (fund_short_name := request.view_args.get("fund_short_name") or request.args.get("fund")) and str.upper(
         fund_short_name
-    ) in get_all_fund_short_names():
+    ) in get_all_fund_short_names(get_ttl_hash(Config.LRU_CACHE_TIME)):
         return fund_short_name
     else:
         return None
