@@ -274,12 +274,6 @@ wheels = [
 ]
 
 [[package]]
-name = "cssmin"
-version = "0.2.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/8e/d8/dc9da69bb186303f7ab41adef0a5b6d34da2fdba006827620877760241c3/cssmin-0.2.0.tar.gz", hash = "sha256:e012f0cc8401efcf2620332339011564738ae32be8c84b2e43ce8beaec1067b6", size = 3228 }
-
-[[package]]
 name = "debugpy"
 version = "1.8.9"
 source = { registry = "https://pypi.org/simple" }
@@ -380,19 +374,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/46/b7/4ace17e37abd9c21715dea5ee11774a25e404c486a7893fa18e764326ead/flask-2.3.3.tar.gz", hash = "sha256:09c347a92aa7ff4a8e7f3206795f30d826654baf38b873d0744cd571ca609efc", size = 672756 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/fd/56/26f0be8adc2b4257df20c1c4260ddd0aa396cf8e75d90ab2f7ff99bc34f9/flask-2.3.3-py3-none-any.whl", hash = "sha256:f69fcd559dc907ed196ab9df0e48471709175e696d6e698dd4dbe940f96ce66b", size = 96112 },
-]
-
-[[package]]
-name = "flask-assets"
-version = "2.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "flask" },
-    { name = "webassets" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/55/bb/c3f04674d54151875321a2aa55a82977b903d3cd6cc130ba04cbc67c6b06/Flask-Assets-2.0.tar.gz", hash = "sha256:1dfdea35e40744d46aada72831f7613d67bf38e8b20ccaaa9e91fdc37aa3b8c2", size = 23097 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/48/5c/3f39865486ccb767d2f5b1b1578a1af1e89168996a8e71b42b3afd1f6b5d/Flask_Assets-2.0-py3-none-any.whl", hash = "sha256:2845bd3b479be9db8556801e7ebc2746ce2d9edb4e7b64a1c786ecbfc1e5867b", size = 8453 },
 ]
 
 [[package]]
@@ -509,23 +490,19 @@ name = "funding-service-design-frontend"
 version = "0.1.1"
 source = { virtual = "." }
 dependencies = [
-    { name = "cssmin" },
     { name = "email-validator" },
     { name = "flask" },
-    { name = "flask-assets" },
     { name = "flask-babel" },
     { name = "flask-compress" },
     { name = "flask-talisman" },
     { name = "flask-wtf" },
     { name = "funding-service-design-utils", extra = ["toggles"] },
     { name = "govuk-frontend-jinja" },
-    { name = "jsmin" },
-    { name = "pyscss" },
     { name = "python-slugify" },
     { name = "requests" },
 ]
 
-[package.dev-dependencies]
+[package.dependency-groups]
 dev = [
     { name = "beautifulsoup4" },
     { name = "debugpy" },
@@ -543,23 +520,19 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "cssmin", specifier = "==0.2.0" },
     { name = "email-validator", specifier = "==2.1.1" },
     { name = "flask", specifier = "==2.3.3" },
-    { name = "flask-assets", specifier = "==2.0" },
     { name = "flask-babel", specifier = "==2.0.0" },
     { name = "flask-compress", specifier = "==1.14" },
     { name = "flask-talisman", specifier = "==1.1.0" },
     { name = "flask-wtf", specifier = "==1.2.1" },
     { name = "funding-service-design-utils", extras = ["toggles"], specifier = "==5.2.0" },
     { name = "govuk-frontend-jinja", specifier = "==2.7.0" },
-    { name = "jsmin", specifier = "==3.0.1" },
-    { name = "pyscss", specifier = "==1.4.0" },
     { name = "python-slugify", specifier = "==8.0.4" },
     { name = "requests", specifier = "==2.32.3" },
 ]
 
-[package.metadata.requires-dev]
+[package.metadata.dependency-groups]
 dev = [
     { name = "beautifulsoup4", specifier = "==4.12.3" },
     { name = "debugpy", specifier = "==1.8.9" },
@@ -716,12 +689,6 @@ wheels = [
 ]
 
 [[package]]
-name = "jsmin"
-version = "3.0.1"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/5e/73/e01e4c5e11ad0494f4407a3f623ad4d87714909f50b17a06ed121034ff6e/jsmin-3.0.1.tar.gz", hash = "sha256:c0959a121ef94542e807a674142606f7e90214a2b3d1eb17300244bbb5cc2bfc", size = 13925 }
-
-[[package]]
 name = "mako"
 version = "1.3.0"
 source = { registry = "https://pypi.org/simple" }
@@ -855,15 +822,6 @@ wheels = [
 crypto = [
     { name = "cryptography" },
 ]
-
-[[package]]
-name = "pyscss"
-version = "1.4.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "six" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/92/30/64c818fd317e03138f98ca67800edb6a916f59fc07b3d7e535e84c3c333a/pyScss-1.4.0.tar.gz", hash = "sha256:8f35521ffe36afa8b34c7d6f3195088a7057c185c2b8f15ee459ab19748669ff", size = 122100 }
 
 [[package]]
 name = "pytest"
@@ -1228,15 +1186,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/94/d7/adb787076e65dc99ef057e0118e25becf80dd05233ef4c86f07aa35f6492/virtualenv-20.25.0.tar.gz", hash = "sha256:bf51c0d9c7dd63ea8e44086fa1e4fb1093a31e963b86959257378aef020e1f1b", size = 7150307 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/83/22/54b1180756d2d6194bcafb7425d437c3034c4bff92129c3e1e633079e2c4/virtualenv-20.25.0-py3-none-any.whl", hash = "sha256:4238949c5ffe6876362d9c0180fc6c3a824a7b12b80604eeb8085f2ed7460de3", size = 3778308 },
-]
-
-[[package]]
-name = "webassets"
-version = "2.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/c1/c4/2da869584205c064614535cc626defa493b98f0d114e8f4741c99800000e/webassets-2.0.tar.gz", hash = "sha256:167132337677c8cedc9705090f6d48da3fb262c8e0b2773b29f3352f050181cd", size = 288016 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/ce/7c/be5d23512974c5843e94aacec163fc31539e91d1e740dd9b886f7714f9d1/webassets-2.0-py3-none-any.whl", hash = "sha256:a31a55147752ba1b3dc07dee0ad8c8efff274464e08bbdb88c1fd59ffd552724", size = 142873 },
 ]
 
 [[package]]
