@@ -3,34 +3,37 @@ from datetime import datetime
 from functools import lru_cache
 
 import requests
-from app.default.data import get_all_funds
-from app.default.data import get_application_data
-from app.default.data import get_default_round_for_fund
-from app.default.data import get_feedback
-from app.default.data import get_feedback_survey_from_store
-from app.default.data import get_fund_data
-from app.default.data import get_fund_data_by_short_name
-from app.default.data import get_research_survey_from_store
-from app.default.data import get_round_data
-from app.default.data import get_round_data_by_short_names
-from app.default.data import get_ttl_hash
+from flask import current_app, request
+from fsd_utils.locale_selector.get_lang import get_lang
+
+from app.default.data import (
+    get_all_funds,
+    get_application_data,
+    get_default_round_for_fund,
+    get_feedback,
+    get_feedback_survey_from_store,
+    get_fund_data,
+    get_fund_data_by_short_name,
+    get_research_survey_from_store,
+    get_round_data,
+    get_round_data_by_short_names,
+    get_ttl_hash,
+)
 from app.models.fund import Fund
 from app.models.round import Round
 from config import Config
-from flask import current_app
-from flask import request
-from fsd_utils.locale_selector.get_lang import get_lang
 
 
 @lru_cache(maxsize=1)
-def get_all_fund_short_names(ttl_hash=get_ttl_hash(Config.LRU_CACHE_TIME)):
+def get_all_fund_short_names(ttl_hash):
     del ttl_hash  # only needed for lru_cache
     return [str.upper(fund["short_name"]) for fund in get_all_funds()]
 
 
 def get_token_to_return_to_application(form_name: str, rehydrate_payload):
     current_app.logger.info(
-        f"obtaining session rehydration token for application id: {rehydrate_payload['metadata']['application_id']}."
+        "obtaining session rehydration token for application id: {application_id}.",
+        extra=dict(application_id=rehydrate_payload["metadata"]["application_id"]),
     )
     res = requests.post(
         Config.FORM_GET_REHYDRATION_TOKEN_URL.format(form_name=form_name),
@@ -114,9 +117,11 @@ def format_rehydrate_payload(
     """
 
     current_app.logger.info(
-        "constructing session rehydration payload for application"
-        f" id:{application_id}, markAsCompleteEnabled:"
-        f" {markAsCompleteEnabled}."
+        (
+            "constructing session rehydration payload for application id:{application_id}, "
+            "markAsCompleteEnabled: {markAsCompleteEnabled}."
+        ),
+        extra=dict(application_id=application_id, markAsCompleteEnabled=markAsCompleteEnabled),
     )
     formatted_data = {}
 
@@ -176,7 +181,7 @@ def find_fund_id_in_request():
 def find_fund_short_name_in_request():
     if (fund_short_name := request.view_args.get("fund_short_name") or request.args.get("fund")) and str.upper(
         fund_short_name
-    ) in get_all_fund_short_names():
+    ) in get_all_fund_short_names(get_ttl_hash(Config.LRU_CACHE_TIME)):
         return fund_short_name
     else:
         return None

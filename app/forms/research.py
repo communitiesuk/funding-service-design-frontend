@@ -1,10 +1,8 @@
+from flask_babel import gettext, lazy_gettext
+from wtforms import RadioField, StringField
+from wtforms.validators import Email, InputRequired
+
 from app.forms.base import PrepopulatedForm
-from flask_babel import gettext
-from flask_babel import lazy_gettext
-from wtforms import RadioField
-from wtforms import StringField
-from wtforms.validators import Email
-from wtforms.validators import InputRequired
 
 
 class ResearchOptForm(PrepopulatedForm):

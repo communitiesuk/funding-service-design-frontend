@@ -1,12 +1,7 @@
-from flask import flash
-from flask import redirect
-from flask import render_template
-from flask import request
-from flask import url_for
+from flask import flash, redirect, render_template, request, url_for
 from flask_wtf import FlaskForm
 from wtforms import IntegerField
-from wtforms.validators import DataRequired
-from wtforms.validators import NumberRange
+from wtforms.validators import DataRequired, NumberRange
 
 
 def not_eligible_page(message):
@@ -30,14 +25,12 @@ def minimium_money_question_page(max_amount: int, success_url: str, data_hook: c
     """
 
     class MinimiumMoneyForm(FlaskForm):
-
         money_field = IntegerField(
             label="project_money_amount",
             validators=[DataRequired(), NumberRange(max=max_amount)],
         )
 
     def min_money_page():
-
         form = MinimiumMoneyForm()
         # If the user has entered data and they are not valid...
         if request.method == "POST":

@@ -2,47 +2,8 @@ from functools import wraps
 from http.client import METHOD_NOT_ALLOWED
 
 import requests
-from app.constants import ApplicationStatus
-from app.default.data import determine_round_status
-from app.default.data import get_application_data
-from app.default.data import get_application_display_config
-from app.default.data import get_feedback
-from app.default.data import get_feedback_survey_from_store
-from app.default.data import get_fund_data
-from app.default.data import get_research_survey_from_store
-from app.default.data import get_round_data
-from app.default.data import get_round_data_without_cache
-from app.default.data import get_ttl_hash
-from app.default.data import post_feedback_survey_to_store
-from app.default.data import post_research_survey_to_store
-from app.default.data import submit_feedback
-from app.forms.feedback import DefaultSectionFeedbackForm
-from app.forms.feedback import (
-    END_OF_APPLICATION_FEEDBACK_SURVEY_PAGE_NUMBER_MAP,
-)
-from app.forms.research import ResearchContactDetailsForm
-from app.forms.research import ResearchOptForm
-from app.helpers import format_rehydrate_payload
-from app.helpers import get_feedback_survey_data
-from app.helpers import get_fund
-from app.helpers import get_fund_and_round
-from app.helpers import get_next_section_number
-from app.helpers import get_research_survey_data
-from app.helpers import get_section_feedback_data
-from app.helpers import get_token_to_return_to_application
-from app.models.statuses import get_formatted
-from config import Config
-from flask import abort
-from flask import Blueprint
-from flask import current_app
-from flask import g
-from flask import make_response
-from flask import redirect
-from flask import render_template
-from flask import request
-from flask import url_for
-from flask_babel import force_locale
-from flask_babel import gettext
+from flask import Blueprint, abort, current_app, g, make_response, redirect, render_template, request, url_for
+from flask_babel import force_locale, gettext
 from flask_wtf import FlaskForm
 from fsd_utils import Decision
 from fsd_utils.authentication.decorators import login_required
@@ -51,6 +12,39 @@ from fsd_utils.simple_utils.date_utils import (
     current_datetime_after_given_iso_string,
 )
 
+from app.constants import ApplicationStatus
+from app.default.data import (
+    determine_round_status,
+    get_application_data,
+    get_application_display_config,
+    get_feedback,
+    get_feedback_survey_from_store,
+    get_fund_data,
+    get_research_survey_from_store,
+    get_round_data,
+    get_round_data_without_cache,
+    get_ttl_hash,
+    post_feedback_survey_to_store,
+    post_research_survey_to_store,
+    submit_feedback,
+)
+from app.forms.feedback import (
+    END_OF_APPLICATION_FEEDBACK_SURVEY_PAGE_NUMBER_MAP,
+    DefaultSectionFeedbackForm,
+)
+from app.forms.research import ResearchContactDetailsForm, ResearchOptForm
+from app.helpers import (
+    format_rehydrate_payload,
+    get_feedback_survey_data,
+    get_fund,
+    get_fund_and_round,
+    get_next_section_number,
+    get_research_survey_data,
+    get_section_feedback_data,
+    get_token_to_return_to_application,
+)
+from app.models.statuses import get_formatted
+from config import Config
 
 application_bp = Blueprint("application_routes", __name__, template_folder="templates")
 
@@ -133,7 +127,8 @@ def verify_round_open(f):
             return f(*args, **kwargs)
         else:
             current_app.logger.info(
-                f"User {g.account_id} tried to update application {application_id} outside of the round being open"
+                "User {account_id} tried to update application {application_id} outside of the round being open",
+                extra=dict(account_id=g.account_id, application_id=application_id),
             )
             if redirect_to_fund is not False:
                 fund = get_fund(fund_id=application.fund_id)
@@ -234,7 +229,10 @@ def tasklist(application_id):
     # note that individual section feedback COULD be independent of round feedback survey.
     # which is why this is not under a conditional round_data.feedback_survey_config.
     if round_data.feedback_survey_config.has_section_feedback:
-        (current_feedback_list, existing_feedback_map,) = get_section_feedback_data(
+        (
+            current_feedback_list,
+            existing_feedback_map,
+        ) = get_section_feedback_data(
             application,
             section_display_config,
         )
@@ -377,7 +375,7 @@ def continue_application(application_id):
         request.host_url
         + url_for("application_routes.fund_round_close_notification", application_id=application_id)[1:]
     )
-    current_app.logger.info(f"Url the form runner should return to '{return_url}'.")
+    current_app.logger.info("Url the form runner should return to '{return_url}'.", extra=dict(return_url=return_url))
 
     application = get_application_data(application_id)
     fund, round = get_fund_and_round(fund_id=application.fund_id, round_id=application.round_id)

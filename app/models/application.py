@@ -3,9 +3,10 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import List
 
+from flask import current_app
+
 from app.constants import ApplicationStatus
 from app.models.application_parts.form import Form
-from flask import current_app
 
 
 @dataclass
@@ -44,9 +45,11 @@ class Application:
 
     def match_forms_to_state(self, display_config):
         current_app.logger.info(
-            "Sorting forms into order using section config associated with"
-            f"fund: {self.fund_id}, round: {self.round_id}"
-            f", for application id:{self.id}."
+            (
+                "Sorting forms into order using section config associated with "
+                "fund: {fund_id}, round: {round_id}, for application id:{application_id}."
+            ),
+            extra=dict(fund_id=self.fund_id, round_id=self.round_id, application_id=self.id),
         )
         sections_config = [
             {

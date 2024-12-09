@@ -1,44 +1,34 @@
 from os import getenv
 
-from app.filters import custom_format_datetime
-from app.filters import date_format_short_month
-from app.filters import datetime_format
-from app.filters import datetime_format_full_month
-from app.filters import datetime_format_short_month
-from app.filters import kebab_case_to_human
-from app.filters import snake_case_to_human
-from app.filters import status_translation
-from app.filters import string_to_datetime
-from app.helpers import find_fund_and_round_in_request
-from app.helpers import find_fund_in_request
-from config import Config
-from flask import current_app
-from flask import Flask
-from flask import make_response
-from flask import render_template
-from flask import request
-from flask import url_for
-from flask_babel import Babel
-from flask_babel import gettext
-from flask_babel import pgettext
+from flask import Flask, current_app, make_response, render_template, request, url_for
+from flask_babel import Babel, gettext, pgettext
 from flask_compress import Compress
 from flask_talisman import Talisman
 from flask_wtf.csrf import CSRFProtect
-from fsd_utils import init_sentry
-from fsd_utils import LanguageSelector
+from fsd_utils import LanguageSelector, init_sentry
 from fsd_utils.healthchecks.checkers import FlaskRunningChecker
 from fsd_utils.healthchecks.healthcheck import Healthcheck
 from fsd_utils.locale_selector.get_lang import get_lang
 from fsd_utils.logging import logging
-from fsd_utils.toggles.toggles import create_toggles_client
-from fsd_utils.toggles.toggles import initialise_toggles_redis_store
-from fsd_utils.toggles.toggles import load_toggles
-from jinja2 import ChoiceLoader
-from jinja2 import PackageLoader
-from jinja2 import PrefixLoader
+from fsd_utils.toggles.toggles import create_toggles_client, initialise_toggles_redis_store, load_toggles
+from jinja2 import ChoiceLoader, PackageLoader, PrefixLoader
+
+from app.filters import (
+    custom_format_datetime,
+    date_format_short_month,
+    datetime_format,
+    datetime_format_full_month,
+    datetime_format_short_month,
+    kebab_case_to_human,
+    snake_case_to_human,
+    status_translation,
+    string_to_datetime,
+)
+from app.helpers import find_fund_and_round_in_request, find_fund_in_request
+from config import Config
 
 
-def create_app() -> Flask:
+def create_app() -> Flask:  # noqa: C901
     init_sentry()
 
     flask_app = Flask(__name__, static_url_path="/assets")
@@ -192,8 +182,7 @@ def create_app() -> Flask:
             request.path.endswith("js") or request.path.endswith("css") or request.path.endswith("/healthcheck")
         ):
             current_app.logger.warning(
-                f"""Application is in the Maintenance mode
-                reach url: {request.url}"""
+                "Application is in the Maintenance mode reach url: {url}", extra=dict(url=request.url)
             )
             return (
                 render_template(

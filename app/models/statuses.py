@@ -2,7 +2,6 @@ from flask_babel import gettext
 
 
 def get_formatted(value: str):
-
     statuses = {
         "NOT_STARTED": gettext("Not Started"),
         "IN_PROGRESS": gettext("In Progress"),
