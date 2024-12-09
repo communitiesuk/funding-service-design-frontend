@@ -371,6 +371,15 @@ wheels = [
 ]
 
 [[package]]
+name = "enum34"
+version = "1.1.10"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/11/c4/2da1f4952ba476677a42f25cd32ab8aaf0e1c0d0e00b89822b835c7e654c/enum34-1.1.10.tar.gz", hash = "sha256:cce6a7477ed816bd2542d03d53db9f0db935dd013b70f336a95c73979289f248", size = 28187 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/63/f6/ccb1c83687756aeabbf3ca0f213508fcfb03883ff200d201b3a4c60cedcc/enum34-1.1.10-py3-none-any.whl", hash = "sha256:c3858660960c984d6ab0ebad691265180da2b43f07e061c0f8dca9ef3cffd328", size = 11224 },
+]
+
+[[package]]
 name = "exceptiongroup"
 version = "1.2.0"
 source = { registry = "https://pypi.org/simple" }
@@ -600,7 +609,7 @@ requires-dist = [
     { name = "flask-compress", specifier = "==1.14" },
     { name = "flask-talisman", specifier = "==1.1.0" },
     { name = "flask-wtf", specifier = "==1.2.1" },
-    { name = "funding-service-design-utils", extras = ["toggles"], specifier = "==5.1.1" },
+    { name = "funding-service-design-utils", extras = ["toggles"], specifier = "==5.2.0" },
     { name = "govuk-frontend-jinja", specifier = "==2.7.0" },
     { name = "jsmin", specifier = "==3.0.1" },
     { name = "pyscss", specifier = "==1.4.0" },
@@ -627,7 +636,7 @@ dev = [
 
 [[package]]
 name = "funding-service-design-utils"
-version = "5.1.1"
+version = "5.2.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "beautifulsoup4" },
@@ -648,9 +657,9 @@ dependencies = [
     { name = "sentry-sdk", extra = ["flask"] },
     { name = "sqlalchemy-utils" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/43/fb/6298600eb3174bdd12b43f22b46a289367e34a13bc29120ac0a858825d5d/funding_service_design_utils-5.1.1.tar.gz", hash = "sha256:3c9539808912e37cb36724b474b4aa6c3d4275da92f970f4a616d6799415a0a0", size = 67221 }
+sdist = { url = "https://files.pythonhosted.org/packages/e4/f6/683e686a975db8074930e7c65203fafbe5e18c460e385e1072eae884301f/funding_service_design_utils-5.2.0.tar.gz", hash = "sha256:06bccd7814647ff1ee226eeaf323aaa1c284188bc03bbfdaa313ca0f0b8898ba", size = 67461 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/a1/bc/f10451e8e3b41d41df1e571a5c611634539432fc8e3f6fec5dde4f7a588a/funding_service_design_utils-5.1.1-py3-none-any.whl", hash = "sha256:efca18a2d7eb7e508687fe458f93bf0673f9bf91b3594f7374108be5855b28d3", size = 81147 },
+    { url = "https://files.pythonhosted.org/packages/41/6b/a6c4dc52793049e7bf13432881997f822a1ba13c9f30c35dc07be0e51296/funding_service_design_utils-5.2.0-py3-none-any.whl", hash = "sha256:773d64ec9a06b6c73f057871a5a16b048e513bdee770d0b7f5d757610e801c38", size = 81221 },
 ]
 
 [package.optional-dependencies]
@@ -850,6 +859,18 @@ wheels = [
 ]
 
 [[package]]
+name = "pathlib2"
+version = "2.3.7.post1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "six" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/31/51/99caf463dc7c18eb18dad1fffe465a3cf3ee50ac3d1dccbd1781336fe9c7/pathlib2-2.3.7.post1.tar.gz", hash = "sha256:9fe0edad898b83c0c3e199c842b27ed216645d2e177757b2dd67384d4113c641", size = 211190 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/09/eb/4af4bcd5b8731366b676192675221c5324394a580dfae469d498313b5c4a/pathlib2-2.3.7.post1-py2.py3-none-any.whl", hash = "sha256:5266a0fd000452f1b3467d782f079a4343c63aaa119221fbdc4e39577489ca5b", size = 18027 },
+]
+
+[[package]]
 name = "pathspec"
 version = "0.12.1"
 source = { registry = "https://pypi.org/simple" }
@@ -956,6 +977,8 @@ name = "pyscss"
 version = "1.4.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
+    { name = "enum34" },
+    { name = "pathlib2" },
     { name = "six" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/92/30/64c818fd317e03138f98ca67800edb6a916f59fc07b3d7e535e84c3c333a/pyScss-1.4.0.tar.gz", hash = "sha256:8f35521ffe36afa8b34c7d6f3195088a7057c185c2b8f15ee459ab19748669ff", size = 122100 }
