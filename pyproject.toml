@@ -15,7 +15,7 @@ dependencies = [
     "flask-talisman==1.1.0",
     "flask-wtf==1.2.1",
     "flask==2.3.3",
-    "funding-service-design-utils[toggles]==5.1.1",
+    "funding-service-design-utils[toggles]==5.2.0",
     "govuk-frontend-jinja==2.7.0",
     "jsmin==3.0.1",
     "python-slugify==8.0.4",
